@@ -11,6 +11,10 @@ package Tabelas;
  */
 public class Talentos {
 
+    int codigo_talento;
+    String nome_talento;
+    String descricao_talento;
+
     public int getCodigo_talento() {
         return codigo_talento;
     }
@@ -19,15 +23,20 @@ public class Talentos {
         this.codigo_talento = codigo_talento;
     }
 
-    public String getNome_codigo() {
-        return nome_codigo;
+    public String getNome_talento() {
+        return nome_talento;
     }
 
-    public void setNome_codigo(String nome_codigo) {
-        this.nome_codigo = nome_codigo;
+    public void setNome_talento(String nome_talento) {
+        this.nome_talento = nome_talento;
     }
-    
-    int codigo_talento;
-    String nome_codigo;
-    
+
+    public String getDescricao_talento() {
+        return descricao_talento;
+    }
+
+    public void setDescricao_talento(String descricao_talento) {
+        this.descricao_talento = descricao_talento;
+    }
+
 }
