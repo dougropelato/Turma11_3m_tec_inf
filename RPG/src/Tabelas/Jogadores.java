@@ -35,17 +35,17 @@ public class Jogadores {
         this.senha_jogador = senha_jogador;
     }
 
-    public Bolean getMestre_jogador() {
+    public Boolean getMestre_jogador() {
         return mestre_jogador;
     }
 
-    public void setMestre_jogador(Bolean mestre_jogador) {
+    public void setMestre_jogador(Boolean mestre_jogador) {
         this.mestre_jogador = mestre_jogador;
     }
     
  int codigo_jogador;
  String nome_jogador;
  String senha_jogador;
- Bolean mestre_jogador;
+ Boolean mestre_jogador;
     
 }
