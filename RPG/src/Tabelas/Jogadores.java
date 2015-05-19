@@ -7,7 +7,7 @@ package Tabelas;
 
 /**
  *
- * @author Felipe e Adriel
+ * @author Felipe e Adriel.
  */
 public class Jogadores {
 
