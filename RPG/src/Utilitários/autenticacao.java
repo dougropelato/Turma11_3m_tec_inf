@@ -14,9 +14,18 @@ public class autenticacao {
     int codigo_jogador;
     int codigo_personagem;
     boolean mestre_jogador;
+    boolean jogador_logado;
     String nome_jogador;
     String senha_jogaodor;
     String nome_personagem;
+
+    public boolean isJogador_logado() {
+        return jogador_logado;
+    }
+
+    public void setJogador_logado(boolean jogador_logado) {
+        this.jogador_logado = jogador_logado;
+    }
 
     public boolean isMestre_jogador() {
         return mestre_jogador;

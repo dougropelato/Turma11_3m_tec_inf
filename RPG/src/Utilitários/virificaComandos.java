@@ -17,62 +17,73 @@ public class virificaComandos {
     // clase criada so para amanter a autenticação
 
     public String verificaComando(String[] aux) throws SQLException {
+
         String res = "";
         buscas bsk = new buscas();
 
-        if (aux[0].equalsIgnoreCase("login")) { //verifica se primeira palavra é o login
+        if (!auth.isJogador_logado()) {// se não estiver logado entra
 
-            if (bsk.buscaJogador(aux[1]).size() > 0) {//virifica se volta algo da pesquisa
+            if (auth.getCodigo_jogador() == 0) {// verifica se falta logar
 
-                res = "digite a senha - EX: senha Minhasenha"; // seta a resposta do "mestre"
+                if (aux[0].equalsIgnoreCase("login")) { //verifica se primeira palavra é o login
 
-                auth.setNome_jogador(aux[1]); // seta nome do jogador logado
+                    if (bsk.buscaJogador(aux[1]).size() > 0) {//virifica se volta algo da pesquisa
 
-                auth.setCodigo_jogador(bsk.buscaJogador(aux[1]).get(0).getCodigo_jogador());// seta codigo do jogador logado
+                        res = "digite a senha - EX: senha Minhasenha"; // seta a resposta do "mestre"
+                        auth.setNome_jogador(aux[1]); // seta nome do jogador logado
+                        auth.setCodigo_jogador(bsk.buscaJogador(aux[1]).get(0).getCodigo_jogador());// seta codigo do jogador logado
 
-            } else {
-                res = "Login invalido tente novamente - EX: login Usuario "; // causo a pesquisa não retornar é pra exibir o erro 
-            }
+                    } else {
+                        res = "Login invalido tente novamente - EX: login Usuario "; // causo a pesquisa não retornar é pra exibir o erro 
+                    }
+                } else {// caso comando não for login
+                    res = "Faça o login para entrar - EX: login Usuario";
+                }
 
-        } else {
+            } else {//caso ja tenha o login do usuario / jogador
 
-            if (auth.getCodigo_jogador() == 0) {
-                res = "Faça o login - EX: login Usuario"; // 
-
-            } else {
                 if (aux[0].equalsIgnoreCase("senha")) {
 
                     if (bsk.buscaJogador(auth.getNome_jogador()).get(0).getSenha_jogador().equals(aux[1])) {
 
-                        res = "Logado com sucesso" + '\n'; // exibe que vc consegui lugar
-
-                        res = res + listaPersonagens();
-
+                        // seta como logado
+                        auth.setJogador_logado(true);
+                        // busca e seta o mestre jogador
                         auth.setMestre_jogador(bsk.buscaJogador(auth.getNome_jogador()).get(0).getMestre_jogador());
 
-                    } else {
-                        res = "senha invalida tente novamente - EX: senha Minhasenha"; // caso a senha não bater exibe erro
+                        //envi resposta que esta logado
+                        res = "Logado com sucesso" + '\n'; // +'\n' usado para quebrar linha
+                        // chama função que lista os personagens deste jogador
+                        res = res + listaPersonagens();
+
+                    } else {// caso a senha não bater exibe erro
+                        res = "senha invalida tente novamente - EX: senha Minhasenha";
                     }
 
                 }
-                // verifica se foi digitado  criar ou  cadastrar
-                if (aux[0].equalsIgnoreCase("criar") || aux[0].equalsIgnoreCase("cadastrar")) {
-                    //criar personagem
 
-                }
-                // se vc for cadastrar e se o unuario logado for mestre
-                if (aux[0].equalsIgnoreCase("cadastrar") && auth.isMestre_jogador() == true) {
+            }
+        } else {// caso je esteja logado
 
-                    //fazer comandos para cadastro dentro deste if
-                } else {
-                    res = " ação negada";  // mostra que foi negado ao acesso
-                }
+            // verifica se foi digitado  criar ou  cadastrar
+            if (aux[0].equalsIgnoreCase("criar")) {
+                //criar / oque ?
 
+            }
+            // se vc for cadastrar e se o unuario logado for mestre
+            if (aux[0].equalsIgnoreCase("cadastrar") && auth.isMestre_jogador() == true) {
+
+                //fazer comandos para cadastro dentro deste if
+            } else {
+                res = "Você não é o Mestre";  // mostra que foi negado ao acesso
+            }
+            if (res.equalsIgnoreCase("")) {// se não encontrar ne um comando a resposta sera vasia
+                res = "Comando não encontrado";// avisa que não foi encontrado o comando
             }
 
         }
 
-        return res;
+        return res;// retorna  a resposta 
 
     }
 
@@ -80,14 +91,14 @@ public class virificaComandos {
         buscas bsk = new buscas();
         String res = "";
 
-        if (bsk.buscaPersonagens(auth.getCodigo_jogador()).size() > 0) {
-            res = '\n' + "------ Personagens ------" + '\n'; //+'\n';
+        if (bsk.buscaPersonagens(auth.getCodigo_jogador()).size() > 0) {// caso tiver personagem criado exibe
+            res = '\n' + "------ Personagens ------" + '\n';  
             for (int i = 0; i < bsk.buscaPersonagens(auth.getCodigo_jogador()).size(); i++) {
                 res = res + bsk.buscaPersonagens(auth.getCodigo_jogador()).get(i).getCodigo_personagem() + " - ";
                 res = res + bsk.buscaPersonagens(auth.getCodigo_jogador()).get(i).getNome_personagem() + "" + '\n';
             }
 
-        } else {
+        } else {//caso não tiver personagem cadastrado
             res = "nenhum personagem digite criar personagem para criar um" + '\n';
         }
 
