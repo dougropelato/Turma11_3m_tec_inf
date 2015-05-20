@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * @author Alexjonas
  */
 public class formprincipal extends javax.swing.JFrame {
-
+    
     virificaComandos vercom = new virificaComandos();
 
     /**
@@ -168,7 +168,7 @@ public class formprincipal extends javax.swing.JFrame {
 
         // divide string em uma arraiy para verificar por partes
         String[] comands = string.split(" ");
-
+        
         jTextArea1.setText(jTextArea1.getText() + "VC: " + string + '\n'); // mostra no texto da historia 
 
         try {
@@ -178,7 +178,7 @@ public class formprincipal extends javax.swing.JFrame {
         }
         // limpa comando digitado
         jTextField1.setText("");
-
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -192,7 +192,7 @@ public class formprincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jButton1.doClick();
-
+            
         }
     }//GEN-LAST:event_jTextField1KeyPressed
 
