@@ -15,7 +15,6 @@ public class Posicoes {
     int coordenadaX_posicao;
     int coordenadaY_posicao;
     int codigo_caminho;
-    int codigo_npc;
 
     public int getCodigo_posicao() {
         return codigo_posicao;
@@ -56,12 +55,3 @@ public class Posicoes {
     public void setCodigo_caminho(int codigo_caminho) {
         this.codigo_caminho = codigo_caminho;
     }
-
-    public int getCodigo_npc() {
-        return codigo_npc;
-    }
-
-    public void setCodigo_npc(int codigo_npc) {
-        this.codigo_npc = codigo_npc;
-    }
-}
