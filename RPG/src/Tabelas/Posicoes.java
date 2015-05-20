@@ -55,3 +55,5 @@ public class Posicoes {
     public void setCodigo_caminho(int codigo_caminho) {
         this.codigo_caminho = codigo_caminho;
     }
+    
+}
