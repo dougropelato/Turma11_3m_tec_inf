@@ -9,30 +9,30 @@ package Tabelas;
  *
  * @author Ricardo Figurski
  */
-public class EscudosPersonagens {
+public class PersonagensArmas {
 
-    int codigo_escudo;
-    int quantidade_escudo;
+    int codigo_arma;
+    int quantidade_arma;
     int codigo_personagem;
 
-    public int getCodigo_escudo() {
-        return codigo_escudo;
+    public int getCodigo_arma() {
+        return codigo_arma;
     }
 
-    public int getQuantidade_escudo() {
-        return quantidade_escudo;
+    public void setCodigo_arma(int codigo_arma) {
+        this.codigo_arma = codigo_arma;
     }
 
-    public void setCodigo_escudo(int codigo_escudo) {
-        this.codigo_escudo = codigo_escudo;
-    }
-
-    public void setQuantidade_escudo(int quantidade_escudo) {
-        this.quantidade_escudo = quantidade_escudo;
+    public void setQuantidade_arma(int quantidade_arma) {
+        this.quantidade_arma = quantidade_arma;
     }
 
     public void setCodigo_personagem(int codigo_personagem) {
         this.codigo_personagem = codigo_personagem;
+    }
+
+    public int getQuantidade_arma() {
+        return quantidade_arma;
     }
 
     public int getCodigo_personagem() {

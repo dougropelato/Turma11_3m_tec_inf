@@ -9,30 +9,30 @@ package Tabelas;
  *
  * @author Ricardo Figurski
  */
-public class ConsumiveisPersonagens {
+public class PersonagensArmaduras {
 
-    int codigo_consumivel;
-    int quantidade_consumivel;
+    int codigo_armadura;
+    int quantidade_armadura;
     int codigo_personagem;
 
-    public int getCodigo_consumivel() {
-        return codigo_consumivel;
+    public int getCodigo_armadura() {
+        return codigo_armadura;
     }
 
-    public void setCodigo_consumivel(int codigo_consumivel) {
-        this.codigo_consumivel = codigo_consumivel;
+    public void setCodigo_armadura(int codigo_armadura) {
+        this.codigo_armadura = codigo_armadura;
     }
 
-    public void setQuantidade_consumivel(int quantidade_consumivel) {
-        this.quantidade_consumivel = quantidade_consumivel;
+    public void setQuantidade_armadura(int quantidade_armadura) {
+        this.quantidade_armadura = quantidade_armadura;
     }
 
     public void setCodigo_personagem(int codigo_personagem) {
         this.codigo_personagem = codigo_personagem;
     }
 
-    public int getQuantidade_consumivel() {
-        return quantidade_consumivel;
+    public int getQuantidade_armadura() {
+        return quantidade_armadura;
     }
 
     public int getCodigo_personagem() {
