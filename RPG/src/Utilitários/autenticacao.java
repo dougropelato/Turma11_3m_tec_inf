@@ -10,12 +10,21 @@ package Utilitários;
  * @author Alexjonas
  */
 public class autenticacao {
-    
+
     int codigo_jogador;
     int codigo_personagem;
+    boolean mestre_jogador;
     String nome_jogador;
     String senha_jogaodor;
     String nome_personagem;
+
+    public boolean isMestre_jogador() {
+        return mestre_jogador;
+    }
+
+    public void setMestre_jogador(boolean mestre_jogador) {
+        this.mestre_jogador = mestre_jogador;
+    }
 
     public int getCodigo_jogador() {
         return codigo_jogador;
@@ -56,6 +65,5 @@ public class autenticacao {
     public void setNome_personagem(String nome_personagem) {
         this.nome_personagem = nome_personagem;
     }
-    
-    
+
 }

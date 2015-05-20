@@ -25,20 +25,18 @@ public class virificaComandos {
         buscas bsk = new buscas();
 
         if (aux[0].equalsIgnoreCase("login")) { //verifica se primeira palavra é o login
-            
+
             if (bsk.buscaJogador(aux[1]).size() > 0) {//virifica se volta algo da pesquisa
-                
+
                 res = "digite a senha - EX: senha Minhasenha"; // seta a resposta do "mestre"
-                
+
                 auth.setNome_jogador(aux[1]); // seta nome do jogador logado
-                
+
                 auth.setCodigo_jogador(bsk.buscaJogador(aux[1]).get(0).getCodigo_jogador());// seta codigo do jogador logado
 
             } else {
                 res = "Login invalido tente novamente - EX: login Usuario "; // causo a pesquisa não retornar é pra exibir o erro 
             }
-
-        } else if (aux[0].equalsIgnoreCase("cls")) {
 
         } else {
 
@@ -50,17 +48,23 @@ public class virificaComandos {
 
                     if (bsk.buscaJogador(nomeJogador).get(0).getSenha_jogador().equals(aux[1])) {
 
-                        res = "vc esta logado O/" + '\n';
+                        res = "Logado com sucesso" + '\n'; // exibe que vc consegui lugar
+                        
                         res = res + listaPersonagens();
+                        
+                        auth.setMestre_jogador(bsk.buscaJogador(auth.getNome_jogador()).get(0).getMestre_jogador());
+                        
+                        
 
                     } else {
-                        res = "senha invalida tente novamente - EX: senha Minhasenha";
+                        res = "senha invalida tente novamente - EX: senha Minhasenha"; // caso a senha não bater exibe erro
                     }
 
                 }
-
-                if (aux[0].equalsIgnoreCase("criar")) {
+                // verifica se foi digitado  criar ou  cadastrar
+                if (aux[0].equalsIgnoreCase("criar") || aux[0].equalsIgnoreCase("cadastrar")) {
                     //criar personagem
+
                 }
 
             }

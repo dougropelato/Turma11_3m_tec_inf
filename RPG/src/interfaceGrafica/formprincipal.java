@@ -5,6 +5,8 @@
  */
 package interfaceGrafica;
 
+import Utilitários.virificaComandos;
+
 import Utilitários.buscas;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
@@ -18,7 +20,7 @@ import java.util.logging.Logger;
 public class formprincipal extends javax.swing.JFrame {
 
    
-
+    virificaComandos vercom = new virificaComandos();
     /**
      * Creates new form formprincipal
      */
@@ -166,11 +168,15 @@ public class formprincipal extends javax.swing.JFrame {
         String[] comands = string.split(" ");
 
         
-        jTextArea1.setText(jTextArea1.getText() + "VC: " + string + '\n');
+        jTextArea1.setText(jTextArea1.getText() + "VC: " + string + '\n'); // mostra no texto da historia 
 
-        jTextArea1.setText(jTextArea1.getText() + "Mestre: " + verificaComando(comands) + '\n');
+        try {
+            jTextArea1.setText(jTextArea1.getText() + "Mestre: " +vercom.verificaComando(comands) + '\n');// exibe a resposta comom mestre
+        } catch (SQLException ex) {
+            Logger.getLogger(formprincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-        Logger.getLogger(formprincipal.class.getName()).log(Level.SEVERE, null, ex);
+    
 
         jTextField1.setText("");
 
