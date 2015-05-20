@@ -19,8 +19,8 @@ import java.util.logging.Logger;
  */
 public class formprincipal extends javax.swing.JFrame {
 
-   
     virificaComandos vercom = new virificaComandos();
+
     /**
      * Creates new form formprincipal
      */
@@ -165,19 +165,18 @@ public class formprincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String string = jTextField1.getText();
+
+        // divide string em uma arraiy para verificar por partes
         String[] comands = string.split(" ");
 
-        
         jTextArea1.setText(jTextArea1.getText() + "VC: " + string + '\n'); // mostra no texto da historia 
 
         try {
-            jTextArea1.setText(jTextArea1.getText() + "Mestre: " +vercom.verificaComando(comands) + '\n');// exibe a resposta comom mestre
+            jTextArea1.setText(jTextArea1.getText() + "Mestre: " + vercom.verificaComando(comands) + '\n');// exibe a resposta comom mestre
         } catch (SQLException ex) {
             Logger.getLogger(formprincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-    
-
+        // limpa comando digitado
         jTextField1.setText("");
 
 
@@ -185,6 +184,7 @@ public class formprincipal extends javax.swing.JFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
+        jTextField1.setFocusable(true);
 
     }//GEN-LAST:event_formComponentShown
 

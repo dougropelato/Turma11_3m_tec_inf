@@ -6,6 +6,7 @@
 package rpg;
 
 import interfaceGrafica.JFPrincipal;
+import interfaceGrafica.formprincipal;
 
 /**
  *
@@ -17,8 +18,8 @@ public class Rpg {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        JFPrincipal tela = new JFPrincipal();
+        formprincipal tela = new formprincipal();
         tela.setVisible(true);
     }
-    
+
 }

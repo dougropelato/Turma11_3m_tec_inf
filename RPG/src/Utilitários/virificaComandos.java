@@ -13,12 +13,8 @@ import java.sql.SQLException;
  */
 public class virificaComandos {
 
-    String nomeJogador;
-    String nomePersonagem;
-    int codigoJogador = 0;
-    int codigoPersonagem = 0;
-
     autenticacao auth = new autenticacao();
+    // clase criada so para amanter a autenticação
 
     public String verificaComando(String[] aux) throws SQLException {
         String res = "";
@@ -46,15 +42,13 @@ public class virificaComandos {
             } else {
                 if (aux[0].equalsIgnoreCase("senha")) {
 
-                    if (bsk.buscaJogador(nomeJogador).get(0).getSenha_jogador().equals(aux[1])) {
+                    if (bsk.buscaJogador(auth.getNome_jogador()).get(0).getSenha_jogador().equals(aux[1])) {
 
                         res = "Logado com sucesso" + '\n'; // exibe que vc consegui lugar
-                        
+
                         res = res + listaPersonagens();
-                        
+
                         auth.setMestre_jogador(bsk.buscaJogador(auth.getNome_jogador()).get(0).getMestre_jogador());
-                        
-                        
 
                     } else {
                         res = "senha invalida tente novamente - EX: senha Minhasenha"; // caso a senha não bater exibe erro
@@ -65,6 +59,13 @@ public class virificaComandos {
                 if (aux[0].equalsIgnoreCase("criar") || aux[0].equalsIgnoreCase("cadastrar")) {
                     //criar personagem
 
+                }
+                // se vc for cadastrar e se o unuario logado for mestre
+                if (aux[0].equalsIgnoreCase("cadastrar") && auth.isMestre_jogador() == true) {
+
+                    //fazer comandos para cadastro dentro deste if
+                } else {
+                    res = " ação negada";  // mostra que foi negado ao acesso
                 }
 
             }
@@ -79,11 +80,11 @@ public class virificaComandos {
         buscas bsk = new buscas();
         String res = "";
 
-        if (bsk.buscaPersonagens(codigoJogador).size() > 0) {
+        if (bsk.buscaPersonagens(auth.getCodigo_jogador()).size() > 0) {
             res = '\n' + "------ Personagens ------" + '\n'; //+'\n';
-            for (int i = 0; i < bsk.buscaPersonagens(codigoJogador).size(); i++) {
-                res = res + bsk.buscaPersonagens(codigoJogador).get(i).getCodigo_personagem() + " - ";
-                res = res + bsk.buscaPersonagens(codigoJogador).get(i).getNome_personagem() + "" + '\n';
+            for (int i = 0; i < bsk.buscaPersonagens(auth.getCodigo_jogador()).size(); i++) {
+                res = res + bsk.buscaPersonagens(auth.getCodigo_jogador()).get(i).getCodigo_personagem() + " - ";
+                res = res + bsk.buscaPersonagens(auth.getCodigo_jogador()).get(i).getNome_personagem() + "" + '\n';
             }
 
         } else {
