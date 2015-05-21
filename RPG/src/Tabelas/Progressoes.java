@@ -109,5 +109,13 @@ public class Progressoes {
 
     public void setClasses_codigo_classe(int classes_codigo_classe) {
         this.codigo_classe = classes_codigo_classe;
+        
+    }
+    public int codigo_classe() {
+        return codigo_classe;
+    }
+
+    public void codigo_classe(int codigo_classe) {
+        this.codigo_classe = codigo_classe;
     }
 }
