@@ -21,7 +21,7 @@ public class Progressoes {
     int quantidade_dado_progressao;
     int tipo_dado_progressao;
     int bonus_ca_progressao;
-    int classes_codigo_classe;
+    int codigo_classe;
 
     public int getCodigo_progressao() {
         return codigo_progressao;
@@ -104,10 +104,10 @@ public class Progressoes {
     }
 
     public int getClasses_codigo_classe() {
-        return classes_codigo_classe;
+        return codigo_classe;
     }
 
     public void setClasses_codigo_classe(int classes_codigo_classe) {
-        this.classes_codigo_classe = classes_codigo_classe;
+        this.codigo_classe = classes_codigo_classe;
     }
 }
