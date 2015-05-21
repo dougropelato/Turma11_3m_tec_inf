@@ -7,6 +7,7 @@ package rpg;
 
 import interfaceGrafica.JFPrincipal;
 import interfaceGrafica.formprincipal;
+import Formularios.*;
 
 /**
  *
@@ -18,8 +19,9 @@ public class Rpg {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        formprincipal tela = new formprincipal();
-        tela.setVisible(true);
+       
+        JFMestre m = new JFMestre(); 
+        m.setVisible(true);
     }
 
 }

@@ -24,76 +24,75 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jbOkLogin" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jbSairLogin" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jtfLogin" max="32767" attributes="0"/>
-                          <Component id="jtfSenha" min="-2" pref="112" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="jcbMestre" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="113" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jtfUsuarioJogador" pref="80" max="32767" attributes="0"/>
+                  <Component id="jtfSenhaJogador" max="32767" attributes="0"/>
+                  <Component id="jtfRepitaSenhaJogador" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="171" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtfUsuarioJogador" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtfSenhaJogador" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbOkLogin" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jbSairLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtfRepitaSenhaJogador" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="50" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jcbMestre" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="125" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="jtfLogin">
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="LOGIN"/>
+        <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="SENHA"/>
+        <Property name="text" type="java.lang.String" value="Senha"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jtfSenha">
-    </Component>
-    <Component class="javax.swing.JButton" name="jbOkLogin">
+    <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="OK"/>
+        <Property name="text" type="java.lang.String" value="Repita sua senha"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jbSairLogin">
+    <Component class="javax.swing.JCheckBox" name="jcbMestre">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Sair"/>
+        <Property name="text" type="java.lang.String" value="Mestre"/>
+        <Property name="horizontalTextPosition" type="int" value="2"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jtfUsuarioJogador">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jtfSenhaJogador">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jtfRepitaSenhaJogador">
     </Component>
   </SubComponents>
 </Form>
