@@ -35,7 +35,7 @@ public class JFLogin extends javax.swing.JFrame {
         jbOkLogin = new javax.swing.JButton();
         jbSairLogin = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("LOGIN");
 
