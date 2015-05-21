@@ -18,8 +18,8 @@ public class Rpg {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        formprincipal tela = new formprincipal();
-        tela.setVisible(true);
+       
+        JF jf = new JF();
     }
 
 }
