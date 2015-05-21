@@ -35,7 +35,7 @@ public class JFJogador extends javax.swing.JFrame {
         jtfSenhaJogador = new javax.swing.JTextField();
         jtfRepitaSenhaJogador = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Usuário");
 
