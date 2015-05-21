@@ -7,6 +7,7 @@ package rpg;
 
 import interfaceGrafica.JFPrincipal;
 import interfaceGrafica.formprincipal;
+import Formularios.*;
 
 /**
  *
@@ -19,7 +20,8 @@ public class Rpg {
      */
     public static void main(String[] args) {
        
-        JF jf = new JF();
+        JFMestre m = new JFMestre(); 
+        m.setVisible(true);
     }
 
 }
