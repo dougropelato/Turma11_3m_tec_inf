@@ -16,6 +16,30 @@ public class JFVendaItens extends javax.swing.JFrame {
      */
     public JFVendaItens() {
         initComponents();
+       jbComprar.setVisible(false);
+        lbComprar.setVisible(false);
+        lbPrecoComprar.setVisible(false);
+        jcbVenderConsumiveis.setVisible(false);
+        jcbVenderEscudos.setVisible(false);
+        jcbVenderArmaduras.setVisible(false);
+        jcbVenderArmas.setVisible(false);
+        jcVenderConsumiveis.setVisible(false);
+        jcVenderEscudos.setVisible(false);
+        jcVenderArmaduras.setVisible(false);         //////Oculta objetos setados antes de abrir o form
+        jcVenderArmas.setVisible(false);
+
+        jbVender.setVisible(false);
+        lbVender.setVisible(false);
+        lbPreçoVender.setVisible(false);
+        jcbComprarConsumiveis.setVisible(false);
+        jcbComprarEscudos.setVisible(false);
+        jcbComprarArmaduras.setVisible(false);
+        jcbComprarArmas.setVisible(false);
+        jcComprarConsumiveis.setVisible(false);
+        jcComprarEscudos.setVisible(false);
+        jcComprarArmaduras.setVisible(false);
+        jcComprarArmas.setVisible(false);
+
     }
 
     /**
@@ -32,9 +56,9 @@ public class JFVendaItens extends javax.swing.JFrame {
         buttonGroup3 = new javax.swing.ButtonGroup();
         label2 = new java.awt.Label();
         lbDinheiroPersonagem = new java.awt.Label();
-        label1 = new java.awt.Label();
+        lbComprar = new java.awt.Label();
         jcComprarArmas = new javax.swing.JComboBox();
-        label3 = new java.awt.Label();
+        lbVender = new java.awt.Label();
         jcVenderArmas = new javax.swing.JComboBox();
         jcComprarArmaduras = new javax.swing.JComboBox();
         jcComprarEscudos = new javax.swing.JComboBox();
@@ -43,8 +67,8 @@ public class JFVendaItens extends javax.swing.JFrame {
         jcVenderEscudos = new javax.swing.JComboBox();
         jcVenderConsumiveis = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        label4 = new java.awt.Label();
-        label5 = new java.awt.Label();
+        lbPrecoComprar = new java.awt.Label();
+        lbPreçoVender = new java.awt.Label();
         jbComprar = new javax.swing.JButton();
         jbVender = new javax.swing.JButton();
         jcbComprar = new javax.swing.JCheckBox();
@@ -59,11 +83,24 @@ public class JFVendaItens extends javax.swing.JFrame {
         jcbVenderConsumiveis = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         label2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        label2.setText("Dinheiro do Personagem:");
+        label2.setText("Peças de Ouro Disponiveis:");
+        getContentPane().add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(lbDinheiroPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 10, 80, -1));
 
-        label1.setText("O que você deseja comprar?");
+        lbComprar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbComprar.setText("O que você deseja comprar?");
+        getContentPane().add(lbComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
         jcComprarArmas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcComprarArmas.addActionListener(new java.awt.event.ActionListener() {
@@ -71,233 +108,158 @@ public class JFVendaItens extends javax.swing.JFrame {
                 jcComprarArmasActionPerformed(evt);
             }
         });
+        getContentPane().add(jcComprarArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 171, -1));
 
-        label3.setText("O que você deseja vender?");
+        lbVender.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbVender.setText("O que você deseja vender?");
+        getContentPane().add(lbVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, -1, -1));
 
         jcVenderArmas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jcVenderArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 171, -1));
 
         jcComprarArmaduras.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jcComprarArmaduras, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 171, -1));
 
         jcComprarEscudos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jcComprarEscudos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 171, -1));
 
         jcComprarConsumiveis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jcComprarConsumiveis, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 171, -1));
 
         jcVenderArmaduras.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jcVenderArmaduras, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 171, -1));
 
         jcVenderEscudos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jcVenderEscudos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 171, -1));
 
         jcVenderConsumiveis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jcVenderConsumiveis, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 171, -1));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
         jLabel1.setText("Olá viajante você deseja comprar ou vender itens?");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
 
-        label4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        label4.setText("Preço:");
+        lbPrecoComprar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lbPrecoComprar.setText("Preço:");
+        getContentPane().add(lbPrecoComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
 
-        label5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        label5.setText("Preço:");
+        lbPreçoVender.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lbPreçoVender.setText("Preço:");
+        getContentPane().add(lbPreçoVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, -1, -1));
 
+        jbComprar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbComprar.setText("Comprar");
         jbComprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbComprarActionPerformed(evt);
             }
         });
+        getContentPane().add(jbComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 112, 39));
 
+        jbVender.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbVender.setText("Vender");
+        jbVender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVenderActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, 112, 39));
 
+        jcbComprar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jcbComprar.setText("Comprar");
+        jcbComprar.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                jcbComprarComponentHidden(evt);
+            }
+        });
         jcbComprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbComprarActionPerformed(evt);
             }
         });
+        getContentPane().add(jcbComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
 
+        jcbVender.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jcbVender.setText("Vender");
         jcbVender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbVenderActionPerformed(evt);
             }
         });
+        getContentPane().add(jcbVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, -1, -1));
 
+        jcbComprarArmas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jcbComprarArmas.setText("Armas");
+        jcbComprarArmas.setHideActionText(true);
         jcbComprarArmas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbComprarArmasActionPerformed(evt);
             }
         });
+        getContentPane().add(jcbComprarArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
+        jcbComprarArmaduras.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jcbComprarArmaduras.setText("Armaduras");
         jcbComprarArmaduras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbComprarArmadurasActionPerformed(evt);
             }
         });
+        getContentPane().add(jcbComprarArmaduras, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
 
+        jcbComprarEscudos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jcbComprarEscudos.setText("Escudos");
         jcbComprarEscudos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbComprarEscudosActionPerformed(evt);
             }
         });
+        getContentPane().add(jcbComprarEscudos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
+        jcbComprarConsumiveis.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jcbComprarConsumiveis.setText("Consumiveis");
         jcbComprarConsumiveis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbComprarConsumiveisActionPerformed(evt);
             }
         });
+        getContentPane().add(jcbComprarConsumiveis, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
 
+        jcbVenderArmas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jcbVenderArmas.setText("Armas");
         jcbVenderArmas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbVenderArmasActionPerformed(evt);
             }
         });
+        getContentPane().add(jcbVenderArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, -1, -1));
 
+        jcbVenderArmaduras.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jcbVenderArmaduras.setText("Armaduras");
         jcbVenderArmaduras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbVenderArmadurasActionPerformed(evt);
             }
         });
+        getContentPane().add(jcbVenderArmaduras, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, -1, -1));
 
+        jcbVenderEscudos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jcbVenderEscudos.setText("Escudos");
         jcbVenderEscudos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbVenderEscudosActionPerformed(evt);
             }
         });
+        getContentPane().add(jcbVenderEscudos, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
 
+        jcbVenderConsumiveis.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jcbVenderConsumiveis.setText("Consumiveis");
         jcbVenderConsumiveis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbVenderConsumiveisActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcbVender)
-                            .addComponent(jcbComprarArmas)
-                            .addComponent(jcbComprarArmaduras)
-                            .addComponent(jcbComprarEscudos)
-                            .addComponent(jcbComprarConsumiveis))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbComprar)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jcComprarEscudos, 0, 171, Short.MAX_VALUE)
-                                .addComponent(jcComprarArmas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jcComprarArmaduras, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jcComprarConsumiveis, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jcVenderArmaduras, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jcVenderArmas, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jcVenderEscudos, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jcVenderConsumiveis, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jbVender)
-                        .addGap(122, 122, 122))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbDinheiroPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(273, 273, 273)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcbVenderArmas)
-                            .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jcbVenderArmaduras)
-                            .addComponent(jcbVenderEscudos)
-                            .addComponent(jcbVenderConsumiveis)
-                            .addComponent(jcbComprar))))
-                .addContainerGap(141, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbDinheiroPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jcComprarArmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jcbVenderArmas))
-                                    .addGap(28, 28, 28))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jcComprarArmaduras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jcbComprarArmaduras)
-                                    .addComponent(jcbVenderArmaduras)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jcVenderArmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jcVenderArmaduras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jcbComprarArmas))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jcComprarEscudos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jcbComprarEscudos))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jcVenderEscudos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jcbVenderEscudos)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jcComprarConsumiveis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jcbComprarConsumiveis)
-                                .addComponent(jcbVenderConsumiveis))
-                            .addComponent(jcVenderConsumiveis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbComprar)
-                            .addComponent(jbVender)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jcbComprar)
-                        .addComponent(jcbVender)))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
+        getContentPane().add(jcbVenderConsumiveis, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -307,26 +269,51 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_jcComprarArmasActionPerformed
 
     private void jbComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComprarActionPerformed
-        ///checkbox2.getState()
-        ///     if (checkbox2.isEnabled()) {
-
 
     }//GEN-LAST:event_jbComprarActionPerformed
 
     private void jcbVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbVenderActionPerformed
-        if (jcbComprar.isSelected()) {
-            // true  
-
+        if (jcbVender.isSelected()) {
+            lbVender.setVisible(true);
+            jcbVenderArmas.setVisible(true);
+            jcbVenderConsumiveis.setVisible(true);
+            jcbVenderEscudos.setVisible(true);
+            jcbVenderArmaduras.setVisible(true);
         } else {
-            // false  
-
+            lbVender.setVisible(false);
+            jcbVenderConsumiveis.setVisible(false);
+            jcbVenderEscudos.setVisible(false);
+            jcbVenderArmaduras.setVisible(false);
+            jcbVenderArmas.setVisible(false);
+            jcVenderConsumiveis.setVisible(false);
+            jcVenderEscudos.setVisible(false);
+            jcVenderArmaduras.setVisible(false);
+            jcVenderArmas.setVisible(false);
+            jbVender.setVisible(false);
+            lbPreçoVender.setVisible(false);
         }
     }//GEN-LAST:event_jcbVenderActionPerformed
 
     private void jcbComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbComprarActionPerformed
-        if (jcbVender.isSelected()) {
+        if (jcbComprar.isSelected()) {
+            lbComprar.setVisible(true);
+            jcbComprarArmas.setVisible(true);
+            jcbComprarConsumiveis.setVisible(true);
+            jcbComprarEscudos.setVisible(true);
+            jcbComprarArmaduras.setVisible(true);
 
         } else {
+            lbComprar.setVisible(false);
+            jcbComprarConsumiveis.setVisible(false);
+            jcbComprarEscudos.setVisible(false);
+            jcbComprarArmaduras.setVisible(false);
+            jcbComprarArmas.setVisible(false);
+            jcComprarConsumiveis.setVisible(false);
+            jcComprarEscudos.setVisible(false);
+            jcComprarArmaduras.setVisible(false);
+            jcComprarArmas.setVisible(false);
+            jbComprar.setVisible(false);
+            lbPrecoComprar.setVisible(false);
 
         }
     }//GEN-LAST:event_jcbComprarActionPerformed
@@ -334,67 +321,115 @@ public class JFVendaItens extends javax.swing.JFrame {
     private void jcbComprarArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbComprarArmasActionPerformed
         if (jcbComprarArmas.isSelected()) {
             jcComprarArmas.setVisible(true);
+            jbComprar.setVisible(true);
+            lbPrecoComprar.setVisible(true);
         } else {
             jcComprarArmas.setVisible(false);
+            jbComprar.setVisible(false);
+            lbPrecoComprar.setVisible(false);
         }
     }//GEN-LAST:event_jcbComprarArmasActionPerformed
 
     private void jcbComprarArmadurasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbComprarArmadurasActionPerformed
         if (jcbComprarArmaduras.isSelected()) {
-            jcComprarArmaduras.setVisible(true); 
+            jcComprarArmaduras.setVisible(true);
+            jbComprar.setVisible(true);
+            lbPrecoComprar.setVisible(true);
         } else {
-            jcComprarArmaduras.setVisible(false);  
+            jcComprarArmaduras.setVisible(false);
+            jbComprar.setVisible(false);
+            lbPrecoComprar.setVisible(false);
         }
     }//GEN-LAST:event_jcbComprarArmadurasActionPerformed
 
     private void jcbComprarEscudosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbComprarEscudosActionPerformed
         if (jcbComprarEscudos.isSelected()) {
             jcComprarEscudos.setVisible(true);
+            jbComprar.setVisible(true);
+            lbPrecoComprar.setVisible(true);
         } else {
-            jcComprarEscudos.setVisible(false); 
+            jcComprarEscudos.setVisible(false);
+            jbComprar.setVisible(false);
+            lbPrecoComprar.setVisible(false);
 
         }
     }//GEN-LAST:event_jcbComprarEscudosActionPerformed
 
     private void jcbComprarConsumiveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbComprarConsumiveisActionPerformed
         if (jcbComprarConsumiveis.isSelected()) {
-            jcComprarConsumiveis.setVisible(true); 
+            jcComprarConsumiveis.setVisible(true);
+            jbComprar.setVisible(true);
+            lbPrecoComprar.setVisible(true);
         } else {
-            jcComprarConsumiveis.setVisible(false); 
+            jcComprarConsumiveis.setVisible(false);
+            jbComprar.setVisible(false);
+            lbPrecoComprar.setVisible(false);
         }
     }//GEN-LAST:event_jcbComprarConsumiveisActionPerformed
 
     private void jcbVenderArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbVenderArmasActionPerformed
         if (jcbVenderArmas.isSelected()) {
-           jcVenderArmas.setVisible(true);
+            jcVenderArmas.setVisible(true);
+            jbVender.setVisible(true);
+            lbPreçoVender.setVisible(true);
         } else {
-            jcVenderArmas.setVisible(false);  
+            jcVenderArmas.setVisible(false);
+            jbVender.setVisible(false);
+            lbPreçoVender.setVisible(false);
         }
     }//GEN-LAST:event_jcbVenderArmasActionPerformed
 
     private void jcbVenderArmadurasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbVenderArmadurasActionPerformed
         if (jcbVenderArmaduras.isSelected()) {
-            jcVenderArmaduras.setVisible(true); 
+            jcVenderArmaduras.setVisible(true);
+            jbVender.setVisible(true);
+            lbPreçoVender.setVisible(true);
         } else {
-            jcVenderArmaduras.setVisible(false); 
+            jcVenderArmaduras.setVisible(false);
+            jbVender.setVisible(false);
+            lbPreçoVender.setVisible(false);
         }
     }//GEN-LAST:event_jcbVenderArmadurasActionPerformed
 
     private void jcbVenderEscudosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbVenderEscudosActionPerformed
         if (jcbVenderEscudos.isSelected()) {
-            jcVenderEscudos.setVisible(true);  
+            jcVenderEscudos.setVisible(true);
+            jbVender.setVisible(true);
+            lbPreçoVender.setVisible(true);
         } else {
-            jcVenderEscudos.setVisible(false);  
+            jcVenderEscudos.setVisible(false);
+            jbVender.setVisible(false);
+            lbPreçoVender.setVisible(false);
         }
     }//GEN-LAST:event_jcbVenderEscudosActionPerformed
 
     private void jcbVenderConsumiveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbVenderConsumiveisActionPerformed
         if (jcbVenderConsumiveis.isSelected()) {
-            jcVenderConsumiveis.setVisible(true); 
+            jcVenderConsumiveis.setVisible(true);
+            jbVender.setVisible(true);
+            lbPreçoVender.setVisible(true);
         } else {
-            jcVenderConsumiveis.setVisible(false);  
+            jcVenderConsumiveis.setVisible(false);
+            jbVender.setVisible(false);
+            lbPreçoVender.setVisible(false);
         }
     }//GEN-LAST:event_jcbVenderConsumiveisActionPerformed
+
+    private void jcbComprarComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jcbComprarComponentHidden
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbComprarComponentHidden
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jbVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbVenderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -456,11 +491,11 @@ public class JFVendaItens extends javax.swing.JFrame {
     private javax.swing.JCheckBox jcbVenderArmas;
     private javax.swing.JCheckBox jcbVenderConsumiveis;
     private javax.swing.JCheckBox jcbVenderEscudos;
-    private java.awt.Label label1;
     private java.awt.Label label2;
-    private java.awt.Label label3;
-    private java.awt.Label label4;
-    private java.awt.Label label5;
+    private java.awt.Label lbComprar;
     private java.awt.Label lbDinheiroPersonagem;
+    private java.awt.Label lbPrecoComprar;
+    private java.awt.Label lbPreçoVender;
+    private java.awt.Label lbVender;
     // End of variables declaration//GEN-END:variables
 }
