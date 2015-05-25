@@ -20,8 +20,8 @@ public class virificaComandos {
     public String verificaComando(String[] aux) throws SQLException {
 
         String res = "";
-       // buscas bsk = new buscas();
-
+        buscas bsk = new buscas();
+        
         // feito apra logar sem banco
         if (aux[0].equalsIgnoreCase("thedoctor")) {
             auth.setCodigo_jogador(1);
@@ -29,7 +29,7 @@ public class virificaComandos {
             auth.setCodigo_personagem(1);
             auth.setSenha_jogador("123");
             auth.setJogador_logado(true);
-            res = "doctor who";
+            res = "doctor who ?";
         } // modo adm
 
         if (!auth.isJogador_logado()) {// se não estiver logado entra
@@ -87,7 +87,7 @@ public class virificaComandos {
                 JFMestre m = new JFMestre();
                 m.setVisible(true);
                 res = "abrindo o formulario de cadastro do Mestre";
-            } 
+            }
             if (res.equalsIgnoreCase("")) {// se não encontrar ne um comando a resposta sera vasia
                 res = "Comando não encontrado";// avisa que não foi encontrado o comando
             }
