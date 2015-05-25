@@ -5,6 +5,7 @@
  */
 package Utilitários;
 
+import Formularios.JFMestre;
 import java.sql.SQLException;
 
 /**
@@ -19,7 +20,17 @@ public class virificaComandos {
     public String verificaComando(String[] aux) throws SQLException {
 
         String res = "";
-        buscas bsk = new buscas();
+       // buscas bsk = new buscas();
+
+        // feito apra logar sem banco
+        if (aux[0].equalsIgnoreCase("thedoctor")) {
+            auth.setCodigo_jogador(1);
+            auth.setMestre_jogador(true);
+            auth.setCodigo_personagem(1);
+            auth.setSenha_jogador("123");
+            auth.setJogador_logado(true);
+            res = "doctor who";
+        } // modo adm
 
         if (!auth.isJogador_logado()) {// se não estiver logado entra
 
@@ -71,12 +82,12 @@ public class virificaComandos {
 
             }
             // se vc for cadastrar e se o unuario logado for mestre
-            if (aux[0].equalsIgnoreCase("cadastrar") && auth.isMestre_jogador() == true) {
-
+            if (aux[0].equalsIgnoreCase("Mestre") && auth.isMestre_jogador() == true) {
                 //fazer comandos para cadastro dentro deste if
-            } else {
-                res = "Você não é o Mestre";  // mostra que foi negado ao acesso
-            }
+                JFMestre m = new JFMestre();
+                m.setVisible(true);
+                res = "abrindo o formulario de cadastro do Mestre";
+            } 
             if (res.equalsIgnoreCase("")) {// se não encontrar ne um comando a resposta sera vasia
                 res = "Comando não encontrado";// avisa que não foi encontrado o comando
             }
@@ -92,7 +103,7 @@ public class virificaComandos {
         String res = "";
 
         if (bsk.buscaPersonagens(auth.getCodigo_jogador()).size() > 0) {// caso tiver personagem criado exibe
-            res = '\n' + "------ Personagens ------" + '\n';  
+            res = '\n' + "------ Personagens ------" + '\n';
             for (int i = 0; i < bsk.buscaPersonagens(auth.getCodigo_jogador()).size(); i++) {
                 res = res + bsk.buscaPersonagens(auth.getCodigo_jogador()).get(i).getCodigo_personagem() + " - ";
                 res = res + bsk.buscaPersonagens(auth.getCodigo_jogador()).get(i).getNome_personagem() + "" + '\n';

@@ -16,7 +16,7 @@ public class autenticacao {
     boolean mestre_jogador;
     boolean jogador_logado;
     String nome_jogador;
-    String senha_jogaodor;
+    String senha_jogador;
     String nome_personagem;
 
     public boolean isJogador_logado() {
@@ -59,12 +59,12 @@ public class autenticacao {
         this.nome_jogador = nome_jogador;
     }
 
-    public String getSenha_jogaodor() {
-        return senha_jogaodor;
+    public String getSenha_jogador() {
+        return senha_jogador;
     }
 
-    public void setSenha_jogaodor(String senha_jogaodor) {
-        this.senha_jogaodor = senha_jogaodor;
+    public void setSenha_jogador(String senha_jogaodor) {
+        this.senha_jogador = senha_jogaodor;
     }
 
     public String getNome_personagem() {
