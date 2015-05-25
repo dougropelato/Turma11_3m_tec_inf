@@ -44,28 +44,88 @@ public class JFMestre extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jbtcampanha.setText("Campanhas");
+        jbtcampanha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtcampanhaActionPerformed(evt);
+            }
+        });
 
         jbtmapa.setText("Mapas");
+        jbtmapa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtmapaActionPerformed(evt);
+            }
+        });
 
         jbtmissao.setText("Missões");
+        jbtmissao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtmissaoActionPerformed(evt);
+            }
+        });
 
         jbtvariavel.setText("Posições");
+        jbtvariavel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtvariavelActionPerformed(evt);
+            }
+        });
 
         jbtcaminho.setText("Caminhos");
+        jbtcaminho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtcaminhoActionPerformed(evt);
+            }
+        });
 
         jbtnpc.setText("NPC");
+        jbtnpc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnpcActionPerformed(evt);
+            }
+        });
 
         jbtraça.setText("Raças");
+        jbtraça.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtraçaActionPerformed(evt);
+            }
+        });
 
         jbtclasse.setText("Classes");
+        jbtclasse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtclasseActionPerformed(evt);
+            }
+        });
 
         jbtarmadura.setText("Armaduras");
+        jbtarmadura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtarmaduraActionPerformed(evt);
+            }
+        });
 
         jbtarma.setText("Armas");
+        jbtarma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtarmaActionPerformed(evt);
+            }
+        });
 
         jbtescudo.setText("Escudos");
+        jbtescudo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtescudoActionPerformed(evt);
+            }
+        });
 
         jbtconsumivel.setText("Consumíveis");
+        jbtconsumivel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtconsumivelActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Menu de Cadastros - Mestre");
@@ -136,6 +196,75 @@ public class JFMestre extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtcampanhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtcampanhaActionPerformed
+        // TODO add your handling code here:
+        JFCampanhas cam = new JFCampanhas(); 
+        cam.setVisible(true);
+    }//GEN-LAST:event_jbtcampanhaActionPerformed
+
+    private void jbtmapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtmapaActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jbtmapaActionPerformed
+
+    private void jbtmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtmissaoActionPerformed
+        // TODO add your handling code here:
+        JFMissoes mis = new JFMissoes();
+        mis.setVisible(true);
+    }//GEN-LAST:event_jbtmissaoActionPerformed
+
+    private void jbtvariavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtvariavelActionPerformed
+        // TODO add your handling code here:
+        JFPosicoes pos = new JFPosicoes();
+        pos.setVisible(true);
+    }//GEN-LAST:event_jbtvariavelActionPerformed
+
+    private void jbtcaminhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtcaminhoActionPerformed
+        // TODO add your handling code here:
+        JFCaminhos cami = new JFCaminhos();
+        cami.setVisible(true);
+    }//GEN-LAST:event_jbtcaminhoActionPerformed
+
+    private void jbtnpcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnpcActionPerformed
+        // TODO add your handling code here:
+        JFNpc npc = new JFNpc();
+        npc.setVisible(true);
+    }//GEN-LAST:event_jbtnpcActionPerformed
+
+    private void jbtraçaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtraçaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtraçaActionPerformed
+
+    private void jbtclasseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtclasseActionPerformed
+        // TODO add your handling code here:
+        JFClasses cla = new JFClasses();
+        cla.setVisible(true);
+    }//GEN-LAST:event_jbtclasseActionPerformed
+
+    private void jbtarmaduraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtarmaduraActionPerformed
+        // TODO add your handling code here:
+        JFArmaduras arm = new JFArmaduras();
+        arm.setVisible(true);
+    }//GEN-LAST:event_jbtarmaduraActionPerformed
+
+    private void jbtarmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtarmaActionPerformed
+        // TODO add your handling code here:
+        JFArmas arma = new JFArmas();
+        arma.setVisible(true);
+    }//GEN-LAST:event_jbtarmaActionPerformed
+
+    private void jbtescudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtescudoActionPerformed
+        // TODO add your handling code here:
+        JFEscudos esc = new JFEscudos();
+        esc.setVisible(true);
+    }//GEN-LAST:event_jbtescudoActionPerformed
+
+    private void jbtconsumivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtconsumivelActionPerformed
+        // TODO add your handling code here:
+        JFConsumiveis con = new JFConsumiveis();
+        con.setVisible(true);
+    }//GEN-LAST:event_jbtconsumivelActionPerformed
 
     /**
      * @param args the command line arguments
