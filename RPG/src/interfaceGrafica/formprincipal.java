@@ -5,9 +5,9 @@
  */
 package interfaceGrafica;
 
-import Utilitários.virificaComandos;
+import Utilitários.VerificaComandos;
 
-import Utilitários.buscas;
+import Utilitários.Buscas;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class formprincipal extends javax.swing.JFrame {
     
-    virificaComandos vercom = new virificaComandos();
+    VerificaComandos vercom = new VerificaComandos();
 
     /**
      * Creates new form formprincipal

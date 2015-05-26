@@ -9,7 +9,7 @@ package Utilitários;
  *
  * @author Alexjonas
  */
-public class autenticacao {
+public class Autenticacao {
 
     int codigo_jogador;
     int codigo_personagem;

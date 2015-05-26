@@ -19,12 +19,12 @@ import java.util.List;
  *
  * @author Alexjonas
  */
-public class buscas {
+public class Buscas {
 
     private final Connection conecta;
     private Object rs;
 
-    public buscas() throws SQLException {
+    public Buscas() throws SQLException {
         this.conecta = conexao.getConexao();
 
     }

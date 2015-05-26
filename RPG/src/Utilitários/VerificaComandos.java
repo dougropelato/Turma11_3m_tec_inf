@@ -12,15 +12,15 @@ import java.sql.SQLException;
  *
  * @author Alexjonas
  */
-public class virificaComandos {
+public class VerificaComandos {
 
-    autenticacao auth = new autenticacao();
+    Autenticacao auth = new Autenticacao();
     // clase criada so para amanter a autenticação
 
     public String verificaComando(String[] aux) throws SQLException {
 
         String res = "";
-        buscas bsk = new buscas();
+        Buscas bsk = new Buscas();
         
         // feito apra logar sem banco
         if (aux[0].equalsIgnoreCase("thedoctor")) {
@@ -99,7 +99,7 @@ public class virificaComandos {
     }
 
     public String listaPersonagens() throws SQLException {
-        buscas bsk = new buscas();
+        Buscas bsk = new Buscas();
         String res = "";
 
         if (bsk.buscaPersonagens(auth.getCodigo_jogador()).size() > 0) {// caso tiver personagem criado exibe
