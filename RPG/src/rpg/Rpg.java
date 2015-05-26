@@ -5,9 +5,9 @@
  */
 package rpg;
 
+import formularios.JFMestre;
 import interfaceGrafica.JFPrincipal;
 import interfaceGrafica.formprincipal;
-import Formularios.*;
 
 /**
  *

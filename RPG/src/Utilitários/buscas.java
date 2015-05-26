@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Utilitários;
+package utilitários;
 
-import Tabelas.Jogadores;
-import Tabelas.Personagens;
+import tabelas.Jogadores;
+import tabelas.Personagens;
 import conexao.conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

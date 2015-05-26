@@ -5,9 +5,8 @@
  */
 package interfaceGrafica;
 
-import Utilitários.VerificaComandos;
-
-import Utilitários.Buscas;
+import utilitários.VerificaComandos;
+import utilitários.Buscas;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;

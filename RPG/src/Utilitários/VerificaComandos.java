@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Utilitários;
+package utilitários;
 
-import Formularios.JFMestre;
+import formularios.JFMestre;
 import java.sql.SQLException;
 
 /**
