@@ -32,7 +32,7 @@ public class Buscas {
     // busca jogador apartir do nome para login
     public List<Jogadores> buscaJogador(String nomJog) throws SQLException {
 
-        String sql = "SELECT * FROM Jogadores where nome_jogador like ? ";
+        String sql = "SELECT * FROM jogadores where nome_jogador like ? ";
         List<Jogadores> lista;
 
         PreparedStatement stmt = this.conecta.prepareStatement(sql);
@@ -62,7 +62,7 @@ public class Buscas {
     public List<Personagens> buscaPersonagens(int codJog) throws SQLException {
 
         String sql = "SELECT *"
-                + "  FROM Jogadores_personagens jogper"
+                + "  FROM jogadores_personagens jogper"
                 + "     , personagens per"
                 + " WHERE jogper.codigo_jogador = ? "
                 + "   AND per.codigo_personagem = jogper.codigo_personagem";
