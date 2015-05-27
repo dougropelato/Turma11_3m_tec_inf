@@ -8,6 +8,7 @@ package utilitários;
 import tabelas.Jogadores;
 import tabelas.Personagens;
 import conexao.conexao;
+import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -86,6 +87,93 @@ public class Buscas {
 
             }
         }
+        return lista;
+    }
+                // cadastraTudo funciaonado feito um relogio
+    public void cadastraTudo(Object obj) throws ClassNotFoundException, SQLException, IllegalArgumentException, IllegalAccessException {
+
+        String classe = obj.getClass().getName();
+        Class cls = Class.forName(classe);
+
+        String campos = "";
+        String valores = "";
+
+        Field listaAtributos[] = cls.getDeclaredFields();
+
+        for (int i = 0; i < listaAtributos.length; i++) {
+
+            Field fld = listaAtributos[i];
+            fld.setAccessible(true);
+
+            campos += fld.getName();
+            valores += "'" + fld.get(obj) + "'";
+
+            if (i != (listaAtributos.length - 1)) {
+                campos += ", ";
+                valores += ", ";
+            }
+
+        }
+
+        String sql = "INSERT INTO " + cls.getSimpleName() + " (" + campos + ") VALUES (" + valores + ")";
+        System.out.println(sql);
+
+        PreparedStatement stmt = conecta.prepareCall(sql);
+
+        stmt.execute();
+        stmt.close();
+        System.out.println("deu certo essa porra");
+
+    }
+
+    public void selectTudo(Object obj) throws ClassNotFoundException, SQLException, IllegalArgumentException, IllegalAccessException {
+
+        String classe = obj.getClass().getName();
+        Class cls = Class.forName(classe);
+
+        String sql = "SELECT * FROM " + cls.getSimpleName();
+        System.out.println(sql);
+
+        PreparedStatement stmt = conecta.prepareCall(sql);
+
+        stmt.execute();
+        stmt.close();
+        System.out.println("deu certo essa porra");
+
+    }
+
+    public ArrayList<Object> buscaTudp(Object obj) throws SQLException, ClassNotFoundException {
+
+        String classe = obj.getClass().getName();
+        Class cls = Class.forName(classe);
+
+        String sql = "SELECT * FROM " + cls.getSimpleName();
+        System.out.println(sql);
+
+        PreparedStatement stmt = conecta.prepareCall(sql);
+        ResultSet RS = stmt.executeQuery();
+
+        stmt.execute();
+        stmt.close();
+        ArrayList<Object> lista = null;
+
+        {
+
+            // ArrayList<Object> lista = new ArrayList<>();
+            ArrayList<Object> lista1 = null;
+
+            while (RS.next()) {
+
+                Personagens per = new Personagens();
+
+                per.setCodigo_personagem(RS.getInt("codigo_personagem"));
+                per.setNome_personagem(RS.getString("nome_personagem"));
+
+                lista1.add(per);
+
+            }
+        }
+
         return lista;
     }
 
