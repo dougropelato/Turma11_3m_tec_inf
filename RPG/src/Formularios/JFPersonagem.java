@@ -45,7 +45,7 @@ public class JFPersonagem extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jtfForcaPersonagem = new javax.swing.JTextField();
         jtfDestrezaPersonagem = new javax.swing.JTextField();
-        jtfContituicaoPersonagem = new javax.swing.JTextField();
+        jtfConstituicaoPersonagem = new javax.swing.JTextField();
         jtfInteligenciaPersonagem = new javax.swing.JTextField();
         jtfSabedoriaPersonagem = new javax.swing.JTextField();
         jtfCarismaPersonagem = new javax.swing.JTextField();
@@ -105,9 +105,9 @@ public class JFPersonagem extends javax.swing.JFrame {
             }
         });
 
-        jtfContituicaoPersonagem.addActionListener(new java.awt.event.ActionListener() {
+        jtfConstituicaoPersonagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfContituicaoPersonagemActionPerformed(evt);
+                jtfConstituicaoPersonagemActionPerformed(evt);
             }
         });
 
@@ -183,7 +183,7 @@ public class JFPersonagem extends javax.swing.JFrame {
                                     .addComponent(jtfFortitudePersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
                                     .addComponent(jtfSabedoriaPersonagem)
                                     .addComponent(jtfInteligenciaPersonagem)
-                                    .addComponent(jtfContituicaoPersonagem)
+                                    .addComponent(jtfConstituicaoPersonagem)
                                     .addComponent(jtfCarismaPersonagem)
                                     .addComponent(jtfRefexoPersonagem, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(189, 189, 189))
@@ -288,7 +288,7 @@ public class JFPersonagem extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtfContituicaoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfConstituicaoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -342,9 +342,9 @@ public class JFPersonagem extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfDestrezaPersonagemActionPerformed
 
-    private void jtfContituicaoPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfContituicaoPersonagemActionPerformed
+    private void jtfConstituicaoPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfConstituicaoPersonagemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtfContituicaoPersonagemActionPerformed
+    }//GEN-LAST:event_jtfConstituicaoPersonagemActionPerformed
 
     private void jtfInteligenciaPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfInteligenciaPersonagemActionPerformed
         // TODO add your handling code here:
@@ -357,12 +357,23 @@ public class JFPersonagem extends javax.swing.JFrame {
     private void jBSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarActionPerformed
         Personagens pers = new Personagens();
         
-        pers.setAltura_personagem(Double.NaN);
-        pers.setBase_ataque_personagem(HIDE_ON_CLOSE);
-        pers.setCarisma_personagem(HIDE_ON_CLOSE);
-        pers.setClasse_armadura_personagem(DO_NOTHING_ON_CLOSE);
-        pers.setContituicao_personagem(DO_NOTHING_ON_CLOSE);
-        pers.setDestreza_personagem(HIDE_ON_CLOSE);
+        pers.setAltura_personagem(Double.parseDouble(jtfAlturaPersonagem.getText()));
+        pers.setBase_ataque_personagem(Integer.parseInt(jtfBaseDeAtaquePersonagem.getText()));
+        pers.setCarisma_personagem(Integer.parseInt(jtfCarismaPersonagem.getText()));
+        pers.setClasse_armadura_personagem (Integer.parseInt(jtfClasseArmaduraPersonagem.getText()));
+        pers.setConstituicao_personagem(Integer.parseInt(jtfConstituicaoPersonagem.getText()));
+        pers.setDestreza_personagem(Integer.parseInt(jtfDestrezaPersonagem.getText()));
+        pers.setForca_personagem(Integer.parseInt(jtfForcaPersonagem.getText()));
+        pers.setFortitude_personagem(Integer.parseInt(jtfFortitudePersonagem.getText()));
+        pers.setIdade_personagem(Integer.parseInt(jtfIdadePersonagem.getText()));
+        pers.setIniciativa_personagem(Integer.parseInt(jtfIniciativaPersonagem.getText()));
+        pers.setInteligencia_personagem(Integer.parseInt(jtfInteligenciaPersonagem.getText()));
+        pers.setNome_personagem(jtfNomePersonagem.getText());
+        pers.setPeso_personagem(Integer.parseInt(jtfPesoPersonagem.getText()));
+        pers.setPontos_vida_personagem(Integer.parseInt(jtfPontosDeVidaPersonagem.getText()));
+        pers.setReflexos_personagem(Integer.parseInt(jtfRefexoPersonagem.getText()));
+        pers.setSabedoria_personagem(Integer.parseInt(jtfSabedoriaPersonagem.getText()));
+        pers.setVontade_personagem(Integer.parseInt(jtfVontadePersonagem.getText()));
         
 
 // TODO add your handling code here:
@@ -432,7 +443,7 @@ public class JFPersonagem extends javax.swing.JFrame {
     private javax.swing.JTextField jtfBaseDeAtaquePersonagem;
     private javax.swing.JTextField jtfCarismaPersonagem;
     private javax.swing.JTextField jtfClasseArmaduraPersonagem;
-    private javax.swing.JTextField jtfContituicaoPersonagem;
+    private javax.swing.JTextField jtfConstituicaoPersonagem;
     private javax.swing.JTextField jtfDestrezaPersonagem;
     private javax.swing.JTextField jtfForcaPersonagem;
     private javax.swing.JTextField jtfFortitudePersonagem;
