@@ -13,13 +13,13 @@ import java.util.Random;
  */
 public class Dados {
 
-    public void getDado() {
+    public int getDado(int ladosDado) {
         Random Dado = new Random();
         int numeroAleatorio = 0;
         for (int i = 0; i < 1; i++) {//mostra sequencia de um numero aleatorio
-            numeroAleatorio = Dado.nextInt(4) + 1;  //numero entre 1 e 4
-            System.out.println("Valor do Dado: " + numeroAleatorio);
+            numeroAleatorio = Dado.nextInt(ladosDado) + 1;  //numero entre 1 e 4
+           
         }
-
+         return numeroAleatorio;
     }
 }
