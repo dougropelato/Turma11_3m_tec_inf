@@ -5,6 +5,8 @@
  */
 package formularios;
 
+import tabelas.Armaduras;
+
 /**
  *
  * @author Jailton
@@ -40,6 +42,7 @@ public class JFArmaduras extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jtfPenalidadeDestrezaArmadura = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jbcadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +73,13 @@ public class JFArmaduras extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Cadastro de Armaduras");
 
+        jbcadastrar.setText("Cadastrar");
+        jbcadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbcadastrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,6 +107,10 @@ public class JFArmaduras extends javax.swing.JFrame {
                             .addComponent(jtfCodigoArmadura, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfPenalidadeDestrezaArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(136, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jbcadastrar)
+                .addGap(212, 212, 212))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +141,9 @@ public class JFArmaduras extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfPenalidadeDestrezaArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jbcadastrar)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -140,6 +156,16 @@ public class JFArmaduras extends javax.swing.JFrame {
     private void jtfNomeArmaduraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNomeArmaduraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNomeArmaduraActionPerformed
+
+    private void jbcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcadastrarActionPerformed
+        
+        Armaduras amd = new Armaduras();  
+        amd.setNome_armadura(jtfNomeArmadura.getText());
+        amd.setTipo_armadura(Integer.parseInt(jtfTipoArmadura.getText()));
+        amd.setPreco_armadura(Integer.parseInt(jtfPrecoArmadura.getText()));
+        amd.setBonus_maximo_armadura(Integer.parseInt(jtfBonusMaximoArmadura.getText()));
+        amd.setPenalidade_destreza_armadura(Integer.parseInt(jtfPenalidadeDestrezaArmadura.getText()));
+    }//GEN-LAST:event_jbcadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,6 +210,7 @@ public class JFArmaduras extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton jbcadastrar;
     private javax.swing.JTextField jtfBonusMaximoArmadura;
     private javax.swing.JTextField jtfCodigoArmadura;
     private javax.swing.JTextField jtfNomeArmadura;
