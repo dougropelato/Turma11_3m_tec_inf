@@ -13,13 +13,13 @@ import java.util.Random;
  */
 public class Dados {
 
-    public int getDado(int ladosDado) {
+    public int getDado(int ladosDado) {//ladoDados é  igual a qauntidades de lados do dado que vc quer o dado
         Random Dado = new Random();
         int numeroAleatorio = 0;
         for (int i = 0; i < 1; i++) {//mostra sequencia de um numero aleatorio
-            numeroAleatorio = Dado.nextInt(ladosDado) + 1;  //numero entre 1 e 4
+            numeroAleatorio = Dado.nextInt(ladosDado) + 1;  //numero entre 1 e a qauntidade que vc informou
            
         }
-         return numeroAleatorio;
+         return numeroAleatorio; // retorna o valor que vctirou no dado
     }
 }
