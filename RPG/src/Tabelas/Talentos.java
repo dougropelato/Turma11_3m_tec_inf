@@ -14,6 +14,24 @@ public class Talentos {
     int codigo_talento;
     String nome_talento;
     String descricao_talento;
+    String requisito_talento;
+    String bonus_talento;
+
+    public String getRequisito_talento() {
+        return requisito_talento;
+    }
+
+    public void setRequisito_talento(String requisito_talento) {
+        this.requisito_talento = requisito_talento;
+    }
+
+    public String getBonus_talento() {
+        return bonus_talento;
+    }
+
+    public void setBonus_talento(String bonus_talento) {
+        this.bonus_talento = bonus_talento;
+    }
 
     public int getCodigo_talento() {
         return codigo_talento;
