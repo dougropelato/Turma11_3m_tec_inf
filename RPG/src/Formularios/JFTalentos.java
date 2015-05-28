@@ -5,7 +5,7 @@
  */
 package Formularios;
 
-import tabelas.talentos;
+import tabelas.Talentos;
 
 /**
  *
@@ -128,7 +128,7 @@ public class JFTalentos extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
         
-        talentos tal = new talentos();
+        Talentos tal = new Talentos();
         
         tal.setNome_talento(jTextField1.getText());
         tal.setDescricao_talento(jTextArea1.getText());

@@ -9,7 +9,7 @@ package tabelas;
  *
  * @author Alexjonas
  */
-public class talentos {
+public class Talentos {
 
     int codigo_talento;
     String nome_talento;
