@@ -10,6 +10,8 @@ import tabelas.Jogadores;
 import tabelas.Personagens;
 import conexao.conexao;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,6 +31,44 @@ public class Buscas {
     public Buscas() throws SQLException {
         this.conecta = conexao.getConexao();
 
+    }
+
+    public List<Object> listar(Class c)
+            throws SQLException, IllegalAccessException, NoSuchFieldException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException, NoSuchMethodException {
+
+        List<Object> list = new ArrayList<Object>();
+        String tabela = c.getSimpleName();
+        String sql = "SELECT * FROM " + tabela;
+        PreparedStatement stmt = this.conecta.prepareStatement(sql);
+        ResultSet rset = stmt.executeQuery();
+
+        while (rset.next()) {
+            Object obj = c.newInstance();
+            for (Method m : c.getMethods()) {
+                if (m.getName().substring(0, 3).equals("set")) {
+                    Class[] args1 = new Class[1];
+                    Class pvec[] = m.getParameterTypes();
+                    String s = m.getName().substring(3, m.getName().length());
+
+                    if (pvec[0].getName().equals("java.lang.String")) {
+                        args1[0] = String.class;
+                        Object Object = obj.getClass().getMethod(m.getName(), args1).invoke(obj, rset.getString(s));
+                    }
+
+                    if (pvec[0].getName().equals("int")) {
+                        args1[0] = int.class;
+                        obj.getClass().getMethod(m.getName(), args1).invoke(obj, rset.getInt(s));
+                    }
+
+                }
+            }
+            list.add(obj);
+        }
+
+        rset.close();
+        stmt.close();
+
+        return list;
     }
 
     // busca jogador apartir do nome para login
@@ -118,22 +158,6 @@ public class Buscas {
         }
 
         String sql = "INSERT INTO " + cls.getSimpleName() + " (" + campos + ") VALUES (" + valores + ")";
-        System.out.println(sql);
-
-        PreparedStatement stmt = conecta.prepareCall(sql);
-
-        stmt.execute();
-        stmt.close();
-        System.out.println("deu certo essa porra");
-
-    }
-
-    public void selectTudo(Object obj) throws ClassNotFoundException, SQLException, IllegalArgumentException, IllegalAccessException {
-
-        String classe = obj.getClass().getName();
-        Class cls = Class.forName(classe);
-
-        String sql = "SELECT * FROM " + cls.getSimpleName();
         System.out.println(sql);
 
         PreparedStatement stmt = conecta.prepareCall(sql);
