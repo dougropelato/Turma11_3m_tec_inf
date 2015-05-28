@@ -5,6 +5,7 @@
  */
 package utilitários;
 
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import tabelas.Jogadores;
 import tabelas.Personagens;
 import conexao.conexao;
@@ -89,7 +90,8 @@ public class Buscas {
         }
         return lista;
     }
-                // cadastraTudo funciaonado feito um relogio
+
+    // cadastraTudo funciaonado feito um relogio
     public void cadastraTudo(Object obj) throws ClassNotFoundException, SQLException, IllegalArgumentException, IllegalAccessException {
 
         String classe = obj.getClass().getName();
@@ -142,39 +144,65 @@ public class Buscas {
 
     }
 
-    public ArrayList<Object> buscaTudp(Object obj) throws SQLException, ClassNotFoundException {
+    public void alteraTudo(Object obj) throws ClassNotFoundException, SQLException, IllegalArgumentException, IllegalAccessException {
 
         String classe = obj.getClass().getName();
         Class cls = Class.forName(classe);
 
-        String sql = "SELECT * FROM " + cls.getSimpleName();
+        String campos = "";
+        String lugar = "";
+        String tabela = cls.getSimpleName();
+
+        Field listaAtributos[] = cls.getDeclaredFields();
+
+        for (int i = 0; i < listaAtributos.length; i++) {
+
+            Field fld = listaAtributos[i];
+            fld.setAccessible(true);
+
+            campos += fld.getName() + " = '" + fld.get(obj) + "'";
+
+            if (i != (listaAtributos.length - 1)) {
+                campos += ", ";
+            }
+
+            if (fld.getType().toString().equals("int")) {
+                if (fld.getName().equalsIgnoreCase(retornaPkey(tabela))) {
+                    lugar = fld.getName() + " = '" + fld.get(obj) + "'";
+                }
+            }
+
+        }
+
+        String sql = "UPDATE " + tabela + " SET " + campos + " WHERE " + lugar + "";
         System.out.println(sql);
 
         PreparedStatement stmt = conecta.prepareCall(sql);
-        ResultSet RS = stmt.executeQuery();
-
         stmt.execute();
         stmt.close();
-        ArrayList<Object> lista = null;
+        System.out.println("deu certo essa porra");
+    }
 
-        {
+    public String retornaPkey(String tabela) throws SQLException {
 
-            // ArrayList<Object> lista = new ArrayList<>();
-            ArrayList<Object> lista1 = null;
+        String sql = "SELECT information_schema.KEY_COLUMN_USAGE.COLUMN_NAME as collp\n"
+                + "FROM information_schema.KEY_COLUMN_USAGE\n"
+                + "WHERE information_schema.KEY_COLUMN_USAGE.CONSTRAINT_NAME LIKE \"PRIMARY\"  AND\n"
+                + "information_schema.KEY_COLUMN_USAGE.TABLE_NAME LIKE \"" + tabela + "\"";
+        PreparedStatement stmt = conecta.prepareCall(sql);
 
-            while (RS.next()) {
+        ResultSet RS = stmt.executeQuery();
 
-                Personagens per = new Personagens();
+        String pK = "";
 
-                per.setCodigo_personagem(RS.getInt("codigo_personagem"));
-                per.setNome_personagem(RS.getString("nome_personagem"));
+        while (RS.next()) {
+            // Object nextElement = en.nextElement();
+            pK = RS.getString("collp");
 
-                lista1.add(per);
-
-            }
         }
 
-        return lista;
+        return pK;
+
     }
 
 }
