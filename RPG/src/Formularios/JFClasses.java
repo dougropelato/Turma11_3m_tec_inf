@@ -281,7 +281,7 @@ public class JFClasses extends javax.swing.JFrame {
 
     private void BtnProgressaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProgressaoActionPerformed
        JFProgressao prog = new JFProgressao();
-       prog.setVisible(true);        // TODO add your handling code here:
+       prog.setVisible(true);       
     }//GEN-LAST:event_BtnProgressaoActionPerformed
 
     /**
