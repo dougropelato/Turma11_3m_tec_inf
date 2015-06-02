@@ -13,4 +13,20 @@ package tabelas;
 public class ProgressaoTalento {
     int codigo_progressao;
     int codigo_talento;
+
+    public int getCodigo_progressao() {
+        return codigo_progressao;
+    }
+
+    public void setCodigo_progressao(int codigo_progressao) {
+        this.codigo_progressao = codigo_progressao;
+    }
+
+    public int getCodigo_talento() {
+        return codigo_talento;
+    }
+
+    public void setCodigo_talento(int codigo_talento) {
+        this.codigo_talento = codigo_talento;
+    }
 }

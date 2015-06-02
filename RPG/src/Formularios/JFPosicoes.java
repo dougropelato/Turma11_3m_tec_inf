@@ -5,6 +5,9 @@
  */
 package formularios;
 
+import tabelas.Posicoes;
+import tabelas.PosicoesNpcs;
+
 /**
  *
  * @author Orlando
@@ -28,30 +31,26 @@ public class JFPosicoes extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollBar1 = new javax.swing.JScrollBar();
-        jcbMissao = new javax.swing.JComboBox();
+        jcbCaminho = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
         jLabel2 = new javax.swing.JLabel();
         jlTamMapa = new javax.swing.JLabel();
         jtfTamMapa = new javax.swing.JTextField();
-        jtlValorX = new javax.swing.JTextField();
+        jtfValorX = new javax.swing.JTextField();
         jlValorX = new javax.swing.JLabel();
         jlValorY = new javax.swing.JLabel();
         jtfValorY = new javax.swing.JTextField();
         jcbNpc = new javax.swing.JComboBox();
         jlSelecNpc = new javax.swing.JLabel();
-        jbCadastrar = new javax.swing.JButton();
+        jbSalvar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtaDescricao = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jcbMissao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel1.setText("Selecionar Caminho");
-
-        jScrollPane1.setViewportView(jTextPane1);
 
         jLabel2.setText("Descrição do Caminho");
 
@@ -69,7 +68,6 @@ public class JFPosicoes extends javax.swing.JFrame {
 
         jlValorY.setText("Insira Valor da Posição Y:");
 
-        jcbNpc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcbNpc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbNpcActionPerformed(evt);
@@ -78,20 +76,25 @@ public class JFPosicoes extends javax.swing.JFrame {
 
         jlSelecNpc.setText("Selecionar NPC");
 
-        jbCadastrar.setText("Cadastrar");
+        jbSalvar.setText("Salvar");
+        jbSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalvarActionPerformed(evt);
+            }
+        });
 
         jbCancelar.setText("Cancelar");
 
         jButton1.setText("+");
 
+        jtaDescricao.setColumns(20);
+        jtaDescricao.setRows(5);
+        jScrollPane2.setViewportView(jtaDescricao);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jlTamMapa)
@@ -100,7 +103,7 @@ public class JFPosicoes extends javax.swing.JFrame {
                 .addGap(133, 133, 133))
             .addGroup(layout.createSequentialGroup()
                 .addGap(155, 155, 155)
-                .addComponent(jbCadastrar)
+                .addComponent(jbSalvar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbCancelar)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -108,7 +111,7 @@ public class JFPosicoes extends javax.swing.JFrame {
                 .addContainerGap(111, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jcbMissao, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jcbCaminho, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -130,31 +133,35 @@ public class JFPosicoes extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jlValorX)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtlValorX, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jtfValorX, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jlValorY)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jtfValorY, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcbMissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbCaminho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlTamMapa)
                     .addComponent(jtfTamMapa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtlValorX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfValorX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlValorX))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -167,7 +174,7 @@ public class JFPosicoes extends javax.swing.JFrame {
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbCadastrar)
+                    .addComponent(jbSalvar)
                     .addComponent(jbCancelar))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
@@ -182,6 +189,22 @@ public class JFPosicoes extends javax.swing.JFrame {
     private void jcbNpcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbNpcActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbNpcActionPerformed
+
+    private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
+        
+        Posicoes posicoes = new Posicoes();
+        PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
+        
+        posicoes.setDescricao_posicao(jtaDescricao.getText());
+        posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));
+        posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorX.getText()));
+        
+        posicoes.setCodigo_caminho(1); //apenas para teste
+        
+        //tabela N pra N
+        posicoesNpcs.setCodigo_posicoes(1); 
+        posicoesNpcs.setCodigo_npc(1);
+    }//GEN-LAST:event_jbSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,18 +246,18 @@ public class JFPosicoes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JButton jbCadastrar;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbCancelar;
-    private javax.swing.JComboBox jcbMissao;
+    private javax.swing.JButton jbSalvar;
+    private javax.swing.JComboBox jcbCaminho;
     private javax.swing.JComboBox jcbNpc;
     private javax.swing.JLabel jlSelecNpc;
     private javax.swing.JLabel jlTamMapa;
     private javax.swing.JLabel jlValorX;
     private javax.swing.JLabel jlValorY;
+    private javax.swing.JTextArea jtaDescricao;
     private javax.swing.JTextField jtfTamMapa;
+    private javax.swing.JTextField jtfValorX;
     private javax.swing.JTextField jtfValorY;
-    private javax.swing.JTextField jtlValorX;
     // End of variables declaration//GEN-END:variables
 }

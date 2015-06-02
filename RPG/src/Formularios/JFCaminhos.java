@@ -5,6 +5,9 @@
  */
 package formularios;
 
+import tabelas.Caminhos;
+import tabelas.Missoes;
+
 /**
  *
  * @author Orlando
@@ -29,7 +32,7 @@ public class JFCaminhos extends javax.swing.JFrame {
 
         jtfCaminho = new javax.swing.JTextField();
         jlCaminho = new javax.swing.JLabel();
-        jbCadastrar = new javax.swing.JButton();
+        jbSalvar = new javax.swing.JButton();
         jcbMissao = new javax.swing.JComboBox();
         jlMissao = new javax.swing.JLabel();
         jbCancelar = new javax.swing.JButton();
@@ -38,9 +41,12 @@ public class JFCaminhos extends javax.swing.JFrame {
 
         jlCaminho.setText("Nome Caminho");
 
-        jbCadastrar.setText("Cadastrar");
-
-        jcbMissao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jbSalvar.setText("Salvar");
+        jbSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalvarActionPerformed(evt);
+            }
+        });
 
         jlMissao.setText("Selecionar Missão");
 
@@ -61,7 +67,7 @@ public class JFCaminhos extends javax.swing.JFrame {
                     .addComponent(jcbMissao, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(jbCadastrar)
+                        .addComponent(jbSalvar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbCancelar)))
                 .addContainerGap(12, Short.MAX_VALUE))
@@ -79,13 +85,23 @@ public class JFCaminhos extends javax.swing.JFrame {
                     .addComponent(jlCaminho))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbCadastrar)
+                    .addComponent(jbSalvar)
                     .addComponent(jbCancelar))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
+        
+        Caminhos caminhos = new Caminhos();
+        Missoes missoes = new Missoes();
+        
+        caminhos.setNome_caminho(jtfCaminho.getText());
+        
+        caminhos.setCodigo_missao(1); //apenas para teste
+    }//GEN-LAST:event_jbSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,8 +139,8 @@ public class JFCaminhos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jbCadastrar;
     private javax.swing.JButton jbCancelar;
+    private javax.swing.JButton jbSalvar;
     private javax.swing.JComboBox jcbMissao;
     private javax.swing.JLabel jlCaminho;
     private javax.swing.JLabel jlMissao;
