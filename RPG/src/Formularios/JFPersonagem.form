@@ -27,36 +27,12 @@
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-<<<<<<< HEAD
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel9" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jtfVontadePersonagem" alignment="0" min="-2" pref="76" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jtfFortitudePersonagem" pref="77" max="32767" attributes="0"/>
-                                  <Component id="jtfSabedoriaPersonagem" max="32767" attributes="0"/>
-                                  <Component id="jtfInteligenciaPersonagem" max="32767" attributes="0"/>
-                                  <Component id="jtfConstituicaoPersonagem" max="32767" attributes="0"/>
-                                  <Component id="jtfCarismaPersonagem" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="jtfRefexoPersonagem" alignment="0" max="32767" attributes="0"/>
-=======
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
->>>>>>> origin/master
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -125,19 +101,23 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jtfContituicaoPersonagem" min="-2" pref="69" max="-2" attributes="0"/>
+                          <Component id="jtfConstituicaoPersonagem" min="-2" pref="69" max="-2" attributes="0"/>
                           <Component id="jtfInteligenciaPersonagem" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
                           <Component id="jtfSabedoriaPersonagem" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jtfFortitudePersonagem" alignment="0" pref="72" max="32767" attributes="0"/>
-                              <Component id="jtfCarismaPersonagem" alignment="0" max="32767" attributes="0"/>
-                          </Group>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jtfVontadePersonagem" alignment="0" pref="76" max="32767" attributes="0"/>
                               <Component id="jtfRefexoPersonagem" alignment="0" max="32767" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jtfFortitudePersonagem" alignment="0" pref="72" max="32767" attributes="0"/>
+                                  <Component id="jtfCarismaPersonagem" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
+                              <Component id="jBSalvar" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="436" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -178,18 +158,8 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-<<<<<<< HEAD
-                          <Component id="jtfConstituicaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jtfInteligenciaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-=======
                           <Component id="jtfForcaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
->>>>>>> origin/master
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -210,7 +180,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfContituicaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtfConstituicaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jtfBaseDeAtaquePersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -224,10 +194,11 @@
                   <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jtfSabedoriaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jtfCarismaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -399,6 +370,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfBaseDeAtaquePersonagem">
+    </Component>
+    <Component class="javax.swing.JButton" name="jBSalvar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Salvar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBSalvarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
