@@ -32,6 +32,10 @@ public class JFVendaItens extends javax.swing.JFrame {
         jcVenderEscudos.setVisible(false);
         jcVenderArmaduras.setVisible(false);         //////Oculta objetos setados antes de abrir o form
         jcVenderArmas.setVisible(false);
+        jlQuantComprar.setVisible(false);
+        jlQuantVender.setVisible(false);
+        QuantComprar.setVisible(false);
+        QuantVender.setVisible(false);
 
         jbVender.setVisible(false);
         lbVender.setVisible(false);
@@ -86,8 +90,8 @@ public class JFVendaItens extends javax.swing.JFrame {
         jcbVenderArmaduras = new javax.swing.JCheckBox();
         jcbVenderEscudos = new javax.swing.JCheckBox();
         jcbVenderConsumiveis = new javax.swing.JCheckBox();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jlQuantComprar = new javax.swing.JLabel();
+        jlQuantVender = new javax.swing.JLabel();
         QuantComprar = new javax.swing.JTextField();
         QuantVender = new javax.swing.JTextField();
 
@@ -270,13 +274,13 @@ public class JFVendaItens extends javax.swing.JFrame {
         });
         getContentPane().add(jcbVenderConsumiveis, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setText("Quantidade:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
+        jlQuantComprar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jlQuantComprar.setText("Quantidade:");
+        getContentPane().add(jlQuantComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel4.setText("Quantidade:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, -1, -1));
+        jlQuantVender.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jlQuantVender.setText("Quantidade:");
+        getContentPane().add(jlQuantVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, -1, -1));
 
         QuantComprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -368,10 +372,15 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcComprarArmas.setVisible(true);
             jbComprar.setVisible(true);
             lbPrecoComprar.setVisible(true);
+            jlQuantComprar.setVisible(true);
+            QuantComprar.setVisible(true);
+
         } else {
             jcComprarArmas.setVisible(false);
             jbComprar.setVisible(false);
             lbPrecoComprar.setVisible(false);
+            jlQuantComprar.setVisible(false);
+            QuantComprar.setVisible(false);
         }
     }//GEN-LAST:event_jcbComprarArmasActionPerformed
 
@@ -380,10 +389,14 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcComprarArmaduras.setVisible(true);
             jbComprar.setVisible(true);
             lbPrecoComprar.setVisible(true);
+            jlQuantComprar.setVisible(true);
+            QuantComprar.setVisible(true);
         } else {
             jcComprarArmaduras.setVisible(false);
             jbComprar.setVisible(false);
             lbPrecoComprar.setVisible(false);
+            jlQuantComprar.setVisible(false);
+            QuantComprar.setVisible(false);
         }
     }//GEN-LAST:event_jcbComprarArmadurasActionPerformed
 
@@ -392,10 +405,14 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcComprarEscudos.setVisible(true);
             jbComprar.setVisible(true);
             lbPrecoComprar.setVisible(true);
+            jlQuantComprar.setVisible(true);
+            QuantComprar.setVisible(true);
         } else {
             jcComprarEscudos.setVisible(false);
             jbComprar.setVisible(false);
             lbPrecoComprar.setVisible(false);
+            jlQuantComprar.setVisible(false);
+            QuantComprar.setVisible(false);
 
         }
     }//GEN-LAST:event_jcbComprarEscudosActionPerformed
@@ -405,10 +422,12 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcComprarConsumiveis.setVisible(true);
             jbComprar.setVisible(true);
             lbPrecoComprar.setVisible(true);
+            QuantComprar.setVisible(true);
         } else {
             jcComprarConsumiveis.setVisible(false);
             jbComprar.setVisible(false);
             lbPrecoComprar.setVisible(false);
+            QuantComprar.setVisible(false);
         }
     }//GEN-LAST:event_jcbComprarConsumiveisActionPerformed
 
@@ -417,10 +436,14 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcVenderArmas.setVisible(true);
             jbVender.setVisible(true);
             lbPreçoVender.setVisible(true);
+            jlQuantVender.setVisible(true);
+            QuantVender.setVisible(true);
         } else {
             jcVenderArmas.setVisible(false);
             jbVender.setVisible(false);
             lbPreçoVender.setVisible(false);
+            jlQuantVender.setVisible(false);
+            QuantVender.setVisible(false);
         }
     }//GEN-LAST:event_jcbVenderArmasActionPerformed
 
@@ -429,10 +452,14 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcVenderArmaduras.setVisible(true);
             jbVender.setVisible(true);
             lbPreçoVender.setVisible(true);
+            jlQuantVender.setVisible(true);
+            QuantVender.setVisible(true);
         } else {
             jcVenderArmaduras.setVisible(false);
             jbVender.setVisible(false);
             lbPreçoVender.setVisible(false);
+            jlQuantVender.setVisible(false);
+            QuantVender.setVisible(false);
         }
     }//GEN-LAST:event_jcbVenderArmadurasActionPerformed
 
@@ -441,10 +468,14 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcVenderEscudos.setVisible(true);
             jbVender.setVisible(true);
             lbPreçoVender.setVisible(true);
+            jlQuantVender.setVisible(true);
+            QuantVender.setVisible(true);
         } else {
             jcVenderEscudos.setVisible(false);
             jbVender.setVisible(false);
             lbPreçoVender.setVisible(false);
+            jlQuantVender.setVisible(false);
+            QuantVender.setVisible(false);
         }
     }//GEN-LAST:event_jcbVenderEscudosActionPerformed
 
@@ -453,10 +484,14 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcVenderConsumiveis.setVisible(true);
             jbVender.setVisible(true);
             lbPreçoVender.setVisible(true);
+            jlQuantVender.setVisible(true);
+            QuantVender.setVisible(true);
         } else {
             jcVenderConsumiveis.setVisible(false);
             jbVender.setVisible(false);
             lbPreçoVender.setVisible(false);
+            jlQuantVender.setVisible(false);
+            QuantVender.setVisible(false);
         }
     }//GEN-LAST:event_jcbVenderConsumiveisActionPerformed
 
@@ -473,21 +508,23 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jbVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVenderActionPerformed
+        int varVender = (Integer.parseInt(QuantVender.getText()));
+
         if (jcbVenderArmaduras.isSelected()) {
             PersonagensArmaduras vender = new PersonagensArmaduras();
-           
+            vender.setQuantidade_armadura(varVender);
         }
         if (jcbVenderArmas.isSelected()) {
             PersonagensArmas vender = new PersonagensArmas();
-            vender.getQuantidade_arma();
+            vender.setQuantidade_arma(varVender);
         }
         if (jcbVenderEscudos.isSelected()) {
             PersonagensEscudos vender = new PersonagensEscudos();
-            vender.getQuantidade_escudo();
+            vender.setQuantidade_escudo(varVender);
         }
         if (jcbVenderConsumiveis.isSelected()) {
             PersonagensConsumiveis vender = new PersonagensConsumiveis();
-            vender.getQuantidade_consumivel();
+            vender.setQuantidade_consumivel(varVender);
         }
     }//GEN-LAST:event_jbVenderActionPerformed
 
@@ -537,8 +574,6 @@ public class JFVendaItens extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton jbComprar;
     private javax.swing.JButton jbVender;
     private javax.swing.JComboBox jcComprarArmaduras;
@@ -559,6 +594,8 @@ public class JFVendaItens extends javax.swing.JFrame {
     private javax.swing.JCheckBox jcbVenderArmas;
     private javax.swing.JCheckBox jcbVenderConsumiveis;
     private javax.swing.JCheckBox jcbVenderEscudos;
+    private javax.swing.JLabel jlQuantComprar;
+    private javax.swing.JLabel jlQuantVender;
     private java.awt.Label label2;
     private java.awt.Label lbComprar;
     private java.awt.Label lbDinheiroPersonagem;
