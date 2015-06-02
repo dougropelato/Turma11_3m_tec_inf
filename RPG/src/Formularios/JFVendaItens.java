@@ -5,6 +5,11 @@
  */
 package formularios;
 
+import tabelas.PersonagensArmaduras;
+import tabelas.PersonagensArmas;
+import tabelas.PersonagensConsumiveis;
+import tabelas.PersonagensEscudos;
+
 /**
  *
  * @author Micro10
@@ -16,7 +21,7 @@ public class JFVendaItens extends javax.swing.JFrame {
      */
     public JFVendaItens() {
         initComponents();
-       jbComprar.setVisible(false);
+        jbComprar.setVisible(false);
         lbComprar.setVisible(false);
         lbPrecoComprar.setVisible(false);
         jcbVenderConsumiveis.setVisible(false);
@@ -81,6 +86,10 @@ public class JFVendaItens extends javax.swing.JFrame {
         jcbVenderArmaduras = new javax.swing.JCheckBox();
         jcbVenderEscudos = new javax.swing.JCheckBox();
         jcbVenderConsumiveis = new javax.swing.JCheckBox();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        QuantComprar = new javax.swing.JTextField();
+        QuantVender = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -139,13 +148,13 @@ public class JFVendaItens extends javax.swing.JFrame {
         jLabel1.setText("Olá viajante você deseja comprar ou vender itens?");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
 
-        lbPrecoComprar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lbPrecoComprar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbPrecoComprar.setText("Preço:");
-        getContentPane().add(lbPrecoComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
+        getContentPane().add(lbPrecoComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
 
-        lbPreçoVender.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lbPreçoVender.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbPreçoVender.setText("Preço:");
-        getContentPane().add(lbPreçoVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, -1, -1));
+        getContentPane().add(lbPreçoVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, -1, -1));
 
         jbComprar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbComprar.setText("Comprar");
@@ -154,7 +163,7 @@ public class JFVendaItens extends javax.swing.JFrame {
                 jbComprarActionPerformed(evt);
             }
         });
-        getContentPane().add(jbComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 112, 39));
+        getContentPane().add(jbComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 490, 112, 39));
 
         jbVender.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbVender.setText("Vender");
@@ -163,7 +172,7 @@ public class JFVendaItens extends javax.swing.JFrame {
                 jbVenderActionPerformed(evt);
             }
         });
-        getContentPane().add(jbVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, 112, 39));
+        getContentPane().add(jbVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 490, 112, 39));
 
         jcbComprar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jcbComprar.setText("Comprar");
@@ -261,6 +270,22 @@ public class JFVendaItens extends javax.swing.JFrame {
         });
         getContentPane().add(jcbVenderConsumiveis, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setText("Quantidade:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setText("Quantidade:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, -1, -1));
+
+        QuantComprar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                QuantComprarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(QuantComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 40, -1));
+        getContentPane().add(QuantVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, 40, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -269,7 +294,27 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_jcComprarArmasActionPerformed
 
     private void jbComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComprarActionPerformed
-
+        int varComprar = (Integer.parseInt(QuantComprar.getText()));
+        if (jcbComprarArmaduras.isSelected()) {
+            PersonagensArmaduras comprar = new PersonagensArmaduras();
+            comprar.getQuantidade_armadura();
+            comprar.setQuantidade_armadura(varComprar);
+        }
+        if (jcbComprarArmas.isSelected()) {
+            PersonagensArmas comprar = new PersonagensArmas();
+            comprar.getQuantidade_arma();
+            comprar.setQuantidade_arma(varComprar);
+        }
+        if (jcbComprarEscudos.isSelected()) {
+            PersonagensEscudos comprar = new PersonagensEscudos();
+            comprar.getQuantidade_escudo();
+            comprar.setQuantidade_escudo(varComprar);
+        }
+        if (jcbComprarConsumiveis.isSelected()) {
+            PersonagensConsumiveis comprar = new PersonagensConsumiveis();
+            comprar.getQuantidade_consumivel();
+            comprar.setQuantidade_consumivel(varComprar);
+        }
     }//GEN-LAST:event_jbComprarActionPerformed
 
     private void jcbVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbVenderActionPerformed
@@ -428,8 +473,27 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jbVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVenderActionPerformed
-        // TODO add your handling code here:
+        if (jcbVenderArmaduras.isSelected()) {
+            PersonagensArmaduras vender = new PersonagensArmaduras();
+           
+        }
+        if (jcbVenderArmas.isSelected()) {
+            PersonagensArmas vender = new PersonagensArmas();
+            vender.getQuantidade_arma();
+        }
+        if (jcbVenderEscudos.isSelected()) {
+            PersonagensEscudos vender = new PersonagensEscudos();
+            vender.getQuantidade_escudo();
+        }
+        if (jcbVenderConsumiveis.isSelected()) {
+            PersonagensConsumiveis vender = new PersonagensConsumiveis();
+            vender.getQuantidade_consumivel();
+        }
     }//GEN-LAST:event_jbVenderActionPerformed
+
+    private void QuantComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuantComprarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_QuantComprarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -467,10 +531,14 @@ public class JFVendaItens extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField QuantComprar;
+    private javax.swing.JTextField QuantVender;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton jbComprar;
     private javax.swing.JButton jbVender;
     private javax.swing.JComboBox jcComprarArmaduras;
