@@ -86,6 +86,11 @@ public class JFPosicoes extends javax.swing.JFrame {
         jbCancelar.setText("Cancelar");
 
         jButton1.setText("+");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jtaDescricao.setColumns(20);
         jtaDescricao.setRows(5);
@@ -205,6 +210,12 @@ public class JFPosicoes extends javax.swing.JFrame {
         posicoesNpcs.setCodigo_posicoes(1); 
         posicoesNpcs.setCodigo_npc(1);
     }//GEN-LAST:event_jbSalvarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        JFNpc npc = new JFNpc();
+        npc.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
