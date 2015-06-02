@@ -9,7 +9,7 @@ import tabelas.Personagens;
 
 /**
  *
- * @author Douglas
+ * @author Adriel
  */
 public class JFPersonagem extends javax.swing.JFrame {
 
