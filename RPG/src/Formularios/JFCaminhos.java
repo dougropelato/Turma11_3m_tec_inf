@@ -101,7 +101,6 @@ public class JFCaminhos extends javax.swing.JFrame {
         caminhos.setNome_caminho(jtfCaminho.getText());
         
         caminhos.setCodigo_missao(1); //apenas para teste
-        caminhos.setCodigo_mapa(missoes.getCodigo_mapa()); //codigo do mapa virá da missao
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     /**

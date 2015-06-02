@@ -13,7 +13,6 @@ public class Caminhos {
     int codigo_camino;
     String nome_caminho;
     int codigo_missao;
-    int codigo_mapa;
 
     public int getCodigo_camino() {
         return codigo_camino;
@@ -38,13 +37,4 @@ public class Caminhos {
     public void setCodigo_missao(int codigo_missao) {
         this.codigo_missao = codigo_missao;
     }
-
-    public int getCodigo_mapa() {
-        return codigo_mapa;
-    }
-
-    public void setCodigo_mapa(int codigo_mapa) {
-        this.codigo_mapa = codigo_mapa;
-    }
-    
 }
