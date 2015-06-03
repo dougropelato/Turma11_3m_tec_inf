@@ -51,6 +51,12 @@ public class JFCaminhos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jtfCaminho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfCaminhoActionPerformed(evt);
+            }
+        });
+
         jlCaminho.setText("Nome Caminho");
 
         jbSalvar.setText("Salvar");
@@ -108,17 +114,31 @@ public class JFCaminhos extends javax.swing.JFrame {
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
         
         try {
-            GenericDAO gDAO = new GenericDAO();
-        } catch (SQLException ex) {
-            Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
-        }
         Caminhos caminhos = new Caminhos();
         Missoes missoes = new Missoes();
         
         caminhos.setNome_caminho(jtfCaminho.getText());
         
         caminhos.setCodigo_missao(1); //apenas para teste
+        
+            GenericDAO gDAO = new GenericDAO();
+            gDAO.adicionar(caminhos);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jbSalvarActionPerformed
+
+    private void jtfCaminhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCaminhoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfCaminhoActionPerformed
 
     /**
      * @param args the command line arguments

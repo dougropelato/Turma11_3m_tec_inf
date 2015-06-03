@@ -5,8 +5,12 @@
  */
 package formularios;
 
+import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tabelas.Posicoes;
 import tabelas.PosicoesNpcs;
 
@@ -192,18 +196,35 @@ public class JFPosicoes extends javax.swing.JFrame {
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
         
-        Posicoes posicoes = new Posicoes();
-        PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
+        try {
+            GenericDAO gDAO = new GenericDAO();
+            Posicoes posicoes = new Posicoes();
+            PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
         
-        posicoes.setDescricao_posicao(jtaDescricao.getText());
-        posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));
-        posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorX.getText()));
+            posicoes.setDescricao_posicao(jtaDescricao.getText());
+            posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));
+            posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorX.getText()));
         
-        posicoes.setCodigo_caminho(1); //apenas para teste
+            posicoes.setCodigo_caminho(1); //apenas para teste
+            
+            gDAO.adicionar(posicoes); //adicionando posicao
+            
+            //tabela N pra N
+            posicoesNpcs.setCodigo_posicoes(1); 
+            posicoesNpcs.setCodigo_npc(1);  
+            
+            gDAO.adicionar(posicoesNpcs); //adicionando tabela n-n posicoesNpcs
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        //tabela N pra N
-        posicoesNpcs.setCodigo_posicoes(1); 
-        posicoesNpcs.setCodigo_npc(1);
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     /**

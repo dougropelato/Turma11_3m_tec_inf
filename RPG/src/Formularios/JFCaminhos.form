@@ -69,6 +69,9 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="jtfCaminho">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfCaminhoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jlCaminho">
       <Properties>
