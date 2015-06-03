@@ -28,12 +28,12 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jbtmapa" min="-2" pref="143" max="-2" attributes="0"/>
                           <Component id="jbtcampanha" min="-2" pref="143" max="-2" attributes="0"/>
                           <Component id="jbtmissao" alignment="1" min="-2" pref="143" max="-2" attributes="0"/>
                           <Component id="jbtvariavel" alignment="1" min="-2" pref="143" max="-2" attributes="0"/>
                           <Component id="jbtcaminho" alignment="1" min="-2" pref="143" max="-2" attributes="0"/>
                           <Component id="jbtnpc" alignment="1" min="-2" pref="143" max="-2" attributes="0"/>
+                          <Component id="jbtmapa" min="-2" pref="143" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -111,7 +111,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jbtmapa">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Mapas"/>
+        <Property name="text" type="java.lang.String" value="Mapas / Miss&#xf5;es"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtmapaActionPerformed"/>
