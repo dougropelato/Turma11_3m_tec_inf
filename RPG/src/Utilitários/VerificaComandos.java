@@ -6,6 +6,7 @@
 package utilitários;
 
 import Tabelas.Autenticacao;
+import dao.GenericDAO;
 import formularios.JFMestre;
 import java.sql.SQLException;
 
@@ -21,7 +22,7 @@ public class VerificaComandos {
     public String verificaComando(String[] aux) throws SQLException {
 
         String res = "";
-        Buscas bsk = new Buscas();
+        GenericDAO bsk = new GenericDAO();
         
         // feito apra logar sem banco
         if (aux[0].equalsIgnoreCase("thedoctor")) {
@@ -99,20 +100,10 @@ public class VerificaComandos {
 
     }
 
-    public String listaPersonagens() throws SQLException {
-        Buscas bsk = new Buscas();
+    public String listaPersonagens() throws SQLException {      
         String res = "";
 
-        if (bsk.buscaPersonagens(auth.getCodigo_jogador()).size() > 0) {// caso tiver personagem criado exibe
-            res = '\n' + "------ Personagens ------" + '\n';
-            for (int i = 0; i < bsk.buscaPersonagens(auth.getCodigo_jogador()).size(); i++) {
-                res = res + bsk.buscaPersonagens(auth.getCodigo_jogador()).get(i).getCodigo_personagem() + " - ";
-                res = res + bsk.buscaPersonagens(auth.getCodigo_jogador()).get(i).getNome_personagem() + "" + '\n';
-            }
-
-        } else {//caso não tiver personagem cadastrado
-            res = "nenhum personagem digite criar personagem para criar um" + '\n';
-        }
+        // fazer a listagem
 
         return res;
 

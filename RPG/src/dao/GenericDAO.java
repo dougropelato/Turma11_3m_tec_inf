@@ -5,6 +5,7 @@
  */
 package dao;
 
+import Formularios.JFRaca;
 import conexao.ConexaoBanco;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -30,6 +31,7 @@ public class GenericDAO {
     public GenericDAO() throws SQLException {
         this.conexao = ConexaoBanco.getConexao();
     }
+    
 
     /**
      * *************************************************************************
