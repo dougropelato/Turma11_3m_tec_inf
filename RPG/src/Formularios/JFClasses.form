@@ -65,12 +65,12 @@
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                                              <Component id="BtnNovo" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jbtnovo" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="BtnCancelar" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jbtcancelar" min="-2" max="-2" attributes="0"/>
                                           <Component id="jTextField5" min="-2" pref="26" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -119,7 +119,7 @@
                                   <Component id="jScrollPane1" min="-2" pref="215" max="-2" attributes="0"/>
                                   <Component id="jComboBox4" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTextField6" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
-                                  <Component id="BtnProgressao" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jbtprogressao" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -187,9 +187,9 @@
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="BtnNovo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="BtnProgressao" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="BtnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jbtnovo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jbtprogressao" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jbtcancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   </Group>
@@ -365,7 +365,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="BtnNovo">
+    <Component class="javax.swing.JButton" name="jbtnovo">
       <Properties>
         <Property name="label" type="java.lang.String" value="Novo"/>
       </Properties>
@@ -374,7 +374,7 @@
         <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
       </AccessibilityProperties>
     </Component>
-    <Component class="javax.swing.JButton" name="BtnProgressao">
+    <Component class="javax.swing.JButton" name="jbtprogressao">
       <Properties>
         <Property name="label" type="java.lang.String" value="Tabela Progress&#xe3;o"/>
       </Properties>
@@ -383,10 +383,10 @@
         <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
       </AccessibilityProperties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnProgressaoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtprogressaoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BtnCancelar">
+    <Component class="javax.swing.JButton" name="jbtcancelar">
       <Properties>
         <Property name="label" type="java.lang.String" value="Cancelar"/>
       </Properties>

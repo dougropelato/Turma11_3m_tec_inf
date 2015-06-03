@@ -56,9 +56,9 @@ public class JFClasses extends javax.swing.JFrame {
         jComboBox5 = new javax.swing.JComboBox();
         jComboBox6 = new javax.swing.JComboBox();
         jComboBox7 = new javax.swing.JComboBox();
-        BtnNovo = new javax.swing.JButton();
-        BtnProgressao = new javax.swing.JButton();
-        BtnCancelar = new javax.swing.JButton();
+        jbtnovo = new javax.swing.JButton();
+        jbtprogressao = new javax.swing.JButton();
+        jbtcancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -121,16 +121,16 @@ public class JFClasses extends javax.swing.JFrame {
 
         jComboBox7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Simples", "Comuns", "Exóticas" }));
 
-        BtnNovo.setLabel("Novo");
+        jbtnovo.setLabel("Novo");
 
-        BtnProgressao.setLabel("Tabela Progressão");
-        BtnProgressao.addActionListener(new java.awt.event.ActionListener() {
+        jbtprogressao.setLabel("Tabela Progressão");
+        jbtprogressao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnProgressaoActionPerformed(evt);
+                jbtprogressaoActionPerformed(evt);
             }
         });
 
-        BtnCancelar.setLabel("Cancelar");
+        jbtcancelar.setLabel("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,10 +163,10 @@ public class JFClasses extends javax.swing.JFrame {
                                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(71, 71, 71)
-                                                .addComponent(BtnNovo)))
+                                                .addComponent(jbtnovo)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(BtnCancelar)
+                                            .addComponent(jbtcancelar)
                                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(44, 44, 44)
@@ -201,7 +201,7 @@ public class JFClasses extends javax.swing.JFrame {
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(BtnProgressao))))))
+                                    .addComponent(jbtprogressao))))))
                 .addContainerGap(77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -252,17 +252,17 @@ public class JFClasses extends javax.swing.JFrame {
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(BtnNovo)
-                            .addComponent(BtnProgressao)
-                            .addComponent(BtnCancelar))
+                            .addComponent(jbtnovo)
+                            .addComponent(jbtprogressao)
+                            .addComponent(jbtcancelar))
                         .addGap(48, 48, 48))))
         );
 
-        BtnNovo.getAccessibleContext().setAccessibleName("BtnNovo");
-        BtnNovo.getAccessibleContext().setAccessibleDescription("");
-        BtnProgressao.getAccessibleContext().setAccessibleName("BtnProgressao");
-        BtnProgressao.getAccessibleContext().setAccessibleDescription("");
-        BtnCancelar.getAccessibleContext().setAccessibleName("BtnCancelar");
+        jbtnovo.getAccessibleContext().setAccessibleName("BtnNovo");
+        jbtnovo.getAccessibleContext().setAccessibleDescription("");
+        jbtprogressao.getAccessibleContext().setAccessibleName("BtnProgressao");
+        jbtprogressao.getAccessibleContext().setAccessibleDescription("");
+        jbtcancelar.getAccessibleContext().setAccessibleName("BtnCancelar");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -279,10 +279,11 @@ public class JFClasses extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
 
-    private void BtnProgressaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProgressaoActionPerformed
-       JFProgressao prog = new JFProgressao();
+    private void jbtprogressaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtprogressaoActionPerformed
+       // TODO add your handling code here:
+        JFProgressao prog = new JFProgressao();
        prog.setVisible(true);       
-    }//GEN-LAST:event_BtnProgressaoActionPerformed
+    }//GEN-LAST:event_jbtprogressaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -320,9 +321,6 @@ public class JFClasses extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnCancelar;
-    private javax.swing.JButton BtnNovo;
-    private javax.swing.JButton BtnProgressao;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
@@ -351,5 +349,8 @@ public class JFClasses extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JButton jbtcancelar;
+    private javax.swing.JButton jbtnovo;
+    private javax.swing.JButton jbtprogressao;
     // End of variables declaration//GEN-END:variables
 }
