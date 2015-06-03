@@ -43,14 +43,19 @@
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="jtfBonusMaximoArmadura" max="32767" attributes="0"/>
                           <Component id="jtfPrecoArmadura" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jtfTipoArmadura" alignment="0" max="32767" attributes="0"/>
                           <Component id="jtfNomeArmadura" alignment="0" max="32767" attributes="0"/>
                           <Component id="jtfCodigoArmadura" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jtfPenalidadeDestrezaArmadura" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="jtfPenalidadeDestrezaArmadura" alignment="0" pref="130" max="32767" attributes="0"/>
+                          <Component id="jcTipoArmadura" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
               <EmptySpace pref="136" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -71,8 +76,8 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jtfTipoArmadura" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                  <Component id="jcTipoArmadura" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -89,7 +94,9 @@
                   <Component id="jtfPenalidadeDestrezaArmadura" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="71" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -120,8 +127,6 @@
         <Property name="text" type="java.lang.String" value="Tipo Armadura:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jtfTipoArmadura">
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="text" type="java.lang.String" value="Preco Armadura:"/>
@@ -149,6 +154,25 @@
           <Font name="Tahoma" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cadastro de Armaduras"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cadastrar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jcTipoArmadura">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="Leves"/>
+            <StringItem index="1" value="Medias"/>
+            <StringItem index="2" value="Pesadas"/>
+          </StringArray>
+        </Property>
       </Properties>
     </Component>
   </SubComponents>
