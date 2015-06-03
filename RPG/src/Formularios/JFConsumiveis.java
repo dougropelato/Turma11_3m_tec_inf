@@ -5,6 +5,8 @@
  */
 package formularios;
 
+import tabelas.Consumiveis;
+
 /**
  *
  * @author Jailton
@@ -38,6 +40,7 @@ public class JFConsumiveis extends javax.swing.JFrame {
         jtfPrecoConsumivel = new javax.swing.JTextField();
         jtfQuantidadeDadosConsumivel = new javax.swing.JTextField();
         jtfTipoDadoConsumivel = new javax.swing.JTextField();
+        jbCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,14 +57,17 @@ public class JFConsumiveis extends javax.swing.JFrame {
 
         jLabel6.setText("Tipo Dado Consumível:");
 
+        jbCadastrar.setText("Cadastrar");
+        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCadastrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(204, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(190, 190, 190))
             .addGroup(layout.createSequentialGroup()
                 .addGap(122, 122, 122)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -78,7 +84,16 @@ public class JFConsumiveis extends javax.swing.JFrame {
                     .addComponent(jtfPrecoConsumivel)
                     .addComponent(jtfQuantidadeDadosConsumivel)
                     .addComponent(jtfTipoDadoConsumivel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(190, 190, 190))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jbCadastrar)
+                        .addGap(177, 177, 177))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,11 +120,23 @@ public class JFConsumiveis extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jtfTipoDadoConsumivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jbCadastrar)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+        
+        Consumiveis cons = new Consumiveis();
+
+        cons.setNome_consumivel(jtfNomeConsumivel.getText());
+        cons.setPreco_consumivel(Double.parseDouble(jtfPrecoConsumivel.getText()));
+        cons.setQuantidade_dados_consumivel(Integer.parseInt(jtfQuantidadeDadosConsumivel.getText()));
+        cons.setTipo_dado_consumivel(Integer.parseInt(jtfTipoDadoConsumivel.getText()));
+    }//GEN-LAST:event_jbCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,6 +180,7 @@ public class JFConsumiveis extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton jbCadastrar;
     private javax.swing.JTextField jtfCodigoConsumivel;
     private javax.swing.JTextField jtfNomeConsumivel;
     private javax.swing.JTextField jtfPrecoConsumivel;
