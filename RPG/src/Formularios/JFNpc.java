@@ -5,6 +5,9 @@
  */
 package formularios;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author Leonardo
@@ -14,8 +17,16 @@ public class JFNpc extends javax.swing.JFrame {
     /**
      * Creates new form JFNpc
      */
+    public void centralizarComponente() {
+        
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation ((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+    }
+    
     public JFNpc() {
         initComponents();
+        centralizarComponente();
     }
 
     /**
@@ -50,6 +61,7 @@ public class JFNpc extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Npc's");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
         LabelNomeNpc.setText("Nome:");
 
@@ -69,18 +81,22 @@ public class JFNpc extends javax.swing.JFrame {
         LabelRespostaNegativa.setText("Resposta Negativa:");
 
         jTADescricaoNpc.setColumns(20);
+        jTADescricaoNpc.setLineWrap(true);
         jTADescricaoNpc.setRows(5);
         jScrollPane1.setViewportView(jTADescricaoNpc);
 
         jTAFalaNpc.setColumns(20);
+        jTAFalaNpc.setLineWrap(true);
         jTAFalaNpc.setRows(5);
         jScrollPane2.setViewportView(jTAFalaNpc);
 
         jTARespostaNegativa.setColumns(20);
+        jTARespostaNegativa.setLineWrap(true);
         jTARespostaNegativa.setRows(5);
         jScrollPane3.setViewportView(jTARespostaNegativa);
 
         jTARespostaPositiva.setColumns(20);
+        jTARespostaPositiva.setLineWrap(true);
         jTARespostaPositiva.setRows(5);
         jScrollPane4.setViewportView(jTARespostaPositiva);
 
@@ -88,7 +104,8 @@ public class JFNpc extends javax.swing.JFrame {
 
         jBAdicionarFala.setText("Adicionar Fala");
 
-        jCBTipoNpc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCBTipoNpc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Combatente", "Comerciante", "Guia", "Missão", "Coletável" }));
+        jCBTipoNpc.setSelectedIndex(-1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
