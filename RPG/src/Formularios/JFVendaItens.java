@@ -5,6 +5,11 @@
  */
 package formularios;
 
+import conexao.conexao;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 import tabelas.PersonagensArmaduras;
 import tabelas.PersonagensArmas;
 import tabelas.PersonagensConsumiveis;
@@ -135,7 +140,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         jcVenderArmas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jcVenderArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 171, -1));
 
-        jcComprarArmaduras.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jcComprarArmaduras, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 171, -1));
 
         jcComprarEscudos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -395,6 +399,30 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbComprarArmasActionPerformed
 
     private void jcbComprarArmadurasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbComprarArmadurasActionPerformed
+        try    
+          {    
+             
+              //jcComprarArmaduras.addItem("");  
+              Connection conn;    
+              conn = conexao.getConexao();//classse de conexao com banco  
+              Statement st = conn.createStatement();    
+              ResultSet rs = st.executeQuery("SELECT nome_armadura FROM armaduras" );    
+              while(rs.next())    
+              {   
+                  jcComprarArmaduras.addItem(rs.getString("nome_armadura"));    
+              }    
+              rs.close();    
+              conn.close();    
+          }    
+          catch(Exception e)    
+          {    
+              JOptionPane.showMessageDialog(null,     
+                      "Ocorreu erro ao carregar a Combo Box", "Erro",    
+                      JOptionPane.ERROR_MESSAGE);    
+       } 
+        
+        
+        
         if (jcbComprarArmaduras.isSelected()) {
             jcComprarArmaduras.setVisible(true);
             jbComprar.setVisible(true);
@@ -407,6 +435,7 @@ public class JFVendaItens extends javax.swing.JFrame {
             lbPrecoComprar.setVisible(false);
             jlQuantComprar.setVisible(false);
             QuantComprar.setVisible(false);
+            jcComprarArmaduras.removeAllItems(); 
         }
     }//GEN-LAST:event_jcbComprarArmadurasActionPerformed
 
