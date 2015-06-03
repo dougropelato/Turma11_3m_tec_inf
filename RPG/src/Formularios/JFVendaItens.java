@@ -5,10 +5,14 @@
  */
 package formularios;
 
-import conexao.conexao;
+import conexao.Conexao;
+import dao.GenericDAO;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
 import javax.swing.JOptionPane;
 import tabelas.PersonagensArmaduras;
 import tabelas.PersonagensArmas;
@@ -24,8 +28,17 @@ public class JFVendaItens extends javax.swing.JFrame {
     /**
      * Creates new form JFVendaItens
      */
+    
+     public void centralizarComponente() {
+        
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation ((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+    }
+     
     public JFVendaItens() {
         initComponents();
+        centralizarComponente();
         jbComprar.setVisible(false);
         lbComprar.setVisible(false);
         lbPrecoComprar.setVisible(false);
@@ -399,12 +412,11 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbComprarArmasActionPerformed
 
     private void jcbComprarArmadurasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbComprarArmadurasActionPerformed
-        try    
+       /* try    
           {    
              
-              //jcComprarArmaduras.addItem("");  
               Connection conn;    
-              conn = conexao.getConexao();//classse de conexao com banco  
+              conn = Conexao.getConexao();//classe de conexao com banco  
               Statement st = conn.createStatement();    
               ResultSet rs = st.executeQuery("SELECT nome_armadura FROM armaduras" );    
               while(rs.next())    
@@ -421,6 +433,8 @@ public class JFVendaItens extends javax.swing.JFrame {
                       JOptionPane.ERROR_MESSAGE);    
        } 
         
+        */
+  
         
         
         if (jcbComprarArmaduras.isSelected()) {
