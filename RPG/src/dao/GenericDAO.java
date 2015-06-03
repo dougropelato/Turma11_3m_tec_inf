@@ -5,7 +5,7 @@
  */
 package dao;
 
-import conexao.Conexaoooo;
+import conexao.Conexao;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -28,7 +28,7 @@ public class GenericDAO {
 
     //Contrutor
     public GenericDAO() throws SQLException {
-        this.conexao = Conexaoooo.getConexao();
+        this.conexao = Conexao.getConexao();
     }
 
     public List<Object> listar(Class c)
