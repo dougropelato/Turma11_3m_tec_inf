@@ -9,11 +9,20 @@ import conexao.ConexaoBanco;
 import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import tabelas.Armaduras;
+import tabelas.Armas;
+import tabelas.Consumiveis;
+import tabelas.Escudos;
 import tabelas.PersonagensArmaduras;
 import tabelas.PersonagensArmas;
 import tabelas.PersonagensConsumiveis;
@@ -73,7 +82,9 @@ public class JFVendaItens extends javax.swing.JFrame {
        
 
     }
-
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -153,6 +164,11 @@ public class JFVendaItens extends javax.swing.JFrame {
         jcVenderArmas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jcVenderArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 171, -1));
 
+        jcComprarArmaduras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcComprarArmadurasActionPerformed(evt);
+            }
+        });
         getContentPane().add(jcComprarArmaduras, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 171, -1));
 
         jcComprarEscudos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -395,6 +411,43 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbComprarActionPerformed
 
     private void jcbComprarArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbComprarArmasActionPerformed
+        
+        
+        GenericDAO gDao = null;
+         try {
+             gDao = new GenericDAO();
+         } catch (SQLException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+        List<Object> list = null;
+         try {
+             list = gDao.listar(Armas.class);
+         } catch (SQLException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (IllegalAccessException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (NoSuchMethodException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (IllegalArgumentException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (InvocationTargetException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (InstantiationException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (ClassNotFoundException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+        
+        for (Object obj2 : list) {
+            Armas arma = (Armas) obj2;
+             jcComprarArmas.addItem(arma.getNome_arma());
+        }
+        
+        
+        
+        
         if (jcbComprarArmas.isSelected()) {
             jcComprarArmas.setVisible(true);
             jbComprar.setVisible(true);
@@ -412,7 +465,40 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbComprarArmasActionPerformed
 
     private void jcbComprarArmadurasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbComprarArmadurasActionPerformed
-       /* try    
+       
+          GenericDAO gDao = null;
+         try {
+             gDao = new GenericDAO();
+         } catch (SQLException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+        List<Object> list = null;
+         try {
+             list = gDao.listar(Armaduras.class);
+         } catch (SQLException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (IllegalAccessException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (NoSuchMethodException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (IllegalArgumentException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (InvocationTargetException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (InstantiationException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (ClassNotFoundException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+        
+        for (Object obj2 : list) {
+            Armaduras armadura = (Armaduras) obj2;
+             jcComprarArmaduras.addItem(armadura.getNome_armadura());
+        }
+        
+        /* try    
           {    
              
               Connection conn;    
@@ -434,8 +520,8 @@ public class JFVendaItens extends javax.swing.JFrame {
        } 
         
         */
-  
-        
+             
+      
         
         if (jcbComprarArmaduras.isSelected()) {
             jcComprarArmaduras.setVisible(true);
@@ -454,6 +540,41 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbComprarArmadurasActionPerformed
 
     private void jcbComprarEscudosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbComprarEscudosActionPerformed
+       
+        
+        GenericDAO gDao = null;
+         try {
+             gDao = new GenericDAO();
+         } catch (SQLException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+        List<Object> list = null;
+         try {
+             list = gDao.listar(Escudos.class);
+         } catch (SQLException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (IllegalAccessException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (NoSuchMethodException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (IllegalArgumentException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (InvocationTargetException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (InstantiationException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (ClassNotFoundException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+        
+        for (Object obj2 : list) {
+            Escudos escudo = (Escudos) obj2;
+             jcComprarEscudos.addItem(escudo.getNome_escudo());
+        }
+        
+        
         if (jcbComprarEscudos.isSelected()) {
             jcComprarEscudos.setVisible(true);
             jbComprar.setVisible(true);
@@ -471,6 +592,42 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbComprarEscudosActionPerformed
 
     private void jcbComprarConsumiveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbComprarConsumiveisActionPerformed
+        
+        
+        GenericDAO gDao = null;
+         try {
+             gDao = new GenericDAO();
+         } catch (SQLException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+        List<Object> list = null;
+         try {
+             list = gDao.listar(Consumiveis.class);
+         } catch (SQLException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (IllegalAccessException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (NoSuchMethodException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (IllegalArgumentException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (InvocationTargetException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (InstantiationException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (ClassNotFoundException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+        
+        for (Object obj2 : list) {
+            Consumiveis consumivel = (Consumiveis) obj2;
+             jcComprarConsumiveis.addItem(consumivel.getNome_consumivel());
+        }
+        
+        
+        
         if (jcbComprarConsumiveis.isSelected()) {
             jcComprarConsumiveis.setVisible(true);
             jbComprar.setVisible(true);
@@ -584,6 +741,10 @@ public class JFVendaItens extends javax.swing.JFrame {
     private void QuantComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuantComprarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_QuantComprarActionPerformed
+
+    private void jcComprarArmadurasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcComprarArmadurasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcComprarArmadurasActionPerformed
 
     /**
      * @param args the command line arguments
