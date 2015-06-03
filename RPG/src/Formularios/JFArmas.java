@@ -38,11 +38,11 @@ public class JFArmas extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jtfCodigoArma = new javax.swing.JTextField();
         jtfNomeArma = new javax.swing.JTextField();
-        jtfTipoArma = new javax.swing.JTextField();
         jtfPrecoArma = new javax.swing.JTextField();
         jtfQuantidadeDadoArma = new javax.swing.JTextField();
         jtfTipoDadoArma = new javax.swing.JTextField();
         jbCadastrar = new javax.swing.JButton();
+        jcTipoArma = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,6 +68,8 @@ public class JFArmas extends javax.swing.JFrame {
             }
         });
 
+        jcTipoArma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Exóticas", "Simples", "Comuns" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,21 +85,21 @@ public class JFArmas extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(2, 2, 2))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGap(4, 4, 4)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jtfPrecoArma, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
                             .addComponent(jtfQuantidadeDadoArma)
                             .addComponent(jtfCodigoArma)
-                            .addComponent(jtfTipoArma)
                             .addComponent(jtfNomeArma)
-                            .addComponent(jtfTipoDadoArma))))
+                            .addComponent(jtfTipoDadoArma)
+                            .addComponent(jcTipoArma, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(145, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -120,7 +122,7 @@ public class JFArmas extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jtfTipoArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcTipoArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -146,7 +148,7 @@ public class JFArmas extends javax.swing.JFrame {
         Armas arma = new Armas();
 
         arma.setNome_arma(jtfNomeArma.getText());
-        arma.setTipo_arma(Integer.parseInt(jtfTipoArma.getText()));
+        arma.setTipo_arma(jcTipoArma.getSelectedIndex());
         arma.setPreco_arma(Double.parseDouble(jtfPrecoArma.getText()));
         arma.setQuantidade_dado_arma(Integer.parseInt(jtfQuantidadeDadoArma.getText()));
         arma.setTipo_do_dado_arma(Integer.parseInt(jtfTipoDadoArma.getText()));
@@ -196,11 +198,11 @@ public class JFArmas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JButton jbCadastrar;
+    private javax.swing.JComboBox jcTipoArma;
     private javax.swing.JTextField jtfCodigoArma;
     private javax.swing.JTextField jtfNomeArma;
     private javax.swing.JTextField jtfPrecoArma;
     private javax.swing.JTextField jtfQuantidadeDadoArma;
-    private javax.swing.JTextField jtfTipoArma;
     private javax.swing.JTextField jtfTipoDadoArma;
     // End of variables declaration//GEN-END:variables
 }
