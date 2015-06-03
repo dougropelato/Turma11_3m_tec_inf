@@ -33,35 +33,6 @@
                   <Component id="LabelNpc" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="LabelInicioMissao" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelFimMissao" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="LabelInicioX" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelFimX" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="JTFInicioMissaoX" min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="JTFFimMissaoX" min="-2" pref="32" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="LabelInicioY" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelFimY" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                              <Component id="JTFInicioMissaoY" min="-2" pref="32" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="JTFFimMissaoY" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="LabelTipoNpc" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -71,17 +42,22 @@
                               <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="JTFNomeNpc" pref="160" max="32767" attributes="0"/>
-                          <Component id="JTFTipoNpc" max="32767" attributes="0"/>
+                          <Component id="jCBTipoNpc" max="32767" attributes="0"/>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jBCadastrar" min="-2" pref="89" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jBAdicionarFala" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane1" alignment="0" min="-2" pref="375" max="-2" attributes="0"/>
+                          <Component id="jScrollPane4" alignment="0" min="-2" pref="375" max="-2" attributes="0"/>
                           <Component id="LabelDescricaoNpc" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="LabelRespostaPositiva" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane4" alignment="0" min="-2" pref="375" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -109,34 +85,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="LabelTipoNpc" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="JTFTipoNpc" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="JTFInicioMissaoX" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelInicioX" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelInicioMissao" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="JTFFimMissaoX" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelFimX" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelFimMissao" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="JTFInicioMissaoY" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelInicioY" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="JTFFimMissaoY" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelFimY" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="jCBTipoNpc" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -145,20 +94,31 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" min="-2" pref="110" max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="110" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jScrollPane1" min="-2" pref="110" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="LabelRespostaPositiva" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jScrollPane2" min="-2" pref="110" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="LabelRespostaNegativa" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="LabelRespostaPositiva" min="-2" max="-2" attributes="0"/>
-                  <Component id="LabelRespostaNegativa" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jScrollPane3" min="-2" pref="110" max="-2" attributes="0"/>
                   <Component id="jScrollPane4" min="-2" pref="110" max="-2" attributes="0"/>
+                  <Component id="jScrollPane3" min="-2" pref="110" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jBCadastrar" min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="jBAdicionarFala" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -174,29 +134,7 @@
         <Property name="text" type="java.lang.String" value="Tipo:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="LabelInicioMissao">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="In&#xed;cio Miss&#xe3;o"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LabelFimMissao">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Fim Miss&#xe3;o"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="JTFNomeNpc">
-    </Component>
-    <Component class="javax.swing.JTextField" name="JTFTipoNpc">
-    </Component>
-    <Component class="javax.swing.JTextField" name="JTFInicioMissaoX">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTFInicioMissaoXActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="JTFFimMissaoX">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTFFimMissaoXActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="LabelNpc">
       <Properties>
@@ -208,13 +146,6 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="JTFInicioMissaoY">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTFInicioMissaoYActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="JTFFimMissaoY">
-    </Component>
     <Component class="javax.swing.JLabel" name="LabelDescricaoNpc">
       <Properties>
         <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o Npc:"/>
@@ -223,26 +154,6 @@
     <Component class="javax.swing.JLabel" name="LabelFala">
       <Properties>
         <Property name="text" type="java.lang.String" value="Fala:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LabelInicioX">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="X:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LabelInicioY">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Y:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LabelFimX">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="X:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LabelFimY">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Y:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="LabelRespostaPositiva">
@@ -262,7 +173,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea1">
+        <Component class="javax.swing.JTextArea" name="jTADescricaoNpc">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -277,7 +188,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea2">
+        <Component class="javax.swing.JTextArea" name="jTAFalaNpc">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -292,7 +203,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea3">
+        <Component class="javax.swing.JTextArea" name="jTARespostaNegativa">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -307,7 +218,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea4">
+        <Component class="javax.swing.JTextArea" name="jTARespostaPositiva">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -315,5 +226,27 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="jBCadastrar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cadastrar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jBAdicionarFala">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Adicionar Fala"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jCBTipoNpc">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>
