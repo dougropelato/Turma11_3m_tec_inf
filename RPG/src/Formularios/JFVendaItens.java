@@ -48,6 +48,11 @@ public class JFVendaItens extends javax.swing.JFrame {
         jcComprarEscudos.setVisible(false);
         jcComprarArmaduras.setVisible(false);
         jcComprarArmas.setVisible(false);
+        
+        
+        
+        
+       
 
     }
 
@@ -293,6 +298,7 @@ public class JFVendaItens extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void jcComprarArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcComprarArmasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcComprarArmasActionPerformed
@@ -340,6 +346,8 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcVenderArmas.setVisible(false);
             jbVender.setVisible(false);
             lbPreçoVender.setVisible(false);
+            jlQuantVender.setVisible(false);
+            QuantVender.setVisible(false);
         }
     }//GEN-LAST:event_jcbVenderActionPerformed
 
@@ -362,7 +370,9 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcComprarArmaduras.setVisible(false);
             jcComprarArmas.setVisible(false);
             jbComprar.setVisible(false);
-            lbPrecoComprar.setVisible(false);
+            lbPrecoComprar.setVisible(false);      
+            jlQuantComprar.setVisible(false);
+            QuantComprar.setVisible(false);
 
         }
     }//GEN-LAST:event_jcbComprarActionPerformed
