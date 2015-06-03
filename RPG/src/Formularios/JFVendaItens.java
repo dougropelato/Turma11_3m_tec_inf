@@ -18,7 +18,6 @@ import tabelas.PersonagensArmaduras;
 import tabelas.PersonagensArmas;
 import tabelas.PersonagensConsumiveis;
 import tabelas.PersonagensEscudos;
-import org.*;
 
 /**
  *
