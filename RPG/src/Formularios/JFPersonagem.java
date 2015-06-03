@@ -5,6 +5,10 @@
  */
 package formularios;
 
+import dao.GenericDAO;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tabelas.Personagens;
 
 /**
@@ -18,6 +22,8 @@ public class JFPersonagem extends javax.swing.JFrame {
      */
     public JFPersonagem() {
         initComponents();
+        
+       
     }
 
     /**
@@ -353,8 +359,13 @@ public class JFPersonagem extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfClasseArmaduraPersonagemActionPerformed
 
     private void jBSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarActionPerformed
-        Personagens pers = new Personagens();
-        
+         Personagens pers = new Personagens();
+        try {
+           GenericDAO aDao = new GenericDAO();  
+        } catch (SQLException ex) {
+            Logger.getLogger(JFPersonagem.class.getName()).log(Level.SEVERE, null, ex);
+            
+            
         pers.setAltura_personagem(Double.parseDouble(jtfAlturaPersonagem.getText()));
         pers.setBase_ataque_personagem(Integer.parseInt(jtfBaseDeAtaquePersonagem.getText()));
         pers.setCarisma_personagem(Integer.parseInt(jtfCarismaPersonagem.getText()));
@@ -372,6 +383,14 @@ public class JFPersonagem extends javax.swing.JFrame {
         pers.setReflexos_personagem(Integer.parseInt(jtfRefexoPersonagem.getText()));
         pers.setSabedoria_personagem(Integer.parseInt(jtfSabedoriaPersonagem.getText()));
         pers.setVontade_personagem(Integer.parseInt(jtfVontadePersonagem.getText()));
+        
+        //aDao.adicionar(pers);
+        
+        }
+       
+        
+        
+        
           // TODO add your handling code here:
     }//GEN-LAST:event_jBSalvarActionPerformed
 
