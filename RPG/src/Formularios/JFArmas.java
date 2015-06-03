@@ -5,6 +5,8 @@
  */
 package formularios;
 
+import tabelas.Armas;
+
 /**
  *
  * @author Jailton
@@ -40,6 +42,7 @@ public class JFArmas extends javax.swing.JFrame {
         jtfPrecoArma = new javax.swing.JTextField();
         jtfQuantidadeDadoArma = new javax.swing.JTextField();
         jtfTipoDadoArma = new javax.swing.JTextField();
+        jbCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +60,13 @@ public class JFArmas extends javax.swing.JFrame {
         jLabel6.setText("Quantidade Dado Arma:");
 
         jLabel7.setText("Tipo Dado Arma:");
+
+        jbCadastrar.setText("Cadastrar");
+        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,6 +99,10 @@ public class JFArmas extends javax.swing.JFrame {
                             .addComponent(jtfNomeArma)
                             .addComponent(jtfTipoDadoArma))))
                 .addContainerGap(145, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jbCadastrar)
+                .addGap(160, 160, 160))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,11 +133,26 @@ public class JFArmas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jtfTipoDadoArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jbCadastrar)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+
+        Armas arma = new Armas();
+
+        arma.setNome_arma(jtfNomeArma.getText());
+        arma.setTipo_arma(Integer.parseInt(jtfTipoArma.getText()));
+        arma.setPreco_arma(Double.parseDouble(jtfPrecoArma.getText()));
+        arma.setQuantidade_dado_arma(Integer.parseInt(jtfQuantidadeDadoArma.getText()));
+        arma.setTipo_do_dado_arma(Integer.parseInt(jtfTipoDadoArma.getText()));
+
+
+    }//GEN-LAST:event_jbCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,6 +197,7 @@ public class JFArmas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton jbCadastrar;
     private javax.swing.JTextField jtfCodigoArma;
     private javax.swing.JTextField jtfNomeArma;
     private javax.swing.JTextField jtfPrecoArma;
