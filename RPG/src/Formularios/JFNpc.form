@@ -7,6 +7,7 @@
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
       <Color id="Cursor Padr&#xe3;o"/>
     </Property>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -176,6 +177,7 @@
         <Component class="javax.swing.JTextArea" name="jTADescricaoNpc">
           <Properties>
             <Property name="columns" type="int" value="20"/>
+            <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
           </Properties>
         </Component>
@@ -191,6 +193,7 @@
         <Component class="javax.swing.JTextArea" name="jTAFalaNpc">
           <Properties>
             <Property name="columns" type="int" value="20"/>
+            <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
           </Properties>
         </Component>
@@ -206,6 +209,7 @@
         <Component class="javax.swing.JTextArea" name="jTARespostaNegativa">
           <Properties>
             <Property name="columns" type="int" value="20"/>
+            <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
           </Properties>
         </Component>
@@ -221,6 +225,7 @@
         <Component class="javax.swing.JTextArea" name="jTARespostaPositiva">
           <Properties>
             <Property name="columns" type="int" value="20"/>
+            <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
           </Properties>
         </Component>
@@ -239,13 +244,15 @@
     <Component class="javax.swing.JComboBox" name="jCBTipoNpc">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="5">
+            <StringItem index="0" value="Combatente"/>
+            <StringItem index="1" value="Comerciante"/>
+            <StringItem index="2" value="Guia"/>
+            <StringItem index="3" value="Miss&#xe3;o"/>
+            <StringItem index="4" value="Colet&#xe1;vel"/>
           </StringArray>
         </Property>
+        <Property name="selectedIndex" type="int" value="-1"/>
       </Properties>
     </Component>
   </SubComponents>
