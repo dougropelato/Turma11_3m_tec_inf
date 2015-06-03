@@ -91,6 +91,11 @@ public class JFRaca extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jbCadastrar_raca.setText("Cadastrar");
+        jbCadastrar_raca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCadastrar_racaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -213,6 +218,10 @@ public class JFRaca extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbCadastrar_racaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrar_racaActionPerformed
+        
+    }//GEN-LAST:event_jbCadastrar_racaActionPerformed
 
     /**
      * @param args the command line arguments

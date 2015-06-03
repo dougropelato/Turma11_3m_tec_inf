@@ -5,6 +5,9 @@
  */
 package formularios;
 
+import dao.GenericDAO;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import tabelas.Caminhos;
 import tabelas.Missoes;
 
@@ -14,11 +17,17 @@ import tabelas.Missoes;
  */
 public class JFCaminhos extends javax.swing.JFrame {
 
+    public void centralizarComponente(){
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation((ds.width - dw.width)/2, (ds.height - dw.height)/2);
+    }
     /**
      * Creates new form JFCaminhos
      */
     public JFCaminhos() {
         initComponents();
+        centralizarComponente();
     }
 
     /**
@@ -95,6 +104,7 @@ public class JFCaminhos extends javax.swing.JFrame {
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
         
+        GenericDAO gDAO = new GenericDAO();
         Caminhos caminhos = new Caminhos();
         Missoes missoes = new Missoes();
         

@@ -5,6 +5,9 @@
  */
 package formularios;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author Leonardo
@@ -14,8 +17,16 @@ public class JFNpc extends javax.swing.JFrame {
     /**
      * Creates new form JFNpc
      */
+    public void centralizarComponente() {
+        
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation ((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+    }
+    
     public JFNpc() {
         initComponents();
+        centralizarComponente();
     }
 
     /**
@@ -29,98 +40,72 @@ public class JFNpc extends javax.swing.JFrame {
 
         LabelNomeNpc = new javax.swing.JLabel();
         LabelTipoNpc = new javax.swing.JLabel();
-        LabelInicioMissao = new javax.swing.JLabel();
-        LabelFimMissao = new javax.swing.JLabel();
         JTFNomeNpc = new javax.swing.JTextField();
-        JTFTipoNpc = new javax.swing.JTextField();
-        JTFInicioMissaoX = new javax.swing.JTextField();
-        JTFFimMissaoX = new javax.swing.JTextField();
         LabelNpc = new javax.swing.JLabel();
-        JTFInicioMissaoY = new javax.swing.JTextField();
-        JTFFimMissaoY = new javax.swing.JTextField();
         LabelDescricaoNpc = new javax.swing.JLabel();
         LabelFala = new javax.swing.JLabel();
-        LabelInicioX = new javax.swing.JLabel();
-        LabelInicioY = new javax.swing.JLabel();
-        LabelFimX = new javax.swing.JLabel();
-        LabelFimY = new javax.swing.JLabel();
         LabelRespostaPositiva = new javax.swing.JLabel();
         LabelRespostaNegativa = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTADescricaoNpc = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        jTAFalaNpc = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        jTARespostaNegativa = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        jTARespostaPositiva = new javax.swing.JTextArea();
+        jBCadastrar = new javax.swing.JButton();
+        jBAdicionarFala = new javax.swing.JButton();
+        jCBTipoNpc = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Npc's");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
         LabelNomeNpc.setText("Nome:");
 
         LabelTipoNpc.setText("Tipo:");
-
-        LabelInicioMissao.setText("Início Missão");
-
-        LabelFimMissao.setText("Fim Missão");
-
-        JTFInicioMissaoX.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTFInicioMissaoXActionPerformed(evt);
-            }
-        });
-
-        JTFFimMissaoX.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTFFimMissaoXActionPerformed(evt);
-            }
-        });
 
         LabelNpc.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LabelNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LabelNpc.setText("Npc's");
         LabelNpc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        JTFInicioMissaoY.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTFInicioMissaoYActionPerformed(evt);
-            }
-        });
-
         LabelDescricaoNpc.setText("Descrição Npc:");
 
         LabelFala.setText("Fala:");
-
-        LabelInicioX.setText("X:");
-
-        LabelInicioY.setText("Y:");
-
-        LabelFimX.setText("X:");
-
-        LabelFimY.setText("Y:");
 
         LabelRespostaPositiva.setText("Resposta Positiva:");
 
         LabelRespostaNegativa.setText("Resposta Negativa:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTADescricaoNpc.setColumns(20);
+        jTADescricaoNpc.setLineWrap(true);
+        jTADescricaoNpc.setRows(5);
+        jScrollPane1.setViewportView(jTADescricaoNpc);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        jTAFalaNpc.setColumns(20);
+        jTAFalaNpc.setLineWrap(true);
+        jTAFalaNpc.setRows(5);
+        jScrollPane2.setViewportView(jTAFalaNpc);
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
+        jTARespostaNegativa.setColumns(20);
+        jTARespostaNegativa.setLineWrap(true);
+        jTARespostaNegativa.setRows(5);
+        jScrollPane3.setViewportView(jTARespostaNegativa);
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
+        jTARespostaPositiva.setColumns(20);
+        jTARespostaPositiva.setLineWrap(true);
+        jTARespostaPositiva.setRows(5);
+        jScrollPane4.setViewportView(jTARespostaPositiva);
+
+        jBCadastrar.setText("Cadastrar");
+
+        jBAdicionarFala.setText("Adicionar Fala");
+
+        jCBTipoNpc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Combatente", "Comerciante", "Guia", "Missão", "Coletável" }));
+        jCBTipoNpc.setSelectedIndex(-1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,43 +117,25 @@ public class JFNpc extends javax.swing.JFrame {
                     .addComponent(LabelNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelInicioMissao)
-                            .addComponent(LabelFimMissao))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(LabelInicioX)
-                            .addComponent(LabelFimX))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JTFInicioMissaoX, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JTFFimMissaoX, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelInicioY, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(LabelFimY))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(JTFInicioMissaoY, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(JTFFimMissaoY, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(LabelTipoNpc)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelNomeNpc)
                                 .addGap(3, 3, 3)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(JTFNomeNpc, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                            .addComponent(JTFTipoNpc)))
+                            .addComponent(jCBTipoNpc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBAdicionarFala))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LabelDescricaoNpc)
-                            .addComponent(LabelRespostaPositiva)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(LabelRespostaPositiva))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelRespostaNegativa)
@@ -189,60 +156,36 @@ public class JFNpc extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelTipoNpc)
-                    .addComponent(JTFTipoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JTFInicioMissaoX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelInicioX)
-                            .addComponent(LabelInicioMissao))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JTFFimMissaoX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelFimX)
-                            .addComponent(LabelFimMissao)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JTFInicioMissaoY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelInicioY))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JTFFimMissaoY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelFimY))))
+                    .addComponent(jCBTipoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelDescricaoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelFala))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LabelRespostaPositiva))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LabelRespostaNegativa)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelRespostaPositiva)
-                    .addComponent(LabelRespostaNegativa))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jBAdicionarFala, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void JTFInicioMissaoXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFInicioMissaoXActionPerformed
-
-    }//GEN-LAST:event_JTFInicioMissaoXActionPerformed
-
-    private void JTFFimMissaoXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFFimMissaoXActionPerformed
-       
-    }//GEN-LAST:event_JTFFimMissaoXActionPerformed
-
-    private void JTFInicioMissaoYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFInicioMissaoYActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTFInicioMissaoYActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,32 +223,24 @@ public class JFNpc extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField JTFFimMissaoX;
-    private javax.swing.JTextField JTFFimMissaoY;
-    private javax.swing.JTextField JTFInicioMissaoX;
-    private javax.swing.JTextField JTFInicioMissaoY;
     private javax.swing.JTextField JTFNomeNpc;
-    private javax.swing.JTextField JTFTipoNpc;
     private javax.swing.JLabel LabelDescricaoNpc;
     private javax.swing.JLabel LabelFala;
-    private javax.swing.JLabel LabelFimMissao;
-    private javax.swing.JLabel LabelFimX;
-    private javax.swing.JLabel LabelFimY;
-    private javax.swing.JLabel LabelInicioMissao;
-    private javax.swing.JLabel LabelInicioX;
-    private javax.swing.JLabel LabelInicioY;
     private javax.swing.JLabel LabelNomeNpc;
     private javax.swing.JLabel LabelNpc;
     private javax.swing.JLabel LabelRespostaNegativa;
     private javax.swing.JLabel LabelRespostaPositiva;
     private javax.swing.JLabel LabelTipoNpc;
+    private javax.swing.JButton jBAdicionarFala;
+    private javax.swing.JButton jBCadastrar;
+    private javax.swing.JComboBox jCBTipoNpc;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTextArea jTADescricaoNpc;
+    private javax.swing.JTextArea jTAFalaNpc;
+    private javax.swing.JTextArea jTARespostaNegativa;
+    private javax.swing.JTextArea jTARespostaPositiva;
     // End of variables declaration//GEN-END:variables
 }
