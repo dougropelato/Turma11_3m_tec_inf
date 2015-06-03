@@ -8,7 +8,7 @@ package utilitários;
 import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import tabelas.Jogadores;
 import tabelas.Personagens;
-import conexao.Conexao;
+import conexao.Conexaoooo;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -29,7 +29,7 @@ public class Buscas {
     private Object rs;
 
     public Buscas() throws SQLException {
-        this.conecta = Conexao.getConexao();
+        this.conecta = Conexaoooo.getConexao();
 
     }
 
