@@ -5,6 +5,7 @@
  */
 package utilitários;
 
+import Tabelas.Autenticacao;
 import formularios.JFMestre;
 import java.sql.SQLException;
 

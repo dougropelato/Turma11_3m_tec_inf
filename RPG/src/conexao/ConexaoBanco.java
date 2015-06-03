@@ -13,7 +13,7 @@ import java.sql.SQLException;
  *
  * @author Alexjonas
  */
-public class ConnexaoBanco {
+public class ConexaoBanco {
 
     public static Connection getConexao() throws SQLException {
 

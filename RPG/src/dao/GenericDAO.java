@@ -5,7 +5,7 @@
  */
 package dao;
 
-import conexao.ConnexaoBanco;
+import conexao.ConexaoBanco;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -28,9 +28,66 @@ public class GenericDAO {
 
     //Contrutor
     public GenericDAO() throws SQLException {
-        this.conexao = ConnexaoBanco.getConexao();
+        this.conexao = ConexaoBanco.getConexao();
     }
 
+    /**
+     * *************************************************************************
+     * Método ALTERAR
+     * **************************************************************************
+     */
+    public void alterar(Object obj) throws ClassNotFoundException,
+            SQLException, IllegalArgumentException,
+            IllegalAccessException {
+
+        String classe = obj.getClass().getName();
+        Class cls = Class.forName(classe);
+        String pK = "";
+        String campos = "";
+        String lugar = "";
+        String tabela = cls.getSimpleName();
+        String baseDados = conexao.getCatalog();
+
+        Field listaAtributos[] = cls.getDeclaredFields();
+
+        String sql3 = "SELECT information_schema.KEY_COLUMN_USAGE.COLUMN_NAME as \"chave\" \n"
+                + "FROM information_schema.KEY_COLUMN_USAGE \n"
+                + "WHERE information_schema.KEY_COLUMN_USAGE.CONSTRAINT_NAME LIKE \"PRIMARY\" \n"
+                + "AND information_schema.KEY_COLUMN_USAGE.TABLE_SCHEMA LIKE \"" + baseDados + "\""
+                + " AND information_schema.KEY_COLUMN_USAGE.TABLE_NAME LIKE \"" + tabela + "\"";
+
+        for (int i = 0; i < listaAtributos.length; i++) {
+            Field fld = listaAtributos[i];
+            fld.setAccessible(true);
+            campos += fld.getName() + " = '" + fld.get(obj) + "'";
+            if (i != (listaAtributos.length - 1)) {
+                campos += ", ";
+            }
+            PreparedStatement stmt = conexao.prepareCall(sql3);
+            ResultSet RS = stmt.executeQuery();
+
+            while (RS.next()) {
+                // Object nextElement = en.nextElement();
+                pK = RS.getString("chave");
+            }
+            if (fld.getType().toString().equals("int")) {
+                if (fld.getName().equalsIgnoreCase(pK)) {
+                    lugar = fld.getName() + " = '" + fld.get(obj) + "'";
+                }
+            }
+        }
+        String sql = "UPDATE " + tabela + " SET " + campos + " WHERE " + lugar + "";
+        PreparedStatement stmt = conexao.prepareCall(sql);
+        stmt.execute();
+        stmt.close();
+        System.out.println("deu certo essa porra");
+    }
+
+    /**
+     * *************************************************************************
+     * Método LISTAR
+     * **************************************************************************
+     */
     public List<Object> listar(Class c)
             throws SQLException, IllegalAccessException, NoSuchMethodException,
             IllegalArgumentException, InvocationTargetException,
@@ -70,7 +127,11 @@ public class GenericDAO {
         return list;
     }
 
-    
+    /**
+     * *************************************************************************
+     * Método ADICIONAR
+     * **************************************************************************
+     */
     public void adicionar(Object obj) throws ClassNotFoundException,
             SQLException, IllegalArgumentException, IllegalAccessException {
 
@@ -116,6 +177,11 @@ public class GenericDAO {
         System.out.println("Registro ADICIONADO ao banco!");
     }
 
+    /**
+     * *************************************************************************
+     * Método EXCLUIR
+     * **************************************************************************
+     */
     public void excluir(Object obj) throws ClassNotFoundException,
             NoSuchFieldException, SQLException {
         String campoTeste = null;

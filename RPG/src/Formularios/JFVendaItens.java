@@ -5,7 +5,7 @@
  */
 package formularios;
 
-import conexao.Conexao;
+import conexao.ConexaoBanco;
 import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -18,6 +18,7 @@ import tabelas.PersonagensArmaduras;
 import tabelas.PersonagensArmas;
 import tabelas.PersonagensConsumiveis;
 import tabelas.PersonagensEscudos;
+import org.*;
 
 /**
  *
