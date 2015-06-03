@@ -5,6 +5,8 @@
  */
 package formularios;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import tabelas.Posicoes;
 import tabelas.PosicoesNpcs;
 
@@ -14,11 +16,17 @@ import tabelas.PosicoesNpcs;
  */
 public class JFPosicoes extends javax.swing.JFrame {
 
+    public void centralizarComponente(){
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation((ds.width - dw.width)/2, (ds.height - dw.height)/2);
+    }
     /**
      * Creates new form JFPosicoes
      */
     public JFPosicoes() {
         initComponents();
+        centralizarComponente();
     }
 
     /**
