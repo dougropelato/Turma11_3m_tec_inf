@@ -281,8 +281,8 @@ public class JFClasses extends javax.swing.JFrame {
 
     private void jbtprogressaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtprogressaoActionPerformed
        // TODO add your handling code here:
-        JFProgressao prog = new JFProgressao();
-       prog.setVisible(true);       
+        Formularios.JFProgressao prog  = new Formularios.JFProgressao();
+        prog.setVisible(true);
     }//GEN-LAST:event_jbtprogressaoActionPerformed
 
     /**
