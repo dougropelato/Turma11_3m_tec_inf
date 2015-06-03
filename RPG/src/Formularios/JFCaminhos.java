@@ -8,6 +8,9 @@ package formularios;
 import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tabelas.Caminhos;
 import tabelas.Missoes;
 
@@ -103,14 +106,21 @@ public class JFCaminhos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
+        try {
+            GenericDAO gDAO = new GenericDAO();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        GenericDAO gDAO = new GenericDAO();
+        
         Caminhos caminhos = new Caminhos();
         Missoes missoes = new Missoes();
         
         caminhos.setNome_caminho(jtfCaminho.getText());
         
         caminhos.setCodigo_missao(1); //apenas para teste
+        
+        
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     /**

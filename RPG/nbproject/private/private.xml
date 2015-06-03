@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Micro10/Documents/GitHub/Turma11_3m_tec_inf/RPG/src/Formularios/JFVendaItens.java</file>
-            <file>file:/C:/Users/Micro10/Documents/GitHub/Turma11_3m_tec_inf/RPG/src/Tabelas/PersonagensArmaduras.java</file>
+            <file>file:/C:/Users/Orlando/Documents/GitHub/Turma11_3m_tec_inf/Turma11_3m_tec_inf/RPG/src/dao/GenericDAO.java</file>
+            <file>file:/C:/Users/Orlando/Documents/GitHub/Turma11_3m_tec_inf/Turma11_3m_tec_inf/RPG/src/Formularios/JFMissoes.java</file>
+            <file>file:/C:/Users/Orlando/Documents/GitHub/Turma11_3m_tec_inf/Turma11_3m_tec_inf/RPG/src/Formularios/JFCaminhos.java</file>
+            <file>file:/C:/Users/Orlando/Documents/GitHub/Turma11_3m_tec_inf/Turma11_3m_tec_inf/RPG/src/Formularios/JFPosicoes.java</file>
+            <file>file:/C:/Users/Orlando/Documents/GitHub/Turma11_3m_tec_inf/Turma11_3m_tec_inf/RPG/src/conexao/Conexao.java</file>
         </group>
     </open-files>
 </project-private>
