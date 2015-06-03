@@ -161,11 +161,14 @@ public class JFArmaduras extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
-        Armaduras armd = new Armaduras();
-        
+       
+          Armaduras armd = new Armaduras();
+
         armd.setNome_armadura(jtfNomeArmadura.getText());
         armd.setTipo_armadura(jcTipoArmadura.getSelectedIndex());
-        
+        armd.setPreco_armadura(Double.parseDouble(jtfPrecoArmadura.getText()));
+        armd.setBonus_maximo_armadura(Double.parseDouble(jtfBonusMaximoArmadura.getText()));
+        armd.setPenalidade_destreza_armadura(Integer.parseInt(jtfPenalidadeDestrezaArmadura.getText()));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -24,14 +24,13 @@ import java.util.logging.Logger;
  * @author Douglas
  */
 public class GenericDAO {
-    
-     private Connection conexao;
+
+    private Connection conexao;
 
     //Contrutor
     public GenericDAO() throws SQLException {
         this.conexao = ConexaoBanco.getConexao();
     }
-    
 
     /**
      * *************************************************************************
@@ -99,6 +98,78 @@ public class GenericDAO {
         String tabela = c.getSimpleName();
         String sql = "SELECT * FROM " + tabela;
         PreparedStatement stmt = this.conexao.prepareStatement(sql);
+        ResultSet rset = stmt.executeQuery();
+
+        while (rset.next()) {
+            Object obj = c.newInstance();
+            for (Method m : c.getMethods()) {
+                if (m.getName().substring(0, 3).equals("set")) {
+                    Class[] args1 = new Class[1];
+                    Class pvec[] = m.getParameterTypes();
+                    String s = m.getName().substring(3, m.getName().length());
+
+                    if (pvec[0].getName().equals("java.lang.String")) {
+                        args1[0] = String.class;
+                        obj.getClass().getMethod(m.getName(), args1).invoke(obj, rset.getString(s));
+                    }
+
+                    if (pvec[0].getName().equals("int")) {
+                        args1[0] = int.class;
+                        obj.getClass().getMethod(m.getName(), args1).invoke(obj, rset.getInt(s));
+                    }
+                }
+            }
+            list.add(obj);
+        }
+
+        rset.close();
+        stmt.close();
+
+        return list;
+    }
+
+    /**
+     * *************************************************************************
+     * Método LISTAR
+     * **************************************************************************
+     */
+    public List<Object> listar2(Class c, Object lugar)
+            throws SQLException, IllegalAccessException, NoSuchMethodException,
+            IllegalArgumentException, InvocationTargetException,
+            InstantiationException, ClassNotFoundException {
+
+        List<Object> list = new ArrayList<Object>();
+        String tabela = c.getSimpleName();
+
+        String onde = "";
+
+        String classe = lugar.getClass().getName();
+        Class cls = Class.forName(classe);
+        Field listaAtributos[] = cls.getDeclaredFields();
+        String valorIncluir = "";
+        String tipoDado;
+
+        for (int i = 0; i < listaAtributos.length; i++) {
+            Field fld = listaAtributos[i];
+            fld.setAccessible(true);
+      
+
+            if (fld.get(lugar) != null) {
+                if (onde.equalsIgnoreCase("")) {
+                    System.out.println(fld.get(lugar));
+                    onde = " WHERE " + fld.getName().toString() + " = '" + fld.get(lugar).toString() + "'";
+                } else {
+                    onde += " AND " + fld.getName().toString() + " = '" + fld.get(lugar).toString() + "'";
+                }
+            }
+
+        }
+        System.out.println(onde);
+                
+        String sql = "SELECT * FROM " + tabela + onde;
+        
+        PreparedStatement stmt = this.conexao.prepareStatement(sql);
+
         ResultSet rset = stmt.executeQuery();
 
         while (rset.next()) {
@@ -222,5 +293,5 @@ public class GenericDAO {
         System.out.println("Registro EXCLUÍDO no banco!");
 
     }
-    
+
 }

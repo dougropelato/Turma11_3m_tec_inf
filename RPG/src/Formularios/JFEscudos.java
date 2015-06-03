@@ -5,6 +5,8 @@
  */
 package formularios;
 
+import tabelas.Escudos;
+
 /**
  *
  * @author Jailton
@@ -38,6 +40,7 @@ public class JFEscudos extends javax.swing.JFrame {
         jtfPrecoEscudo = new javax.swing.JTextField();
         jtfBonusMaximoEscudo = new javax.swing.JTextField();
         jtfPenalidadeDestrezaEscudo = new javax.swing.JTextField();
+        jbCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +56,13 @@ public class JFEscudos extends javax.swing.JFrame {
         jLabel5.setText("Bônus Máximo Escudo:");
 
         jLabel6.setText("Penalidade Destreza Escudo:");
+
+        jbCadastrar.setText("Cadastrar");
+        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,6 +89,10 @@ public class JFEscudos extends javax.swing.JFrame {
                             .addComponent(jtfBonusMaximoEscudo)
                             .addComponent(jtfPrecoEscudo, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(143, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jbCadastrar)
+                .addGap(175, 175, 175))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,11 +119,24 @@ public class JFEscudos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jtfPenalidadeDestrezaEscudo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jbCadastrar)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+       Escudos esc = new Escudos();
+        
+        esc.setNome_escudo(jtfNomeEscudo.getText());
+        esc.setPreco_escudo(Double.parseDouble(jtfPrecoEscudo.getText()));
+        esc.setBonus_maximo_escudo(Double.parseDouble(jtfBonusMaximoEscudo.getText()));
+        esc.setPenalidade_destreza_escudo(Integer.parseInt(jtfPenalidadeDestrezaEscudo.getText()));
+        
+        
+    }//GEN-LAST:event_jbCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,6 +180,7 @@ public class JFEscudos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton jbCadastrar;
     private javax.swing.JTextField jtfBonusMaximoEscudo;
     private javax.swing.JTextField jtfCodigoEscudo;
     private javax.swing.JTextField jtfNomeEscudo;
