@@ -23,7 +23,7 @@ public class Rpg {
      */
     public static void main(String[] args) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
        
-        JFMestre m = new JFMestre(); 
+        JFMestre m = new JFMestre();
         m.setVisible(true);
 
     }

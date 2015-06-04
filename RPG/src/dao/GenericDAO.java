@@ -130,7 +130,7 @@ public class GenericDAO {
 
     /**
      * *************************************************************************
-     * Método LISTAR
+     * Método LISTAR2 passar como parame tro a classe e o objeto com algo dentro
      * **************************************************************************
      */
     public List<Object> listar2(Class c, Object lugar)
@@ -152,7 +152,6 @@ public class GenericDAO {
         for (int i = 0; i < listaAtributos.length; i++) {
             Field fld = listaAtributos[i];
             fld.setAccessible(true);
-      
 
             if (fld.get(lugar) != null) {
                 if (onde.equalsIgnoreCase("")) {
@@ -164,10 +163,9 @@ public class GenericDAO {
             }
 
         }
-        System.out.println(onde);
-                
+
         String sql = "SELECT * FROM " + tabela + onde;
-        
+
         PreparedStatement stmt = this.conexao.prepareStatement(sql);
 
         ResultSet rset = stmt.executeQuery();
@@ -198,6 +196,32 @@ public class GenericDAO {
         stmt.close();
 
         return list;
+    }
+
+    public int codigoMax(Class c)
+            throws SQLException, IllegalAccessException, NoSuchMethodException,
+            IllegalArgumentException, InvocationTargetException,
+            InstantiationException, ClassNotFoundException {            
+        
+        int max = 0;
+        
+        String tabela = c.getSimpleName(); 
+
+        String sql = "SELECT MAX(" + retornaPK(tabela) + ") maior FROM " + tabela ;
+
+        PreparedStatement stmt = this.conexao.prepareStatement(sql);
+
+        ResultSet rset = stmt.executeQuery();
+
+        while (rset.next()) {
+            
+            max = rset.getInt("maior");
+        }
+
+        rset.close();
+        stmt.close();
+
+        return max;
     }
 
     /**
@@ -293,5 +317,31 @@ public class GenericDAO {
         System.out.println("Registro EXCLUÍDO no banco!");
 
     }
+       /**
+     * *************************************************************************
+     * Método EXCLUIR
+     * **************************************************************************
+     */
+    public String retornaPK(String tabela) throws SQLException {
+        String pK = "";
+        String baseDados = conexao.getCatalog();
 
+        String sql = "SELECT information_schema.KEY_COLUMN_USAGE.COLUMN_NAME as \"chave\" \n"
+                + "FROM information_schema.KEY_COLUMN_USAGE \n"
+                + "WHERE information_schema.KEY_COLUMN_USAGE.CONSTRAINT_NAME LIKE \"PRIMARY\" \n"
+                + "AND information_schema.KEY_COLUMN_USAGE.TABLE_SCHEMA LIKE \"" + baseDados + "\""
+                + " AND information_schema.KEY_COLUMN_USAGE.TABLE_NAME LIKE \"" + tabela + "\"";
+
+        PreparedStatement stmt = this.conexao.prepareStatement(sql);
+
+        ResultSet rset = stmt.executeQuery();
+
+        while (rset.next()) {
+            
+            pK = rset.getString("chave");
+        }
+
+        return pK;
+
+    }
 }
