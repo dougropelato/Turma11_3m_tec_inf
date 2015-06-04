@@ -5,6 +5,8 @@
  */
 package formularios;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import tabelas.Armaduras;
 
 /**
@@ -13,11 +15,18 @@ import tabelas.Armaduras;
  */
 public class JFArmaduras extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JFArmaduras
-     */
+    public void centralizarComponente() {
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation((ds.width - dw.width) / 2,
+                (ds.height - dw.height) / 2);
+
+    }
+
     public JFArmaduras() {
         initComponents();
+        centralizarComponente();
+
     }
 
     /**
@@ -44,7 +53,7 @@ public class JFArmaduras extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jcTipoArmadura = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Código:");
 
@@ -160,9 +169,8 @@ public class JFArmaduras extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfNomeArmaduraActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-       
-          Armaduras armd = new Armaduras();
+
+        Armaduras armd = new Armaduras();
 
         armd.setNome_armadura(jtfNomeArmadura.getText());
         armd.setTipo_armadura(jcTipoArmadura.getSelectedIndex());
@@ -222,4 +230,5 @@ public class JFArmaduras extends javax.swing.JFrame {
     private javax.swing.JTextField jtfPenalidadeDestrezaArmadura;
     private javax.swing.JTextField jtfPrecoArmadura;
     // End of variables declaration//GEN-END:variables
+
 }

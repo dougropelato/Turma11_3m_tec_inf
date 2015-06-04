@@ -5,6 +5,8 @@
  */
 package formularios;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import tabelas.Armas;
 
 /**
@@ -13,11 +15,16 @@ import tabelas.Armas;
  */
 public class JFArmas extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JFArmas
-     */
+    public void centralizarComponente() {
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation((ds.width - dw.width) / 2,
+                (ds.height - dw.height) / 2);
+    }
+
     public JFArmas() {
         initComponents();
+        centralizarComponente();
     }
 
     /**
@@ -44,7 +51,7 @@ public class JFArmas extends javax.swing.JFrame {
         jbCadastrar = new javax.swing.JButton();
         jcTipoArma = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Cadastro de Armas");
@@ -144,7 +151,7 @@ public class JFArmas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
-        
+
         Armas arma = new Armas();
 
         arma.setNome_arma(jtfNomeArma.getText());

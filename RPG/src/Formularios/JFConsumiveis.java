@@ -5,6 +5,8 @@
  */
 package formularios;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import tabelas.Consumiveis;
 
 /**
@@ -13,11 +15,16 @@ import tabelas.Consumiveis;
  */
 public class JFConsumiveis extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JFConsumiveis
-     */
+    public void centralizarComponente() {
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation((ds.width - dw.width) / 2,
+                (ds.height - dw.height) / 2);
+    }
+
     public JFConsumiveis() {
         initComponents();
+        centralizarComponente();
     }
 
     /**
@@ -42,7 +49,7 @@ public class JFConsumiveis extends javax.swing.JFrame {
         jtfTipoDadoConsumivel = new javax.swing.JTextField();
         jbCadastrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Cadastro de Consumíveis");
@@ -129,7 +136,7 @@ public class JFConsumiveis extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
-        
+
         Consumiveis cons = new Consumiveis();
 
         cons.setNome_consumivel(jtfNomeConsumivel.getText());

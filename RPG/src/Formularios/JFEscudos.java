@@ -5,6 +5,8 @@
  */
 package formularios;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import tabelas.Escudos;
 
 /**
@@ -13,11 +15,16 @@ import tabelas.Escudos;
  */
 public class JFEscudos extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JFEscudos
-     */
+    public void centralizarComponente() {
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation((ds.width - dw.width) / 2,
+                (ds.height - dw.height) / 2);
+    }
+
     public JFEscudos() {
         initComponents();
+        centralizarComponente();
     }
 
     /**
@@ -42,7 +49,7 @@ public class JFEscudos extends javax.swing.JFrame {
         jtfPenalidadeDestrezaEscudo = new javax.swing.JTextField();
         jbCadastrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Cadastro de Escudos");
@@ -128,14 +135,14 @@ public class JFEscudos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
-       Escudos esc = new Escudos();
-        
+        Escudos esc = new Escudos();
+
         esc.setNome_escudo(jtfNomeEscudo.getText());
         esc.setPreco_escudo(Double.parseDouble(jtfPrecoEscudo.getText()));
         esc.setBonus_maximo_escudo(Double.parseDouble(jtfBonusMaximoEscudo.getText()));
         esc.setPenalidade_destreza_escudo(Integer.parseInt(jtfPenalidadeDestrezaEscudo.getText()));
-        
-        
+
+
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     /**
