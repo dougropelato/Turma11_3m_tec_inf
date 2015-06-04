@@ -6,7 +6,6 @@
 package Formularios;
 
 import utilitários.VerificaComandos;
-import utilitários.Buscas;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -47,7 +46,6 @@ public class JFPrincipal extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
-        label1 = new java.awt.Label();
         label2 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,19 +87,15 @@ public class JFPrincipal extends javax.swing.JFrame {
         jTextArea3.setRows(5);
         jScrollPane3.setViewportView(jTextArea3);
 
-        label1.setText("label1");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 468, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 32, Short.MAX_VALUE)
         );
 
         label2.setText("label2");
@@ -221,7 +215,6 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField1;
-    private java.awt.Label label1;
     private java.awt.Label label2;
     // End of variables declaration//GEN-END:variables
 
