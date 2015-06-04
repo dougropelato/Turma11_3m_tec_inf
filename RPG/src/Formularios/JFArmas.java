@@ -14,8 +14,8 @@ import tabelas.Armas;
  * @author Jailton
  */
 public class JFArmas extends javax.swing.JFrame {
-
-    public void centralizarComponente() {
+    
+      public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
         setLocation((ds.width - dw.width) / 2,
@@ -25,6 +25,7 @@ public class JFArmas extends javax.swing.JFrame {
     public JFArmas() {
         initComponents();
         centralizarComponente();
+
     }
 
     /**
