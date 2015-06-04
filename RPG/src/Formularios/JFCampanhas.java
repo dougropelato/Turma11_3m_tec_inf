@@ -5,6 +5,13 @@
  */
 package formularios;
 
+import dao.GenericDAO;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import tabelas.Campanhas;
+
 /**
  *
  * @author Orlando
@@ -43,8 +50,18 @@ public class JFCampanhas extends javax.swing.JFrame {
         jlCampanha.setText("Nome Campanha");
 
         jbCadastrar.setText("Cadastrar");
+        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCadastrarActionPerformed(evt);
+            }
+        });
 
         jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,8 +97,43 @@ public class JFCampanhas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtfNomeCampanhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNomeCampanhaActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jtfNomeCampanhaActionPerformed
+
+    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+
+        try {//Tente cadastrar a camapnha...
+            if (jtfNomeCampanha.getText().equals("")) { //Caso o Campo para Cadastro esteja em branco na hora do cadastro faça...
+                JOptionPane.showMessageDialog(null, "Por Favor Insira Nome da Campanha!");//Exite Tela com a Mensagem "Por Favor Insira Nome da Campanha!"
+                //System.out.println("Por Favor Insira Nome da Campanha!");//Exibe Mensagem de Texto... 
+            }//Fim IF...
+            else { //SENÃO FAÇA...
+
+                GenericDAO gg = new GenericDAO();//Criando Objeto 'gg' da Classe 'GenericDAO'
+                Campanhas novacampanha = new Campanhas();//Criando Objeto 'novacampanha' da Classe 'Campanhas'
+
+                novacampanha.setNome_campanha(jtfNomeCampanha.getText());//Atributo 'Nome_campanha' recebe a informação inserida no campo...
+                gg.adicionar(novacampanha);//Efetua o post no Banco...
+
+                JOptionPane.showMessageDialog(null, "Campanha " + jtfNomeCampanha.getText() + " foi Cadasttrado com Sucesso!");//Exibe Mensagem...
+                jtfNomeCampanha.setText(null);//Limpa o Campo...
+            }//Fim ELSE...
+        }//Fim Try... 
+        catch (SQLException ex) {//Caso Houver Exceção... E Não puder Cadastrar...
+            Logger.getLogger(JFCampanhas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFCampanhas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFCampanhas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFCampanhas.class.getName()).log(Level.SEVERE, null, ex);
+        }//Fim Catch...
+
+    }//GEN-LAST:event_jbCadastrarActionPerformed
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        jtfNomeCampanha.setText(null);//Limpa o campo...
+    }//GEN-LAST:event_jbCancelarActionPerformed
 
     /**
      * @param args the command line arguments
