@@ -5,8 +5,16 @@
  */
 package formularios;
 
+import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import tabelas.Falas;
+import tabelas.Npcs;
+import tabelas.NpcsFalas;
 
 /**
  *
@@ -61,7 +69,7 @@ public class JFNpc extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Npc's");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setResizable(false);
+        setPreferredSize(new java.awt.Dimension(788, 405));
 
         LabelNomeNpc.setText("Nome:");
 
@@ -101,6 +109,11 @@ public class JFNpc extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTARespostaPositiva);
 
         jBCadastrar.setText("Cadastrar");
+        jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarActionPerformed(evt);
+            }
+        });
 
         jBAdicionarFala.setText("Adicionar Fala");
 
@@ -114,7 +127,6 @@ public class JFNpc extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -123,9 +135,9 @@ public class JFNpc extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelNomeNpc)
                                 .addGap(3, 3, 3)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(JTFNomeNpc, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                            .addComponent(jCBTipoNpc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCBTipoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JTFNomeNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -142,14 +154,16 @@ public class JFNpc extends javax.swing.JFrame {
                             .addComponent(LabelFala)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(LabelNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(LabelNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelNomeNpc)
                     .addComponent(JTFNomeNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -157,7 +171,7 @@ public class JFNpc extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelTipoNpc)
                     .addComponent(jCBTipoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelDescricaoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelFala))
@@ -176,16 +190,65 @@ public class JFNpc extends javax.swing.JFrame {
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jBAdicionarFala, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBAdicionarFala, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+        // TODO add your handling code here:
+        
+        try {
+        
+        Npcs npc = new Npcs();
+        Falas fala = new Falas();   
+        NpcsFalas npcfala = new NpcsFalas();
+        
+        GenericDAO gDao = new GenericDAO();
+                
+        npc.setNome_npc(JTFNomeNpc.getText()); 
+        npc.setTipo_npc(String.valueOf(jCBTipoNpc.getSelectedItem()));  // cadastra base NPCS            
+        npc.setDescricao_npc(jTADescricaoNpc.getText());
+        
+        gDao.adicionar(npc); 
+        int codMaxNPC = gDao.codigoMax(Npcs.class);
+            System.out.println(codMaxNPC);
+        
+        fala.setDescricao_fala(jTAFalaNpc.getText());
+        fala.setResposta_positivo_fala(jTARespostaPositiva.getText());  // cadastra fala NPC
+        fala.setResposta_negativo_fala(jTARespostaNegativa.getText());
+
+        gDao.adicionar(fala);
+        int codMaxFala = gDao.codigoMax(Falas.class);
+            System.out.println(codMaxFala);
+
+            System.out.println("Cadastro de Npc efetuado com muita dor!");
+            
+        npcfala.setCodigo_npc(codMaxNPC);
+        npcfala.setCodigo_fala(codMaxFala);             // cadastra N/N NPCS e Falas
+        
+        gDao.adicionar(npcfala);
+   
+        } catch (SQLException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    }//GEN-LAST:event_jBCadastrarActionPerformed
 
     /**
      * @param args the command line arguments

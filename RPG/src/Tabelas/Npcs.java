@@ -13,9 +13,7 @@ public class Npcs {
     int codigo_npc;
     String nome_npc;
     String descricao_npc;
-    int tipo_npc;
-    boolean inicio_missao;
-    boolean fim_missao;
+    String tipo_npc;
 
     public int getCodigo_npc() {
         return codigo_npc;
@@ -41,27 +39,12 @@ public class Npcs {
         this.descricao_npc = descricao_npc;
     }
 
-    public int getTipo_npc() {
+    public String getTipo_npc() {
         return tipo_npc;
     }
 
-    public void setTipo_npc(int tipo_npc) {
+    public void setTipo_npc(String tipo_npc) {
         this.tipo_npc = tipo_npc;
     }
-
-    public boolean isInicio_missao() {
-        return inicio_missao;
-    }
-
-    public void setInicio_missao(boolean inicio_missao) {
-        this.inicio_missao = inicio_missao;
-    }
-
-    public boolean isFim_missao() {
-        return fim_missao;
-    }
-
-    public void setFim_missao(boolean fim_missao) {
-        this.fim_missao = fim_missao;
-    }
+    
 }
