@@ -5,6 +5,8 @@
  */
 package Formularios;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import utilitários.VerificaComandos;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
@@ -18,12 +20,18 @@ import java.util.logging.Logger;
 public class JFPrincipal extends javax.swing.JFrame {
     
     VerificaComandos vercom = new VerificaComandos();
-
+    
+    public void centralizarComponente(){
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation((ds.width - dw.width)/2, (ds.height - dw.height)/2);
+    }
     /**
      * Creates new form formprincipal
      */
     public JFPrincipal() {
         initComponents();
+        centralizarComponente();
     }
 
     /**
@@ -162,17 +170,10 @@ public class JFPrincipal extends javax.swing.JFrame {
         // divide string em uma arraiy para verificar por partes
         String[] comands = string.split(" ");
         
-        jTextArea1.setText(jTextArea1.getText() + "VC: " + string + '\n'); // mostra no texto da historia 
-
-        try {
-            jTextArea1.setText(jTextArea1.getText() + "Mestre: " + vercom.verificaComando(comands) + '\n');// exibe a resposta comom mestre
-        } catch (SQLException ex) {
-            Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        jTextArea1.setText(string); // mostra no texto da historia 
+        
         // limpa comando digitado
         jTextField1.setText("");
-        
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
