@@ -149,7 +149,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         lbComprar.setText("O que você deseja comprar?");
         getContentPane().add(lbComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
-        jcComprarArmas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcComprarArmas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcComprarArmasActionPerformed(evt);
@@ -171,10 +170,8 @@ public class JFVendaItens extends javax.swing.JFrame {
         });
         getContentPane().add(jcComprarArmaduras, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 171, -1));
 
-        jcComprarEscudos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jcComprarEscudos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 171, -1));
 
-        jcComprarConsumiveis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jcComprarConsumiveis, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 171, -1));
 
         jcVenderArmaduras.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -337,26 +334,88 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_jcComprarArmasActionPerformed
 
     private void jbComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComprarActionPerformed
-        int varComprar = (Integer.parseInt(QuantComprar.getText()));
+      
+        int varComprarQuant = (Integer.parseInt(QuantComprar.getText()));
+       
+        GenericDAO gDAO = null;
+         try {
+             gDAO = new GenericDAO();
+         } catch (SQLException ex) {
+             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
         if (jcbComprarArmaduras.isSelected()) {
+            //String varComprarCombobox = (jcComprarArmaduras.setSelectedItem());
             PersonagensArmaduras comprar = new PersonagensArmaduras();
-            comprar.getQuantidade_armadura();
-            comprar.setQuantidade_armadura(varComprar);
+           // comprar.getCodigo_armadura(varComprarCombobox);
+            //comprar.getQuantidade_armadura();
+            comprar.setQuantidade_armadura(varComprarQuant);
+            try {
+                gDAO.adicionar(comprar);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
         }
         if (jcbComprarArmas.isSelected()) {
             PersonagensArmas comprar = new PersonagensArmas();
-            comprar.getQuantidade_arma();
-            comprar.setQuantidade_arma(varComprar);
+            
+            //comprar.getQuantidade_arma();
+            comprar.setQuantidade_arma(varComprarQuant);
+            
+            
+            try {
+                gDAO.adicionar(comprar);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (jcbComprarEscudos.isSelected()) {
             PersonagensEscudos comprar = new PersonagensEscudos();
-            comprar.getQuantidade_escudo();
-            comprar.setQuantidade_escudo(varComprar);
+            //comprar.getQuantidade_escudo();
+            comprar.setQuantidade_escudo(varComprarQuant);
+            
+            try {
+                gDAO.adicionar(comprar);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (jcbComprarConsumiveis.isSelected()) {
             PersonagensConsumiveis comprar = new PersonagensConsumiveis();
-            comprar.getQuantidade_consumivel();
-            comprar.setQuantidade_consumivel(varComprar);
+            //comprar.getQuantidade_consumivel();
+            comprar.setQuantidade_consumivel(varComprarQuant);
+            
+            try {
+                gDAO.adicionar(comprar);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jbComprarActionPerformed
 
