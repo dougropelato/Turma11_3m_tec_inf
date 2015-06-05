@@ -75,13 +75,14 @@ public class Personagens {
         this.destreza_personagem = destreza_personagem;
     }
 
-    public int getConstituicao_personagem() {
-        return constituicao_personagem;
+    public int getContituicao_personagem() {
+        return contituicao_personagem;
     }
 
-    public void setConstituicao_personagem(int constituicao_personagem) {
-        this.constituicao_personagem = constituicao_personagem;
+    public void setContituicao_personagem(int contituicao_personagem) {
+        this.contituicao_personagem = contituicao_personagem;
     }
+
 
     public int getInteligencia_personagem() {
         return inteligencia_personagem;
@@ -179,7 +180,7 @@ public class Personagens {
     Double altura_personagem;
     int forca_personagem;
     int destreza_personagem;
-    int constituicao_personagem;
+    int contituicao_personagem;
     int inteligencia_personagem;
     int sabedoria_personagem;
     int carisma_personagem;

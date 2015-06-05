@@ -5,12 +5,15 @@
  */
 package rpg;
 
+import Tabelas.TalentosPersonagem;
 import dao.GenericDAO;
 import formularios.JFMestre;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.List;
+import tabelas.Armas;
+import tabelas.Personagens;
 import tabelas.Talentos;
-
 
 /**
  *
@@ -22,9 +25,32 @@ public class Rpg {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
-       
-        JFMestre m = new JFMestre();
-        m.setVisible(true);
+
+//        JFMestre m = new JFMestre();;
+//        m.setVisible(true);
+        GenericDAO gDao = new GenericDAO();
+        List<List> list = null;
+
+        Talentos tt = new Talentos();
+
+        tt.setCodigo_talento(2);
+
+        list = gDao.listar3(tt, Personagens.class, TalentosPersonagem.class);
+
+        for (Object obj2 : list.get(0)) {
+            Talentos ttt = (Talentos) obj2;
+            System.out.println(ttt.getDescricao_talento());
+        }
+
+        for (Object obj2 : list.get(1)) {
+            Personagens pp = (Personagens) obj2;
+            System.out.println(pp.getNome_personagem());
+        }
+
+        for (Object obj2 : list.get(2)) {
+            TalentosPersonagem ttp= (TalentosPersonagem) obj2;
+            System.out.println(ttp.getBonus_talento_personagem());
+        }
 
     }
 

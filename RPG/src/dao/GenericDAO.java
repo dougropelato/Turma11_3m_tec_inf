@@ -198,23 +198,165 @@ public class GenericDAO {
         return list;
     }
 
-    public int codigoMax(Class c)
+    public List<List> listar3(Object TabelaA, Class TabelaB, Class nN)
             throws SQLException, IllegalAccessException, NoSuchMethodException,
             IllegalArgumentException, InvocationTargetException,
-            InstantiationException, ClassNotFoundException {            
-        
-        int max = 0;
-        
-        String tabela = c.getSimpleName(); 
+            InstantiationException, ClassNotFoundException {
 
-        String sql = "SELECT MAX(" + retornaPK(tabela) + ") maior FROM " + tabela ;
+        Class c = TabelaA.getClass();
+
+        String tA = c.getSimpleName();
+        String tB = TabelaB.getSimpleName();
+        String tC = nN.getSimpleName();
+
+        List<List> list = new ArrayList<>();
+
+        List<Object> listA = new ArrayList<Object>();
+        List<Object> listB = new ArrayList<Object>();
+        List<Object> listC = new ArrayList<Object>();
+
+        String tabela = tA + " tA, " + tB + " tB, " + tC + " tC";
+
+        String onde = "";
+        String daOnde = "";
+
+        String classe = TabelaA.getClass().getName();
+        Class cls = Class.forName(classe);
+        Field listaAtributos[] = cls.getDeclaredFields();
+
+        for (int i = 0; i < listaAtributos.length; i++) {
+            Field fld = listaAtributos[i];
+            fld.setAccessible(true);
+
+            if (fld.get(TabelaA) != null && fld.getName().equalsIgnoreCase(retornaPK(tA))) {
+
+                daOnde = "'"+fld.get(TabelaA)+"'";
+
+            }
+
+        }
+
+        onde = " WHERE ";
+
+        onde += "tC." + retornaPK(tA);
+
+        if (!daOnde.equalsIgnoreCase("")) {
+            onde += " = "+daOnde;
+        } else {
+            onde += " = tA." + retornaPK(tA);
+        }        
+
+        onde += " AND ";
+        onde += "tC." + retornaPK(tB) + " = tB." + retornaPK(tB);
+
+        String sql = "SELECT * FROM " + tabela + onde;
+
+        System.out.println(sql);
 
         PreparedStatement stmt = this.conexao.prepareStatement(sql);
 
         ResultSet rset = stmt.executeQuery();
 
         while (rset.next()) {
-            
+            Object objA = c.newInstance();
+            Object objB = TabelaB.newInstance();
+            Object objC = nN.newInstance();
+
+            for (Method m : c.getMethods()) {
+                if (m.getName().substring(0, 3).equals("set")) {
+                    Class[] args1 = new Class[1];
+                    Class pvec[] = m.getParameterTypes();
+                    String s = m.getName().substring(3, m.getName().length());
+
+                    if (pvec[0].getName().equals("java.lang.String")) {
+                        args1[0] = String.class;
+
+                        objA.getClass().getMethod(m.getName(), args1).invoke(objA, rset.getString(s));
+                    }
+
+                    if (pvec[0].getName().equals("int")) {
+                        args1[0] = int.class;
+                        objA.getClass().getMethod(m.getName(), args1).invoke(objA, rset.getInt(s));
+                    }
+                }
+            }
+            listA.add(objA);
+
+            for (Method m : TabelaB.getMethods()) {
+                if (m.getName().substring(0, 3).equals("set")) {
+                    Class[] args1 = new Class[1];
+                    Class pvec[] = m.getParameterTypes();
+                    String s = m.getName().substring(3, m.getName().length());
+
+                    if (pvec[0].getName().equals("java.lang.String")) {
+                        args1[0] = String.class;
+
+                        objB.getClass().getMethod(m.getName(), args1).invoke(objB, rset.getString(s));
+                    }
+
+                    if (pvec[0].getName().equals("int")) {
+                        args1[0] = int.class;
+                        objB.getClass().getMethod(m.getName(), args1).invoke(objB, rset.getInt(s));
+                    }
+                }
+            }
+            listB.add(objB);
+
+            for (Method m : nN.getMethods()) {
+                if (m.getName().substring(0, 3).equals("set")) {
+                    Class[] args1 = new Class[1];
+                    Class pvec[] = m.getParameterTypes();
+                    String s = m.getName().substring(3, m.getName().length());
+
+                    if (pvec[0].getName().equals("java.lang.String")) {
+                        args1[0] = String.class;
+
+                        objC.getClass().getMethod(m.getName(), args1).invoke(objC, rset.getString(s));
+                    }
+
+                    if (pvec[0].getName().equals("int")) {
+                        args1[0] = int.class;
+                        objC.getClass().getMethod(m.getName(), args1).invoke(objC, rset.getInt(s));
+                    }
+                }
+            }
+            listC.add(objC);
+
+        }
+
+        list.add(listA);
+        list.add(listB);
+        list.add(listC);
+
+        rset.close();
+        stmt.close();
+
+        return list;
+    }
+
+    /**
+     * ****************************************************************************************
+     * Função codigoMax passar como parametro a classe e ele vai retornar o
+     * valor da maior pk
+     * ****************************************************************************************
+     */
+    public int codigoMax(Class c)
+            throws SQLException, IllegalAccessException, NoSuchMethodException,
+            IllegalArgumentException, InvocationTargetException,
+            InstantiationException, ClassNotFoundException {
+
+        int max = 0;
+
+        String tabela = c.getSimpleName();
+
+        String sql = "SELECT MAX(" + retornaPK(tabela) + ") maior FROM " + tabela;
+
+        PreparedStatement stmt = this.conexao.prepareStatement(sql);
+
+        ResultSet rset = stmt.executeQuery();
+
+        while (rset.next()) {
+
             max = rset.getInt("maior");
         }
 
@@ -317,9 +459,11 @@ public class GenericDAO {
         System.out.println("Registro EXCLUÍDO no banco!");
 
     }
-       /**
+
+    /**
      * *************************************************************************
-     * Método EXCLUIR
+     * Método retornaPK passar como parametro o nome da tabela e ela retorna o
+     * nome do compo que é PK
      * **************************************************************************
      */
     public String retornaPK(String tabela) throws SQLException {
@@ -333,15 +477,12 @@ public class GenericDAO {
                 + " AND information_schema.KEY_COLUMN_USAGE.TABLE_NAME LIKE \"" + tabela + "\"";
 
         PreparedStatement stmt = this.conexao.prepareStatement(sql);
-
         ResultSet rset = stmt.executeQuery();
 
         while (rset.next()) {
-            
             pK = rset.getString("chave");
         }
 
         return pK;
-
     }
 }
