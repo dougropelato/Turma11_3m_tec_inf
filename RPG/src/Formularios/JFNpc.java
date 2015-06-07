@@ -53,63 +53,6 @@ public class JFNpc extends javax.swing.JFrame {
     private void initComponents() {
 
         jTPNPC = new javax.swing.JTabbedPane();
-        jPAlterar = new javax.swing.JPanel();
-        LabelAlterarNomeNpc = new javax.swing.JLabel();
-        LabelAlterarTipoNpc = new javax.swing.JLabel();
-        JTFAlterarNomeNpc = new javax.swing.JTextField();
-        LabelAlterarNpc = new javax.swing.JLabel();
-        LabelAlterarDescricaoNpc = new javax.swing.JLabel();
-        LabelAlterarFala = new javax.swing.JLabel();
-        LabelAlterarRespostaPositiva = new javax.swing.JLabel();
-        LabelAlterarRespostaNegativa = new javax.swing.JLabel();
-        jLAlterarVontade = new javax.swing.JLabel();
-        jLAlterarReflexos = new javax.swing.JLabel();
-        jLAlterarCarisma = new javax.swing.JLabel();
-        jTFAlterarDestreza = new javax.swing.JTextField();
-        jTFAlterarConstituicao = new javax.swing.JTextField();
-        jTFAlterarInteligencia = new javax.swing.JTextField();
-        jTFAlterarSabedoria = new javax.swing.JTextField();
-        jTFAlterarFortitude = new javax.swing.JTextField();
-        jTFAlterarClassedeArmadura = new javax.swing.JTextField();
-        jTFAlterarBasedeAtaque = new javax.swing.JTextField();
-        jTFAlterarForca = new javax.swing.JTextField();
-        jLAlterarAtributosNpc = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTAAlterarDescricaoNpc = new javax.swing.JTextArea();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jTAAlterarFalaNpc = new javax.swing.JTextArea();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        jTAAlterarRespostaNegativa = new javax.swing.JTextArea();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        jTAAlterarRespostaPositiva = new javax.swing.JTextArea();
-        jBAlterarSalvar = new javax.swing.JButton();
-        jBAlterarAdicionarFala = new javax.swing.JButton();
-        jTFAlterarPontosdeVida = new javax.swing.JTextField();
-        jTFAlterarIniciativa = new javax.swing.JTextField();
-        jLAlterarForca = new javax.swing.JLabel();
-        jTFAlterarVontade = new javax.swing.JTextField();
-        jLAlterarDestreza = new javax.swing.JLabel();
-        jTFAlterarReflexos = new javax.swing.JTextField();
-        jLAlterarConstituicao = new javax.swing.JLabel();
-        jTFAlterarCarisma = new javax.swing.JTextField();
-        jLAlterarInteligencia = new javax.swing.JLabel();
-        jLAlterarClasse = new javax.swing.JLabel();
-        jLAlterarSabedoria = new javax.swing.JLabel();
-        jLAlterarRaca = new javax.swing.JLabel();
-        jLAlterarFortitude = new javax.swing.JLabel();
-        jCBAlterarRaca = new javax.swing.JComboBox();
-        jLAlterarClassedeArmadura = new javax.swing.JLabel();
-        jCBAlterarClasse = new javax.swing.JComboBox();
-        jLAlterarBasedeAtaque = new javax.swing.JLabel();
-        jLAlterarPontosdeVida = new javax.swing.JLabel();
-        jLAlterarIniciativa = new javax.swing.JLabel();
-        jCBAlterarTipoNpc = new javax.swing.JComboBox();
-        jCBAlterarNomeNpc = new javax.swing.JComboBox();
-        jPExcluir = new javax.swing.JPanel();
-        LabelExcluirNomeNpc = new javax.swing.JLabel();
-        LabelExcluirNpc = new javax.swing.JLabel();
-        jCBExcluirNomeNpc = new javax.swing.JComboBox();
-        jBExcluirNpc = new javax.swing.JButton();
         jPCadastrar = new javax.swing.JPanel();
         LabelNomeNpc = new javax.swing.JLabel();
         LabelTipoNpc = new javax.swing.JLabel();
@@ -183,6 +126,84 @@ public class JFNpc extends javax.swing.JFrame {
         jTFCodRaca = new javax.swing.JTextField();
         jTFCodClasse = new javax.swing.JTextField();
         jBAdicionarItenNpc = new javax.swing.JButton();
+        jPAlterar = new javax.swing.JPanel();
+        LabelAlterarNomeNpc = new javax.swing.JLabel();
+        LabelAlterarTipoNpc = new javax.swing.JLabel();
+        JTFAlterarNomeNpc = new javax.swing.JTextField();
+        LabelAlterarNpc = new javax.swing.JLabel();
+        LabelAlterarDescricaoNpc = new javax.swing.JLabel();
+        LabelAlterarFala = new javax.swing.JLabel();
+        LabelAlterarRespostaPositiva = new javax.swing.JLabel();
+        LabelAlterarRespostaNegativa = new javax.swing.JLabel();
+        jLAlterarVontade = new javax.swing.JLabel();
+        jLAlterarReflexos = new javax.swing.JLabel();
+        jLAlterarCarisma = new javax.swing.JLabel();
+        jTFAlterarDestreza = new javax.swing.JTextField();
+        jTFAlterarConstituicao = new javax.swing.JTextField();
+        jTFAlterarInteligencia = new javax.swing.JTextField();
+        jTFAlterarSabedoria = new javax.swing.JTextField();
+        jTFAlterarFortitude = new javax.swing.JTextField();
+        jTFAlterarClassedeArmadura = new javax.swing.JTextField();
+        jTFAlterarBasedeAtaque = new javax.swing.JTextField();
+        jTFAlterarForca = new javax.swing.JTextField();
+        jLAlterarAtributosNpc = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTAAlterarDescricaoNpc = new javax.swing.JTextArea();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTAAlterarFalaNpc = new javax.swing.JTextArea();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTAAlterarRespostaNegativa = new javax.swing.JTextArea();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTAAlterarRespostaPositiva = new javax.swing.JTextArea();
+        jBAlterarSalvar = new javax.swing.JButton();
+        jBAlterarAdicionarFala = new javax.swing.JButton();
+        jTFAlterarPontosdeVida = new javax.swing.JTextField();
+        jTFAlterarIniciativa = new javax.swing.JTextField();
+        jLAlterarForca = new javax.swing.JLabel();
+        jTFAlterarVontade = new javax.swing.JTextField();
+        jLAlterarDestreza = new javax.swing.JLabel();
+        jTFAlterarReflexos = new javax.swing.JTextField();
+        jLAlterarConstituicao = new javax.swing.JLabel();
+        jTFAlterarCarisma = new javax.swing.JTextField();
+        jLAlterarInteligencia = new javax.swing.JLabel();
+        jLAlterarClasse = new javax.swing.JLabel();
+        jLAlterarSabedoria = new javax.swing.JLabel();
+        jLAlterarRaca = new javax.swing.JLabel();
+        jLAlterarFortitude = new javax.swing.JLabel();
+        jCBAlterarRaca = new javax.swing.JComboBox();
+        jLAlterarClassedeArmadura = new javax.swing.JLabel();
+        jCBAlterarClasse = new javax.swing.JComboBox();
+        jLAlterarBasedeAtaque = new javax.swing.JLabel();
+        jLAlterarPontosdeVida = new javax.swing.JLabel();
+        jLAlterarIniciativa = new javax.swing.JLabel();
+        jCBAlterarTipoNpc = new javax.swing.JComboBox();
+        jCBAlterarNomeNpc = new javax.swing.JComboBox();
+        jLAlterarItens = new javax.swing.JLabel();
+        jLAlterarArmaduraNpc = new javax.swing.JLabel();
+        jLAlterarArmaNpc = new javax.swing.JLabel();
+        jLAlterarConsumivelNpc = new javax.swing.JLabel();
+        jLEscudoNpc1 = new javax.swing.JLabel();
+        jCBArmaduraNpc1 = new javax.swing.JComboBox();
+        jCBAlterarArmaNpc = new javax.swing.JComboBox();
+        jCBAlterarConsumivelNpc = new javax.swing.JComboBox();
+        jCBAlterarEscudoNpc = new javax.swing.JComboBox();
+        jTFQuantidadeArmaduraNpc1 = new javax.swing.JTextField();
+        jTFAlterarQuantidadeArmaNpc = new javax.swing.JTextField();
+        jTFAlterarQuantidadeConsumivelNpc = new javax.swing.JTextField();
+        jTFAlterarQuantidadeEscudoNpc = new javax.swing.JTextField();
+        jTFAlterarCodArmadura = new javax.swing.JTextField();
+        jLAlterarQuantidadeItensNpc = new javax.swing.JLabel();
+        jTFAlterarCodArma = new javax.swing.JTextField();
+        jTFAlterarCodConsumivel = new javax.swing.JTextField();
+        jTFAlterarCodEscudo = new javax.swing.JTextField();
+        jTFAlterarCodRaca = new javax.swing.JTextField();
+        jTFAlterarCodClasse = new javax.swing.JTextField();
+        jBAlterarAdicionarItenNpc = new javax.swing.JButton();
+        jPExcluir = new javax.swing.JPanel();
+        LabelExcluirNomeNpc = new javax.swing.JLabel();
+        LabelExcluirNpc = new javax.swing.JLabel();
+        jCBExcluirNomeNpc = new javax.swing.JComboBox();
+        jBExcluirNpc = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Npc's");
@@ -191,372 +212,6 @@ public class JFNpc extends javax.swing.JFrame {
         jTPNPC.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTPNPC.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTPNPC.setToolTipText("");
-
-        jPAlterar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        LabelAlterarNomeNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LabelAlterarNomeNpc.setText("Nome:");
-
-        LabelAlterarTipoNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LabelAlterarTipoNpc.setText("Tipo:");
-
-        JTFAlterarNomeNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        LabelAlterarNpc.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        LabelAlterarNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LabelAlterarNpc.setText("Npc's");
-        LabelAlterarNpc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        LabelAlterarDescricaoNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LabelAlterarDescricaoNpc.setText("Descrição Npc:");
-
-        LabelAlterarFala.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LabelAlterarFala.setText("Fala:");
-
-        LabelAlterarRespostaPositiva.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LabelAlterarRespostaPositiva.setText("Resposta Positiva:");
-
-        LabelAlterarRespostaNegativa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LabelAlterarRespostaNegativa.setText("Resposta Negativa:");
-
-        jLAlterarVontade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLAlterarVontade.setText("Vontade:");
-
-        jLAlterarReflexos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLAlterarReflexos.setText("Reflexos:");
-
-        jLAlterarCarisma.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLAlterarCarisma.setText("Carisma:");
-
-        jTFAlterarDestreza.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTFAlterarDestreza.setName(""); // NOI18N
-
-        jTFAlterarConstituicao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        jTFAlterarInteligencia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        jTFAlterarSabedoria.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        jTFAlterarFortitude.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        jTFAlterarClassedeArmadura.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        jTFAlterarBasedeAtaque.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        jTFAlterarForca.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTFAlterarForca.setName(""); // NOI18N
-
-        jLAlterarAtributosNpc.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLAlterarAtributosNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLAlterarAtributosNpc.setText("Atributos NPC");
-
-        jTAAlterarDescricaoNpc.setColumns(20);
-        jTAAlterarDescricaoNpc.setLineWrap(true);
-        jTAAlterarDescricaoNpc.setRows(5);
-        jScrollPane5.setViewportView(jTAAlterarDescricaoNpc);
-
-        jTAAlterarFalaNpc.setColumns(20);
-        jTAAlterarFalaNpc.setLineWrap(true);
-        jTAAlterarFalaNpc.setRows(5);
-        jScrollPane6.setViewportView(jTAAlterarFalaNpc);
-
-        jTAAlterarRespostaNegativa.setColumns(20);
-        jTAAlterarRespostaNegativa.setLineWrap(true);
-        jTAAlterarRespostaNegativa.setRows(5);
-        jScrollPane7.setViewportView(jTAAlterarRespostaNegativa);
-
-        jTAAlterarRespostaPositiva.setColumns(20);
-        jTAAlterarRespostaPositiva.setLineWrap(true);
-        jTAAlterarRespostaPositiva.setRows(5);
-        jScrollPane8.setViewportView(jTAAlterarRespostaPositiva);
-
-        jBAlterarSalvar.setText("Salvar");
-        jBAlterarSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBAlterarSalvarActionPerformed(evt);
-            }
-        });
-
-        jBAlterarAdicionarFala.setText("Adicionar Fala");
-
-        jTFAlterarPontosdeVida.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        jTFAlterarIniciativa.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        jLAlterarForca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLAlterarForca.setText("Força:");
-
-        jTFAlterarVontade.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        jLAlterarDestreza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLAlterarDestreza.setText("Destreza:");
-
-        jTFAlterarReflexos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        jLAlterarConstituicao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLAlterarConstituicao.setText("Constituição:");
-
-        jTFAlterarCarisma.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        jLAlterarInteligencia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLAlterarInteligencia.setText("Inteligência:");
-
-        jLAlterarClasse.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLAlterarClasse.setText("Classe:");
-
-        jLAlterarSabedoria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLAlterarSabedoria.setText("Sabedoria:");
-
-        jLAlterarRaca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLAlterarRaca.setText("Raça:");
-
-        jLAlterarFortitude.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLAlterarFortitude.setText("Fortitude:");
-
-        jLAlterarClassedeArmadura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLAlterarClassedeArmadura.setText("Classe de Armadura:");
-
-        jLAlterarBasedeAtaque.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLAlterarBasedeAtaque.setText("Base de Ataque:");
-
-        jLAlterarPontosdeVida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLAlterarPontosdeVida.setText("Pontos de Vida:");
-
-        jLAlterarIniciativa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLAlterarIniciativa.setText("Iniciativa:");
-
-        jCBAlterarTipoNpc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Combatente", "Comerciante", "Guia", "Missão", "Coletável" }));
-        jCBAlterarTipoNpc.setSelectedIndex(-1);
-
-        javax.swing.GroupLayout jPAlterarLayout = new javax.swing.GroupLayout(jPAlterar);
-        jPAlterar.setLayout(jPAlterarLayout);
-        jPAlterarLayout.setHorizontalGroup(
-            jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPAlterarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelAlterarNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPAlterarLayout.createSequentialGroup()
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPAlterarLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jBAlterarAdicionarFala, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBAlterarSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelAlterarFala, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelAlterarRespostaPositiva, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelAlterarRespostaNegativa, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelAlterarDescricaoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(51, 51, 51)
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLAlterarAtributosNpc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLAlterarClasse, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLAlterarRaca, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jCBAlterarRaca, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jCBAlterarClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPAlterarLayout.createSequentialGroup()
-                                .addComponent(jLAlterarSabedoria, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTFAlterarSabedoria, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPAlterarLayout.createSequentialGroup()
-                                    .addComponent(jLAlterarInteligencia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTFAlterarInteligencia))
-                                .addGroup(jPAlterarLayout.createSequentialGroup()
-                                    .addComponent(jLAlterarConstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTFAlterarConstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPAlterarLayout.createSequentialGroup()
-                                    .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLAlterarDestreza, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLAlterarForca, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTFAlterarForca)
-                                        .addComponent(jTFAlterarDestreza, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPAlterarLayout.createSequentialGroup()
-                                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLAlterarFortitude, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLAlterarClassedeArmadura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLAlterarBasedeAtaque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLAlterarPontosdeVida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLAlterarIniciativa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLAlterarVontade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLAlterarReflexos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLAlterarCarisma, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTFAlterarVontade, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTFAlterarIniciativa, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTFAlterarPontosdeVida, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTFAlterarBasedeAtaque, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTFAlterarClassedeArmadura, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTFAlterarFortitude)
-                                    .addComponent(jTFAlterarReflexos)
-                                    .addComponent(jTFAlterarCarisma, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPAlterarLayout.createSequentialGroup()
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelAlterarTipoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelAlterarNomeNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCBAlterarTipoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPAlterarLayout.createSequentialGroup()
-                                .addComponent(jCBAlterarNomeNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(JTFAlterarNomeNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(242, Short.MAX_VALUE))
-        );
-        jPAlterarLayout.setVerticalGroup(
-            jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPAlterarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPAlterarLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLAlterarAtributosNpc)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLAlterarRaca)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCBAlterarRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLAlterarClasse)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCBAlterarClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLAlterarForca)
-                            .addComponent(jTFAlterarForca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLAlterarDestreza)
-                            .addComponent(jTFAlterarDestreza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLAlterarConstituicao)
-                            .addComponent(jTFAlterarConstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLAlterarInteligencia)
-                            .addComponent(jTFAlterarInteligencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLAlterarSabedoria)
-                            .addComponent(jTFAlterarSabedoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLAlterarFortitude)
-                            .addComponent(jTFAlterarFortitude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLAlterarClassedeArmadura)
-                            .addComponent(jTFAlterarClassedeArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLAlterarBasedeAtaque)
-                            .addComponent(jTFAlterarBasedeAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLAlterarPontosdeVida)
-                            .addComponent(jTFAlterarPontosdeVida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLAlterarIniciativa)
-                            .addComponent(jTFAlterarIniciativa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLAlterarVontade)
-                            .addComponent(jTFAlterarVontade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLAlterarReflexos)
-                            .addComponent(jTFAlterarReflexos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLAlterarCarisma)
-                            .addComponent(jTFAlterarCarisma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPAlterarLayout.createSequentialGroup()
-                        .addComponent(LabelAlterarNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LabelAlterarNomeNpc)
-                            .addComponent(jCBAlterarNomeNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JTFAlterarNomeNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LabelAlterarTipoNpc)
-                            .addComponent(jCBAlterarTipoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(LabelAlterarDescricaoNpc)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LabelAlterarFala)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LabelAlterarRespostaPositiva)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LabelAlterarRespostaNegativa, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
-                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBAlterarSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBAlterarAdicionarFala, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(31, Short.MAX_VALUE))))
-        );
-
-        jTPNPC.addTab("Alterar", jPAlterar);
-
-        jPExcluir.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        LabelExcluirNomeNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LabelExcluirNomeNpc.setText("Nome:");
-
-        LabelExcluirNpc.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        LabelExcluirNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LabelExcluirNpc.setText("Npc's");
-        LabelExcluirNpc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        jBExcluirNpc.setText("EXCLUIR");
-
-        javax.swing.GroupLayout jPExcluirLayout = new javax.swing.GroupLayout(jPExcluir);
-        jPExcluir.setLayout(jPExcluirLayout);
-        jPExcluirLayout.setHorizontalGroup(
-            jPExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPExcluirLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(LabelExcluirNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelExcluirNomeNpc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCBExcluirNomeNpc, 0, 155, Short.MAX_VALUE)
-                    .addComponent(jBExcluirNpc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(763, Short.MAX_VALUE))
-        );
-        jPExcluirLayout.setVerticalGroup(
-            jPExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPExcluirLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(LabelExcluirNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(LabelExcluirNomeNpc)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCBExcluirNomeNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jBExcluirNpc)
-                .addContainerGap(539, Short.MAX_VALUE))
-        );
-
-        jTPNPC.addTab("Excluir", jPExcluir);
 
         jPCadastrar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -794,17 +449,6 @@ public class JFNpc extends javax.swing.JFrame {
                                 .addComponent(jTFVontade, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPCadastrarLayout.createSequentialGroup()
                                 .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPCadastrarLayout.createSequentialGroup()
-                                        .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jLClasse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLAtributosNpc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLRaca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jCBRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jCBClasse, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTFCodRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTFCodClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(jPCadastrarLayout.createSequentialGroup()
                                             .addComponent(jLDestreza, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -813,12 +457,6 @@ public class JFNpc extends javax.swing.JFrame {
                                             .addComponent(jLForca, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(jTFForca, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jTFDestreza, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPCadastrarLayout.createSequentialGroup()
-                                            .addComponent(jLConstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jTFConstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPCadastrarLayout.createSequentialGroup()
                                             .addComponent(jLSabedoria, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -827,7 +465,23 @@ public class JFNpc extends javax.swing.JFrame {
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPCadastrarLayout.createSequentialGroup()
                                             .addComponent(jLInteligencia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jTFInteligencia, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(jTFInteligencia, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jTFDestreza, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPCadastrarLayout.createSequentialGroup()
+                                            .addComponent(jLConstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jTFConstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLRaca, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jCBRaca, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLClasse, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jCBClasse, javax.swing.GroupLayout.Alignment.LEADING, 0, 214, Short.MAX_VALUE)
+                                        .addComponent(jLAtributosNpc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTFCodRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTFCodClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTFCodArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -865,7 +519,7 @@ public class JFNpc extends javax.swing.JFrame {
                                     .addGroup(jPCadastrarLayout.createSequentialGroup()
                                         .addGap(14, 14, 14)
                                         .addComponent(jTFQuantidadeEscudoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addGap(0, 16, Short.MAX_VALUE))
+                .addGap(0, 32, Short.MAX_VALUE))
         );
         jPCadastrarLayout.setVerticalGroup(
             jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -886,19 +540,15 @@ public class JFNpc extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)
                                 .addComponent(jLRaca)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jCBRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTFCodRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jCBRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLClasse)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jCBClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTFCodClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jCBClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLForca)
-                                    .addComponent(jTFForca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTFForca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLForca))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLDestreza)
@@ -922,13 +572,15 @@ public class JFNpc extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jCBArmaduraNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTFCodArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTFCodArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTFCodRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLArmaNpc)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jCBArmaNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTFCodArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTFCodArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTFCodClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLConsumivelNpc)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -941,7 +593,7 @@ public class JFNpc extends javax.swing.JFrame {
                                 .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jCBEscudoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTFCodEscudo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jBAdicionarItenNpc))
                             .addGroup(jPCadastrarLayout.createSequentialGroup()
                                 .addGap(28, 28, 28)
@@ -962,7 +614,7 @@ public class JFNpc extends javax.swing.JFrame {
                         .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLClassedeArmadura)
                             .addComponent(jTFClassedeArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(6, 6, 6)
                         .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLBasedeAtaque)
                             .addComponent(jTFBasedeAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -986,7 +638,7 @@ public class JFNpc extends javax.swing.JFrame {
                         .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLCarisma)
                             .addComponent(jTFCarisma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 142, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPCadastrarLayout.createSequentialGroup()
                         .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LabelTipoNpc)
@@ -999,9 +651,7 @@ public class JFNpc extends javax.swing.JFrame {
                             .addComponent(LabelDescricaoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPCadastrarLayout.createSequentialGroup()
-                                .addComponent(LabelFala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(240, 240, 240))
+                            .addComponent(LabelFala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPCadastrarLayout.createSequentialGroup()
                                 .addGap(20, 20, 20)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1010,17 +660,491 @@ public class JFNpc extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelRespostaNegativa)
-                                .addGap(5, 5, 5)))
+                                .addComponent(LabelRespostaNegativa)))
+                        .addGap(5, 5, 5)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jBAdicionarFala, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(12, Short.MAX_VALUE))))
         );
 
         jTPNPC.addTab("Cadastrar", jPCadastrar);
+
+        jPAlterar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        LabelAlterarNomeNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelAlterarNomeNpc.setText("Nome:");
+
+        LabelAlterarTipoNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelAlterarTipoNpc.setText("Tipo:");
+
+        JTFAlterarNomeNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        LabelAlterarNpc.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LabelAlterarNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelAlterarNpc.setText("Npc's");
+        LabelAlterarNpc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        LabelAlterarDescricaoNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelAlterarDescricaoNpc.setText("Descrição Npc:");
+
+        LabelAlterarFala.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelAlterarFala.setText("Fala:");
+
+        LabelAlterarRespostaPositiva.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelAlterarRespostaPositiva.setText("Resposta Positiva:");
+
+        LabelAlterarRespostaNegativa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelAlterarRespostaNegativa.setText("Resposta Negativa:");
+
+        jLAlterarVontade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarVontade.setText("Vontade:");
+
+        jLAlterarReflexos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarReflexos.setText("Reflexos:");
+
+        jLAlterarCarisma.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarCarisma.setText("Carisma:");
+
+        jTFAlterarDestreza.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTFAlterarDestreza.setName(""); // NOI18N
+
+        jTFAlterarConstituicao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jTFAlterarInteligencia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jTFAlterarSabedoria.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jTFAlterarFortitude.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jTFAlterarClassedeArmadura.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jTFAlterarBasedeAtaque.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jTFAlterarForca.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTFAlterarForca.setName(""); // NOI18N
+
+        jLAlterarAtributosNpc.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLAlterarAtributosNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarAtributosNpc.setText("Atributos NPC");
+
+        jTAAlterarDescricaoNpc.setColumns(20);
+        jTAAlterarDescricaoNpc.setLineWrap(true);
+        jTAAlterarDescricaoNpc.setRows(5);
+        jScrollPane5.setViewportView(jTAAlterarDescricaoNpc);
+
+        jTAAlterarFalaNpc.setColumns(20);
+        jTAAlterarFalaNpc.setLineWrap(true);
+        jTAAlterarFalaNpc.setRows(5);
+        jScrollPane6.setViewportView(jTAAlterarFalaNpc);
+
+        jTAAlterarRespostaNegativa.setColumns(20);
+        jTAAlterarRespostaNegativa.setLineWrap(true);
+        jTAAlterarRespostaNegativa.setRows(5);
+        jScrollPane7.setViewportView(jTAAlterarRespostaNegativa);
+
+        jTAAlterarRespostaPositiva.setColumns(20);
+        jTAAlterarRespostaPositiva.setLineWrap(true);
+        jTAAlterarRespostaPositiva.setRows(5);
+        jScrollPane8.setViewportView(jTAAlterarRespostaPositiva);
+
+        jBAlterarSalvar.setText("Salvar");
+        jBAlterarSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAlterarSalvarActionPerformed(evt);
+            }
+        });
+
+        jBAlterarAdicionarFala.setText("Adicionar Fala");
+
+        jTFAlterarPontosdeVida.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jTFAlterarIniciativa.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jLAlterarForca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarForca.setText("Força:");
+
+        jTFAlterarVontade.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jLAlterarDestreza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarDestreza.setText("Destreza:");
+
+        jTFAlterarReflexos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jLAlterarConstituicao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarConstituicao.setText("Constituição:");
+
+        jTFAlterarCarisma.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jLAlterarInteligencia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarInteligencia.setText("Inteligência:");
+
+        jLAlterarClasse.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarClasse.setText("Classe:");
+
+        jLAlterarSabedoria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarSabedoria.setText("Sabedoria:");
+
+        jLAlterarRaca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarRaca.setText("Raça:");
+
+        jLAlterarFortitude.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarFortitude.setText("Fortitude:");
+
+        jLAlterarClassedeArmadura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarClassedeArmadura.setText("Classe de Armadura:");
+
+        jLAlterarBasedeAtaque.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarBasedeAtaque.setText("Base de Ataque:");
+
+        jLAlterarPontosdeVida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarPontosdeVida.setText("Pontos de Vida:");
+
+        jLAlterarIniciativa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarIniciativa.setText("Iniciativa:");
+
+        jCBAlterarTipoNpc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Combatente", "Comerciante", "Guia", "Missão", "Coletável" }));
+        jCBAlterarTipoNpc.setSelectedIndex(-1);
+
+        jLAlterarItens.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLAlterarItens.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarItens.setText("Itens NPC");
+
+        jLAlterarArmaduraNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarArmaduraNpc.setText("Armadura:");
+
+        jLAlterarArmaNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarArmaNpc.setText("Arma:");
+
+        jLAlterarConsumivelNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlterarConsumivelNpc.setText("Consumivel:");
+
+        jLEscudoNpc1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLEscudoNpc1.setText("Escudo:");
+
+        jLAlterarQuantidadeItensNpc.setText("Qtd:");
+
+        jBAlterarAdicionarItenNpc.setText("Adicionar Itens");
+
+        javax.swing.GroupLayout jPAlterarLayout = new javax.swing.GroupLayout(jPAlterar);
+        jPAlterar.setLayout(jPAlterarLayout);
+        jPAlterarLayout.setHorizontalGroup(
+            jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPAlterarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelAlterarRespostaNegativa, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelAlterarNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPAlterarLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jBAlterarAdicionarFala, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBAlterarSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelAlterarFala, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelAlterarRespostaPositiva, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelAlterarDescricaoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPAlterarLayout.createSequentialGroup()
+                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelAlterarTipoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelAlterarNomeNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPAlterarLayout.createSequentialGroup()
+                                .addComponent(jCBAlterarTipoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(181, 181, 181)
+                                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPAlterarLayout.createSequentialGroup()
+                                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLAlterarVontade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLAlterarReflexos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLAlterarCarisma, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jTFAlterarReflexos, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTFAlterarVontade)
+                                            .addComponent(jTFAlterarCarisma, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPAlterarLayout.createSequentialGroup()
+                                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLAlterarFortitude, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLAlterarClassedeArmadura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLAlterarBasedeAtaque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLAlterarPontosdeVida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLAlterarIniciativa, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jTFAlterarPontosdeVida, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTFAlterarBasedeAtaque, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTFAlterarClassedeArmadura, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTFAlterarFortitude)
+                                            .addComponent(jTFAlterarIniciativa, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPAlterarLayout.createSequentialGroup()
+                                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(jLAlterarAtributosNpc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLAlterarRaca, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jCBAlterarRaca, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLAlterarClasse, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jCBAlterarClasse, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPAlterarLayout.createSequentialGroup()
+                                                    .addComponent(jLAlterarSabedoria, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(jTFAlterarSabedoria))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPAlterarLayout.createSequentialGroup()
+                                                    .addComponent(jLAlterarInteligencia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(jTFAlterarInteligencia))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPAlterarLayout.createSequentialGroup()
+                                                    .addComponent(jLAlterarConstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jTFAlterarConstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPAlterarLayout.createSequentialGroup()
+                                                    .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(jLAlterarForca, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                                                        .addComponent(jLAlterarDestreza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(jTFAlterarForca)
+                                                        .addComponent(jTFAlterarDestreza, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTFAlterarCodRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTFAlterarCodClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTFAlterarCodArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTFAlterarCodEscudo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTFAlterarCodConsumivel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTFAlterarCodArma, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(10, 10, 10)
+                                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLAlterarArmaduraNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLAlterarItens, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jCBArmaduraNpc1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLAlterarArmaNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(jLAlterarConsumivelNpc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jCBAlterarArmaNpc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(jLEscudoNpc1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jCBAlterarConsumivelNpc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(jBAlterarAdicionarItenNpc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jCBAlterarEscudoNpc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPAlterarLayout.createSequentialGroup()
+                                                .addGap(14, 14, 14)
+                                                .addComponent(jTFQuantidadeArmaduraNpc1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPAlterarLayout.createSequentialGroup()
+                                                .addGap(14, 14, 14)
+                                                .addComponent(jTFAlterarQuantidadeArmaNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPAlterarLayout.createSequentialGroup()
+                                                .addGap(14, 14, 14)
+                                                .addComponent(jTFAlterarQuantidadeConsumivelNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPAlterarLayout.createSequentialGroup()
+                                                .addGap(14, 14, 14)
+                                                .addComponent(jTFAlterarQuantidadeEscudoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLAlterarQuantidadeItensNpc))))
+                            .addGroup(jPAlterarLayout.createSequentialGroup()
+                                .addComponent(jCBAlterarNomeNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JTFAlterarNomeNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPAlterarLayout.setVerticalGroup(
+            jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPAlterarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LabelAlterarNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelAlterarNomeNpc)
+                    .addComponent(jCBAlterarNomeNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JTFAlterarNomeNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPAlterarLayout.createSequentialGroup()
+                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LabelAlterarTipoNpc)
+                            .addComponent(jCBAlterarTipoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(LabelAlterarDescricaoNpc)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LabelAlterarFala)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LabelAlterarRespostaPositiva)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LabelAlterarRespostaNegativa, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPAlterarLayout.createSequentialGroup()
+                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPAlterarLayout.createSequentialGroup()
+                                .addComponent(jLAlterarAtributosNpc)
+                                .addGap(6, 6, 6)
+                                .addComponent(jLAlterarRaca)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCBAlterarRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLAlterarClasse)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCBAlterarClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLAlterarForca)
+                                    .addComponent(jTFAlterarForca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLAlterarDestreza)
+                                    .addComponent(jTFAlterarDestreza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLAlterarConstituicao)
+                                    .addComponent(jTFAlterarConstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLAlterarInteligencia)
+                                    .addComponent(jTFAlterarInteligencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLAlterarSabedoria)
+                                    .addComponent(jTFAlterarSabedoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLAlterarFortitude)
+                                    .addComponent(jTFAlterarFortitude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLAlterarClassedeArmadura)
+                                    .addComponent(jTFAlterarClassedeArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPAlterarLayout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(jLAlterarQuantidadeItensNpc))
+                            .addGroup(jPAlterarLayout.createSequentialGroup()
+                                .addComponent(jLAlterarItens)
+                                .addGap(6, 6, 6)
+                                .addComponent(jLAlterarArmaduraNpc)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jCBArmaduraNpc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTFAlterarCodArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTFAlterarCodRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLAlterarArmaNpc)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jCBAlterarArmaNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTFAlterarCodArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTFAlterarCodClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLAlterarConsumivelNpc)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jCBAlterarConsumivelNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTFAlterarCodConsumivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLEscudoNpc1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jCBAlterarEscudoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTFAlterarCodEscudo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jBAlterarAdicionarItenNpc))
+                            .addGroup(jPAlterarLayout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(jTFQuantidadeArmaduraNpc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jTFAlterarQuantidadeArmaNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jTFAlterarQuantidadeConsumivelNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jTFAlterarQuantidadeEscudoNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLAlterarBasedeAtaque)
+                            .addComponent(jTFAlterarBasedeAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLAlterarPontosdeVida)
+                            .addComponent(jTFAlterarPontosdeVida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLAlterarIniciativa)
+                            .addComponent(jTFAlterarIniciativa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLAlterarVontade)
+                            .addComponent(jTFAlterarVontade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLAlterarReflexos)
+                            .addComponent(jTFAlterarReflexos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLAlterarCarisma)
+                            .addComponent(jTFAlterarCarisma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBAlterarAdicionarFala, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBAlterarSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTPNPC.addTab("Alterar", jPAlterar);
+
+        jPExcluir.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        LabelExcluirNomeNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelExcluirNomeNpc.setText("Nome:");
+
+        LabelExcluirNpc.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LabelExcluirNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelExcluirNpc.setText("Npc's");
+        LabelExcluirNpc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jBExcluirNpc.setText("EXCLUIR");
+
+        javax.swing.GroupLayout jPExcluirLayout = new javax.swing.GroupLayout(jPExcluir);
+        jPExcluir.setLayout(jPExcluirLayout);
+        jPExcluirLayout.setHorizontalGroup(
+            jPExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPExcluirLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(LabelExcluirNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelExcluirNomeNpc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCBExcluirNomeNpc, 0, 155, Short.MAX_VALUE)
+                    .addComponent(jBExcluirNpc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(781, Short.MAX_VALUE))
+        );
+        jPExcluirLayout.setVerticalGroup(
+            jPExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPExcluirLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LabelExcluirNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(LabelExcluirNomeNpc)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCBExcluirNomeNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jBExcluirNpc)
+                .addContainerGap(514, Short.MAX_VALUE))
+        );
+
+        jTPNPC.addTab("Excluir", jPExcluir);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1032,10 +1156,8 @@ public class JFNpc extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTPNPC)
+            .addComponent(jTPNPC, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
         );
-
-        jTPNPC.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1180,33 +1302,43 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JButton jBAdicionarFala;
     private javax.swing.JButton jBAdicionarItenNpc;
     private javax.swing.JButton jBAlterarAdicionarFala;
+    private javax.swing.JButton jBAlterarAdicionarItenNpc;
     private javax.swing.JButton jBAlterarSalvar;
     private javax.swing.JButton jBCadastrar;
     private javax.swing.JButton jBExcluirNpc;
+    private javax.swing.JComboBox jCBAlterarArmaNpc;
     private javax.swing.JComboBox jCBAlterarClasse;
+    private javax.swing.JComboBox jCBAlterarConsumivelNpc;
+    private javax.swing.JComboBox jCBAlterarEscudoNpc;
     private javax.swing.JComboBox jCBAlterarNomeNpc;
     private javax.swing.JComboBox jCBAlterarRaca;
     private javax.swing.JComboBox jCBAlterarTipoNpc;
     private javax.swing.JComboBox jCBArmaNpc;
     private javax.swing.JComboBox jCBArmaduraNpc;
+    private javax.swing.JComboBox jCBArmaduraNpc1;
     private javax.swing.JComboBox jCBClasse;
     private javax.swing.JComboBox jCBConsumivelNpc;
     private javax.swing.JComboBox jCBEscudoNpc;
     private javax.swing.JComboBox jCBExcluirNomeNpc;
     private javax.swing.JComboBox jCBRaca;
     private javax.swing.JComboBox jCBTipoNpc;
+    private javax.swing.JLabel jLAlterarArmaNpc;
+    private javax.swing.JLabel jLAlterarArmaduraNpc;
     private javax.swing.JLabel jLAlterarAtributosNpc;
     private javax.swing.JLabel jLAlterarBasedeAtaque;
     private javax.swing.JLabel jLAlterarCarisma;
     private javax.swing.JLabel jLAlterarClasse;
     private javax.swing.JLabel jLAlterarClassedeArmadura;
     private javax.swing.JLabel jLAlterarConstituicao;
+    private javax.swing.JLabel jLAlterarConsumivelNpc;
     private javax.swing.JLabel jLAlterarDestreza;
     private javax.swing.JLabel jLAlterarForca;
     private javax.swing.JLabel jLAlterarFortitude;
     private javax.swing.JLabel jLAlterarIniciativa;
     private javax.swing.JLabel jLAlterarInteligencia;
+    private javax.swing.JLabel jLAlterarItens;
     private javax.swing.JLabel jLAlterarPontosdeVida;
+    private javax.swing.JLabel jLAlterarQuantidadeItensNpc;
     private javax.swing.JLabel jLAlterarRaca;
     private javax.swing.JLabel jLAlterarReflexos;
     private javax.swing.JLabel jLAlterarSabedoria;
@@ -1222,6 +1354,7 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JLabel jLConsumivelNpc;
     private javax.swing.JLabel jLDestreza;
     private javax.swing.JLabel jLEscudoNpc;
+    private javax.swing.JLabel jLEscudoNpc1;
     private javax.swing.JLabel jLForca;
     private javax.swing.JLabel jLFortitude;
     private javax.swing.JLabel jLIniciativa;
@@ -1255,6 +1388,12 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JTextField jTFAlterarBasedeAtaque;
     private javax.swing.JTextField jTFAlterarCarisma;
     private javax.swing.JTextField jTFAlterarClassedeArmadura;
+    private javax.swing.JTextField jTFAlterarCodArma;
+    private javax.swing.JTextField jTFAlterarCodArmadura;
+    private javax.swing.JTextField jTFAlterarCodClasse;
+    private javax.swing.JTextField jTFAlterarCodConsumivel;
+    private javax.swing.JTextField jTFAlterarCodEscudo;
+    private javax.swing.JTextField jTFAlterarCodRaca;
     private javax.swing.JTextField jTFAlterarConstituicao;
     private javax.swing.JTextField jTFAlterarDestreza;
     private javax.swing.JTextField jTFAlterarForca;
@@ -1262,6 +1401,9 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JTextField jTFAlterarIniciativa;
     private javax.swing.JTextField jTFAlterarInteligencia;
     private javax.swing.JTextField jTFAlterarPontosdeVida;
+    private javax.swing.JTextField jTFAlterarQuantidadeArmaNpc;
+    private javax.swing.JTextField jTFAlterarQuantidadeConsumivelNpc;
+    private javax.swing.JTextField jTFAlterarQuantidadeEscudoNpc;
     private javax.swing.JTextField jTFAlterarReflexos;
     private javax.swing.JTextField jTFAlterarSabedoria;
     private javax.swing.JTextField jTFAlterarVontade;
@@ -1284,6 +1426,7 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JTextField jTFPontosdeVida;
     private javax.swing.JTextField jTFQuantidadeArmaNpc;
     private javax.swing.JTextField jTFQuantidadeArmaduraNpc;
+    private javax.swing.JTextField jTFQuantidadeArmaduraNpc1;
     private javax.swing.JTextField jTFQuantidadeConsumivelNpc;
     private javax.swing.JTextField jTFQuantidadeEscudoNpc;
     private javax.swing.JTextField jTFReflexos;
