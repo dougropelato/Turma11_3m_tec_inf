@@ -12,7 +12,7 @@ package tabelas;
 public class ArmasNpcs {
    int codigo_arma;
    int codigo_npc;
-   int quantidade_npc;
+   int quantidade_arma;
 
     public int getCodigo_arma() {
         return codigo_arma;
@@ -29,12 +29,13 @@ public class ArmasNpcs {
     public void setCodigo_npc(int codigo_npc) {
         this.codigo_npc = codigo_npc;
     }
-
-    public int getQuantidade_npc() {
-        return quantidade_npc;
+    
+    public int getQuantidade_arma() {
+        return quantidade_arma;
     }
 
-    public void setQuantidade_npc(int quantidade_npc) {
-        this.quantidade_npc = quantidade_npc;
+    public void setQuantidade_arma(int quantidade_arma) {
+        this.quantidade_arma = quantidade_arma;
     }
+
 }
