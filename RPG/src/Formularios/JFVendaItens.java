@@ -327,107 +327,101 @@ public class JFVendaItens extends javax.swing.JFrame {
 
     private void jbComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComprarActionPerformed
 
-        int varComprarQuant = (Integer.parseInt(QuantComprar.getText()));
-
         if (jcbComprarArmaduras.isSelected()) {
-            
+
             PersonagensArmaduras comprar = new PersonagensArmaduras();
-            
+            Armaduras armadura = new Armaduras();
+            int varComprarQuant = (Integer.parseInt(QuantComprar.getText()));
+            int varCadastrarCodArmadura = jcComprarArmaduras.getSelectedIndex();
+
             try {
 
                 GenericDAO gDAO = new GenericDAO();
-                
 
-                //int teste = (jcComprarArmaduras.getSelectedIndex());
-                //int codMaxArmadura = gDAO.codigoMax(Armaduras.class);
-                //System.out.println(codMaxArmadura);    
+                List<Object> ll = new ArrayList<>();
+
+                armadura.setNome_armadura((String) jcComprarArmaduras.getSelectedItem());
+
+                ll = gDAO.listar2(Armaduras.class, armadura);
+
+                for (Object ll1 : ll) {
+                    Armaduras aa = (Armaduras) ll1;
+                    System.out.println(aa.getCodigo_armadura());
+                    comprar.setCodigo_armadura(aa.getCodigo_armadura());
+                }
 
                 comprar.setCodigo_personagem(1);
-                comprar.setCodigo_armadura(1);
+                
                 comprar.setQuantidade_armadura(varComprarQuant);
                 gDAO.adicionar(comprar);
 
-            } catch (ClassNotFoundException ex) {
+            } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException ex) {
                 Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
+            } catch (NoSuchMethodException ex) {
                 Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalArgumentException ex) {
+            } catch (InvocationTargetException ex) {
                 Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
+            } catch (InstantiationException ex) {
                 Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }
         if (jcbComprarArmas.isSelected()) {
-            PersonagensArmas comprar = new PersonagensArmas();
 
-            //comprar.getQuantidade_arma();
+            PersonagensArmas comprar = new PersonagensArmas();
+            int varComprarQuant = (Integer.parseInt(QuantComprar.getText()));
+
             comprar.setQuantidade_arma(varComprarQuant);
 
-            
             try {
 
                 GenericDAO gDAO = new GenericDAO();
 
-                comprar.setCodigo_personagem(2);
+                comprar.setCodigo_personagem(1);
                 comprar.setCodigo_arma(1);
                 comprar.setQuantidade_arma(varComprarQuant);
                 gDAO.adicionar(comprar);
 
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalArgumentException ex) {
-                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
+            } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException ex) {
                 Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if (jcbComprarEscudos.isSelected()) {
+
             PersonagensEscudos comprar = new PersonagensEscudos();
-            //comprar.getQuantidade_escudo();
+            int varComprarQuant = (Integer.parseInt(QuantComprar.getText()));
+
             comprar.setQuantidade_escudo(varComprarQuant);
 
             try {
 
                 GenericDAO gDAO = new GenericDAO();
 
-                comprar.setCodigo_personagem(2);
+                comprar.setCodigo_personagem(1);
                 comprar.setCodigo_escudo(1);
                 comprar.setQuantidade_escudo(varComprarQuant);
                 gDAO.adicionar(comprar);
 
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalArgumentException ex) {
-                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
+            } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException ex) {
                 Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if (jcbComprarConsumiveis.isSelected()) {
+
             PersonagensConsumiveis comprar = new PersonagensConsumiveis();
-            //comprar.getQuantidade_consumivel();
+            int varComprarQuant = (Integer.parseInt(QuantComprar.getText()));
+
             comprar.setQuantidade_consumivel(varComprarQuant);
 
             try {
                 GenericDAO gDAO = new GenericDAO();
 
-                comprar.setCodigo_personagem(2);
+                comprar.setCodigo_personagem(1);
                 comprar.setCodigo_consumivel(1);
                 comprar.setQuantidade_consumivel(varComprarQuant);
                 gDAO.adicionar(comprar);
 
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalArgumentException ex) {
-                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
+            } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException ex) {
                 Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
