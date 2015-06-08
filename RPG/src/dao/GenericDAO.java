@@ -387,7 +387,7 @@ public class GenericDAO {
             fld.setAccessible(true);
             //Testa os tipos de dados. 
             //Falta fazer com todos os tipos utilizados.
-            if (i != 0) {
+          //  if (i != 0) {
                 campos = campos + fld.getName() + ", ";
                 tipoDado = fld.getType().toString();
                 if (tipoDado.equals("class java.lang.String")) {
@@ -396,17 +396,15 @@ public class GenericDAO {
                 if (tipoDado.equals("int")) {
                     dados = dados + fld.get(obj) + ",";
                 }
-                try {
-                    valorIncluir = valorIncluir + (String) fld.get(obj) + " ";
-                } catch (ClassCastException e) {
-                    valorIncluir = valorIncluir + (int) fld.get(obj) + " ";
-                }
-            }
+            
+            //}
         }
         campos = campos.substring(0, campos.length() - 2);
         String tabela = cls.getSimpleName();
         dados = dados.substring(0, dados.length() - 1); //tira a última vírgula
         String sql = "INSERT INTO " + tabela + " (" + campos + ") VALUES (" + dados + ")";
+        
+        System.out.println(sql);
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
