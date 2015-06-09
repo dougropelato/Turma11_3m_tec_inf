@@ -5,6 +5,10 @@
  */
 package Formularios;
 
+import java.util.ArrayList;
+import java.util.List;
+import tabelas.Progressoes;
+
 /**
  *
  * @author Jefferson
@@ -27,21 +31,103 @@ public class JFProgressao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtbprogressao = new javax.swing.JTable();
+        jbtsalvar = new javax.swing.JButton();
+        jbtcancelar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jtbprogressao.setAutoCreateRowSorter(true);
+        jtbprogressao.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                { new Integer(1),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(2), null, null, null, null, null, null, null, null},
+                { new Integer(3), null, null, null, null, null, null, null, null},
+                { new Integer(4), null, null, null, null, null, null, null, null},
+                { new Integer(5), null, null, null, null, null, null, null, null},
+                { new Integer(6), null, null, null, null, null, null, null, null},
+                { new Integer(7), null, null, null, null, null, null, null, null},
+                { new Integer(8), null, null, null, null, null, null, null, null},
+                { new Integer(9), null, null, null, null, null, null, null, null},
+                { new Integer(10), null, null, null, null, null, null, null, null},
+                { new Integer(11), null, null, null, null, null, null, null, null},
+                { new Integer(12), null, null, null, null, null, null, null, null},
+                { new Integer(13), null, null, null, null, null, null, null, null},
+                { new Integer(14), null, null, null, null, null, null, null, null},
+                { new Integer(15), null, null, null, null, null, null, null, null},
+                { new Integer(16), null, null, null, null, null, null, null, null},
+                { new Integer(17), null, null, null, null, null, null, null, null},
+                { new Integer(18), null, null, null, null, null, null, null, null},
+                { new Integer(19), null, null, null, null, null, null, null, null},
+                { new Integer(20), null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Nível", "Base ataque", "Fortitude", "Reflexos", "Vontade", "Perícia", "Dado dano", "Qt dado dano", "Bonus CA"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jtbprogressao.setToolTipText("");
+        jScrollPane1.setViewportView(jtbprogressao);
+        jtbprogressao.getAccessibleContext().setAccessibleName("");
+        jtbprogressao.getAccessibleContext().setAccessibleDescription("");
+
+        jbtsalvar.setText("Salvar");
+        jbtsalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtsalvarActionPerformed(evt);
+            }
+        });
+
+        jbtcancelar.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(277, 277, 277)
+                .addComponent(jbtsalvar)
+                .addGap(126, 126, 126)
+                .addComponent(jbtcancelar)
+                .addContainerGap(378, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtsalvar)
+                    .addComponent(jbtcancelar))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtsalvarActionPerformed
+
+        List<Progressoes> lista = new ArrayList();
+
+        for (int i = 1; i < 20; i++) {
+            Progressoes prg = new Progressoes();
+            jtbprogressao.setEditingRow(i);
+            jtbprogressao.setEditingColumn(1);
+            jtbprogressao.
+            prg.setNivel_progressao(i);
+            ;
+
+        }
+    }//GEN-LAST:event_jbtsalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +165,9 @@ public class JFProgressao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbtcancelar;
+    private javax.swing.JButton jbtsalvar;
+    private javax.swing.JTable jtbprogressao;
     // End of variables declaration//GEN-END:variables
 }
