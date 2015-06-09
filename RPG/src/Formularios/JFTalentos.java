@@ -18,6 +18,7 @@ public class JFTalentos extends javax.swing.JFrame {
      */
     public JFTalentos() {
         initComponents();
+        
         comboAtributos.enable(false);
         comboPericias.enable(false);
         jTextField4.enable(false);
