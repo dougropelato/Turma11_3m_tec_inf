@@ -389,19 +389,16 @@ public class GenericDAO {
         for (int i = 0; i < listaAtributos.length; i++) {
             Field fld = listaAtributos[i];
             fld.setAccessible(true);
-            //Testa os tipos de dados. 
-            //Falta fazer com todos os tipos utilizados.
-            //  if (i != 0) {
+
             campos = campos + fld.getName() + ", ";
             tipoDado = fld.getType().toString();
             if (tipoDado.equals("class java.lang.String")) {
-                dados = dados + '"' + fld.get(obj) + '"' + ",";
+                dados = dados + "'" + fld.get(obj) + "'" + ",";
             }
             if (tipoDado.equals("int")) {
                 dados = dados + fld.get(obj) + ",";
             }
 
-            //}
         }
         campos = campos.substring(0, campos.length() - 2);
         String tabela = cls.getSimpleName();
@@ -425,15 +422,18 @@ public class GenericDAO {
      */
     public void excluir(Object obj) throws ClassNotFoundException,
             NoSuchFieldException, SQLException {
+        
         String campoTeste = null;
         String campo = null;
         int valorExcluir = 0;
         String classe = obj.getClass().getName();
         Class cls = Class.forName(classe);
         Field listaAtributos[] = cls.getDeclaredFields();
+        
         for (int i = 0; i < listaAtributos.length; i++) {
             Field fld = listaAtributos[i];
             fld.setAccessible(true);
+            
             try {
                 System.out.println("Valor...........: " + fld.get(obj));
                 campoTeste = fld.get(obj).toString();

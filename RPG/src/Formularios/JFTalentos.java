@@ -5,6 +5,18 @@
  */
 package Formularios;
 
+import dao.GenericDAO;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import tabelas.Jogadores;
+import tabelas.Pericias;
+import tabelas.Personagens;
 import tabelas.Talentos;
 
 /**
@@ -13,18 +25,68 @@ import tabelas.Talentos;
  */
 public class JFTalentos extends javax.swing.JFrame {
 
+    GenericDAO bsk = new GenericDAO();
+
     /**
      * Creates new form JFTalentos
      */
-    public JFTalentos() {
+    public JFTalentos() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         initComponents();
-        
+
+        comboAtributos1.enable(false);
+        comboPericias1.enable(false);
         comboAtributos.enable(false);
         comboPericias.enable(false);
         jTextField4.enable(false);
         jTextField5.enable(false);
         jTextField4.setText("");
         jTextField5.setText("");
+        jTextField6.enable(false);
+        jTextField7.enable(false);
+        jTextField6.setText("");
+        jTextField7.setText("");
+        jtextrequisitos.enable(false);
+        jTextField3.enable(false);
+
+        carregaArtibutos();
+        carregaPericias();
+    }
+
+    public void carregaArtibutos() {
+
+        Class cls = Personagens.class;
+        Field listaAtributos[] = cls.getDeclaredFields();
+
+        for (int i = 0; i < listaAtributos.length; i++) {
+            Field fld = listaAtributos[i];
+            fld.setAccessible(true);
+
+            String[] teste = fld.getName().split("_");
+
+            if (!teste[0].equalsIgnoreCase("codigo") && !teste[0].equalsIgnoreCase("peso") && !teste[0].equalsIgnoreCase("idade")) {
+
+                if (fld.getType().toString().equals("int") || fld.getType().toString().equals("double")) {
+                    comboAtributos.addItem(fld.getName());
+                    comboAtributos1.addItem(fld.getName());
+                }
+            }
+
+        }
+    }
+
+    public void carregaPericias() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+
+        List<Object> lista = new ArrayList();
+
+        lista = bsk.listar(Pericias.class);
+        comboPericias.addItem("pericia");
+
+        for (Object obj : lista) {
+            Pericias pp = (Pericias) obj;
+            comboPericias.addItem(pp.getNome_pericia());
+            comboPericias1.addItem(pp.getNome_pericia());
+
+        }
 
     }
 
@@ -43,7 +105,7 @@ public class JFTalentos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jtextrequisitos = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -56,6 +118,14 @@ public class JFTalentos extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        comboPericias1 = new javax.swing.JComboBox();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        comboAtributos1 = new javax.swing.JComboBox();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,7 +151,7 @@ public class JFTalentos extends javax.swing.JFrame {
             }
         });
 
-        comboPericias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboPericias.setToolTipText("");
         comboPericias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboPericiasActionPerformed(evt);
@@ -102,7 +172,6 @@ public class JFTalentos extends javax.swing.JFrame {
             }
         });
 
-        comboAtributos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboAtributos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboAtributosActionPerformed(evt);
@@ -116,6 +185,41 @@ public class JFTalentos extends javax.swing.JFrame {
         jLabel6.setText("Requisito");
 
         jLabel7.setText("Valor minimo");
+
+        comboPericias1.setToolTipText("");
+        comboPericias1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboPericias1ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton3.setText("Pericias");
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton4.setText("Atributos");
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
+
+        comboAtributos1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboAtributos1ActionPerformed(evt);
+            }
+        });
+
+        jTextField6.setText("jTextField4");
+
+        jTextField7.setText("jTextField5");
+
+        jLabel8.setText("Bonus");
+
+        jLabel9.setText("Valor do bonus");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,7 +237,9 @@ public class JFTalentos extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jRadioButton2)
-                                .addComponent(jRadioButton1))
+                                .addComponent(jRadioButton1)
+                                .addComponent(jRadioButton3)
+                                .addComponent(jRadioButton4))
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -144,7 +250,7 @@ public class JFTalentos extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jTextField1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtextrequisitos, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jToggleButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
@@ -152,15 +258,22 @@ public class JFTalentos extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(comboAtributos, javax.swing.GroupLayout.Alignment.LEADING, 0, 211, Short.MAX_VALUE)
-                                        .addComponent(comboPericias, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jLabel6))
+                                        .addComponent(comboPericias, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(comboPericias1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(comboAtributos1, javax.swing.GroupLayout.Alignment.LEADING, 0, 211, Short.MAX_VALUE))
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel8))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(jTextField4)
-                                    .addComponent(jTextField5))))
+                                    .addComponent(jTextField5)
+                                    .addComponent(jTextField6)
+                                    .addComponent(jTextField7)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel9))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -176,7 +289,7 @@ public class JFTalentos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
@@ -191,10 +304,25 @@ public class JFTalentos extends javax.swing.JFrame {
                     .addComponent(comboAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(comboPericias1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jRadioButton3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(comboAtributos1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField7))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtextrequisitos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,14 +337,57 @@ public class JFTalentos extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
+        String req = "";
+        String bon = "";
 
-        Talentos tal = new Talentos();
+        if (jRadioButton1.isSelected()) {
+            req = "Pericias;";
+            req += comboPericias.getSelectedItem();
+            req += ";" + jTextField4.getText();
+        } else if (jRadioButton2.isSelected()) {
+            req = "Personagens;";
+            req += comboAtributos.getSelectedItem();
+            req += ";" + jTextField5.getText();
+        } else {
+            req = "null";
+        }
 
-        tal.setNome_talento(jTextField1.getText());
-        tal.setDescricao_talento(jTextArea1.getText());
-        tal.setRequisito_talento(jTextField2.getText());
-        tal.setBonus_talento(jTextField3.getText());
+        if (jRadioButton3.isSelected()) {
+            bon = "Pericias;";
+            bon += comboPericias1.getSelectedItem();
+            bon += ";" + jTextField6.getText();
+        } else if (jRadioButton4.isSelected()) {
+            bon = "Personagens;";
+            bon += comboAtributos1.getSelectedItem();
+            bon += ";" + jTextField7.getText();
+        }
 
+        if (jTextField1.getText().equalsIgnoreCase("") || jTextArea1.getText().equalsIgnoreCase("") || jTextField3.getText().equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(null, "Valeres em branco favor verificar!");
+        } else {
+
+            jtextrequisitos.setText(req);
+            jTextField3.setText(bon);
+
+            Talentos tal = new Talentos();
+
+            tal.setNome_talento(jTextField1.getText());
+            tal.setDescricao_talento(jTextArea1.getText());
+            tal.setRequisito_talento(jtextrequisitos.getText());
+            tal.setBonus_talento(jTextField3.getText());
+
+            try {
+                bsk.adicionar(tal);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(JFTalentos.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(JFTalentos.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(JFTalentos.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(JFTalentos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void comboPericiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPericiasActionPerformed
@@ -230,7 +401,7 @@ public class JFTalentos extends javax.swing.JFrame {
             comboAtributos.enable(true);
             jTextField5.enable(true);
             comboPericias.enable(false);
-            jTextField5.enable(true);
+            jTextField4.enable(false);
 
         } else {
             comboAtributos.enable(false);
@@ -247,13 +418,51 @@ public class JFTalentos extends javax.swing.JFrame {
         if (jRadioButton1.isSelected()) {
             jRadioButton2.setSelected(false);
             comboPericias.enable(true);
-            jTextField4.enable(true);
             comboAtributos.enable(false);
+            jTextField4.enable(true);
+            jTextField5.enable(false);
         } else {
             comboPericias.enable(false);
             jTextField4.enable(false);
         }
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void comboPericias1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPericias1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboPericias1ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        // TODO add your handling code here:
+        if (jRadioButton3.isSelected()) {
+            jRadioButton4.setSelected(false);
+            comboPericias1.enable(true);
+            jTextField6.enable(true);
+            comboAtributos1.enable(false);
+            jTextField7.enable(false);
+        } else {
+            comboPericias1.enable(false);
+            jTextField6.enable(false);
+        }
+
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+        if (jRadioButton4.isSelected()) {
+            jRadioButton3.setSelected(false);
+            comboAtributos1.enable(true);
+            comboPericias1.enable(false);
+            jTextField7.enable(true);
+            jTextField6.enable(false);
+
+        } else {
+            comboAtributos1.enable(false);
+            jTextField7.enable(false);
+        }
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
+
+    private void comboAtributos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboAtributos1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboAtributos1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,14 +494,32 @@ public class JFTalentos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFTalentos().setVisible(true);
+                try {
+                    new JFTalentos().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JFTalentos.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(JFTalentos.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NoSuchMethodException ex) {
+                    Logger.getLogger(JFTalentos.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(JFTalentos.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(JFTalentos.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(JFTalentos.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(JFTalentos.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox comboAtributos;
+    private javax.swing.JComboBox comboAtributos1;
     private javax.swing.JComboBox comboPericias;
+    private javax.swing.JComboBox comboPericias1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -300,15 +527,21 @@ public class JFTalentos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JTextField jtextrequisitos;
     // End of variables declaration//GEN-END:variables
 }
