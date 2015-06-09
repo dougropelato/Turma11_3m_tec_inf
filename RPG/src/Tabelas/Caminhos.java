@@ -10,18 +10,20 @@ package tabelas;
  * @author Caio
  */
 public class Caminhos {
-    int codigo_camino;
+    int codigo_caminho;
+
+    public int getCodigo_caminho() {
+        return codigo_caminho;
+    }
+
+    public void setCodigo_caminho(int codigo_caminho) {
+        this.codigo_caminho = codigo_caminho;
+    }
+    
     String nome_caminho;
     int codigo_missao;
 
-    public int getCodigo_camino() {
-        return codigo_camino;
-    }
-
-    public void setCodigo_camino(int codigo_camino) {
-        this.codigo_camino = codigo_camino;
-    }
-
+   
     public String getNome_caminho() {
         return nome_caminho;
     }
