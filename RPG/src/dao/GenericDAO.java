@@ -152,11 +152,11 @@ public class GenericDAO {
         for (int i = 0; i < listaAtributos.length; i++) {
             Field fld = listaAtributos[i];
             fld.setAccessible(true);
-            tipoDado = fld.get(lugar).toString();
+            if (fld.get(lugar) != null) {
+                tipoDado = fld.get(lugar).toString();
 
-            if (!tipoDado.equalsIgnoreCase("0") && !tipoDado.equalsIgnoreCase("0.0")) {
+                if (!tipoDado.equalsIgnoreCase("0") && !tipoDado.equalsIgnoreCase("0.0")) {
 
-                if (fld.get(lugar) != null) {
                     if (onde.equalsIgnoreCase("")) {
                         System.out.println(fld.get(lugar));
                         onde = " WHERE " + fld.getName().toString() + " = '" + fld.get(lugar).toString() + "'";

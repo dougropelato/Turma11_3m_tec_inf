@@ -8,7 +8,11 @@ package utilitários;
 import Tabelas.Autenticacao;
 import dao.GenericDAO;
 import formularios.JFMestre;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import tabelas.Jogadores;
 
 /**
  *
@@ -19,11 +23,11 @@ public class VerificaComandos {
     Autenticacao auth = new Autenticacao();
     // clase criada so para amanter a autenticação
 
-    public String verificaComando(String[] aux) throws SQLException {
+    public String verificaComando(String[] aux) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
         String res = "";
         GenericDAO bsk = new GenericDAO();
-        
+
         // feito apra logar sem banco
         if (aux[0].equalsIgnoreCase("thedoctor")) {
             auth.setCodigo_jogador(1);
@@ -39,12 +43,25 @@ public class VerificaComandos {
             if (auth.getCodigo_jogador() == 0) {// verifica se falta logar
 
                 if (aux[0].equalsIgnoreCase("login")) { //verifica se primeira palavra é o login
-                    
-                    if (bsk.buscaJogador(aux[1]).size() > 0) {//virifica se volta algo da pesquisa
+
+                    Jogadores jj = new Jogadores();
+                    List<Object> ll = new ArrayList();
+
+                    jj.setNome_jogador(aux[1]);
+
+                    ll = bsk.listar2(Jogadores.class, jj);
+
+                    if (ll.size() > 0) {//virifica se volta algo da pesquisa
 
                         res = "digite a senha - EX: senha Minhasenha"; // seta a resposta do "mestre"
-                        auth.setNome_jogador(aux[1]); // seta nome do jogador logado
-                        auth.setCodigo_jogador(bsk.buscaJogador(aux[1]).get(0).getCodigo_jogador());// seta codigo do jogador logado
+
+                        for (Object obj : ll) {
+                            Jogadores jog = (Jogadores) obj;
+                            auth.setNome_jogador(jog.getNome_jogador());
+                            auth.setCodigo_jogador(jog.getCodigo_jogador());
+                            auth.setSenha_jogador(jog.getSenha_jogador());
+                            auth.setMestre_jogador(jog.getMestre_jogador());
+                        }
 
                     } else {
                         res = "Login invalido tente novamente - EX: login Usuario "; // causo a pesquisa não retornar é pra exibir o erro 
@@ -57,12 +74,10 @@ public class VerificaComandos {
 
                 if (aux[0].equalsIgnoreCase("senha")) {
 
-                    if (bsk.buscaJogador(auth.getNome_jogador()).get(0).getSenha_jogador().equals(aux[1])) {
+                    if (auth.getSenha_jogador().equals(aux[1])) {
 
                         // seta como logado
                         auth.setJogador_logado(true);
-                        // busca e seta o mestre jogador
-                        auth.setMestre_jogador(bsk.buscaJogador(auth.getNome_jogador()).get(0).getMestre_jogador());
 
                         //envi resposta que esta logado
                         res = "Logado com sucesso" + '\n'; // +'\n' usado para quebrar linha
@@ -100,11 +115,10 @@ public class VerificaComandos {
 
     }
 
-    public String listaPersonagens() throws SQLException {      
+    public String listaPersonagens() throws SQLException {
         String res = "";
 
         // fazer a listagem
-
         return res;
 
     }
