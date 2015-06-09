@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import utilitários.VerificaComandos;
 import java.awt.event.KeyEvent;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,14 +19,15 @@ import java.util.logging.Logger;
  * @author Alexjonas
  */
 public class JFPrincipal extends javax.swing.JFrame {
-    
+
     VerificaComandos vercom = new VerificaComandos();
-    
-    public void centralizarComponente(){
+
+    public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
-        setLocation((ds.width - dw.width)/2, (ds.height - dw.height)/2);
+        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
     }
+
     /**
      * Creates new form formprincipal
      */
@@ -167,11 +169,30 @@ public class JFPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         String string = jTextField1.getText();
 
+        VerificaComandos vC = new VerificaComandos();
+
         // divide string em uma arraiy para verificar por partes
         String[] comands = string.split(" ");
-        
-        jTextArea1.setText(string); // mostra no texto da historia 
-        
+
+        jTextArea1.setText(jTextArea1.getText() + string + '\n'); // mostra no texto da historia 
+        try {
+            jTextArea1.setText(jTextArea1.getText() + vC.verificaComando(comands));
+        } catch (SQLException ex) {
+            Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         // limpa comando digitado
         jTextField1.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -186,7 +207,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jButton1.doClick();
-            
+
         }
     }//GEN-LAST:event_jTextField1KeyPressed
 
