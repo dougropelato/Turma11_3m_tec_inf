@@ -39,7 +39,7 @@ public class VerificaComandos {
             if (auth.getCodigo_jogador() == 0) {// verifica se falta logar
 
                 if (aux[0].equalsIgnoreCase("login")) { //verifica se primeira palavra é o login
-
+                    
                     if (bsk.buscaJogador(aux[1]).size() > 0) {//virifica se volta algo da pesquisa
 
                         res = "digite a senha - EX: senha Minhasenha"; // seta a resposta do "mestre"
