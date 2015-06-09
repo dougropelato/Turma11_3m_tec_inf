@@ -223,10 +223,15 @@ public class JFTalentos extends javax.swing.JFrame {
         if (jRadioButton2.isSelected()) {
             jRadioButton1.setSelected(false);
             comboAtributos.enable(true);
+            jTextField5.enable(true);
             comboPericias.enable(false);
+            jTextField4.enable(false);
+            jTextField5.enable(false);
 
         } else {
             comboAtributos.enable(false);
+
+            jTextField5.enable(false);
 
         }
     }//GEN-LAST:event_jRadioButton2ActionPerformed
@@ -240,11 +245,11 @@ public class JFTalentos extends javax.swing.JFrame {
         if (jRadioButton1.isSelected()) {
             jRadioButton2.setSelected(false);
             comboPericias.enable(true);
+            jTextField4.enable(true);
             comboAtributos.enable(false);
-
         } else {
             comboPericias.enable(false);
-
+            jTextField4.enable(false);
         }
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
