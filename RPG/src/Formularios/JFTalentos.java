@@ -22,6 +22,9 @@ public class JFTalentos extends javax.swing.JFrame {
         comboPericias.enable(false);
         jTextField4.enable(false);
         jTextField5.enable(false);
+        jTextField4.setText("");
+        jTextField5.setText("");
+
     }
 
     /**
@@ -177,10 +180,11 @@ public class JFTalentos extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboPericias, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(comboPericias, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jRadioButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(comboAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -225,14 +229,11 @@ public class JFTalentos extends javax.swing.JFrame {
             comboAtributos.enable(true);
             jTextField5.enable(true);
             comboPericias.enable(false);
-            jTextField4.enable(false);
-            jTextField5.enable(false);
+            jTextField5.enable(true);
 
         } else {
             comboAtributos.enable(false);
-
             jTextField5.enable(false);
-
         }
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
