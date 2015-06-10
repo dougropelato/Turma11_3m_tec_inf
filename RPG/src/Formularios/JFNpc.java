@@ -80,7 +80,6 @@ public class JFNpc extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTARespostaPositiva = new javax.swing.JTextArea();
         jBCadastrar = new javax.swing.JButton();
-        jBAdicionarFala = new javax.swing.JButton();
         jCBTipoNpc = new javax.swing.JComboBox();
         jLAtributosNpc = new javax.swing.JLabel();
         jTFForca = new javax.swing.JTextField();
@@ -143,7 +142,6 @@ public class JFNpc extends javax.swing.JFrame {
         jTFNovaFalaCodigoNpc = new javax.swing.JTextField();
         jCBNovaFalaNomeNpc = new javax.swing.JComboBox();
         LabelNovaFalaTipoNpc = new javax.swing.JLabel();
-        jCBNovaFalaTipoNpc = new javax.swing.JComboBox();
         LabelNovaFalaNpc = new javax.swing.JLabel();
         LabelNovaFalaRespostaPositiva = new javax.swing.JLabel();
         LabelNovaFalaRespostaNegativa = new javax.swing.JLabel();
@@ -153,8 +151,8 @@ public class JFNpc extends javax.swing.JFrame {
         jTANovaFalaRespostaPositiva = new javax.swing.JTextArea();
         jScrollPane8 = new javax.swing.JScrollPane();
         jTANovaFalaRespostaNegativa = new javax.swing.JTextArea();
-        jBNovaFalaCadastrar = new javax.swing.JButton();
-        jBNovaFalaAdicionarFala = new javax.swing.JButton();
+        jBNovaFalaAdicionar = new javax.swing.JButton();
+        jTFNovaFalaTipoNpc = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         LabelAlterarNomeNpc = new javax.swing.JLabel();
         LabelAlterarTipoNpc = new javax.swing.JLabel();
@@ -246,6 +244,11 @@ public class JFNpc extends javax.swing.JFrame {
 
         jTPNPC.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTPNPC.setToolTipText("");
+        jTPNPC.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTPNPCStateChanged(evt);
+            }
+        });
 
         jPCadastrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPCadastrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -325,14 +328,6 @@ public class JFNpc extends javax.swing.JFrame {
             }
         });
         jPCadastrar.add(jBCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 600, 120, 30));
-
-        jBAdicionarFala.setText("Adicionar Fala");
-        jBAdicionarFala.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBAdicionarFalaActionPerformed(evt);
-            }
-        });
-        jPCadastrar.add(jBAdicionarFala, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 590, 120, 30));
 
         jCBTipoNpc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Combatente", "Comerciante", "Coletável", "Guia", "Missão" }));
         jCBTipoNpc.setSelectedIndex(-1);
@@ -526,7 +521,7 @@ public class JFNpc extends javax.swing.JFrame {
 
         jTFCodigoNpc.setEditable(false);
         jTFCodigoNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPCadastrar.add(jTFCodigoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 47, 30, -1));
+        jPCadastrar.add(jTFCodigoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 47, 40, -1));
 
         jTFCodArmadura.setEditable(false);
         jTFCodArmadura.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -565,7 +560,7 @@ public class JFNpc extends javax.swing.JFrame {
         jPCadastrar.add(jBAdicionarItenNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 540, 120, 30));
 
         jTFIndexTipoNpc.setEditable(false);
-        jPCadastrar.add(jTFIndexTipoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 77, 30, -1));
+        jPCadastrar.add(jTFIndexTipoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 77, 40, -1));
 
         jBTestes.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jBTestes.setForeground(new java.awt.Color(255, 0, 51));
@@ -589,17 +584,18 @@ public class JFNpc extends javax.swing.JFrame {
 
         jTFNovaFalaCodigoNpc.setEditable(false);
         jTFNovaFalaCodigoNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel3.add(jTFNovaFalaCodigoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 47, 30, -1));
+        jPanel3.add(jTFNovaFalaCodigoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 47, 40, -1));
 
+        jCBNovaFalaNomeNpc.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBNovaFalaNomeNpcItemStateChanged(evt);
+            }
+        });
         jPanel3.add(jCBNovaFalaNomeNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 47, 155, -1));
 
         LabelNovaFalaTipoNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LabelNovaFalaTipoNpc.setText("Tipo:");
         jPanel3.add(LabelNovaFalaTipoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 80, 45, -1));
-
-        jCBNovaFalaTipoNpc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Combatente", "Comerciante", "Guia", "Missão", "Coletável" }));
-        jCBNovaFalaTipoNpc.setSelectedIndex(-1);
-        jPanel3.add(jCBNovaFalaTipoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 77, 155, -1));
 
         LabelNovaFalaNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LabelNovaFalaNpc.setText("Fala:");
@@ -638,11 +634,16 @@ public class JFNpc extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 375, 375, -1));
 
-        jBNovaFalaCadastrar.setText("Cadastrar");
-        jPanel3.add(jBNovaFalaCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 480, 120, 30));
+        jBNovaFalaAdicionar.setText("Adicionar Fala");
+        jBNovaFalaAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNovaFalaAdicionarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jBNovaFalaAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, 120, 30));
 
-        jBNovaFalaAdicionarFala.setText("Adicionar Fala");
-        jPanel3.add(jBNovaFalaAdicionarFala, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 120, 30));
+        jTFNovaFalaTipoNpc.setEditable(false);
+        jPanel3.add(jTFNovaFalaTipoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 77, 155, -1));
 
         jTPNPC.addTab("Cadastrar Nova Fala", jPanel3);
 
@@ -1313,6 +1314,19 @@ public class JFNpc extends javax.swing.JFrame {
         jCBEscudoNpc.removeAllItems();
     }
     
+    public void LimparCamposNovaFala(java.awt.event.ActionEvent evt){
+        
+        jCBNovaFalaNomeNpc.setSelectedIndex(-1);
+        jTFNovaFalaCodigoNpc.setText("");
+        
+        jTFNovaFalaTipoNpc.setText("");
+        
+        jTANovaFalaNpc.setText("");
+        jTANovaFalaRespostaNegativa.setText("");
+        jTANovaFalaRespostaPositiva.setText("");
+
+    }
+    
     // Cadastra Npc Combatente // falta terminar
     public void CadastrarNpcCombatente (java.awt.event.ActionEvent evt) throws ClassNotFoundException, 
         IllegalArgumentException, IllegalAccessException, NoSuchMethodException, 
@@ -1340,7 +1354,7 @@ public class JFNpc extends javax.swing.JFrame {
             npc.setDescricao_npc(jTADescricaoNpc.getText());
             gDao.adicionar(npc);
 
-            // Informa o ultimo código_npc
+            // Informa o ultimo codigo_npc
             int codMaxNPC = gDao.codigoMax(Npcs.class);
             System.out.println(codMaxNPC);
 
@@ -1350,7 +1364,7 @@ public class JFNpc extends javax.swing.JFrame {
             fala.setResposta_negativo_fala(jTARespostaNegativa.getText());
             gDao.adicionar(fala);
 
-            // Informa o ultimo código_fala
+            // Informa o ultimo codigo_fala
             int codMaxFala = gDao.codigoMax(Falas.class);
             System.out.println(codMaxFala);
 
@@ -1394,6 +1408,7 @@ public class JFNpc extends javax.swing.JFrame {
             
             gDao.adicionar(npcpersonagem);
             
+            // Informa o ultimo codigo_personagem
             int codMaxPersonagem = gDao.codigoMax(Personagens.class);
             System.out.println(codMaxPersonagem);
 
@@ -1457,7 +1472,7 @@ public class JFNpc extends javax.swing.JFrame {
             npc.setDescricao_npc(jTADescricaoNpc.getText());
             gDao.adicionar(npc);
 
-            // Informa o ultimo código_npc
+            // Informa o ultimo codigo_npc
             int codMaxNPC = gDao.codigoMax(Npcs.class);
             System.out.println(codMaxNPC);
 
@@ -1467,7 +1482,7 @@ public class JFNpc extends javax.swing.JFrame {
             fala.setResposta_negativo_fala(jTARespostaNegativa.getText());
             gDao.adicionar(fala);
 
-            // Informa o ultimo código_fala
+            // Informa o ultimo codigo_fala
             int codMaxFala = gDao.codigoMax(Falas.class);
             System.out.println(codMaxFala);
 
@@ -1532,7 +1547,7 @@ public class JFNpc extends javax.swing.JFrame {
             npc.setDescricao_npc(jTADescricaoNpc.getText());
             gDao.adicionar(npc);
 
-            // Informa o ultimo código_npc
+            // Informa o ultimo codigo_npc
             int codMaxNPC = gDao.codigoMax(Npcs.class);
             System.out.println(codMaxNPC);
 
@@ -1542,7 +1557,7 @@ public class JFNpc extends javax.swing.JFrame {
             fala.setResposta_negativo_fala(jTARespostaNegativa.getText());
             gDao.adicionar(fala);
 
-            // Informa o ultimo código_fala
+            // Informa o ultimo codigo_fala
             int codMaxFala = gDao.codigoMax(Falas.class);
             System.out.println(codMaxFala);
 
@@ -1563,6 +1578,41 @@ public class JFNpc extends javax.swing.JFrame {
         }
         
     }
+    
+    // Cadastra nova fala
+    public void CadastrarNovaFala(java.awt.event.ActionEvent evt){
+
+        try {
+
+            Falas fala = new Falas();
+            NpcsFalas npcfala = new NpcsFalas();
+
+            GenericDAO gDao = new GenericDAO();
+
+            // Cadastra a fala
+            fala.setDescricao_fala(jTANovaFalaNpc.getText());
+            fala.setResposta_positivo_fala(jTANovaFalaRespostaPositiva.getText());
+            fala.setResposta_negativo_fala(jTANovaFalaRespostaNegativa.getText());
+            gDao.adicionar(fala);
+
+            // Retorna o código da fala cadastrada acima
+            int codMaxFala = gDao.codigoMax(Falas.class);
+            System.out.println(codMaxFala);
+
+            // Cadastra NpcsFalas
+            npcfala.setCodigo_fala(codMaxFala);
+            npcfala.setCodigo_npc(Integer.parseInt(jTFNovaFalaCodigoNpc.getText()));
+            gDao.adicionar(npcfala);
+
+            // Limpa os campos
+            LimparCamposNovaFala(evt); // Chama evt LimparCamposNovaFala
+
+            JOptionPane.showMessageDialog(null, "Fala adicionada!");
+
+        } catch (SQLException | ClassNotFoundException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    } 
     
     // Botão Cadastrar
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
@@ -1691,53 +1741,8 @@ public class JFNpc extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_formWindowOpened
-    
-    
-    private void jBAdicionarFalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdicionarFalaActionPerformed
-
-        try {
-
-            Falas fala = new Falas();
-            NpcsFalas npcfala = new NpcsFalas();
-
-            GenericDAO gDao = new GenericDAO();
-
-            // Cadastra a fala
-            fala.setDescricao_fala(jTAFalaNpc.getText());
-            fala.setResposta_positivo_fala(jTARespostaPositiva.getText());
-            fala.setResposta_negativo_fala(jTARespostaNegativa.getText());
-            gDao.adicionar(fala);
-
-            int codMaxFala = gDao.codigoMax(Falas.class);
-            System.out.println(codMaxFala);
-
-            //int codfala = (1);
-            //codfala = (codMaxFala + codfala);
-            int codMaxNpc = gDao.codigoMax(Npcs.class);
-            System.out.println(codMaxNpc);
-
-            //int codnpc = (1);
-            //codnpc = (codMaxNpc + codnpc);
-            //int codnpc = (Integer.parseInt(jTFCodigoNpc.getText()));
-            
-            // Cadastra NpcsFalas
-            npcfala.setCodigo_fala(codMaxFala);
-            npcfala.setCodigo_npc(codMaxNpc);
-            gDao.adicionar(npcfala);
-
-            // Limpa os campos
-            jTAFalaNpc.setText("");
-            jTARespostaPositiva.setText("");
-            jTARespostaNegativa.setText("");
-            
-            JOptionPane.showMessageDialog(null, "Fala cadastrada!");
-
-        } catch (SQLException | ClassNotFoundException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
-            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jBAdicionarFalaActionPerformed
-
-    
+     
+    // Falta implementar
     private void jBAdicionarItenNpcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdicionarItenNpcActionPerformed
         
         try {
@@ -2008,6 +2013,78 @@ public class JFNpc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBClasseItemStateChanged
 
+    // Lista Npcs cadastrados e mostra em Combobox
+    private void jTPNPCStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTPNPCStateChanged
+
+        try { 
+            
+        GenericDAO gDao = new GenericDAO();
+        
+        // Carrega combobox Npcs    
+        List<Object> listarNpcs = null;
+            try {
+                listarNpcs = gDao.listar(Npcs.class);
+            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+                    Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            for (Object obj2 : listarNpcs) {
+                Npcs nomenpc = (Npcs) obj2;
+                jCBNovaFalaNomeNpc.addItem(nomenpc.getNome_npc());
+            }
+        // Fim listar Raças
+            
+            jCBNovaFalaNomeNpc.setSelectedIndex(-1);
+            jTFNovaFalaCodigoNpc.setText("");
+            jTFNovaFalaTipoNpc.setText("");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jTPNPCStateChanged
+    
+    // Busca atraves de nome_npc o codigo_npc e tipo_npc, mostrando em edits
+    private void jCBNovaFalaNomeNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNovaFalaNomeNpcItemStateChanged
+        
+        try {    
+        
+        GenericDAO gDao = new GenericDAO();
+        Npcs npc = new Npcs();
+        
+        List<Object> ListarDadosNpcs = new ArrayList<>();
+
+        npc.setNome_npc((String) jCBNovaFalaNomeNpc.getSelectedItem());
+
+        ListarDadosNpcs = gDao.listar2(Npcs.class, npc);
+
+        for (Object cod : ListarDadosNpcs) {
+            Npcs codnpc = (Npcs) cod;
+            jTFNovaFalaCodigoNpc.setText(String.valueOf(codnpc.getCodigo_npc()));
+            jTFNovaFalaTipoNpc.setText(String.valueOf(codnpc.getTipo_npc()));
+        }
+        
+        } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_jCBNovaFalaNomeNpcItemStateChanged
+
+    // Botão Adicionar nova fala
+    private void jBNovaFalaAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovaFalaAdicionarActionPerformed
+
+        if (jTFNovaFalaCodigoNpc.getText().equals("") | jTFNovaFalaTipoNpc.getText().equals("")
+             | jTANovaFalaNpc.getText().equals("") | jTANovaFalaRespostaNegativa.getText().equals("")
+                | jTANovaFalaRespostaPositiva.getText().equals("")) {
+            
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+        }
+        else {
+            CadastrarNovaFala(evt); // Chama evt CadastrarNovaFala
+            LimparCamposNovaFala(evt);
+        }
+    }//GEN-LAST:event_jBNovaFalaAdicionarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2064,15 +2141,13 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JLabel LabelRespostaNegativa;
     private javax.swing.JLabel LabelRespostaPositiva;
     private javax.swing.JLabel LabelTipoNpc;
-    private javax.swing.JButton jBAdicionarFala;
     private javax.swing.JButton jBAdicionarItenNpc;
     private javax.swing.JButton jBAlterarAdicionarFala;
     private javax.swing.JButton jBAlterarAdicionarItenNpc;
     private javax.swing.JButton jBAlterarCadastrar;
     private javax.swing.JButton jBCadastrar;
     private javax.swing.JButton jBExcluirNpc;
-    private javax.swing.JButton jBNovaFalaAdicionarFala;
-    private javax.swing.JButton jBNovaFalaCadastrar;
+    private javax.swing.JButton jBNovaFalaAdicionar;
     private javax.swing.JButton jBTestes;
     private javax.swing.JComboBox jCBAlterarArmaNpc;
     private javax.swing.JComboBox jCBAlterarArmaduraNpc;
@@ -2088,7 +2163,6 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JComboBox jCBEscudoNpc;
     private javax.swing.JComboBox jCBExcluirNomeNpc;
     private javax.swing.JComboBox jCBNovaFalaNomeNpc;
-    private javax.swing.JComboBox jCBNovaFalaTipoNpc;
     private javax.swing.JComboBox jCBRaca;
     private javax.swing.JComboBox jCBTipoNpc;
     private javax.swing.JLabel jLAlterarArmaNpc;
@@ -2203,6 +2277,7 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JTextField jTFIniciativa;
     private javax.swing.JTextField jTFInteligencia;
     private javax.swing.JTextField jTFNovaFalaCodigoNpc;
+    private javax.swing.JTextField jTFNovaFalaTipoNpc;
     private javax.swing.JTextField jTFPontosdeVida;
     private javax.swing.JTextField jTFQuantidadeArmaNpc;
     private javax.swing.JTextField jTFQuantidadeArmaduraNpc;
