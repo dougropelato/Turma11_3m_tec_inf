@@ -8,6 +8,7 @@ package rpg;
 import Tabelas.TalentosPersonagem;
 import dao.GenericDAO;
 import formularios.JFMestre;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.List;
@@ -28,19 +29,10 @@ public class Rpg {
 
 //        JFMestre m = new JFMestre();;
 //        m.setVisible(true);
-        GenericDAO gd = new GenericDAO();
-        List<List> list = null;
+        Personagens pp = new Personagens();
+        Talentos tts = new Talentos();
 
-        TalentosPersonagem tp = new TalentosPersonagem();
-
-        tp.setCodigo_talento(1);
-        tp.setCodigo_personagem(1);
-        tp.setBonus_talento_personagem(10);
-        
-        
-        gd.adicionar(tp);
-        
-        
+        aplicaTalento(pp, tts);
 
 //        list = gDao.listar3(tt, Personagens.class, TalentosPersonagem.class);;;;;;;
 //
@@ -58,6 +50,50 @@ public class Rpg {
 //            TalentosPersonagem ttp= (TalentosPersonagem) obj2;
 //            System.out.println(ttp.getBonus_talento_personagem());
 //        }
+    }
+
+    public static void aplicaTalento(Personagens pp, Talentos tts) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+
+        GenericDAO gd = new GenericDAO();
+        TalentosPersonagem tp = new TalentosPersonagem();
+
+        List<Object> list = null;
+        list = gd.listar(Talentos.class);
+        String bns = null;
+
+        for (Object obj : list) {
+            Talentos tt = (Talentos) obj;
+
+            bns = tt.getBonus_talento();
+        }
+
+        String[] bonus = bns.split(";");
+
+        if (bonus[0].equalsIgnoreCase("personagens")) {
+
+            int bnn = 0;
+
+            Class cls = Personagens.class;
+            Field listaAtributos[] = cls.getDeclaredFields();
+
+            for (int i = 0; i < listaAtributos.length; i++) {
+                Field fld = listaAtributos[i];
+                fld.setAccessible(true);
+
+                String teste = fld.getName();
+
+                if (teste.equalsIgnoreCase(bonus[1])) {                   
+                    
+                    bnn = Integer.valueOf(fld.get(pp).toString());
+
+                    bnn = bnn + Integer.valueOf(bonus[2]);    
+                    
+                   
+                }
+
+            }
+
+        }
 
     }
 
