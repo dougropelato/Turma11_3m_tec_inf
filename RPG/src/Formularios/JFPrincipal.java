@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import tabelas.Campanhas;
+import tabelas.Missoes;
 
 /**
  *
@@ -40,10 +41,14 @@ public class JFPrincipal extends javax.swing.JFrame {
         
             for (Object obj2 : list) {
                 Campanhas c = (Campanhas) obj2;
-                jTextArea1.setText("Bem vindo a campanha "+ c.getNome_campanha());           
+                jTextArea1.setText("Bem vindo a campanha "+ c.getNome_campanha()); //mostra nome da campanha           
             }   
-        
-        
+       
+          
+       /* //leitura da tabela de posiçoes    
+        while(){
+            
+        }*/
     }
     /**
      * Creates new form formprincipal
