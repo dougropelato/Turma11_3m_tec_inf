@@ -132,7 +132,7 @@ public class JFProgressao extends javax.swing.JFrame {
             prg.setTipo_dado_progressao((int) jtbprogressao.getValueAt(i -1, 6));
             prg.setQuantidade_dado_progressao((int) jtbprogressao.getValueAt(i -1, 7));
             prg.setBonus_base_progressao((int) jtbprogressao.getValueAt(i -1, 8));
-            
+            //Precisa de um tratamento para quando não possui valor no campo pois da null pointer exeption
             lista.add(prg);
         }
         
