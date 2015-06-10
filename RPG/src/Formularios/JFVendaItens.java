@@ -90,6 +90,10 @@ public class JFVendaItens extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
+        buttonGroup6 = new javax.swing.ButtonGroup();
+        buttonGroup7 = new javax.swing.ButtonGroup();
         label2 = new java.awt.Label();
         lbDinheiroPersonagem = new java.awt.Label();
         lbComprar = new java.awt.Label();
@@ -471,6 +475,15 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcbVenderConsumiveis.setVisible(true);
             jcbVenderEscudos.setVisible(true);
             jcbVenderArmaduras.setVisible(true);
+            jcbComprar.setEnabled(false);
+            jcbVenderArmaduras.setEnabled(true);
+            jcbVenderEscudos.setEnabled(true);
+            jcbVenderArmas.setEnabled(true);
+            jcbVenderConsumiveis.setEnabled(true);
+            jcbVenderArmaduras.setSelected(false);
+            jcbVenderEscudos.setSelected(false);
+            jcbVenderArmas.setSelected(false);
+            jcbVenderConsumiveis.setSelected(false);
         } else {
             lbVender.setVisible(false);
             jcbVenderConsumiveis.setVisible(false);
@@ -485,6 +498,7 @@ public class JFVendaItens extends javax.swing.JFrame {
             lbPreçoVender.setVisible(false);
             jlQuantVender.setVisible(false);
             QuantVender.setVisible(false);
+            jcbComprar.setEnabled(true);
         }
     }//GEN-LAST:event_jcbVenderActionPerformed
 
@@ -495,6 +509,15 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcbComprarConsumiveis.setVisible(true);
             jcbComprarEscudos.setVisible(true);
             jcbComprarArmaduras.setVisible(true);
+            jcbVender.setEnabled(false);
+            jcbComprarArmaduras.setEnabled(true);
+            jcbComprarEscudos.setEnabled(true);
+            jcbComprarArmas.setEnabled(true);
+            jcbComprarConsumiveis.setEnabled(true);
+            jcbComprarArmaduras.setSelected(false);
+            jcbComprarEscudos.setSelected(false);
+            jcbComprarArmas.setSelected(false);
+            jcbComprarConsumiveis.setSelected(false);
 
         } else {
             lbComprar.setVisible(false);
@@ -510,6 +533,8 @@ public class JFVendaItens extends javax.swing.JFrame {
             lbPrecoComprar.setVisible(false);
             jlQuantComprar.setVisible(false);
             QuantComprar.setVisible(false);
+            jcbVender.setEnabled(true);
+            
 
         }
     }//GEN-LAST:event_jcbComprarActionPerformed
@@ -543,12 +568,20 @@ public class JFVendaItens extends javax.swing.JFrame {
             jlQuantComprar.setVisible(true);
             QuantComprar.setVisible(true);
 
+            jcbComprarArmaduras.setEnabled(false);
+            jcbComprarEscudos.setEnabled(false);
+            jcbComprarConsumiveis.setEnabled(false);
+
         } else {
             jcComprarArmas.setVisible(false);
             jbComprar.setVisible(false);
             lbPrecoComprar.setVisible(false);
             jlQuantComprar.setVisible(false);
             QuantComprar.setVisible(false);
+            jcComprarArmas.removeAllItems();
+            jcbComprarArmaduras.setEnabled(true);
+            jcbComprarEscudos.setEnabled(true);
+            jcbComprarConsumiveis.setEnabled(true);
         }
     }//GEN-LAST:event_jcbComprarArmasActionPerformed
 
@@ -601,6 +634,9 @@ public class JFVendaItens extends javax.swing.JFrame {
             lbPrecoComprar.setVisible(true);
             jlQuantComprar.setVisible(true);
             QuantComprar.setVisible(true);
+            jcbComprarArmas.setEnabled(false);
+            jcbComprarEscudos.setEnabled(false);
+            jcbComprarConsumiveis.setEnabled(false);
         } else {
             jcComprarArmaduras.setVisible(false);
             jbComprar.setVisible(false);
@@ -608,6 +644,9 @@ public class JFVendaItens extends javax.swing.JFrame {
             jlQuantComprar.setVisible(false);
             QuantComprar.setVisible(false);
             jcComprarArmaduras.removeAllItems();
+            jcbComprarArmas.setEnabled(true);
+            jcbComprarEscudos.setEnabled(true);
+            jcbComprarConsumiveis.setEnabled(true);
         }
     }//GEN-LAST:event_jcbComprarArmadurasActionPerformed
 
@@ -638,12 +677,19 @@ public class JFVendaItens extends javax.swing.JFrame {
             lbPrecoComprar.setVisible(true);
             jlQuantComprar.setVisible(true);
             QuantComprar.setVisible(true);
+            jcbComprarArmas.setEnabled(false);
+            jcbComprarArmaduras.setEnabled(false);
+            jcbComprarConsumiveis.setEnabled(false);
         } else {
             jcComprarEscudos.setVisible(false);
             jbComprar.setVisible(false);
             lbPrecoComprar.setVisible(false);
             jlQuantComprar.setVisible(false);
             QuantComprar.setVisible(false);
+            jcComprarEscudos.removeAllItems();
+            jcbComprarArmas.setEnabled(true);
+            jcbComprarArmaduras.setEnabled(true);
+            jcbComprarConsumiveis.setEnabled(true);
 
         }
     }//GEN-LAST:event_jcbComprarEscudosActionPerformed
@@ -674,11 +720,18 @@ public class JFVendaItens extends javax.swing.JFrame {
             jbComprar.setVisible(true);
             lbPrecoComprar.setVisible(true);
             QuantComprar.setVisible(true);
+            jcbComprarArmas.setEnabled(false);
+            jcbComprarArmaduras.setEnabled(false);
+            jcbComprarEscudos.setEnabled(false);
         } else {
             jcComprarConsumiveis.setVisible(false);
             jbComprar.setVisible(false);
             lbPrecoComprar.setVisible(false);
             QuantComprar.setVisible(false);
+            jcComprarConsumiveis.removeAllItems();
+            jcbComprarArmas.setEnabled(true);
+            jcbComprarArmaduras.setEnabled(true);
+            jcbComprarEscudos.setEnabled(true);
         }
     }//GEN-LAST:event_jcbComprarConsumiveisActionPerformed
 
@@ -722,7 +775,7 @@ public class JFVendaItens extends javax.swing.JFrame {
                 Armas aa = (Armas) ll1;
                 jcVenderArmas.addItem(mostrarCodigo + " - " + aa.getNome_arma()); /// adiciona no combo o codigo + nome
 
-            } 
+            }
 
         }
 
@@ -749,12 +802,20 @@ public class JFVendaItens extends javax.swing.JFrame {
             lbPreçoVender.setVisible(true);
             jlQuantVender.setVisible(true);
             QuantVender.setVisible(true);
+            jcbVenderArmaduras.setEnabled(false);
+            jcbVenderEscudos.setEnabled(false);
+            jcbVenderConsumiveis.setEnabled(false);
+            
         } else {
             jcVenderArmas.setVisible(false);
             jbVender.setVisible(false);
             lbPreçoVender.setVisible(false);
             jlQuantVender.setVisible(false);
             QuantVender.setVisible(false);
+            jcVenderArmas.removeAllItems();
+            jcbVenderArmaduras.setEnabled(true);
+            jcbVenderEscudos.setEnabled(true);
+            jcbVenderConsumiveis.setEnabled(true);
         }
     }//GEN-LAST:event_jcbVenderArmasActionPerformed
 
@@ -798,7 +859,7 @@ public class JFVendaItens extends javax.swing.JFrame {
                 Armaduras aa = (Armaduras) ll1;
                 jcVenderArmaduras.addItem(mostrarCodigo + " - " + aa.getNome_armadura()); /// adiciona no combo o codigo + nome
 
-            } 
+            }
 
         }
 
@@ -808,12 +869,19 @@ public class JFVendaItens extends javax.swing.JFrame {
             lbPreçoVender.setVisible(true);
             jlQuantVender.setVisible(true);
             QuantVender.setVisible(true);
+            jcbVenderArmas.setEnabled(false);
+            jcbVenderEscudos.setEnabled(false);
+            jcbVenderConsumiveis.setEnabled(false);
         } else {
             jcVenderArmaduras.setVisible(false);
             jbVender.setVisible(false);
             lbPreçoVender.setVisible(false);
             jlQuantVender.setVisible(false);
             QuantVender.setVisible(false);
+            jcVenderArmaduras.removeAllItems();
+            jcbVenderArmas.setEnabled(true);
+            jcbVenderEscudos.setEnabled(true);
+            jcbVenderConsumiveis.setEnabled(true);
         }
     }//GEN-LAST:event_jcbVenderArmadurasActionPerformed
 
@@ -846,12 +914,19 @@ public class JFVendaItens extends javax.swing.JFrame {
             lbPreçoVender.setVisible(true);
             jlQuantVender.setVisible(true);
             QuantVender.setVisible(true);
+            jcbVenderArmas.setEnabled(false);
+            jcbVenderArmaduras.setEnabled(false);
+            jcbVenderConsumiveis.setEnabled(false);
         } else {
             jcVenderEscudos.setVisible(false);
             jbVender.setVisible(false);
             lbPreçoVender.setVisible(false);
             jlQuantVender.setVisible(false);
             QuantVender.setVisible(false);
+            jcVenderEscudos.removeAllItems();
+            jcbVenderArmas.setEnabled(true);
+            jcbVenderArmaduras.setEnabled(true);
+            jcbVenderConsumiveis.setEnabled(true);
         }
     }//GEN-LAST:event_jcbVenderEscudosActionPerformed
 
@@ -884,12 +959,19 @@ public class JFVendaItens extends javax.swing.JFrame {
             lbPreçoVender.setVisible(true);
             jlQuantVender.setVisible(true);
             QuantVender.setVisible(true);
+            jcbVenderArmas.setEnabled(false);
+            jcbVenderArmaduras.setEnabled(false);
+            jcbVenderEscudos.setEnabled(false);
         } else {
             jcVenderConsumiveis.setVisible(false);
             jbVender.setVisible(false);
             lbPreçoVender.setVisible(false);
             jlQuantVender.setVisible(false);
             QuantVender.setVisible(false);
+            jcVenderConsumiveis.removeAllItems();
+            jcbVenderArmas.setEnabled(true);
+            jcbVenderArmaduras.setEnabled(true);
+            jcbVenderEscudos.setEnabled(true);
         }
     }//GEN-LAST:event_jcbVenderConsumiveisActionPerformed
 
@@ -1008,6 +1090,10 @@ public class JFVendaItens extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.ButtonGroup buttonGroup6;
+    private javax.swing.ButtonGroup buttonGroup7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jbComprar;
     private javax.swing.JButton jbVender;

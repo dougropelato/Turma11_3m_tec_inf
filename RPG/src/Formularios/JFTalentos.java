@@ -362,12 +362,12 @@ public class JFTalentos extends javax.swing.JFrame {
             bon += ";" + jTextField7.getText();
         }
 
+        jtextrequisitos.setText(req);
+        jTextField3.setText(bon);
+
         if (jTextField1.getText().equalsIgnoreCase("") || jTextArea1.getText().equalsIgnoreCase("") || jTextField3.getText().equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(null, "Valeres em branco favor verificar!");
         } else {
-
-            jtextrequisitos.setText(req);
-            jTextField3.setText(bon);
 
             Talentos tal = new Talentos();
 
