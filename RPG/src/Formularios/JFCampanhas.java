@@ -101,7 +101,7 @@ public class JFCampanhas extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfNomeCampanhaActionPerformed
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
-
+8
         try {//Tente cadastrar a camapnha...
             if (jtfNomeCampanha.getText().equals("")) { //Caso o Campo para Cadastro esteja em branco na hora do cadastro faça...
                 JOptionPane.showMessageDialog(null, "Por Favor Insira Nome da Campanha!");//Exite Tela com a Mensagem "Por Favor Insira Nome da Campanha!"

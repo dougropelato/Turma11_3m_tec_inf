@@ -5,10 +5,17 @@
  */
 package formularios;
 
+import Tabelas.Raca;
+import conexao.ConexaoBanco;
 import dao.GenericDAO;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import tabelas.Classes;
 import tabelas.Personagens;
 
 /**
@@ -17,13 +24,13 @@ import tabelas.Personagens;
  */
 public class JFPersonagem extends javax.swing.JFrame {
 
+    ArrayList listRaca = new ArrayList();
     /**
      * Creates new form JFPersonagem
      */
     public JFPersonagem() {
         initComponents();
-        
-       
+
     }
 
     /**
@@ -78,10 +85,13 @@ public class JFPersonagem extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setText("Nome");
-
-        jCClasse.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel2.setText("Idade");
 
@@ -151,8 +161,6 @@ public class JFPersonagem extends javax.swing.JFrame {
                 jBSalvarActionPerformed(evt);
             }
         });
-
-        jCRaca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel19.setText("Classe");
 
@@ -359,40 +367,132 @@ public class JFPersonagem extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfClasseArmaduraPersonagemActionPerformed
 
     private void jBSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarActionPerformed
-         Personagens pers = new Personagens();
         try {
-           GenericDAO aDao = new GenericDAO();  
+            GenericDAO aDao = new GenericDAO();
+            
+            Personagens pers = new Personagens();
+            Raca rc = new Raca ();
+            
+            int codRaca = ((int) listRaca.get(jCRaca.getSelectedIndex()));
+            rc.setCodigo_raca(codRaca);
+            
+            List<Object> list = aDao.listar2(Raca.class, rc);
+            for (Object obj3 : list) {
+
+                Raca r = (Raca) obj3;
+                            
+                int forca = (r.getForca_raca());
+                System.out.println("é: "+ forca);
+            }
+
+            pers.setNome_personagem("");
+            pers.setIdade_personagem(0);
+            pers.setPeso_personagem(0);
+            pers.setAltura_personagem(0);
+            pers.setForca_personagem(0);
+            pers.setForca_personagem(0);
+            pers.setDestreza_personagem(0);
+            pers.setContituicao_personagem(0);
+            pers.setInteligencia_personagem(0);
+            pers.setSabedoria_personagem(0);
+            pers.setCarisma_personagem(0);
+            pers.setFortitude_personagem(0);
+            pers.setReflexos_personagem(0);
+            pers.setVontade_personagem(0);
+            pers.setClasse_armadura_personagem(0);
+            pers.setPontos_vida_personagem(0);
+            pers.setIniciativa_personagem(0);
+            pers.setBase_ataque_personagem(0);
+
+            pers.setNome_personagem(jtfNomePersonagem.getText());
+            pers.setIdade_personagem(Integer.parseInt(jtfIdadePersonagem.getText()));
+            pers.setPeso_personagem(Integer.parseInt(jtfPesoPersonagem.getText()));
+            pers.setAltura_personagem(Integer.parseInt(jtfAlturaPersonagem.getText()));
+            pers.setForca_personagem((Integer.parseInt(jtfForcaPersonagem.getText())));
+            pers.setDestreza_personagem(Integer.parseInt(jtfDestrezaPersonagem.getText()));
+            pers.setContituicao_personagem(Integer.parseInt(jtfConstituicaoPersonagem.getText()));
+            pers.setInteligencia_personagem(Integer.parseInt(jtfInteligenciaPersonagem.getText()));
+            pers.setSabedoria_personagem(Integer.parseInt(jtfSabedoriaPersonagem.getText()));
+            pers.setCarisma_personagem(Integer.parseInt(jtfCarismaPersonagem.getText()));
+            pers.setFortitude_personagem(Integer.parseInt(jtfFortitudePersonagem.getText()));
+            pers.setReflexos_personagem(Integer.parseInt(jtfRefexoPersonagem.getText()));
+            pers.setVontade_personagem(Integer.parseInt(jtfVontadePersonagem.getText()));
+            pers.setClasse_armadura_personagem(Integer.parseInt(jtfClasseArmaduraPersonagem.getText()));
+            pers.setPontos_vida_personagem(Integer.parseInt(jtfPontosDeVidaPersonagem.getText()));
+            pers.setIniciativa_personagem(Integer.parseInt(jtfIniciativaPersonagem.getText()));
+            pers.setBase_ataque_personagem(Integer.parseInt(jtfBaseDeAtaquePersonagem.getText()));
+            pers.setCodigo_raca((int) listRaca.get(jCRaca.getSelectedIndex()));
+            aDao.adicionar(pers);
+
         } catch (SQLException ex) {
             Logger.getLogger(JFPersonagem.class.getName()).log(Level.SEVERE, null, ex);
-            
-            
-        pers.setAltura_personagem(Double.parseDouble(jtfAlturaPersonagem.getText()));
-        pers.setBase_ataque_personagem(Integer.parseInt(jtfBaseDeAtaquePersonagem.getText()));
-        pers.setCarisma_personagem(Integer.parseInt(jtfCarismaPersonagem.getText()));
-        pers.setClasse_armadura_personagem (Integer.parseInt(jtfClasseArmaduraPersonagem.getText()));
-        pers.setConstituicao_personagem(Integer.parseInt(jtfConstituicaoPersonagem.getText()));
-        pers.setDestreza_personagem(Integer.parseInt(jtfDestrezaPersonagem.getText()));
-        pers.setForca_personagem(Integer.parseInt(jtfForcaPersonagem.getText()));
-        pers.setFortitude_personagem(Integer.parseInt(jtfFortitudePersonagem.getText()));
-        pers.setIdade_personagem(Integer.parseInt(jtfIdadePersonagem.getText()));
-        pers.setIniciativa_personagem(Integer.parseInt(jtfIniciativaPersonagem.getText()));
-        pers.setInteligencia_personagem(Integer.parseInt(jtfInteligenciaPersonagem.getText()));
-        pers.setNome_personagem(jtfNomePersonagem.getText());
-        pers.setPeso_personagem(Integer.parseInt(jtfPesoPersonagem.getText()));
-        pers.setPontos_vida_personagem(Integer.parseInt(jtfPontosDeVidaPersonagem.getText()));
-        pers.setReflexos_personagem(Integer.parseInt(jtfRefexoPersonagem.getText()));
-        pers.setSabedoria_personagem(Integer.parseInt(jtfSabedoriaPersonagem.getText()));
-        pers.setVontade_personagem(Integer.parseInt(jtfVontadePersonagem.getText()));
-        
-        //aDao.adicionar(pers);
-        
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFPersonagem.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFPersonagem.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFPersonagem.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFPersonagem.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFPersonagem.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFPersonagem.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
-        
-        
-        
-          // TODO add your handling code here:
+
+        // TODO add your handling code here:
     }//GEN-LAST:event_jBSalvarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        GenericDAO aDao;
+        try {
+            aDao = new GenericDAO();
+
+            List<Object> list = aDao.listar(Classes.class);//lista classe
+
+            for (Object obj2 : list) {
+
+                Classes cl = (Classes) obj2;
+                            
+                String Classe = "";
+                Classe = cl.getNome_classe();
+                jCClasse.addItem(Classe);
+                
+                
+
+            }
+
+              
+        
+             List<Object> list2 = aDao.listar(Raca.class);
+        
+             for (Object obj2 : list2) {
+            
+             Raca rc = (Raca) obj2;
+             String Raca = "";
+             Raca = rc.getNome_raca();
+             listRaca.add(rc.getCodigo_raca());
+             jCRaca.addItem(Raca);
+             }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(JFPersonagem.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFPersonagem.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFPersonagem.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFPersonagem.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFPersonagem.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFPersonagem.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFPersonagem.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

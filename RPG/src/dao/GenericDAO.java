@@ -152,20 +152,24 @@ public class GenericDAO {
         for (int i = 0; i < listaAtributos.length; i++) {
             Field fld = listaAtributos[i];
             fld.setAccessible(true);
-
             if (fld.get(lugar) != null) {
-                if (onde.equalsIgnoreCase("")) {
-                    System.out.println(fld.get(lugar));
-                    onde = " WHERE " + fld.getName().toString() + " = '" + fld.get(lugar).toString() + "'";
-                } else {
-                    onde += " AND " + fld.getName().toString() + " = '" + fld.get(lugar).toString() + "'";
+                tipoDado = fld.get(lugar).toString();
+
+                if (!tipoDado.equalsIgnoreCase("0") && !tipoDado.equalsIgnoreCase("0.0")) {
+
+                    if (onde.equalsIgnoreCase("")) {
+                        System.out.println(fld.get(lugar));
+                        onde = " WHERE " + fld.getName().toString() + " = '" + fld.get(lugar).toString() + "'";
+                    } else {
+                        onde += " AND " + fld.getName().toString() + " = '" + fld.get(lugar).toString() + "'";
+                    }
                 }
             }
 
         }
 
         String sql = "SELECT * FROM " + tabela + onde;
-
+        System.out.println(sql);
         PreparedStatement stmt = this.conexao.prepareStatement(sql);
 
         ResultSet rset = stmt.executeQuery();
@@ -230,7 +234,7 @@ public class GenericDAO {
 
             if (fld.get(TabelaA) != null && fld.getName().equalsIgnoreCase(retornaPK(tA))) {
 
-                daOnde = "'"+fld.get(TabelaA)+"'";
+                daOnde = "'" + fld.get(TabelaA) + "'";
 
             }
 
@@ -241,10 +245,10 @@ public class GenericDAO {
         onde += "tC." + retornaPK(tA);
 
         if (!daOnde.equalsIgnoreCase("")) {
-            onde += " = "+daOnde;
+            onde += " = " + daOnde;
         } else {
             onde += " = tA." + retornaPK(tA);
-        }        
+        }
 
         onde += " AND ";
         onde += "tC." + retornaPK(tB) + " = tB." + retornaPK(tB);
@@ -385,25 +389,22 @@ public class GenericDAO {
         for (int i = 0; i < listaAtributos.length; i++) {
             Field fld = listaAtributos[i];
             fld.setAccessible(true);
-            //Testa os tipos de dados. 
-            //Falta fazer com todos os tipos utilizados.
-          //  if (i != 0) {
-                campos = campos + fld.getName() + ", ";
-                tipoDado = fld.getType().toString();
-                if (tipoDado.equals("class java.lang.String")) {
-                    dados = dados + '"' + fld.get(obj) + '"' + ",";
-                }
-                if (tipoDado.equals("int")) {
-                    dados = dados + fld.get(obj) + ",";
-                }
-            
-            //}
+
+            campos = campos + fld.getName() + ", ";
+            tipoDado = fld.getType().toString();
+            if (tipoDado.equals("class java.lang.String")) {
+                dados = dados + "'" + fld.get(obj) + "'" + ",";
+            }
+            if (tipoDado.equals("int")) {
+                dados = dados + fld.get(obj) + ",";
+            }
+
         }
         campos = campos.substring(0, campos.length() - 2);
         String tabela = cls.getSimpleName();
         dados = dados.substring(0, dados.length() - 1); //tira a última vírgula
         String sql = "INSERT INTO " + tabela + " (" + campos + ") VALUES (" + dados + ")";
-        
+
         System.out.println(sql);
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
@@ -421,15 +422,18 @@ public class GenericDAO {
      */
     public void excluir(Object obj) throws ClassNotFoundException,
             NoSuchFieldException, SQLException {
+        
         String campoTeste = null;
         String campo = null;
         int valorExcluir = 0;
         String classe = obj.getClass().getName();
         Class cls = Class.forName(classe);
         Field listaAtributos[] = cls.getDeclaredFields();
+        
         for (int i = 0; i < listaAtributos.length; i++) {
             Field fld = listaAtributos[i];
             fld.setAccessible(true);
+            
             try {
                 System.out.println("Valor...........: " + fld.get(obj));
                 campoTeste = fld.get(obj).toString();

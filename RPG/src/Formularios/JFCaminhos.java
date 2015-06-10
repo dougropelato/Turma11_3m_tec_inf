@@ -8,11 +8,16 @@ package formularios;
 import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import tabelas.Caminhos;
 import tabelas.Missoes;
+import tabelas.Npcs;
 
 /**
  *
@@ -20,17 +25,37 @@ import tabelas.Missoes;
  */
 public class JFCaminhos extends javax.swing.JFrame {
 
+    ArrayList arrayListMissoes = new ArrayList();
+    
     public void centralizarComponente(){
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
         setLocation((ds.width - dw.width)/2, (ds.height - dw.height)/2);
     }
+    
+    public void carregaComboMissoes() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException{
+
+        GenericDAO gDAO = new GenericDAO();
+        Missoes missoes = new Missoes();
+        List<Object> list = gDAO.listar(Missoes.class);
+    
+        for (Object obj2 : list) {
+            Missoes m = (Missoes) obj2;
+            
+            System.out.println("cod npc "+ m.getCodigo_missao());
+            System.out.println("nome npc "+ m.getCodigo_missao());
+            
+            arrayListMissoes.add(m.getCodigo_missao());
+            jcbMissao.addItem(m.getNome_missao());
+        }
+    }
     /**
      * Creates new form JFCaminhos
      */
-    public JFCaminhos() {
+    public JFCaminhos() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         initComponents();
         centralizarComponente();
+        carregaComboMissoes();
     }
 
     /**
@@ -114,16 +139,24 @@ public class JFCaminhos extends javax.swing.JFrame {
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
         
         try {
-        Caminhos caminhos = new Caminhos();
-        Missoes missoes = new Missoes();
+        if (jtfCaminho.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Insira um nome para esse caminho"); 
+        }else {
+            Caminhos caminhos = new Caminhos();
+            Missoes missoes = new Missoes();
         
-        caminhos.setNome_caminho(jtfCaminho.getText());
+            caminhos.setNome_caminho(jtfCaminho.getText());
         
-        caminhos.setCodigo_missao(1); //apenas para teste
+            caminhos.setCodigo_missao((int) ( arrayListMissoes.get(jcbMissao.getSelectedIndex()))); //apenas para teste
         
             GenericDAO gDAO = new GenericDAO();
             gDAO.adicionar(caminhos);
             
+            //mensagem de cadastro
+            JOptionPane.showMessageDialog(null, "Caminho cadastrado!");
+            //limpando campos apos cadastro
+            jtfCaminho.setText("");
+        }    
         } catch (SQLException ex) {
             Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -170,7 +203,23 @@ public class JFCaminhos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFCaminhos().setVisible(true);
+                try {
+                    new JFCaminhos().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NoSuchMethodException ex) {
+                    Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

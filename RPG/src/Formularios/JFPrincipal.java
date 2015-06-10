@@ -5,13 +5,19 @@
  */
 package Formularios;
 
+import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import utilitários.VerificaComandos;
 import java.awt.event.KeyEvent;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import tabelas.Campanhas;
+import tabelas.Missoes;
 
 /**
  *
@@ -26,12 +32,31 @@ public class JFPrincipal extends javax.swing.JFrame {
         Dimension dw = getSize();
         setLocation((ds.width - dw.width)/2, (ds.height - dw.height)/2);
     }
+    
+    public void principal() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException{
+        GenericDAO gDAO = new GenericDAO();
+        Campanhas campanha = new Campanhas(); 
+        campanha.setCodigo_campanha(2);  //precisa de uma verificação da campanha que o usuario seleciona
+        List<Object> list = gDAO.listar2(Campanhas.class, campanha);
+        
+            for (Object obj2 : list) {
+                Campanhas c = (Campanhas) obj2;
+                jTextArea1.setText("Bem vindo a campanha "+ c.getNome_campanha()); //mostra nome da campanha           
+            }   
+       
+          
+       /* //leitura da tabela de posiçoes    
+        while(){
+            
+        }*/
+    }
     /**
      * Creates new form formprincipal
      */
-    public JFPrincipal() {
+    public JFPrincipal() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         initComponents();
         centralizarComponente();
+        principal();
     }
 
     /**
@@ -162,7 +187,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String string = jTextField1.getText();
@@ -199,7 +224,23 @@ public class JFPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFPrincipal().setVisible(true);
+                try {
+                    new JFPrincipal().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NoSuchMethodException ex) {
+                    Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

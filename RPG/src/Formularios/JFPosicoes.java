@@ -8,9 +8,16 @@ package formularios;
 import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import static java.util.Collections.list;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import tabelas.Caminhos;
+import tabelas.Npcs;
 import tabelas.Posicoes;
 import tabelas.PosicoesNpcs;
 
@@ -20,11 +27,52 @@ import tabelas.PosicoesNpcs;
  */
 public class JFPosicoes extends javax.swing.JFrame {
 
+    ArrayList arrayListNpc = new ArrayList(); //salva todos os codigos de npc do combobox
+    ArrayList arrayListCaminhos = new ArrayList(); //salva todos os codigos de caminhos do combobox
+    ArrayList arrayListMissoes = new ArrayList(); //salva todos os codigos de missoes do combobox   
+        
     public void centralizarComponente(){
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
         setLocation((ds.width - dw.width)/2, (ds.height - dw.height)/2);
     }
+    
+    public void carregaComboCaminhos() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+        GenericDAO gDAO = new GenericDAO();
+        Caminhos caminho = new Caminhos();
+        List<Object> list = gDAO.listar(Caminhos.class);
+            
+        for (Object obj : list) {
+            Caminhos c = (Caminhos) obj;
+            
+            System.out.println("cod caminho "+ c.getCodigo_caminho());
+            System.out.println("cod missao " + c.getCodigo_missao());
+            System.out.println("nome caminho "+ c.getNome_caminho());
+            
+            arrayListCaminhos.add(c.getCodigo_caminho());
+            arrayListMissoes.add(c.getCodigo_missao());
+            
+            jcbCaminho.addItem(c.getNome_caminho());    
+        }
+    }
+            
+    public void carregaComboNpc() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException{
+
+        GenericDAO gDAO = new GenericDAO();
+        Npcs npc = new Npcs();
+        List<Object> list = gDAO.listar(Npcs.class);
+    
+        for (Object obj2 : list) {
+            Npcs n = (Npcs) obj2;
+            
+            System.out.println("cod npc "+ n.getCodigo_npc());
+            System.out.println("nome npc "+ n.getNome_npc());
+            
+            arrayListNpc.add(npc.getCodigo_npc());
+            jcbNpc.addItem(n.getNome_npc());
+        }
+    }
+    
     /**
      * Creates new form JFPosicoes
      */
@@ -60,6 +108,11 @@ public class JFPosicoes extends javax.swing.JFrame {
         jtaDescricao = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setText("Selecionar Caminho");
 
@@ -197,23 +250,37 @@ public class JFPosicoes extends javax.swing.JFrame {
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
         
         try {
-            GenericDAO gDAO = new GenericDAO();
-            Posicoes posicoes = new Posicoes();
-            PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
+            if (jtaDescricao.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Insira uma descrição para esta posição!"); 
+            }else {
+                GenericDAO gDAO = new GenericDAO();
+                Posicoes posicoes = new Posicoes();
         
-            posicoes.setDescricao_posicao(jtaDescricao.getText());
-            posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));
-            posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorX.getText()));
+                //posicoes.setCodigo_posicao(1);
+                posicoes.setDescricao_posicao(jtaDescricao.getText());
+                posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));
+                posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorX.getText()));
         
-            posicoes.setCodigo_caminho(1); //apenas para teste
+                posicoes.setCodigo_caminho((int) ( arrayListCaminhos.get(jcbCaminho.getSelectedIndex()))); //apenas para teste
             
-            gDAO.adicionar(posicoes); //adicionando posicao
+                gDAO.adicionar(posicoes); //adicionando posicao
+                
+            /*    
+                PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
+                //tabela N pra N
+                posicoesNpcs.setCodigo_posicoes(posicoes.getCodigo_posicao());
+                posicoesNpcs.setCodigo_npc(((int) ((arrayListNpc.get(jcbNpc.getSelectedIndex())))));
             
-            //tabela N pra N
-            posicoesNpcs.setCodigo_posicoes(1); 
-            posicoesNpcs.setCodigo_npc(1);  
-            
-            gDAO.adicionar(posicoesNpcs); //adicionando tabela n-n posicoesNpcs
+                gDAO.adicionar(posicoesNpcs); //adicionando tabela n-n posicoesNpcs
+            */    
+                
+                //mensagem de cadastro
+                JOptionPane.showMessageDialog(null, "Posição cadastrada!");
+                //limpando campos apos cadastro
+                jtaDescricao.setText("");
+                jtfValorX.setText("");
+                jtfValorY.setText("");
+            }
             
         } catch (SQLException ex) {
             Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
@@ -226,6 +293,29 @@ public class JFPosicoes extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jbSalvarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        try {
+            carregaComboCaminhos();
+            carregaComboNpc();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
