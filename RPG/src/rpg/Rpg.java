@@ -30,35 +30,26 @@ public class Rpg {
 //        JFMestre m = new JFMestre();;
 //        m.setVisible(true);
         Personagens pp = new Personagens();
+
+        pp.setCodigo_personagem(1);
+
         Talentos tts = new Talentos();
+
+        tts.setCodigo_talento(5);
 
         aplicaTalento(pp, tts);
 
-//        list = gDao.listar3(tt, Personagens.class, TalentosPersonagem.class);;;;;;;
-//
-//        for (Object obj2 : list.get(0)) {
-//            Talentos ttt = (Talentos) obj2;
-//            System.out.println(ttt.getDescricao_talento());
-//        }
-//
-//        for (Object obj2 : list.get(1)) {
-//            Personagens pp = (Personagens) obj2;
-//            System.out.println(pp.getNome_personagem());
-//        }
-//
-//        for (Object obj2 : list.get(2)) {
-//            TalentosPersonagem ttp= (TalentosPersonagem) obj2;
-//            System.out.println(ttp.getBonus_talento_personagem());
-//        }
     }
 
     public static void aplicaTalento(Personagens pp, Talentos tts) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
         GenericDAO gd = new GenericDAO();
+        String sql = "";
+
         TalentosPersonagem tp = new TalentosPersonagem();
 
         List<Object> list = null;
-        list = gd.listar(Talentos.class);
+        list = gd.listar2(Talentos.class, tts);
         String bns = null;
 
         for (Object obj : list) {
@@ -70,31 +61,54 @@ public class Rpg {
         String[] bonus = bns.split(";");
 
         if (bonus[0].equalsIgnoreCase("personagens")) {
-
+            sql = "UPDATE " + bonus[0] + " SET ";
             int bnn = 0;
 
             Class cls = Personagens.class;
             Field listaAtributos[] = cls.getDeclaredFields();
 
             for (int i = 0; i < listaAtributos.length; i++) {
+
                 Field fld = listaAtributos[i];
                 fld.setAccessible(true);
+                String campo = fld.getName();
 
-                String teste = fld.getName();
+                if (campo.equalsIgnoreCase(bonus[1])) {
 
-                if (teste.equalsIgnoreCase(bonus[1])) {                   
-                    
                     bnn = Integer.valueOf(fld.get(pp).toString());
+                    bnn = bnn + Integer.valueOf(bonus[2]);
+                    sql += campo + " = '" + bnn + "'";
 
-                    bnn = bnn + Integer.valueOf(bonus[2]);    
-                    
-                   
                 }
-
             }
-
+            sql += " WHERE codigo_personagem = " + pp.getCodigo_personagem();
         }
 
-    }
+        if (bonus[0].equalsIgnoreCase("talentos")) {
+            sql = "UPDATE talentospersonagem SET ";
+            int bnn = 0;
 
+            Class cls = Talentos.class;
+            Field listaAtributos[] = cls.getDeclaredFields();
+
+            for (int i = 0; i < listaAtributos.length; i++) {
+
+                Field fld = listaAtributos[i];
+                fld.setAccessible(true);
+                String campo = fld.getName();
+
+                if (campo.equalsIgnoreCase(bonus[1])) {
+
+                    bnn = Integer.valueOf(fld.get(pp).toString());
+                    bnn = bnn + Integer.valueOf(bonus[2]);
+                    sql += campo + " = '" + bnn + "'";
+
+                }
+            }
+            sql += " WHERE codigo_personagem = " + pp.getCodigo_personagem();
+        }
+
+        System.out.println(sql);
+        gd.executaSql(sql);
+    }
 }

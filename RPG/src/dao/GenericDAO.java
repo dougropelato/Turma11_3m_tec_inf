@@ -422,18 +422,18 @@ public class GenericDAO {
      */
     public void excluir(Object obj) throws ClassNotFoundException,
             NoSuchFieldException, SQLException {
-        
+
         String campoTeste = null;
         String campo = null;
         int valorExcluir = 0;
         String classe = obj.getClass().getName();
         Class cls = Class.forName(classe);
         Field listaAtributos[] = cls.getDeclaredFields();
-        
+
         for (int i = 0; i < listaAtributos.length; i++) {
             Field fld = listaAtributos[i];
             fld.setAccessible(true);
-            
+
             try {
                 System.out.println("Valor...........: " + fld.get(obj));
                 campoTeste = fld.get(obj).toString();
@@ -487,4 +487,17 @@ public class GenericDAO {
 
         return pK;
     }
+
+    public String executaSql(String sql) throws SQLException {
+        String res = "foi";
+
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.execute();
+        stmt.close();
+        System.out.println("Sql foi executado");
+
+        return res;
+
+    }
+
 }
