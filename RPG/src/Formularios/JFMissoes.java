@@ -5,18 +5,44 @@
  */
 package formularios;
 
+import dao.GenericDAO;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import tabelas.Campanhas;
+
 /**
  *
  * @author Orlando
  */
-public class JFMissoes extends javax.swing.JFrame {
+public class JFMissoes extends javax.swing.JFrame {//Classe Pública JMissoes Extendida de Java.Swing.JFrame...
 
-    /**
-     * Creates new form Missoes
-     */
-    public JFMissoes() {
-        initComponents();
-    }
+    ArrayList pegaCod = new ArrayList<>(); //Array chamado 'pegacod' Público...
+   
+    //Ao Iniciar o Programa Faça...
+    public JFMissoes() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+        initComponents();//Inicia Componentes...
+        carregaComboBox();//Chama Método...
+    }//Fim Ações do Programa...
+    
+    private void carregaComboBox() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+        GenericDAO ccDAO = new GenericDAO();//Criando objeto ccDAO da Classe GenericDAO...
+        Campanhas ccMissao = new Campanhas();//Criando objeto ccMissao da Classe Campanhas...
+         
+        List<Object> list = ccDAO.listar(Campanhas.class);//Criando List da Classe Campanhas...
+        
+        for (Object obj : list) {//For para Listar Objetos...
+            Campanhas mm = (Campanhas) obj;//Criando objeto 'mm' do tipo 'Campanhas'
+           
+           System.out.println(mm.getCodigo_campanha() + mm.getNome_campanha());//Mostra Codigo e nome da campanha
+           pegaCod.add(mm.getCodigo_campanha());//ArrayList 'pegaCod' recebe o Código da Campanha selecionado no comboBox...
+           jcbCampanhas.addItem(mm.getNome_campanha());//ComboBox recebe o Nome da Campanha...
+        }//Fim For...
+   
+    }//Fim Método CarregaComboBox...
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,13 +67,16 @@ public class JFMissoes extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jcbCampanhas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jlCampanha.setText("Selecionar Campanha");
 
         jlNomeMissao.setText("Nome Missão");
 
         jbCadastrar.setText("Cadastrar");
+        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCadastrarActionPerformed(evt);
+            }
+        });
 
         jlTamMapa.setText("Tamanho Mapa");
 
@@ -125,6 +154,13 @@ public class JFMissoes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+    
+        if (jtfNomeMissao.toString().equals("")){
+          JO
+        }
+    }//GEN-LAST:event_jbCadastrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -156,7 +192,23 @@ public class JFMissoes extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFMissoes().setVisible(true);
+                try {
+                    new JFMissoes().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JFMissoes.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(JFMissoes.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NoSuchMethodException ex) {
+                    Logger.getLogger(JFMissoes.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(JFMissoes.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(JFMissoes.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(JFMissoes.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(JFMissoes.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
