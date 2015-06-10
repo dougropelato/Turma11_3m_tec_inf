@@ -51,11 +51,11 @@ public class Personagens {
         this.peso_personagem = peso_personagem;
     }
 
-    public Double getAltura_personagem() {
+    public int getAltura_personagem() {
         return altura_personagem;
     }
 
-    public void setAltura_personagem(Double altura_personagem) {
+    public void setAltura_personagem(int altura_personagem) {
         this.altura_personagem = altura_personagem;
     }
 
@@ -177,7 +177,7 @@ public class Personagens {
     String nome_personagem;
     int idade_personagem;
     int peso_personagem;
-    Double altura_personagem;
+    int altura_personagem;
     int forca_personagem;
     int destreza_personagem;
     int contituicao_personagem;
