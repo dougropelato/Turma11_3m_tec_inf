@@ -21,7 +21,27 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Douglas
+ * @author Douglas / Alex jonas
+ */
+/**
+ * *************************************************************************
+ * Método ALTERAR passar o objeto que vai ser alterado
+ * **************************************************************************
+ * Método LISTAR - passar a classe EX listar(Armas.class);
+ * *************************************************************************
+ * Método LISTAR2 passar como parametro a classe e o objeto com algo dentro
+ * *************************************************************************
+ * Método LISTAR3 passar como parametro o objeto com algo dentro uma classe que
+ * é o outro lado da n pra n e a classe n pra n
+ * ****************************************************************************************
+ * Função codigoMax passar como parametro a classe e ele vai retornar o valor da
+ * maior pk
+ * *************************************************************************
+ * Método ADICIONAR passar o objeto com os valeores para serem adicionados
+ * **************************************************************************
+ * Método executaSql passar como parametro uma sting com o sql monta dentro ela
+ * não lista nada so altera e ou deleta
+ * **************************************************************************
  */
 public class GenericDAO {
 
@@ -34,7 +54,7 @@ public class GenericDAO {
 
     /**
      * *************************************************************************
-     * Método ALTERAR
+     * Método ALTERAR passar o objeto que vai ser alterado
      * **************************************************************************
      */
     public void alterar(Object obj) throws ClassNotFoundException,
@@ -86,7 +106,7 @@ public class GenericDAO {
 
     /**
      * *************************************************************************
-     * Método LISTAR
+     * Método LISTAR - passar a classe EX listar(Armas.class);
      * **************************************************************************
      */
     public List<Object> listar(Class c)
@@ -130,7 +150,7 @@ public class GenericDAO {
 
     /**
      * *************************************************************************
-     * Método LISTAR2 passar como parame tro a classe e o objeto com algo dentro
+     * Método LISTAR2 passar como parametro a classe e o objeto com algo dentro
      * **************************************************************************
      */
     public List<Object> listar2(Class c, Object lugar)
@@ -202,6 +222,12 @@ public class GenericDAO {
         return list;
     }
 
+    /**
+     * *************************************************************************
+     * Método LISTAR3 passar como parametro o objeto com algo dentro uma classe
+     * que é o outro lado da n pra n e a classe n pra n
+     * **************************************************************************
+     */
     public List<List> listar3(Object TabelaA, Class TabelaB, Class nN)
             throws SQLException, IllegalAccessException, NoSuchMethodException,
             IllegalArgumentException, InvocationTargetException,
@@ -372,7 +398,7 @@ public class GenericDAO {
 
     /**
      * *************************************************************************
-     * Método ADICIONAR
+     * Método ADICIONAR passar o objeto com os valeores para serem adicionados
      * **************************************************************************
      */
     public void adicionar(Object obj) throws ClassNotFoundException,
@@ -417,7 +443,7 @@ public class GenericDAO {
 
     /**
      * *************************************************************************
-     * Método EXCLUIR
+     * Método EXCLUIR passar o objeto com o codigo setado para excluir
      * **************************************************************************
      */
     public void excluir(Object obj) throws ClassNotFoundException,
@@ -488,13 +514,18 @@ public class GenericDAO {
         return pK;
     }
 
+    /**
+     * *************************************************************************
+     * Método executaSql passar como parametro uma sting com o sql monta dentro
+     * ela não lista nada so altera e ou deleta
+     * **************************************************************************
+     */
     public String executaSql(String sql) throws SQLException {
-        String res = "foi";
+        String res = "O Sql foi executado";
 
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.execute();
         stmt.close();
-        System.out.println("Sql foi executado");
 
         return res;
 
