@@ -16,14 +16,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import tabelas.Caminhos;
 import tabelas.Campanhas;
+import tabelas.Posicoes;
 
 /**
  *
  * @author Alexjonas
  */
 public class JFPrincipal extends javax.swing.JFrame {
-    
+    int posi = 0;
     VerificaComandos vercom = new VerificaComandos();
     
     public void centralizarComponente(){
@@ -33,21 +35,46 @@ public class JFPrincipal extends javax.swing.JFrame {
     }
     
     public void principal() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException{
+        jTextArea1.setLineWrap(true);
         GenericDAO gDAO = new GenericDAO();
-        Campanhas campanha = new Campanhas(); 
+        Caminhos caminhos = new Caminhos();
+        Campanhas campanha = new Campanhas();
+        Posicoes posicoes = new Posicoes();
+        ArrayList arrayListDescPosicao = new ArrayList();
+        
+        //localiza a campanha selecionada
         campanha.setCodigo_campanha(2);  //precisa de uma verificação da campanha que o usuario seleciona
         List<Object> list = gDAO.listar2(Campanhas.class, campanha);
-        
             for (Object obj2 : list) {
                 Campanhas c = (Campanhas) obj2;
-                jTextArea1.setText("Bem vindo a campanha "+ c.getNome_campanha()); //mostra nome da campanha           
+                jTextArea1.setText("Bem vindo a campanha "+ c.getNome_campanha() +" \n "); //mostra nome da campanha 
+                jlCampanha.setText(c.getNome_campanha());
             }   
        
-          
-       /* //leitura da tabela de posiçoes    
-        while(){
+        jTextArea1.setText(jTextArea1.getText() +"Deseja seguir que caminho? \n ");
+
+        //Lista os caminhos para o jogador selecionar o desejado
+        caminhos.setCodigo_campanha(campanha.getCodigo_campanha());
+        List<Object> list2 = gDAO.listar2(Caminhos.class, caminhos);
             
-        }*/
+            for (Object obj3 : list2){
+                Caminhos ca = (Caminhos) obj3;
+                jTextArea1.setText(jTextArea1.getText() + ca.getCodigo_caminho() + " - " + ca.getNome_caminho() +" \n ");
+            }
+        
+        
+        if (Integer.toString(posi) != "0"){
+            posicoes.setCodigo_caminho(posi);
+            List<Object> list3 = gDAO.listar2(Posicoes.class, posicoes);
+                
+                for (Object obj4 : list3){
+                    Posicoes p = (Posicoes) obj4;
+                
+                    arrayListDescPosicao.add(posicoes.getDescricao_posicao());
+                    System.out.println(posicoes.getDescricao_posicao());
+                }
+        }
+        
     }
     /**
      * Creates new form formprincipal
@@ -78,7 +105,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
-        label2 = new java.awt.Label();
+        jlCampanha = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -130,7 +157,7 @@ public class JFPrincipal extends javax.swing.JFrame {
             .addGap(0, 32, Short.MAX_VALUE)
         );
 
-        label2.setText("label2");
+        jlCampanha.setText("label2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,7 +167,7 @@ public class JFPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jlCampanha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -166,7 +193,7 @@ public class JFPrincipal extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlCampanha, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -190,12 +217,13 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String string = jTextField1.getText();
-
-        // divide string em uma arraiy para verificar por partes
-        String[] comands = string.split(" ");
+        if (string != ""){
+            // divide string em uma arraiy para verificar por partes
+            String[] comands = string.split(" ");
+            posi = Integer.parseInt(string);
         
-        jTextArea1.setText(string); // mostra no texto da historia 
-        
+            jTextArea1.setText( jTextArea1.getText()+" \n Jogador diz: "+string); // mostra no texto da historia 
+        }
         // limpa comando digitado
         jTextField1.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -256,7 +284,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField1;
-    private java.awt.Label label2;
+    private java.awt.Label jlCampanha;
     // End of variables declaration//GEN-END:variables
 
 }

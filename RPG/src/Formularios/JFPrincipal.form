@@ -30,7 +30,7 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="label2" max="32767" attributes="0"/>
+                      <Component id="jlCampanha" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jPanel1" max="32767" attributes="0"/>
                   </Group>
@@ -65,7 +65,7 @@
               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="label2" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="jlCampanha" min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
@@ -177,7 +177,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="java.awt.Label" name="label2">
+    <Component class="java.awt.Label" name="jlCampanha">
       <Properties>
         <Property name="text" type="java.lang.String" value="label2"/>
       </Properties>
