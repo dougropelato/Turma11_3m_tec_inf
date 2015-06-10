@@ -1350,25 +1350,25 @@ public class JFNpc extends javax.swing.JFrame {
             // Cadastra ArmadurasNpcs   
             armaduranpc.setCodigo_npc(codMaxNPC);
             armaduranpc.setCodigo_armadura(Integer.parseInt(jTFCodArmadura.getText()));
-            armaduranpc.setQuantidade_armadura(Integer.parseInt(jTFQuantidadeArmaduraNpc.getText()));
+            //armaduranpc.setQuantidade_armadura(Integer.parseInt(jTFQuantidadeArmaduraNpc.getText()));
             gDao.adicionar(armaduranpc);
 
             // Cadastra ArmaNpcs
             armanpc.setCodigo_npc(codMaxNPC);                
             armanpc.setCodigo_arma(Integer.parseInt(jTFCodArma.getText()));
-            armanpc.setQuantidade_arma(Integer.parseInt(jTFQuantidadeArmaNpc.getText()));
+            //armanpc.setQuantidade_arma(Integer.parseInt(jTFQuantidadeArmaNpc.getText()));
             gDao.adicionar(armanpc);    
 
             // Cadastra ConsumiveisNpcs
             consumivelnpc.setCodigo_npc(codMaxNPC);    
             consumivelnpc.setCodigo_consumivel(Integer.parseInt(jTFCodConsumivel.getText()));
-            consumivelnpc.setQuantidade_consumivel(Integer.parseInt(jTFQuantidadeConsumivelNpc.getText()));
+            //consumivelnpc.setQuantidade_consumivel(Integer.parseInt(jTFQuantidadeConsumivelNpc.getText()));
             gDao.adicionar(consumivelnpc);  
 
             // Cadastra EscudosNpcs
             escudonpc.setCodigo_npc(codMaxNPC); 
             escudonpc.setCodigo_escudo(Integer.parseInt(jTFCodEscudo.getText()));
-            escudonpc.setQuantidade_escudos(Integer.parseInt(jTFQuantidadeEscudoNpc.getText()));
+            //escudonpc.setQuantidade_escudos(Integer.parseInt(jTFQuantidadeEscudoNpc.getText()));
             gDao.adicionar(escudonpc);
             
             JOptionPane.showMessageDialog(null, "Npc Combatente cadastrado!");    
@@ -1431,7 +1431,7 @@ public class JFNpc extends javax.swing.JFrame {
             armanpc.setCodigo_npc(codMaxNPC);                
             armanpc.setCodigo_arma(Integer.parseInt(jTFCodArma.getText()));
             armanpc.setQuantidade_arma(Integer.parseInt(jTFQuantidadeArmaNpc.getText()));
-            gDao.adicionar(armanpc);    
+            //gDao.adicionar(armanpc);    
                 
             // Cadastra ConsumiveisNpcs
             consumivelnpc.setCodigo_npc(codMaxNPC);    
@@ -1444,7 +1444,7 @@ public class JFNpc extends javax.swing.JFrame {
             escudonpc.setCodigo_escudo(Integer.parseInt(jTFCodEscudo.getText()));
             escudonpc.setQuantidade_escudos(Integer.parseInt(jTFQuantidadeEscudoNpc.getText()));
             gDao.adicionar(escudonpc);
-                    
+      
             if (jTFIndexTipoNpc.getText().equals("1")){
                 JOptionPane.showMessageDialog(null, "Npc Comerciante cadastrado!");
             }
@@ -1601,30 +1601,6 @@ public class JFNpc extends javax.swing.JFrame {
                         LimparCampos(evt);  // Chama evt LimparCampos
                 }   // Fim else - Cadastro Npc Guia ou Missão      
             }   // Fim if - Verifica se tipo Npc é Guia ou Missão
-  
-                /*    
-                
-                // Limpa os campos
-                jCBArmaduraNpc.setSelectedIndex(-1);
-                jTFCodArmadura.setText("");
-                jTFQuantidadeArmaduraNpc.setText("");
-
-                // Limpa os campos
-                jCBArmaNpc.setSelectedIndex(-1);
-                jTFCodArmadura.setText("");
-                jTFQuantidadeArmaduraNpc.setText("");
-
-                // Limpa os campos
-                jCBConsumivelNpc.setSelectedIndex(-1);
-                jTFCodConsumivel.setText("");   
-                jTFQuantidadeConsumivelNpc.setText("");
-
-                // Limpa os campos
-                jCBEscudoNpc.setSelectedIndex(-1);
-                jTFCodEscudo.setText("");
-                jTFQuantidadeEscudoNpc.setText("");
-                
-                */
             
         } catch (SQLException | ClassNotFoundException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
