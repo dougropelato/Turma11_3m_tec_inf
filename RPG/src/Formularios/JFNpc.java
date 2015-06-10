@@ -29,6 +29,7 @@ import tabelas.EscudosNpcs;
 import tabelas.Falas;
 import tabelas.Npcs;
 import tabelas.NpcsFalas;
+import tabelas.Personagens;
 
 /**
  *
@@ -135,6 +136,7 @@ public class JFNpc extends javax.swing.JFrame {
         jTFCodClasse = new javax.swing.JTextField();
         jBAdicionarItenNpc = new javax.swing.JButton();
         jTFIndexTipoNpc = new javax.swing.JTextField();
+        jBTestes = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         LabelNovaFalaNomeNpc = new javax.swing.JLabel();
         LabelCadastroNovaFalaNpc = new javax.swing.JLabel();
@@ -554,6 +556,16 @@ public class JFNpc extends javax.swing.JFrame {
 
         jTFIndexTipoNpc.setEditable(false);
         jPCadastrar.add(jTFIndexTipoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 77, 30, -1));
+
+        jBTestes.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jBTestes.setForeground(new java.awt.Color(255, 0, 51));
+        jBTestes.setText("Testes");
+        jBTestes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBTestesActionPerformed(evt);
+            }
+        });
+        jPCadastrar.add(jBTestes, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 410, 120, 120));
 
         jTPNPC.addTab("Cadastrar", jPCadastrar);
 
@@ -1340,35 +1352,37 @@ public class JFNpc extends javax.swing.JFrame {
             npcfala.setCodigo_fala(codMaxFala);
             npcfala.setCodigo_npc(codMaxNPC);
             gDao.adicionar(npcfala);
-
+            
+            int codMaxPersonagem = gDao.codigoMax(Personagens.class);
+            System.out.println(codMaxPersonagem);
+            
             // Cadastra NpcsCombatentes
-            //npccombate.setCodigo_npc(codMaxNPC);
-            //npccombate.setCodigo_npc_combatente();
-            //npccombate.setCodigo_personagem();
-            //gDao.adicionar(npccombate);
+            npccombate.setCodigo_npc(codMaxNPC);
+            npccombate.setCodigo_personagem(codMaxPersonagem);
+            gDao.adicionar(npccombate);
                 
             // Cadastra ArmadurasNpcs   
             armaduranpc.setCodigo_npc(codMaxNPC);
             armaduranpc.setCodigo_armadura(Integer.parseInt(jTFCodArmadura.getText()));
-            //armaduranpc.setQuantidade_armadura(Integer.parseInt(jTFQuantidadeArmaduraNpc.getText()));
+            armaduranpc.setQuantidade_armadura(Integer.parseInt(jTFQuantidadeArmaduraNpc.getText()));
             gDao.adicionar(armaduranpc);
 
             // Cadastra ArmaNpcs
             armanpc.setCodigo_npc(codMaxNPC);                
             armanpc.setCodigo_arma(Integer.parseInt(jTFCodArma.getText()));
-            //armanpc.setQuantidade_arma(Integer.parseInt(jTFQuantidadeArmaNpc.getText()));
+            armanpc.setQuantidade_arma(Integer.parseInt(jTFQuantidadeArmaNpc.getText()));
             gDao.adicionar(armanpc);    
 
             // Cadastra ConsumiveisNpcs
             consumivelnpc.setCodigo_npc(codMaxNPC);    
             consumivelnpc.setCodigo_consumivel(Integer.parseInt(jTFCodConsumivel.getText()));
-            //consumivelnpc.setQuantidade_consumivel(Integer.parseInt(jTFQuantidadeConsumivelNpc.getText()));
+            consumivelnpc.setQuantidade_consumivel(Integer.parseInt(jTFQuantidadeConsumivelNpc.getText()));
             gDao.adicionar(consumivelnpc);  
 
             // Cadastra EscudosNpcs
             escudonpc.setCodigo_npc(codMaxNPC); 
             escudonpc.setCodigo_escudo(Integer.parseInt(jTFCodEscudo.getText()));
-            //escudonpc.setQuantidade_escudos(Integer.parseInt(jTFQuantidadeEscudoNpc.getText()));
+            escudonpc.setQuantidade_escudos(Integer.parseInt(jTFQuantidadeEscudoNpc.getText()));
             gDao.adicionar(escudonpc);
             
             JOptionPane.showMessageDialog(null, "Npc Combatente cadastrado!");    
@@ -1431,7 +1445,7 @@ public class JFNpc extends javax.swing.JFrame {
             armanpc.setCodigo_npc(codMaxNPC);                
             armanpc.setCodigo_arma(Integer.parseInt(jTFCodArma.getText()));
             armanpc.setQuantidade_arma(Integer.parseInt(jTFQuantidadeArmaNpc.getText()));
-            //gDao.adicionar(armanpc);    
+            gDao.adicionar(armanpc);    
                 
             // Cadastra ConsumiveisNpcs
             consumivelnpc.setCodigo_npc(codMaxNPC);    
@@ -1763,8 +1777,9 @@ public class JFNpc extends javax.swing.JFrame {
 
                 LimparComboBoxs(null); // Chama evt LimparComboBoxs
                 
-                ListarAtributos(null);  // Chama evt ListarAtributos
                 ListarItens(null);  // Chama evt ListarItens
+                ListarAtributos(null);  // Chama evt ListarAtributos
+                
 
                 // Seleciona index -1
                 // Atributos
@@ -1904,6 +1919,33 @@ public class JFNpc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBEscudoNpcItemStateChanged
 
+    // Botão para testes de código
+    private void jBTestesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTestesActionPerformed
+        // TODO add your handling code here:
+
+        try {
+ 
+        GenericDAO gDao = new GenericDAO();
+        
+        // Carrega combobox Raças    
+        List<Object> listarRacas = null;
+            try {
+                listarRacas = gDao.listar(Raca.class);
+            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+                    Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            for (Object obj2 : listarRacas) {
+                Raca racanpc = (Raca) obj2;
+                jCBRaca.addItem(racanpc.getNome_raca());
+            }
+        // Fim listar Raças  
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+    } 
+    }//GEN-LAST:event_jBTestesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1969,6 +2011,7 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JButton jBExcluirNpc;
     private javax.swing.JButton jBNovaFalaAdicionarFala;
     private javax.swing.JButton jBNovaFalaCadastrar;
+    private javax.swing.JButton jBTestes;
     private javax.swing.JComboBox jCBAlterarArmaNpc;
     private javax.swing.JComboBox jCBAlterarArmaduraNpc;
     private javax.swing.JComboBox jCBAlterarClasse;
