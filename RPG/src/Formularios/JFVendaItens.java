@@ -333,7 +333,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 
             PersonagensArmaduras comprar = new PersonagensArmaduras();
 
-            int varComprarQuant = (Integer.parseInt(QuantComprar.getText()));  
+            int varComprarQuant = (Integer.parseInt(QuantComprar.getText()));
 
             try {
 
@@ -517,6 +517,7 @@ public class JFVendaItens extends javax.swing.JFrame {
     private void jcbComprarArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbComprarArmasActionPerformed
 
         GenericDAO gDao = null;
+
         try {
             gDao = new GenericDAO();
         } catch (SQLException ex) {
@@ -701,26 +702,47 @@ public class JFVendaItens extends javax.swing.JFrame {
         }
 
         for (Object obj2 : list) {
+
             PersonagensArmas armaNN = (PersonagensArmas) obj2;
-            jcVenderArmas.addItem(armaNN.getCodigo_arma());
-        }
-        
-        
+            Armas arma = new Armas();
+            List<Object> ListarArmas = new ArrayList<>();
 
-                /*PersonagensArmas arma = new PersonagensArmas();
-                List<Object> ListarArmas = new ArrayList<>();
+            int mostrarCodigo = (armaNN.getCodigo_arma());
+            System.out.println(mostrarCodigo);
 
-                arma.setCodigo_arma((int) jcVenderArmas.getSelectedItem());
+            arma.setCodigo_arma(mostrarCodigo);
 
+            try {
                 ListarArmas = gDao.listar2(Armas.class, arma);
+            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-                for (Object ll1 : ListarArmas) {
-                    Armas aa = (Armas) ll1;
-                    System.out.println(aa.getNome_arma());   /// mostra o nome
-                    //comprar.setCodigo_armadura(aa.getCodigo_armadura()); /// cadastra no banco o codigo
-                }*/
+            for (Object ll1 : ListarArmas) {
+                Armas aa = (Armas) ll1;
+                jcVenderArmas.addItem(mostrarCodigo + " - " + aa.getNome_arma()); /// adiciona no combo o codigo + nome
 
+            } 
 
+        }
+
+        /*
+        
+         arma.setCodigo_arma((int) jcVenderArmas.getSelectedItem());
+         PersonagensArmas arma = new PersonagensArmas();
+         List<Object> ListarArmas = new ArrayList<>();
+
+            
+
+         ListarArmas = gDao.listar2(Armas.class, arma);
+
+         for (Object ll1 : ListarArmas) {
+         Armas aa = (Armas) ll1;
+         System.out.println(aa.getNome_arma());   /// mostra o nome
+         //comprar.setCodigo_armadura(aa.getCodigo_armadura()); /// cadastra no banco o codigo
+         }
+         }
+         */
         if (jcbVenderArmas.isSelected()) {
             jcVenderArmas.setVisible(true);
             jbVender.setVisible(true);
@@ -737,7 +759,7 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbVenderArmasActionPerformed
 
     private void jcbVenderArmadurasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbVenderArmadurasActionPerformed
-        
+
         GenericDAO gDao = null;
         try {
             gDao = new GenericDAO();
@@ -756,10 +778,30 @@ public class JFVendaItens extends javax.swing.JFrame {
         }
 
         for (Object obj2 : list) {
-            PersonagensArmaduras armaduraNN = (PersonagensArmaduras) obj2;
-            jcVenderArmaduras.addItem(armaduraNN.getCodigo_armadura());
+
+            PersonagensArmaduras armadurasNN = (PersonagensArmaduras) obj2;
+            Armaduras armadura = new Armaduras();
+            List<Object> ListarArmaduras = new ArrayList<>();
+
+            int mostrarCodigo = (armadurasNN.getCodigo_armadura());
+            System.out.println(mostrarCodigo);
+
+            armadura.setCodigo_armadura(mostrarCodigo);
+
+            try {
+                ListarArmaduras = gDao.listar2(Armaduras.class, armadura);
+            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            for (Object ll1 : ListarArmaduras) {
+                Armaduras aa = (Armaduras) ll1;
+                jcVenderArmaduras.addItem(mostrarCodigo + " - " + aa.getNome_armadura()); /// adiciona no combo o codigo + nome
+
+            } 
+
         }
-               
+
         if (jcbVenderArmaduras.isSelected()) {
             jcVenderArmaduras.setVisible(true);
             jbVender.setVisible(true);
@@ -797,8 +839,7 @@ public class JFVendaItens extends javax.swing.JFrame {
             PersonagensEscudos escudoNN = (PersonagensEscudos) obj2;
             jcVenderEscudos.addItem(escudoNN.getCodigo_escudo());
         }
-        
-        
+
         if (jcbVenderEscudos.isSelected()) {
             jcVenderEscudos.setVisible(true);
             jbVender.setVisible(true);
@@ -836,7 +877,7 @@ public class JFVendaItens extends javax.swing.JFrame {
             PersonagensConsumiveis consumivelNN = (PersonagensConsumiveis) obj2;
             jcVenderEscudos.addItem(consumivelNN.getCodigo_consumivel());
         }
-        
+
         if (jcbVenderConsumiveis.isSelected()) {
             jcVenderConsumiveis.setVisible(true);
             jbVender.setVisible(true);
@@ -894,7 +935,36 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_jcComprarArmadurasActionPerformed
 
     private void jcVenderArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcVenderArmasActionPerformed
-        // TODO add your handling code here:
+        /* GenericDAO gDao = null;
+         try {
+         gDao = new GenericDAO();
+         } catch (SQLException ex) {
+         Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+         //Armas arma = new Armas();
+         PersonagensArmas armaNN = new PersonagensArmas();
+         armaNN.setCodigo_arma((int) jcVenderArmas.getSelectedItem());
+            
+         List<Object> ListarArmas = new ArrayList<>();
+
+            
+
+         try {
+         ListarArmas = gDao.listar2(Armas.class, armaNN);
+         } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+         Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+         }
+
+         for (Object ll1 : ListarArmas) {
+         Armas aa = (Armas) ll1;
+         System.out.println(aa.getNome_arma());   /// mostra o nome
+                
+         }
+        
+         */
+
+
     }//GEN-LAST:event_jcVenderArmasActionPerformed
 
     /**
