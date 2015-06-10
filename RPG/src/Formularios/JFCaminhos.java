@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import tabelas.Caminhos;
+import tabelas.Campanhas;
 import tabelas.Npcs;
 
 /**
@@ -32,20 +33,19 @@ public class JFCaminhos extends javax.swing.JFrame {
         setLocation((ds.width - dw.width)/2, (ds.height - dw.height)/2);
     }
     
-    public void carregaComboMissoes() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException{
+    public void carregaComboCampanha() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException{
 
         GenericDAO gDAO = new GenericDAO();
-        Missoes missoes = new Missoes();
-        List<Object> list = gDAO.listar(Missoes.class);
+        Campanhas campanhas = new Campanhas();
+        List<Object> list = gDAO.listar(Campanhas.class);
     
         for (Object obj2 : list) {
-            Missoes m = (Missoes) obj2;
+            Campanhas c = (Campanhas) obj2;
             
-            System.out.println("cod npc "+ m.getCodigo_missao());
-            System.out.println("nome npc "+ m.getCodigo_missao());
+            System.out.println("cod npc "+ c.getCodigo_campanha());
             
-            arrayListMissoes.add(m.getCodigo_missao());
-            jcbMissao.addItem(m.getNome_missao());
+            arrayListMissoes.add(c.getCodigo_campanha());
+            jcbMissao.addItem(c.getNome_campanha());
         }
     }
     /**
@@ -54,7 +54,7 @@ public class JFCaminhos extends javax.swing.JFrame {
     public JFCaminhos() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         initComponents();
         centralizarComponente();
-        carregaComboMissoes();
+        carregaComboCampanha();
     }
 
     /**
@@ -145,7 +145,7 @@ public class JFCaminhos extends javax.swing.JFrame {
         
             caminhos.setNome_caminho(jtfCaminho.getText());
         
-            caminhos.setCodigo_missao((int) ( arrayListMissoes.get(jcbMissao.getSelectedIndex()))); //apenas para teste
+            caminhos.setCodigo_campanha((int) ( arrayListMissoes.get(jcbMissao.getSelectedIndex()))); //apenas para teste
         
             GenericDAO gDAO = new GenericDAO();
             gDAO.adicionar(caminhos);
