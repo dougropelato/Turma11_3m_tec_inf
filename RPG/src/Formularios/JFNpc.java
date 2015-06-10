@@ -1754,6 +1754,30 @@ public class JFNpc extends javax.swing.JFrame {
                 jTFCodEscudo.setText("");
     
             }
+            
+            if (jTFIndexTipoNpc.getText().equals("1")) { 
+                
+                // Armaduras 
+                jTFCodArmadura.setVisible(true);
+                jCBArmaduraNpc.setVisible(true);
+                jTFQuantidadeArmaduraNpc.setVisible(true);
+                
+                // Armas
+                jTFCodArma.setVisible(true);
+                jCBArmaNpc.setVisible(true);
+                jTFQuantidadeArmaNpc.setVisible(true);
+    
+                // Consumiveis
+                jTFCodConsumivel.setVisible(true);
+                jCBConsumivelNpc.setVisible(true);
+                jTFQuantidadeConsumivelNpc.setVisible(true);
+    
+                // Escudos
+                jTFCodEscudo.setVisible(true);
+                jCBEscudoNpc.setVisible(true);
+                jTFQuantidadeEscudoNpc.setVisible(true);
+                
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
