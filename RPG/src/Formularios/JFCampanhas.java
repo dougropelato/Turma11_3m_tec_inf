@@ -38,6 +38,10 @@ public class JFCampanhas extends javax.swing.JFrame {
         jlCampanha = new javax.swing.JLabel();
         jbCadastrar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
+        jlTamX = new javax.swing.JLabel();
+        jlTamY = new javax.swing.JLabel();
+        jtfTamX = new javax.swing.JTextField();
+        jtfTamY = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -63,21 +67,38 @@ public class JFCampanhas extends javax.swing.JFrame {
             }
         });
 
+        jlTamX.setText("Tamanho X");
+
+        jlTamY.setText("Tamanho Y");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jlCampanha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
                         .addComponent(jbCadastrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbCancelar))
-                    .addComponent(jtfNomeCampanha, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jlCampanha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtfNomeCampanha, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jlTamX)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtfTamX, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jlTamY)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtfTamY, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,9 +109,17 @@ public class JFCampanhas extends javax.swing.JFrame {
                     .addComponent(jlCampanha))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlTamX)
+                    .addComponent(jtfTamX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlTamY)
+                    .addComponent(jtfTamY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCadastrar)
                     .addComponent(jbCancelar))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -101,7 +130,7 @@ public class JFCampanhas extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfNomeCampanhaActionPerformed
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
-8
+
         try {//Tente cadastrar a camapnha...
             if (jtfNomeCampanha.getText().equals("")) { //Caso o Campo para Cadastro esteja em branco na hora do cadastro faça...
                 JOptionPane.showMessageDialog(null, "Por Favor Insira Nome da Campanha!");//Exite Tela com a Mensagem "Por Favor Insira Nome da Campanha!"
@@ -174,6 +203,10 @@ public class JFCampanhas extends javax.swing.JFrame {
     private javax.swing.JButton jbCadastrar;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JLabel jlCampanha;
+    private javax.swing.JLabel jlTamX;
+    private javax.swing.JLabel jlTamY;
     private javax.swing.JTextField jtfNomeCampanha;
+    private javax.swing.JTextField jtfTamX;
+    private javax.swing.JTextField jtfTamY;
     // End of variables declaration//GEN-END:variables
 }

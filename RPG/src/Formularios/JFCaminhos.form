@@ -27,7 +27,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jlCaminho" min="-2" max="-2" attributes="0"/>
-                  <Component id="jlMissao" min="-2" max="-2" attributes="0"/>
+                  <Component id="jlCampanha" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -40,7 +40,7 @@
                       <Component id="jbCancelar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="12" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -50,7 +50,7 @@
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jcbMissao" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jlMissao" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jlCampanha" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -93,9 +93,9 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jlMissao">
+    <Component class="javax.swing.JLabel" name="jlCampanha">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Selecionar Miss&#xe3;o"/>
+        <Property name="text" type="java.lang.String" value="Selecionar Campanha"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jbCancelar">

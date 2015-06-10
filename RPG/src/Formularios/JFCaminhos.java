@@ -16,7 +16,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import tabelas.Caminhos;
-import tabelas.Missoes;
 import tabelas.Npcs;
 
 /**
@@ -71,7 +70,7 @@ public class JFCaminhos extends javax.swing.JFrame {
         jlCaminho = new javax.swing.JLabel();
         jbSalvar = new javax.swing.JButton();
         jcbMissao = new javax.swing.JComboBox();
-        jlMissao = new javax.swing.JLabel();
+        jlCampanha = new javax.swing.JLabel();
         jbCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -91,7 +90,7 @@ public class JFCaminhos extends javax.swing.JFrame {
             }
         });
 
-        jlMissao.setText("Selecionar Missão");
+        jlCampanha.setText("Selecionar Campanha");
 
         jbCancelar.setText("Cancelar");
 
@@ -103,7 +102,7 @@ public class JFCaminhos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jlCaminho)
-                    .addComponent(jlMissao))
+                    .addComponent(jlCampanha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jtfCaminho)
@@ -113,7 +112,7 @@ public class JFCaminhos extends javax.swing.JFrame {
                         .addComponent(jbSalvar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbCancelar)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +120,7 @@ public class JFCaminhos extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbMissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlMissao))
+                    .addComponent(jlCampanha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfCaminho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -143,7 +142,6 @@ public class JFCaminhos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Insira um nome para esse caminho"); 
         }else {
             Caminhos caminhos = new Caminhos();
-            Missoes missoes = new Missoes();
         
             caminhos.setNome_caminho(jtfCaminho.getText());
         
@@ -229,7 +227,7 @@ public class JFCaminhos extends javax.swing.JFrame {
     private javax.swing.JButton jbSalvar;
     private javax.swing.JComboBox jcbMissao;
     private javax.swing.JLabel jlCaminho;
-    private javax.swing.JLabel jlMissao;
+    private javax.swing.JLabel jlCampanha;
     private javax.swing.JTextField jtfCaminho;
     // End of variables declaration//GEN-END:variables
 }
