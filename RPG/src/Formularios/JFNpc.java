@@ -153,6 +153,7 @@ public class JFNpc extends javax.swing.JFrame {
         jTANovaFalaRespostaNegativa = new javax.swing.JTextArea();
         jBNovaFalaAdicionar = new javax.swing.JButton();
         jTFNovaFalaTipoNpc = new javax.swing.JTextField();
+        jBNovaFalaAtualizar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         LabelAdicionarNovosItens = new javax.swing.JLabel();
         LabelNovosItensNomeNpc = new javax.swing.JLabel();
@@ -271,11 +272,6 @@ public class JFNpc extends javax.swing.JFrame {
 
         jTPNPC.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTPNPC.setToolTipText("");
-        jTPNPC.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jTPNPCStateChanged(evt);
-            }
-        });
 
         jPCadastrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPCadastrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -319,6 +315,8 @@ public class JFNpc extends javax.swing.JFrame {
         jTADescricaoNpc.setColumns(20);
         jTADescricaoNpc.setLineWrap(true);
         jTADescricaoNpc.setRows(5);
+        jTADescricaoNpc.setToolTipText("");
+        jTADescricaoNpc.setWrapStyleWord(true);
         jTADescricaoNpc.setPreferredSize(null);
         jScrollPane1.setViewportView(jTADescricaoNpc);
 
@@ -327,6 +325,7 @@ public class JFNpc extends javax.swing.JFrame {
         jTAFalaNpc.setColumns(20);
         jTAFalaNpc.setLineWrap(true);
         jTAFalaNpc.setRows(5);
+        jTAFalaNpc.setWrapStyleWord(true);
         jTAFalaNpc.setPreferredSize(null);
         jScrollPane2.setViewportView(jTAFalaNpc);
 
@@ -335,6 +334,7 @@ public class JFNpc extends javax.swing.JFrame {
         jTARespostaNegativa.setColumns(20);
         jTARespostaNegativa.setLineWrap(true);
         jTARespostaNegativa.setRows(5);
+        jTARespostaNegativa.setWrapStyleWord(true);
         jTARespostaNegativa.setPreferredSize(null);
         jScrollPane3.setViewportView(jTARespostaNegativa);
 
@@ -343,6 +343,7 @@ public class JFNpc extends javax.swing.JFrame {
         jTARespostaPositiva.setColumns(20);
         jTARespostaPositiva.setLineWrap(true);
         jTARespostaPositiva.setRows(5);
+        jTARespostaPositiva.setWrapStyleWord(true);
         jTARespostaPositiva.setPreferredSize(null);
         jScrollPane4.setViewportView(jTARespostaPositiva);
 
@@ -587,6 +588,7 @@ public class JFNpc extends javax.swing.JFrame {
         jPCadastrar.add(jBAdicionarItenNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 540, 120, 30));
 
         jTFIndexTipoNpc.setEditable(false);
+        jTFIndexTipoNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPCadastrar.add(jTFIndexTipoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 77, 40, -1));
 
         jBTestes.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -640,6 +642,7 @@ public class JFNpc extends javax.swing.JFrame {
         jTANovaFalaNpc.setColumns(20);
         jTANovaFalaNpc.setLineWrap(true);
         jTANovaFalaNpc.setRows(5);
+        jTANovaFalaNpc.setWrapStyleWord(true);
         jTANovaFalaNpc.setPreferredSize(null);
         jScrollPane5.setViewportView(jTANovaFalaNpc);
 
@@ -648,6 +651,7 @@ public class JFNpc extends javax.swing.JFrame {
         jTANovaFalaRespostaPositiva.setColumns(20);
         jTANovaFalaRespostaPositiva.setLineWrap(true);
         jTANovaFalaRespostaPositiva.setRows(5);
+        jTANovaFalaRespostaPositiva.setWrapStyleWord(true);
         jTANovaFalaRespostaPositiva.setPreferredSize(null);
         jScrollPane6.setViewportView(jTANovaFalaRespostaPositiva);
 
@@ -656,6 +660,7 @@ public class JFNpc extends javax.swing.JFrame {
         jTANovaFalaRespostaNegativa.setColumns(20);
         jTANovaFalaRespostaNegativa.setLineWrap(true);
         jTANovaFalaRespostaNegativa.setRows(5);
+        jTANovaFalaRespostaNegativa.setWrapStyleWord(true);
         jTANovaFalaRespostaNegativa.setPreferredSize(null);
         jScrollPane8.setViewportView(jTANovaFalaRespostaNegativa);
 
@@ -670,7 +675,16 @@ public class JFNpc extends javax.swing.JFrame {
         jPanel3.add(jBNovaFalaAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, 120, 30));
 
         jTFNovaFalaTipoNpc.setEditable(false);
+        jTFNovaFalaTipoNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel3.add(jTFNovaFalaTipoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 77, 155, -1));
+
+        jBNovaFalaAtualizar.setText("Atualizar");
+        jBNovaFalaAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNovaFalaAtualizarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jBNovaFalaAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 42, 120, 30));
 
         jTPNPC.addTab("Adicionar Nova Fala", jPanel3);
 
@@ -703,6 +717,7 @@ public class JFNpc extends javax.swing.JFrame {
         jPanel2.add(LabelNovosItensTipoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 80, 45, -1));
 
         jTFNovosItensTipoNpc.setEditable(false);
+        jTFNovosItensTipoNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel2.add(jTFNovosItensTipoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 77, 155, -1));
 
         jLNovosItens.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -1100,7 +1115,7 @@ public class JFNpc extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTPNPC, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
+                .addComponent(jTPNPC, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2228,38 +2243,7 @@ public class JFNpc extends javax.swing.JFrame {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jCBClasseItemStateChanged
-
-    // Lista Npcs cadastrados e mostra em Combobox em aba Adicionar Nova Falas
-    private void jTPNPCStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTPNPCStateChanged
-
-        try { 
-            
-        GenericDAO gDao = new GenericDAO();
-        
-        // Carrega combobox Npcs    
-        List<Object> listarNpcs = null;
-            try {
-                listarNpcs = gDao.listar(Npcs.class);
-            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
-                    Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            for (Object obj2 : listarNpcs) {
-                Npcs nomenpc = (Npcs) obj2;
-                jCBNovaFalaNomeNpc.addItem(nomenpc.getNome_npc());
-            }
-        // Fim listar Npcs
-            
-            // Deixa campos em branco
-            jCBNovaFalaNomeNpc.setSelectedIndex(-1);
-            jTFNovaFalaCodigoNpc.setText("");
-            jTFNovaFalaTipoNpc.setText("");
-
-        } catch (SQLException ex) {
-            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jTPNPCStateChanged
-    
+ 
     // Busca atraves de nome_npc o codigo_npc e tipo_npc, mostrando em edits em aba Adicionar Nova Fala
     private void jCBNovaFalaNomeNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNovaFalaNomeNpcItemStateChanged
         
@@ -2325,7 +2309,7 @@ public class JFNpc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBNovosItensNomeNpcItemStateChanged
     
-    //  Busca atraves do nome_armadura o codigo_armadura e mostra em edit em aba Adicionar Novos Itens 
+    // Busca atraves do nome_armadura o codigo_armadura e mostra em edit em aba Adicionar Novos Itens 
     private void jCBNovosItensArmaduraNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNovosItensArmaduraNpcItemStateChanged
         
         try {    
@@ -2349,7 +2333,7 @@ public class JFNpc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBNovosItensArmaduraNpcItemStateChanged
 
-    //  Busca atraves do nome_arma o codigo_arma e mostra em edit em aba Adicionar Novos Itens  
+    // Busca atraves do nome_arma o codigo_arma e mostra em edit em aba Adicionar Novos Itens  
     private void jCBNovosItensArmaNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNovosItensArmaNpcItemStateChanged
         
         try {    
@@ -2373,7 +2357,7 @@ public class JFNpc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBNovosItensArmaNpcItemStateChanged
     
-    //  Busca atraves do nome_consumivel o codigo_consumivel e mostra em edit em aba Adicionar Novos Itens  
+    // Busca atraves do nome_consumivel o codigo_consumivel e mostra em edit em aba Adicionar Novos Itens  
     private void jCBNovosItensConsumivelNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNovosItensConsumivelNpcItemStateChanged
         
         try {    
@@ -2397,7 +2381,7 @@ public class JFNpc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBNovosItensConsumivelNpcItemStateChanged
 
-    //  Busca atraves do nome_escudo o codigo_escudo e mostra em edit em aba Adicionar Novos Itens
+    // Busca atraves do nome_escudo o codigo_escudo e mostra em edit em aba Adicionar Novos Itens
     private void jCBNovosItensEscudoNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNovosItensEscudoNpcItemStateChanged
         
         try {    
@@ -2475,6 +2459,39 @@ public class JFNpc extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jBNovosItensAtualizarActionPerformed
+    
+    // Lista Npcs cadastrados e mostra em Combobox em aba Adicionar Nova Falas
+    private void jBNovaFalaAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovaFalaAtualizarActionPerformed
+        
+        try { 
+            
+        GenericDAO gDao = new GenericDAO();
+        
+        jCBNovaFalaNomeNpc.removeAllItems();
+        
+        // Carrega combobox Npcs    
+        List<Object> listarNpcs = null;
+            try {
+                listarNpcs = gDao.listar(Npcs.class);
+            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+                    Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            for (Object obj2 : listarNpcs) {
+                Npcs nomenpc = (Npcs) obj2;
+                jCBNovaFalaNomeNpc.addItem(nomenpc.getNome_npc());
+            }
+        // Fim listar Npcs
+            
+            // Deixa campos em branco
+            jCBNovaFalaNomeNpc.setSelectedIndex(-1);
+            jTFNovaFalaCodigoNpc.setText("");
+            jTFNovaFalaTipoNpc.setText("");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }//GEN-LAST:event_jBNovaFalaAtualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2542,6 +2559,7 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JButton jBCadastrar;
     private javax.swing.JButton jBExcluirNpc;
     private javax.swing.JButton jBNovaFalaAdicionar;
+    private javax.swing.JButton jBNovaFalaAtualizar;
     private javax.swing.JButton jBNovosItensAdicionar;
     private javax.swing.JButton jBNovosItensAtualizar;
     private javax.swing.JButton jBTestes;
