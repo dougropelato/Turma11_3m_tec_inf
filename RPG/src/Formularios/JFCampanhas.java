@@ -6,6 +6,8 @@
 package formularios;
 
 import dao.GenericDAO;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,11 +20,17 @@ import tabelas.Campanhas;
  */
 public class JFCampanhas extends javax.swing.JFrame {
 
+    public void centralizarComponente() { //Método (Procedure) para centralizar o Form na tela
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+    }// Fim Método 'centralizarComponente'
     /**
      * Creates new form JFCampanhas
      */
     public JFCampanhas() {
         initComponents();
+        centralizarComponente();//Chama Método de Centralizar JFrame...
     }
 
     /**
