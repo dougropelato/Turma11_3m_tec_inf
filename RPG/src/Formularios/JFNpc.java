@@ -138,7 +138,7 @@ public class JFNpc extends javax.swing.JFrame {
         jBTestes = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         LabelNovaFalaNomeNpc = new javax.swing.JLabel();
-        LabelCadastroNovaFalaNpc = new javax.swing.JLabel();
+        LabelAdicionarNovaFala = new javax.swing.JLabel();
         jTFNovaFalaCodigoNpc = new javax.swing.JTextField();
         jCBNovaFalaNomeNpc = new javax.swing.JComboBox();
         LabelNovaFalaTipoNpc = new javax.swing.JLabel();
@@ -153,6 +153,33 @@ public class JFNpc extends javax.swing.JFrame {
         jTANovaFalaRespostaNegativa = new javax.swing.JTextArea();
         jBNovaFalaAdicionar = new javax.swing.JButton();
         jTFNovaFalaTipoNpc = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        LabelAdicionarNovosItens = new javax.swing.JLabel();
+        LabelNovosItensNomeNpc = new javax.swing.JLabel();
+        jCBNovosItensNomeNpc = new javax.swing.JComboBox();
+        jTFNovosItensCodigoNpc = new javax.swing.JTextField();
+        LabelNovosItensTipoNpc = new javax.swing.JLabel();
+        jTFNovosItensTipoNpc = new javax.swing.JTextField();
+        jLNovosItens = new javax.swing.JLabel();
+        jLNovosItensArmaduraNpc = new javax.swing.JLabel();
+        jLNovosItensArmaNpc = new javax.swing.JLabel();
+        jLNovosItensConsumivelNpc = new javax.swing.JLabel();
+        jLNovosItensEscudoNpc = new javax.swing.JLabel();
+        jCBNovosItensArmaduraNpc = new javax.swing.JComboBox();
+        jCBNovosItensArmaNpc = new javax.swing.JComboBox();
+        jCBNovosItensConsumivelNpc = new javax.swing.JComboBox();
+        jCBNovosItensEscudoNpc = new javax.swing.JComboBox();
+        jTFNovosItensQuantidadeArmaduraNpc = new javax.swing.JTextField();
+        jTFNovosItensQuantidadeArmaNpc = new javax.swing.JTextField();
+        jTFNovosItensQuantidadeConsumivelNpc = new javax.swing.JTextField();
+        jTFNovosItensQuantidadeEscudoNpc = new javax.swing.JTextField();
+        jTFNovosItensCodArmadura = new javax.swing.JTextField();
+        jLNovosItensQuantidadeItensNpc = new javax.swing.JLabel();
+        jTFNovosItensCodArma = new javax.swing.JTextField();
+        jTFNovosItensCodConsumivel = new javax.swing.JTextField();
+        jTFNovosItensCodEscudo = new javax.swing.JTextField();
+        jBNovosItensAdicionar = new javax.swing.JButton();
+        jBNovosItensAtualizar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         LabelAlterarNomeNpc = new javax.swing.JLabel();
         LabelAlterarTipoNpc = new javax.swing.JLabel();
@@ -576,11 +603,11 @@ public class JFNpc extends javax.swing.JFrame {
         LabelNovaFalaNomeNpc.setText("Nome:");
         jPanel3.add(LabelNovaFalaNomeNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 50, 45, -1));
 
-        LabelCadastroNovaFalaNpc.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        LabelCadastroNovaFalaNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LabelCadastroNovaFalaNpc.setText("Cadastro de Npc's");
-        LabelCadastroNovaFalaNpc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel3.add(LabelCadastroNovaFalaNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, 170, 28));
+        LabelAdicionarNovaFala.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LabelAdicionarNovaFala.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelAdicionarNovaFala.setText("Adicionar Nova Fala");
+        LabelAdicionarNovaFala.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel3.add(LabelAdicionarNovaFala, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, 190, 28));
 
         jTFNovaFalaCodigoNpc.setEditable(false);
         jTFNovaFalaCodigoNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -645,7 +672,133 @@ public class JFNpc extends javax.swing.JFrame {
         jTFNovaFalaTipoNpc.setEditable(false);
         jPanel3.add(jTFNovaFalaTipoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 77, 155, -1));
 
-        jTPNPC.addTab("Cadastrar Nova Fala", jPanel3);
+        jTPNPC.addTab("Adicionar Nova Fala", jPanel3);
+
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        LabelAdicionarNovosItens.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LabelAdicionarNovosItens.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelAdicionarNovosItens.setText("Adicionar Novos Itens");
+        LabelAdicionarNovosItens.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel2.add(LabelAdicionarNovosItens, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, 210, 28));
+
+        LabelNovosItensNomeNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelNovosItensNomeNpc.setText("Nome:");
+        jPanel2.add(LabelNovosItensNomeNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 50, 45, -1));
+
+        jCBNovosItensNomeNpc.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBNovosItensNomeNpcItemStateChanged(evt);
+            }
+        });
+        jPanel2.add(jCBNovosItensNomeNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 47, 155, -1));
+
+        jTFNovosItensCodigoNpc.setEditable(false);
+        jTFNovosItensCodigoNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(jTFNovosItensCodigoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 47, 40, -1));
+
+        LabelNovosItensTipoNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelNovosItensTipoNpc.setText("Tipo:");
+        jPanel2.add(LabelNovosItensTipoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 80, 45, -1));
+
+        jTFNovosItensTipoNpc.setEditable(false);
+        jPanel2.add(jTFNovosItensTipoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 77, 155, -1));
+
+        jLNovosItens.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLNovosItens.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLNovosItens.setText("Itens NPC");
+        jPanel2.add(jLNovosItens, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 120, 155, -1));
+
+        jLNovosItensArmaduraNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLNovosItensArmaduraNpc.setText("Armadura:");
+        jPanel2.add(jLNovosItensArmaduraNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 150, 155, -1));
+
+        jLNovosItensArmaNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLNovosItensArmaNpc.setText("Arma:");
+        jPanel2.add(jLNovosItensArmaNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 200, 155, -1));
+
+        jLNovosItensConsumivelNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLNovosItensConsumivelNpc.setText("Consumivel:");
+        jPanel2.add(jLNovosItensConsumivelNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 250, 155, -1));
+
+        jLNovosItensEscudoNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLNovosItensEscudoNpc.setText("Escudo:");
+        jPanel2.add(jLNovosItensEscudoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 155, -1));
+
+        jCBNovosItensArmaduraNpc.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBNovosItensArmaduraNpcItemStateChanged(evt);
+            }
+        });
+        jPanel2.add(jCBNovosItensArmaduraNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 170, 155, -1));
+
+        jCBNovosItensArmaNpc.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBNovosItensArmaNpcItemStateChanged(evt);
+            }
+        });
+        jPanel2.add(jCBNovosItensArmaNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 220, 155, -1));
+
+        jCBNovosItensConsumivelNpc.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBNovosItensConsumivelNpcItemStateChanged(evt);
+            }
+        });
+        jPanel2.add(jCBNovosItensConsumivelNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 270, 155, -1));
+
+        jCBNovosItensEscudoNpc.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBNovosItensEscudoNpcItemStateChanged(evt);
+            }
+        });
+        jPanel2.add(jCBNovosItensEscudoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 155, -1));
+
+        jTFNovosItensQuantidadeArmaduraNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(jTFNovosItensQuantidadeArmaduraNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 45, -1));
+
+        jTFNovosItensQuantidadeArmaNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(jTFNovosItensQuantidadeArmaNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 45, -1));
+
+        jTFNovosItensQuantidadeConsumivelNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(jTFNovosItensQuantidadeConsumivelNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 45, -1));
+
+        jTFNovosItensQuantidadeEscudoNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(jTFNovosItensQuantidadeEscudoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 45, -1));
+
+        jTFNovosItensCodArmadura.setEditable(false);
+        jTFNovosItensCodArmadura.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(jTFNovosItensCodArmadura, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 30, -1));
+
+        jLNovosItensQuantidadeItensNpc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLNovosItensQuantidadeItensNpc.setText("Qtd:");
+        jPanel2.add(jLNovosItensQuantidadeItensNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 45, -1));
+
+        jTFNovosItensCodArma.setEditable(false);
+        jTFNovosItensCodArma.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(jTFNovosItensCodArma, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 30, -1));
+
+        jTFNovosItensCodConsumivel.setEditable(false);
+        jTFNovosItensCodConsumivel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(jTFNovosItensCodConsumivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 30, -1));
+
+        jTFNovosItensCodEscudo.setEditable(false);
+        jTFNovosItensCodEscudo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(jTFNovosItensCodEscudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 31, -1));
+
+        jBNovosItensAdicionar.setText("Adicionar Itens");
+        jPanel2.add(jBNovosItensAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 155, 30));
+
+        jBNovosItensAtualizar.setText("Atualizar");
+        jBNovosItensAtualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBNovosItensAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNovosItensAtualizarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jBNovosItensAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 120, 30));
+
+        jTPNPC.addTab("Adicionar Novos Itens", jPanel2);
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -940,7 +1093,7 @@ public class JFNpc extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTPNPC, javax.swing.GroupLayout.DEFAULT_SIZE, 935, Short.MAX_VALUE)
+                .addComponent(jTPNPC)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -954,7 +1107,7 @@ public class JFNpc extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    // Oculta Atributos formulário Npcs
+    // Oculta Atributos formulário Npcs em aba Cadastrar
     public void OcultarComponentesAtributos(java.awt.event.ActionEvent evt) {
         
         // Atributos
@@ -1009,7 +1162,7 @@ public class JFNpc extends javax.swing.JFrame {
         
     }
     
-    // Oculta Itens formulário Npcs
+    // Oculta Itens formulário Npcs em aba Cadastrar
     public void OcultarComponentesItens(java.awt.event.ActionEvent evt){
     
         // Itens
@@ -1042,7 +1195,7 @@ public class JFNpc extends javax.swing.JFrame {
         
     } 
     
-    // Mostra Atributos formulário Npcs
+    // Mostra Atributos formulário Npcs em aba Cadastrar
     public void MostrarComponentesAtributos(java.awt.event.ActionEvent evt) {
 
         // Atributos
@@ -1097,7 +1250,7 @@ public class JFNpc extends javax.swing.JFrame {
         
     }
     
-    // Mostra Itens formulário Npcs
+    // Mostra Itens formulário Npcs em aba Cadastrar
     public void MostrarComponentesItens(java.awt.event.ActionEvent evt){
     
         // Itens
@@ -1130,7 +1283,7 @@ public class JFNpc extends javax.swing.JFrame {
         
     } 
     
-    // Carrega combobox dos Itens
+    // Carrega combobox dos Itens em aba Cadastrar
     public void ListarItens(java.awt.event.ActionEvent evt) throws SQLException{
         
         GenericDAO gDao = new GenericDAO();
@@ -1193,6 +1346,68 @@ public class JFNpc extends javax.swing.JFrame {
       
     } 
     
+    // Carrega combobox em aba adicionar Novos Itens 
+    public void ListarNovosItens(java.awt.event.ActionEvent evt) throws SQLException{
+    
+        GenericDAO gDao = new GenericDAO();
+
+        // Carrega combobox Armaduras    
+        List<Object> listarArmaduras = null;
+            try {
+                listarArmaduras = gDao.listar(Armaduras.class);
+            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+                    Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            for (Object obj2 : listarArmaduras) {
+                Armaduras armaduranpc = (Armaduras) obj2;
+                jCBNovosItensArmaduraNpc.addItem(armaduranpc.getNome_armadura());
+            }
+        // Fim listar Armaduras 
+        
+        // Carrega combobox Armas    
+        List<Object> listarArmas = null;
+            try {
+                listarArmas = gDao.listar(Armas.class);
+            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+                Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            for (Object obj2 : listarArmas) {
+                Armas armanpc = (Armas) obj2;
+                jCBNovosItensArmaNpc.addItem(armanpc.getNome_arma());
+            }   
+        // Fim listar Armas         
+        
+        // Carrega combobox Consumiveis
+        List<Object> listarConsumiveis = null;
+            try {
+                listarConsumiveis = gDao.listar(Consumiveis.class);
+            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+                    Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            for (Object obj2 : listarConsumiveis) {
+                Consumiveis consumivelnpc = (Consumiveis) obj2;
+                jCBNovosItensConsumivelNpc.addItem(consumivelnpc.getNome_consumivel());
+            }    
+        // Fim listar Consumiveis        
+
+        // Carrega combobox Escudos
+        List<Object> listarEscudos = null;
+            try {
+                listarEscudos = gDao.listar(Escudos.class);
+            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+                    Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            for (Object obj2 : listarEscudos) {
+                Escudos escudonpc = (Escudos) obj2;
+                jCBNovosItensEscudoNpc.addItem(escudonpc.getNome_escudo());
+            }
+        // Fim listar Escudos   
+    }
+    
     // Carrega combobox dos Atributos
     public void ListarAtributos(java.awt.event.ActionEvent evt) throws SQLException{
         
@@ -1227,7 +1442,7 @@ public class JFNpc extends javax.swing.JFrame {
             // Fim listar Classes  
     }
     
-    // Limpa todos os campos
+    // Limpa todos os campos em aba Cadastrar
     public void LimparCampos(java.awt.event.ActionEvent evt){
     
     // Npcs    
@@ -1285,7 +1500,7 @@ public class JFNpc extends javax.swing.JFrame {
     
     }
     
-    // Limpa campos de código dos Atributos e Itens
+    // Limpa campos de código dos Atributos e Itens em aba Cadastrar
     public void LimparCamposCodigo(java.awt.event.ActionEvent evt){
         
         // Atributos
@@ -1300,7 +1515,7 @@ public class JFNpc extends javax.swing.JFrame {
         
     }
     
-    // Remove itens de combobox atributos e itens
+    // Remove itens de combobox Atributos e Itens em aba Cadastrar
     public void LimparComboBoxs(java.awt.event.ActionEvent evt){
         
         // Atributos
@@ -1314,6 +1529,7 @@ public class JFNpc extends javax.swing.JFrame {
         jCBEscudoNpc.removeAllItems();
     }
     
+    // Limpa campos em aba Nova Fala
     public void LimparCamposNovaFala(java.awt.event.ActionEvent evt){
         
         jCBNovaFalaNomeNpc.setSelectedIndex(-1);
@@ -1327,7 +1543,7 @@ public class JFNpc extends javax.swing.JFrame {
 
     }
     
-    // Cadastra Npc Combatente // falta terminar
+    // Cadastra Npc Combatente // Arrumar Banco
     public void CadastrarNpcCombatente (java.awt.event.ActionEvent evt) throws ClassNotFoundException, 
         IllegalArgumentException, IllegalAccessException, NoSuchMethodException, 
             InvocationTargetException, InstantiationException{
@@ -1614,7 +1830,7 @@ public class JFNpc extends javax.swing.JFrame {
         }  
     } 
     
-    // Botão Cadastrar
+    // Botão Cadastrar em aba Cadastrar
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
 
         try {
@@ -1805,7 +2021,7 @@ public class JFNpc extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jBAdicionarItenNpcActionPerformed
     
-    // Quando o item do combobox jCBTipoNpc é alterado
+    // Quando o item do combobox jCBTipoNpc é alterado em aba Cadastrar
     private void jCBTipoNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBTipoNpcItemStateChanged
 
         try {
@@ -1869,7 +2085,7 @@ public class JFNpc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBTipoNpcItemStateChanged
     
-    // Busca atraves do nome_armadura o codigo_armadura e mostra em edit
+    // Busca atraves do nome_armadura o codigo_armadura e mostra em edit em aba Cadastrar
     private void jCBArmaduraNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBArmaduraNpcItemStateChanged
    
         try {    
@@ -1893,7 +2109,7 @@ public class JFNpc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBArmaduraNpcItemStateChanged
     
-    // Busca atraves do nome_arma o codigo_arma e mostra em edit
+    // Busca atraves do nome_arma o codigo_arma e mostra em edit em aba Cadastrar
     private void jCBArmaNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBArmaNpcItemStateChanged
 
         try {    
@@ -1917,7 +2133,7 @@ public class JFNpc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBArmaNpcItemStateChanged
     
-    // Busca atraves do nome_consumivel o codigo_consumivel e mostra em edit
+    // Busca atraves do nome_consumivel o codigo_consumivel e mostra em edit em aba Cadastrar
     private void jCBConsumivelNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBConsumivelNpcItemStateChanged
     
         try {    
@@ -1941,7 +2157,7 @@ public class JFNpc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBConsumivelNpcItemStateChanged
     
-    // Busca atraves do nome_escudo o codigo_escudo e mostra em edit
+    // Busca atraves do nome_escudo o codigo_escudo e mostra em edit em aba Cadastrar
     private void jCBEscudoNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBEscudoNpcItemStateChanged
 
         try {    
@@ -1965,7 +2181,7 @@ public class JFNpc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBEscudoNpcItemStateChanged
 
-    // Busca atraves de nome_raca o codigo_raca e mostra em edit
+    // Busca atraves de nome_raca o codigo_raca e mostra em edit em aba Cadastrar
     private void jCBRacaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBRacaItemStateChanged
  
         try {    
@@ -1989,7 +2205,7 @@ public class JFNpc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBRacaItemStateChanged
 
-    // Busca atraves de nome_classe o codigo_classe e mostra em edit
+    // Busca atraves de nome_classe o codigo_classe e mostra em edit em aba Cadastrar
     private void jCBClasseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBClasseItemStateChanged
         
         try {    
@@ -2013,7 +2229,7 @@ public class JFNpc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBClasseItemStateChanged
 
-    // Lista Npcs cadastrados e mostra em Combobox
+    // Lista Npcs cadastrados e mostra em Combobox em aba Adicionar Nova Falas
     private void jTPNPCStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTPNPCStateChanged
 
         try { 
@@ -2032,7 +2248,7 @@ public class JFNpc extends javax.swing.JFrame {
                 Npcs nomenpc = (Npcs) obj2;
                 jCBNovaFalaNomeNpc.addItem(nomenpc.getNome_npc());
             }
-        // Fim listar Raças
+        // Fim listar Npcs
             
             jCBNovaFalaNomeNpc.setSelectedIndex(-1);
             jTFNovaFalaCodigoNpc.setText("");
@@ -2043,7 +2259,7 @@ public class JFNpc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTPNPCStateChanged
     
-    // Busca atraves de nome_npc o codigo_npc e tipo_npc, mostrando em edits
+    // Busca atraves de nome_npc o codigo_npc e tipo_npc, mostrando em edits em aba Adicionar Nova Fala
     private void jCBNovaFalaNomeNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNovaFalaNomeNpcItemStateChanged
         
         try {    
@@ -2070,7 +2286,7 @@ public class JFNpc extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jCBNovaFalaNomeNpcItemStateChanged
 
-    // Botão Adicionar nova fala
+    // Botão Adicionar Nova Fala
     private void jBNovaFalaAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovaFalaAdicionarActionPerformed
 
         if (jTFNovaFalaCodigoNpc.getText().equals("") | jTFNovaFalaTipoNpc.getText().equals("")
@@ -2084,6 +2300,72 @@ public class JFNpc extends javax.swing.JFrame {
             LimparCamposNovaFala(evt);
         }
     }//GEN-LAST:event_jBNovaFalaAdicionarActionPerformed
+
+    private void jCBNovosItensNomeNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNovosItensNomeNpcItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBNovosItensNomeNpcItemStateChanged
+
+    private void jCBNovosItensArmaduraNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNovosItensArmaduraNpcItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBNovosItensArmaduraNpcItemStateChanged
+
+    private void jCBNovosItensArmaNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNovosItensArmaNpcItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBNovosItensArmaNpcItemStateChanged
+
+    private void jCBNovosItensConsumivelNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNovosItensConsumivelNpcItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBNovosItensConsumivelNpcItemStateChanged
+
+    private void jCBNovosItensEscudoNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNovosItensEscudoNpcItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBNovosItensEscudoNpcItemStateChanged
+    
+    // Atualiza Combobox com todos os dados do banco
+    private void jBNovosItensAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovosItensAtualizarActionPerformed
+ 
+        try { 
+            
+        GenericDAO gDao = new GenericDAO();
+        
+        jCBNovosItensNomeNpc.removeAllItems();
+        
+        // Carrega combobox Npcs    
+        List<Object> listarNpcs = null;
+            try {
+                listarNpcs = gDao.listar(Npcs.class);
+            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+                    Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            for (Object obj2 : listarNpcs) {
+                Npcs nomenpc = (Npcs) obj2;
+                jCBNovosItensNomeNpc.addItem(nomenpc.getNome_npc());
+            }
+        // Fim listar Npcs
+            
+            // Limpa os campos
+            jCBNovosItensNomeNpc.setSelectedIndex(-1);
+            jCBNovosItensArmaduraNpc.setSelectedIndex(-1);
+            jCBNovosItensArmaNpc.setSelectedIndex(-1);
+            jCBNovosItensConsumivelNpc.setSelectedIndex(-1);
+            jCBNovosItensEscudoNpc.setSelectedIndex(-1);
+
+            jTFNovosItensCodArmadura.setText("");
+            jTFNovosItensCodArma.setText("");
+            jTFNovosItensCodConsumivel.setText("");
+            jTFNovosItensCodEscudo.setText("");
+            
+            jTFNovosItensQuantidadeArmaduraNpc.setText("");
+            jTFNovosItensQuantidadeArmaNpc.setText("");
+            jTFNovosItensQuantidadeConsumivelNpc.setText("");
+            jTFNovosItensQuantidadeEscudoNpc.setText("");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jBNovosItensAtualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2120,13 +2402,14 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JTextField JTFAlterarNomeNpc;
     private javax.swing.JTextField JTFNomeNpc;
     private javax.swing.JLabel LabeAlterarlFala;
+    private javax.swing.JLabel LabelAdicionarNovaFala;
+    private javax.swing.JLabel LabelAdicionarNovosItens;
     private javax.swing.JLabel LabelAlteracaoNpc;
     private javax.swing.JLabel LabelAlterarDescricaoNpc;
     private javax.swing.JLabel LabelAlterarNomeNpc;
     private javax.swing.JLabel LabelAlterarRespostaNegativa;
     private javax.swing.JLabel LabelAlterarRespostaPositiva;
     private javax.swing.JLabel LabelAlterarTipoNpc;
-    private javax.swing.JLabel LabelCadastroNovaFalaNpc;
     private javax.swing.JLabel LabelCadastroNpc;
     private javax.swing.JLabel LabelDescricaoNpc;
     private javax.swing.JLabel LabelExcluirNomeNpc;
@@ -2138,6 +2421,8 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JLabel LabelNovaFalaRespostaNegativa;
     private javax.swing.JLabel LabelNovaFalaRespostaPositiva;
     private javax.swing.JLabel LabelNovaFalaTipoNpc;
+    private javax.swing.JLabel LabelNovosItensNomeNpc;
+    private javax.swing.JLabel LabelNovosItensTipoNpc;
     private javax.swing.JLabel LabelRespostaNegativa;
     private javax.swing.JLabel LabelRespostaPositiva;
     private javax.swing.JLabel LabelTipoNpc;
@@ -2148,6 +2433,8 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JButton jBCadastrar;
     private javax.swing.JButton jBExcluirNpc;
     private javax.swing.JButton jBNovaFalaAdicionar;
+    private javax.swing.JButton jBNovosItensAdicionar;
+    private javax.swing.JButton jBNovosItensAtualizar;
     private javax.swing.JButton jBTestes;
     private javax.swing.JComboBox jCBAlterarArmaNpc;
     private javax.swing.JComboBox jCBAlterarArmaduraNpc;
@@ -2163,6 +2450,11 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JComboBox jCBEscudoNpc;
     private javax.swing.JComboBox jCBExcluirNomeNpc;
     private javax.swing.JComboBox jCBNovaFalaNomeNpc;
+    private javax.swing.JComboBox jCBNovosItensArmaNpc;
+    private javax.swing.JComboBox jCBNovosItensArmaduraNpc;
+    private javax.swing.JComboBox jCBNovosItensConsumivelNpc;
+    private javax.swing.JComboBox jCBNovosItensEscudoNpc;
+    private javax.swing.JComboBox jCBNovosItensNomeNpc;
     private javax.swing.JComboBox jCBRaca;
     private javax.swing.JComboBox jCBTipoNpc;
     private javax.swing.JLabel jLAlterarArmaNpc;
@@ -2203,6 +2495,12 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JLabel jLIniciativa;
     private javax.swing.JLabel jLInteligencia;
     private javax.swing.JLabel jLItens;
+    private javax.swing.JLabel jLNovosItens;
+    private javax.swing.JLabel jLNovosItensArmaNpc;
+    private javax.swing.JLabel jLNovosItensArmaduraNpc;
+    private javax.swing.JLabel jLNovosItensConsumivelNpc;
+    private javax.swing.JLabel jLNovosItensEscudoNpc;
+    private javax.swing.JLabel jLNovosItensQuantidadeItensNpc;
     private javax.swing.JLabel jLPontosdeVida;
     private javax.swing.JLabel jLQuantidadeItensNpc;
     private javax.swing.JLabel jLRaca;
@@ -2212,6 +2510,7 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JPanel jPCadastrar;
     private javax.swing.JPanel jPExcluir;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
@@ -2278,6 +2577,16 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JTextField jTFInteligencia;
     private javax.swing.JTextField jTFNovaFalaCodigoNpc;
     private javax.swing.JTextField jTFNovaFalaTipoNpc;
+    private javax.swing.JTextField jTFNovosItensCodArma;
+    private javax.swing.JTextField jTFNovosItensCodArmadura;
+    private javax.swing.JTextField jTFNovosItensCodConsumivel;
+    private javax.swing.JTextField jTFNovosItensCodEscudo;
+    private javax.swing.JTextField jTFNovosItensCodigoNpc;
+    private javax.swing.JTextField jTFNovosItensQuantidadeArmaNpc;
+    private javax.swing.JTextField jTFNovosItensQuantidadeArmaduraNpc;
+    private javax.swing.JTextField jTFNovosItensQuantidadeConsumivelNpc;
+    private javax.swing.JTextField jTFNovosItensQuantidadeEscudoNpc;
+    private javax.swing.JTextField jTFNovosItensTipoNpc;
     private javax.swing.JTextField jTFPontosdeVida;
     private javax.swing.JTextField jTFQuantidadeArmaNpc;
     private javax.swing.JTextField jTFQuantidadeArmaduraNpc;
