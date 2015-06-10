@@ -449,8 +449,18 @@ public class JFNpc extends javax.swing.JFrame {
         jLRaca.setText("Raça:");
         jPCadastrar.add(jLRaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 214, -1));
 
+        jCBRaca.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBRacaItemStateChanged(evt);
+            }
+        });
         jPCadastrar.add(jCBRaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 214, -1));
 
+        jCBClasse.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBClasseItemStateChanged(evt);
+            }
+        });
         jPCadastrar.add(jCBClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 214, -1));
 
         jLItens.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -560,11 +570,6 @@ public class JFNpc extends javax.swing.JFrame {
         jBTestes.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jBTestes.setForeground(new java.awt.Color(255, 0, 51));
         jBTestes.setText("Testes");
-        jBTestes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBTestesActionPerformed(evt);
-            }
-        });
         jPCadastrar.add(jBTestes, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 410, 120, 120));
 
         jTPNPC.addTab("Cadastrar", jPCadastrar);
@@ -1216,7 +1221,7 @@ public class JFNpc extends javax.swing.JFrame {
 
             for (Object obj2 : listarClasses) {
                 Classes classenpc = (Classes) obj2;
-                jCBRaca.addItem(classenpc.getNome_classe());
+                jCBClasse.addItem(classenpc.getNome_classe());
             }
             // Fim listar Classes  
     }
@@ -1319,6 +1324,7 @@ public class JFNpc extends javax.swing.JFrame {
             Falas fala = new Falas();
             NpcsFalas npcfala = new NpcsFalas();
             
+            Personagens npcpersonagem = new Personagens();
             NpcsCombatentes npccombate = new NpcsCombatentes();
 
             ArmadurasNpcs armaduranpc = new ArmadurasNpcs();
@@ -1353,9 +1359,44 @@ public class JFNpc extends javax.swing.JFrame {
             npcfala.setCodigo_npc(codMaxNPC);
             gDao.adicionar(npcfala);
             
+            // Cadastra Npc em Personagem
+            npcpersonagem.setNome_personagem(JTFNomeNpc.getText());
+            
+            npcpersonagem.setCodigo_raca(Integer.parseInt(jTFCodRaca.getText()));
+            
+            npcpersonagem.setCodigo_classe(Integer.parseInt(jTFCodClasse.getText()));
+            
+            npcpersonagem.setForca_personagem(Integer.parseInt(jTFForca.getText()));
+            
+            npcpersonagem.setDestreza_personagem(Integer.parseInt(jTFDestreza.getText()));
+            
+            npcpersonagem.setContituicao_personagem(Integer.parseInt(jTFConstituicao.getText()));
+            
+            npcpersonagem.setInteligencia_personagem(Integer.parseInt(jTFInteligencia.getText()));
+            
+            npcpersonagem.setSabedoria_personagem(Integer.parseInt(jTFSabedoria.getText()));
+            
+            npcpersonagem.setFortitude_personagem(Integer.parseInt(jTFFortitude.getText()));
+            
+            npcpersonagem.setClasse_armadura_personagem(Integer.parseInt(jTFClassedeArmadura.getText()));
+            
+            npcpersonagem.setBase_ataque_personagem(Integer.parseInt(jTFBasedeAtaque.getText()));
+            
+            npcpersonagem.setPontos_vida_personagem(Integer.parseInt(jTFPontosdeVida.getText()));
+            
+            npcpersonagem.setIniciativa_personagem(Integer.parseInt(jTFIniciativa.getText()));
+            
+            npcpersonagem.setVontade_personagem(Integer.parseInt(jTFVontade.getText()));
+            
+            npcpersonagem.setReflexos_personagem(Integer.parseInt(jTFReflexos.getText()));
+            
+            npcpersonagem.setCarisma_personagem(Integer.parseInt(jTFCarisma.getText()));
+            
+            gDao.adicionar(npcpersonagem);
+            
             int codMaxPersonagem = gDao.codigoMax(Personagens.class);
             System.out.println(codMaxPersonagem);
-            
+
             // Cadastra NpcsCombatentes
             npccombate.setCodigo_npc(codMaxNPC);
             npccombate.setCodigo_personagem(codMaxPersonagem);
@@ -1919,32 +1960,53 @@ public class JFNpc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBEscudoNpcItemStateChanged
 
-    // Botão para testes de código
-    private void jBTestesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTestesActionPerformed
-        // TODO add your handling code here:
-
-        try {
+    // Busca atraves de nome_raca o codigo_raca e mostra em edit
+    private void jCBRacaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBRacaItemStateChanged
  
+        try {    
+        
         GenericDAO gDao = new GenericDAO();
+        Raca raca = new Raca();
         
-        // Carrega combobox Raças    
-        List<Object> listarRacas = null;
-            try {
-                listarRacas = gDao.listar(Raca.class);
-            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
-                    Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        List<Object> ListarCodRaca = new ArrayList<>();
 
-            for (Object obj2 : listarRacas) {
-                Raca racanpc = (Raca) obj2;
-                jCBRaca.addItem(racanpc.getNome_raca());
-            }
-        // Fim listar Raças  
+        raca.setNome_raca((String) jCBRaca.getSelectedItem());
+
+        ListarCodRaca = gDao.listar2(Raca.class, raca);
+
+        for (Object cod : ListarCodRaca) {
+            Raca codraca = (Raca) cod;
+            jTFCodRaca.setText(String.valueOf(codraca.getCodigo_raca()));
+        }
         
-        } catch (SQLException ex) {
+        } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
-    } 
-    }//GEN-LAST:event_jBTestesActionPerformed
+        }
+    }//GEN-LAST:event_jCBRacaItemStateChanged
+
+    // Busca atraves de nome_classe o codigo_classe e mostra em edit
+    private void jCBClasseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBClasseItemStateChanged
+        
+        try {    
+        
+        GenericDAO gDao = new GenericDAO();
+        Classes classe = new Classes();
+        
+        List<Object> ListarCodClasse = new ArrayList<>();
+
+        classe.setNome_classe((String) jCBClasse.getSelectedItem());
+
+        ListarCodClasse = gDao.listar2(Classes.class, classe);
+
+        for (Object cod : ListarCodClasse) {
+            Classes codclasse = (Classes) cod;
+            jTFCodClasse.setText(String.valueOf(codclasse.getCodigo_classe()));
+        }
+        
+        } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jCBClasseItemStateChanged
 
     /**
      * @param args the command line arguments
