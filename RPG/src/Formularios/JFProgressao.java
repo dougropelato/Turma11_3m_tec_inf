@@ -120,12 +120,28 @@ public class JFProgressao extends javax.swing.JFrame {
 
         for (int i = 1; i < 20; i++) {
             Progressoes prg = new Progressoes();
-            jtbprogressao.setEditingRow(i);
-            jtbprogressao.setEditingColumn(1);
-            jtbprogressao.
+            //Atribui os valores da linha e coluna informados para o campo correspondente 
+            // da classe progressao passo i -1 para linha pois a mesma deve começar de zero
+            // e a variavel i começa em 1
             prg.setNivel_progressao(i);
-            ;
-
+            prg.setBonus_base_progressao((int) jtbprogressao.getValueAt(i -1, 1));
+            prg.setFortitude_progressao((int) jtbprogressao.getValueAt(i -1, 2));
+            prg.setReflexos_progressao((int) jtbprogressao.getValueAt(i -1, 3));
+            prg.setVontade_progressao((int) jtbprogressao.getValueAt(i -1, 4));
+            prg.setPericia_progressao((int) jtbprogressao.getValueAt(i -1, 5));
+            prg.setTipo_dado_progressao((int) jtbprogressao.getValueAt(i -1, 6));
+            prg.setQuantidade_dado_progressao((int) jtbprogressao.getValueAt(i -1, 7));
+            prg.setBonus_base_progressao((int) jtbprogressao.getValueAt(i -1, 8));
+            
+            lista.add(prg);
+        }
+        
+        for (Progressoes l : lista) {
+            Progressoes prg = (Progressoes) l;
+            
+            System.out.println("Nivel: "+ prg.getNivel_progressao());
+            System.out.println("Bonus base: "+ prg.getBonus_base_progressao());
+            System.out.println("CA: "+ prg.getBonus_ca_progressao());
         }
     }//GEN-LAST:event_jbtsalvarActionPerformed
 
