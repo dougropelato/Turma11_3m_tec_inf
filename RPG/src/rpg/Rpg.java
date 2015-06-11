@@ -29,91 +29,133 @@ public class Rpg {
      */
     public static void main(String[] args) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
-//        JFMestre m = new JFMestre();;
-//        m.setVisible(true);
-        Personagens pp = new Personagens();
-
-        pp.setCodigo_personagem(1);
-
-        Talentos tts = new Talentos();
-
-        tts.setCodigo_talento(6);
-
-        aplicaTalento(pp, tts);
+        JFMestre m = new JFMestre();
+        m.setVisible(true);
 
     }
 
     public static void aplicaTalento(Personagens pp, Talentos tts) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
         GenericDAO gd = new GenericDAO();
-        String sql = "";
+
+        String sql = "NOK";
 
         TalentosPersonagem tp = new TalentosPersonagem();
 
         List<Object> lista = null;
         lista = gd.listar2(Talentos.class, tts);
         String bns = null;
+        String pre = null;
 
         for (Object obj : lista) {
             Talentos tt = (Talentos) obj;
             bns = tt.getBonus_talento();
+            pre = tt.getRequisito_talento();
+
         }
 
         String[] bonus = bns.split(";");
+        String[] req = pre.split(";");
 
-        if (bonus[0].equalsIgnoreCase("personagens")) {
-            sql = "UPDATE " + bonus[0] + " SET ";
-            int bnn = 0;
+        if (req[0].equalsIgnoreCase("personagens")) {
+            lista = gd.listar2(Personagens.class, pp);
+            for (Object obj : lista) {
+                Personagens pps = (Personagens) obj;
 
-            Class cls = Personagens.class;
-            Field listaAtributos[] = cls.getDeclaredFields();
+                Class cls = Personagens.class;
+                Field listaAtributos[] = cls.getDeclaredFields();
 
-            for (int i = 0; i < listaAtributos.length; i++) {
+                for (int i = 0; i < listaAtributos.length; i++) {
 
-                Field fld = listaAtributos[i];
-                fld.setAccessible(true);
-                String campo = fld.getName();
+                    Field fld = listaAtributos[i];
+                    fld.setAccessible(true);
+                    String campo = fld.getName();
 
-                if (campo.equalsIgnoreCase(bonus[1])) {
+                    if (campo.equalsIgnoreCase(bonus[1])) {
+                        if (Integer.getInteger((String) fld.get(pps)) <= Integer.getInteger(req[2])) {
+                            sql = "OK";
 
-                    bnn = Integer.valueOf(fld.get(pp).toString());
-                    bnn = bnn + Integer.valueOf(bonus[2]);
-                    sql += campo + " = '" + bnn + "'";
-
+                        }
+                    }
                 }
             }
-            sql += " WHERE codigo_personagem = " + pp.getCodigo_personagem();
         }
-
-        if (bonus[0].equalsIgnoreCase("Pericias")) {
-            sql = "UPDATE Periciapersonagem SET ";
-
-            int bnn = Integer.parseInt(bonus[2]);
-            int codgobous = 0;
-            Pericias pp2 = new Pericias();
-            pp2.setNome_pericia(bonus[1]);
-            lista = gd.listar2(Pericias.class, pp2);
-
-            for (Object obj : lista) {
-                Pericias ett = (Pericias) obj;
-                codgobous = ett.getCodigo_pericia();
-            }
+        if (req[0].equalsIgnoreCase("Pericias")) {
 
             PericiaPersonagem PPS = new PericiaPersonagem();
             PPS.setCodigo_personagem(pp.getCodigo_personagem());
-            PPS.setCodigo_pericia(codgobous);
+            PPS.setCodigo_pericia(tts.getCodigo_talento());
 
             lista = gd.listar2(PericiaPersonagem.class, PPS);
 
             for (Object obj2 : lista) {
                 PericiaPersonagem ett1 = (PericiaPersonagem) obj2;
-                bnn = ett1.getPontos_de_pericia() + bnn;
+
+                if (ett1.getPontos_de_pericia() <= Integer.valueOf(req[2])) {
+                    sql = "OK";
+                }
+            }
+        }
+
+        if (sql.equalsIgnoreCase("OK")) {
+
+            if (bonus[0].equalsIgnoreCase("personagens")) {
+                sql = "UPDATE " + bonus[0] + " SET ";
+                int bnn = 0;
+
+                Class cls = Personagens.class;
+                Field listaAtributos[] = cls.getDeclaredFields();
+
+                for (int i = 0; i < listaAtributos.length; i++) {
+
+                    Field fld = listaAtributos[i];
+                    fld.setAccessible(true);
+                    String campo = fld.getName();
+
+                    if (campo.equalsIgnoreCase(bonus[1])) {
+
+                        bnn = Integer.valueOf(fld.get(pp).toString());
+                        bnn = bnn + Integer.valueOf(bonus[2]);
+                        sql += campo + " = '" + bnn + "'";
+
+                    }
+                }
+                sql += " WHERE codigo_personagem = " + pp.getCodigo_personagem();
             }
 
-            System.out.println(bonus[2]);
-            sql += " Pontos_de_pericia = " + bnn + "";
-            sql += " WHERE codigo_personagem = " + pp.getCodigo_personagem() + " AND Codigo_pericia = " + codgobous;
+            if (bonus[0].equalsIgnoreCase("Pericias")) {
+                sql = "UPDATE Periciapersonagem SET ";
+
+                int bnn = Integer.parseInt(bonus[2]);
+                int codgobous = 0;
+                Pericias pp2 = new Pericias();
+                pp2.setNome_pericia(bonus[1]);
+                lista = gd.listar2(Pericias.class, pp2);
+
+                for (Object obj : lista) {
+                    Pericias ett = (Pericias) obj;
+                    codgobous = ett.getCodigo_pericia();
+                }
+
+                PericiaPersonagem PPS = new PericiaPersonagem();
+                PPS.setCodigo_personagem(pp.getCodigo_personagem());
+                PPS.setCodigo_pericia(codgobous);
+
+                lista = gd.listar2(PericiaPersonagem.class, PPS);
+
+                for (Object obj2 : lista) {
+                    PericiaPersonagem ett1 = (PericiaPersonagem) obj2;
+                    bnn = ett1.getPontos_de_pericia() + bnn;
+                }
+
+                System.out.println(bonus[2]);
+                sql += " Pontos_de_pericia = " + bnn + "";
+                sql += " WHERE codigo_personagem = " + pp.getCodigo_personagem() + " AND Codigo_pericia = " + codgobous;
+            }
+            gd.executaSql(sql);
+        } else {
+            System.out.println("nao tem os requisitos necessarios");
         }
-        gd.executaSql(sql);
+
     }
 }
