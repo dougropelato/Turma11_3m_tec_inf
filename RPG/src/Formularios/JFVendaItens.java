@@ -24,6 +24,7 @@ import tabelas.Armaduras;
 import tabelas.Armas;
 import tabelas.Consumiveis;
 import tabelas.Escudos;
+import tabelas.Npcs;
 import tabelas.PersonagensArmaduras;
 import tabelas.PersonagensArmas;
 import tabelas.PersonagensConsumiveis;
@@ -125,6 +126,7 @@ public class JFVendaItens extends javax.swing.JFrame {
         jlQuantVender = new javax.swing.JLabel();
         QuantComprar = new javax.swing.JTextField();
         QuantVender = new javax.swing.JTextField();
+        jlListPreçoComprar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -146,6 +148,11 @@ public class JFVendaItens extends javax.swing.JFrame {
         lbComprar.setText("O que você deseja comprar?");
         getContentPane().add(lbComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
+        jcComprarArmas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcComprarArmasItemStateChanged(evt);
+            }
+        });
         jcComprarArmas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcComprarArmasActionPerformed(evt);
@@ -322,13 +329,40 @@ public class JFVendaItens extends javax.swing.JFrame {
         });
         getContentPane().add(QuantComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 40, -1));
         getContentPane().add(QuantVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, 40, -1));
+        getContentPane().add(jlListPreçoComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 40, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     private void jcComprarArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcComprarArmasActionPerformed
-        // TODO add your handling code here:
+        
+
+        /* GenericDAO gDao = null;
+        try {
+            gDao = new GenericDAO();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+         String BuscarPreço = (String) (jcComprarArmas.getSelectedItem());
+         Armas arma = new Armas();
+         arma.setNome_arma(BuscarPreço);
+         System.out.println("o preço é"+BuscarPreço);
+         
+         
+         List<Object> list = null;
+        try {
+            list = gDao.listar(Armas.class);
+        } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+            Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        for (Object obj2 : list) {
+            Armas aa = (Armas) obj2;
+            jlListPreçoComprar.setText(String.valueOf(aa.getPreco_arma()));
+        } */
+         
     }//GEN-LAST:event_jcComprarArmasActionPerformed
 
     private void jbComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComprarActionPerformed
@@ -609,7 +643,7 @@ public class JFVendaItens extends javax.swing.JFrame {
         /* try    
          {    
              
-         Connection conn;    
+         Connection cConnectiononn;    
          conn = Conexao.getConexao();//classe de conexao com banco  
          Statement st = conn.createStatement();    
          ResultSet rs = st.executeQuery("SELECT nome_armadura FROM armaduras" );    
@@ -720,6 +754,7 @@ public class JFVendaItens extends javax.swing.JFrame {
             jbComprar.setVisible(true);
             lbPrecoComprar.setVisible(true);
             QuantComprar.setVisible(true);
+            jlQuantComprar.setVisible(true);
             jcbComprarArmas.setEnabled(false);
             jcbComprarArmaduras.setEnabled(false);
             jcbComprarEscudos.setEnabled(false);
@@ -950,7 +985,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 
         for (Object obj2 : list) {
             PersonagensConsumiveis consumivelNN = (PersonagensConsumiveis) obj2;
-            jcVenderEscudos.addItem(consumivelNN.getCodigo_consumivel());
+            jcVenderConsumiveis.addItem(consumivelNN.getCodigo_consumivel());
         }
 
         if (jcbVenderConsumiveis.isSelected()) {
@@ -1049,6 +1084,30 @@ public class JFVendaItens extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jcVenderArmasActionPerformed
 
+    private void jcComprarArmasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcComprarArmasItemStateChanged
+       try {    
+        
+        GenericDAO gDao = new GenericDAO();
+        Armas arma = new Armas();
+        
+        List<Object> ListarPreçoArma = new ArrayList<>();
+
+        arma.setNome_arma((String) jcComprarArmas.getSelectedItem());
+           
+
+        ListarPreçoArma = gDao.listar2(Armas.class, arma);
+        
+        for (Object cod : ListarPreçoArma) {
+            Armas aa = (Armas) cod;
+            
+            jlListPreçoComprar.setText(String.valueOf(aa.getPreco_arma()));
+        }
+        
+        } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jcComprarArmasItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -1115,6 +1174,7 @@ public class JFVendaItens extends javax.swing.JFrame {
     private javax.swing.JCheckBox jcbVenderArmas;
     private javax.swing.JCheckBox jcbVenderConsumiveis;
     private javax.swing.JCheckBox jcbVenderEscudos;
+    private javax.swing.JLabel jlListPreçoComprar;
     private javax.swing.JLabel jlQuantComprar;
     private javax.swing.JLabel jlQuantVender;
     private java.awt.Label label2;
