@@ -11,6 +11,8 @@ package tabelas;
  */
 public class Caminhos {
     int codigo_caminho;
+    String nome_caminho;
+    int codigo_campanha;
 
     public int getCodigo_caminho() {
         return codigo_caminho;
@@ -20,10 +22,6 @@ public class Caminhos {
         this.codigo_caminho = codigo_caminho;
     }
     
-    String nome_caminho;
-    int codigo_missao;
-    int codigo_campanha;
-
     public int getCodigo_campanha() {
         return codigo_campanha;
     }
@@ -39,13 +37,5 @@ public class Caminhos {
 
     public void setNome_caminho(String nome_caminho) {
         this.nome_caminho = nome_caminho;
-    }
-
-    public int getCodigo_missao() {
-        return codigo_missao;
-    }
-
-    public void setCodigo_missao(int codigo_missao) {
-        this.codigo_missao = codigo_missao;
     }
 }
