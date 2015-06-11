@@ -2498,6 +2498,7 @@ public class JFNpc extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_jBNovaFalaAtualizarActionPerformed
 
+    // Cadastra Novos Itens em um Npc
     private void jBNovosItensAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovosItensAdicionarActionPerformed
 
         try {
