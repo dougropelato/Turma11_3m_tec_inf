@@ -133,9 +133,7 @@ public class JFNpc extends javax.swing.JFrame {
         jTFCodEscudo = new javax.swing.JTextField();
         jTFCodRaca = new javax.swing.JTextField();
         jTFCodClasse = new javax.swing.JTextField();
-        jBAdicionarItenNpc = new javax.swing.JButton();
         jTFIndexTipoNpc = new javax.swing.JTextField();
-        jBTestes = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         LabelNovaFalaNomeNpc = new javax.swing.JLabel();
         LabelAdicionarNovaFala = new javax.swing.JLabel();
@@ -579,22 +577,9 @@ public class JFNpc extends javax.swing.JFrame {
         jTFCodClasse.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPCadastrar.add(jTFCodClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, 30, -1));
 
-        jBAdicionarItenNpc.setText("Adicionar Itens");
-        jBAdicionarItenNpc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBAdicionarItenNpcActionPerformed(evt);
-            }
-        });
-        jPCadastrar.add(jBAdicionarItenNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 540, 120, 30));
-
         jTFIndexTipoNpc.setEditable(false);
         jTFIndexTipoNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPCadastrar.add(jTFIndexTipoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 77, 40, -1));
-
-        jBTestes.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jBTestes.setForeground(new java.awt.Color(255, 0, 51));
-        jBTestes.setText("Testes");
-        jPCadastrar.add(jBTestes, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 410, 120, 120));
 
         jTPNPC.addTab("Cadastrar", jPCadastrar);
 
@@ -1978,69 +1963,7 @@ public class JFNpc extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowOpened
      
-    // Falta implementar
-    private void jBAdicionarItenNpcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdicionarItenNpcActionPerformed
-        
-        try {
-
-            ArmadurasNpcs armaduranpc = new ArmadurasNpcs();
-            ArmasNpcs armanpc = new ArmasNpcs();
-            ConsumiveisNpcs consumivelnpc = new ConsumiveisNpcs();
-            EscudosNpcs escudonpc = new EscudosNpcs();
-
-            GenericDAO gDao = new GenericDAO();
-
-            // cadastra ArmadurasNpcs   
-            armaduranpc.setCodigo_armadura(Integer.parseInt(jTFCodArmadura.getText()));
-            armaduranpc.setCodigo_npc(Integer.parseInt(jTFCodigoNpc.getText()));
-            armaduranpc.setQuantidade_armadura(Integer.parseInt(jTFQuantidadeArmaduraNpc.getText()));
-            gDao.adicionar(armaduranpc);
-
-            // limpa os campos
-            jCBArmaduraNpc.setSelectedIndex(-1);
-            jTFCodArmadura.setText("");
-            jTFQuantidadeArmaduraNpc.setText("");
-
-            // cadastra ArmaNpcs
-            armanpc.setCodigo_arma(Integer.parseInt(jTFCodArma.getText()));
-            armanpc.setCodigo_npc(Integer.parseInt(jTFCodigoNpc.getText()));
-            armanpc.setQuantidade_arma(Integer.parseInt(jTFQuantidadeArmaNpc.getText()));
-            gDao.adicionar(armanpc);
-
-            // limpa os campos
-            jCBArmaNpc.setSelectedIndex(-1);
-            jTFCodArmadura.setText("");
-            jTFQuantidadeArmaduraNpc.setText("");
-
-            // cadastra ConsumiveisNpcs
-            consumivelnpc.setCodigo_consumivel(Integer.parseInt(jTFCodConsumivel.getText()));
-            consumivelnpc.setCodigo_npc(Integer.parseInt(jTFCodigoNpc.getText()));
-            consumivelnpc.setQuantidade_consumivel(Integer.parseInt(jTFQuantidadeConsumivelNpc.getText()));
-            gDao.adicionar(consumivelnpc);
-
-            // limpa os campos
-            jCBConsumivelNpc.setSelectedIndex(-1);
-            jTFCodConsumivel.setText("");
-            jTFQuantidadeConsumivelNpc.setText("");
-
-            // cadastra EscudosNpcs
-            escudonpc.setCodigo_escudo(Integer.parseInt(jTFCodEscudo.getText()));
-            escudonpc.setCodigo_npc(Integer.parseInt(jTFCodigoNpc.getText()));
-            escudonpc.setQuantidade_escudos(Integer.parseInt(jTFQuantidadeEscudoNpc.getText()));
-
-            // limpa os campos
-            jCBEscudoNpc.setSelectedIndex(-1);
-            jTFCodEscudo.setText("");
-            jTFQuantidadeEscudoNpc.setText("");
-
-            System.out.println("Itens adicionados! Insira novos itens..");
-
-        } catch (SQLException | ClassNotFoundException | IllegalArgumentException | IllegalAccessException ex) {
-            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_jBAdicionarItenNpcActionPerformed
-    
+   
     // Quando o item do combobox jCBTipoNpc é alterado em aba Cadastrar
     private void jCBTipoNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBTipoNpcItemStateChanged
 
@@ -2410,7 +2333,7 @@ public class JFNpc extends javax.swing.JFrame {
         }   
     }//GEN-LAST:event_jCBNovosItensEscudoNpcItemStateChanged
     
-    // Atualiza Combobox com todos os dados do banco
+    // Atualiza Combobox com todos os itens cadastrados no banco
     private void jBNovosItensAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovosItensAtualizarActionPerformed
  
         try { 
@@ -2506,10 +2429,15 @@ public class JFNpc extends javax.swing.JFrame {
             GenericDAO gDao = new GenericDAO();
             
         // Verifica se algum Npc esta selecionado em combobox    
-        if (jTFNovosItensCodigoNpc.getText() != ("") | jTFNovosItensTipoNpc.getText() != ("") ){
+        if (jTFNovosItensCodigoNpc.getText().equals("") | jTFNovosItensTipoNpc.getText().equals("")){
             
+            JOptionPane.showMessageDialog(null, "Selecione algum Npc para adicionar novos itens!");
+            
+        }
+        else {
+            // Verifica se jCBNovosItensArmaduraNpc possui alguma armadura selecionado
             if (jCBNovosItensArmaduraNpc.getSelectedIndex() != (-1) 
-                 | jTFNovosItensCodArmadura.getText() != ("") | jTFNovosItensQuantidadeArmaduraNpc.getText() != ("")){
+                    | jTFNovosItensCodArmadura.getText() != ("") | jTFNovosItensQuantidadeArmaduraNpc.getText() != ("")){
                 
                 ArmadurasNpcs NovaArmaduraNpc = new ArmadurasNpcs();
                 
@@ -2520,11 +2448,12 @@ public class JFNpc extends javax.swing.JFrame {
                 gDao.adicionar(NovaArmaduraNpc);
             } 
             
-            else {   
-                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            else {  // Informa campos em branco  
+                JOptionPane.showMessageDialog(null, "Preencha os campos com itens selecionados!");
             }
-        
-            if (jCBNovosItensArmaNpc.getSelectedIndex() != -1){
+            // Verifica se jCBNovosItensArmaNpc possui alguma arma selecionado
+            if (jCBNovosItensArmaNpc.getSelectedIndex() != (-1)
+                    | jTFNovosItensCodArma.getText() != ("") | jTFNovosItensQuantidadeArmaNpc.getText() != ("")){
                 
                 ArmasNpcs NovaArmaNpc = new ArmasNpcs();
                 
@@ -2535,11 +2464,12 @@ public class JFNpc extends javax.swing.JFrame {
                 gDao.adicionar(NovaArmaNpc);
             }
             
-            else {
-                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            else {  // Informa campos em branco
+                JOptionPane.showMessageDialog(null, "Preencha os campos com itens selecionados!");
             }
-            
-            if (jCBNovosItensConsumivelNpc.getSelectedIndex() != -1){
+            // Verifica se jCBNovosItensConsumivelNpc possui algum consumivel selecionado
+            if (jCBNovosItensConsumivelNpc.getSelectedIndex() != (-1)
+                    | jTFNovosItensCodConsumivel.getText() != ("") | jTFNovosItensQuantidadeConsumivelNpc.getText() != ("")){
                 
                 ConsumiveisNpcs NovoConsumivelNpc = new ConsumiveisNpcs();
                 
@@ -2550,11 +2480,12 @@ public class JFNpc extends javax.swing.JFrame {
                 gDao.adicionar(NovoConsumivelNpc);
             }
             
-            else {
-                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            else { // Informa campos em branco
+                JOptionPane.showMessageDialog(null, "Preencha os campos com itens selecionados!");
             }
             // Verifica se jCBNovosItensEscudoNpc possui algum escudo selecionado
-            if (jCBNovosItensEscudoNpc.getSelectedIndex() != -1){
+            if (jCBNovosItensEscudoNpc.getSelectedIndex() != (-1)
+                    | jTFNovosItensCodEscudo.getText() != ("") | jTFNovosItensQuantidadeEscudoNpc.getText() != ("")){
                 
                 EscudosNpcs NovoEscudoNpc = new EscudosNpcs();
                 
@@ -2565,13 +2496,9 @@ public class JFNpc extends javax.swing.JFrame {
                 gDao.adicionar(NovoEscudoNpc);
             }
             
-            else {//
-                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            else {  // Informa campos em branco
+                JOptionPane.showMessageDialog(null, "Preencha os campos com itens selecionados!");
             }
-        } //Fim if - Verifica se algum Npc esta selecionado em combobox    
-        
-        else { // Senão informa para selecionar algum Npc para adicionar novos itens
-            JOptionPane.showMessageDialog(null, "Selecione algum Npc para adicionar novos itens!");
         }
 
         } catch (SQLException | ClassNotFoundException | IllegalArgumentException | IllegalAccessException ex) {
@@ -2638,7 +2565,6 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JLabel LabelRespostaNegativa;
     private javax.swing.JLabel LabelRespostaPositiva;
     private javax.swing.JLabel LabelTipoNpc;
-    private javax.swing.JButton jBAdicionarItenNpc;
     private javax.swing.JButton jBAlterarAdicionarFala;
     private javax.swing.JButton jBAlterarAdicionarItenNpc;
     private javax.swing.JButton jBAlterarCadastrar;
@@ -2648,7 +2574,6 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JButton jBNovaFalaAtualizar;
     private javax.swing.JButton jBNovosItensAdicionar;
     private javax.swing.JButton jBNovosItensAtualizar;
-    private javax.swing.JButton jBTestes;
     private javax.swing.JComboBox jCBAlterarArmaNpc;
     private javax.swing.JComboBox jCBAlterarArmaduraNpc;
     private javax.swing.JComboBox jCBAlterarClasse;
