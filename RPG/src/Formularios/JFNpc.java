@@ -802,6 +802,11 @@ public class JFNpc extends javax.swing.JFrame {
         jPanel2.add(jTFNovosItensCodEscudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 31, -1));
 
         jBNovosItensAdicionar.setText("Adicionar Itens");
+        jBNovosItensAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNovosItensAdicionarActionPerformed(evt);
+            }
+        });
         jPanel2.add(jBNovosItensAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 155, 30));
 
         jBNovosItensAtualizar.setText("Atualizar");
@@ -2492,6 +2497,77 @@ public class JFNpc extends javax.swing.JFrame {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }//GEN-LAST:event_jBNovaFalaAtualizarActionPerformed
+
+    private void jBNovosItensAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovosItensAdicionarActionPerformed
+
+        try {
+        
+            GenericDAO gDao = new GenericDAO();
+            
+                    if (jTFNovosItensCodigoNpc.getText().equals("") | jTFNovosItensTipoNpc.getText().equals("")){
+            
+            if (jCBNovosItensArmaduraNpc.getSelectedIndex() != -1){
+                
+                ArmadurasNpcs NovaArmaduraNpc = new ArmadurasNpcs();
+                
+                NovaArmaduraNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
+                NovaArmaduraNpc.setCodigo_armadura(Integer.parseInt(jTFNovosItensCodArmadura.getText()));
+                NovaArmaduraNpc.setQuantidade_armadura(Integer.parseInt(jTFNovosItensCodArmadura.getText()));
+                
+                gDao.adicionar(NovaArmaduraNpc);
+            } 
+            
+            else {   
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            }
+        
+            if (jCBNovosItensArmaNpc.getSelectedIndex() != -1){
+                
+                ArmasNpcs NovaArmaNpc = new ArmasNpcs();
+                
+                NovaArmaNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
+                NovaArmaNpc.setCodigo_arma(Integer.parseInt(jTFNovosItensCodArma.getText()));
+                NovaArmaNpc.setQuantidade_arma(Integer.parseInt(jTFNovosItensQuantidadeArmaNpc.getText()));
+                
+                gDao.adicionar(NovaArmaNpc);
+            }
+            
+            else {
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            }
+            
+            if (jCBNovosItensConsumivelNpc.getSelectedIndex() != -1){
+                
+                ConsumiveisNpcs NovoConsumivelNpc = new ConsumiveisNpcs();
+                
+                NovoConsumivelNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
+                NovoConsumivelNpc.setCodigo_consumivel(Integer.parseInt(jTFNovosItensCodConsumivel.getText()));
+                NovoConsumivelNpc.setQuantidade_consumivel(Integer.parseInt(jTFNovosItensQuantidadeConsumivelNpc.getText()));
+                
+                gDao.adicionar(NovoConsumivelNpc);
+            }
+            
+            else {
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            }
+            
+            if (jCBNovosItensEscudoNpc.getSelectedIndex() != -1){
+                
+                EscudosNpcs NovoEscudoNpc = new EscudosNpcs();
+                
+                NovoEscudoNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
+                NovoEscudoNpc.setCodigo_escudo(Integer.parseInt(jTFNovosItensCodEscudo.getText()));
+                NovoEscudoNpc.setQuantidade_escudos(Integer.parseInt(jTFNovosItensQuantidadeEscudoNpc.getText()));
+                
+                gDao.adicionar(NovoEscudoNpc);
+            }
+           
+        }
+
+        } catch (SQLException | ClassNotFoundException | IllegalArgumentException | IllegalAccessException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBNovosItensAdicionarActionPerformed
 
     /**
      * @param args the command line arguments
