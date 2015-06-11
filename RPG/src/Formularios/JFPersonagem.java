@@ -23,7 +23,13 @@ import tabelas.Personagens;
  * @author Adriel
  */
 public class JFPersonagem extends javax.swing.JFrame {
-
+    int forca;
+    int destreza;
+    int constituicao;
+    int inteligencia;
+    int sabedoria;
+    int carisma;
+    
     ArrayList listRaca = new ArrayList();
     /**
      * Creates new form JFPersonagem
@@ -374,17 +380,29 @@ public class JFPersonagem extends javax.swing.JFrame {
             Raca rc = new Raca ();
             
             int codRaca = ((int) listRaca.get(jCRaca.getSelectedIndex()));
-            rc.setCodigo_raca(codRaca);
+            pers.setCodigo_raca(codRaca);
             
             List<Object> list = aDao.listar2(Raca.class, rc);
             for (Object obj3 : list) {
 
                 Raca r = (Raca) obj3;
                             
-                int forca = (r.getForca_raca());
-                System.out.println("é: "+ forca);
+                forca = (r.getForca_raca());
+                //System.out.println("forca raca : "+ forca);
+                destreza = (r.getDestreza_raca());
+                constituicao = (r.getConstituicao_raca());
+                inteligencia = (r.getInteligencia_raca());
+                sabedoria = (r.getSabedoria_raca());
+                carisma = (r.getCarisma_raca());
             }
-
+                
+               
+                
+                //System.out.println("forca personagem " + forcaPersonagem);
+                //totalForca = (forca+forcaPersonagem);
+                //System.out.println("total: " + (forca + (Integer.parseInt(jtfForcaPersonagem.getText()))));
+                
+                
             pers.setNome_personagem("");
             pers.setIdade_personagem(0);
             pers.setPeso_personagem(0);
@@ -408,12 +426,12 @@ public class JFPersonagem extends javax.swing.JFrame {
             pers.setIdade_personagem(Integer.parseInt(jtfIdadePersonagem.getText()));
             pers.setPeso_personagem(Integer.parseInt(jtfPesoPersonagem.getText()));
             pers.setAltura_personagem(Integer.parseInt(jtfAlturaPersonagem.getText()));
-            pers.setForca_personagem((Integer.parseInt(jtfForcaPersonagem.getText())));
-            pers.setDestreza_personagem(Integer.parseInt(jtfDestrezaPersonagem.getText()));
-            pers.setContituicao_personagem(Integer.parseInt(jtfConstituicaoPersonagem.getText()));
-            pers.setInteligencia_personagem(Integer.parseInt(jtfInteligenciaPersonagem.getText()));
-            pers.setSabedoria_personagem(Integer.parseInt(jtfSabedoriaPersonagem.getText()));
-            pers.setCarisma_personagem(Integer.parseInt(jtfCarismaPersonagem.getText()));
+            pers.setForca_personagem(forca + (Integer.parseInt(jtfForcaPersonagem.getText())));
+            pers.setDestreza_personagem(destreza + (Integer.parseInt(jtfDestrezaPersonagem.getText())));
+            pers.setContituicao_personagem(constituicao + (Integer.parseInt(jtfConstituicaoPersonagem.getText())));
+            pers.setInteligencia_personagem(inteligencia + (Integer.parseInt(jtfInteligenciaPersonagem.getText())));
+            pers.setSabedoria_personagem(sabedoria + (Integer.parseInt(jtfSabedoriaPersonagem.getText())));
+            pers.setCarisma_personagem(carisma + (Integer.parseInt(jtfCarismaPersonagem.getText())));
             pers.setFortitude_personagem(Integer.parseInt(jtfFortitudePersonagem.getText()));
             pers.setReflexos_personagem(Integer.parseInt(jtfRefexoPersonagem.getText()));
             pers.setVontade_personagem(Integer.parseInt(jtfVontadePersonagem.getText()));

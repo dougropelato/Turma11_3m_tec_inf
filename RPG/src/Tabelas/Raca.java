@@ -12,11 +12,19 @@ public class Raca {
     int inteligencia_raca;
     int sabedoria_raca;
     int carisma_raca;
-     int qtd_talen_raca_adc;
-     int uso_arma_raca;
-     Boolean uso_escudo_raca;
-     int  armadura_raca_;
-     String nome_raca;
+    int qtd_talen_raca_adc;
+    int uso_arma_raca;
+    Boolean uso_escudo_raca;
+    int  uso_armadura_raca;
+
+    public int getUso_armadura_raca() {
+        return uso_armadura_raca;
+    }
+
+    public void setUso_armadura_raca(int uso_armadura_raca) {
+        this.uso_armadura_raca = uso_armadura_raca;
+    }
+    String nome_raca;
 
     public int getCodigo_raca() {
         return codigo_raca;
@@ -106,13 +114,7 @@ public class Raca {
         this.uso_escudo_raca = uso_escudo_raca;
     }
 
-    public int getArmadura_raca_() {
-        return armadura_raca_;
-    }
 
-    public void setArmadura_raca_(int armadura_raca_) {
-        this.armadura_raca_ = armadura_raca_;
-    }
 
     public String getNome_raca() {
         return nome_raca;
