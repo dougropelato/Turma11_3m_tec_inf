@@ -2505,9 +2505,11 @@ public class JFNpc extends javax.swing.JFrame {
         
             GenericDAO gDao = new GenericDAO();
             
-                    if (jTFNovosItensCodigoNpc.getText().equals("") | jTFNovosItensTipoNpc.getText().equals("")){
+        // Verifica se algum Npc esta selecionado em combobox    
+        if (jTFNovosItensCodigoNpc.getText() != ("") | jTFNovosItensTipoNpc.getText() != ("") ){
             
-            if (jCBNovosItensArmaduraNpc.getSelectedIndex() != -1){
+            if (jCBNovosItensArmaduraNpc.getSelectedIndex() != (-1) 
+                 | jTFNovosItensCodArmadura.getText() != ("") | jTFNovosItensQuantidadeArmaduraNpc.getText() != ("")){
                 
                 ArmadurasNpcs NovaArmaduraNpc = new ArmadurasNpcs();
                 
@@ -2551,7 +2553,7 @@ public class JFNpc extends javax.swing.JFrame {
             else {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
             }
-            
+            // Verifica se jCBNovosItensEscudoNpc possui algum escudo selecionado
             if (jCBNovosItensEscudoNpc.getSelectedIndex() != -1){
                 
                 EscudosNpcs NovoEscudoNpc = new EscudosNpcs();
@@ -2562,7 +2564,14 @@ public class JFNpc extends javax.swing.JFrame {
                 
                 gDao.adicionar(NovoEscudoNpc);
             }
-           
+            
+            else {//
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            }
+        } //Fim if - Verifica se algum Npc esta selecionado em combobox    
+        
+        else { // Senão informa para selecionar algum Npc para adicionar novos itens
+            JOptionPane.showMessageDialog(null, "Selecione algum Npc para adicionar novos itens!");
         }
 
         } catch (SQLException | ClassNotFoundException | IllegalArgumentException | IllegalAccessException ex) {
