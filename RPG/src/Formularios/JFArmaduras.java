@@ -5,8 +5,12 @@
  */
 package formularios;
 
+import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tabelas.Armaduras;
 
 /**
@@ -171,12 +175,34 @@ public class JFArmaduras extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         Armaduras armd = new Armaduras();
+        
+        GenericDAO gDAO = null;
+        try {
+            gDAO = new GenericDAO();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         armd.setNome_armadura(jtfNomeArmadura.getText());
         armd.setTipo_armadura(jcTipoArmadura.getSelectedIndex());
         armd.setPreco_armadura(Double.parseDouble(jtfPrecoArmadura.getText()));
         armd.setBonus_maximo_armadura(Double.parseDouble(jtfBonusMaximoArmadura.getText()));
         armd.setPenalidade_destreza_armadura(Integer.parseInt(jtfPenalidadeDestrezaArmadura.getText()));
+        
+        try {
+            gDAO.adicionar(armd);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
