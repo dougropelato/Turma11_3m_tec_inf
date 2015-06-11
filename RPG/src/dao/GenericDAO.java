@@ -211,6 +211,10 @@ public class GenericDAO {
                         args1[0] = int.class;
                         obj.getClass().getMethod(m.getName(), args1).invoke(obj, rset.getInt(s));
                     }
+                    if (pvec[0].getName().equals("double")) {
+                        args1[0] = double.class;
+                        obj.getClass().getMethod(m.getName(), args1).invoke(obj, rset.getDouble(s));
+                    }
                 }
             }
             list.add(obj);
