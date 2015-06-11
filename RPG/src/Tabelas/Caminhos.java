@@ -22,6 +22,15 @@ public class Caminhos {
     
     String nome_caminho;
     int codigo_missao;
+    int codigo_campanha;
+
+    public int getCodigo_campanha() {
+        return codigo_campanha;
+    }
+
+    public void setCodigo_campanha(int codigo_campanha) {
+        this.codigo_campanha = codigo_campanha;
+    }
 
    
     public String getNome_caminho() {
