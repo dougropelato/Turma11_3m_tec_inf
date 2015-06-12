@@ -5,7 +5,7 @@ package Tabelas;
 public class Raca {
     
     int codigo_raca;
-    String descricao_raca;
+    /*String descricao_raca;
     int forca_raca;
     int destreza_raca;
     int constituicao_raca;
@@ -15,16 +15,16 @@ public class Raca {
     int qtd_talen_raca_adc;
     int uso_arma_raca;
     Boolean uso_escudo_raca;
-    int  uso_armadura_raca;
-    String nome_raca;
+    int  uso_armadura_raca;*/
+     String nome_raca;
 
-   public int getUso_armadura_raca() {
+   /* public int getUso_armadura_raca() {
         return uso_armadura_raca;
     }
 
     public void setUso_armadura_raca(int uso_armadura_raca) {
         this.uso_armadura_raca = uso_armadura_raca;
-    }
+    }*/
    
 
     public int getCodigo_raca() {
@@ -35,7 +35,7 @@ public class Raca {
         this.codigo_raca = codigo_raca;
     }
 
-    public String getDescricao_raca() {
+  /*  public String getDescricao_raca() {
         return descricao_raca;
     }
 
@@ -113,7 +113,7 @@ public class Raca {
 
     public void setUso_escudo_raca(Boolean uso_escudo_raca) {
         this.uso_escudo_raca = uso_escudo_raca;
-    }
+    }*/
 
 
 
@@ -124,8 +124,6 @@ public class Raca {
     public void setNome_raca(String nome_raca) {
         this.nome_raca = nome_raca;
     }
-    
-    
      
     
 }
