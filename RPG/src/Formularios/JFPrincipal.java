@@ -62,12 +62,12 @@ public class JFPrincipal extends javax.swing.JFrame {
                 jTextArea1.setText(jTextArea1.getText() + ca.getCodigo_caminho() + " - " + ca.getNome_caminho() +" \n ");
             }
         
-        localizaPosicao();
+        carregaPosicoes();
         
         
     }
     
-    public void localizaPosicao() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException{
+    public void carregaPosicoes() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException{
         Posicoes posicoes = new Posicoes();
         GenericDAO gDAO = new GenericDAO();
         
