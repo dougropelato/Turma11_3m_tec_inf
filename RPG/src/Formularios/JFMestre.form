@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JToggleButton" name="jToggleButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jToggleButton1"/>
+      </Properties>
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -25,29 +32,33 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jbtcampanha" min="-2" pref="143" max="-2" attributes="0"/>
                           <Component id="jbtcaminho" alignment="1" min="-2" pref="143" max="-2" attributes="0"/>
                           <Component id="jbtnpc" alignment="1" min="-2" pref="143" max="-2" attributes="0"/>
-                          <Component id="jbtmapa" min="-2" pref="143" max="-2" attributes="0"/>
                           <Component id="jbtmissao" min="-2" pref="143" max="-2" attributes="0"/>
                           <Component id="jbtvariavel" min="-2" pref="143" max="-2" attributes="0"/>
+                          <Component id="jbttalentos" min="-2" pref="143" max="-2" attributes="0"/>
+                          <Component id="jbtpericiais" alignment="1" min="-2" pref="143" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jbtclasse" max="32767" attributes="0"/>
-                          <Component id="jbtraça" max="32767" attributes="0"/>
-                          <Component id="jbtarmadura" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jbtarma" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jbtescudo" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jbtconsumivel" alignment="0" pref="143" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jbtclasse" max="32767" attributes="0"/>
+                              <Component id="jbtraça" max="32767" attributes="0"/>
+                              <Component id="jbtarmadura" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jbtarma" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jbtescudo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jbtconsumivel" alignment="0" pref="143" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jbtsair" min="-2" pref="143" max="-2" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="65" max="32767" attributes="0"/>
@@ -70,29 +81,34 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jbtclasse" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="jbtmapa" min="-2" pref="35" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jbtarmadura" pref="36" max="32767" attributes="0"/>
-                  <Component id="jbtcaminho" max="32767" attributes="0"/>
+                  <Component id="jbtcaminho" min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbtarma" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="jbtarmadura" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="jbtvariavel" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbtescudo" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="jbtarma" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="jbtmissao" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jbtescudo" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="jbtnpc" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="jbtconsumivel" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="160" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jbtconsumivel" pref="35" max="32767" attributes="0"/>
+                  <Component id="jbttalentos" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jbtpericiais" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="jbtsair" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="120" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -104,14 +120,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtcampanhaActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="jbtmapa">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Mapas / Miss&#xf5;es"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtmapaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbtmissao">
@@ -201,6 +209,30 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Menu de Cadastros - Mestre"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="jbttalentos">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Talentos"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbttalentosActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="jbtpericiais">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pericias"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtpericiaisActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="jbtsair">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sair"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtsairActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
