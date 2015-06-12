@@ -172,6 +172,57 @@ public class Personagens {
         this.codigo_raca = codigo_raca;
     }
     
+        public int getModForca() {
+    
+    double forca = (double)this.forca_personagem;
+    
+    return (int) ((forca-10)/2);
+    
+}
+    public int getModDestreza() {
+    
+    double destreza = (double)this.destreza_personagem;
+    
+    return (int) ((destreza-10)/2);
+    
+}
+    
+    public int getModConstituicao() {
+    
+    double contituicao = (double)this.contituicao_personagem;
+    
+    return (int) ((contituicao-10)/2);
+    
+}
+    public int getModInteligencia() {
+    
+    double inteligencia = (double)this.iniciativa_personagem;
+    
+    return (int) ((inteligencia-10)/2);
+    
+}
+    public int getModSabedoria() {
+    
+    double sabedoria = (double)this.sabedoria_personagem;
+    
+    return (int) ((sabedoria-10)/2);
+    
+}
+    public int getModCarisma() {
+    
+    double carisma = (double)this.carisma_personagem;
+    
+    return (int) ((carisma-10)/2);
+    
+}
+    public int getModFortitude() {
+    
+    double fortitude = (double)this.forca_personagem;
+    
+    return (int) ((fortitude-10)/2);
+    
+}
+    
     int codigo_personagem;
     int codigo_classe;
     String nome_personagem;
