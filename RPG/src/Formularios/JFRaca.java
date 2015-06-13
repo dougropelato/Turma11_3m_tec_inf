@@ -1,6 +1,12 @@
 
 package Formularios;
 
+import Tabelas.Raca;
+import dao.GenericDAO;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class JFRaca extends javax.swing.JFrame {
 
@@ -122,7 +128,25 @@ public class JFRaca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbCadastrar_racaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrar_racaActionPerformed
-          
+        try {         
+            GenericDAO gDao = new GenericDAO ();
+            Raca rc = new Raca();
+            
+            rc.setNome_raca(jtfNome_raca.getText());
+            gDao.adicionar(rc);
+            
+            
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(JFRaca.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFRaca.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFRaca.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFRaca.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbCadastrar_racaActionPerformed
 
     /**
