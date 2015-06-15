@@ -31,6 +31,7 @@ public class JFPersonagem extends javax.swing.JFrame {
     int carisma;
     
     ArrayList listRaca = new ArrayList();
+    ArrayList listClasse = new ArrayList();
     /**
      * Creates new form JFPersonagem
      */
@@ -379,8 +380,7 @@ public class JFPersonagem extends javax.swing.JFrame {
             Personagens pers = new Personagens();
             Raca rc = new Raca ();
             
-            int codRaca = ((int) listRaca.get(jCRaca.getSelectedIndex()));
-            pers.setCodigo_raca(codRaca);
+            
             
             List<Object> list = aDao.listar2(Raca.class, rc);
             for (Object obj3 : list) {
@@ -440,6 +440,8 @@ public class JFPersonagem extends javax.swing.JFrame {
             pers.setIniciativa_personagem(Integer.parseInt(jtfIniciativaPersonagem.getText()));
             pers.setBase_ataque_personagem(Integer.parseInt(jtfBaseDeAtaquePersonagem.getText()));
             pers.setCodigo_raca((int) listRaca.get(jCRaca.getSelectedIndex()));
+            pers.setCodigo_classe((int) listClasse.get(jCClasse.getSelectedIndex()));
+            
             aDao.adicionar(pers);
 
         } catch (SQLException ex) {
@@ -476,7 +478,7 @@ public class JFPersonagem extends javax.swing.JFrame {
                 String Classe = "";
                 Classe = cl.getNome_classe();
                 jCClasse.addItem(Classe);
-                
+                listClasse.add(cl.getCodigo_classe());
                 
 
             }

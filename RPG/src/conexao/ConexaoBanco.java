@@ -20,6 +20,7 @@ public class ConexaoBanco {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             return DriverManager.getConnection("jdbc:mysql://localhost/rpg", "root", "");
+              // return DriverManager.getConnection("jdbc:mysql://alexdb.ddns.net/rpg", "alexx", "alexx");
             //return DriverManager.getConnection("jdbc:mysql://db4free.org/ceduprpgturma11", "turma11", "turma111234567890");
         } catch (ClassNotFoundException e) {
             throw new SQLException(e.getMessage());

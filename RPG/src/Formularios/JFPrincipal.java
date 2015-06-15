@@ -26,6 +26,7 @@ import tabelas.Posicoes;
  */
 public class JFPrincipal extends javax.swing.JFrame {
     int posi = 0;
+    ArrayList arrayListDescPosicao = new ArrayList();
     VerificaComandos vercom = new VerificaComandos();
     
     public void centralizarComponente(){
@@ -40,7 +41,6 @@ public class JFPrincipal extends javax.swing.JFrame {
         Caminhos caminhos = new Caminhos();
         Campanhas campanha = new Campanhas();
         Posicoes posicoes = new Posicoes();
-        ArrayList arrayListDescPosicao = new ArrayList();
         
         //localiza a campanha selecionada
         campanha.setCodigo_campanha(2);  //precisa de uma verificação da campanha que o usuario seleciona
@@ -62,9 +62,16 @@ public class JFPrincipal extends javax.swing.JFrame {
                 jTextArea1.setText(jTextArea1.getText() + ca.getCodigo_caminho() + " - " + ca.getNome_caminho() +" \n ");
             }
         
+        carregaPosicoes();
         
-        if (Integer.toString(posi) != "0"){
-            posicoes.setCodigo_caminho(posi);
+        
+    }
+    
+    public void carregaPosicoes() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException{
+        Posicoes posicoes = new Posicoes();
+        GenericDAO gDAO = new GenericDAO();
+        
+        posicoes.setCodigo_caminho(posi);
             List<Object> list3 = gDAO.listar2(Posicoes.class, posicoes);
                 
                 for (Object obj4 : list3){
@@ -73,8 +80,6 @@ public class JFPrincipal extends javax.swing.JFrame {
                     arrayListDescPosicao.add(posicoes.getDescricao_posicao());
                     System.out.println(posicoes.getDescricao_posicao());
                 }
-        }
-        
     }
     /**
      * Creates new form formprincipal
