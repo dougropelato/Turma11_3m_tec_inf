@@ -440,7 +440,8 @@ public class JFPersonagem extends javax.swing.JFrame {
             pers.setIniciativa_personagem(Integer.parseInt(jtfIniciativaPersonagem.getText()));
             pers.setBase_ataque_personagem(Integer.parseInt(jtfBaseDeAtaquePersonagem.getText()));
             pers.setCodigo_raca((int) listRaca.get(jCRaca.getSelectedIndex()));
-            pers.setCodigo_raca((int) listClasse.get(jCClasse.getSelectedIndex()));
+            pers.setCodigo_classe((int) listClasse.get(jCClasse.getSelectedIndex()));
+            
             aDao.adicionar(pers);
 
         } catch (SQLException ex) {
