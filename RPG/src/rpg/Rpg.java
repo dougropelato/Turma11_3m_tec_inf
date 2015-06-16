@@ -5,6 +5,7 @@
  */
 package rpg;
 
+import Formularios.JFPrincipal;
 import Tabelas.PericiaPersonagem;
 import Tabelas.TalentosPersonagem;
 import dao.GenericDAO;
@@ -29,8 +30,13 @@ public class Rpg {
      */
     public static void main(String[] args) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
-        JFMestre m = new JFMestre();
-        m.setVisible(true);
+//        JFMestre m = new JFMestre();
+//        m.setVisible(true);
+        
+               JFPrincipal m = new JFPrincipal();
+                 m.setVisible(true);
+
+        
 
     }
 

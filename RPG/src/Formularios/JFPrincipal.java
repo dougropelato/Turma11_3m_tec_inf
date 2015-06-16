@@ -25,62 +25,66 @@ import tabelas.Posicoes;
  * @author Alexjonas
  */
 public class JFPrincipal extends javax.swing.JFrame {
+
     int posi = 0;
     ArrayList arrayListDescPosicao = new ArrayList();
-    VerificaComandos vercom = new VerificaComandos();
-    
-    public void centralizarComponente(){
+    VerificaComandos vc = new VerificaComandos();
+
+    public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
-        setLocation((ds.width - dw.width)/2, (ds.height - dw.height)/2);
+        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
     }
-    
-    public void principal() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException{
+
+    public void principal() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         jTextArea1.setLineWrap(true);
         GenericDAO gDAO = new GenericDAO();
+
+        //------------------------------------------------------
         Caminhos caminhos = new Caminhos();
         Campanhas campanha = new Campanhas();
         Posicoes posicoes = new Posicoes();
-        
+
         //localiza a campanha selecionada
         campanha.setCodigo_campanha(2);  //precisa de uma verificação da campanha que o usuario seleciona
         List<Object> list = gDAO.listar2(Campanhas.class, campanha);
-            for (Object obj2 : list) {
-                Campanhas c = (Campanhas) obj2;
-                jTextArea1.setText("Bem vindo a campanha "+ c.getNome_campanha() +" \n "); //mostra nome da campanha 
-                jlCampanha.setText(c.getNome_campanha());
-            }   
-       
-        jTextArea1.setText(jTextArea1.getText() +"Deseja seguir que caminho? \n ");
+        for (Object obj2 : list) {
+            Campanhas c = (Campanhas) obj2;
+            jTextArea1.setText("Bem vindo a campanha " + c.getNome_campanha() + " \n "); //mostra nome da campanha 
+            jlCampanha.setText(c.getNome_campanha());
+        }
+
+        jTextArea1.setText(jTextArea1.getText() + "Deseja seguir que caminho? \n ");
 
         //Lista os caminhos para o jogador selecionar o desejado
         caminhos.setCodigo_campanha(campanha.getCodigo_campanha());
         List<Object> list2 = gDAO.listar2(Caminhos.class, caminhos);
-            
-            for (Object obj3 : list2){
-                Caminhos ca = (Caminhos) obj3;
-                jTextArea1.setText(jTextArea1.getText() + ca.getCodigo_caminho() + " - " + ca.getNome_caminho() +" \n ");
-            }
-        
+
+        for (Object obj3 : list2) {
+            Caminhos ca = (Caminhos) obj3;
+            jTextArea1.setText(jTextArea1.getText() + ca.getCodigo_caminho() + " - " + ca.getNome_caminho() + " \n ");
+        }
+
         carregaPosicoes();
-        
-        
+
+        //-------------------------------------------------------------
     }
-    
-    public void carregaPosicoes() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException{
+
+    public void carregaPosicoes() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         Posicoes posicoes = new Posicoes();
         GenericDAO gDAO = new GenericDAO();
-        
+
         posicoes.setCodigo_caminho(posi);
-            List<Object> list3 = gDAO.listar2(Posicoes.class, posicoes);
-                
-                for (Object obj4 : list3){
-                    Posicoes p = (Posicoes) obj4;
-                
-                    arrayListDescPosicao.add(posicoes.getDescricao_posicao());
-                    System.out.println(posicoes.getDescricao_posicao());
-                }
+        List<Object> list3 = gDAO.listar2(Posicoes.class, posicoes);
+
+        for (Object obj4 : list3) {
+            Posicoes p = (Posicoes) obj4;
+
+            arrayListDescPosicao.add(posicoes.getDescricao_posicao());
+            System.out.println(posicoes.getDescricao_posicao());
+        }
     }
+
     /**
      * Creates new form formprincipal
      */
@@ -218,16 +222,34 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String string = jTextField1.getText();
-        if (string != ""){
+        if (string != "") {
             // divide string em uma arraiy para verificar por partes
             String[] comands = string.split(" ");
-            posi = Integer.parseInt(string);
-        
-            jTextArea1.setText( jTextArea1.getText()+" \n Jogador diz: "+string); // mostra no texto da historia 
+           // posi = Integer.parseInt(string);          
+
+            jTextArea1.setText(jTextArea1.getText() + " \n Jogador diz: " + string); // mostra no texto da historia 
+            try {
+                jTextArea1.setText(jTextArea1.getText() + " \n mestre diz: " + vc.verificaComando(comands)); // mostra no texto da historia 
+            } catch (SQLException ex) {
+                Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSuchMethodException ex) {
+                Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvocationTargetException ex) {
+                Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
         // limpa comando digitado
         jTextField1.setText("");
@@ -243,7 +265,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jButton1.doClick();
-            
+
         }
     }//GEN-LAST:event_jTextField1KeyPressed
 

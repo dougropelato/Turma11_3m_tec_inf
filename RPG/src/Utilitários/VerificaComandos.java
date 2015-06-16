@@ -39,7 +39,7 @@ public class VerificaComandos {
         } // modo adm
 
         if (!auth.isJogador_logado()) {// se não estiver logado entra
-
+            System.out.println(auth.getCodigo_jogador());
             if (auth.getCodigo_jogador() == 0) {// verifica se falta logar
 
                 if (aux[0].equalsIgnoreCase("login")) { //verifica se primeira palavra é o login
@@ -57,10 +57,11 @@ public class VerificaComandos {
 
                         for (Object obj : ll) {
                             Jogadores jog = (Jogadores) obj;
-                            auth.setNome_jogador(jog.getNome_jogador());
                             auth.setCodigo_jogador(jog.getCodigo_jogador());
+                            auth.setNome_jogador(jog.getNome_jogador());
                             auth.setSenha_jogador(jog.getSenha_jogador());
-                            auth.setMestre_jogador(jog.getMestre_jogador());
+                            System.out.println("senha " + jog.getCodigo_jogador());
+                            // auth.setMestre_jogador(jog.getMestre_jogador());
                         }
 
                     } else {
