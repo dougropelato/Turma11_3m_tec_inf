@@ -97,70 +97,114 @@ public class JFPersonagem extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Nome");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+        getContentPane().add(jtfNomePersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 49, 120, -1));
+
+        getContentPane().add(jCClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 11, 120, -1));
 
         jLabel2.setText("Idade");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 78, -1, -1));
+        getContentPane().add(jtfIdadePersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 75, 120, -1));
 
         jLabel3.setText("Peso");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 104, -1, -1));
 
         jtfPesoPersonagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfPesoPersonagemActionPerformed(evt);
             }
         });
+        getContentPane().add(jtfPesoPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 101, 120, -1));
 
         jLabel4.setText("Altura");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 135, -1, -1));
+        getContentPane().add(jtfAlturaPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 129, 120, -1));
 
         jLabel5.setText("Força");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 158, -1, -1));
 
         jLabel6.setText("Destreza");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 184, -1, -1));
 
         jLabel7.setText("Constituição");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 70, -1));
 
         jLabel8.setText("Inteligência");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 236, -1, -1));
 
         jLabel9.setText("Sabedoria");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 262, -1, -1));
 
         jLabel10.setText("Carisma");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(299, 213, -1, -1));
+        getContentPane().add(jtfForcaPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 155, 120, -1));
 
         jtfDestrezaPersonagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfDestrezaPersonagemActionPerformed(evt);
             }
         });
+        getContentPane().add(jtfDestrezaPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 181, 120, -1));
 
         jtfConstituicaoPersonagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfConstituicaoPersonagemActionPerformed(evt);
             }
         });
+        getContentPane().add(jtfConstituicaoPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 207, 120, -1));
 
         jtfInteligenciaPersonagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfInteligenciaPersonagemActionPerformed(evt);
             }
         });
+        getContentPane().add(jtfInteligenciaPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 233, 120, -1));
+        getContentPane().add(jtfSabedoriaPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 259, 120, -1));
+        getContentPane().add(jtfCarismaPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 210, 120, -1));
 
         jLabel11.setText("Fortitude");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 285, -1, -1));
+        getContentPane().add(jtfFortitudePersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 285, 120, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 16, -1, -1));
 
         jLabel13.setText("Refexos");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 187, -1, -1));
+        getContentPane().add(jtfRefexoPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 184, 120, -1));
 
         jLabel14.setText("Vontade");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 161, -1, -1));
+
+        jtfVontadePersonagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfVontadePersonagemActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jtfVontadePersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 158, 120, -1));
 
         jLabel15.setText("Cls.Armadura (CA)");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 52, -1, -1));
 
         jtfClasseArmaduraPersonagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfClasseArmaduraPersonagemActionPerformed(evt);
             }
         });
+        getContentPane().add(jtfClasseArmaduraPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 49, 120, -1));
 
         jLabel16.setText("Pontos de Vida");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 109, -1, -1));
+        getContentPane().add(jtfPontosDeVidaPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 106, 120, -1));
 
         jLabel17.setText("Iniciativa");
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 135, -1, -1));
+        getContentPane().add(jtfIniciativaPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 132, 120, -1));
 
         jLabel18.setText("Base de Ataque");
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 78, -1, -1));
+        getContentPane().add(jtfBaseDeAtaquePersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 75, 120, -1));
 
         jBSalvar.setText("Salvar");
         jBSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -168,187 +212,18 @@ public class JFPersonagem extends javax.swing.JFrame {
                 jBSalvarActionPerformed(evt);
             }
         });
+        getContentPane().add(jBSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 260, 120, -1));
+
+        getContentPane().add(jCRaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 11, 130, -1));
 
         jLabel19.setText("Classe");
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 14, -1, -1));
 
         jLabel20.setText("Raça");
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 14, -1, -1));
 
         jButton1.setText("Sair");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel20))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfIdadePersonagem)
-                            .addComponent(jtfNomePersonagem)
-                            .addComponent(jCRaca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)))
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfPesoPersonagem)
-                            .addComponent(jtfInteligenciaPersonagem, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jtfConstituicaoPersonagem, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jtfForcaPersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                            .addComponent(jtfAlturaPersonagem)
-                            .addComponent(jtfDestrezaPersonagem, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jtfSabedoriaPersonagem)
-                            .addComponent(jtfFortitudePersonagem))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtfClasseArmaduraPersonagem))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel12)
-                                        .addGap(222, 222, 222))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jLabel19)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jCClasse, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel10))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfIniciativaPersonagem)
-                                    .addComponent(jtfVontadePersonagem)
-                                    .addComponent(jtfRefexoPersonagem, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jtfCarismaPersonagem, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jBSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jtfPontosDeVidaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel18)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfBaseDeAtaquePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(51, 51, 51))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtfVontadePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtfRefexoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13)))
-                    .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfCarismaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBSalvar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(jCRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19)
-                    .addComponent(jCClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jtfNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15)
-                    .addComponent(jtfClasseArmaduraPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jtfIdadePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfBaseDeAtaquePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtfPesoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(jtfPontosDeVidaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jLabel4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel17))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtfIniciativaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jtfAlturaPersonagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfForcaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfDestrezaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfConstituicaoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfInteligenciaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfSabedoriaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(jtfFortitudePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(75, 75, 75))
-        );
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 289, 120, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -469,7 +344,7 @@ public class JFPersonagem extends javax.swing.JFrame {
         try {
             aDao = new GenericDAO();
 
-            List<Object> list = aDao.listar(Classes.class);//lista classe
+            List<Object> list = aDao.listar(Classes.class);// listar generico
 
             for (Object obj2 : list) {
 
@@ -477,14 +352,12 @@ public class JFPersonagem extends javax.swing.JFrame {
                             
                 String Classe = "";
                 Classe = cl.getNome_classe();
-                jCClasse.addItem(Classe);
-                listClasse.add(cl.getCodigo_classe());
-                
-
+                jCClasse.addItem(Classe);// adiciona nome da classe no comboBox
+                listClasse.add(cl.getCodigo_classe());//adiciona o codigo da classe no array classe
+              
             }
 
-              
-        
+                    
              List<Object> list2 = aDao.listar(Raca.class);
         
              for (Object obj2 : list2) {
@@ -492,8 +365,8 @@ public class JFPersonagem extends javax.swing.JFrame {
              Raca rc = (Raca) obj2;
              String Raca = "";
              Raca = rc.getNome_raca();
-             listRaca.add(rc.getCodigo_raca());
-             jCRaca.addItem(Raca);
+             listRaca.add(rc.getCodigo_raca());// adiciona o nome da raca no comboBox
+             jCRaca.addItem(Raca);//adiciona o codigo da raca no array raca
              }
              
         } catch (SQLException ex) {
@@ -513,6 +386,10 @@ public class JFPersonagem extends javax.swing.JFrame {
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
+
+    private void jtfVontadePersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfVontadePersonagemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfVontadePersonagemActionPerformed
 
     /**
      * @param args the command line arguments
