@@ -29,7 +29,7 @@ public class JFPosicoes extends javax.swing.JFrame {
 
     ArrayList arrayListNpc = new ArrayList(); //salva todos os codigos de npc do combobox
     ArrayList arrayListCaminhos = new ArrayList(); //salva todos os codigos de caminhos do combobox
-    ArrayList arrayListMissoes = new ArrayList(); //salva todos os codigos de missoes do combobox   
+    ArrayList arrayListCampanhas = new ArrayList(); //salva todos os codigos de campanhas do combobox   
         
     public void centralizarComponente(){
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
@@ -46,11 +46,11 @@ public class JFPosicoes extends javax.swing.JFrame {
             Caminhos c = (Caminhos) obj;
             
             System.out.println("cod caminho "+ c.getCodigo_caminho());
-            System.out.println("cod missao " + c.getCodigo_missao());
+            System.out.println("cod missao " + c.getCodigo_campanha());
             System.out.println("nome caminho "+ c.getNome_caminho());
             
             arrayListCaminhos.add(c.getCodigo_caminho());
-            arrayListMissoes.add(c.getCodigo_missao());
+            arrayListCampanhas.add(c.getCodigo_campanha());
             
             jcbCaminho.addItem(c.getNome_caminho());    
         }
