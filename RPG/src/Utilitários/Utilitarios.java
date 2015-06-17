@@ -21,8 +21,8 @@ import tabelas.Talentos;
  * @author Alexjonas
  */
 public class Utilitarios {
-    
-     public static void aplicaTalento(Personagens pp, Talentos tts) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+
+    public static void aplicaTalento(Personagens pp, Talentos tts) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
         GenericDAO gd = new GenericDAO();
 
@@ -108,7 +108,11 @@ public class Utilitarios {
 
                     }
                 }
+
                 sql += " WHERE codigo_personagem = " + pp.getCodigo_personagem();
+
+                System.out.println(sql);
+                gd.executaSql(sql);
             }
 
             if (bonus[0].equalsIgnoreCase("Pericias")) {
@@ -136,15 +140,14 @@ public class Utilitarios {
                     bnn = ett1.getPontos_de_pericia() + bnn;
                 }
 
-                System.out.println(bonus[2]);
-                sql += " Pontos_de_pericia = " + bnn + "";
-                sql += " WHERE codigo_personagem = " + pp.getCodigo_personagem() + " AND Codigo_pericia = " + codgobous;
+                PPS.setPontos_de_pericia(bnn);
+                gd.alterar(PPS);
             }
-            gd.executaSql(sql);
+
         } else {
-            System.out.println("nao tem os requisitos necessarios");
+            System.out.println("Voçe nao tem os requisitos necessarios para este Telento");
         }
 
     }
-    
+
 }
