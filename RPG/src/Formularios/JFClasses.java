@@ -6,6 +6,11 @@
 
 package formularios;
 
+import java.util.ArrayList;
+import java.util.List;
+import tabelas.Classes;
+import tabelas.Progressoes;
+
 /**
  *
  * @author Jefferson
@@ -33,7 +38,7 @@ public class JFClasses extends javax.swing.JFrame {
         buttonGroup3 = new javax.swing.ButtonGroup();
         buttonGroup4 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtfNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -44,19 +49,19 @@ public class JFClasses extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        jtfDadoVida = new javax.swing.JTextField();
+        jtfQtPericias = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jtaDescricao = new javax.swing.JTextArea();
         jComboBox1 = new javax.swing.JComboBox();
         jComboBox2 = new javax.swing.JComboBox();
         jComboBox3 = new javax.swing.JComboBox();
         jComboBox4 = new javax.swing.JComboBox();
-        jTextField6 = new javax.swing.JTextField();
-        jComboBox5 = new javax.swing.JComboBox();
+        jtfDinheiro = new javax.swing.JTextField();
+        jcbArmaduras = new javax.swing.JComboBox();
         jComboBox6 = new javax.swing.JComboBox();
-        jComboBox7 = new javax.swing.JComboBox();
-        jbtnovo = new javax.swing.JButton();
+        jcbArmas = new javax.swing.JComboBox();
+        jbtsalvar = new javax.swing.JButton();
         jbtprogressao = new javax.swing.JButton();
         jbtcancelar = new javax.swing.JButton();
 
@@ -65,9 +70,9 @@ public class JFClasses extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Cadastro de classes");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jtfNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jtfNomeActionPerformed(evt);
             }
         });
 
@@ -91,15 +96,15 @@ public class JFClasses extends javax.swing.JFrame {
 
         jLabel11.setText("Descrição");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jtfDadoVida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jtfDadoVidaActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jtaDescricao.setColumns(20);
+        jtaDescricao.setRows(5);
+        jScrollPane1.setViewportView(jtaDescricao);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Simples", "Comuns", "Exóticas" }));
 
@@ -109,19 +114,24 @@ public class JFClasses extends javax.swing.JFrame {
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Grande de madeira", "Grande de metal", "Broquel" }));
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        jtfDinheiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                jtfDinheiroActionPerformed(evt);
             }
         });
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Leves", "Médias", "Pesadas" }));
+        jcbArmaduras.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Leves", "Médias", "Pesadas" }));
 
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Leves", "Médias", "Pesadas" }));
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Simples", "Comuns", "Exóticas" }));
+        jcbArmas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Simples", "Comuns", "Exóticas" }));
 
-        jbtnovo.setLabel("Novo");
+        jbtsalvar.setText("Salvar");
+        jbtsalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtsalvarActionPerformed(evt);
+            }
+        });
 
         jbtprogressao.setLabel("Tabela Progressão");
         jbtprogressao.addActionListener(new java.awt.event.ActionListener() {
@@ -153,9 +163,9 @@ public class JFClasses extends javax.swing.JFrame {
                                             .addComponent(jLabel5))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(jtfDadoVida, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jcbArmaduras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jcbArmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
@@ -163,16 +173,16 @@ public class JFClasses extends javax.swing.JFrame {
                                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(71, 71, 71)
-                                                .addComponent(jbtnovo)))
+                                                .addComponent(jbtsalvar)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jbtcancelar)
-                                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(jtfQtPericias, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(44, 44, 44)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -200,7 +210,7 @@ public class JFClasses extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtfDinheiro, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jbtprogressao))))))
                 .addContainerGap(77, Short.MAX_VALUE))
         );
@@ -214,20 +224,20 @@ public class JFClasses extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                            .addComponent(jTextField1)
+                            .addComponent(jtfNome)
                             .addComponent(jLabel8)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField2)
+                            .addComponent(jtfDadoVida)
                             .addComponent(jLabel7)
                             .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbArmaduras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -236,8 +246,8 @@ public class JFClasses extends javax.swing.JFrame {
                             .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbArmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfDinheiro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
@@ -249,17 +259,17 @@ public class JFClasses extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtfQtPericias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbtnovo)
+                            .addComponent(jbtsalvar)
                             .addComponent(jbtprogressao)
                             .addComponent(jbtcancelar))
                         .addGap(48, 48, 48))))
         );
 
-        jbtnovo.getAccessibleContext().setAccessibleName("BtnNovo");
-        jbtnovo.getAccessibleContext().setAccessibleDescription("");
+        jbtsalvar.getAccessibleContext().setAccessibleName("BtnNovo");
+        jbtsalvar.getAccessibleContext().setAccessibleDescription("");
         jbtprogressao.getAccessibleContext().setAccessibleName("BtnProgressao");
         jbtprogressao.getAccessibleContext().setAccessibleDescription("");
         jbtcancelar.getAccessibleContext().setAccessibleName("BtnCancelar");
@@ -267,23 +277,55 @@ public class JFClasses extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jtfNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jtfNomeActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jtfDadoVidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDadoVidaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jtfDadoVidaActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void jtfDinheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDinheiroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_jtfDinheiroActionPerformed
 
     private void jbtprogressaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtprogressaoActionPerformed
        // TODO add your handling code here:
         Formularios.JFProgressao prog  = new Formularios.JFProgressao();
         prog.setVisible(true);
     }//GEN-LAST:event_jbtprogressaoActionPerformed
+
+    private void jbtsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtsalvarActionPerformed
+        // TODO add your handling code here:
+        Classes c = new Classes();
+        
+        c.setNome_classe(jtfNome.getText());
+        c.setUsar_armaduras_classe(jcbArmaduras.getSelectedIndex());
+        c.setUsar_armas_classe(jcbArmas.getSelectedIndex());
+        c.setDescricao_classe(jtaDescricao.getText());
+        
+        try {
+            c.setDado_vida_classe(Integer.valueOf(jtfDadoVida.getText()));
+            c.setQuantidade_pericias_classe(Integer.valueOf(jtfQtPericias.getText()));
+            c.setDinheiro_classe(Integer.valueOf(jtfDinheiro.getText()));
+            c.setCodigo_arma(1);
+            c.setCodigo_armadura(1);
+            c.setCodigo_escudo(0);
+        } catch (Exception e) {
+            System.out.println("Valor informado não é um numero");
+        }
+        List<Progressoes> listaP = new ArrayList<>();
+        
+        listaP = JFProgressao.buscaProgressoes();
+        
+        for (Progressoes l : listaP) {
+            Progressoes prg = (Progressoes) l;
+            
+            System.out.println("Nivel: "+ prg.getNivel_progressao());
+            System.out.println("Bonus base: "+ prg.getBonus_base_progressao());
+            System.out.println("CA: "+ prg.getBonus_ca_progressao());
+        }
+    }//GEN-LAST:event_jbtsalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -329,9 +371,7 @@ public class JFClasses extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBox4;
-    private javax.swing.JComboBox jComboBox5;
     private javax.swing.JComboBox jComboBox6;
-    private javax.swing.JComboBox jComboBox7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -344,13 +384,15 @@ public class JFClasses extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JButton jbtcancelar;
-    private javax.swing.JButton jbtnovo;
     private javax.swing.JButton jbtprogressao;
+    private javax.swing.JButton jbtsalvar;
+    private javax.swing.JComboBox jcbArmaduras;
+    private javax.swing.JComboBox jcbArmas;
+    private javax.swing.JTextArea jtaDescricao;
+    private javax.swing.JTextField jtfDadoVida;
+    private javax.swing.JTextField jtfDinheiro;
+    private javax.swing.JTextField jtfNome;
+    private javax.swing.JTextField jtfQtPericias;
     // End of variables declaration//GEN-END:variables
 }
