@@ -195,6 +195,11 @@ public class JFVendaItens extends javax.swing.JFrame {
                 jcComprarConsumiveisItemStateChanged(evt);
             }
         });
+        jcComprarConsumiveis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcComprarConsumiveisActionPerformed(evt);
+            }
+        });
         getContentPane().add(jcComprarConsumiveis, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 171, -1));
 
         getContentPane().add(jcVenderArmaduras, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 171, -1));
@@ -1179,7 +1184,7 @@ public class JFVendaItens extends javax.swing.JFrame {
         
         List<Object> ListarPreçoConsumivel = new ArrayList<>();
 
-        consumivel.setNome_consumivel((String) jcComprarEscudos.getSelectedItem());
+        consumivel.setNome_consumivel((String) jcComprarConsumiveis.getSelectedItem());
            
 
         ListarPreçoConsumivel = gDao.listar2(Escudos.class, consumivel);
@@ -1194,6 +1199,10 @@ public class JFVendaItens extends javax.swing.JFrame {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jcComprarConsumiveisItemStateChanged
+
+    private void jcComprarConsumiveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcComprarConsumiveisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcComprarConsumiveisActionPerformed
 
     /**
      * @param args the command line arguments
