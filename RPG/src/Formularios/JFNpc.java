@@ -270,6 +270,11 @@ public class JFNpc extends javax.swing.JFrame {
 
         jTPNPC.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTPNPC.setToolTipText("");
+        jTPNPC.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTPNPCStateChanged(evt);
+            }
+        });
 
         jPCadastrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPCadastrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1521,6 +1526,7 @@ public class JFNpc extends javax.swing.JFrame {
     }
     
     // Remove itens de combobox Atributos e Itens em aba Cadastrar
+    // Mudar para RemoveItensComboAbaCadastrar
     public void LimparComboBoxs(java.awt.event.ActionEvent evt){
         
         // Atributos
@@ -1532,9 +1538,10 @@ public class JFNpc extends javax.swing.JFrame {
         jCBArmaNpc.removeAllItems();
         jCBConsumivelNpc.removeAllItems();
         jCBEscudoNpc.removeAllItems();
+        
     }
     
-    // Limpa campos em aba Nova Fala
+    // Limpa os campos jTF e seleciona index -1 em combobox na aba Adicinar Nova Fala
     public void LimparCamposNovaFala(java.awt.event.ActionEvent evt){
         
         jCBNovaFalaNomeNpc.setSelectedIndex(-1);
@@ -1545,6 +1552,50 @@ public class JFNpc extends javax.swing.JFrame {
         jTANovaFalaNpc.setText("");
         jTANovaFalaRespostaNegativa.setText("");
         jTANovaFalaRespostaPositiva.setText("");
+
+    }
+    
+    // Limpa os campos jTF e seleciona index -1 em combobox na aba Adicinar Novos Itens
+    public void LimparCamposAbaCadastrarNovosItens(java.awt.event.ActionEvent evt){
+        
+        jCBNovosItensNomeNpc.setSelectedIndex(-1);
+        jTFNovosItensCodigoNpc.setText("");
+        jTFNovosItensTipoNpc.setText("");
+        
+        jCBNovosItensArmaduraNpc.setSelectedIndex(-1);
+        jTFNovosItensCodArmadura.setText("");
+        jTFNovosItensQuantidadeArmaduraNpc.setText("");
+
+        jCBNovosItensArmaNpc.setSelectedIndex(-1);
+        jTFNovosItensCodArma.setText("");
+        jTFNovosItensQuantidadeArmaNpc.setText("");
+        
+        jCBNovosItensConsumivelNpc.setSelectedIndex(-1);
+        jTFNovosItensCodConsumivel.setText("");
+        jTFNovosItensQuantidadeConsumivelNpc.setText("");
+         
+        jCBNovosItensEscudoNpc.setSelectedIndex(-1);
+        jTFNovosItensCodEscudo.setText("");
+        jTFNovosItensQuantidadeEscudoNpc.setText("");
+                
+    }
+    
+    // Remove nomes dos Npcs do combobox na aba Adicionar Nova Fala
+    public void RemoverItensComboAbaNovaFala(java.awt.event.ActionEvent evt){
+        
+        // Npcs
+        jCBNovaFalaNomeNpc.removeAllItems();
+        
+    }
+    
+    // Remove itens do combobox na aba Adicionar Novos Itens
+    public void RemoverItensComboAbaNovosItens(java.awt.event.ActionEvent evt){
+          
+        // Itens    
+        jCBNovosItensArmaduraNpc.removeAllItems();
+        jCBNovosItensArmaNpc.removeAllItems();
+        jCBNovosItensConsumivelNpc.removeAllItems();
+        jCBNovosItensEscudoNpc.removeAllItems();
 
     }
     
@@ -1962,8 +2013,7 @@ public class JFNpc extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_formWindowOpened
-     
-   
+      
     // Quando o item do combobox jCBTipoNpc é alterado em aba Cadastrar
     private void jCBTipoNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBTipoNpcItemStateChanged
 
@@ -2505,6 +2555,18 @@ public class JFNpc extends javax.swing.JFrame {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBNovosItensAdicionarActionPerformed
+
+    // Limpa todos os campos ao trocar de aba no formulário
+    private void jTPNPCStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTPNPCStateChanged
+        
+        LimparCampos(null);
+        LimparCamposNovaFala(null);
+        LimparComboBoxs(null);
+        
+        RemoverItensComboAbaNovosItens(null);
+        
+
+    }//GEN-LAST:event_jTPNPCStateChanged
 
     /**
      * @param args the command line arguments
