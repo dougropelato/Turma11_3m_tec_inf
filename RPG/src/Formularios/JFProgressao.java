@@ -94,6 +94,11 @@ public class JFProgressao extends javax.swing.JFrame {
         });
 
         jbtcancelar.setText("Cancelar");
+        jbtcancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtcancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,7 +130,7 @@ public class JFProgressao extends javax.swing.JFrame {
 
         lista.clear();
                 
-        for (int i = 1; i < 20; i++) {
+        for (int i = 1; i < 21; i++) {
             Progressoes prg = new Progressoes();
             // Atribui os valores da linha e coluna informados para o campo correspondente 
             // da classe progressao passo i -1 para linha pois a mesma deve começar de zero
@@ -142,14 +147,13 @@ public class JFProgressao extends javax.swing.JFrame {
             lista.add(prg);
         }
         
-        for (Progressoes l : lista) {
-            Progressoes prg = (Progressoes) l;
-            
-            System.out.println("Nivel: "+ prg.getNivel_progressao());
-            System.out.println("Bonus base: "+ prg.getBonus_base_progressao());
-            System.out.println("CA: "+ prg.getBonus_ca_progressao());
-        }
+        this.setVisible(false);
     }//GEN-LAST:event_jbtsalvarActionPerformed
+
+    private void jbtcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtcancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jbtcancelarActionPerformed
 
     /**
      * @param args the command line arguments
