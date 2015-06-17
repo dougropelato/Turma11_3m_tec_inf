@@ -21,6 +21,7 @@ public class JFProgressao extends javax.swing.JFrame {
     public JFProgressao() {
         initComponents();
     }
+    List<Progressoes> lista = new ArrayList();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,25 +43,25 @@ public class JFProgressao extends javax.swing.JFrame {
         jtbprogressao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 { new Integer(1),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
-                { new Integer(2), null, null, null, null, null, null, null, null},
-                { new Integer(3), null, null, null, null, null, null, null, null},
-                { new Integer(4), null, null, null, null, null, null, null, null},
-                { new Integer(5), null, null, null, null, null, null, null, null},
-                { new Integer(6), null, null, null, null, null, null, null, null},
-                { new Integer(7), null, null, null, null, null, null, null, null},
-                { new Integer(8), null, null, null, null, null, null, null, null},
-                { new Integer(9), null, null, null, null, null, null, null, null},
-                { new Integer(10), null, null, null, null, null, null, null, null},
-                { new Integer(11), null, null, null, null, null, null, null, null},
-                { new Integer(12), null, null, null, null, null, null, null, null},
-                { new Integer(13), null, null, null, null, null, null, null, null},
-                { new Integer(14), null, null, null, null, null, null, null, null},
-                { new Integer(15), null, null, null, null, null, null, null, null},
-                { new Integer(16), null, null, null, null, null, null, null, null},
-                { new Integer(17), null, null, null, null, null, null, null, null},
-                { new Integer(18), null, null, null, null, null, null, null, null},
-                { new Integer(19), null, null, null, null, null, null, null, null},
-                { new Integer(20), null, null, null, null, null, null, null, null}
+                { new Integer(2),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(3),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(4),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(5),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(6),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(7),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(8),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(9),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(10),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(11),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(12),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(13),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(14),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(15),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(16),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(17),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(18),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(19),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(20),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)}
             },
             new String [] {
                 "Nível", "Base ataque", "Fortitude", "Reflexos", "Vontade", "Perícia", "Dado dano", "Qt dado dano", "Bonus CA"
@@ -69,15 +70,21 @@ public class JFProgressao extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, true, true, true
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jtbprogressao.setToolTipText("");
         jScrollPane1.setViewportView(jtbprogressao);
         jtbprogressao.getAccessibleContext().setAccessibleName("");
-        jtbprogressao.getAccessibleContext().setAccessibleDescription("");
 
         jbtsalvar.setText("Salvar");
         jbtsalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -116,11 +123,11 @@ public class JFProgressao extends javax.swing.JFrame {
 
     private void jbtsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtsalvarActionPerformed
 
-        List<Progressoes> lista = new ArrayList();
-
+        lista.clear();
+                
         for (int i = 1; i < 20; i++) {
             Progressoes prg = new Progressoes();
-            //Atribui os valores da linha e coluna informados para o campo correspondente 
+            // Atribui os valores da linha e coluna informados para o campo correspondente 
             // da classe progressao passo i -1 para linha pois a mesma deve começar de zero
             // e a variavel i começa em 1
             prg.setNivel_progressao(i);
@@ -132,7 +139,6 @@ public class JFProgressao extends javax.swing.JFrame {
             prg.setTipo_dado_progressao((int) jtbprogressao.getValueAt(i -1, 6));
             prg.setQuantidade_dado_progressao((int) jtbprogressao.getValueAt(i -1, 7));
             prg.setBonus_base_progressao((int) jtbprogressao.getValueAt(i -1, 8));
-            //Precisa de um tratamento para quando não possui valor no campo pois da null pointer exeption
             lista.add(prg);
         }
         
@@ -179,7 +185,11 @@ public class JFProgressao extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    public List buscaProgressoes () {
+        return lista;
+    }
+            
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbtcancelar;
