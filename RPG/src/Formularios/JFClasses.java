@@ -23,7 +23,7 @@ public class JFClasses extends javax.swing.JFrame {
     public JFClasses() {
         initComponents();
     }
-
+    Formularios.JFProgressao prog1;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -141,6 +141,11 @@ public class JFClasses extends javax.swing.JFrame {
         });
 
         jbtcancelar.setLabel("Cancelar");
+        jbtcancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtcancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -292,6 +297,7 @@ public class JFClasses extends javax.swing.JFrame {
     private void jbtprogressaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtprogressaoActionPerformed
        // TODO add your handling code here:
         Formularios.JFProgressao prog  = new Formularios.JFProgressao();
+        prog1 = prog;
         prog.setVisible(true);
     }//GEN-LAST:event_jbtprogressaoActionPerformed
 
@@ -316,7 +322,15 @@ public class JFClasses extends javax.swing.JFrame {
         }
         List<Progressoes> listaP = new ArrayList<>();
         
-        listaP = JFProgressao.buscaProgressoes();
+        listaP = prog1.buscaProgressoes();
+        
+        System.out.println("Nome " + c.getNome_classe());
+        System.out.println("desc " + c.getDescricao_classe());
+        System.out.println("Dado " + c.getDado_vida_classe());
+        System.out.println("Dinheiro " + c.getDinheiro_classe());
+        System.out.println("Pnts " + c.getQuantidade_pericias_classe());
+        System.out.println("Usar arma" + c.getUsar_armas_classe());
+        System.out.println("Usar armadura" + c.getUsar_armaduras_classe());
         
         for (Progressoes l : listaP) {
             Progressoes prg = (Progressoes) l;
@@ -326,6 +340,11 @@ public class JFClasses extends javax.swing.JFrame {
             System.out.println("CA: "+ prg.getBonus_ca_progressao());
         }
     }//GEN-LAST:event_jbtsalvarActionPerformed
+
+    private void jbtcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtcancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jbtcancelarActionPerformed
 
     /**
      * @param args the command line arguments

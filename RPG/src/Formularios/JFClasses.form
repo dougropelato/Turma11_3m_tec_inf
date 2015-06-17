@@ -396,6 +396,9 @@
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="BtnCancelar"/>
       </AccessibilityProperties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtcancelarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
