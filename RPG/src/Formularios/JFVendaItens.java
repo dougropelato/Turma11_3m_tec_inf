@@ -118,7 +118,6 @@ public class JFVendaItens extends javax.swing.JFrame {
 
         jbVender.setVisible(false);
         lbVender.setVisible(false);
-        lbPreçoVender.setVisible(false);
         jcbComprarConsumiveis.setVisible(false);
         jcbComprarEscudos.setVisible(false);
         jcbComprarArmaduras.setVisible(false);
@@ -165,7 +164,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         jcVenderConsumiveis = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         lbPrecoComprar = new java.awt.Label();
-        lbPreçoVender = new java.awt.Label();
         jbComprar = new javax.swing.JButton();
         jbVender = new javax.swing.JButton();
         jcbComprar = new javax.swing.JCheckBox();
@@ -270,10 +268,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         lbPrecoComprar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbPrecoComprar.setText("Preço:");
         getContentPane().add(lbPrecoComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
-
-        lbPreçoVender.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbPreçoVender.setText("Preço:");
-        getContentPane().add(lbPreçoVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, -1, -1));
 
         jbComprar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbComprar.setText("Comprar");
@@ -629,7 +623,6 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcVenderArmaduras.setVisible(false);
             jcVenderArmas.setVisible(false);
             jbVender.setVisible(false);
-            lbPreçoVender.setVisible(false);
             jlQuantVender.setVisible(false);
             QuantVender.setVisible(false);
             jcbComprar.setEnabled(true);
@@ -917,7 +910,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         if (jcbVenderArmas.isSelected()) {
             jcVenderArmas.setVisible(true);
             jbVender.setVisible(true);
-            lbPreçoVender.setVisible(true);
             jlQuantVender.setVisible(true);
             QuantVender.setVisible(true);
             jcbVenderArmaduras.setEnabled(false);
@@ -927,7 +919,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         } else {
             jcVenderArmas.setVisible(false);
             jbVender.setVisible(false);
-            lbPreçoVender.setVisible(false);
             jlQuantVender.setVisible(false);
             QuantVender.setVisible(false);
             jcVenderArmas.removeAllItems();
@@ -987,7 +978,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         if (jcbVenderArmaduras.isSelected()) {
             jcVenderArmaduras.setVisible(true);
             jbVender.setVisible(true);
-            lbPreçoVender.setVisible(true);
             jlQuantVender.setVisible(true);
             QuantVender.setVisible(true);
             jcbVenderArmas.setEnabled(false);
@@ -996,7 +986,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         } else {
             jcVenderArmaduras.setVisible(false);
             jbVender.setVisible(false);
-            lbPreçoVender.setVisible(false);
             jlQuantVender.setVisible(false);
             QuantVender.setVisible(false);
             jcVenderArmaduras.removeAllItems();
@@ -1056,7 +1045,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         if (jcbVenderEscudos.isSelected()) {
             jcVenderEscudos.setVisible(true);
             jbVender.setVisible(true);
-            lbPreçoVender.setVisible(true);
             jlQuantVender.setVisible(true);
             QuantVender.setVisible(true);
             jcbVenderArmas.setEnabled(false);
@@ -1065,7 +1053,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         } else {
             jcVenderEscudos.setVisible(false);
             jbVender.setVisible(false);
-            lbPreçoVender.setVisible(false);
             jlQuantVender.setVisible(false);
             QuantVender.setVisible(false);
             jcVenderEscudos.removeAllItems();
@@ -1125,7 +1112,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         if (jcbVenderConsumiveis.isSelected()) {
             jcVenderConsumiveis.setVisible(true);
             jbVender.setVisible(true);
-            lbPreçoVender.setVisible(true);
             jlQuantVender.setVisible(true);
             QuantVender.setVisible(true);
             jcbVenderArmas.setEnabled(false);
@@ -1134,7 +1120,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         } else {
             jcVenderConsumiveis.setVisible(false);
             jbVender.setVisible(false);
-            lbPreçoVender.setVisible(false);
             jlQuantVender.setVisible(false);
             QuantVender.setVisible(false);
             jcVenderConsumiveis.removeAllItems();
@@ -1395,7 +1380,6 @@ public class JFVendaItens extends javax.swing.JFrame {
     private java.awt.Label lbComprar;
     private javax.swing.JLabel lbDinheiroPersonagem;
     private java.awt.Label lbPrecoComprar;
-    private java.awt.Label lbPreçoVender;
     private java.awt.Label lbVender;
     // End of variables declaration//GEN-END:variables
 }
