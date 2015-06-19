@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import tabelas.Armaduras;
 import tabelas.Armas;
+import tabelas.Classes;
 import tabelas.Consumiveis;
 import tabelas.Escudos;
 import tabelas.Jogadores;
@@ -40,11 +41,47 @@ public class JFVendaItens extends javax.swing.JFrame {
         Dimension dw = getSize();
         setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
     }
-    
+
+    public void ListarDinheiro() {
+
+         try {
+
+            GenericDAO gDao = new GenericDAO();
+            Personagens personagem = new Personagens();
+            List<Object> ListarCodClasse = new ArrayList<>();
+            List<Object> ListarDinheiroPersonagem = new ArrayList<>();
+
+            personagem.setNome_personagem((String) jcPersonagem.getSelectedItem());
+
+            ListarCodClasse = gDao.listar2(Personagens.class, personagem);    ////compara o item selecionado no combobox e procura o codigo da classe
+
+            for (Object obj : ListarCodClasse) {
+                Personagens pp = (Personagens) obj;
+                Classes classe = new Classes();
+
+                int codClasse = pp.getCodigo_classe();
+                classe.setCodigo_classe(codClasse);
+                
+                ListarDinheiroPersonagem = gDao.listar2(Classes.class, classe);    ////pega o codigo da classe e procura o dinheiro da mesma
+
+                for (Object obj2 : ListarDinheiroPersonagem) {
+                    Classes cc = (Classes) obj2;
+
+                    lbDinheiroPersonagem.setText(String.valueOf(cc.getDinheiro_classe()));
+                    
+                }
+
+            }
+
+        } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void CarregaComboboxPersonagem() {
-        
+
         List<Object> list = null;
-        
+
         try {
 
             GenericDAO gDao = new GenericDAO();
@@ -58,12 +95,11 @@ public class JFVendaItens extends javax.swing.JFrame {
         } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
             Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    
-    
-    public void OcultarObjetos () { //////Oculta objetos setados antes de abrir o form
-    
+
+    public void OcultarObjetos() { //////Oculta objetos setados antes de abrir o form
+
         jbComprar.setVisible(false);
         lbComprar.setVisible(false);
         lbPrecoComprar.setVisible(false);
@@ -73,7 +109,7 @@ public class JFVendaItens extends javax.swing.JFrame {
         jcbVenderArmas.setVisible(false);
         jcVenderConsumiveis.setVisible(false);
         jcVenderEscudos.setVisible(false);
-        jcVenderArmaduras.setVisible(false);         
+        jcVenderArmaduras.setVisible(false);
         jcVenderArmas.setVisible(false);
         jlQuantComprar.setVisible(false);
         jlQuantVender.setVisible(false);
@@ -91,7 +127,7 @@ public class JFVendaItens extends javax.swing.JFrame {
         jcComprarEscudos.setVisible(false);
         jcComprarArmaduras.setVisible(false);
         jcComprarArmas.setVisible(false);
-}
+    }
 
     public JFVendaItens() {
         initComponents();
@@ -117,7 +153,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         buttonGroup5 = new javax.swing.ButtonGroup();
         buttonGroup6 = new javax.swing.ButtonGroup();
         buttonGroup7 = new javax.swing.ButtonGroup();
-        lbDinheiroPersonagem = new java.awt.Label();
         lbComprar = new java.awt.Label();
         jcComprarArmas = new javax.swing.JComboBox();
         lbVender = new java.awt.Label();
@@ -151,6 +186,7 @@ public class JFVendaItens extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jcPersonagem = new javax.swing.JComboBox();
+        lbDinheiroPersonagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -162,7 +198,6 @@ public class JFVendaItens extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(lbDinheiroPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 110, -1));
 
         lbComprar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbComprar.setText("O que você deseja comprar?");
@@ -379,7 +414,18 @@ public class JFVendaItens extends javax.swing.JFrame {
         jLabel4.setText("P.O Disponiveis:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
+        jcPersonagem.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcPersonagemItemStateChanged(evt);
+            }
+        });
+        jcPersonagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcPersonagemActionPerformed(evt);
+            }
+        });
         getContentPane().add(jcPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 110, -1));
+        getContentPane().add(lbDinheiroPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 60, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -404,7 +450,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                 armadura.setNome_armadura((String) jcComprarArmaduras.getSelectedItem());
 
-                ListarArmaduras = gDAO.listar2(Armaduras.class, armadura);  
+                ListarArmaduras = gDAO.listar2(Armaduras.class, armadura);
 
                 for (Object ll1 : ListarArmaduras) {  //// pega o nome da armadura no combobox e procura pelo codigo da mesma
                     Armaduras aa = (Armaduras) ll1;
@@ -416,17 +462,14 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                 personagem.setNome_personagem((String) jcPersonagem.getSelectedItem());
 
-                ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);  
+                ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);
 
                 for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
                     Personagens pp = (Personagens) ll1;
                     comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// cadastra na tabela N/N o codigo do personagem
                 }
-                
-                
-                
-/////////////////////////////////////////
 
+/////////////////////////////////////////
                 comprar.setQuantidade_armadura(varComprarQuant); /// cadastra na tabela N/N a quantidade de armaduras compradas 
                 gDAO.adicionar(comprar);
 
@@ -435,7 +478,7 @@ public class JFVendaItens extends javax.swing.JFrame {
             }
 
         }
-        
+
         if (jcbComprarArmas.isSelected()) {
 
             PersonagensArmas comprar = new PersonagensArmas();
@@ -462,13 +505,13 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                 personagem.setNome_personagem((String) jcPersonagem.getSelectedItem());
 
-                ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);  
+                ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);
 
                 for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
                     Personagens pp = (Personagens) ll1;
                     comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// cadastra na tabela N/N o codigo do personagem
                 }
-                
+
                 comprar.setQuantidade_arma(varComprarQuant); /// cadastra na tabela N/N a quantidade de armas compradas 
                 gDAO.adicionar(comprar);
 
@@ -476,7 +519,7 @@ public class JFVendaItens extends javax.swing.JFrame {
                 Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
         if (jcbComprarEscudos.isSelected()) {
 
             PersonagensEscudos comprar = new PersonagensEscudos();
@@ -503,13 +546,12 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                 personagem.setNome_personagem((String) jcPersonagem.getSelectedItem());
 
-                ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);  
+                ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);
 
                 for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
                     Personagens pp = (Personagens) ll1;
                     comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// cadastra na tabela N/N o codigo do personagem
                 }
-                
 
                 comprar.setQuantidade_escudo(varComprarQuant); /// cadastra na tabela N/N a quantidade de escudos comprados
                 gDAO.adicionar(comprar);
@@ -525,7 +567,7 @@ public class JFVendaItens extends javax.swing.JFrame {
             comprar.setQuantidade_consumivel(varComprarQuant);
 
             try {
-                
+
                 GenericDAO gDAO = new GenericDAO();
                 Consumiveis consumivel = new Consumiveis();
                 List<Object> ListarConsumiveis = new ArrayList<>();
@@ -544,13 +586,12 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                 personagem.setNome_personagem((String) jcPersonagem.getSelectedItem());
 
-                ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);  
+                ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);
 
                 for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
                     Personagens pp = (Personagens) ll1;
                     comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// cadastra na tabela N/N o codigo do personagem
                 }
-                
 
                 comprar.setQuantidade_consumivel(varComprarQuant); /// cadastra na tabela N/N a quantidade de consumiveis comprados
                 gDAO.adicionar(comprar);
@@ -636,7 +677,7 @@ public class JFVendaItens extends javax.swing.JFrame {
     private void jcbComprarArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbComprarArmasActionPerformed
 
         List<Object> list = null;
-        
+
         try {
 
             GenericDAO gDao = new GenericDAO();
@@ -856,15 +897,15 @@ public class JFVendaItens extends javax.swing.JFrame {
             arma.setCodigo_arma(mostrarCodigo);     /////seta o codigo da arma da tabela N/N
 
             try {
-                
+
                 ListarArmas = gDao.listar2(Armas.class, arma);
-                
+
             } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
                 Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             for (Object ll1 : ListarArmas) { /////compara o codigo setado com a tabela Armas e procura o nome da arma
-               
+
                 Armas aa = (Armas) ll1;
                 jcVenderArmas.addItem(aa.getNome_arma()); /// adiciona no combobox o nome da arma
                 ///jcVenderArmas.addItem(mostrarCodigo + " - " + aa.getNome_arma()); /// adiciona no combo o codigo + nome
@@ -925,16 +966,16 @@ public class JFVendaItens extends javax.swing.JFrame {
             armadura.setCodigo_armadura(mostrarCodigo);  /////seta o codigo da armadura da tabela N/N
 
             try {
-                
-                ListarArmaduras = gDao.listar2(Armaduras.class, armadura); 
+
+                ListarArmaduras = gDao.listar2(Armaduras.class, armadura);
                 /////compara o codigo setado com a tabela armadura e procura o nome da armadura
-                
+
             } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
                 Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            for (Object ll1 : ListarArmaduras) {   
-                
+            for (Object ll1 : ListarArmaduras) {
+
                 Armaduras aa = (Armaduras) ll1;
                 jcVenderArmaduras.addItem(aa.getNome_armadura()); /// adiciona no combobox o nome da armadura
                 // jcVenderArmaduras.addItem(mostrarCodigo + " - " + aa.getNome_armadura());
@@ -966,7 +1007,7 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbVenderArmadurasActionPerformed
 
     private void jcbVenderEscudosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbVenderEscudosActionPerformed
-        
+
         GenericDAO gDao = null;
         try {
             gDao = new GenericDAO();
@@ -994,16 +1035,16 @@ public class JFVendaItens extends javax.swing.JFrame {
             escudo.setCodigo_escudo(mostrarCodigo);  /////seta o codigo do escudo da tabela N/N
 
             try {
-                
-                ListarEscudos = gDao.listar2(Escudos.class, escudo); 
+
+                ListarEscudos = gDao.listar2(Escudos.class, escudo);
                 /////compara o codigo setado com a tabela escudos e procura o nome do escudo
-                
+
             } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
                 Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            for (Object ll1 : ListarEscudos) {   
-                
+            for (Object ll1 : ListarEscudos) {
+
                 Escudos ee = (Escudos) ll1;
                 jcVenderEscudos.addItem(ee.getNome_escudo()); /// adiciona no combobox o nome do escudo
                 // jcVenderEscudos.addItem(mostrarCodigo + " - " + ee.getNome_escudo());
@@ -1035,7 +1076,7 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbVenderEscudosActionPerformed
 
     private void jcbVenderConsumiveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbVenderConsumiveisActionPerformed
-        
+
         GenericDAO gDao = null;
         try {
             gDao = new GenericDAO();
@@ -1063,16 +1104,16 @@ public class JFVendaItens extends javax.swing.JFrame {
             consumivel.setCodigo_consumivel(mostrarCodigo);  /////seta o codigo do consumivel da tabela N/N
 
             try {
-                
-                ListarConsumiveis = gDao.listar2(Consumiveis.class, consumivel); 
+
+                ListarConsumiveis = gDao.listar2(Consumiveis.class, consumivel);
                 /////compara o codigo setado com a tabela consumiveis e procura o nome do consumivel
-                
+
             } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
                 Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            for (Object ll1 : ListarConsumiveis) {   
-                
+            for (Object ll1 : ListarConsumiveis) {
+
                 Consumiveis cc = (Consumiveis) ll1;
                 jcVenderConsumiveis.addItem(cc.getNome_consumivel()); /// adiciona no combobox o nome do consumivel
                 // jcVenderConsumiveis.addItem(mostrarCodigo + " - " + cc.getNome_consumivel());
@@ -1228,7 +1269,7 @@ public class JFVendaItens extends javax.swing.JFrame {
             Escudos escudo = new Escudos();
             List<Object> ListarPreçoEscudo = new ArrayList<>();
 
-            escudo.setNome_escudo((String) jcComprarEscudos.getSelectedItem()); 
+            escudo.setNome_escudo((String) jcComprarEscudos.getSelectedItem());
 
             ListarPreçoEscudo = gDao.listar2(Escudos.class, escudo); ////compara o item selecionado no combobox e procura seu preço
 
@@ -1269,6 +1310,15 @@ public class JFVendaItens extends javax.swing.JFrame {
     private void jcComprarConsumiveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcComprarConsumiveisActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcComprarConsumiveisActionPerformed
+
+    private void jcPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcPersonagemActionPerformed
+        
+    }//GEN-LAST:event_jcPersonagemActionPerformed
+
+    private void jcPersonagemItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcPersonagemItemStateChanged
+
+       ListarDinheiro();
+    }//GEN-LAST:event_jcPersonagemItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -1343,7 +1393,7 @@ public class JFVendaItens extends javax.swing.JFrame {
     private javax.swing.JLabel jlQuantComprar;
     private javax.swing.JLabel jlQuantVender;
     private java.awt.Label lbComprar;
-    private java.awt.Label lbDinheiroPersonagem;
+    private javax.swing.JLabel lbDinheiroPersonagem;
     private java.awt.Label lbPrecoComprar;
     private java.awt.Label lbPreçoVender;
     private java.awt.Label lbVender;
