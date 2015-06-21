@@ -10,15 +10,15 @@ package tabelas;
  * @author Usuario5
  */
 public class PosicoesNpcs {
-    int codigo_posicoes;
+    int codigo_posicao;
     int codigo_npc;
 
-    public int getCodigo_posicoes() {
-        return codigo_posicoes;
+    public int getCodigo_posicao() {
+        return codigo_posicao;
     }
 
-    public void setCodigo_posicoes(int codigo_posicoes) {
-        this.codigo_posicoes = codigo_posicoes;
+    public void setCodigo_posicao(int codigo_posicao) {
+        this.codigo_posicao = codigo_posicao;
     }
 
     public int getCodigo_npc() {
@@ -28,4 +28,6 @@ public class PosicoesNpcs {
     public void setCodigo_npc(int codigo_npc) {
         this.codigo_npc = codigo_npc;
     }
+
+   
 }

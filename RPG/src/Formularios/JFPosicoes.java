@@ -5,6 +5,7 @@
  */
 package formularios;
 
+import Tabelas.PericiasPosicoes;
 import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -18,6 +19,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import tabelas.Caminhos;
 import tabelas.Npcs;
+import tabelas.Pericias;
 import tabelas.Posicoes;
 import tabelas.PosicoesNpcs;
 
@@ -30,49 +32,67 @@ public class JFPosicoes extends javax.swing.JFrame {
     ArrayList arrayListNpc = new ArrayList(); //salva todos os codigos de npc do combobox
     ArrayList arrayListCaminhos = new ArrayList(); //salva todos os codigos de caminhos do combobox
     ArrayList arrayListCampanhas = new ArrayList(); //salva todos os codigos de campanhas do combobox   
-        
-    public void centralizarComponente(){
+    ArrayList arrayListPosicoes = new ArrayList(); //salva todos os codigos de Caminhos do combobox 
+    ArrayList arrayListPericias = new ArrayList(); //salva todos os codigos de Pericias no combobox
+
+    public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
-        setLocation((ds.width - dw.width)/2, (ds.height - dw.height)/2);
+        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
     }
-    
+
     public void carregaComboCaminhos() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         GenericDAO gDAO = new GenericDAO();
         Caminhos caminho = new Caminhos();
         List<Object> list = gDAO.listar(Caminhos.class);
-            
+
         for (Object obj : list) {
             Caminhos c = (Caminhos) obj;
-            
-            System.out.println("cod caminho "+ c.getCodigo_caminho());
+
+            System.out.println("cod caminho " + c.getCodigo_caminho());
             System.out.println("cod missao " + c.getCodigo_campanha());
-            System.out.println("nome caminho "+ c.getNome_caminho());
-            
+            System.out.println("nome caminho " + c.getNome_caminho());
+
             arrayListCaminhos.add(c.getCodigo_caminho());
             arrayListCampanhas.add(c.getCodigo_campanha());
-            
-            jcbCaminho.addItem(c.getNome_caminho());    
+            jcbCaminho.addItem(c.getNome_caminho());
         }
     }
-            
-    public void carregaComboNpc() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException{
+
+    public void carregaComboNpc() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
         GenericDAO gDAO = new GenericDAO();
         Npcs npc = new Npcs();
         List<Object> list = gDAO.listar(Npcs.class);
-    
+
         for (Object obj2 : list) {
             Npcs n = (Npcs) obj2;
-            
-            System.out.println("cod npc "+ n.getCodigo_npc());
-            System.out.println("nome npc "+ n.getNome_npc());
-            
+
+            System.out.println("cod npc " + n.getCodigo_npc());
+            System.out.println("nome npc " + n.getNome_npc());
+
             arrayListNpc.add(npc.getCodigo_npc());
             jcbNpc.addItem(n.getNome_npc());
         }
     }
-    
+
+    public void carregaComboPericia() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+
+        GenericDAO gDAO2 = new GenericDAO();
+        Pericias pericia = new Pericias();
+        List<Object> list = gDAO2.listar(Pericias.class);
+
+        for (Object obj3 : list) {
+            Pericias p = (Pericias) obj3;
+
+            System.out.println("cod pericia " + p.getCodigo_pericia());
+            System.out.println("Nome pericia " + p.getNome_pericia());
+
+            arrayListPericias.add(pericia.getCodigo_pericia());
+            jcbPericias.addItem(p.getNome_pericia());
+        }
+    }
+
     /**
      * Creates new form JFPosicoes
      */
@@ -105,12 +125,12 @@ public class JFPosicoes extends javax.swing.JFrame {
         jbSalvar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jtaDescricao = new javax.swing.JTextArea();
-        jComboBox1 = new javax.swing.JComboBox();
+        jtaDescricaoCaminho = new javax.swing.JTextArea();
+        jcbPericias = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jtaDescricaoPericia = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jtfValPericia = new javax.swing.JTextField();
 
@@ -118,6 +138,12 @@ public class JFPosicoes extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
+            }
+        });
+
+        jcbCaminho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbCaminhoActionPerformed(evt);
             }
         });
 
@@ -156,17 +182,17 @@ public class JFPosicoes extends javax.swing.JFrame {
 
         jbCancelar.setText("Cancelar");
 
-        jtaDescricao.setColumns(20);
-        jtaDescricao.setRows(5);
-        jScrollPane2.setViewportView(jtaDescricao);
+        jtaDescricaoCaminho.setColumns(20);
+        jtaDescricaoCaminho.setRows(5);
+        jScrollPane2.setViewportView(jtaDescricaoCaminho);
 
         jLabel3.setText("Perícia Personagem");
 
         jLabel4.setText("Dificuldade Perícia (Valor Inteiro)");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jtaDescricaoPericia.setColumns(20);
+        jtaDescricaoPericia.setRows(5);
+        jScrollPane1.setViewportView(jtaDescricaoPericia);
 
         jLabel5.setText("Descrição Perícia Caso Personagem Consiga Utilizá-la");
 
@@ -208,15 +234,15 @@ public class JFPosicoes extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addGap(16, 16, 16)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jcbNpc, 0, 138, Short.MAX_VALUE)
                             .addComponent(jbCancelar)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jcbPericias, 0, 180, Short.MAX_VALUE)
+                            .addComponent(jcbNpc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(122, 122, 122)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtfValPericia, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,7 +291,7 @@ public class JFPosicoes extends javax.swing.JFrame {
                     .addComponent(jlSelecNpc))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbPericias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -294,40 +320,59 @@ public class JFPosicoes extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbNpcActionPerformed
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
-        
+
         try {
-            if (jtaDescricao.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Insira uma descrição para esta posição!"); 
-            }else {
+            //if (jtaDescricaoCaminho.getText().equals("") || jtaDescricaoPericia.getText().equals("") || jtfValPericia.getText().equals("") || jtfValorX.getText().equals("") || jtfValorY.getText().equals("")) {
+                //JOptionPane.showMessageDialog(null, "Insira uma descrição para esta posição!");
+            //} else {
                 GenericDAO gDAO = new GenericDAO();
                 Posicoes posicoes = new Posicoes();
-        
-                //posicoes.setCodigo_posicao(1);
-                posicoes.setDescricao_posicao(jtaDescricao.getText());
+                PosicoesNpcs posicaoNpc = new PosicoesNpcs();
+                Npcs npc = new Npcs();
+                Pericias pericias = new Pericias();
+                PericiasPosicoes periciaPosicao = new PericiasPosicoes();
+                Caminhos caminhos = new Caminhos();
+
+                //Insertes tabela 'Posicoes'
+                posicoes.setCodigo_caminho((int) (arrayListCaminhos.get(jcbCaminho.getSelectedIndex())));
+                posicoes.setDescricao_posicao(jtaDescricaoCaminho.getText());
                 posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));
-                posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorX.getText()));
-        
-                posicoes.setCodigo_caminho((int) ( arrayListCaminhos.get(jcbCaminho.getSelectedIndex()))); //apenas para teste
-            
+                posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorY.getText()));
                 gDAO.adicionar(posicoes); //adicionando posicao
+
                 
-            /*    
-                PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
-                //tabela N pra N
-                posicoesNpcs.setCodigo_posicoes(posicoes.getCodigo_posicao());
-                posicoesNpcs.setCodigo_npc(((int) ((arrayListNpc.get(jcbNpc.getSelectedIndex())))));
+                //Inserts Tabela N/N 'PosicoesNpcs'
+                posicaoNpc.setCodigo_posicao(posicoes.getCodigo_posicao());
+                posicaoNpc.setCodigo_npc((int) (arrayListNpc.get(jcbNpc.getSelectedIndex())));
+              //posicaoNpc.setCodigo_posicao((int)arrayListPosicoes.get(posicoes.getCodigo_posicao()));
+               gDAO.adicionar(posicaoNpc);
+                
+                //Inserts Tabela N/N 'PericiasPosicoes'
+                //periciaPosicao.setCodigo_pericia((int) arrayListPericias.get(jcbPericias.getSelectedIndex()));
+                //periciaPosicao.setCodigo_posicao(posicoes.getCodigo_posicao());
+                //periciaPosicao.setDescricao_pericia_conseguiu(jtaDescricaoPericia.getText());
+                //periciaPosicao.setValor_pericia(Integer.parseInt(jtfValPericia.getText()));
+                //gDAO.adicionar(periciaPosicao);
+                
+                
+                
+                
+                /*    
+                 PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
+                 //tabela N pra N
+                 posicoesNpcs.setCodigo_posicoes(posicoes.getCodigo_posicao());
+                 posicoesNpcs.setCodigo_npc(((int) ((arrayListNpc.get(jcbNpc.getSelectedIndex())))));
             
-                gDAO.adicionar(posicoesNpcs); //adicionando tabela n-n posicoesNpcs
-            */    
-                
+                 gDAO.adicionar(posicoesNpcs); //adicionando tabela n-n posicoesNpcs
+                 */
                 //mensagem de cadastro
                 JOptionPane.showMessageDialog(null, "Posição cadastrada!");
                 //limpando campos apos cadastro
-                jtaDescricao.setText("");
+                jtaDescricaoCaminho.setText("");
                 jtfValorX.setText("");
                 jtfValorY.setText("");
-            }
-            
+           // }
+
         } catch (SQLException ex) {
             Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -337,15 +382,15 @@ public class JFPosicoes extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+
         try {
             carregaComboCaminhos();
             carregaComboNpc();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
@@ -362,6 +407,10 @@ public class JFPosicoes extends javax.swing.JFrame {
             Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void jcbCaminhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCaminhoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbCaminhoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,7 +448,6 @@ public class JFPosicoes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -408,16 +456,17 @@ public class JFPosicoes extends javax.swing.JFrame {
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbSalvar;
     private javax.swing.JComboBox jcbCaminho;
     private javax.swing.JComboBox jcbNpc;
+    private javax.swing.JComboBox jcbPericias;
     private javax.swing.JLabel jlSelecNpc;
     private javax.swing.JLabel jlTamMapa;
     private javax.swing.JLabel jlValorX;
     private javax.swing.JLabel jlValorY;
-    private javax.swing.JTextArea jtaDescricao;
+    private javax.swing.JTextArea jtaDescricaoCaminho;
+    private javax.swing.JTextArea jtaDescricaoPericia;
     private javax.swing.JTextField jtfTamMapa;
     private javax.swing.JTextField jtfValPericia;
     private javax.swing.JTextField jtfValorX;

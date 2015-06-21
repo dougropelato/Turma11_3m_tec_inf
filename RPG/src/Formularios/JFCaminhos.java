@@ -8,6 +8,8 @@ package formularios;
 import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -26,28 +28,29 @@ import tabelas.Npcs;
 public class JFCaminhos extends javax.swing.JFrame {
 
     ArrayList arrayListMissoes = new ArrayList();
-    
-    public void centralizarComponente(){
+
+    public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
-        setLocation((ds.width - dw.width)/2, (ds.height - dw.height)/2);
+        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
     }
-    
-    public void carregaComboCampanha() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException{
+
+    public void carregaComboCampanha() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
         GenericDAO gDAO = new GenericDAO();
         Campanhas campanhas = new Campanhas();
         List<Object> list = gDAO.listar(Campanhas.class);
-    
+
         for (Object obj2 : list) {
             Campanhas c = (Campanhas) obj2;
-            
-            System.out.println("cod npc "+ c.getCodigo_campanha());
-            
+
+            System.out.println("cod npc " + c.getCodigo_campanha());
+
             arrayListMissoes.add(c.getCodigo_campanha());
             jcbMissao.addItem(c.getNome_campanha());
         }
     }
+
     /**
      * Creates new form JFCaminhos
      */
@@ -87,6 +90,17 @@ public class JFCaminhos extends javax.swing.JFrame {
         jbSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbSalvarActionPerformed(evt);
+            }
+        });
+
+        jcbMissao.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcbMissaoItemStateChanged(evt);
+            }
+        });
+        jcbMissao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMissaoActionPerformed(evt);
             }
         });
 
@@ -136,25 +150,25 @@ public class JFCaminhos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
-        
+
         try {
-        if (jtfCaminho.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Insira um nome para esse caminho"); 
-        }else {
-            Caminhos caminhos = new Caminhos();
-        
-            caminhos.setNome_caminho(jtfCaminho.getText());
-        
-            caminhos.setCodigo_campanha((int) ( arrayListMissoes.get(jcbMissao.getSelectedIndex()))); //apenas para teste
-        
-            GenericDAO gDAO = new GenericDAO();
-            gDAO.adicionar(caminhos);
-            
-            //mensagem de cadastro
-            JOptionPane.showMessageDialog(null, "Caminho cadastrado!");
-            //limpando campos apos cadastro
-            jtfCaminho.setText("");
-        }    
+            if (jtfCaminho.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Por Favor insira um nome para o Caminho");
+            } else {
+                Caminhos caminhos = new Caminhos();
+
+                caminhos.setNome_caminho(jtfCaminho.getText());
+
+                caminhos.setCodigo_campanha((int) (arrayListMissoes.get(jcbMissao.getSelectedIndex()))); //apenas para teste
+
+                GenericDAO gDAO = new GenericDAO();
+                gDAO.adicionar(caminhos);
+
+                //mensagem de cadastro
+                JOptionPane.showMessageDialog(null, "Caminho Cadastrado com Sucesso!");
+                //limpando campos apos cadastro
+                jtfCaminho.setText("");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -164,12 +178,22 @@ public class JFCaminhos extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void jtfCaminhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCaminhoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfCaminhoActionPerformed
+
+    private void jcbMissaoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbMissaoItemStateChanged
+
+
+    }//GEN-LAST:event_jcbMissaoItemStateChanged
+
+    private void jcbMissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMissaoActionPerformed
+        String t = (String.valueOf(jcbMissao.getSelectedIndex()) + jcbMissao.getSelectedItem().toString());//Variável 't' recebe o Código Index e o Nome do Atributo selecionado no JComboBox
+        System.out.println(t);
+    }//GEN-LAST:event_jcbMissaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,16 +209,21 @@ public class JFCaminhos extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFCaminhos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFCaminhos.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFCaminhos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFCaminhos.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFCaminhos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFCaminhos.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFCaminhos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFCaminhos.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -203,20 +232,28 @@ public class JFCaminhos extends javax.swing.JFrame {
             public void run() {
                 try {
                     new JFCaminhos().setVisible(true);
+
                 } catch (SQLException ex) {
-                    Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(JFCaminhos.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 } catch (IllegalAccessException ex) {
-                    Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(JFCaminhos.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 } catch (NoSuchMethodException ex) {
-                    Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(JFCaminhos.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 } catch (IllegalArgumentException ex) {
-                    Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(JFCaminhos.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 } catch (InvocationTargetException ex) {
-                    Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(JFCaminhos.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 } catch (InstantiationException ex) {
-                    Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(JFCaminhos.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(JFCaminhos.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
