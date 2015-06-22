@@ -5,8 +5,12 @@
  */
 package formularios;
 
+import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tabelas.Escudos;
 
 /**
@@ -135,12 +139,27 @@ public class JFEscudos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
-        Escudos esc = new Escudos();
-
-        esc.setNome_escudo(jtfNomeEscudo.getText());
-        esc.setPreco_escudo(Double.parseDouble(jtfPrecoEscudo.getText()));
-        esc.setBonus_maximo_escudo(Double.parseDouble(jtfBonusMaximoEscudo.getText()));
-        esc.setPenalidade_destreza_escudo(Integer.parseInt(jtfPenalidadeDestrezaEscudo.getText()));
+        
+        try {
+            Escudos esc = new Escudos();
+            
+            GenericDAO gDAO = new GenericDAO();
+            
+            esc.setNome_escudo(jtfNomeEscudo.getText());
+            esc.setPreco_escudo(Double.parseDouble(jtfPrecoEscudo.getText()));
+            esc.setBonus_maximo_escudo(Double.parseDouble(jtfBonusMaximoEscudo.getText()));
+            esc.setPenalidade_destreza_escudo(Integer.parseInt(jtfPenalidadeDestrezaEscudo.getText()));
+            
+            gDAO.adicionar(esc);
+        } catch (SQLException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
 
     }//GEN-LAST:event_jbCadastrarActionPerformed
