@@ -5,8 +5,12 @@
  */
 package formularios;
 
+import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tabelas.Consumiveis;
 
 /**
@@ -137,12 +141,26 @@ public class JFConsumiveis extends javax.swing.JFrame {
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
 
-        Consumiveis cons = new Consumiveis();
-
-        cons.setNome_consumivel(jtfNomeConsumivel.getText());
-        cons.setPreco_consumivel(Double.parseDouble(jtfPrecoConsumivel.getText()));
-        cons.setQuantidade_dados_consumivel(Integer.parseInt(jtfQuantidadeDadosConsumivel.getText()));
-        cons.setTipo_dado_consumivel(Integer.parseInt(jtfTipoDadoConsumivel.getText()));
+        try {
+            Consumiveis cons = new Consumiveis();
+            
+            GenericDAO gDAO = new GenericDAO();
+            
+            cons.setNome_consumivel(jtfNomeConsumivel.getText());
+            cons.setPreco_consumivel(Double.parseDouble(jtfPrecoConsumivel.getText()));
+            cons.setQuantidade_dados_consumivel(Integer.parseInt(jtfQuantidadeDadosConsumivel.getText()));
+            cons.setTipo_dado_consumivel(Integer.parseInt(jtfTipoDadoConsumivel.getText()));
+            
+            gDAO.adicionar(cons);
+        } catch (SQLException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     /**
