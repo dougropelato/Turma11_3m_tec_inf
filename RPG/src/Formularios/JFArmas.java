@@ -5,8 +5,12 @@
  */
 package formularios;
 
+import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tabelas.Armas;
 
 /**
@@ -153,13 +157,27 @@ public class JFArmas extends javax.swing.JFrame {
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
 
-        Armas arma = new Armas();
-
-        arma.setNome_arma(jtfNomeArma.getText());
-        arma.setTipo_arma(jcTipoArma.getSelectedIndex());
-        arma.setPreco_arma(Double.parseDouble(jtfPrecoArma.getText()));
-        arma.setQuantidade_dado_arma(Integer.parseInt(jtfQuantidadeDadoArma.getText()));
-        arma.setTipo_do_dado_arma(Integer.parseInt(jtfTipoDadoArma.getText()));
+          try {
+              Armas arma = new Armas();
+              
+              GenericDAO gDAO = new GenericDAO();
+              
+              arma.setNome_arma(jtfNomeArma.getText());
+              arma.setTipo_arma(jcTipoArma.getSelectedIndex());
+              arma.setPreco_arma(Double.parseDouble(jtfPrecoArma.getText()));
+              arma.setQuantidade_dado_arma(Integer.parseInt(jtfQuantidadeDadoArma.getText()));
+              arma.setTipo_do_dado_arma(Integer.parseInt(jtfTipoDadoArma.getText()));
+              
+              gDAO.adicionar(arma);
+          } catch (SQLException ex) {
+              Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+          } catch (ClassNotFoundException ex) {
+              Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+          } catch (IllegalArgumentException ex) {
+              Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+          } catch (IllegalAccessException ex) {
+              Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+          }
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     /**
