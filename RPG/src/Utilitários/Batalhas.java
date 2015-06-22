@@ -12,6 +12,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import tabelas.Armas;
 import tabelas.Escudos;
 import tabelas.Personagens;
 
@@ -22,6 +23,7 @@ import tabelas.Personagens;
 public class Batalhas {
 
     public String ParametroBatalho(Personagens per, NpcsCombatentes npc, Temporario tem) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+
         String ini = "";
 
         utilitários.Dados dad = new utilitários.Dados();
@@ -29,10 +31,9 @@ public class Batalhas {
         Personagens psg = new Personagens();
         Temporario tempnpc = new Temporario();
 
-        int vlriniciativaper;
-        int vlriniciativanpc = 0;
+        int dano = 0;
 
-        vlriniciativaper = dad.getDado(20) + per.getDestreza_personagem();
+        tem.setIniciativa_personagem(dad.getDado(20) + per.getDestreza_personagem());
 
         List<Object> lis = new ArrayList();
 
@@ -42,7 +43,6 @@ public class Batalhas {
 
         for (Object li : lis) {
             Personagens pso = (Personagens) li;
-            vlriniciativanpc = dad.getDado(20) + pso.getDestreza_personagem();
 
             psg.setAltura_personagem(pso.getAltura_personagem());
             psg.setBase_ataque_personagem(pso.getBase_ataque_personagem());
@@ -72,10 +72,21 @@ public class Batalhas {
             tempnpc.setCodigo_arma(tp.getCodigo_arma());
             tempnpc.setPontos_vida_temporario(tp.getPontos_vida_temporario());
             tempnpc.setCodigo_escudo(tp.getCodigo_escudo());
+            tempnpc.setIniciativa_personagem(dad.getDado(20) + psg.getDestreza_personagem());
         }
 
-        if (vlriniciativaper > vlriniciativanpc) {
+        if (tem.getIniciativa_personagem() > tempnpc.getIniciativa_personagem()) {
             if (verAcerto(psg, tempnpc) > verDefesa(per, tem)) {
+                dano = dano(per, tem);
+                psg.setPontos_vida_personagem(psg.getPontos_vida_personagem() - dano);
+
+                if (psg.getPontos_vida_personagem() > 0) {
+                    ini = psg.getNome_personagem() + " recebeu um ataque violento \n";
+                    ini += dano + " pontos de dano ";
+                } else {
+                    ini = psg.getNome_personagem() + " recebeu um ataque violento \n";
+                    ini += dano + " pontos de dano e morreu";
+                }
 
             } else {
                 ini = "Você Errou.";
@@ -84,6 +95,15 @@ public class Batalhas {
 
         } else {
             if (verAcerto(per, tem) > verDefesa(psg, tempnpc)) {
+
+                dano = dano(psg, tempnpc);
+                per.setPontos_vida_personagem(per.getPontos_vida_personagem() - dano);
+
+                if (per.getPontos_vida_personagem() > 0) {
+                    ini = "voce recebeu um ataque violento";
+                } else {
+
+                }
 
             } else {
                 ini = "NPC errou.";
@@ -104,9 +124,7 @@ public class Batalhas {
         } else {
             res = dad.getDado(20) + pp.getModDestreza() + pp.getBase_ataque_personagem();
         }
-
         return res;
-
     }
 
     public int verDefesa(Personagens pp, Temporario tp) throws SQLException, IllegalAccessException, ClassNotFoundException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
@@ -126,6 +144,32 @@ public class Batalhas {
         }
 
         res = (int) (10 + pp.getModDestreza() + es.getBonus_maximo_escudo());
+
+        return res;
+    }
+
+    public int dano(Personagens pp, Temporario tp) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+        int res = 0;
+        GenericDAO gda = new GenericDAO();
+        Armas arm = new Armas();
+        utilitários.Dados dad = new utilitários.Dados();
+        arm.setCodigo_arma(tp.getCodigo_arma());
+
+        List<Object> aAs = gda.listar2(Armas.class, arm);
+
+        for (Object ar : aAs) {
+            Armas ars = (Armas) ar;
+            arm.setNome_arma(arm.getNome_arma());
+            arm.setQuantidade_dado_arma(ars.getQuantidade_dado_arma());
+            arm.setTipo_do_dado_arma(ars.getTipo_do_dado_arma());
+        }
+
+        for (int i = 0; i < arm.getQuantidade_dado_arma(); i++) {
+
+            res += dad.getDado(arm.getTipo_do_dado_arma());
+        }
+
+        res += pp.getModForca();
 
         return res;
     }

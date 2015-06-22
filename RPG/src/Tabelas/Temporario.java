@@ -10,6 +10,7 @@ package Tabelas;
  * @author mamut
  */
 public class Temporario {
+
     int codigo_temporario;
     int pontos_vida_temporario;
     int dinheiro_classe;
@@ -20,7 +21,16 @@ public class Temporario {
     int codigo_escudo;
     int codigo_arma;
     int codigo_consumivel;
+    int iniciativa_personagem;
 
+    public int getIniciativa_personagem() {
+        return iniciativa_personagem;
+    }
+
+    public void setIniciativa_personagem(int iniciativa_personagem) {
+        this.iniciativa_personagem = iniciativa_personagem;
+    }
+    
     public int getCodigo_escudo() {
         return codigo_escudo;
     }
@@ -44,7 +54,6 @@ public class Temporario {
     public void setCodigo_consumivel(int codigo_consumivel) {
         this.codigo_consumivel = codigo_consumivel;
     }
-    
 
     public int getCodigo_temporario() {
         return codigo_temporario;
