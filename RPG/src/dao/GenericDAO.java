@@ -421,13 +421,8 @@ public class GenericDAO {
             fld.setAccessible(true);
 
             campos = campos + fld.getName() + ", ";
-            tipoDado = fld.getType().toString();
-            if (tipoDado.equals("class java.lang.String")) {
-                dados = dados + "'" + fld.get(obj) + "'" + ",";
-            }
-            if (tipoDado.equals("int")) {
-                dados = dados + fld.get(obj) + ",";
-            }
+
+            dados = dados + "'" + fld.get(obj) + "'" + ",";
 
         }
         campos = campos.substring(0, campos.length() - 2);
