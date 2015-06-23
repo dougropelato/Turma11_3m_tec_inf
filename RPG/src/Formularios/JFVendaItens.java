@@ -68,7 +68,7 @@ public class JFVendaItens extends javax.swing.JFrame {
                 for (Object obj2 : ListarDinheiroPersonagem) {
                     Classes cc = (Classes) obj2;
 
-                    lbDinheiroPersonagem.setText(String.valueOf(cc.getDinheiro_classe()));
+                    lbDinheiroClasse.setText(String.valueOf(cc.getDinheiro_classe()));
 
                 }
 
@@ -185,6 +185,7 @@ public class JFVendaItens extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jcPersonagem = new javax.swing.JComboBox();
+        lbDinheiroClasse = new javax.swing.JLabel();
         lbDinheiroPersonagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -420,7 +421,8 @@ public class JFVendaItens extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jcPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 110, -1));
-        getContentPane().add(lbDinheiroPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 60, 20));
+        getContentPane().add(lbDinheiroClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 60, 20));
+        getContentPane().add(lbDinheiroPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 50, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -471,7 +473,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 /////////////////////////////////////////
                     comprar.setQuantidade_armadura(varComprarQuant); /// cadastra na tabela N/N a quantidade de armaduras compradas 
                     gDAO.adicionar(comprar);
-                     JOptionPane.showMessageDialog(null, "Favor escolha a quantidade do item que deseja comprar!!!");
+                     JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
 
                 } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
                     Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
@@ -514,6 +516,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                     comprar.setQuantidade_arma(varComprarQuant); /// cadastra na tabela N/N a quantidade de armas compradas 
                     gDAO.adicionar(comprar);
+                    JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
 
                 } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
                     Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
@@ -555,6 +558,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                     comprar.setQuantidade_escudo(varComprarQuant); /// cadastra na tabela N/N a quantidade de escudos comprados
                     gDAO.adicionar(comprar);
+                    JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
 
                 } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
                     Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
@@ -595,6 +599,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                     comprar.setQuantidade_consumivel(varComprarQuant); /// cadastra na tabela N/N a quantidade de consumiveis comprados
                     gDAO.adicionar(comprar);
+                    JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
 
                 } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
                     Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
@@ -1385,6 +1390,7 @@ public class JFVendaItens extends javax.swing.JFrame {
     private javax.swing.JLabel jlQuantComprar;
     private javax.swing.JLabel jlQuantVender;
     private java.awt.Label lbComprar;
+    private javax.swing.JLabel lbDinheiroClasse;
     private javax.swing.JLabel lbDinheiroPersonagem;
     private java.awt.Label lbPrecoComprar;
     private java.awt.Label lbVender;
