@@ -22,57 +22,58 @@ import tabelas.Personagens;
  */
 public class Batalhas {
 
-    public String ParametroBatalho(Personagens per, NpcsCombatentes npc, Temporario tem) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+    public String iniciaBatalha(Personagens per, NpcsCombatentes npc, Temporario tem) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
         String ini = "";
-
         utilitários.Dados dad = new utilitários.Dados();
         GenericDAO gda = new GenericDAO();
         Personagens psg = new Personagens();
         Temporario tempnpc = new Temporario();
-
         int dano = 0;
 
-        tem.setIniciativa_personagem(dad.getDado(20) + per.getDestreza_personagem());
+        if (tem.getIniciativa_personagem() == 0) {
 
-        List<Object> lis = new ArrayList();
+            tem.setIniciativa_personagem(dad.getDado(20) + per.getDestreza_personagem());
 
-        psg.setCodigo_personagem(npc.getCodigo_personagem());
+            List<Object> lis = new ArrayList();
 
-        lis = gda.listar2(Personagens.class, psg);
+            psg.setCodigo_personagem(npc.getCodigo_personagem());
 
-        for (Object li : lis) {
-            Personagens pso = (Personagens) li;
+            lis = gda.listar2(Personagens.class, psg);
 
-            psg.setAltura_personagem(pso.getAltura_personagem());
-            psg.setBase_ataque_personagem(pso.getBase_ataque_personagem());
-            psg.setCarisma_personagem(pso.getCarisma_personagem());
-            psg.setClasse_armadura_personagem(pso.getClasse_armadura_personagem());
-            psg.setContituicao_personagem(pso.getContituicao_personagem());
-            psg.setDestreza_personagem(pso.getDestreza_personagem());
-            psg.setForca_personagem(pso.getForca_personagem());
-            psg.setFortitude_personagem(pso.getFortitude_personagem());
-            psg.setIdade_personagem(pso.getIdade_personagem());
-            psg.setIniciativa_personagem(pso.getIniciativa_personagem());
-            psg.setInteligencia_personagem(pso.getInteligencia_personagem());
-            psg.setNome_personagem(pso.getNome_personagem());
-            psg.setPeso_personagem(pso.getPeso_personagem());
-            psg.setPontos_vida_personagem(pso.getPontos_vida_personagem());
-            psg.setReflexos_personagem(pso.getReflexos_personagem());
-            psg.setSabedoria_personagem(pso.getSabedoria_personagem());
-            psg.setVontade_personagem(pso.getVontade_personagem());
-        }
+            for (Object li : lis) {
+                Personagens pso = (Personagens) li;
 
-        tempnpc.setCodigo_personagem(npc.getCodigo_personagem());
-        lis = gda.listar2(Temporario.class, tempnpc);
+                psg.setAltura_personagem(pso.getAltura_personagem());
+                psg.setBase_ataque_personagem(pso.getBase_ataque_personagem());
+                psg.setCarisma_personagem(pso.getCarisma_personagem());
+                psg.setClasse_armadura_personagem(pso.getClasse_armadura_personagem());
+                psg.setContituicao_personagem(pso.getContituicao_personagem());
+                psg.setDestreza_personagem(pso.getDestreza_personagem());
+                psg.setForca_personagem(pso.getForca_personagem());
+                psg.setFortitude_personagem(pso.getFortitude_personagem());
+                psg.setIdade_personagem(pso.getIdade_personagem());
+                psg.setIniciativa_personagem(pso.getIniciativa_personagem());
+                psg.setInteligencia_personagem(pso.getInteligencia_personagem());
+                psg.setNome_personagem(pso.getNome_personagem());
+                psg.setPeso_personagem(pso.getPeso_personagem());
+                psg.setPontos_vida_personagem(pso.getPontos_vida_personagem());
+                psg.setReflexos_personagem(pso.getReflexos_personagem());
+                psg.setSabedoria_personagem(pso.getSabedoria_personagem());
+                psg.setVontade_personagem(pso.getVontade_personagem());
+            }
+            
+            tempnpc.setCodigo_personagem(npc.getCodigo_personagem());
+            lis = gda.listar2(Temporario.class, tempnpc);
 
-        for (Object li : lis) {
-            Temporario tp = (Temporario) li;
-            tempnpc.setCa_personagem(tp.getCa_personagem());
-            tempnpc.setCodigo_arma(tp.getCodigo_arma());
-            tempnpc.setPontos_vida_temporario(tp.getPontos_vida_temporario());
-            tempnpc.setCodigo_escudo(tp.getCodigo_escudo());
-            tempnpc.setIniciativa_personagem(dad.getDado(20) + psg.getDestreza_personagem());
+            for (Object li : lis) {
+                Temporario tp = (Temporario) li;
+                tempnpc.setCa_personagem(tp.getCa_personagem());
+                tempnpc.setCodigo_arma(tp.getCodigo_arma());
+                tempnpc.setPontos_vida_temporario(tp.getPontos_vida_temporario());
+                tempnpc.setCodigo_escudo(tp.getCodigo_escudo());
+                tempnpc.setIniciativa_personagem(dad.getDado(20) + psg.getDestreza_personagem());
+            }
         }
 
         if (tem.getIniciativa_personagem() > tempnpc.getIniciativa_personagem()) {
