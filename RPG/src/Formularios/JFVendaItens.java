@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import tabelas.Armaduras;
 import tabelas.Armas;
 import tabelas.Classes;
@@ -44,7 +45,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 
     public void ListarDinheiro() {
 
-         try {
+        try {
 
             GenericDAO gDao = new GenericDAO();
             Personagens personagem = new Personagens();
@@ -61,14 +62,14 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                 int codClasse = pp.getCodigo_classe();
                 classe.setCodigo_classe(codClasse);
-                
+
                 ListarDinheiroPersonagem = gDao.listar2(Classes.class, classe);    ////pega o codigo da classe e procura o dinheiro da mesma
 
                 for (Object obj2 : ListarDinheiroPersonagem) {
                     Classes cc = (Classes) obj2;
 
                     lbDinheiroPersonagem.setText(String.valueOf(cc.getDinheiro_classe()));
-                    
+
                 }
 
             }
@@ -431,167 +432,173 @@ public class JFVendaItens extends javax.swing.JFrame {
 
     private void jbComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComprarActionPerformed
 
-        if (jcbComprarArmaduras.isSelected()) {
+        if (QuantComprar.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Favor escolha a quantidade do item que deseja comprar!!!");     
+        } else {
+            
+            if (jcbComprarArmaduras.isSelected()) {
 
-            PersonagensArmaduras comprar = new PersonagensArmaduras();
-            int varComprarQuant = (Integer.parseInt(QuantComprar.getText()));
+                PersonagensArmaduras comprar = new PersonagensArmaduras();
+                int varComprarQuant = (Integer.parseInt(QuantComprar.getText()));
 
-            try {
+                try {
 
-                GenericDAO gDAO = new GenericDAO();
-                Armaduras armadura = new Armaduras();
-                List<Object> ListarArmaduras = new ArrayList<>();
+                    GenericDAO gDAO = new GenericDAO();
+                    Armaduras armadura = new Armaduras();
+                    List<Object> ListarArmaduras = new ArrayList<>();
 
-                armadura.setNome_armadura((String) jcComprarArmaduras.getSelectedItem());
+                    armadura.setNome_armadura((String) jcComprarArmaduras.getSelectedItem());
 
-                ListarArmaduras = gDAO.listar2(Armaduras.class, armadura);
+                    ListarArmaduras = gDAO.listar2(Armaduras.class, armadura);
 
-                for (Object ll1 : ListarArmaduras) {  //// pega o nome da armadura no combobox e procura pelo codigo da mesma
-                    Armaduras aa = (Armaduras) ll1;
-                    comprar.setCodigo_armadura(aa.getCodigo_armadura()); /// cadastra na tabela N/N o codigo da armadura
-                }
+                    for (Object ll1 : ListarArmaduras) {  //// pega o nome da armadura no combobox e procura pelo codigo da mesma
+                        Armaduras aa = (Armaduras) ll1;
+                        comprar.setCodigo_armadura(aa.getCodigo_armadura()); /// cadastra na tabela N/N o codigo da armadura
+                    }
 ////////////////////////////////////////
-                Personagens personagem = new Personagens();
-                List<Object> ProcurarCodPersonagem = new ArrayList<>();
+                    Personagens personagem = new Personagens();
+                    List<Object> ProcurarCodPersonagem = new ArrayList<>();
 
-                personagem.setNome_personagem((String) jcPersonagem.getSelectedItem());
+                    personagem.setNome_personagem((String) jcPersonagem.getSelectedItem());
 
-                ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);
+                    ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);
 
-                for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
-                    Personagens pp = (Personagens) ll1;
-                    comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// cadastra na tabela N/N o codigo do personagem
-                }
+                    for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
+                        Personagens pp = (Personagens) ll1;
+                        comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// cadastra na tabela N/N o codigo do personagem
+                    }
 
 /////////////////////////////////////////
-                comprar.setQuantidade_armadura(varComprarQuant); /// cadastra na tabela N/N a quantidade de armaduras compradas 
-                gDAO.adicionar(comprar);
+                    comprar.setQuantidade_armadura(varComprarQuant); /// cadastra na tabela N/N a quantidade de armaduras compradas 
+                    gDAO.adicionar(comprar);
+                     JOptionPane.showMessageDialog(null, "Favor escolha a quantidade do item que deseja comprar!!!");
 
-            } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
-                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
+                    Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             }
 
-        }
+            if (jcbComprarArmas.isSelected()) {
 
-        if (jcbComprarArmas.isSelected()) {
+                PersonagensArmas comprar = new PersonagensArmas();
+                int varComprarQuant = (Integer.parseInt(QuantComprar.getText()));
+                comprar.setQuantidade_arma(varComprarQuant);
 
-            PersonagensArmas comprar = new PersonagensArmas();
-            int varComprarQuant = (Integer.parseInt(QuantComprar.getText()));
-            comprar.setQuantidade_arma(varComprarQuant);
+                try {
 
-            try {
+                    GenericDAO gDAO = new GenericDAO();
+                    Armas arma = new Armas();
+                    List<Object> ListarArmas = new ArrayList<>();
 
-                GenericDAO gDAO = new GenericDAO();
-                Armas arma = new Armas();
-                List<Object> ListarArmas = new ArrayList<>();
+                    arma.setNome_arma((String) jcComprarArmas.getSelectedItem());
 
-                arma.setNome_arma((String) jcComprarArmas.getSelectedItem());
+                    ListarArmas = gDAO.listar2(Armas.class, arma);
 
-                ListarArmas = gDAO.listar2(Armas.class, arma);
+                    for (Object ll1 : ListarArmas) { //// pega o nome da arma no combobox e procura pelo codigo da mesma
+                        Armas aa = (Armas) ll1;
+                        comprar.setCodigo_arma(aa.getCodigo_arma()); /// cadastra na tabela N/N o codigo da arma
+                    }
 
-                for (Object ll1 : ListarArmas) { //// pega o nome da arma no combobox e procura pelo codigo da mesma
-                    Armas aa = (Armas) ll1;
-                    comprar.setCodigo_arma(aa.getCodigo_arma()); /// cadastra na tabela N/N o codigo da arma
+                    Personagens personagem = new Personagens();
+                    List<Object> ProcurarCodPersonagem = new ArrayList<>();
+
+                    personagem.setNome_personagem((String) jcPersonagem.getSelectedItem());
+
+                    ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);
+
+                    for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
+                        Personagens pp = (Personagens) ll1;
+                        comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// cadastra na tabela N/N o codigo do personagem
+                    }
+
+                    comprar.setQuantidade_arma(varComprarQuant); /// cadastra na tabela N/N a quantidade de armas compradas 
+                    gDAO.adicionar(comprar);
+
+                } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
+                    Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-                Personagens personagem = new Personagens();
-                List<Object> ProcurarCodPersonagem = new ArrayList<>();
-
-                personagem.setNome_personagem((String) jcPersonagem.getSelectedItem());
-
-                ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);
-
-                for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
-                    Personagens pp = (Personagens) ll1;
-                    comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// cadastra na tabela N/N o codigo do personagem
-                }
-
-                comprar.setQuantidade_arma(varComprarQuant); /// cadastra na tabela N/N a quantidade de armas compradas 
-                gDAO.adicionar(comprar);
-
-            } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
-                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
 
-        if (jcbComprarEscudos.isSelected()) {
+            if (jcbComprarEscudos.isSelected()) {
 
-            PersonagensEscudos comprar = new PersonagensEscudos();
-            int varComprarQuant = (Integer.parseInt(QuantComprar.getText()));
-            comprar.setQuantidade_escudo(varComprarQuant);
+                PersonagensEscudos comprar = new PersonagensEscudos();
+                int varComprarQuant = (Integer.parseInt(QuantComprar.getText()));
+                comprar.setQuantidade_escudo(varComprarQuant);
 
-            try {
+                try {
 
-                GenericDAO gDAO = new GenericDAO();
-                Escudos escudo = new Escudos();
-                List<Object> ListarEscudos = new ArrayList<>();
+                    GenericDAO gDAO = new GenericDAO();
+                    Escudos escudo = new Escudos();
+                    List<Object> ListarEscudos = new ArrayList<>();
 
-                escudo.setNome_escudo((String) jcComprarEscudos.getSelectedItem());
+                    escudo.setNome_escudo((String) jcComprarEscudos.getSelectedItem());
 
-                ListarEscudos = gDAO.listar2(Escudos.class, escudo);
+                    ListarEscudos = gDAO.listar2(Escudos.class, escudo);
 
-                for (Object ll1 : ListarEscudos) {   //// pega o nome do escudo no combobox e procura pelo codigo da mesmo
-                    Escudos ee = (Escudos) ll1;
-                    comprar.setCodigo_escudo(ee.getCodigo_escudo()); /// cadastra na tabela N/N o codigo do escudo
+                    for (Object ll1 : ListarEscudos) {   //// pega o nome do escudo no combobox e procura pelo codigo da mesmo
+                        Escudos ee = (Escudos) ll1;
+                        comprar.setCodigo_escudo(ee.getCodigo_escudo()); /// cadastra na tabela N/N o codigo do escudo
+                    }
+
+                    Personagens personagem = new Personagens();
+                    List<Object> ProcurarCodPersonagem = new ArrayList<>();
+
+                    personagem.setNome_personagem((String) jcPersonagem.getSelectedItem());
+
+                    ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);
+
+                    for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
+                        Personagens pp = (Personagens) ll1;
+                        comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// cadastra na tabela N/N o codigo do personagem
+                    }
+
+                    comprar.setQuantidade_escudo(varComprarQuant); /// cadastra na tabela N/N a quantidade de escudos comprados
+                    gDAO.adicionar(comprar);
+
+                } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
+                    Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-                Personagens personagem = new Personagens();
-                List<Object> ProcurarCodPersonagem = new ArrayList<>();
-
-                personagem.setNome_personagem((String) jcPersonagem.getSelectedItem());
-
-                ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);
-
-                for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
-                    Personagens pp = (Personagens) ll1;
-                    comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// cadastra na tabela N/N o codigo do personagem
-                }
-
-                comprar.setQuantidade_escudo(varComprarQuant); /// cadastra na tabela N/N a quantidade de escudos comprados
-                gDAO.adicionar(comprar);
-
-            } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
-                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        if (jcbComprarConsumiveis.isSelected()) {
+            if (jcbComprarConsumiveis.isSelected()) {
 
-            PersonagensConsumiveis comprar = new PersonagensConsumiveis();
-            int varComprarQuant = (Integer.parseInt(QuantComprar.getText()));
-            comprar.setQuantidade_consumivel(varComprarQuant);
+                PersonagensConsumiveis comprar = new PersonagensConsumiveis();
+                int varComprarQuant = (Integer.parseInt(QuantComprar.getText()));
+                comprar.setQuantidade_consumivel(varComprarQuant);
 
-            try {
+                try {
 
-                GenericDAO gDAO = new GenericDAO();
-                Consumiveis consumivel = new Consumiveis();
-                List<Object> ListarConsumiveis = new ArrayList<>();
+                    GenericDAO gDAO = new GenericDAO();
+                    Consumiveis consumivel = new Consumiveis();
+                    List<Object> ListarConsumiveis = new ArrayList<>();
 
-                consumivel.setNome_consumivel((String) jcComprarConsumiveis.getSelectedItem());
+                    consumivel.setNome_consumivel((String) jcComprarConsumiveis.getSelectedItem());
 
-                ListarConsumiveis = gDAO.listar2(Consumiveis.class, consumivel);
+                    ListarConsumiveis = gDAO.listar2(Consumiveis.class, consumivel);
 
-                for (Object ll1 : ListarConsumiveis) {  //// pega o nome do consumivel no combobox e procura pelo codigo do mesmo
-                    Consumiveis cc = (Consumiveis) ll1;
-                    comprar.setCodigo_consumivel(cc.getCodigo_consumivel()); /// cadastra na tabela N/N o codigo do consumivel
+                    for (Object ll1 : ListarConsumiveis) {  //// pega o nome do consumivel no combobox e procura pelo codigo do mesmo
+                        Consumiveis cc = (Consumiveis) ll1;
+                        comprar.setCodigo_consumivel(cc.getCodigo_consumivel()); /// cadastra na tabela N/N o codigo do consumivel
+                    }
+
+                    Personagens personagem = new Personagens();
+                    List<Object> ProcurarCodPersonagem = new ArrayList<>();
+
+                    personagem.setNome_personagem((String) jcPersonagem.getSelectedItem());
+
+                    ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);
+
+                    for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
+                        Personagens pp = (Personagens) ll1;
+                        comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// cadastra na tabela N/N o codigo do personagem
+                    }
+
+                    comprar.setQuantidade_consumivel(varComprarQuant); /// cadastra na tabela N/N a quantidade de consumiveis comprados
+                    gDAO.adicionar(comprar);
+
+                } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
+                    Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-                Personagens personagem = new Personagens();
-                List<Object> ProcurarCodPersonagem = new ArrayList<>();
-
-                personagem.setNome_personagem((String) jcPersonagem.getSelectedItem());
-
-                ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);
-
-                for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
-                    Personagens pp = (Personagens) ll1;
-                    comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// cadastra na tabela N/N o codigo do personagem
-                }
-
-                comprar.setQuantidade_consumivel(varComprarQuant); /// cadastra na tabela N/N a quantidade de consumiveis comprados
-                gDAO.adicionar(comprar);
-
-            } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
-                Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_jbComprarActionPerformed
@@ -1297,12 +1304,12 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_jcComprarConsumiveisActionPerformed
 
     private void jcPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcPersonagemActionPerformed
-        
+
     }//GEN-LAST:event_jcPersonagemActionPerformed
 
     private void jcPersonagemItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcPersonagemItemStateChanged
 
-       ListarDinheiro();
+        ListarDinheiro();
     }//GEN-LAST:event_jcPersonagemItemStateChanged
 
     /**
