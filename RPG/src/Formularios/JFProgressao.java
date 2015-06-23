@@ -130,21 +130,21 @@ public class JFProgressao extends javax.swing.JFrame {
 
         lista.clear();
                 
-        for (int i = 1; i < 21; i++) {
+        for (int i = 0; i < 20; i++) {
             Progressoes prg = new Progressoes();
+            lista.add(prg);
             // Atribui os valores da linha e coluna informados para o campo correspondente 
             // da classe progressao passo i -1 para linha pois a mesma deve começar de zero
             // e a variavel i começa em 1
-            prg.setNivel_progressao(i);
-            prg.setBonus_base_progressao((int) jtbprogressao.getValueAt(i -1, 1));
-            prg.setFortitude_progressao((int) jtbprogressao.getValueAt(i -1, 2));
-            prg.setReflexos_progressao((int) jtbprogressao.getValueAt(i -1, 3));
-            prg.setVontade_progressao((int) jtbprogressao.getValueAt(i -1, 4));
-            prg.setPericia_progressao((int) jtbprogressao.getValueAt(i -1, 5));
-            prg.setTipo_dado_progressao((int) jtbprogressao.getValueAt(i -1, 6));
-            prg.setQuantidade_dado_progressao((int) jtbprogressao.getValueAt(i -1, 7));
-            prg.setBonus_base_progressao((int) jtbprogressao.getValueAt(i -1, 8));
-            lista.add(prg);
+            prg.setNivel_progressao(i+1);
+            prg.setBonus_base_progressao((int) jtbprogressao.getValueAt(i, 1));
+            prg.setFortitude_progressao((int) jtbprogressao.getValueAt(i, 2));
+            prg.setReflexos_progressao((int) jtbprogressao.getValueAt(i, 3));
+            prg.setVontade_progressao((int) jtbprogressao.getValueAt(i, 4));
+            prg.setPericia_progressao((int) jtbprogressao.getValueAt(i, 5));
+            prg.setTipo_dado_progressao((int) jtbprogressao.getValueAt(i, 6));
+            prg.setQuantidade_dado_progressao((int) jtbprogressao.getValueAt(i, 7));
+            prg.setBonus_ca_progressao((int) jtbprogressao.getValueAt(i, 8));
         }
         
         this.setVisible(false);
