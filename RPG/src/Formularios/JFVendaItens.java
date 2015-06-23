@@ -41,6 +41,17 @@ public class JFVendaItens extends javax.swing.JFrame {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
         setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+
+    }
+
+    public void VerificarDinheiro() {
+
+        double dinheiroTotal = (Double.parseDouble(lbDinheiroPersonagem.getText()));
+        double QuantItens = (Double.parseDouble(QuantComprar.getText()));
+        double PrecoUnidade = (Double.parseDouble(jlListPreçoComprar.getText()));
+
+        double Result = PrecoUnidade * QuantItens;
+
     }
 
     public void ListarDinheiro() {
@@ -69,6 +80,7 @@ public class JFVendaItens extends javax.swing.JFrame {
                     Classes cc = (Classes) obj2;
 
                     lbDinheiroClasse.setText(String.valueOf(cc.getDinheiro_classe()));
+                    lbDinheiroPersonagem.setText(lbDinheiroClasse.getText());
 
                 }
 
@@ -435,9 +447,9 @@ public class JFVendaItens extends javax.swing.JFrame {
     private void jbComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComprarActionPerformed
 
         if (QuantComprar.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Favor escolha a quantidade do item que deseja comprar!!!");     
+            JOptionPane.showMessageDialog(null, "Favor escolha a quantidade do item que deseja comprar!!!");
         } else {
-            
+
             if (jcbComprarArmaduras.isSelected()) {
 
                 PersonagensArmaduras comprar = new PersonagensArmaduras();
@@ -470,10 +482,24 @@ public class JFVendaItens extends javax.swing.JFrame {
                         comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// cadastra na tabela N/N o codigo do personagem
                     }
 
-/////////////////////////////////////////
                     comprar.setQuantidade_armadura(varComprarQuant); /// cadastra na tabela N/N a quantidade de armaduras compradas 
-                    gDAO.adicionar(comprar);
-                     JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
+
+///////////////////////////////// Verificação de Peças de Ouro                    
+                    double dinheiroTotal = (Double.parseDouble(lbDinheiroPersonagem.getText()));
+                    double QuantItens = (Double.parseDouble(QuantComprar.getText()));
+                    double PrecoUnidade = (Double.parseDouble(jlListPreçoComprar.getText()));
+                    double Result = PrecoUnidade * QuantItens;
+                    double ResultDinheiro = dinheiroTotal - Result;
+
+                    System.out.println("Total compras" + Result);
+
+                    if (dinheiroTotal < Result) {
+                        JOptionPane.showMessageDialog(null, "Não há Peças de Ouro disponiveis para efetuar a compra!!!");
+                    } else {
+                        lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
+                        gDAO.adicionar(comprar);
+                        JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
+                    }
 
                 } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
                     Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
@@ -515,8 +541,23 @@ public class JFVendaItens extends javax.swing.JFrame {
                     }
 
                     comprar.setQuantidade_arma(varComprarQuant); /// cadastra na tabela N/N a quantidade de armas compradas 
-                    gDAO.adicionar(comprar);
-                    JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
+
+///////////////////////////////// Verificação de Peças de Ouro
+                    double dinheiroTotal = (Double.parseDouble(lbDinheiroPersonagem.getText()));
+                    double QuantItens = (Double.parseDouble(QuantComprar.getText()));
+                    double PrecoUnidade = (Double.parseDouble(jlListPreçoComprar.getText()));
+                    double Result = PrecoUnidade * QuantItens;
+                    double ResultDinheiro = dinheiroTotal - Result;
+
+                    System.out.println("Total compras" + Result);
+
+                    if (dinheiroTotal < Result) {
+                        JOptionPane.showMessageDialog(null, "Não há Peças de Ouro disponiveis para efetuar a compra!!!");
+                    } else {
+                        lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
+                        gDAO.adicionar(comprar);
+                        JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
+                    }
 
                 } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
                     Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
@@ -557,8 +598,23 @@ public class JFVendaItens extends javax.swing.JFrame {
                     }
 
                     comprar.setQuantidade_escudo(varComprarQuant); /// cadastra na tabela N/N a quantidade de escudos comprados
-                    gDAO.adicionar(comprar);
-                    JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
+                    
+///////////////////////////////// Verificação de Peças de Ouro
+                    double dinheiroTotal = (Double.parseDouble(lbDinheiroPersonagem.getText()));
+                    double QuantItens = (Double.parseDouble(QuantComprar.getText()));
+                    double PrecoUnidade = (Double.parseDouble(jlListPreçoComprar.getText()));
+                    double Result = PrecoUnidade * QuantItens;
+                    double ResultDinheiro = dinheiroTotal - Result;
+
+                    System.out.println("Total compras" + Result);
+
+                    if (dinheiroTotal < Result) {
+                        JOptionPane.showMessageDialog(null, "Não há Peças de Ouro disponiveis para efetuar a compra!!!");
+                    } else {
+                        lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
+                        gDAO.adicionar(comprar);
+                        JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
+                    }
 
                 } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
                     Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
@@ -598,8 +654,24 @@ public class JFVendaItens extends javax.swing.JFrame {
                     }
 
                     comprar.setQuantidade_consumivel(varComprarQuant); /// cadastra na tabela N/N a quantidade de consumiveis comprados
-                    gDAO.adicionar(comprar);
-                    JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
+                    
+///////////////////////////////// Verificação de Peças de Ouro
+                    double dinheiroTotal = (Double.parseDouble(lbDinheiroPersonagem.getText()));
+                    double QuantItens = (Double.parseDouble(QuantComprar.getText()));
+                    double PrecoUnidade = (Double.parseDouble(jlListPreçoComprar.getText()));
+                    double Result = PrecoUnidade * QuantItens;
+                    double ResultDinheiro = dinheiroTotal - Result;
+
+                    System.out.println("Total compras" + Result);
+
+                    if (dinheiroTotal < Result) {
+                        JOptionPane.showMessageDialog(null, "Não há Peças de Ouro disponiveis para efetuar a compra!!!");
+                    } else {
+                        
+                        lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
+                        gDAO.adicionar(comprar);
+                        JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
+                    }
 
                 } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
                     Logger.getLogger(JFVendaItens.class.getName()).log(Level.SEVERE, null, ex);
