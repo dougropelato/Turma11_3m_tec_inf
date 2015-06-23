@@ -13,24 +13,7 @@ public class PericiasPosicoes {
 
     int codigo_pericia;
     int codigo_posicao;
-    String descricao_pericia_conseguiu;
     int valor_pericia;
-
-    public String getDescricao_pericia_conseguiu() {
-        return descricao_pericia_conseguiu;
-    }
-
-    public void setDescricao_pericia_conseguiu(String descricao_pericia_conseguiu) {
-        this.descricao_pericia_conseguiu = descricao_pericia_conseguiu;
-    }
-
-    public int getValor_pericia() {
-        return valor_pericia;
-    }
-
-    public void setValor_pericia(int valor_pericia) {
-        this.valor_pericia = valor_pericia;
-    }
 
     public int getCodigo_pericia() {
         return codigo_pericia;
@@ -47,5 +30,16 @@ public class PericiasPosicoes {
     public void setCodigo_posicao(int codigo_posicao) {
         this.codigo_posicao = codigo_posicao;
     }
+
+    public int getValor_pericia() {
+        return valor_pericia;
+    }
+
+    public void setValor_pericia(int valor_pericia) {
+        this.valor_pericia = valor_pericia;
+    }
+    
+
+    
 
 }

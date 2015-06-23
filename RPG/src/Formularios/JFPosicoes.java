@@ -99,6 +99,7 @@ public class JFPosicoes extends javax.swing.JFrame {
     public JFPosicoes() {
         initComponents();
         centralizarComponente();
+
     }
 
     /**
@@ -323,55 +324,63 @@ public class JFPosicoes extends javax.swing.JFrame {
 
         try {
             //if (jtaDescricaoCaminho.getText().equals("") || jtaDescricaoPericia.getText().equals("") || jtfValPericia.getText().equals("") || jtfValorX.getText().equals("") || jtfValorY.getText().equals("")) {
-                //JOptionPane.showMessageDialog(null, "Insira uma descrição para esta posição!");
+            //JOptionPane.showMessageDialog(null, "Insira uma descrição para esta posição!");
             //} else {
-                GenericDAO gDAO = new GenericDAO();
-                Posicoes posicoes = new Posicoes();
-                PosicoesNpcs posicaoNpc = new PosicoesNpcs();
-                Npcs npc = new Npcs();
-                Pericias pericias = new Pericias();
-                PericiasPosicoes periciaPosicao = new PericiasPosicoes();
-                Caminhos caminhos = new Caminhos();
+            GenericDAO gDAO = new GenericDAO();
+            Posicoes posicoes = new Posicoes();
+            PosicoesNpcs posicaoNpc = new PosicoesNpcs();
+            Npcs npc = new Npcs();
+            Pericias pericias = new Pericias();
+            PericiasPosicoes periciaPosicao = new PericiasPosicoes();
+            Caminhos caminhos = new Caminhos();
 
-                //Insertes tabela 'Posicoes'
-                posicoes.setCodigo_caminho((int) (arrayListCaminhos.get(jcbCaminho.getSelectedIndex())));
-                posicoes.setDescricao_posicao(jtaDescricaoCaminho.getText());
-                posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));
-                posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorY.getText()));
-                gDAO.adicionar(posicoes); //adicionando posicao
+            //Insertes tabela 'Posicoes'
+            posicoes.setCodigo_caminho((int) (arrayListCaminhos.get(jcbCaminho.getSelectedIndex())));
+            posicoes.setDescricao_posicao(jtaDescricaoCaminho.getText());
+            posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));
+            posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorY.getText()));
+            gDAO.adicionar(posicoes); //adicionando posicao
+            posicoes.setCodigo_posicao(gDAO.codigoMax(Posicoes.class));//Pega o código da última posição cadastrada
+            System.out.println("Posição Cadastradacom Sucesso!");
 
-                
-                //Inserts Tabela N/N 'PosicoesNpcs'
-                posicaoNpc.setCodigo_posicao(posicoes.getCodigo_posicao());
-                posicaoNpc.setCodigo_npc((int) (arrayListNpc.get(jcbNpc.getSelectedIndex())));
-              //posicaoNpc.setCodigo_posicao((int)arrayListPosicoes.get(posicoes.getCodigo_posicao()));
-               gDAO.adicionar(posicaoNpc);
-                
+            npc.setNome_npc(jcbNpc.getSelectedItem().toString());
+            List<Object> list = gDAO.listar2(Npcs.class, npc);
+
+            for (Object obj4 : list) {
+                Npcs npcc = (Npcs) obj4;
+
+                posicaoNpc.setCodigo_npc(npcc.getCodigo_npc());
+            }
+
+            //Inserts Tabela N/N 'PosicoesNpcs'
+            posicaoNpc.setCodigo_posicao(posicoes.getCodigo_posicao());
+            System.out.println(arrayListNpc.get(jcbNpc.getSelectedIndex()));
+            System.out.println(posicaoNpc.getCodigo_npc());
+            System.out.println(jcbNpc.getSelectedItem());
+            System.out.println(arrayListNpc);
+            gDAO.adicionar(posicaoNpc);
+
                 //Inserts Tabela N/N 'PericiasPosicoes'
-                //periciaPosicao.setCodigo_pericia((int) arrayListPericias.get(jcbPericias.getSelectedIndex()));
-                //periciaPosicao.setCodigo_posicao(posicoes.getCodigo_posicao());
-                //periciaPosicao.setDescricao_pericia_conseguiu(jtaDescricaoPericia.getText());
-                //periciaPosicao.setValor_pericia(Integer.parseInt(jtfValPericia.getText()));
-                //gDAO.adicionar(periciaPosicao);
-                
-                
-                
-                
-                /*    
-                 PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
-                 //tabela N pra N
-                 posicoesNpcs.setCodigo_posicoes(posicoes.getCodigo_posicao());
-                 posicoesNpcs.setCodigo_npc(((int) ((arrayListNpc.get(jcbNpc.getSelectedIndex())))));
+            //periciaPosicao.setCodigo_pericia((int) arrayListPericias.get(jcbPericias.getSelectedIndex()));
+            //periciaPosicao.setCodigo_posicao(posicoes.getCodigo_posicao());
+            //periciaPosicao.setDescricao_pericia_conseguiu(jtaDescricaoPericia.getText());
+            //periciaPosicao.setValor_pericia(Integer.parseInt(jtfValPericia.getText()));
+            //gDAO.adicionar(periciaPosicao);
+            /*    
+             PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
+             //tabela N pra N
+             posicoesNpcs.setCodigo_posicoes(posicoes.getCodigo_posicao());
+             posicoesNpcs.setCodigo_npc(((int) ((arrayListNpc.get(jcbNpc.getSelectedIndex())))));
             
-                 gDAO.adicionar(posicoesNpcs); //adicionando tabela n-n posicoesNpcs
-                 */
-                //mensagem de cadastro
-                JOptionPane.showMessageDialog(null, "Posição cadastrada!");
-                //limpando campos apos cadastro
-                jtaDescricaoCaminho.setText("");
-                jtfValorX.setText("");
-                jtfValorY.setText("");
-           // }
+             gDAO.adicionar(posicoesNpcs); //adicionando tabela n-n posicoesNpcs
+             */
+            //mensagem de cadastro
+            JOptionPane.showMessageDialog(null, "Posição cadastrada!");
+            //limpando campos apos cadastro
+            jtaDescricaoCaminho.setText("");
+            jtfValorX.setText("");
+            jtfValorY.setText("");
+            // }
 
         } catch (SQLException ex) {
             Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
@@ -380,6 +389,12 @@ public class JFPosicoes extends javax.swing.JFrame {
         } catch (IllegalArgumentException ex) {
             Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
             Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -390,6 +405,7 @@ public class JFPosicoes extends javax.swing.JFrame {
         try {
             carregaComboCaminhos();
             carregaComboNpc();
+            carregaComboPericia();
 
         } catch (SQLException ex) {
             Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
