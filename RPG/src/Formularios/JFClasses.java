@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package formularios;
 
 import dao.GenericDAO;
@@ -28,6 +27,7 @@ public class JFClasses extends javax.swing.JFrame {
      * Creates new form JFClasses
      */
     public JFClasses() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+        this.prog1 = new Formularios.JFProgressao();
         this.gDAO = new GenericDAO();
         this.armas = gDAO.listar(Armas.class);
         this.armaduras = gDAO.listar(Armaduras.class);
@@ -37,6 +37,7 @@ public class JFClasses extends javax.swing.JFrame {
     GenericDAO gDAO;
     List<Object> armas;
     List<Object> armaduras;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -155,10 +156,30 @@ public class JFClasses extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(264, 264, 264)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jbtsalvar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                        .addComponent(jbtcancelar)
+                        .addGap(62, 62, 62)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfDinheiro, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtprogressao)
+                    .addComponent(jcbArmaduraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -188,28 +209,9 @@ public class JFClasses extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jcbArmaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(63, 63, 63)
-                                .addComponent(jbtsalvar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                                .addComponent(jbtcancelar)
-                                .addGap(62, 62, 62)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfDinheiro, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtprogressao)
-                            .addComponent(jcbArmaduraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(15, Short.MAX_VALUE))
+                        .addGap(210, 210, 210)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,7 +278,7 @@ public class JFClasses extends javax.swing.JFrame {
         for (Object arma : armas) {
             jcbArmaInicial.addItem(arma);
         }
-        
+
         for (Object armadura : armaduras) {
             jcbArmaduraInicial.addItem(armadura);
         }
@@ -291,35 +293,33 @@ public class JFClasses extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfDinheiroActionPerformed
 
     private void jbtprogressaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtprogressaoActionPerformed
-       // TODO add your handling code here:
-        Formularios.JFProgressao prog  = new Formularios.JFProgressao();
-        prog1 = prog;
-        prog.setVisible(true);
+        // TODO add your handling code here:
+        prog1.setVisible(true);
     }//GEN-LAST:event_jbtprogressaoActionPerformed
 
     private void jbtsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtsalvarActionPerformed
         // TODO add your handling code here:
         Classes c = new Classes();
-        
+
         c.setNome_classe(jtfNome.getText());
         c.setUsar_armaduras_classe(jcbArmaduras.getSelectedIndex());
         c.setUsar_armas_classe(jcbArmas.getSelectedIndex());
         c.setDescricao_classe(jtaDescricao.getText());
-        
+
         try {
             c.setDado_vida_classe(Integer.valueOf(jtfDadoVida.getText()));
             c.setQuantidade_pericias_classe(Integer.valueOf(jtfQtPericias.getText()));
             c.setDinheiro_classe(Integer.valueOf(jtfDinheiro.getText()));
             c.setCodigo_arma(1);
             c.setCodigo_armadura(1);
-            c.setCodigo_escudo(0);
+            c.setCodigo_escudo(1);
         } catch (Exception e) {
             System.out.println("Valor informado não é um numero");
         }
         List<Progressoes> listaP = new ArrayList<>();
-        
+
         listaP = prog1.buscaProgressoes();
-        
+
         System.out.println("Nome " + c.getNome_classe());
         System.out.println("desc " + c.getDescricao_classe());
         System.out.println("Dado " + c.getDado_vida_classe());
@@ -327,13 +327,38 @@ public class JFClasses extends javax.swing.JFrame {
         System.out.println("Pnts " + c.getQuantidade_pericias_classe());
         System.out.println("Usar arma" + c.getUsar_armas_classe());
         System.out.println("Usar armadura" + c.getUsar_armaduras_classe());
-        
+
         for (Progressoes l : listaP) {
             Progressoes prg = (Progressoes) l;
+
+            System.out.println("Nivel: " + prg.getNivel_progressao());
+            System.out.println("Bonus base: " + prg.getBonus_base_progressao());
+            System.out.println("CA: " + prg.getBonus_ca_progressao());
+        }
+        try {
+            gDAO.adicionar(c);
+            int codigoClasse = gDAO.codigoMax(c.getClass());
+            System.out.println("Adiciionou classe codigo " + codigoClasse);
             
-            System.out.println("Nivel: "+ prg.getNivel_progressao());
-            System.out.println("Bonus base: "+ prg.getBonus_base_progressao());
-            System.out.println("CA: "+ prg.getBonus_ca_progressao());
+            for (Progressoes lp : listaP) {
+                Progressoes p = (Progressoes) lp;
+                p.setClasses_codigo_classe(codigoClasse);
+                gDAO.adicionar(p);
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFClasses.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JFClasses.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFClasses.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFClasses.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFClasses.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFClasses.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFClasses.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbtsalvarActionPerformed
 
