@@ -224,11 +224,30 @@ public class JFPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         String string = jTextField1.getText();
         if (string != "") {
-            // divide string em uma arraiy para verificar por partes
-            String[] comands = string.split(" ");
-            posi = Integer.parseInt(string);
+            try {
+                // divide string em uma arraiy para verificar por partes
+                String[] comands = string.split(" ");
+                //posi = Integer.parseInt(string);
 
-            jTextArea1.setText(jTextArea1.getText() + " \n Jogador diz: " + string); // mostra no texto da historia 
+                jTextArea1.setText(jTextArea1.getText() + "Jogador diz: " + string); // mostra no texto da historia
+
+                jTextArea1.setText(jTextArea1.getText() + "\n" + "Mestre: " + vercom.verificaComando(comands));
+            } catch (SQLException ex) {
+                Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSuchMethodException ex) {
+                Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvocationTargetException ex) {
+                Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
         // limpa comando digitado
         jTextField1.setText("");
