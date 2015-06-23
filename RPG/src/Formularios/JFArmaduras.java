@@ -42,8 +42,6 @@ public class JFArmaduras extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jtfCodigoArmadura = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jtfNomeArmadura = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -58,14 +56,6 @@ public class JFArmaduras extends javax.swing.JFrame {
         jcTipoArmadura = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jLabel1.setText("Código:");
-
-        jtfCodigoArmadura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfCodigoArmaduraActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Nome Armadura:");
 
@@ -105,38 +95,34 @@ public class JFArmaduras extends javax.swing.JFrame {
                         .addGap(170, 170, 170)
                         .addComponent(jLabel7))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
+                        .addGap(57, 57, 57)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jtfBonusMaximoArmadura)
-                            .addComponent(jtfPrecoArmadura, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfNomeArmadura, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfCodigoArmadura, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfPenalidadeDestrezaArmadura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                            .addComponent(jcTipoArmadura, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(136, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(157, 157, 157))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jtfBonusMaximoArmadura)
+                                    .addComponent(jtfPrecoArmadura, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfNomeArmadura, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfPenalidadeDestrezaArmadura, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jcTipoArmadura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(184, 184, 184)
+                                .addComponent(jButton1)
+                                .addGap(21, 21, 21)))))
+                .addContainerGap(199, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel7)
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfCodigoArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfNomeArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -158,15 +144,11 @@ public class JFArmaduras extends javax.swing.JFrame {
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jtfCodigoArmaduraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCodigoArmaduraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfCodigoArmaduraActionPerformed
 
     private void jtfNomeArmaduraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNomeArmaduraActionPerformed
         // TODO add your handling code here:
@@ -239,7 +221,6 @@ public class JFArmaduras extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -248,7 +229,6 @@ public class JFArmaduras extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JComboBox jcTipoArmadura;
     private javax.swing.JTextField jtfBonusMaximoArmadura;
-    private javax.swing.JTextField jtfCodigoArmadura;
     private javax.swing.JTextField jtfNomeArmadura;
     private javax.swing.JTextField jtfPenalidadeDestrezaArmadura;
     private javax.swing.JTextField jtfPrecoArmadura;

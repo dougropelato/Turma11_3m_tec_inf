@@ -21,6 +21,7 @@ import tabelas.Jogadores;
 public class VerificaComandos {
 
     Autenticacao auth = new Autenticacao();
+    Utilitários.Batalhas bata = new Utilitários.Batalhas();
     // clase criada so para amanter a autenticação
 
     public String verificaComando(String[] aux) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
@@ -92,6 +93,21 @@ public class VerificaComandos {
 
             }
         } else {// caso je esteja logado
+
+            if (auth.getStatus_atual().equalsIgnoreCase("BATALHA")) {// entra na batalha
+
+                bata.iniciaBatalha(null, null, null);
+
+                if (aux[0].equalsIgnoreCase("atacar")) {//ataca
+
+                }
+                if (aux[0].equalsIgnoreCase("usar")) {//usa item
+
+                }
+                if (aux[0].equalsIgnoreCase("fugir")) {//tenta fugir
+
+                }
+            }
 
             // verifica se foi digitado  criar ou  cadastrar
             if (aux[0].equalsIgnoreCase("criar")) {

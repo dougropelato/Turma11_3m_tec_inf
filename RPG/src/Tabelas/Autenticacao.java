@@ -13,12 +13,22 @@ public class Autenticacao {
 
     int codigo_jogador;
     int codigo_personagem;
+    String status_atual;
     boolean mestre_jogador;
     boolean jogador_logado;
     String nome_jogador;
     String senha_jogador;
     String nome_personagem;
 
+    public String getStatus_atual() {
+        return status_atual;
+    }
+
+    public void setStatus_atual(String status_atual) {
+        this.status_atual = status_atual;
+    }
+
+    
     public boolean isJogador_logado() {
         return jogador_logado;
     }
