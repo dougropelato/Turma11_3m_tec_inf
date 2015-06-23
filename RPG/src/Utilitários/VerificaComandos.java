@@ -20,9 +20,9 @@ import tabelas.Jogadores;
  */
 public class VerificaComandos {
 
-    Autenticacao auth = new Autenticacao();
+    Autenticacao auth = Autenticacao.getInstance();
     Utilitários.Batalhas bata = new Utilitários.Batalhas();
-    // clase criada so para amanter a autenticação
+    // clase criada so para amanter a autenticação 
 
     public String verificaComando(String[] aux) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
@@ -36,6 +36,9 @@ public class VerificaComandos {
             auth.setCodigo_personagem(1);
             auth.setSenha_jogador("123");
             auth.setJogador_logado(true);
+            System.out.println(auth.getCodigo_personagem());
+            System.out.println(auth.getNome_personagem());
+
             res = "doctor who ?";
         } // modo adm
 
