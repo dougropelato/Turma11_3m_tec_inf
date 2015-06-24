@@ -48,11 +48,6 @@ public class JFArmaduras extends javax.swing.JFrame {
             
             if (a.getCodigo_armadura() == contador) {
                 jtfNomeArmadura.setText(a.getNome_armadura());
-                jcTipoArmadura.setSelectedItem(a.getTipo_armadura());
-                jtfPrecoArmadura.setText(String.valueOf(a.getPreco_armadura()));
-                jtfBonusMaximoArmadura.setText(String.valueOf(a.getBonus_maximo_armadura()));
-                jtfPenalidadeDestrezaArmadura.setText(String.valueOf(a.getPenalidade_destreza_armadura()));
-                       
             }
         }
 
@@ -222,8 +217,7 @@ public class JFArmaduras extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         contador--;
-       this.carregaRegistro();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
