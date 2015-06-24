@@ -8,6 +8,7 @@ package Utilitários;
 import Formularios.JFPrincipal;
 import Tabelas.Autenticacao;
 import Tabelas.PericiaPersonagem;
+import Tabelas.PericiasPosicoes;
 import Tabelas.TalentosPersonagem;
 import dao.GenericDAO;
 import java.lang.reflect.Field;
@@ -43,11 +44,16 @@ public class Utilitarios {
         List<Object> list = gDAO.listar2(Campanhas.class, campanha);
         for (Object obj2 : list) {
             Campanhas c = (Campanhas) obj2;
-            textoCampanha="Bem vindo a campanha " + c.getNome_campanha() + " \n "; //mostra nome da campanha 
-            textoCampanha+=c.getNome_campanha();
+        
+            textoCampanha=" Bem vindo a campanha " + c.getNome_campanha() + " \n "; //mostra nome da campanha 
+            //textoCampanha+=" "+c.getNome_campanha();
+            
+        //setando tamanho do mapa
+            auth.setTam_x_mapa(c.getTam_x_campanha());
+            auth.setTam_y_mapa(c.getTam_y_campanha());
         }
 
-        textoCampanha+= "Deseja seguir que caminho? \n ";
+        textoCampanha+= " Deseja seguir que caminho? \n ";
 
         //Lista os caminhos para o jogador selecionar o desejado
         caminhos.setCodigo_campanha(campanha.getCodigo_campanha());
@@ -55,9 +61,11 @@ public class Utilitarios {
 
         for (Object obj3 : list2) {
             Caminhos ca = (Caminhos) obj3;
-            textoCampanha+= ca.getCodigo_caminho() + " - " + ca.getNome_caminho() + " \n ";
+            textoCampanha+= " "+ ca.getCodigo_caminho() + " - " + ca.getNome_caminho() + " \n ";
         }
-        auth.set
+        
+        
+        //auth.setCodigo_caminho(0); //caminho selecionado
         
         return textoCampanha;
     }
@@ -65,8 +73,9 @@ public class Utilitarios {
     public String posicoes(int codigo_caminho) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException,
             InvocationTargetException, InstantiationException, ClassNotFoundException {
         Posicoes posicoes = new Posicoes();
+        PericiasPosicoes periciasPosicoes = new PericiasPosicoes();
         GenericDAO gDAO = new GenericDAO();
-        ArrayList arrayListDescPosicao = new ArrayList();
+        ArrayList arrayListPosicao = new ArrayList(); //aqui todos os codigos de posicoes do caminho selecionado ficam
         Autenticacao auth = Autenticacao.getInstance();
         String textoPosicoes = "";
         
@@ -75,10 +84,30 @@ public class Utilitarios {
 
         for (Object obj4 : list3) {
             Posicoes p = (Posicoes) obj4;
-
-            arrayListDescPosicao.add(posicoes.getDescricao_posicao());
+            
+            arrayListPosicao.add(posicoes.getCodigo_posicao());
+            //textoPosicoes=posicoes.getDescricao_posicao() +" ";
             //System.out.println(posicoes.getDescricao_posicao());
+            
+            periciasPosicoes.setCodigo_posicao(posicoes.getCodigo_posicao());
+            List<Object> list4 = gDAO.listar2(PericiasPosicoes.class, periciasPosicoes);
+            for (Object obj5 : list4) {
+                PericiasPosicoes pp = new PericiasPosicoes();
+                
+                
+            }
         }
+        
+        int cont = 1;
+        while (cont <= arrayListPosicao.size()) {
+
+            auth.setCodigo_posicao((int) arrayListPosicao.get(cont)); //posição atual
+        
+            textoPosicoes=" "+posicoes.getDescricao_posicao()+" /n";
+            
+            cont++;
+        }
+        
         return textoPosicoes;
     }
 

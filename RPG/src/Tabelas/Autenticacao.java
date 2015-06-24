@@ -30,7 +30,34 @@ public class Autenticacao extends Temporario {
     int codigo_jogador;
     int codigo_campanha;
     int codigo_caminho;
+    int codigo_posicao;
+    int tam_x_mapa;
+    int tam_y_mapa;
 
+    public int getTam_x_mapa() {
+        return tam_x_mapa;
+    }
+
+    public void setTam_x_mapa(int tam_x_mapa) {
+        this.tam_x_mapa = tam_x_mapa;
+    }
+
+    public int getTam_y_mapa() {
+        return tam_y_mapa;
+    }
+
+    public void setTam_y_mapa(int tam_y_mapa) {
+        this.tam_y_mapa = tam_y_mapa;
+    }
+
+    public int getCodigo_posicao() {
+        return codigo_posicao;
+    }
+
+    public void setCodigo_posicao(int codigo_posicao) {
+        this.codigo_posicao = codigo_posicao;
+    }
+    
     public int getCodigo_caminho() {
         return codigo_caminho;
     }
