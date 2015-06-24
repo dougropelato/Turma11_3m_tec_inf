@@ -5,8 +5,6 @@
  */
 package Tabelas;
 
-import Formularios.JFPrincipal;
-
 /**
  *
  * @author Alexjonas
@@ -27,6 +25,7 @@ public class Autenticacao extends Temporario {
     boolean jogador_logado;
     String nome_jogador;
     String senha_jogador;
+<<<<<<< HEAD
     int codigo_jogador;
     int codigo_campanha;
     int codigo_caminho;
@@ -73,6 +72,10 @@ public class Autenticacao extends Temporario {
     public void setCodigo_campanha(int codigo_campanha) {
         this.codigo_campanha = codigo_campanha;
     }
+=======
+
+    int codigo_jogador;
+>>>>>>> origin/master
 
     public int getCodigo_jogador() {
         return codigo_jogador;
