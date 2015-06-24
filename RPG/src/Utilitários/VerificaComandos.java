@@ -39,8 +39,8 @@ public class VerificaComandos {
             auth.setCodigo_personagem(1);
             auth.setSenha_jogador("123");
             auth.setJogador_logado(true);
-            System.out.println(auth.getCodigo_personagem());
-            System.out.println(auth.getNome_personagem());
+            auth.setNome_jogador("Mestre");
+            jfprim.jLnome_jogador.setText("Mestre");
 
             res = "doctor who ?";
         } // modo adm
@@ -100,6 +100,13 @@ public class VerificaComandos {
             }
         } else {// caso je esteja logado
 
+            if (aux[0].equalsIgnoreCase("Mestre") && auth.isMestre_jogador() == true) {
+                //fazer comandos para cadastro dentro deste if
+                JFMestre m = new JFMestre();
+                m.setVisible(true);
+                res = "abrindo o formulario de cadastro do Mestre";
+            }
+
             if (auth.getCodigo_personagem() == 0) {
 
                 if (aux[0].equalsIgnoreCase("criar")) {
@@ -131,18 +138,23 @@ public class VerificaComandos {
                         }
                     }
 
-                    // se vc for cadastrar e se o unuario logado for mestre
-                    if (aux[0].equalsIgnoreCase("Mestre") && auth.isMestre_jogador() == true) {
-                        //fazer comandos para cadastro dentro deste if
-                        JFMestre m = new JFMestre();
-                        m.setVisible(true);
-                        res = "abrindo o formulario de cadastro do Mestre";
+                    if (aux[0].equalsIgnoreCase("Pericia")) {
+                        res = "pericia";
                     }
-                    if (res.equalsIgnoreCase("")) {// se não encontrar ne um comando a resposta sera vasia
-                        res = "Comando não encontrado";// avisa que não foi encontrado o comando
+                    if (aux[0].equalsIgnoreCase("Usar")) {
+                        res = "item / escudos / armas / comsumiveis / armaduras";
+                    }
+                    if (aux[0].equalsIgnoreCase("npc")) {
+                        res = "npc não encontrado";
+                    }
+                    if (aux[0].equalsIgnoreCase("coletar")) {
+                        res = "nada a coletar aki";
                     }
                 }
             }
+        }
+        if (res.equalsIgnoreCase("")) {// se não encontrar ne um comando a resposta sera vasia
+            res = "Comando não encontrado";// avisa que não foi encontrado o comando
         }
 
         return res;// retorna  a resposta 
