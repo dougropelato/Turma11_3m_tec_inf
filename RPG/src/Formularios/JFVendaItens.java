@@ -138,7 +138,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         centralizarComponente();
         CarregaComboboxPersonagem();
         OcultarObjetos();
-
     }
 
     /**
@@ -387,14 +386,14 @@ public class JFVendaItens extends javax.swing.JFrame {
         jlQuantVender.setText("Quantidade:");
         getContentPane().add(jlQuantVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, -1, -1));
 
-        QuantComprar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                QuantComprarActionPerformed(evt);
+        QuantComprar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                QuantComprarKeyReleased(evt);
             }
         });
         getContentPane().add(QuantComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 40, -1));
         getContentPane().add(QuantVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, 40, -1));
-        getContentPane().add(jlListPreçoUndComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 70, 20));
+        getContentPane().add(jlListPreçoUndComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 130, 20));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setText("Personagem:");
@@ -421,12 +420,11 @@ public class JFVendaItens extends javax.swing.JFrame {
         lbPrecoComprar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbPrecoComprar.setText("Preço Total:");
         getContentPane().add(lbPrecoComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
-        getContentPane().add(jlListPreçoComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 100, 20));
+        getContentPane().add(jlListPreçoComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 170, 20));
 
         lbPrecoUndComprar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbPrecoUndComprar.setText("Preço unidade:");
         getContentPane().add(lbPrecoUndComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
-        lbPrecoUndComprar.getAccessibleContext().setAccessibleName("Preço unidade:");
 
         lbComprar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbComprar.setText("O que você deseja comprar?");
@@ -598,7 +596,7 @@ public class JFVendaItens extends javax.swing.JFrame {
                     }
 
                     comprar.setQuantidade_escudo(varComprarQuant); /// cadastra na tabela N/N a quantidade de escudos comprados
-                    
+
 ///////////////////////////////// Verificação de Peças de Ouro
                     double dinheiroTotal = (Double.parseDouble(lbDinheiroPersonagem.getText()));
                     double QuantItens = (Double.parseDouble(QuantComprar.getText()));
@@ -654,7 +652,7 @@ public class JFVendaItens extends javax.swing.JFrame {
                     }
 
                     comprar.setQuantidade_consumivel(varComprarQuant); /// cadastra na tabela N/N a quantidade de consumiveis comprados
-                    
+
 ///////////////////////////////// Verificação de Peças de Ouro
                     double dinheiroTotal = (Double.parseDouble(lbDinheiroPersonagem.getText()));
                     double QuantItens = (Double.parseDouble(QuantComprar.getText()));
@@ -667,7 +665,7 @@ public class JFVendaItens extends javax.swing.JFrame {
                     if (dinheiroTotal < Result) {
                         JOptionPane.showMessageDialog(null, "Não há Peças de Ouro disponiveis para efetuar a compra!!!");
                     } else {
-                        
+
                         lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
                         gDAO.adicionar(comprar);
                         JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
@@ -1288,10 +1286,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbVenderActionPerformed
 
-    private void QuantComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuantComprarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_QuantComprarActionPerformed
-
     private void jcComprarArmadurasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcComprarArmadurasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcComprarArmadurasActionPerformed
@@ -1427,9 +1421,16 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_jcPersonagemActionPerformed
 
     private void jcPersonagemItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcPersonagemItemStateChanged
-
         ListarDinheiro();
     }//GEN-LAST:event_jcPersonagemItemStateChanged
+
+    private void QuantComprarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_QuantComprarKeyReleased
+        double QuantItens = (Double.parseDouble(QuantComprar.getText()));
+        double PrecoUnidade = (Double.parseDouble(jlListPreçoUndComprar.getText()));
+        double Result = PrecoUnidade * QuantItens;
+
+        jlListPreçoComprar.setText(String.valueOf(Result));
+    }//GEN-LAST:event_QuantComprarKeyReleased
 
     /**
      * @param args the command line arguments
