@@ -5,9 +5,11 @@
  */
 package utilitários;
 
+import Formularios.JFPrincipal;
 import Tabelas.Autenticacao;
 import dao.GenericDAO;
 import formularios.JFMestre;
+import formularios.JFPersonagem;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ public class VerificaComandos {
 
         String res = "";
         GenericDAO bsk = new GenericDAO();
+        JFPrincipal jfprim = JFPrincipal.getInstance();
 
         // feito apra logar sem banco
         if (aux[0].equalsIgnoreCase("thedoctor")) {
@@ -97,37 +100,49 @@ public class VerificaComandos {
             }
         } else {// caso je esteja logado
 
-            if (auth.getStatus_atual().equalsIgnoreCase("BATALHA")) {// entra na batalha
+            if (auth.getCodigo_personagem() == 0) {
 
-                bata.iniciaBatalha(null, null, null);
-
-                if (aux[0].equalsIgnoreCase("atacar")) {//ataca
-
+                if (aux[0].equalsIgnoreCase("criar")) {
+                    JFPersonagem nper = new JFPersonagem();
+                    nper.setVisible(true);
                 }
-                if (aux[0].equalsIgnoreCase("usar")) {//usa item
 
+                //lista personagem usando o 
+                auth.getCodigo_jogador(); // <-- este
+
+            } else {
+
+                if (auth.getCodigo_campanha() == 0) {
+                    // abre formulario campanha
+                } else {
+
+                    if (auth.getStatus_atual().equalsIgnoreCase("BATALHA")) {// entra na batalha
+
+                        bata.iniciaBatalha(null, null, null);
+
+                        if (aux[0].equalsIgnoreCase("atacar")) {//ataca
+
+                        }
+                        if (aux[0].equalsIgnoreCase("usar")) {//usa item
+
+                        }
+                        if (aux[0].equalsIgnoreCase("fugir")) {//tenta fugir
+
+                        }
+                    }
+
+                    // se vc for cadastrar e se o unuario logado for mestre
+                    if (aux[0].equalsIgnoreCase("Mestre") && auth.isMestre_jogador() == true) {
+                        //fazer comandos para cadastro dentro deste if
+                        JFMestre m = new JFMestre();
+                        m.setVisible(true);
+                        res = "abrindo o formulario de cadastro do Mestre";
+                    }
+                    if (res.equalsIgnoreCase("")) {// se não encontrar ne um comando a resposta sera vasia
+                        res = "Comando não encontrado";// avisa que não foi encontrado o comando
+                    }
                 }
-                if (aux[0].equalsIgnoreCase("fugir")) {//tenta fugir
-
-                }
             }
-
-            // verifica se foi digitado  criar ou  cadastrar
-            if (aux[0].equalsIgnoreCase("criar")) {
-                //criar / oque ?
-
-            }
-            // se vc for cadastrar e se o unuario logado for mestre
-            if (aux[0].equalsIgnoreCase("Mestre") && auth.isMestre_jogador() == true) {
-                //fazer comandos para cadastro dentro deste if
-                JFMestre m = new JFMestre();
-                m.setVisible(true);
-                res = "abrindo o formulario de cadastro do Mestre";
-            }
-            if (res.equalsIgnoreCase("")) {// se não encontrar ne um comando a resposta sera vasia
-                res = "Comando não encontrado";// avisa que não foi encontrado o comando
-            }
-
         }
 
         return res;// retorna  a resposta 
