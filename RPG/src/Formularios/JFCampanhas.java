@@ -133,6 +133,18 @@ public class JFCampanhas extends javax.swing.JFrame {
 
         jlTamY.setText("Tamanho mapa Y");
 
+        jtfTamX.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfTamXKeyTyped(evt);
+            }
+        });
+
+        jtfTamY.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfTamYKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpCadastrarLayout = new javax.swing.GroupLayout(jpCadastrar);
         jpCadastrar.setLayout(jpCadastrarLayout);
         jpCadastrarLayout.setHorizontalGroup(
@@ -239,6 +251,11 @@ public class JFCampanhas extends javax.swing.JFrame {
                 jtfEditarTamanhoXActionPerformed(evt);
             }
         });
+        jtfEditarTamanhoX.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfEditarTamanhoXKeyTyped(evt);
+            }
+        });
 
         jlEditarTamX.setText("Tamanho mapa X");
 
@@ -247,6 +264,11 @@ public class JFCampanhas extends javax.swing.JFrame {
         jtfEditarTamanhoY.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfEditarTamanhoYActionPerformed(evt);
+            }
+        });
+        jtfEditarTamanhoY.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfEditarTamanhoYKeyTyped(evt);
             }
         });
 
@@ -654,6 +676,38 @@ public class JFCampanhas extends javax.swing.JFrame {
             Logger.getLogger(JFCampanhas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbExcluirActionPerformed
+
+    private void jtfEditarTamanhoXKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfEditarTamanhoXKeyTyped
+        // TODO add your handling code here:
+        String caracteres = "0987654321"; //apenas numeros podem ser digitados
+        if(!caracteres.contains(evt.getKeyChar()+"")){ //se algo diferente que "caracteres" for digitado
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfEditarTamanhoXKeyTyped
+
+    private void jtfEditarTamanhoYKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfEditarTamanhoYKeyTyped
+        // TODO add your handling code here:
+        String caracteres = "0987654321"; //apenas numeros podem ser digitados
+        if(!caracteres.contains(evt.getKeyChar()+"")){ //se algo diferente que "caracteres" for digitado
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfEditarTamanhoYKeyTyped
+
+    private void jtfTamXKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfTamXKeyTyped
+        // TODO add your handling code here:
+        String caracteres = "0987654321"; //apenas numeros podem ser digitados
+        if(!caracteres.contains(evt.getKeyChar()+"")){ //se algo diferente que "caracteres" for digitado
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfTamXKeyTyped
+
+    private void jtfTamYKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfTamYKeyTyped
+        // TODO add your handling code here:
+        String caracteres = "0987654321"; //apenas numeros podem ser digitados
+        if(!caracteres.contains(evt.getKeyChar()+"")){ //se algo diferente que "caracteres" for digitado
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfTamYKeyTyped
 
     /**
      * @param args the command line arguments
