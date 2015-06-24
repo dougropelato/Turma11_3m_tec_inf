@@ -2502,7 +2502,7 @@ public class JFNpc extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_jCBNovosItensAdicionarEscudoActionPerformed
 
-    // Chama formuário parar alterar e excluir Npc
+    // Chama formulário parar alterar e excluir Npc
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
         JFNpcAlterarExcluir NpcAlterarExcluir = new JFNpcAlterarExcluir();
         NpcAlterarExcluir.setVisible(true);
