@@ -155,6 +155,7 @@ public class JFPericias extends javax.swing.JFrame {
             Pericias p = new Pericias();
             p.setNome_pericia(teste.getText());
             p.setDescricao_pericia(jTextArea1.getText());
+            p.setAtributo_principal_pericia(String.valueOf(jComboBox2.getSelectedItem()));
             gDAO.adicionar(p);
   
         } catch (SQLException | ClassNotFoundException | IllegalArgumentException | IllegalAccessException ex) {
@@ -186,7 +187,7 @@ public class JFPericias extends javax.swing.JFrame {
 
                 for (Object obj2 : listarClasses) {
                     Classes classe = (Classes) obj2;
-                    jComboBox1.addItem(classe.getNome_classe());
+                    jComboBox2.addItem(classe.getNome_classe());
                 }
 
         } catch (SQLException ex) {
@@ -225,7 +226,11 @@ public class JFPericias extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFPericias().setVisible(true);
+                try {
+                    new JFPericias().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JFPericias.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
