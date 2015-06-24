@@ -35,60 +35,14 @@ public class JFPrincipal extends javax.swing.JFrame {
         Dimension dw = getSize();
         setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
     }
-
-    public void principal() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
-        jTextArea1.setLineWrap(true);
-        GenericDAO gDAO = new GenericDAO();
-        Caminhos caminhos = new Caminhos();
-        Campanhas campanha = new Campanhas();
-        Posicoes posicoes = new Posicoes();
-
-        //localiza a campanha selecionada
-        campanha.setCodigo_campanha(2);  //precisa de uma verificação da campanha que o usuario seleciona
-        List<Object> list = gDAO.listar2(Campanhas.class, campanha);
-        for (Object obj2 : list) {
-            Campanhas c = (Campanhas) obj2;
-            jTextArea1.setText("Bem vindo a campanha " + c.getNome_campanha() + " \n "); //mostra nome da campanha 
-            jlCampanha.setText(c.getNome_campanha());
-        }
-
-        jTextArea1.setText(jTextArea1.getText() + "Deseja seguir que caminho? \n ");
-
-        //Lista os caminhos para o jogador selecionar o desejado
-        caminhos.setCodigo_campanha(campanha.getCodigo_campanha());
-        List<Object> list2 = gDAO.listar2(Caminhos.class, caminhos);
-
-        for (Object obj3 : list2) {
-            Caminhos ca = (Caminhos) obj3;
-            jTextArea1.setText(jTextArea1.getText() + ca.getCodigo_caminho() + " - " + ca.getNome_caminho() + " \n ");
-        }
-
-        carregaPosicoes();
-
-    }
-
-    public void carregaPosicoes() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
-        Posicoes posicoes = new Posicoes();
-        GenericDAO gDAO = new GenericDAO();
-
-        posicoes.setCodigo_caminho(posi);
-        List<Object> list3 = gDAO.listar2(Posicoes.class, posicoes);
-
-        for (Object obj4 : list3) {
-            Posicoes p = (Posicoes) obj4;
-
-            arrayListDescPosicao.add(posicoes.getDescricao_posicao());
-            System.out.println(posicoes.getDescricao_posicao());
-        }
-    }
-
+    
     /**
      * Creates new form formprincipal
      */
     public JFPrincipal() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         initComponents();
         centralizarComponente();
-        principal();
+    //    principal();
     }
 
     /**

@@ -14,7 +14,7 @@ public class Pericias {
     int codigo_pericia;
     String nome_pericia; 
     String descricao_pericia;
-    int bonus_pericia;
+    String atributo_principal_pericia;
 
     public int getCodigo_pericia() {
         return codigo_pericia;
@@ -40,12 +40,12 @@ public class Pericias {
         this.descricao_pericia = descricao_pericia;
     }
 
-    public int getBonus_pericia() {
-        return bonus_pericia;
+    public String getAtributo_principal_pericia() {
+        return atributo_principal_pericia;
     }
 
-    public void setBonus_pericia(int bonus_pericia) {
-        this.bonus_pericia = bonus_pericia;
+    public void setAtributo_principal_pericia(String atributo_principal_pericia) {
+        this.atributo_principal_pericia = atributo_principal_pericia;
     }
 
     
