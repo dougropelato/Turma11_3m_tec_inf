@@ -54,11 +54,12 @@ public class Utilitarios {
         }
     }
     
-    public void posicoes(){
+    public void posicoes() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, 
+            InvocationTargetException, InstantiationException, ClassNotFoundException{
         Posicoes posicoes = new Posicoes();
         GenericDAO gDAO = new GenericDAO();
 
-        posicoes.setCodigo_caminho(posi);
+        posicoes.setCodigo_caminho(); //Aqui vai o codigo do caminho que o usuario digita no metodo de caminhos
         List<Object> list3 = gDAO.listar2(Posicoes.class, posicoes);
 
         for (Object obj4 : list3) {
