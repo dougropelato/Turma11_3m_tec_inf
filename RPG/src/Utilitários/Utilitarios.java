@@ -6,6 +6,7 @@
 package Utilitários;
 
 import Formularios.JFPrincipal;
+import Tabelas.Autenticacao;
 import Tabelas.PericiaPersonagem;
 import Tabelas.TalentosPersonagem;
 import dao.GenericDAO;
@@ -27,24 +28,26 @@ import tabelas.Talentos;
  */
 public class Utilitarios {
 
-    public void caminhos() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException,
+    public String caminhos() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException,
             InvocationTargetException, InstantiationException, ClassNotFoundException {
         GenericDAO gDAO = new GenericDAO();
         Caminhos caminhos = new Caminhos();
         Campanhas campanha = new Campanhas();
         Posicoes posicoes = new Posicoes();
-        JFPrincipal jfprim = JFPrincipal.getInstance();
-
+        //JFPrincipal jfprim = JFPrincipal.getInstance();
+        Autenticacao auth = Autenticacao.getInstance();
+        String textoCampanha = "";
+        
         //localiza a campanha selecionada
-        campanha.setCodigo_campanha(2);  //precisa de uma verificação da campanha que o usuario seleciona
+        campanha.setCodigo_campanha(auth.getCodigo_campanha());  //precisa de uma verificação da campanha que o usuario seleciona
         List<Object> list = gDAO.listar2(Campanhas.class, campanha);
         for (Object obj2 : list) {
             Campanhas c = (Campanhas) obj2;
-            jfprim.jTextArea1.setText("Bem vindo a campanha " + c.getNome_campanha() + " \n "); //mostra nome da campanha 
-            jfprim.jLnome_campanha.setText(c.getNome_campanha());
+            textoCampanha="Bem vindo a campanha " + c.getNome_campanha() + " \n "; //mostra nome da campanha 
+            textoCampanha+=c.getNome_campanha();
         }
 
-        jfprim.jTextArea1.setText(jfprim.jTextArea1.getText() + "Deseja seguir que caminho? \n ");
+        textoCampanha+= "Deseja seguir que caminho? \n ";
 
         //Lista os caminhos para o jogador selecionar o desejado
         caminhos.setCodigo_campanha(campanha.getCodigo_campanha());
@@ -52,16 +55,21 @@ public class Utilitarios {
 
         for (Object obj3 : list2) {
             Caminhos ca = (Caminhos) obj3;
-            jfprim.jTextArea1.setText(jfprim.jTextArea1.getText() + ca.getCodigo_caminho() + " - " + ca.getNome_caminho() + " \n ");
+            textoCampanha+= ca.getCodigo_caminho() + " - " + ca.getNome_caminho() + " \n ";
         }
+        auth.set
+        
+        return textoCampanha;
     }
 
-    public void posicoes(int codigo_caminho) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException,
+    public String posicoes(int codigo_caminho) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException,
             InvocationTargetException, InstantiationException, ClassNotFoundException {
         Posicoes posicoes = new Posicoes();
         GenericDAO gDAO = new GenericDAO();
         ArrayList arrayListDescPosicao = new ArrayList();
-
+        Autenticacao auth = Autenticacao.getInstance();
+        String textoPosicoes = "";
+        
         posicoes.setCodigo_caminho(codigo_caminho); //Aqui vai o codigo do caminho que o usuario digita no metodo de caminhos
         List<Object> list3 = gDAO.listar2(Posicoes.class, posicoes);
 
@@ -69,8 +77,9 @@ public class Utilitarios {
             Posicoes p = (Posicoes) obj4;
 
             arrayListDescPosicao.add(posicoes.getDescricao_posicao());
-            System.out.println(posicoes.getDescricao_posicao());
+            //System.out.println(posicoes.getDescricao_posicao());
         }
+        return textoPosicoes;
     }
 
     public static void aplicaTalento(Personagens pp, Talentos tts) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {

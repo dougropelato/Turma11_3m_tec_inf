@@ -29,7 +29,16 @@ public class Autenticacao extends Temporario {
     String senha_jogador;
     int codigo_jogador;
     int codigo_campanha;
+    int codigo_caminho;
 
+    public int getCodigo_caminho() {
+        return codigo_caminho;
+    }
+
+    public void setCodigo_caminho(int codigo_caminho) {
+        this.codigo_caminho = codigo_caminho;
+    }
+    
     public int getCodigo_campanha() {
         return codigo_campanha;
     }
