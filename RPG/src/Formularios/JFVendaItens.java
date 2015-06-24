@@ -44,16 +44,6 @@ public class JFVendaItens extends javax.swing.JFrame {
 
     }
 
-    public void VerificarDinheiro() {
-
-        double dinheiroTotal = (Double.parseDouble(lbDinheiroPersonagem.getText()));
-        double QuantItens = (Double.parseDouble(QuantComprar.getText()));
-        double PrecoUnidade = (Double.parseDouble(jlListPreçoComprar.getText()));
-
-        double Result = PrecoUnidade * QuantItens;
-
-    }
-
     public void ListarDinheiro() {
 
         try {
@@ -112,9 +102,11 @@ public class JFVendaItens extends javax.swing.JFrame {
     }
 
     public void OcultarObjetos() { //////Oculta objetos setados antes de abrir o form
-
+        lbDinheiroClasse.setVisible(false);
         jbComprar.setVisible(false);
         lbComprar.setVisible(false);
+        lbPrecoUndComprar.setVisible(false);
+        jlListPreçoComprar.setVisible(false);
         lbPrecoComprar.setVisible(false);
         jcbVenderConsumiveis.setVisible(false);
         jcbVenderEscudos.setVisible(false);
@@ -165,9 +157,7 @@ public class JFVendaItens extends javax.swing.JFrame {
         buttonGroup5 = new javax.swing.ButtonGroup();
         buttonGroup6 = new javax.swing.ButtonGroup();
         buttonGroup7 = new javax.swing.ButtonGroup();
-        lbComprar = new java.awt.Label();
         jcComprarArmas = new javax.swing.JComboBox();
-        lbVender = new java.awt.Label();
         jcVenderArmas = new javax.swing.JComboBox();
         jcComprarArmaduras = new javax.swing.JComboBox();
         jcComprarEscudos = new javax.swing.JComboBox();
@@ -176,7 +166,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         jcVenderEscudos = new javax.swing.JComboBox();
         jcVenderConsumiveis = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        lbPrecoComprar = new java.awt.Label();
         jbComprar = new javax.swing.JButton();
         jbVender = new javax.swing.JButton();
         jcbComprar = new javax.swing.JCheckBox();
@@ -193,12 +182,17 @@ public class JFVendaItens extends javax.swing.JFrame {
         jlQuantVender = new javax.swing.JLabel();
         QuantComprar = new javax.swing.JTextField();
         QuantVender = new javax.swing.JTextField();
-        jlListPreçoComprar = new javax.swing.JLabel();
+        jlListPreçoUndComprar = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jcPersonagem = new javax.swing.JComboBox();
         lbDinheiroClasse = new javax.swing.JLabel();
         lbDinheiroPersonagem = new javax.swing.JLabel();
+        lbPrecoComprar = new javax.swing.JLabel();
+        jlListPreçoComprar = new javax.swing.JLabel();
+        lbPrecoUndComprar = new javax.swing.JLabel();
+        lbComprar = new javax.swing.JLabel();
+        lbVender = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -211,10 +205,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbComprar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lbComprar.setText("O que você deseja comprar?");
-        getContentPane().add(lbComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
-
         jcComprarArmas.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jcComprarArmasItemStateChanged(evt);
@@ -226,10 +216,6 @@ public class JFVendaItens extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jcComprarArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 171, -1));
-
-        lbVender.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lbVender.setText("O que você deseja vender?");
-        getContentPane().add(lbVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, -1));
 
         jcVenderArmas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -278,10 +264,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
         jLabel1.setText("Olá viajante você deseja comprar ou vender itens?");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
-
-        lbPrecoComprar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbPrecoComprar.setText("Preço:");
-        getContentPane().add(lbPrecoComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
 
         jbComprar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbComprar.setText("Comprar");
@@ -399,7 +381,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 
         jlQuantComprar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jlQuantComprar.setText("Quantidade:");
-        getContentPane().add(jlQuantComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
+        getContentPane().add(jlQuantComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
 
         jlQuantVender.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jlQuantVender.setText("Quantidade:");
@@ -410,9 +392,9 @@ public class JFVendaItens extends javax.swing.JFrame {
                 QuantComprarActionPerformed(evt);
             }
         });
-        getContentPane().add(QuantComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, 40, -1));
+        getContentPane().add(QuantComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 40, -1));
         getContentPane().add(QuantVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, 40, -1));
-        getContentPane().add(jlListPreçoComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 40, 20));
+        getContentPane().add(jlListPreçoUndComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 70, 20));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setText("Personagem:");
@@ -435,6 +417,24 @@ public class JFVendaItens extends javax.swing.JFrame {
         getContentPane().add(jcPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 110, -1));
         getContentPane().add(lbDinheiroClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 60, 20));
         getContentPane().add(lbDinheiroPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 50, 20));
+
+        lbPrecoComprar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbPrecoComprar.setText("Preço Total:");
+        getContentPane().add(lbPrecoComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
+        getContentPane().add(jlListPreçoComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 100, 20));
+
+        lbPrecoUndComprar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbPrecoUndComprar.setText("Preço unidade:");
+        getContentPane().add(lbPrecoUndComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
+        lbPrecoUndComprar.getAccessibleContext().setAccessibleName("Preço unidade:");
+
+        lbComprar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbComprar.setText("O que você deseja comprar?");
+        getContentPane().add(lbComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
+
+        lbVender.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbVender.setText("O que você deseja vender?");
+        getContentPane().add(lbVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -487,7 +487,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 ///////////////////////////////// Verificação de Peças de Ouro                    
                     double dinheiroTotal = (Double.parseDouble(lbDinheiroPersonagem.getText()));
                     double QuantItens = (Double.parseDouble(QuantComprar.getText()));
-                    double PrecoUnidade = (Double.parseDouble(jlListPreçoComprar.getText()));
+                    double PrecoUnidade = (Double.parseDouble(jlListPreçoUndComprar.getText()));
                     double Result = PrecoUnidade * QuantItens;
                     double ResultDinheiro = dinheiroTotal - Result;
 
@@ -545,7 +545,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 ///////////////////////////////// Verificação de Peças de Ouro
                     double dinheiroTotal = (Double.parseDouble(lbDinheiroPersonagem.getText()));
                     double QuantItens = (Double.parseDouble(QuantComprar.getText()));
-                    double PrecoUnidade = (Double.parseDouble(jlListPreçoComprar.getText()));
+                    double PrecoUnidade = (Double.parseDouble(jlListPreçoUndComprar.getText()));
                     double Result = PrecoUnidade * QuantItens;
                     double ResultDinheiro = dinheiroTotal - Result;
 
@@ -602,7 +602,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 ///////////////////////////////// Verificação de Peças de Ouro
                     double dinheiroTotal = (Double.parseDouble(lbDinheiroPersonagem.getText()));
                     double QuantItens = (Double.parseDouble(QuantComprar.getText()));
-                    double PrecoUnidade = (Double.parseDouble(jlListPreçoComprar.getText()));
+                    double PrecoUnidade = (Double.parseDouble(jlListPreçoUndComprar.getText()));
                     double Result = PrecoUnidade * QuantItens;
                     double ResultDinheiro = dinheiroTotal - Result;
 
@@ -658,7 +658,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 ///////////////////////////////// Verificação de Peças de Ouro
                     double dinheiroTotal = (Double.parseDouble(lbDinheiroPersonagem.getText()));
                     double QuantItens = (Double.parseDouble(QuantComprar.getText()));
-                    double PrecoUnidade = (Double.parseDouble(jlListPreçoComprar.getText()));
+                    double PrecoUnidade = (Double.parseDouble(jlListPreçoUndComprar.getText()));
                     double Result = PrecoUnidade * QuantItens;
                     double ResultDinheiro = dinheiroTotal - Result;
 
@@ -696,6 +696,16 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcbVenderEscudos.setSelected(false);
             jcbVenderArmas.setSelected(false);
             jcbVenderConsumiveis.setSelected(false);
+            jcComprarArmas.removeAllItems();
+            jcComprarArmaduras.removeAllItems();
+            jcComprarEscudos.removeAllItems();
+            jcComprarConsumiveis.removeAllItems();
+            jcVenderArmas.removeAllItems();
+            jcVenderArmaduras.removeAllItems();
+            jcVenderEscudos.removeAllItems();
+            jcVenderConsumiveis.removeAllItems();
+            jlListPreçoUndComprar.setText("");
+            jlListPreçoComprar.setText("");
         } else {
             lbVender.setVisible(false);
             jcbVenderConsumiveis.setVisible(false);
@@ -729,6 +739,14 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcbComprarEscudos.setSelected(false);
             jcbComprarArmas.setSelected(false);
             jcbComprarConsumiveis.setSelected(false);
+            jcComprarArmas.removeAllItems();
+            jcComprarArmaduras.removeAllItems();
+            jcComprarEscudos.removeAllItems();
+            jcComprarConsumiveis.removeAllItems();
+            jcVenderArmas.removeAllItems();
+            jcVenderArmaduras.removeAllItems();
+            jcVenderEscudos.removeAllItems();
+            jcVenderConsumiveis.removeAllItems();
 
         } else {
             lbComprar.setVisible(false);
@@ -741,11 +759,14 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcComprarArmaduras.setVisible(false);
             jcComprarArmas.setVisible(false);
             jbComprar.setVisible(false);
+            lbPrecoUndComprar.setVisible(false);
+            jlListPreçoComprar.setVisible(false);
             lbPrecoComprar.setVisible(false);
             jlQuantComprar.setVisible(false);
             QuantComprar.setVisible(false);
             jcbVender.setEnabled(true);
-            jlListPreçoComprar.setEnabled(false);
+            jlListPreçoUndComprar.setEnabled(false);
+            jlListPreçoUndComprar.setText("");
             jlListPreçoComprar.setText("");
 
         }
@@ -772,18 +793,21 @@ public class JFVendaItens extends javax.swing.JFrame {
         if (jcbComprarArmas.isSelected()) {
             jcComprarArmas.setVisible(true);
             jbComprar.setVisible(true);
-            lbPrecoComprar.setVisible(true);
+            lbPrecoUndComprar.setVisible(true);
             jlQuantComprar.setVisible(true);
             QuantComprar.setVisible(true);
-
+            jlListPreçoComprar.setVisible(true);
+            lbPrecoComprar.setVisible(true);
             jcbComprarArmaduras.setEnabled(false);
             jcbComprarEscudos.setEnabled(false);
             jcbComprarConsumiveis.setEnabled(false);
-            jlListPreçoComprar.setEnabled(true);
+            jlListPreçoUndComprar.setEnabled(true);
 
         } else {
             jcComprarArmas.setVisible(false);
             jbComprar.setVisible(false);
+            lbPrecoUndComprar.setVisible(false);
+            jlListPreçoComprar.setVisible(false);
             lbPrecoComprar.setVisible(false);
             jlQuantComprar.setVisible(false);
             QuantComprar.setVisible(false);
@@ -791,7 +815,10 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcbComprarArmaduras.setEnabled(true);
             jcbComprarEscudos.setEnabled(true);
             jcbComprarConsumiveis.setEnabled(true);
-            jlListPreçoComprar.setEnabled(false);
+            jlListPreçoUndComprar.setEnabled(false);
+            jlListPreçoComprar.setVisible(false);
+            lbPrecoComprar.setVisible(false);
+            jlListPreçoUndComprar.setText("");
             jlListPreçoComprar.setText("");
         }
     }//GEN-LAST:event_jcbComprarArmasActionPerformed
@@ -837,24 +864,29 @@ public class JFVendaItens extends javax.swing.JFrame {
         if (jcbComprarArmaduras.isSelected()) {
             jcComprarArmaduras.setVisible(true);
             jbComprar.setVisible(true);
-            lbPrecoComprar.setVisible(true);
+            lbPrecoUndComprar.setVisible(true);
             jlQuantComprar.setVisible(true);
             QuantComprar.setVisible(true);
+            jlListPreçoComprar.setVisible(true);
+            lbPrecoComprar.setVisible(true);
             jcbComprarArmas.setEnabled(false);
             jcbComprarEscudos.setEnabled(false);
             jcbComprarConsumiveis.setEnabled(false);
-            jlListPreçoComprar.setEnabled(true);
+            jlListPreçoUndComprar.setEnabled(true);
         } else {
             jcComprarArmaduras.setVisible(false);
             jbComprar.setVisible(false);
-            lbPrecoComprar.setVisible(false);
+            lbPrecoUndComprar.setVisible(false);
             jlQuantComprar.setVisible(false);
             QuantComprar.setVisible(false);
             jcComprarArmaduras.removeAllItems();
             jcbComprarArmas.setEnabled(true);
             jcbComprarEscudos.setEnabled(true);
             jcbComprarConsumiveis.setEnabled(true);
-            jlListPreçoComprar.setEnabled(false);
+            jlListPreçoUndComprar.setEnabled(false);
+            jlListPreçoComprar.setVisible(false);
+            lbPrecoComprar.setVisible(false);
+            jlListPreçoUndComprar.setText("");
             jlListPreçoComprar.setText("");
         }
     }//GEN-LAST:event_jcbComprarArmadurasActionPerformed
@@ -881,24 +913,29 @@ public class JFVendaItens extends javax.swing.JFrame {
         if (jcbComprarEscudos.isSelected()) {
             jcComprarEscudos.setVisible(true);
             jbComprar.setVisible(true);
-            lbPrecoComprar.setVisible(true);
+            lbPrecoUndComprar.setVisible(true);
             jlQuantComprar.setVisible(true);
             QuantComprar.setVisible(true);
+            jlListPreçoComprar.setVisible(true);
+            lbPrecoComprar.setVisible(true);
             jcbComprarArmas.setEnabled(false);
             jcbComprarArmaduras.setEnabled(false);
             jcbComprarConsumiveis.setEnabled(false);
-            jlListPreçoComprar.setEnabled(true);
+            jlListPreçoUndComprar.setEnabled(true);
         } else {
             jcComprarEscudos.setVisible(false);
             jbComprar.setVisible(false);
-            lbPrecoComprar.setVisible(false);
+            lbPrecoUndComprar.setVisible(false);
             jlQuantComprar.setVisible(false);
             QuantComprar.setVisible(false);
             jcComprarEscudos.removeAllItems();
             jcbComprarArmas.setEnabled(true);
             jcbComprarArmaduras.setEnabled(true);
             jcbComprarConsumiveis.setEnabled(true);
-            jlListPreçoComprar.setEnabled(false);
+            jlListPreçoUndComprar.setEnabled(false);
+            jlListPreçoComprar.setVisible(false);
+            lbPrecoComprar.setVisible(false);
+            jlListPreçoUndComprar.setText("");
             jlListPreçoComprar.setText("");
 
         }
@@ -924,23 +961,28 @@ public class JFVendaItens extends javax.swing.JFrame {
         if (jcbComprarConsumiveis.isSelected()) {
             jcComprarConsumiveis.setVisible(true);
             jbComprar.setVisible(true);
-            lbPrecoComprar.setVisible(true);
+            lbPrecoUndComprar.setVisible(true);
             QuantComprar.setVisible(true);
+            jlListPreçoComprar.setVisible(true);
+            lbPrecoComprar.setVisible(true);
             jlQuantComprar.setVisible(true);
             jcbComprarArmas.setEnabled(false);
             jcbComprarArmaduras.setEnabled(false);
             jcbComprarEscudos.setEnabled(false);
-            jlListPreçoComprar.setEnabled(true);
+            jlListPreçoUndComprar.setEnabled(true);
         } else {
             jcComprarConsumiveis.setVisible(false);
             jbComprar.setVisible(false);
-            lbPrecoComprar.setVisible(false);
+            lbPrecoUndComprar.setVisible(false);
             QuantComprar.setVisible(false);
             jcComprarConsumiveis.removeAllItems();
             jcbComprarArmas.setEnabled(true);
             jcbComprarArmaduras.setEnabled(true);
             jcbComprarEscudos.setEnabled(true);
-            jlListPreçoComprar.setEnabled(false);
+            jlListPreçoUndComprar.setEnabled(false);
+            jlListPreçoComprar.setVisible(false);
+            lbPrecoComprar.setVisible(false);
+            jlListPreçoUndComprar.setText("");
             jlListPreçoComprar.setText("");
         }
     }//GEN-LAST:event_jcbComprarConsumiveisActionPerformed
@@ -1301,7 +1343,7 @@ public class JFVendaItens extends javax.swing.JFrame {
             for (Object cod : ListarPreçoArma) {
                 Armas aa = (Armas) cod;
 
-                jlListPreçoComprar.setText(String.valueOf(aa.getPreco_arma())); //// lista preço arma
+                jlListPreçoUndComprar.setText(String.valueOf(aa.getPreco_arma())); //// lista preço arma
             }
 
         } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
@@ -1323,7 +1365,7 @@ public class JFVendaItens extends javax.swing.JFrame {
             for (Object cod : ListarPreçoArmadura) {
                 Armaduras aa = (Armaduras) cod;
 
-                jlListPreçoComprar.setText(String.valueOf(aa.getPreco_armadura())); ////lista preço armadura
+                jlListPreçoUndComprar.setText(String.valueOf(aa.getPreco_armadura())); ////lista preço armadura
             }
 
         } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
@@ -1345,7 +1387,7 @@ public class JFVendaItens extends javax.swing.JFrame {
             for (Object cod : ListarPreçoEscudo) {
                 Escudos aa = (Escudos) cod;
 
-                jlListPreçoComprar.setText(String.valueOf(aa.getPreco_escudo())); ///lista preço escudo
+                jlListPreçoUndComprar.setText(String.valueOf(aa.getPreco_escudo())); ///lista preço escudo
             }
 
         } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
@@ -1368,7 +1410,7 @@ public class JFVendaItens extends javax.swing.JFrame {
             for (Object cod : ListarPreçoConsumivel) {
                 Consumiveis aa = (Consumiveis) cod;
 
-                jlListPreçoComprar.setText(String.valueOf(aa.getPreco_consumivel())); ///lista preço consumivel
+                jlListPreçoUndComprar.setText(String.valueOf(aa.getPreco_consumivel())); ///lista preço consumivel
             }
 
         } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
@@ -1459,12 +1501,14 @@ public class JFVendaItens extends javax.swing.JFrame {
     private javax.swing.JCheckBox jcbVenderConsumiveis;
     private javax.swing.JCheckBox jcbVenderEscudos;
     private javax.swing.JLabel jlListPreçoComprar;
+    private javax.swing.JLabel jlListPreçoUndComprar;
     private javax.swing.JLabel jlQuantComprar;
     private javax.swing.JLabel jlQuantVender;
-    private java.awt.Label lbComprar;
+    private javax.swing.JLabel lbComprar;
     private javax.swing.JLabel lbDinheiroClasse;
     private javax.swing.JLabel lbDinheiroPersonagem;
-    private java.awt.Label lbPrecoComprar;
-    private java.awt.Label lbVender;
+    private javax.swing.JLabel lbPrecoComprar;
+    private javax.swing.JLabel lbPrecoUndComprar;
+    private javax.swing.JLabel lbVender;
     // End of variables declaration//GEN-END:variables
 }
