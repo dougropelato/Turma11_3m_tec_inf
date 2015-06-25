@@ -343,32 +343,32 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+                      <Component id="jbExcluir" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jbExcluirCancelar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="79" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="55" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="jlExcluirTamY" min="-2" max="-2" attributes="0"/>
                                   <Component id="jlExcluirTamX" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlExcluirCampanha" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jlExcluirNome" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jcbExcluirCampanha" min="-2" pref="123" max="-2" attributes="0"/>
                                   <Component id="jlExcluirTamanhoX" min="-2" max="-2" attributes="0"/>
                                   <Component id="jlExcluirTamanhoY" min="-2" max="-2" attributes="0"/>
                                   <Component id="jlExcluirNomeCampanha" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
-                              <Component id="jbExcluir" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jbExcluirCancelar" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jcbExcluirCampanha" alignment="1" min="-2" pref="155" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                      <EmptySpace min="115" pref="115" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -376,10 +376,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jcbExcluirCampanha" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jlExcluirCampanha" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jcbExcluirCampanha" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jlExcluirNomeCampanha" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -414,12 +411,8 @@
               </Properties>
               <Events>
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jcbExcluirCampanhaItemStateChanged"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbExcluirCampanhaActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jlExcluirCampanha">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Selecione a campanha"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jlExcluirNomeCampanha">
               <Properties>

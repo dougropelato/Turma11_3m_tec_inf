@@ -89,7 +89,6 @@ public class JFCampanhas extends javax.swing.JFrame {
         jtfInfo = new javax.swing.JLabel();
         jpExcluir = new javax.swing.JPanel();
         jcbExcluirCampanha = new javax.swing.JComboBox();
-        jlExcluirCampanha = new javax.swing.JLabel();
         jlExcluirNomeCampanha = new javax.swing.JLabel();
         jlExcluirNome = new javax.swing.JLabel();
         jlExcluirTamX = new javax.swing.JLabel();
@@ -345,8 +344,11 @@ public class JFCampanhas extends javax.swing.JFrame {
                 jcbExcluirCampanhaItemStateChanged(evt);
             }
         });
-
-        jlExcluirCampanha.setText("Selecione a campanha");
+        jcbExcluirCampanha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbExcluirCampanhaActionPerformed(evt);
+            }
+        });
 
         jlExcluirNomeCampanha.setText("Nome Campanha");
 
@@ -373,35 +375,33 @@ public class JFCampanhas extends javax.swing.JFrame {
         jpExcluir.setLayout(jpExcluirLayout);
         jpExcluirLayout.setHorizontalGroup(
             jpExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpExcluirLayout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(jbExcluir)
+                .addGap(18, 18, 18)
+                .addComponent(jbExcluirCancelar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpExcluirLayout.createSequentialGroup()
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addGroup(jpExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpExcluirLayout.createSequentialGroup()
-                        .addContainerGap(55, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpExcluirLayout.createSequentialGroup()
                         .addGroup(jpExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jlExcluirTamY)
                             .addComponent(jlExcluirTamX)
-                            .addComponent(jlExcluirCampanha)
                             .addComponent(jlExcluirNome))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jpExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcbExcluirCampanha, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlExcluirTamanhoX)
                             .addComponent(jlExcluirTamanhoY)
                             .addComponent(jlExcluirNomeCampanha)))
-                    .addGroup(jpExcluirLayout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jbExcluir)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbExcluirCancelar)))
-                .addGap(73, 73, 73))
+                    .addComponent(jcbExcluirCampanha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(115, 115, 115))
         );
         jpExcluirLayout.setVerticalGroup(
             jpExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpExcluirLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(jpExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcbExcluirCampanha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlExcluirCampanha))
+                .addComponent(jcbExcluirCampanha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jpExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlExcluirNomeCampanha)
@@ -623,7 +623,6 @@ public class JFCampanhas extends javax.swing.JFrame {
                 GenericDAO gDAO = new GenericDAO();
                 Campanhas c = new Campanhas();
             
-                jlExcluirCampanha.setText(null);
                 jlExcluirTamanhoX.setText(null);
                 jlExcluirTamanhoY.setText(null);
                 jlExcluirNomeCampanha.setText(jcbCampanhas.getItemAt(jcbExcluirCampanha.getSelectedIndex()).toString());
@@ -709,6 +708,10 @@ public class JFCampanhas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jtfTamYKeyTyped
 
+    private void jcbExcluirCampanhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbExcluirCampanhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbExcluirCampanhaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -758,7 +761,6 @@ public class JFCampanhas extends javax.swing.JFrame {
     private javax.swing.JLabel jlEditarNomeCampanha;
     private javax.swing.JLabel jlEditarTamX;
     private javax.swing.JLabel jlEditarTamY;
-    private javax.swing.JLabel jlExcluirCampanha;
     private javax.swing.JLabel jlExcluirNome;
     private javax.swing.JLabel jlExcluirNomeCampanha;
     private javax.swing.JLabel jlExcluirTamX;
