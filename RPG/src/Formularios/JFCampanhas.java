@@ -370,6 +370,11 @@ public class JFCampanhas extends javax.swing.JFrame {
         });
 
         jbExcluirCancelar.setText("Cancelar");
+        jbExcluirCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbExcluirCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpExcluirLayout = new javax.swing.GroupLayout(jpExcluir);
         jpExcluir.setLayout(jpExcluirLayout);
@@ -492,6 +497,11 @@ public class JFCampanhas extends javax.swing.JFrame {
         arrayListTamY.clear();
         jcbCampanhas.removeAllItems();
         jcbExcluirCampanha.removeAllItems();
+        
+        JFCampanhas c = new JFCampanhas();
+        JFMestre m = new JFMestre();
+        m.setVisible(true);
+        c.setVisible(false);
     }//GEN-LAST:event_jbCancelarActionPerformed
 
     private void jcbCampanhasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCampanhasActionPerformed
@@ -504,6 +514,18 @@ public class JFCampanhas extends javax.swing.JFrame {
 
     private void jbCancelarEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarEdicaoActionPerformed
         // TODO add your handling code here:
+        jtfNomeCampanha.setText(null);  //Limpa o campo
+        
+        arrayListCampanhas.clear();
+        arrayListTamX.clear();
+        arrayListTamY.clear();
+        jcbCampanhas.removeAllItems();
+        jcbExcluirCampanha.removeAllItems();
+        
+        JFCampanhas c = new JFCampanhas();
+        JFMestre m = new JFMestre();
+        m.setVisible(true);
+        c.setVisible(false);
     }//GEN-LAST:event_jbCancelarEdicaoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -711,6 +733,22 @@ public class JFCampanhas extends javax.swing.JFrame {
     private void jcbExcluirCampanhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbExcluirCampanhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbExcluirCampanhaActionPerformed
+
+    private void jbExcluirCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirCancelarActionPerformed
+        // TODO add your handling code here:
+        jtfNomeCampanha.setText(null);  //Limpa o campo
+        
+        arrayListCampanhas.clear();
+        arrayListTamX.clear();
+        arrayListTamY.clear();
+        jcbCampanhas.removeAllItems();
+        jcbExcluirCampanha.removeAllItems();
+        
+        /*JFCampanhas c = new JFCampanhas();
+        JFMestre m = new JFMestre();
+        m.setVisible(true);
+        c.setVisible(false);*/
+    }//GEN-LAST:event_jbExcluirCancelarActionPerformed
 
     /**
      * @param args the command line arguments
