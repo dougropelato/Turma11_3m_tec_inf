@@ -5,6 +5,7 @@
  */
 package Formularios;
 
+import Tabelas.Autenticacao;
 import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -21,7 +22,7 @@ import java.util.logging.Logger;
  * @author Alexjonas
  */
 public class JFPrincipal extends javax.swing.JFrame {
-
+    Autenticacao auth = Autenticacao.getInstance();
     public static JFPrincipal instance;
 
     public static JFPrincipal getInstance() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InstantiationException, InvocationTargetException, ClassNotFoundException {
