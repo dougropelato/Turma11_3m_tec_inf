@@ -14,6 +14,15 @@ public class PericiasPosicoes {
     int codigo_pericia;
     int codigo_posicao;
     int valor_pericia;
+    String descricao_pericia_sucesso;
+
+    public String getDescricao_pericia_sucesso() {
+        return descricao_pericia_sucesso;
+    }
+
+    public void setDescricao_pericia_sucesso(String descricao_pericia_sucesso) {
+        this.descricao_pericia_sucesso = descricao_pericia_sucesso;
+    }
 
     public int getCodigo_pericia() {
         return codigo_pericia;
