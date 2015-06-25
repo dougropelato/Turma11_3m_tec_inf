@@ -7,7 +7,10 @@ package Formularios;
 
 import Tabelas.Autenticacao;
 import dao.GenericDAO;
+import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
+import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Toolkit;
 import utilitários.VerificaComandos;
 import java.awt.event.KeyEvent;
@@ -16,6 +19,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 /**
  *
@@ -25,6 +29,12 @@ public class JFPrincipal extends javax.swing.JFrame {
     
     Autenticacao auth = Autenticacao.getInstance();
 
+    
+    
+    
+    
+    
+    
     public static JFPrincipal instance;
 
     public static JFPrincipal getInstance() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InstantiationException, InvocationTargetException, ClassNotFoundException {
@@ -54,7 +64,22 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLnome_jogador.setText("");
         jLnome_personagem.setText("");
         jLvida_personagem.setText("");
-
+    
+        
+        
+        Container c = getContentPane();
+        c.setBackground(Color.WHITE); // Define a cor de fundo
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(null);
+      //  setSize(1000, 1000);
+        
+        
+        
+        this.setExtendedState(MAXIMIZED_BOTH);
+        
+        
+        
+        
     }
 
     /**
@@ -79,7 +104,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLnome_personagem = new javax.swing.JLabel();
         jLvida_personagem = new javax.swing.JLabel();
         jLnome_campanha = new javax.swing.JLabel();
-        jPmapa = new javax.swing.JPanel();
+        jpAraDePintar = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -87,17 +112,21 @@ public class JFPrincipal extends javax.swing.JFrame {
                 formComponentShown(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField1KeyPressed(evt);
             }
         });
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 442, 370, 23));
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 450, 360));
 
         jButton1.setText("Enviar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -105,15 +134,20 @@ public class JFPrincipal extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 440, -1, -1));
 
         jButton2.setText("Comandos");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 442, 110, -1));
 
         jButton3.setText("Itens");
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 442, 81, -1));
 
         jTextArea3.setEditable(false);
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
         jScrollPane3.setViewportView(jTextArea3);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, 200, 240));
 
         jLnome_jogador.setText("jLabel1");
 
@@ -128,10 +162,10 @@ public class JFPrincipal extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLnome_jogador)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLnome_personagem)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLnome_jogador)
                 .addGap(129, 129, 129)
                 .addComponent(jLvida_personagem)
                 .addGap(125, 125, 125)
@@ -150,63 +184,20 @@ public class JFPrincipal extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPmapaLayout = new javax.swing.GroupLayout(jPmapa);
-        jPmapa.setLayout(jPmapaLayout);
-        jPmapaLayout.setHorizontalGroup(
-            jPmapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 640, -1));
+
+        javax.swing.GroupLayout jpAraDePintarLayout = new javax.swing.GroupLayout(jpAraDePintar);
+        jpAraDePintar.setLayout(jpAraDePintarLayout);
+        jpAraDePintarLayout.setHorizontalGroup(
+            jpAraDePintarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPmapaLayout.setVerticalGroup(
-            jPmapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jpAraDePintarLayout.setVerticalGroup(
+            jpAraDePintarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 117, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPmapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPmapa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
-                        .addComponent(jButton2)
-                        .addComponent(jButton3)))
-                .addContainerGap())
-        );
+        getContentPane().add(jpAraDePintar, new org.netbeans.lib.awtextra.AbsoluteConstraints(666, 64, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -297,12 +288,12 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLnome_personagem;
     private javax.swing.JLabel jLvida_personagem;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPmapa;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel jpAraDePintar;
     // End of variables declaration//GEN-END:variables
 
 }
