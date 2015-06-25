@@ -40,7 +40,7 @@ public class VerificaComandos {
             auth.setSenha_jogador("123");
             auth.setJogador_logado(true);
             auth.setNome_jogador("Mestre");
-            jfprim.jLnome_jogador.setText("Mestre");
+            // jfprim.jLnome_jogador.setText("Mestre");
 
             res = "doctor who ?";
         } // modo adm
