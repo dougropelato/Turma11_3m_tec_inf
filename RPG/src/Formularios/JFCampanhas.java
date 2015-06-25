@@ -23,15 +23,17 @@ import tabelas.Campanhas;
  * @author Orlando
  */
 public class JFCampanhas extends javax.swing.JFrame {
+
     ArrayList arrayListCampanhas = new ArrayList();
     ArrayList arrayListTamX = new ArrayList();
     ArrayList arrayListTamY = new ArrayList();
-    
-    public void carregaComboCampanhas() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException{
+
+    public void carregaComboCampanhas() throws SQLException, IllegalAccessException, NoSuchMethodException,
+            IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         GenericDAO genericDAO = new GenericDAO();
         List<Object> list = genericDAO.listar(Campanhas.class);
-        
-        for (Object obj: list) {
+
+        for (Object obj : list) {
             Campanhas campanhas = (Campanhas) obj;
             arrayListCampanhas.add(campanhas.getCodigo_campanha());
             arrayListTamX.add(campanhas.getTam_x_campanha());
@@ -39,15 +41,15 @@ public class JFCampanhas extends javax.swing.JFrame {
             jcbCampanhas.addItem(campanhas.getNome_campanha());
             jcbExcluirCampanha.addItem(campanhas.getNome_campanha());
         }
-        
+
     }
-    
-    public void centralizarComponente() { 
+
+    public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
         setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
     }
-    
+
     /**
      * Creates new form JFCampanhas
      */
@@ -450,28 +452,28 @@ public class JFCampanhas extends javax.swing.JFrame {
 
         try {
             //verifica se os campos estão vazios
-            if (jtfNomeCampanha.getText().equals("") || (jtfTamX.getText().equals("")) || (jtfTamY.getText().equals(""))) { 
-                JOptionPane.showMessageDialog(null, "Por favor insira todas as informações!"); 
-            } else { 
+            if (jtfNomeCampanha.getText().equals("") || (jtfTamX.getText().equals("")) || (jtfTamY.getText().equals(""))) {
+                JOptionPane.showMessageDialog(null, "Por favor insira todas as informações!");
+            } else {
                 GenericDAO gDAO = new GenericDAO();
                 Campanhas c = new Campanhas();
-                
+
                 c.setNome_campanha(jtfNomeCampanha.getText());
                 c.setTam_x_campanha(Integer.parseInt(jtfTamX.getText()));
                 c.setTam_y_campanha(Integer.parseInt(jtfTamY.getText()));
                 gDAO.adicionar(c); //post
-                
+
                 JOptionPane.showMessageDialog(null, "Campanha " + jtfNomeCampanha.getText() + " foi cadastrada!");
                 jtfNomeCampanha.setText(null);  //Limpa o Campos
                 jtfTamX.setText(null);
                 jtfTamY.setText(null);
             }
-          
+
             arrayListCampanhas.clear();
             jcbCampanhas.removeAllItems();
             jcbExcluirCampanha.removeAllItems();
             carregaComboCampanhas();
-        
+
         } catch (SQLException ex) {//Caso Houver Exceção... E Não puder Cadastrar...
             Logger.getLogger(JFCampanhas.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -491,17 +493,17 @@ public class JFCampanhas extends javax.swing.JFrame {
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         jtfNomeCampanha.setText(null);  //Limpa o campo
-        
+
         arrayListCampanhas.clear();
         arrayListTamX.clear();
         arrayListTamY.clear();
         jcbCampanhas.removeAllItems();
         jcbExcluirCampanha.removeAllItems();
-        
+
         /*JFCampanhas c = new JFCampanhas();
-        JFMestre m = new JFMestre();
-        m.setVisible(true);
-        c.setVisible(false);*/
+         JFMestre m = new JFMestre();
+         m.setVisible(true);
+         c.setVisible(false);*/
     }//GEN-LAST:event_jbCancelarActionPerformed
 
     private void jcbCampanhasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCampanhasActionPerformed
@@ -515,25 +517,25 @@ public class JFCampanhas extends javax.swing.JFrame {
     private void jbCancelarEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarEdicaoActionPerformed
         // TODO add your handling code here:
         jtfNomeCampanha.setText(null);  //Limpa o campo
-        
+
         arrayListCampanhas.clear();
         arrayListTamX.clear();
         arrayListTamY.clear();
         jcbCampanhas.removeAllItems();
         jcbExcluirCampanha.removeAllItems();
-        
+
         /*JFCampanhas c = new JFCampanhas();
-        JFMestre m = new JFMestre();
-        m.setVisible(true);
-        c.setVisible(false);*/
+         JFMestre m = new JFMestre();
+         m.setVisible(true);
+         c.setVisible(false);*/
     }//GEN-LAST:event_jbCancelarEdicaoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {/*
-            // TODO add your handling code here:
-            arrayListCampanhas.clear();
-            jcbCampanhas.removeAll(); */
-            
+             // TODO add your handling code here:
+             arrayListCampanhas.clear();
+             jcbCampanhas.removeAll(); */
+
             carregaComboCampanhas();
         } catch (SQLException ex) {
             Logger.getLogger(JFCampanhas.class.getName()).log(Level.SEVERE, null, ex);
@@ -558,19 +560,19 @@ public class JFCampanhas extends javax.swing.JFrame {
         try {
             Campanhas c = new Campanhas();
             GenericDAO gDAO = new GenericDAO();
-            
-            if (jtfEditarCampanha.getText().equals("") || (jtfEditarTamanhoX.getText().equals("")) || (jtfEditarTamanhoY.getText().equals(""))) { 
-                JOptionPane.showMessageDialog(null, "Por favor insira todas as informações!"); 
+
+            if (jtfEditarCampanha.getText().equals("") || (jtfEditarTamanhoX.getText().equals("")) || (jtfEditarTamanhoY.getText().equals(""))) {
+                JOptionPane.showMessageDialog(null, "Por favor insira todas as informações!");
             } else {
                 c.setCodigo_campanha(cod);
                 c.setNome_campanha(jtfEditarCampanha.getText());
                 c.setTam_x_campanha(Integer.parseInt(jtfEditarTamanhoX.getText()));
                 c.setTam_y_campanha(Integer.parseInt(jtfEditarTamanhoY.getText()));
-            
+
                 gDAO.alterar(c);
-                
-                JOptionPane.showMessageDialog(null, "Campanha "+ c.getNome_campanha() + " alterada com sucesso!");
-                
+
+                JOptionPane.showMessageDialog(null, "Campanha " + c.getNome_campanha() + " alterada com sucesso!");
+
                 //limpando campos
                 jtfEditarCampanha.setText(null);
                 jtfEditarTamanhoX.setText(null);
@@ -597,7 +599,7 @@ public class JFCampanhas extends javax.swing.JFrame {
         } catch (InstantiationException ex) {
             Logger.getLogger(JFCampanhas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_jbSalvarEdicaoActionPerformed
 
     private void jtfEditarTamanhoYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfEditarTamanhoYActionPerformed
@@ -609,15 +611,15 @@ public class JFCampanhas extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfEditarTamanhoXActionPerformed
 
     private void jcbCampanhasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jcbCampanhasFocusGained
-        
+
     }//GEN-LAST:event_jcbCampanhasFocusGained
 
     private void jcbCampanhasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbCampanhasMouseClicked
-        
+
     }//GEN-LAST:event_jcbCampanhasMouseClicked
 
     private void jcbCampanhasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jcbCampanhasFocusLost
-        
+
     }//GEN-LAST:event_jcbCampanhasFocusLost
 
     private void jcbCampanhasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbCampanhasItemStateChanged
@@ -625,14 +627,14 @@ public class JFCampanhas extends javax.swing.JFrame {
             try {
                 GenericDAO gDAO = new GenericDAO();
                 Campanhas c = new Campanhas();
-            
+
                 jtfEditarCampanha.setText(null);
                 jtfEditarTamanhoX.setText(null);
                 jtfEditarTamanhoY.setText(null);
                 jtfEditarCampanha.setText(jcbCampanhas.getItemAt(jcbCampanhas.getSelectedIndex()).toString());
                 jtfEditarTamanhoX.setText(arrayListTamX.get(jcbCampanhas.getSelectedIndex()).toString());
                 jtfEditarTamanhoY.setText(arrayListTamY.get(jcbCampanhas.getSelectedIndex()).toString());
-            
+
             } catch (SQLException ex) {
                 Logger.getLogger(JFCampanhas.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -644,13 +646,13 @@ public class JFCampanhas extends javax.swing.JFrame {
             try {
                 GenericDAO gDAO = new GenericDAO();
                 Campanhas c = new Campanhas();
-            
+
                 jlExcluirTamanhoX.setText(null);
                 jlExcluirTamanhoY.setText(null);
                 jlExcluirNomeCampanha.setText(jcbCampanhas.getItemAt(jcbExcluirCampanha.getSelectedIndex()).toString());
                 jlExcluirTamanhoX.setText(arrayListTamX.get(jcbExcluirCampanha.getSelectedIndex()).toString());
                 jlExcluirTamanhoY.setText(arrayListTamY.get(jcbExcluirCampanha.getSelectedIndex()).toString());
-            
+
             } catch (SQLException ex) {
                 Logger.getLogger(JFCampanhas.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -661,15 +663,15 @@ public class JFCampanhas extends javax.swing.JFrame {
         try {
             GenericDAO gDAO = new GenericDAO();
             Campanhas c = new Campanhas();
-            
+
             c.setCodigo_campanha((int) arrayListCampanhas.get(jcbExcluirCampanha.getSelectedIndex()));
             c.setNome_campanha(jlExcluirNomeCampanha.getText());
             c.setTam_x_campanha(Integer.parseInt(jlExcluirTamanhoX.getText()));
             c.setTam_y_campanha(Integer.parseInt(jlExcluirTamanhoY.getText()));
             gDAO.excluir(c);
-            
+
             JOptionPane.showMessageDialog(null, "Campanha " + jlExcluirNomeCampanha.getText() + " foi excluida!");
-            
+
             jlExcluirNomeCampanha.setText("Nome Campanha");
             jlExcluirTamanhoX.setText("Tamanho X");
             jlExcluirTamanhoY.setText("Tamanho Y");
@@ -678,7 +680,7 @@ public class JFCampanhas extends javax.swing.JFrame {
             arrayListTamY.clear();
             jcbCampanhas.removeAllItems();
             jcbExcluirCampanha.removeAllItems();
-            carregaComboCampanhas();    
+            carregaComboCampanhas();
         } catch (SQLException ex) {
             Logger.getLogger(JFCampanhas.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -701,7 +703,7 @@ public class JFCampanhas extends javax.swing.JFrame {
     private void jtfEditarTamanhoXKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfEditarTamanhoXKeyTyped
         // TODO add your handling code here:
         String caracteres = "0987654321"; //apenas numeros podem ser digitados
-        if(!caracteres.contains(evt.getKeyChar()+"")){ //se algo diferente que "caracteres" for digitado
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
             evt.consume();
         }
     }//GEN-LAST:event_jtfEditarTamanhoXKeyTyped
@@ -709,7 +711,7 @@ public class JFCampanhas extends javax.swing.JFrame {
     private void jtfEditarTamanhoYKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfEditarTamanhoYKeyTyped
         // TODO add your handling code here:
         String caracteres = "0987654321"; //apenas numeros podem ser digitados
-        if(!caracteres.contains(evt.getKeyChar()+"")){ //se algo diferente que "caracteres" for digitado
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
             evt.consume();
         }
     }//GEN-LAST:event_jtfEditarTamanhoYKeyTyped
@@ -717,7 +719,7 @@ public class JFCampanhas extends javax.swing.JFrame {
     private void jtfTamXKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfTamXKeyTyped
         // TODO add your handling code here:
         String caracteres = "0987654321"; //apenas numeros podem ser digitados
-        if(!caracteres.contains(evt.getKeyChar()+"")){ //se algo diferente que "caracteres" for digitado
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
             evt.consume();
         }
     }//GEN-LAST:event_jtfTamXKeyTyped
@@ -725,7 +727,7 @@ public class JFCampanhas extends javax.swing.JFrame {
     private void jtfTamYKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfTamYKeyTyped
         // TODO add your handling code here:
         String caracteres = "0987654321"; //apenas numeros podem ser digitados
-        if(!caracteres.contains(evt.getKeyChar()+"")){ //se algo diferente que "caracteres" for digitado
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
             evt.consume();
         }
     }//GEN-LAST:event_jtfTamYKeyTyped
@@ -737,17 +739,17 @@ public class JFCampanhas extends javax.swing.JFrame {
     private void jbExcluirCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirCancelarActionPerformed
         // TODO add your handling code here:
         jtfNomeCampanha.setText(null);  //Limpa o campo
-        
+
         arrayListCampanhas.clear();
         arrayListTamX.clear();
         arrayListTamY.clear();
         jcbCampanhas.removeAllItems();
         jcbExcluirCampanha.removeAllItems();
-        
+
         /*JFCampanhas c = new JFCampanhas();
-        JFMestre m = new JFMestre();
-        m.setVisible(true);
-        c.setVisible(false);*/
+         JFMestre m = new JFMestre();
+         m.setVisible(true);
+         c.setVisible(false);*/
     }//GEN-LAST:event_jbExcluirCancelarActionPerformed
 
     /**
