@@ -498,10 +498,10 @@ public class JFCampanhas extends javax.swing.JFrame {
         jcbCampanhas.removeAllItems();
         jcbExcluirCampanha.removeAllItems();
         
-        JFCampanhas c = new JFCampanhas();
+        /*JFCampanhas c = new JFCampanhas();
         JFMestre m = new JFMestre();
         m.setVisible(true);
-        c.setVisible(false);
+        c.setVisible(false);*/
     }//GEN-LAST:event_jbCancelarActionPerformed
 
     private void jcbCampanhasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCampanhasActionPerformed
@@ -522,10 +522,10 @@ public class JFCampanhas extends javax.swing.JFrame {
         jcbCampanhas.removeAllItems();
         jcbExcluirCampanha.removeAllItems();
         
-        JFCampanhas c = new JFCampanhas();
+        /*JFCampanhas c = new JFCampanhas();
         JFMestre m = new JFMestre();
         m.setVisible(true);
-        c.setVisible(false);
+        c.setVisible(false);*/
     }//GEN-LAST:event_jbCancelarEdicaoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
