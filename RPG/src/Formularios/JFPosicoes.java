@@ -9,6 +9,7 @@ import Tabelas.PericiasPosicoes;
 import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import static java.util.Collections.list;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import tabelas.Caminhos;
 import tabelas.Npcs;
@@ -100,6 +102,20 @@ public class JFPosicoes extends javax.swing.JFrame {
         initComponents();
         centralizarComponente();
 
+        jtaDescricaoCaminho.setLineWrap(true);//Adiciona quebra de linha no Campo 'Descrição Perícia'
+        jcbNpc.setVisible(false); //Seta o JComboBox NPC como Invisível
+        jcbPericias.setVisible(false); //Seta o JComboBox Perícia como Invisível
+        jlSelecNpc.setVisible(false);
+        jlSelectPericia.setVisible(false);
+
+        jcbPericias.setVisible(false);
+        jlSelectPericia.setVisible(false);
+
+        jcbValorPericia.setVisible(false);
+        jlTituloDificuldadePericia.setVisible(false);
+
+        jtaDescricaoPericia.setVisible(false);
+
     }
 
     /**
@@ -128,12 +144,14 @@ public class JFPosicoes extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jtaDescricaoCaminho = new javax.swing.JTextArea();
         jcbPericias = new javax.swing.JComboBox();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jlSelectPericia = new javax.swing.JLabel();
+        jlTituloDificuldadePericia = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtaDescricaoPericia = new javax.swing.JTextArea();
-        jLabel5 = new javax.swing.JLabel();
-        jtfValPericia = new javax.swing.JTextField();
+        jcheckNpc = new javax.swing.JCheckBox();
+        jcheckPericia = new javax.swing.JCheckBox();
+        jcbValorPericia = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -187,79 +205,101 @@ public class JFPosicoes extends javax.swing.JFrame {
         jtaDescricaoCaminho.setRows(5);
         jScrollPane2.setViewportView(jtaDescricaoCaminho);
 
-        jLabel3.setText("Perícia Personagem");
+        jlSelectPericia.setText("Selecionar Perícia");
 
-        jLabel4.setText("Dificuldade Perícia (Valor Inteiro)");
+        jlTituloDificuldadePericia.setText("Dificuldade Perícia (Valor)");
 
         jtaDescricaoPericia.setColumns(20);
         jtaDescricaoPericia.setRows(5);
         jScrollPane1.setViewportView(jtaDescricaoPericia);
 
-        jLabel5.setText("Descrição Perícia Caso Personagem Consiga Utilizá-la");
+        jcheckNpc.setText("NPC");
+        jcheckNpc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcheckNpcActionPerformed(evt);
+            }
+        });
+
+        jcheckPericia.setText("Perícia");
+        jcheckPericia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcheckPericiaActionPerformed(evt);
+            }
+        });
+
+        jcbValorPericia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fácil (5)", "Médio (10)", "Difícil (15)", "Desafiador (20)", "Formidável (25)", "Heróico (30)", "Impossível (40)" }));
+
+        jLabel3.setText("Opcional:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jlTamMapa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtfTamMapa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(133, 133, 133))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jlValorX)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtfValorX, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jlValorY)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtfValorY, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jlSelecNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jbSalvar))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(16, 16, 16)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jbCancelar)
-                            .addComponent(jcbPericias, 0, 180, Short.MAX_VALUE)
-                            .addComponent(jcbNpc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfValPericia, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(33, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 101, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jcbCaminho, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane2)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlValorY)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtfValorY))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlValorX)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtfValorX, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlTamMapa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtfTamMapa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(56, 56, 56))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jlTituloDificuldadePericia)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jcbValorPericia, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jcheckNpc)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jlSelecNpc, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jcheckPericia)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jlSelectPericia)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jcbPericias, 0, 180, Short.MAX_VALUE)
+                                    .addComponent(jcbNpc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jScrollPane1)
                 .addContainerGap())
         );
@@ -273,8 +313,8 @@ public class JFPosicoes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlTamMapa)
                     .addComponent(jtfTamMapa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -282,30 +322,35 @@ public class JFPosicoes extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfValorX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlValorX))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlValorY)
-                    .addComponent(jtfValorY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcbNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlSelecNpc))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcbPericias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jtfValPericia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbCancelar)
-                    .addComponent(jbSalvar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlValorY)
+                            .addComponent(jtfValorY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jcbNpc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlSelecNpc)
+                            .addComponent(jcheckNpc))
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jcbPericias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlSelectPericia)
+                            .addComponent(jcheckPericia))
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlTituloDificuldadePericia)
+                            .addComponent(jcbValorPericia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel3)))
                 .addContainerGap())
         );
 
@@ -323,64 +368,102 @@ public class JFPosicoes extends javax.swing.JFrame {
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
 
         try {
-            //if (jtaDescricaoCaminho.getText().equals("") || jtaDescricaoPericia.getText().equals("") || jtfValPericia.getText().equals("") || jtfValorX.getText().equals("") || jtfValorY.getText().equals("")) {
-            //JOptionPane.showMessageDialog(null, "Insira uma descrição para esta posição!");
-            //} else {
-            GenericDAO gDAO = new GenericDAO();
-            Posicoes posicoes = new Posicoes();
-            PosicoesNpcs posicaoNpc = new PosicoesNpcs();
-            Npcs npc = new Npcs();
-            Pericias pericias = new Pericias();
-            PericiasPosicoes periciaPosicao = new PericiasPosicoes();
-            Caminhos caminhos = new Caminhos();
+            if (jtaDescricaoCaminho.getText().equals("") || jtfValorY.getText().equals("") || jtfValorX.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Preencha Todos os Campos!");
+            } else {
+                GenericDAO gDAO = new GenericDAO();
+                Posicoes posicoes = new Posicoes();
+                PosicoesNpcs posicaoNpc = new PosicoesNpcs();
+                Npcs npc = new Npcs();
+                Pericias pericias = new Pericias();
+                PericiasPosicoes periciaPosicao = new PericiasPosicoes();
+                Caminhos caminhos = new Caminhos();
 
-            //Insertes tabela 'Posicoes'
-            posicoes.setCodigo_caminho((int) (arrayListCaminhos.get(jcbCaminho.getSelectedIndex())));
-            posicoes.setDescricao_posicao(jtaDescricaoCaminho.getText());
-            posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));
-            posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorY.getText()));
-            gDAO.adicionar(posicoes); //adicionando posicao
-            posicoes.setCodigo_posicao(gDAO.codigoMax(Posicoes.class));//Pega o código da última posição cadastrada
-            System.out.println("Posição Cadastradacom Sucesso!");
+                //Insertes tabela 'Posicoes'
+                posicoes.setCodigo_caminho((int) (arrayListCaminhos.get(jcbCaminho.getSelectedIndex())));
+                posicoes.setDescricao_posicao(jtaDescricaoCaminho.getText());
+                posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));
+                posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorY.getText()));
+                gDAO.adicionar(posicoes); //adicionando posicao
+                posicoes.setCodigo_posicao(gDAO.codigoMax(Posicoes.class));//Pega o código da última posição cadastrada
+                System.out.println("Posição Cadastrada com Sucesso!");//
 
-            npc.setNome_npc(jcbNpc.getSelectedItem().toString());
-            List<Object> list = gDAO.listar2(Npcs.class, npc);
+                if (jcheckNpc.isSelected()) {
+                    //Inserts Tabela 'PosicoesNpcs'
+                    npc.setNome_npc(jcbNpc.getSelectedItem().toString());
+                    List<Object> list = gDAO.listar2(Npcs.class, npc);
 
-            for (Object obj4 : list) {
-                Npcs npcc = (Npcs) obj4;
+                    for (Object obj4 : list) {
+                        Npcs npcc = (Npcs) obj4;
 
-                posicaoNpc.setCodigo_npc(npcc.getCodigo_npc());
+                        posicaoNpc.setCodigo_npc(npcc.getCodigo_npc());
+                    }
+                    posicaoNpc.setCodigo_posicao(posicoes.getCodigo_posicao());
+                    System.out.println(posicoes.getCodigo_posicao());
+                    gDAO.adicionar(posicaoNpc);
+                    System.out.println("NPC Cadastrado com Sucesso!");
+                }
+
+                if (jcheckPericia.isSelected()) {
+
+                    int varDificuldadePericia = (0);
+
+                    if (jcbValorPericia.getSelectedIndex() == 0) { //Fácil
+                        varDificuldadePericia = 5;
+                    }
+                    if (jcbValorPericia.getSelectedIndex() == 1) { //Fácil
+                        varDificuldadePericia = 10;
+                    }
+                    if (jcbValorPericia.getSelectedIndex() == 2) { //Fácil
+                        varDificuldadePericia = 15;
+                    }
+                    if (jcbValorPericia.getSelectedIndex() == 3) { //Fácil
+                        varDificuldadePericia = 20;
+                    }
+                    if (jcbValorPericia.getSelectedIndex() == 4) { //Fácil
+                        varDificuldadePericia = 25;
+                    }
+                    if (jcbValorPericia.getSelectedIndex() == 5) { //Fácil
+                        varDificuldadePericia = 30;
+                    }
+                    if (jcbValorPericia.getSelectedIndex() == 6) { //Fácil
+                        varDificuldadePericia = 40;
+                    }
+
+                    //Inserts Tabela N/N 'PericiasPosicoes'
+                    pericias.setNome_pericia(jcbPericias.getSelectedItem().toString());
+                    List<Object> list2 = gDAO.listar2(Pericias.class, pericias);
+                    System.out.println("Estou aqui deeerrreeentroooo!!!");
+
+                    for (Object obj5 : list2) {
+                        Pericias peric = (Pericias) obj5;
+
+                        periciaPosicao.setCodigo_pericia(peric.getCodigo_pericia());
+                    }
+
+                   
+                    periciaPosicao.setCodigo_posicao(posicoes.getCodigo_posicao());
+                    periciaPosicao.setValor_pericia(varDificuldadePericia);
+                    periciaPosicao.setDescricao_pericia_sucesso(jtaDescricaoPericia.getText());
+                    System.out.println(posicoes.getCodigo_posicao());
+
+                    gDAO.adicionar(periciaPosicao);
+
+                    System.out.println("Pericia Cadastrados com Sucesso! " + varDificuldadePericia + "");
+
+                }
+
+                //mensagem de cadastro
+                JOptionPane.showMessageDialog(null, "Posição Cadastrada com Sucesso!");
+                //limpando campos apos cadastro
+                jtaDescricaoCaminho.setText("");
+                jtfValorX.setText("");
+                jtfValorY.setText("");
+                jtaDescricaoPericia.setText("");
+
+                //jtfValPericia.setText("");
+                //jcbCaminho.set
             }
-
-            //Inserts Tabela N/N 'PosicoesNpcs'
-            posicaoNpc.setCodigo_posicao(posicoes.getCodigo_posicao());
-            System.out.println(arrayListNpc.get(jcbNpc.getSelectedIndex()));
-            System.out.println(posicaoNpc.getCodigo_npc());
-            System.out.println(jcbNpc.getSelectedItem());
-            System.out.println(arrayListNpc);
-            gDAO.adicionar(posicaoNpc);
-
-                //Inserts Tabela N/N 'PericiasPosicoes'
-            //periciaPosicao.setCodigo_pericia((int) arrayListPericias.get(jcbPericias.getSelectedIndex()));
-            //periciaPosicao.setCodigo_posicao(posicoes.getCodigo_posicao());
-            //periciaPosicao.setDescricao_pericia_conseguiu(jtaDescricaoPericia.getText());
-            //periciaPosicao.setValor_pericia(Integer.parseInt(jtfValPericia.getText()));
-            //gDAO.adicionar(periciaPosicao);
-            /*    
-             PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
-             //tabela N pra N
-             posicoesNpcs.setCodigo_posicoes(posicoes.getCodigo_posicao());
-             posicoesNpcs.setCodigo_npc(((int) ((arrayListNpc.get(jcbNpc.getSelectedIndex())))));
-            
-             gDAO.adicionar(posicoesNpcs); //adicionando tabela n-n posicoesNpcs
-             */
-            //mensagem de cadastro
-            JOptionPane.showMessageDialog(null, "Posição cadastrada!");
-            //limpando campos apos cadastro
-            jtaDescricaoCaminho.setText("");
-            jtfValorX.setText("");
-            jtfValorY.setText("");
-            // }
 
         } catch (SQLException ex) {
             Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
@@ -428,6 +511,38 @@ public class JFPosicoes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbCaminhoActionPerformed
 
+    private void jcheckNpcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcheckNpcActionPerformed
+        if (jcheckNpc.isSelected()) {
+            jcbNpc.setVisible(true);
+            jlSelecNpc.setVisible(true);
+        } else {
+            jcbNpc.setVisible(false);
+            jlSelecNpc.setVisible(false);
+        }
+    }//GEN-LAST:event_jcheckNpcActionPerformed
+
+    private void jcheckPericiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcheckPericiaActionPerformed
+        if (jcheckPericia.isSelected()) {
+            jcbPericias.setVisible(true);
+            jlSelectPericia.setVisible(true);
+
+            jcbValorPericia.setVisible(true);
+            jlTituloDificuldadePericia.setVisible(true);
+
+            jtaDescricaoPericia.setVisible(true);
+
+        } else {
+            jcbPericias.setVisible(false);
+            jlSelectPericia.setVisible(false);
+
+            jcbValorPericia.setVisible(false);
+            jlTituloDificuldadePericia.setVisible(false);
+
+            jtaDescricaoPericia.setVisible(false);
+        }
+
+    }//GEN-LAST:event_jcheckPericiaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -467,8 +582,6 @@ public class JFPosicoes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -477,14 +590,18 @@ public class JFPosicoes extends javax.swing.JFrame {
     private javax.swing.JComboBox jcbCaminho;
     private javax.swing.JComboBox jcbNpc;
     private javax.swing.JComboBox jcbPericias;
+    private javax.swing.JComboBox jcbValorPericia;
+    private javax.swing.JCheckBox jcheckNpc;
+    private javax.swing.JCheckBox jcheckPericia;
     private javax.swing.JLabel jlSelecNpc;
+    private javax.swing.JLabel jlSelectPericia;
     private javax.swing.JLabel jlTamMapa;
+    private javax.swing.JLabel jlTituloDificuldadePericia;
     private javax.swing.JLabel jlValorX;
     private javax.swing.JLabel jlValorY;
     private javax.swing.JTextArea jtaDescricaoCaminho;
     private javax.swing.JTextArea jtaDescricaoPericia;
     private javax.swing.JTextField jtfTamMapa;
-    private javax.swing.JTextField jtfValPericia;
     private javax.swing.JTextField jtfValorX;
     private javax.swing.JTextField jtfValorY;
     // End of variables declaration//GEN-END:variables
