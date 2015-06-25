@@ -366,14 +366,50 @@ public class JFMestre extends javax.swing.JFrame {
 
     private void jbtescudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtescudoActionPerformed
         // TODO add your handling code here:
-        JFEscudos esc = new JFEscudos();
-        esc.setVisible(true);
+        JFEscudos esc;
+        try {
+            esc = new JFEscudos();
+            esc.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jbtescudoActionPerformed
 
     private void jbtconsumivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtconsumivelActionPerformed
         // TODO add your handling code here:
-        JFConsumiveis con = new JFConsumiveis();
-        con.setVisible(true);
+        JFConsumiveis con;
+        try {
+            con = new JFConsumiveis();
+            con.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jbtconsumivelActionPerformed
 
     private void jbttalentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbttalentosActionPerformed
