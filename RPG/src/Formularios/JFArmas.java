@@ -8,7 +8,10 @@ package formularios;
 import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import tabelas.Armas;
@@ -18,17 +21,38 @@ import tabelas.Armas;
  * @author Jailton
  */
 public class JFArmas extends javax.swing.JFrame {
-    
-      public void centralizarComponente() {
+
+    private final GenericDAO gg;
+    private List<Object> lista = new ArrayList();
+    private int contador = 0;
+
+    public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
         setLocation((ds.width - dw.width) / 2,
                 (ds.height - dw.height) / 2);
     }
 
-    public JFArmas() {
+    public JFArmas() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+        this.gg = new GenericDAO();
         initComponents();
         centralizarComponente();
+        this.lista = gg.listar(Armas.class);
+    }
+
+    public void carregaRegistro() {
+
+        for (Object l1 : lista) {
+            Armas a = (Armas) l1;
+
+            if (a.getCodigo_arma() == contador) {
+                jtfNomeArma.setText(a.getNome_arma());
+                jcTipoArma.setSelectedIndex(a.getTipo_arma());
+                jtfPrecoArma.setText(String.valueOf(a.getPreco_arma()));
+                jtfQuantidadeDadoArma.setText(String.valueOf(a.getQuantidade_dado_arma()));
+                jtfTipoDadoArma.setText(String.valueOf(a.getTipo_do_dado_arma()));
+            }
+        }
 
     }
 
@@ -53,6 +77,8 @@ public class JFArmas extends javax.swing.JFrame {
         jtfTipoDadoArma = new javax.swing.JTextField();
         jbCadastrar = new javax.swing.JButton();
         jcTipoArma = new javax.swing.JComboBox();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -78,6 +104,20 @@ public class JFArmas extends javax.swing.JFrame {
 
         jcTipoArma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Exóticas", "Simples", "Comuns" }));
 
+        jButton1.setText("<");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText(">");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,9 +127,9 @@ public class JFArmas extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(166, 166, 166))
             .addGroup(layout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel7)
@@ -107,8 +147,12 @@ public class JFArmas extends javax.swing.JFrame {
                             .addComponent(jtfNomeArma)
                             .addComponent(jtfTipoDadoArma)
                             .addComponent(jcTipoArma, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbCadastrar)
                         .addGap(33, 33, 33)))
                 .addContainerGap(138, Short.MAX_VALUE))
@@ -130,17 +174,25 @@ public class JFArmas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jtfPrecoArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jtfQuantidadeDadoArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jtfTipoDadoArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jbCadastrar)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jtfQuantidadeDadoArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jtfTipoDadoArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbCadastrar)
+                        .addContainerGap(45, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2)
+                            .addComponent(jButton1))
+                        .addGap(37, 37, 37))))
         );
 
         pack();
@@ -148,28 +200,38 @@ public class JFArmas extends javax.swing.JFrame {
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
 
-          try {
-              Armas arma = new Armas();
-              
-              GenericDAO gDAO = new GenericDAO();
-              
-              arma.setNome_arma(jtfNomeArma.getText());
-              arma.setTipo_arma(jcTipoArma.getSelectedIndex());
-              arma.setPreco_arma(Double.parseDouble(jtfPrecoArma.getText()));
-              arma.setQuantidade_dado_arma(Integer.parseInt(jtfQuantidadeDadoArma.getText()));
-              arma.setTipo_do_dado_arma(Integer.parseInt(jtfTipoDadoArma.getText()));
-              
-              gDAO.adicionar(arma);
-          } catch (SQLException ex) {
-              Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
-          } catch (ClassNotFoundException ex) {
-              Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
-          } catch (IllegalArgumentException ex) {
-              Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
-          } catch (IllegalAccessException ex) {
-              Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
-          }
+        try {
+            Armas arma = new Armas();
+
+            GenericDAO gDAO = new GenericDAO();
+
+            arma.setNome_arma(jtfNomeArma.getText());
+            arma.setTipo_arma(jcTipoArma.getSelectedIndex());
+            arma.setPreco_arma(Double.parseDouble(jtfPrecoArma.getText()));
+            arma.setQuantidade_dado_arma(Integer.parseInt(jtfQuantidadeDadoArma.getText()));
+            arma.setTipo_do_dado_arma(Integer.parseInt(jtfTipoDadoArma.getText()));
+
+            gDAO.adicionar(arma);
+        } catch (SQLException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbCadastrarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        contador++;
+        this.carregaRegistro();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        contador--;
+        this.carregaRegistro();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,12 +263,30 @@ public class JFArmas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFArmas().setVisible(true);
+                try {
+                    new JFArmas().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NoSuchMethodException ex) {
+                    Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

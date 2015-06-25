@@ -7,6 +7,10 @@ package formularios;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -247,9 +251,25 @@ public class JFMestre extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtvariavelActionPerformed
 
     private void jbtcaminhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtcaminhoActionPerformed
-        // TODO add your handling code here:
-        JFCaminhos cami = new JFCaminhos();
-        cami.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            JFCaminhos cami = new JFCaminhos();
+            cami.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbtcaminhoActionPerformed
 
     private void jbtnpcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnpcActionPerformed
@@ -266,15 +286,47 @@ public class JFMestre extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtraçaActionPerformed
 
     private void jbtclasseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtclasseActionPerformed
-        // TODO add your handling code here:
-        JFClasses cla = new JFClasses();
-        cla.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            JFClasses cla = new JFClasses();
+            cla.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbtclasseActionPerformed
 
     private void jbtarmaduraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtarmaduraActionPerformed
-        // TODO add your handling code here:
-        JFArmaduras arm = new JFArmaduras();
-        arm.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            JFArmaduras arm = new JFArmaduras();
+            arm.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbtarmaduraActionPerformed
 
     private void jbtarmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtarmaActionPerformed
@@ -297,14 +349,36 @@ public class JFMestre extends javax.swing.JFrame {
 
     private void jbttalentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbttalentosActionPerformed
         // TODO add your handling code here:
-        Formularios.JFTalentos tal = new JFTalentos();
-        tal.setVisible(true);
+        Formularios.JFTalentos tal;
+        try {
+            tal = new Formularios.JFTalentos();
+            tal.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }//GEN-LAST:event_jbttalentosActionPerformed
 
     private void jbtpericiaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtpericiaisActionPerformed
-        // TODO add your handling code here:
-       Formularios.JFPericias per = new Formularios.JFPericias();
-       per.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            Formularios.JFPericias per = new Formularios.JFPericias();
+            per.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbtpericiaisActionPerformed
 
     private void jbtsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtsairActionPerformed

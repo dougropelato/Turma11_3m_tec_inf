@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 package Tabelas;
-
+import tabelas.Personagens;
 /**
  *
  * @author mamut
  */
-public class Temporario {
-
+public class Temporario extends Personagens {
+   
     int codigo_temporario;
     int pontos_vida_temporario;
     int dinheiro_classe;
@@ -30,7 +30,7 @@ public class Temporario {
     public void setIniciativa_personagem(int iniciativa_personagem) {
         this.iniciativa_personagem = iniciativa_personagem;
     }
-    
+
     public int getCodigo_escudo() {
         return codigo_escudo;
     }
@@ -110,4 +110,5 @@ public class Temporario {
     public void setDano_personagem(int dano_personagem) {
         this.dano_personagem = dano_personagem;
     }
+
 }

@@ -9,40 +9,67 @@ package Tabelas;
  *
  * @author Alexjonas
  */
-public class Autenticacao {
+public class Autenticacao extends Temporario {
 
-    int codigo_jogador;
-    int codigo_personagem;
-    String status_atual;
+    public static Autenticacao instance;
+
+    public static Autenticacao getInstance() {
+        if (instance == null) {
+            instance = new Autenticacao();
+        }
+        return instance;
+    }
+
+    String status_atual = "";
     boolean mestre_jogador;
     boolean jogador_logado;
     String nome_jogador;
     String senha_jogador;
-    String nome_personagem;
-
-    public String getStatus_atual() {
-        return status_atual;
-    }
-
-    public void setStatus_atual(String status_atual) {
-        this.status_atual = status_atual;
-    }
-
+    int codigo_jogador;
+    int codigo_campanha;
+    int codigo_caminho;
+    int codigo_posicao;
+    int tam_x_mapa;
+    int tam_y_mapa;
     
-    public boolean isJogador_logado() {
-        return jogador_logado;
+    public int getTam_x_mapa() {
+        return tam_x_mapa;
     }
 
-    public void setJogador_logado(boolean jogador_logado) {
-        this.jogador_logado = jogador_logado;
+    public void setTam_x_mapa(int tam_x_mapa) {
+        this.tam_x_mapa = tam_x_mapa;
     }
 
-    public boolean isMestre_jogador() {
-        return mestre_jogador;
+    public int getTam_y_mapa() {
+        return tam_y_mapa;
     }
 
-    public void setMestre_jogador(boolean mestre_jogador) {
-        this.mestre_jogador = mestre_jogador;
+    public void setTam_y_mapa(int tam_y_mapa) {
+        this.tam_y_mapa = tam_y_mapa;
+    }
+
+    public int getCodigo_posicao() {
+        return codigo_posicao;
+    }
+
+    public void setCodigo_posicao(int codigo_posicao) {
+        this.codigo_posicao = codigo_posicao;
+    }
+    
+    public int getCodigo_caminho() {
+        return codigo_caminho;
+    }
+
+    public void setCodigo_caminho(int codigo_caminho) {
+        this.codigo_caminho = codigo_caminho;
+    }
+    
+    public int getCodigo_campanha() {
+        return codigo_campanha;
+    }
+
+    public void setCodigo_campanha(int codigo_campanha) {
+        this.codigo_campanha = codigo_campanha;
     }
 
     public int getCodigo_jogador() {
@@ -53,12 +80,28 @@ public class Autenticacao {
         this.codigo_jogador = codigo_jogador;
     }
 
-    public int getCodigo_personagem() {
-        return codigo_personagem;
+    public String getStatus_atual() {
+        return status_atual;
     }
 
-    public void setCodigo_personagem(int codigo_personagem) {
-        this.codigo_personagem = codigo_personagem;
+    public void setStatus_atual(String status_atual) {
+        this.status_atual = status_atual;
+    }
+
+    public boolean isMestre_jogador() {
+        return mestre_jogador;
+    }
+
+    public void setMestre_jogador(boolean mestre_jogador) {
+        this.mestre_jogador = mestre_jogador;
+    }
+
+    public boolean isJogador_logado() {
+        return jogador_logado;
+    }
+
+    public void setJogador_logado(boolean jogador_logado) {
+        this.jogador_logado = jogador_logado;
     }
 
     public String getNome_jogador() {
@@ -73,16 +116,8 @@ public class Autenticacao {
         return senha_jogador;
     }
 
-    public void setSenha_jogador(String senha_jogaodor) {
-        this.senha_jogador = senha_jogaodor;
-    }
-
-    public String getNome_personagem() {
-        return nome_personagem;
-    }
-
-    public void setNome_personagem(String nome_personagem) {
-        this.nome_personagem = nome_personagem;
+    public void setSenha_jogador(String senha_jogador) {
+        this.senha_jogador = senha_jogador;
     }
 
 }
