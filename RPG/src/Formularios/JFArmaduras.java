@@ -86,12 +86,13 @@ public class JFArmaduras extends javax.swing.JFrame {
         jBalterar = new javax.swing.JButton();
         jBexcluir = new javax.swing.JButton();
         jBconfirmar = new javax.swing.JButton();
+        jBcancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel2.setText("Nome Armadura:");
 
-        jtfNomeArmadura.setEnabled(false);
+        jtfNomeArmadura.setEditable(false);
         jtfNomeArmadura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfNomeArmaduraActionPerformed(evt);
@@ -102,15 +103,15 @@ public class JFArmaduras extends javax.swing.JFrame {
 
         jLabel4.setText("Preco Armadura:");
 
-        jtfPrecoArmadura.setEnabled(false);
+        jtfPrecoArmadura.setEditable(false);
 
         jLabel5.setText("Bônus Máximo Armadura:");
 
-        jtfBonusMaximoArmadura.setEnabled(false);
+        jtfBonusMaximoArmadura.setEditable(false);
 
         jLabel6.setText("Penalidade Destreza Armadura:");
 
-        jtfPenalidadeDestrezaArmadura.setEnabled(false);
+        jtfPenalidadeDestrezaArmadura.setEditable(false);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Cadastro de Armaduras");
@@ -124,7 +125,6 @@ public class JFArmaduras extends javax.swing.JFrame {
         });
 
         jcTipoArmadura.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Leves", "Medias", "Pesadas" }));
-        jcTipoArmadura.setEnabled(false);
 
         jButton2.setText("<");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +155,6 @@ public class JFArmaduras extends javax.swing.JFrame {
         });
 
         jBexcluir.setText("Excluir");
-        jBexcluir.setEnabled(false);
         jBexcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBexcluirActionPerformed(evt);
@@ -163,11 +162,15 @@ public class JFArmaduras extends javax.swing.JFrame {
         });
 
         jBconfirmar.setText("Confirmar");
+        jBconfirmar.setEnabled(false);
         jBconfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBconfirmarActionPerformed(evt);
             }
         });
+
+        jBcancelar.setText("Cancelar");
+        jBcancelar.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -208,9 +211,12 @@ public class JFArmaduras extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton1)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBalterar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBexcluir)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBalterar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBexcluir))
+                            .addComponent(jBcancelar))))
                 .addContainerGap(115, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -248,7 +254,8 @@ public class JFArmaduras extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
-                    .addComponent(jBconfirmar))
+                    .addComponent(jBconfirmar)
+                    .addComponent(jBcancelar))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -278,6 +285,11 @@ public class JFArmaduras extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        jButton2.setEnabled(true);
+        jButton3.setEnabled(true);
+        jButton1.setEnabled(false);
+        jBalterar.setEnabled(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -294,43 +306,51 @@ public class JFArmaduras extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        jtfNomeArmadura.setEnabled(true);
-        jcTipoArmadura.setEnabled(true);
-        jtfPrecoArmadura.setEnabled(true);
-        jtfBonusMaximoArmadura.setEnabled(true);
-        jtfPenalidadeDestrezaArmadura.setEnabled(true);
-        
+        jtfNomeArmadura.setEditable(true);
+        jcTipoArmadura.setEditable(true);
+        jtfPrecoArmadura.setEditable(true);
+        jtfBonusMaximoArmadura.setEditable(true);
+        jtfPenalidadeDestrezaArmadura.setEditable(true);
+
         jtfNomeArmadura.setText("");
         jcTipoArmadura.setSelectedIndex(0);
         jtfPrecoArmadura.setText("");
         jtfBonusMaximoArmadura.setText("");
         jtfPenalidadeDestrezaArmadura.setText("");
-        
+
         jButton1.setEnabled(true);
-        
-       
+        jBalterar.setEnabled(false);
+        jButton2.setEnabled(false);
+        jButton3.setEnabled(false);
+
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jBalterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBalterarActionPerformed
-        jtfNomeArmadura.setEnabled(true);
-        jcTipoArmadura.setEnabled(true);
-        jtfPrecoArmadura.setEnabled(true);
-        jtfBonusMaximoArmadura.setEnabled(true);
-        jtfPenalidadeDestrezaArmadura.setEnabled(true);
+        jtfNomeArmadura.setEditable(true);
+        jcTipoArmadura.setEditable(true);
+        jtfPrecoArmadura.setEditable(true);
+        jtfBonusMaximoArmadura.setEditable(true);
+        jtfPenalidadeDestrezaArmadura.setEditable(true);
+
+        jButton4.setEnabled(false);
+        jBconfirmar.setEnabled(true);
+        jBcancelar.setEnabled(true);
+
     }//GEN-LAST:event_jBalterarActionPerformed
 
     private void jBexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBexcluirActionPerformed
-     
+          
     }//GEN-LAST:event_jBexcluirActionPerformed
-
+    
     private void jBconfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconfirmarActionPerformed
-       Armaduras armd = new Armaduras();
+        Armaduras armd = new Armaduras();
         armd.setNome_armadura(jtfNomeArmadura.getText());
         armd.setTipo_armadura(jcTipoArmadura.getSelectedIndex());
         armd.setPreco_armadura(Double.parseDouble(jtfPrecoArmadura.getText()));
         armd.setBonus_maximo_armadura(Double.parseDouble(jtfBonusMaximoArmadura.getText()));
         armd.setPenalidade_destreza_armadura(Integer.parseInt(jtfPenalidadeDestrezaArmadura.getText()));
-        
+
         try {
             gg.alterar(armd);
         } catch (ClassNotFoundException ex) {
@@ -342,6 +362,13 @@ public class JFArmaduras extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        jButton4.setEnabled(true);
+        jButton1.setEnabled(false);
+        jBalterar.setEnabled(true);
+        jBconfirmar.setEnabled(false);
+        jBcancelar.setEnabled(false);
+
     }//GEN-LAST:event_jBconfirmarActionPerformed
 
     /**
@@ -397,6 +424,7 @@ public class JFArmaduras extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBalterar;
+    private javax.swing.JButton jBcancelar;
     private javax.swing.JButton jBconfirmar;
     private javax.swing.JButton jBexcluir;
     private javax.swing.JButton jButton1;

@@ -99,6 +99,7 @@ public class GenericDAO {
         }
         String sql = "UPDATE " + tabela + " SET " + campos + " WHERE " + lugar + "";
         PreparedStatement stmt = conexao.prepareCall(sql);
+         System.out.println(sql);
         stmt.execute();
         stmt.close();
         System.out.println("deu certo essa porra");
@@ -136,6 +137,10 @@ public class GenericDAO {
                     if (pvec[0].getName().equals("int")) {
                         args1[0] = int.class;
                         obj.getClass().getMethod(m.getName(), args1).invoke(obj, rset.getInt(s));
+                    }
+                    if (pvec[0].getName().equals("double")) {
+                        args1[0] = double.class;
+                        obj.getClass().getMethod(m.getName(), args1).invoke(obj, rset.getDouble(s));
                     }
                 }
             }
