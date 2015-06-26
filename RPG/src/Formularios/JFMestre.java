@@ -155,6 +155,11 @@ public class JFMestre extends javax.swing.JFrame {
 
         jbtjogar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbtjogar.setText("JOGAR");
+        jbtjogar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtjogarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -445,6 +450,11 @@ public class JFMestre extends javax.swing.JFrame {
             Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbtpericiaisActionPerformed
+
+    private void jbtjogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtjogarActionPerformed
+        Formularios.JFSelecaoCampanha sca = new Formularios.JFSelecaoCampanha();
+        sca.setVisible(true);
+    }//GEN-LAST:event_jbtjogarActionPerformed
 
     /**
      * @param args the command line arguments
