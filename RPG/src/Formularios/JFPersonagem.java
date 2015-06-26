@@ -110,6 +110,12 @@ public class JFPersonagem extends javax.swing.JFrame {
 
         jLabel2.setText("Idade");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 78, -1, -1));
+
+        jtfIdadePersonagem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfIdadePersonagemKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfIdadePersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 75, 120, -1));
 
         jLabel3.setText("Peso");
@@ -120,10 +126,21 @@ public class JFPersonagem extends javax.swing.JFrame {
                 jtfPesoPersonagemActionPerformed(evt);
             }
         });
+        jtfPesoPersonagem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfPesoPersonagemKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfPesoPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 101, 120, -1));
 
         jLabel4.setText("Altura");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 135, -1, -1));
+
+        jtfAlturaPersonagem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfAlturaPersonagemKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfAlturaPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 129, 120, -1));
 
         jLabel5.setText("Força");
@@ -143,11 +160,27 @@ public class JFPersonagem extends javax.swing.JFrame {
 
         jLabel10.setText("Carisma");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(299, 213, -1, -1));
+
+        jtfForcaPersonagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfForcaPersonagemActionPerformed(evt);
+            }
+        });
+        jtfForcaPersonagem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfForcaPersonagemKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfForcaPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 155, 120, -1));
 
         jtfDestrezaPersonagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfDestrezaPersonagemActionPerformed(evt);
+            }
+        });
+        jtfDestrezaPersonagem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfDestrezaPersonagemKeyTyped(evt);
             }
         });
         getContentPane().add(jtfDestrezaPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 181, 120, -1));
@@ -157,6 +190,11 @@ public class JFPersonagem extends javax.swing.JFrame {
                 jtfConstituicaoPersonagemActionPerformed(evt);
             }
         });
+        jtfConstituicaoPersonagem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfConstituicaoPersonagemKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfConstituicaoPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 207, 120, -1));
 
         jtfInteligenciaPersonagem.addActionListener(new java.awt.event.ActionListener() {
@@ -164,17 +202,46 @@ public class JFPersonagem extends javax.swing.JFrame {
                 jtfInteligenciaPersonagemActionPerformed(evt);
             }
         });
+        jtfInteligenciaPersonagem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfInteligenciaPersonagemKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfInteligenciaPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 233, 120, -1));
+
+        jtfSabedoriaPersonagem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfSabedoriaPersonagemKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfSabedoriaPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 259, 120, -1));
+
+        jtfCarismaPersonagem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfCarismaPersonagemKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfCarismaPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 210, 120, -1));
 
         jLabel11.setText("Fortitude");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 285, -1, -1));
+
+        jtfFortitudePersonagem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfFortitudePersonagemKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfFortitudePersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 285, 120, -1));
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 16, -1, -1));
 
         jLabel13.setText("Refexos");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 187, -1, -1));
+
+        jtfRefexoPersonagem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfRefexoPersonagemKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfRefexoPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 184, 120, -1));
 
         jLabel14.setText("Vontade");
@@ -183,6 +250,11 @@ public class JFPersonagem extends javax.swing.JFrame {
         jtfVontadePersonagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfVontadePersonagemActionPerformed(evt);
+            }
+        });
+        jtfVontadePersonagem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfVontadePersonagemKeyTyped(evt);
             }
         });
         getContentPane().add(jtfVontadePersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 158, 120, -1));
@@ -195,18 +267,41 @@ public class JFPersonagem extends javax.swing.JFrame {
                 jtfClasseArmaduraPersonagemActionPerformed(evt);
             }
         });
+        jtfClasseArmaduraPersonagem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfClasseArmaduraPersonagemKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfClasseArmaduraPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 49, 120, -1));
 
         jLabel16.setText("Pontos de Vida");
         getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 109, -1, -1));
+
+        jtfPontosDeVidaPersonagem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfPontosDeVidaPersonagemKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfPontosDeVidaPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 106, 120, -1));
 
         jLabel17.setText("Iniciativa");
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 135, -1, -1));
+
+        jtfIniciativaPersonagem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfIniciativaPersonagemKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfIniciativaPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 132, 120, -1));
 
         jLabel18.setText("Base de Ataque");
         getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 78, -1, -1));
+
+        jtfBaseDeAtaquePersonagem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfBaseDeAtaquePersonagemKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfBaseDeAtaquePersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 75, 120, -1));
 
         jBSalvar.setText("Salvar");
@@ -394,6 +489,106 @@ public class JFPersonagem extends javax.swing.JFrame {
     private void jtfVontadePersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfVontadePersonagemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfVontadePersonagemActionPerformed
+
+    private void jtfForcaPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfForcaPersonagemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfForcaPersonagemActionPerformed
+
+    private void jtfForcaPersonagemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfForcaPersonagemKeyTyped
+ String caracteres = "0987654321 "; //apenas numeros podem ser digitados
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
+            evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfForcaPersonagemKeyTyped
+
+    private void jtfIdadePersonagemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfIdadePersonagemKeyTyped
+ String caracteres = "0987654321 "; //apenas numeros podem ser digitados
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
+            evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfIdadePersonagemKeyTyped
+
+    private void jtfPesoPersonagemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesoPersonagemKeyTyped
+ String caracteres = "0987654321 "; //apenas numeros podem ser digitados
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
+            evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfPesoPersonagemKeyTyped
+
+    private void jtfAlturaPersonagemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfAlturaPersonagemKeyTyped
+ String caracteres = "0987654321 "; //apenas numeros podem ser digitados
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
+            evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfAlturaPersonagemKeyTyped
+
+    private void jtfDestrezaPersonagemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDestrezaPersonagemKeyTyped
+ String caracteres = "0987654321 "; //apenas numeros podem ser digitados
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
+            evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfDestrezaPersonagemKeyTyped
+
+    private void jtfConstituicaoPersonagemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfConstituicaoPersonagemKeyTyped
+ String caracteres = "0987654321 "; //apenas numeros podem ser digitados
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
+            evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfConstituicaoPersonagemKeyTyped
+
+    private void jtfInteligenciaPersonagemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfInteligenciaPersonagemKeyTyped
+ String caracteres = "0987654321 "; //apenas numeros podem ser digitados
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
+            evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfInteligenciaPersonagemKeyTyped
+
+    private void jtfSabedoriaPersonagemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfSabedoriaPersonagemKeyTyped
+ String caracteres = "0987654321 "; //apenas numeros podem ser digitados
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
+            evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfSabedoriaPersonagemKeyTyped
+
+    private void jtfFortitudePersonagemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfFortitudePersonagemKeyTyped
+ String caracteres = "0987654321 "; //apenas numeros podem ser digitados
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
+            evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfFortitudePersonagemKeyTyped
+
+    private void jtfClasseArmaduraPersonagemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfClasseArmaduraPersonagemKeyTyped
+ String caracteres = "0987654321 "; //apenas numeros podem ser digitados
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
+            evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfClasseArmaduraPersonagemKeyTyped
+
+    private void jtfBaseDeAtaquePersonagemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfBaseDeAtaquePersonagemKeyTyped
+ String caracteres = "0987654321 "; //apenas numeros podem ser digitados
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
+            evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfBaseDeAtaquePersonagemKeyTyped
+
+    private void jtfPontosDeVidaPersonagemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPontosDeVidaPersonagemKeyTyped
+ String caracteres = "0987654321 "; //apenas numeros podem ser digitados
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
+            evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfPontosDeVidaPersonagemKeyTyped
+
+    private void jtfIniciativaPersonagemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfIniciativaPersonagemKeyTyped
+ String caracteres = "0987654321 "; //apenas numeros podem ser digitados
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
+            evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfIniciativaPersonagemKeyTyped
+
+    private void jtfVontadePersonagemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfVontadePersonagemKeyTyped
+ String caracteres = "0987654321 "; //apenas numeros podem ser digitados
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
+            evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfVontadePersonagemKeyTyped
+
+    private void jtfRefexoPersonagemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfRefexoPersonagemKeyTyped
+ String caracteres = "0987654321 "; //apenas numeros podem ser digitados
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
+            evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfRefexoPersonagemKeyTyped
+
+    private void jtfCarismaPersonagemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCarismaPersonagemKeyTyped
+ String caracteres = "0987654321 "; //apenas numeros podem ser digitados
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
+            evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfCarismaPersonagemKeyTyped
 
     /**
      * @param args the command line arguments
