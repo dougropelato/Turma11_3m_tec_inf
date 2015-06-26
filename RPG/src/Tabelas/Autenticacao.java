@@ -31,6 +31,24 @@ public class Autenticacao extends Temporario {
     int codigo_posicao;
     int tam_x_mapa;
     int tam_y_mapa;
+    int coordenadaX_posicao;    //coordenadas da posicao em que o jogador está
+    int coordenadaY_posicao;
+
+    public int getCoordenadaX_posicao() {
+        return coordenadaX_posicao;
+    }
+
+    public void setCoordenadaX_posicao(int coordenadaX_posicao) {
+        this.coordenadaX_posicao = coordenadaX_posicao;
+    }
+
+    public int getCoordenadaY_posicao() {
+        return coordenadaY_posicao;
+    }
+
+    public void setCoordenadaY_posicao(int coordenadaY_posicao) {
+        this.coordenadaY_posicao = coordenadaY_posicao;
+    }
     
     public int getTam_x_mapa() {
         return tam_x_mapa;
