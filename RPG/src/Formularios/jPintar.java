@@ -22,7 +22,8 @@ public class jPintar extends JPanel {
     public void criaGrade(Graphics g, Color cor, int tamanhoX,
             int tamanhoY, int tamanhoGrade) {
 
-        Autenticacao aut = new Autenticacao();
+       
+        
         
         
         
@@ -41,11 +42,17 @@ public class jPintar extends JPanel {
         } 
 
         //jogador
+        
         g.drawRect(32, 32, 10, 10);
     }
 
     @Override
     public void paintComponent(Graphics g) {
-        criaGrade(g, Color.BLACK, 10, 10, 15);
+        
+         Autenticacao auth = Autenticacao.getInstance();
+         int tamx = auth.getTam_x_mapa();
+         int tamy = auth.getTam_y_mapa();
+         
+        criaGrade(g, Color.BLACK, tamx, tamy, 10);
     }
 }
