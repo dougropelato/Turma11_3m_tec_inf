@@ -190,6 +190,15 @@ public class JFNpc extends javax.swing.JFrame {
         jCBNovosItensCodArmaduraNpc = new javax.swing.JComboBox();
         jLNovosItensCodArmaduraNpcBanco = new javax.swing.JLabel();
         jTFNovosItensVerificaCodArmadura = new javax.swing.JTextField();
+        jLNovosItensCodArmaNpcBanco = new javax.swing.JLabel();
+        jCBNovosItensCodArmaNpc = new javax.swing.JComboBox();
+        jTFNovosItensVerificaCodArma = new javax.swing.JTextField();
+        jLNovosItensCodConsumivelNpcBanco = new javax.swing.JLabel();
+        jLNovosItensCodEscudoNpcBanco = new javax.swing.JLabel();
+        jCBNovosItensCodConsumivelNpc = new javax.swing.JComboBox();
+        jCBNovosItensCodEscudoNpc = new javax.swing.JComboBox();
+        jTFNovosItensVerificaCodConsumivel = new javax.swing.JTextField();
+        jTFNovosItensVerificaCodEscudo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Npc's");
@@ -860,12 +869,48 @@ public class JFNpc extends javax.swing.JFrame {
                 jCBNovosItensCodArmaduraNpcItemStateChanged(evt);
             }
         });
-        jPanel2.add(jCBNovosItensCodArmaduraNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 90, -1));
+        jPanel2.add(jCBNovosItensCodArmaduraNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 90, -1));
 
         jLNovosItensCodArmaduraNpcBanco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLNovosItensCodArmaduraNpcBanco.setText("Cod Armadura");
-        jPanel2.add(jLNovosItensCodArmaduraNpcBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 90, -1));
-        jPanel2.add(jTFNovosItensVerificaCodArmadura, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 60, -1));
+        jPanel2.add(jLNovosItensCodArmaduraNpcBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 90, -1));
+        jPanel2.add(jTFNovosItensVerificaCodArmadura, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 60, -1));
+
+        jLNovosItensCodArmaNpcBanco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLNovosItensCodArmaNpcBanco.setText("Cod Arma");
+        jPanel2.add(jLNovosItensCodArmaNpcBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 90, -1));
+
+        jCBNovosItensCodArmaNpc.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBNovosItensCodArmaNpcItemStateChanged(evt);
+            }
+        });
+        jPanel2.add(jCBNovosItensCodArmaNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 90, -1));
+        jPanel2.add(jTFNovosItensVerificaCodArma, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 60, -1));
+
+        jLNovosItensCodConsumivelNpcBanco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLNovosItensCodConsumivelNpcBanco.setText("Cod Consumivel");
+        jPanel2.add(jLNovosItensCodConsumivelNpcBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 90, -1));
+
+        jLNovosItensCodEscudoNpcBanco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLNovosItensCodEscudoNpcBanco.setText("Cod Escudo");
+        jPanel2.add(jLNovosItensCodEscudoNpcBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 90, -1));
+
+        jCBNovosItensCodConsumivelNpc.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBNovosItensCodConsumivelNpcItemStateChanged(evt);
+            }
+        });
+        jPanel2.add(jCBNovosItensCodConsumivelNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 90, -1));
+
+        jCBNovosItensCodEscudoNpc.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBNovosItensCodEscudoNpcItemStateChanged(evt);
+            }
+        });
+        jPanel2.add(jCBNovosItensCodEscudoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 90, -1));
+        jPanel2.add(jTFNovosItensVerificaCodConsumivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 60, -1));
+        jPanel2.add(jTFNovosItensVerificaCodEscudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 60, -1));
 
         jTPNPC.addTab("Adicionar Novos Itens", jPanel2);
 
@@ -2055,6 +2100,9 @@ public class JFNpc extends javax.swing.JFrame {
             }
             
             BuscarCodArmaduraNpcsBanco(null);
+            BuscarCodArmaNpcsBanco(null);
+            BuscarCodConsumivelNpcsBanco(null);
+            BuscarCodEscudoNpcsBanco(null);
         
         } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
@@ -2107,6 +2155,8 @@ public class JFNpc extends javax.swing.JFrame {
                 Armas codarma = (Armas) cod;
                 jTFNovosItensCodArma.setText(String.valueOf(codarma.getCodigo_arma()));
             }
+            
+            jCBNovosItensCodArmaNpc.setSelectedItem(jTFNovosItensVerificaCodArma.getText());
         
         } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
@@ -2132,6 +2182,8 @@ public class JFNpc extends javax.swing.JFrame {
                 Consumiveis codconsumivel = (Consumiveis) cod;
                 jTFNovosItensCodConsumivel.setText(String.valueOf(codconsumivel.getCodigo_consumivel()));
             }
+            
+            jCBNovosItensCodConsumivelNpc.setSelectedItem(jTFNovosItensVerificaCodConsumivel.getText());
         
         } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
@@ -2158,6 +2210,8 @@ public class JFNpc extends javax.swing.JFrame {
                 jTFNovosItensCodEscudo.setText(String.valueOf(codescudo.getCodigo_escudo()));
             }
         
+            jCBNovosItensCodEscudoNpc.setSelectedItem(jTFNovosItensVerificaCodEscudo.getText());
+            
         } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -2187,22 +2241,18 @@ public class JFNpc extends javax.swing.JFrame {
                 
                 ArmadurasNpcs NovaArmaduraNpc = new ArmadurasNpcs();
 
+                // Verifica se campos codigo são iguais ao que esta cadastrado
                 // Se já existir o valor ele faz um update na tabela
-                System.out.println(jTFNovosItensCodArmadura.getText()+" = "+jTFNovosItensVerificaCodArmadura.getText());
-                
-                if ( jTFNovosItensCodArmadura.getText() == jTFNovosItensVerificaCodArmadura.getText() ) {
+                if ( jTFNovosItensCodArmadura.getText().equalsIgnoreCase(jTFNovosItensVerificaCodArmadura.getText()) ) {
                     
-                    System.out.println("Alterar");
                     NovaArmaduraNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
                     NovaArmaduraNpc.setCodigo_armadura(Integer.parseInt(jTFNovosItensCodArmadura.getText()));
                     NovaArmaduraNpc.setQuantidade_armadura(Integer.parseInt(jTFNovosItensQuantidadeArmaduraNpc.getText()));
-                    gDao.alterar(NovaArmaduraNpc);
-                    
+                    gDao.alterar(NovaArmaduraNpc); 
                 }
                 
                 else{// Senão, ele faz um insert
                     
-                    System.out.println("Cadastrar");
                     NovaArmaduraNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
                     NovaArmaduraNpc.setCodigo_armadura(Integer.parseInt(jTFNovosItensCodArmadura.getText()));
                     NovaArmaduraNpc.setQuantidade_armadura(Integer.parseInt(jTFNovosItensQuantidadeArmaduraNpc.getText()));
@@ -2279,6 +2329,8 @@ public class JFNpc extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jBNovosItensAdicionarActionPerformed
 
+    // --- Verificações para cadastro em N/N --- //
+    
     // Busca codigo_armadura que esta cadastrado em tabela ArmadurasNpcs atraves do Npc selecionado
     public void BuscarCodArmaduraNpcsBanco(java.awt.event.ActionEvent evt) {   
 
@@ -2307,6 +2359,94 @@ public class JFNpc extends javax.swing.JFrame {
         }
         
     }
+    
+    // Busca codigo_arma que esta cadastrado em tabela ArmadurasNpcs atraves do Npc selecionado
+    public void BuscarCodArmaNpcsBanco(java.awt.event.ActionEvent evt){
+    
+        try {    
+        
+            GenericDAO gDao = new GenericDAO();
+            ArmasNpcs armanpc = new ArmasNpcs();
+        
+            jCBNovosItensCodArmaNpc.removeAllItems();
+            
+            List<Object> ListarArmasNpcs = new ArrayList<>();
+
+            armanpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
+
+            ListarArmasNpcs = gDao.listar2(ArmasNpcs.class, armanpc);
+
+            for (Object cod : ListarArmasNpcs) {
+                ArmasNpcs codarma = (ArmasNpcs) cod;
+                jCBNovosItensCodArmaNpc.addItem(String.valueOf(codarma.getCodigo_arma()));
+            }
+
+            jCBNovosItensCodArmaNpc.setSelectedIndex(-1);
+        
+        } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    
+    } 
+    
+    // Busca codigo_consumivel que esta cadastrado em tabela ArmadurasNpcs atraves do Npc selecionado
+    public void BuscarCodConsumivelNpcsBanco(java.awt.event.ActionEvent evt){
+    
+        try {    
+        
+            GenericDAO gDao = new GenericDAO();
+            ConsumiveisNpcs consumivelnpc = new ConsumiveisNpcs();
+        
+            jCBNovosItensCodConsumivelNpc.removeAllItems();
+            
+            List<Object> ListarConsumiveisNpcs = new ArrayList<>();
+
+            consumivelnpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
+
+            ListarConsumiveisNpcs = gDao.listar2(ConsumiveisNpcs.class, consumivelnpc);
+
+            for (Object cod : ListarConsumiveisNpcs) {
+                ConsumiveisNpcs codconsumivel = (ConsumiveisNpcs) cod;
+                jCBNovosItensCodConsumivelNpc.addItem(String.valueOf(codconsumivel.getCodigo_consumivel()));
+            }
+
+            jCBNovosItensCodConsumivelNpc.setSelectedIndex(-1);
+        
+        } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        }    
+        
+    }
+    
+    // Busca codigo_escudo que esta cadastrado em tabela ArmadurasNpcs atraves do Npc selecionado
+    public void BuscarCodEscudoNpcsBanco(java.awt.event.ActionEvent evt){
+    
+        try {    
+        
+            GenericDAO gDao = new GenericDAO();
+            EscudosNpcs escudonpc = new EscudosNpcs();
+        
+            jCBNovosItensCodEscudoNpc.removeAllItems();
+            
+            List<Object> ListarEscudoNpcs = new ArrayList<>();
+
+            escudonpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
+
+            ListarEscudoNpcs = gDao.listar2(EscudosNpcs.class, escudonpc);
+
+            for (Object cod : ListarEscudoNpcs) {
+                EscudosNpcs codescudo = (EscudosNpcs) cod;
+                jCBNovosItensCodEscudoNpc.addItem(String.valueOf(codescudo.getCodigo_escudo()));
+            }
+
+            jCBNovosItensCodEscudoNpc.setSelectedIndex(-1);
+        
+        } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
             
     // Lista Npcs cadastrados e mostra em ComboBox em aba Adicionar Nova Fala
     private void jBNovaFalaAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovaFalaAtualizarActionPerformed
@@ -2615,9 +2755,23 @@ public class JFNpc extends javax.swing.JFrame {
         Npc.setVisible(false);
     }//GEN-LAST:event_jBAlterarActionPerformed
 
+    // --- Valores de ComboBox passam para jTF sendo utilizados para fazer verificação --- // 
+    
     private void jCBNovosItensCodArmaduraNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNovosItensCodArmaduraNpcItemStateChanged
         jTFNovosItensVerificaCodArmadura.setText((String) jCBNovosItensCodArmaduraNpc.getSelectedItem());
     }//GEN-LAST:event_jCBNovosItensCodArmaduraNpcItemStateChanged
+
+    private void jCBNovosItensCodArmaNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNovosItensCodArmaNpcItemStateChanged
+        jTFNovosItensVerificaCodArma.setText((String) jCBNovosItensCodArmaNpc.getSelectedItem());
+    }//GEN-LAST:event_jCBNovosItensCodArmaNpcItemStateChanged
+
+    private void jCBNovosItensCodConsumivelNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNovosItensCodConsumivelNpcItemStateChanged
+        jTFNovosItensVerificaCodConsumivel.setText((String) jCBNovosItensCodConsumivelNpc.getSelectedItem());
+    }//GEN-LAST:event_jCBNovosItensCodConsumivelNpcItemStateChanged
+
+    private void jCBNovosItensCodEscudoNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNovosItensCodEscudoNpcItemStateChanged
+        jTFNovosItensVerificaCodEscudo.setText((String) jCBNovosItensCodEscudoNpc.getSelectedItem());
+    }//GEN-LAST:event_jCBNovosItensCodEscudoNpcItemStateChanged
     
     
     /**
@@ -2689,7 +2843,10 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCBNovosItensAdicionarEscudo;
     private javax.swing.JComboBox jCBNovosItensArmaNpc;
     private javax.swing.JComboBox jCBNovosItensArmaduraNpc;
+    private javax.swing.JComboBox jCBNovosItensCodArmaNpc;
     private javax.swing.JComboBox jCBNovosItensCodArmaduraNpc;
+    private javax.swing.JComboBox jCBNovosItensCodConsumivelNpc;
+    private javax.swing.JComboBox jCBNovosItensCodEscudoNpc;
     private javax.swing.JComboBox jCBNovosItensConsumivelNpc;
     private javax.swing.JComboBox jCBNovosItensEscudoNpc;
     private javax.swing.JComboBox jCBNovosItensNomeNpc;
@@ -2714,7 +2871,10 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JLabel jLNovosItens;
     private javax.swing.JLabel jLNovosItensArmaNpc;
     private javax.swing.JLabel jLNovosItensArmaduraNpc;
+    private javax.swing.JLabel jLNovosItensCodArmaNpcBanco;
     private javax.swing.JLabel jLNovosItensCodArmaduraNpcBanco;
+    private javax.swing.JLabel jLNovosItensCodConsumivelNpcBanco;
+    private javax.swing.JLabel jLNovosItensCodEscudoNpcBanco;
     private javax.swing.JLabel jLNovosItensConsumivelNpc;
     private javax.swing.JLabel jLNovosItensEscudoNpc;
     private javax.swing.JLabel jLNovosItensQuantidadeItensNpc;
@@ -2770,7 +2930,10 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JTextField jTFNovosItensQuantidadeConsumivelNpc;
     private javax.swing.JTextField jTFNovosItensQuantidadeEscudoNpc;
     private javax.swing.JTextField jTFNovosItensTipoNpc;
+    private javax.swing.JTextField jTFNovosItensVerificaCodArma;
     private javax.swing.JTextField jTFNovosItensVerificaCodArmadura;
+    private javax.swing.JTextField jTFNovosItensVerificaCodConsumivel;
+    private javax.swing.JTextField jTFNovosItensVerificaCodEscudo;
     private javax.swing.JTextField jTFPontosdeVida;
     private javax.swing.JTextField jTFQuantidadeArmaNpc;
     private javax.swing.JTextField jTFQuantidadeArmaduraNpc;
