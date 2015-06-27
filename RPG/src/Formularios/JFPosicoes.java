@@ -5,6 +5,7 @@
  */
 package formularios;
 
+//Importações da Biblioteca Java
 import Tabelas.PericiasPosicoes;
 import dao.GenericDAO;
 import java.awt.Dimension;
@@ -31,7 +32,7 @@ import tabelas.PosicoesNpcs;
 
 /**
  *
- * @author Orlando
+ * @author Kaayo
  */
 public class JFPosicoes extends javax.swing.JFrame {
 
@@ -41,12 +42,14 @@ public class JFPosicoes extends javax.swing.JFrame {
     ArrayList arrayListPosicoes = new ArrayList(); //salva todos os codigos de Caminhos do combobox 
     ArrayList arrayListPericias = new ArrayList(); //salva todos os codigos de Pericias no combobox
 
+    //Método Void para Centralizar o Formulário Posições quando Iniciado (Visível)
     public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
         setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
     }
 
+    //Método Void para Carregar o JComboBox Caminho
     public void carregaComboCaminhos() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         GenericDAO gDAO = new GenericDAO();
         Caminhos caminho = new Caminhos();
@@ -55,50 +58,71 @@ public class JFPosicoes extends javax.swing.JFrame {
         for (Object obj : list) {
             Caminhos c = (Caminhos) obj;
 
+            //Exibe Mensagens
             System.out.println("cod caminho " + c.getCodigo_caminho());
             System.out.println("cod missao " + c.getCodigo_campanha());
             System.out.println("nome caminho " + c.getNome_caminho());
 
+            //Arrays recebem os respectivos códigos e indexam-os
             arrayListCaminhos.add(c.getCodigo_caminho());
             arrayListCampanhas.add(c.getCodigo_campanha());
+
+            //JComboBox Caminho recebe o Nome do Caminho
             jcbCaminho.addItem(c.getNome_caminho());
         }
     }
 
+    //Método void para Carregar o JComboBox NPC
     public void carregaComboNpc() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
+        //Criando Objetos
         GenericDAO gDAO = new GenericDAO();
         Npcs npc = new Npcs();
+
+        //Criadno Lista da Classe NPCs
         List<Object> list = gDAO.listar(Npcs.class);
 
         for (Object obj2 : list) {
             Npcs n = (Npcs) obj2;
 
+            //Exibe Mensagens
             System.out.println("cod npc " + n.getCodigo_npc());
             System.out.println("nome npc " + n.getNome_npc());
 
+            //Array recebe o respectivo código e indexa-o
             arrayListNpc.add(npc.getCodigo_npc());
+
+            //JComboBox recebe o Nome do NPC
             jcbNpc.addItem(n.getNome_npc());
         }
     }
 
+    //Método Void que Carreaga o JComboBox Pericia
     public void carregaComboPericia() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
+        //Criando Objetos...
         GenericDAO gDAO2 = new GenericDAO();
         Pericias pericia = new Pericias();
+
+        //Criando Lista da Classe Perícias
         List<Object> list = gDAO2.listar(Pericias.class);
 
         for (Object obj3 : list) {
             Pericias p = (Pericias) obj3;
 
+            //Exibe Mensagens
             System.out.println("cod pericia " + p.getCodigo_pericia());
             System.out.println("Nome pericia " + p.getNome_pericia());
 
+            //Array recebe o respectivo código e indexa-o
             arrayListPericias.add(pericia.getCodigo_pericia());
+
+            //JComboBox Pericia recebe o Nome da Pericia 
             jcbPericias.addItem(p.getNome_pericia());
         }
     }
 
+    //Método Void que limpa os Campos das Posições...
     public void LimpaCamposPosicoes() {
         jtaDescricaoCaminho.setText("");
         jtaDescricaoPericia.setText("");
@@ -113,19 +137,17 @@ public class JFPosicoes extends javax.swing.JFrame {
         initComponents();
         centralizarComponente();
 
+        //Quando é Inicializado o os Componentes do JFrame 'Posicoes' ocorre os seguintes configurações...
         jtaDescricaoCaminho.setLineWrap(true);//Adiciona quebra de linha no Campo 'Descrição Perícia'
         jcbNpc.setVisible(false); //Seta o JComboBox NPC como Invisível
         jcbPericias.setVisible(false); //Seta o JComboBox Perícia como Invisível
-        jlSelecNpc.setVisible(false);
-        jlSelectPericia.setVisible(false);
-
-        jcbPericias.setVisible(false);
-        jlSelectPericia.setVisible(false);
-
-        jcbValorPericia.setVisible(false);
-        jlTituloDificuldadePericia.setVisible(false);
-
-        jtaDescricaoPericia.setVisible(false);
+        jlSelecNpc.setVisible(false);// ""  ""  ""  ""  ""  ""  ""  ""  ""  ""  ""
+        jlSelectPericia.setVisible(false);// ""  ""  ""  ""  ""  ""  ""  ""  ""  ""  ""
+        jcbPericias.setVisible(false);// ""  ""  ""  ""  ""  ""  ""  ""  ""  ""  ""
+        jlSelectPericia.setVisible(false);// ""  ""  ""  ""  ""  ""  ""  ""  ""  ""  ""
+        jcbValorPericia.setVisible(false);// ""  ""  ""  ""  ""  ""  ""  ""  ""  ""  ""
+        jlTituloDificuldadePericia.setVisible(false);// ""  ""  ""  ""  ""  ""  ""  ""  ""  ""  ""
+        jtaDescricaoPericia.setVisible(false);// ""  ""  ""  ""  ""  ""  ""  ""  ""  ""  ""
 
     }
 
@@ -406,76 +428,78 @@ public class JFPosicoes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbNpcActionPerformed
 
+//Declaração de Método Void presente no Evento do Botão 'Salvar' quando Pressionado...
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
         try {
-            if (jtaDescricaoCaminho.getText().equals("") || jtfValorY.getText().equals("") || jtfValorX.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Preencha Todos os Campos!");
-            } else {
-                if (jcheckNpc.isSelected() && (jcheckPericia.isSelected()) && jtaDescricaoPericia.getText().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Preencha Todos os Campos!");
-                } else {
-                    if (jcheckNpc.isSelected() && (jcheckPericia.isSelected()) && !jtaDescricaoPericia.getText().equals("")) {
-                        GenericDAO gDAO = new GenericDAO();
-                        Posicoes posicoes = new Posicoes();
+            if (jtaDescricaoCaminho.getText().equals("") || jtfValorY.getText().equals("") || jtfValorX.getText().equals("")) {//Se o Campos Estiverem em Branco faça...
+                JOptionPane.showMessageDialog(null, "Preencha Todos os Campos!");//Exiba Mensagem...
+            } else {//Senão faça...1
+                if (jcheckNpc.isSelected() && (jcheckPericia.isSelected()) && jtaDescricaoPericia.getText().equals("")) {//Se o CheckBoxes NPC e Perícia Estiverem Selecionados e o JTexTArea Estiver em Branco faça...
+                    JOptionPane.showMessageDialog(null, "Preencha Todos os Campos!");//Exiba Mensagem                                  
+                } else {//Senão Faça...2
+                    if (jcheckNpc.isSelected() && (jcheckPericia.isSelected()) && !jtaDescricaoPericia.getText().equals("")) {//Se os CheckBoxes NPC e Perícia Estiverem Selecionados e o JTextArea Estiver com Algum Caracter em seus Campo faça...
+                        //Criando Objetos...
+                        GenericDAO gDAO = new GenericDAO();//Objeto do Package dao
+                        Posicoes posicoes = new Posicoes();//Criando Objeto 'possicoes' da Classe Posicoes (Proveniente do Package Tabelas)
                         PosicoesNpcs posicaoNpc = new PosicoesNpcs();
                         Npcs npc = new Npcs();
                         Pericias pericias = new Pericias();
                         PericiasPosicoes periciaPosicao = new PericiasPosicoes();
 
-                        //Insertes tabela 'Posicoes'
-                        posicoes.setCodigo_caminho((int) (arrayListCaminhos.get(jcbCaminho.getSelectedIndex())));
-                        posicoes.setDescricao_posicao(jtaDescricaoCaminho.getText());
-                        posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));
-                        posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorY.getText()));
-                        gDAO.adicionar(posicoes); //cadastrando posicao
+                        //Inserts na Tabela 'Posicoes'
+                        posicoes.setCodigo_caminho((int) (arrayListCaminhos.get(jcbCaminho.getSelectedIndex())));//Classe 'Posicoes' seta seu atributo 'codigo_caminho' com o valor do ArrayList (arrayListCaminhos) proveniente do JComboBox
+                        posicoes.setDescricao_posicao(jtaDescricaoCaminho.getText()); ////Classe 'Posicoes' seta seu atributo 'descricao_posicao' com os dados provenientes do campo memo JTextArea.
+                        posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));//Classe 'Posicoes' seta seu atributo 'coordenadaX_posicao' com o valor campo JTexTFiel1.
+                        posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorY.getText()));//Classe 'Posicoes' seta seu atributo 'coordenadaY_posicao' com o valor campo JTexTFiel2.
+                        gDAO.adicionar(posicoes); //cadastrando posicao no Banco de Dados***
                         posicoes.setCodigo_posicao(gDAO.codigoMax(Posicoes.class));//Pega o código da última posição cadastrada
                         System.out.println("Posição Cadastrada com Sucesso!");//
                         ////////////////////////////////////////////////////
                         //Inserts Tabela N/N 'PosicoesNpcs'
-                        npc.setNome_npc(jcbNpc.getSelectedItem().toString());
-                        List<Object> list = gDAO.listar2(Npcs.class, npc);
+                        npc.setNome_npc(jcbNpc.getSelectedItem().toString());//Atributo 'nome_npc' da Classe NPCs recebe o 'nome do  npc' seçlecionado no JComboBox
+                        List<Object> list = gDAO.listar2(Npcs.class, npc);//Criando uma 'Lista' para a Classe 'NPCs' do qual receberá todos os atributos da Classe.
 
-                        for (Object obj4 : list) {
-                            Npcs npcc = (Npcs) obj4;
-                            posicaoNpc.setCodigo_npc(npcc.getCodigo_npc());
+                        for (Object obj4 : list) {//Criando 'For' para listar todos os atributos da Classe NPCs
+                            Npcs npcc = (Npcs) obj4;//Criando Objeto 'npcc' da Classe NPCs
+                            posicaoNpc.setCodigo_npc(npcc.getCodigo_npc());//atributo 'codigo_npc' da Classe 'PosicoesNPCs' recebe o Código do NPC selecionado no JComboBox
                         }
-                        posicaoNpc.setCodigo_posicao(posicoes.getCodigo_posicao());
+                        posicaoNpc.setCodigo_posicao(posicoes.getCodigo_posicao());//Atributo 'codigo_posicao' da Classe 'PosicoesNpcs' recebe o código da posição durante o cadastro da mesma.  
                         System.out.println(posicoes.getCodigo_posicao());
-                        gDAO.adicionar(posicaoNpc);//Cadastrando npc
+                        gDAO.adicionar(posicaoNpc);//Cadastrando NPC no Banco de Dados***
                         System.out.println("NPC Cadastrado com Sucesso!");
                         /////////////////////////////////////////////////////////////
                         //Inserts Tabela N/N 'PericiasPosicoes'
-                        int varDificuldadePericia = (0);
+                        int varDificuldadePericia = (0);//Iniciando variável inteira com valor '0'
 
-                        if (jcbValorPericia.getSelectedIndex() == 0) { //Fácil
-                            varDificuldadePericia = 5;
+                        if (jcbValorPericia.getSelectedIndex() == 0) { //Fácil - Se o Item de nome 'Fácil' de index 0 presente no JComboxBox for Selecionado Faça...
+                            varDificuldadePericia = 5; //Variável declarada no início recebe o valor 5
                         }
-                        if (jcbValorPericia.getSelectedIndex() == 1) { //Médio
+                        if (jcbValorPericia.getSelectedIndex() == 1) { //Médio ''       ''      ''      ''      ''      ''      ''      ''      ''      ''
                             varDificuldadePericia = 10;
                         }
-                        if (jcbValorPericia.getSelectedIndex() == 2) { //Difícil
+                        if (jcbValorPericia.getSelectedIndex() == 2) { //Difícil ''       ''      ''      ''      ''      ''      ''      ''      ''      ''
                             varDificuldadePericia = 15;
                         }
-                        if (jcbValorPericia.getSelectedIndex() == 3) { //Formidável
+                        if (jcbValorPericia.getSelectedIndex() == 3) { //Formidável ''       ''      ''      ''      ''      ''      ''      ''      ''      ''
                             varDificuldadePericia = 20;
                         }
-                        if (jcbValorPericia.getSelectedIndex() == 4) { //Desafiador
-                            varDificuldadePericia = 25;
+                        if (jcbValorPericia.getSelectedIndex() == 4) { //Desafiador - Se o Item de nome 'Desafiador' de index 4 presente no JComboxBox for Selecionado Faça...
+                            varDificuldadePericia = 25; //Variável declarada no início recebe o valor 25
                         }
-                        if (jcbValorPericia.getSelectedIndex() == 5) { //Heróico
+                        if (jcbValorPericia.getSelectedIndex() == 5) { //Heróico ''       ''      ''      ''      ''      ''      ''      ''      ''      ''
                             varDificuldadePericia = 30;
                         }
-                        if (jcbValorPericia.getSelectedIndex() == 6) { //Impossível
+                        if (jcbValorPericia.getSelectedIndex() == 6) { //Impossível ''       ''      ''      ''      ''      ''      ''      ''      ''      ''
                             varDificuldadePericia = 40;
                         }
 
-                        pericias.setNome_pericia(jcbPericias.getSelectedItem().toString());
-                        List<Object> list2 = gDAO.listar2(Pericias.class, pericias);
+                        pericias.setNome_pericia(jcbPericias.getSelectedItem().toString()); //atributo 'nome_pericia' da Classe 'Pericias' recebe o Nome da Pericia Selecionada mo JComboBox
+                        List<Object> list2 = gDAO.listar2(Pericias.class, pericias);//Criando uma Lista para a Classe Pericias
                         //System.out.println("Estou aqui deeerrreeentroooo!!!");
 
-                        for (Object obj5 : list2) {
+                        for (Object obj5 : list2) {//Criando 'For' para listar todos os atributos da Classe
                             Pericias peric = (Pericias) obj5;
-                            periciaPosicao.setCodigo_pericia(peric.getCodigo_pericia());
+                            periciaPosicao.setCodigo_pericia(peric.getCodigo_pericia());//atributo 'codigo_pericia' da Classe Pericias recebe o código da pericia selecioanda no JComboBox
                         }
                         periciaPosicao.setCodigo_posicao(posicoes.getCodigo_posicao());
                         periciaPosicao.setDificuldade_pericia(varDificuldadePericia);
@@ -486,18 +510,16 @@ public class JFPosicoes extends javax.swing.JFrame {
                         System.out.println("Pericia Cadastrados com Sucesso! " + varDificuldadePericia + "");
                         LimpaCamposPosicoes();//Limpa Posicoes
                         JOptionPane.showMessageDialog(null, "Posição, NPC e Perícia Cadastrados com Sucesso!");
-
-                    } else {
-
-                        if (jcheckNpc.isSelected()) {
-
+                    } else {//Senão Falça...3
+                        if (jcheckNpc.isSelected()) {//Se o CheckBox NPC estive Selecionado faça...                           
+                            //Criando Objetos...
                             GenericDAO gDAO = new GenericDAO();
                             Posicoes posicoes = new Posicoes();
                             PosicoesNpcs posicaoNpc = new PosicoesNpcs();
                             Npcs npc = new Npcs();
 
-                            //Insertes tabela 'Posicoes'
-                            posicoes.setCodigo_caminho((int) (arrayListCaminhos.get(jcbCaminho.getSelectedIndex())));
+                            //Inserts na Tabela 'Posicoes'
+                            posicoes.setCodigo_caminho((int) (arrayListCaminhos.get(jcbCaminho.getSelectedIndex())));//
                             posicoes.setDescricao_posicao(jtaDescricaoCaminho.getText());
                             posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));
                             posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorY.getText()));
@@ -518,8 +540,8 @@ public class JFPosicoes extends javax.swing.JFrame {
                             gDAO.adicionar(posicaoNpc);//Cadastrando npc
                             System.out.println("NPC Cadastrado com Sucesso!");
                             LimpaCamposPosicoes();//Limpa Posicoes
-                            JOptionPane.showMessageDialog(null, "Posição e NPC Cadastrados com Sucesso!");
-                        } else {
+                            JOptionPane.showMessageDialog(null, "Posição e NPC Cadastrados com Sucesso!");//Exibe Mensagem
+                        } else {//Senão faça...
                             if (jcheckPericia.isSelected()) {
                                 if (jtaDescricaoPericia.getText().equals("")) {
                                     JOptionPane.showMessageDialog(null, "Preencha Todos os Campos!");
@@ -539,7 +561,7 @@ public class JFPosicoes extends javax.swing.JFrame {
                                     System.out.println("Posição Cadastrada com Sucesso!");//
                                     ////////////////////////////////////////////////////
 
-                                    int varDificuldadePericia = (0);
+                                    int varDificuldadePericia = (0);//Declarando variável inteira com valor 0
 
                                     if (jcbValorPericia.getSelectedIndex() == 0) { //Fácil
                                         varDificuldadePericia = 5;
@@ -575,14 +597,12 @@ public class JFPosicoes extends javax.swing.JFrame {
                                     periciaPosicao.setDificuldade_pericia(varDificuldadePericia);
                                     periciaPosicao.setDescricao_pericia_sucesso(jtaDescricaoPericia.getText());
                                     System.out.println(posicoes.getCodigo_posicao());
-
-                                    gDAO.adicionar(periciaPosicao);
+                                    gDAO.adicionar(periciaPosicao);//Cadastra a pericia no Banco de Dados***
                                     System.out.println("Pericia Cadastrados com Sucesso! " + varDificuldadePericia + "");
                                     LimpaCamposPosicoes();//Limpa Posicoes
-                                    JOptionPane.showMessageDialog(null, "Posição e Perícia Cadastrados com Sucesso!");
-
+                                    JOptionPane.showMessageDialog(null, "Posição e Perícia Cadastrados com Sucesso!");//Exibe Mensagem
                                 }
-                            } else {
+                            } else {//Senão faça...                               
                                 //Cadastra Posições Vazias (Sem NPC e Sem Perícia)
                                 GenericDAO gDAO = new GenericDAO();
                                 Posicoes posicoes = new Posicoes();
@@ -592,20 +612,16 @@ public class JFPosicoes extends javax.swing.JFrame {
                                 posicoes.setDescricao_posicao(jtaDescricaoCaminho.getText());
                                 posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));
                                 posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorY.getText()));
-                                gDAO.adicionar(posicoes); //cadastrando posicao
+                                gDAO.adicionar(posicoes); //cadastrando posicao no Banco de Dados***
                                 posicoes.setCodigo_posicao(gDAO.codigoMax(Posicoes.class));//Pega o código da última posição cadastrada
                                 System.out.println("Posição Cadastrada com Sucesso!");//
                                 ////////////////////////////////////////////////////
 
                                 LimpaCamposPosicoes();//Limpa Posicoes
 
-                                JOptionPane.showMessageDialog(null, "Posição Cadastrada com Sucesso!");
-
+                                JOptionPane.showMessageDialog(null, "Posição Cadastrada com Sucesso!");//Exibe Mensagem
                             }
-
-                        }//
-
-                        ///
+                        }
                     }
                 }
             }
@@ -626,13 +642,14 @@ public class JFPosicoes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbSalvarActionPerformed
 
-
+//Método void presente no Evento do Formulário Posições quando Aberto(Visível)
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
         try {
-            carregaComboCaminhos();
-            carregaComboNpc();
-            carregaComboPericia();
+            //Iniciando Métodos...
+            carregaComboCaminhos();//JComboBox Caminhos...
+            carregaComboNpc();//JComboBox NPC...
+            carregaComboPericia();//JComboBox Pericia...
 
         } catch (SQLException ex) {
             Logger.getLogger(JFPosicoes.class
@@ -659,9 +676,10 @@ public class JFPosicoes extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jcbCaminhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCaminhoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jcbCaminhoActionPerformed
 
+//Método void do Evento do Checkbox NPC quando Selecionado ou Não...    
     private void jcheckNpcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcheckNpcActionPerformed
         if (jcheckNpc.isSelected()) {
             jcbNpc.setVisible(true);
@@ -672,83 +690,69 @@ public class JFPosicoes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jcheckNpcActionPerformed
 
+//Método void do Evento do Checkbox Pericias quando Selecionado ou Não...    
     private void jcheckPericiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcheckPericiaActionPerformed
-        if (jcheckPericia.isSelected()) {
-            jcbPericias.setVisible(true);
-            jlSelectPericia.setVisible(true);
-
-            jcbValorPericia.setVisible(true);
-            jlTituloDificuldadePericia.setVisible(true);
-
-            jtaDescricaoPericia.setVisible(true);
-
-        } else {
+        if (jcheckPericia.isSelected()) {//Se checkBox selecionado faça...
+            jcbPericias.setVisible(true);//Habilita visualmente o JComboBox das Pericias
+            jlSelectPericia.setVisible(true);//Habilita visualmente o Label das Pericias
+            jcbValorPericia.setVisible(true);//Habilita visualmente o JComboBox da Dificuldade das Pericias
+            jlTituloDificuldadePericia.setVisible(true);//Habilita visualmente o Label das Dificuldades das Pericias
+            jtaDescricaoPericia.setVisible(true);//Habilita visualmente o JTextArea das Pericias
+        } else {//Senão Faça... Sete todas as opções acima como invisíveis...
             jcbPericias.setVisible(false);
             jlSelectPericia.setVisible(false);
-
             jcbValorPericia.setVisible(false);
             jlTituloDificuldadePericia.setVisible(false);
-
             jtaDescricaoPericia.setVisible(false);
         }
-
     }//GEN-LAST:event_jcheckPericiaActionPerformed
 
+//Método Void do Evento do Campo Valor X quando É inserido algo no mesmo...
     private void jtfValorXKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfValorXKeyTyped
-        String caracteres = "0987654321 "; //apenas numeros podem ser digitados
+        String caracteres = "0987654321 "; //Iniciando Variável String e recebendo caractéres numérios (09876543231) - apenas numeros podem ser digitados
         if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
-            evt.consume();
-            JOptionPane.showMessageDialog(null, "Apenas Números");
-            jtfValorX.setText("");
-
+            evt.consume();//Cosume como o prórpio nome já diz, apaga o caracter inserido no campo casoseja diferente de um valor inteiro
+            JOptionPane.showMessageDialog(null, "Apenas Números");//Exibe Mensagem...
+            jtfValorX.setText("");//Limpa o campo onde os valores são inseridos
         }
-        /*else {
-         int label_X = Integer.parseInt(jlX.getText());
-         int campo_x = Integer.parseInt(jtfValorX.getText());
-
-         if (label_X < campo_x) {
-
-         JOptionPane.showMessageDialog(null, "Valor Informado Excede o Tamanho do Mapa!, Insira um Valor Menor");
-             
-         }}*/
-
-
     }//GEN-LAST:event_jtfValorXKeyTyped
 
+//Método Void do Evento do Campo Valor Y quando É inserido algo no mesmo...    
     private void jtfValorYKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfValorYKeyTyped
         String caracteres = "0987654321"; //apenas numeros podem ser digitados
         if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
             evt.consume();
             JOptionPane.showMessageDialog(null, "Apenas Números");
             jtfValorY.setText("");
-        }        // TODO add your handling code here:
+        }
     }//GEN-LAST:event_jtfValorYKeyTyped
 
+//Método Void presente no evento do JComboBox Caminhos quando algum item é selecionado
     private void jcbCaminhoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbCaminhoItemStateChanged
         // TODO add your handling code here:
 
-        int recebe_cod_campanha = 0;
-        recebe_cod_campanha = (int) arrayListCampanhas.get(jcbCaminho.getSelectedIndex());
+        int recebe_cod_campanha = 0;//Declarando variável do tipo  inteiro recebendo 0
+        recebe_cod_campanha = (int) arrayListCampanhas.get(jcbCaminho.getSelectedIndex());//Variável recebe o Código do ArrayListCampanhas...
 
         try {
+            //Criando Objetos...
             Campanhas cmp = new Campanhas();
             GenericDAO gDAO = new GenericDAO();
 
-            cmp.setCodigo_campanha(recebe_cod_campanha);
+            cmp.setCodigo_campanha(recebe_cod_campanha);//objeto tem seu atributo codigo_campanha' recebendo a variável...
 
-            List<Object> list = gDAO.listar2(Campanhas.class, cmp);
+            List<Object> list = gDAO.listar2(Campanhas.class, cmp);//Criadno uma Lista para Lista os atributos da Classe Campanhas...
 
-            for (Object obj5 : list) {
+            for (Object obj5 : list) {//Criando 'For' para lsitar os atributos da Classe Campanhas
                 Campanhas camp = (Campanhas) obj5;
-                //camp.getTam_x_campanha();
-                //camp.getTam_y_campanha();
-                jlX.setText(String.valueOf(camp.getTam_x_campanha()));
-                System.out.println(camp.getTam_x_campanha());
-                jlY.setText(String.valueOf(camp.getTam_y_campanha()));
 
+                jlX.setText(String.valueOf(camp.getTam_x_campanha()));//Label1 - X: recebe o valor convertido de inteiro para String do Atributo 'tam_x_campanha da Classe Campanhas'
+                System.out.println(camp.getTam_x_campanha());//Exibe Mensagem
+                jlY.setText(String.valueOf(camp.getTam_y_campanha()));//Label1 - Y: recebe o valor convertido de inteiro para String do Atributo 'tam_y_campanha da Classe Campanhas'
+                System.out.println(camp.getTam_y_campanha());//Exibe Mensagem
             }
-            jtfValorX.setText("");
-            jtfValorY.setText("");
+            jtfValorX.setText("");//Limpa campo do Valor X
+            jtfValorY.setText("");//Limpa campo do Valor Y
         } catch (SQLException ex) {
             Logger.getLogger(JFPosicoes.class
                     .getName()).log(Level.SEVERE, null, ex);
@@ -771,23 +775,20 @@ public class JFPosicoes extends javax.swing.JFrame {
             Logger.getLogger(JFPosicoes.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
-
-        List<Object> list;
-
-
     }//GEN-LAST:event_jcbCaminhoItemStateChanged
 
+//Método Void presente no JTextFieldX no evento em quando é terminado de inserir um dado em seu campo    
     private void jtfValorXKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfValorXKeyReleased
-        int label_X = Integer.parseInt(jlX.getText());
-        int campo_x = Integer.parseInt(jtfValorX.getText());
+        int label_X = Integer.parseInt(jlX.getText());//Variável é iniciada e recebe o valor convertido de String para Inteiro do LabelX (Proveniente do Banco de Dados)
+        int campo_x = Integer.parseInt(jtfValorX.getText());//Variável Campo recebe é iniciada e recebe o valor convertido de String para Inteiro do Campo onde o usuário insere o valor de X
 
-        if (label_X < campo_x) {
-
-            JOptionPane.showMessageDialog(null, "Valor de X Informado Excede o Tamanho do Mapa!, Insira um Valor Menor");
-            jtfValorX.setText("");
-        }       // TODO add your handling code here:
+        if (label_X < campo_x) {//Se o valor de X (label_x) cadastrado do Mapa for Menor '<' do que o valor que o usuário predente cadastrar a posição (campo_x), faça...
+            JOptionPane.showMessageDialog(null, "Valor de X Informado Excede o Tamanho do Mapa!, Insira um Valor Menor");//Exibe Mensagem
+            jtfValorX.setText("");//Limpa o campo onde o usuário digitou o valor
+        }
     }//GEN-LAST:event_jtfValorXKeyReleased
 
+//Método Void presente no JTextFieldY no evento em quando é terminado de inserir um dado em seu campo     
     private void jtfValorYKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfValorYKeyReleased
         int label_y = Integer.parseInt(jlY.getText());
         int campo_y = Integer.parseInt(jtfValorY.getText());
@@ -799,14 +800,14 @@ public class JFPosicoes extends javax.swing.JFrame {
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jtfValorYKeyReleased
 
+    //Método Void presente no Evento do Botão Cancelar quando Pressionado...
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        //Limpa todos os Campos do Formulario, até mesmo os desativados
         jtaDescricaoCaminho.setText("");
         jtaDescricaoPericia.setText("");
         jtfValorX.setText("");
         jtfValorY.setText("");
-        this.dispose();
-
-
+        this.dispose(); //Fecha o Formulário 
     }//GEN-LAST:event_jbCancelarActionPerformed
 
     /**
