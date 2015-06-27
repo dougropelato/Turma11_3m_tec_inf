@@ -2229,7 +2229,7 @@ public class JFNpc extends javax.swing.JFrame {
         
             GenericDAO gDao = new GenericDAO();
             
-        // Verifica se algum Npc esta selecionado em combobox    
+        // Verifica se algum Npc esta selecionado em ComboBox    
         if (jTFNovosItensCodigoNpc.getText().equals("") && jTFNovosItensTipoNpc.getText().equals("")){
  
             JOptionPane.showMessageDialog(null, "Selecione um Npc para poder adicionar novos itens!"); 
@@ -2253,6 +2253,7 @@ public class JFNpc extends javax.swing.JFrame {
                     NovaArmaduraNpc.setCodigo_armadura(Integer.parseInt(jTFNovosItensCodArmadura.getText()));
                     NovaArmaduraNpc.setQuantidade_armadura(Integer.parseInt(jTFNovosItensQuantidadeArmaduraNpc.getText()));
                     gDao.alterar(NovaArmaduraNpc); 
+                    
                 }
                 
                 else{ // Senão, ele faz um insert
@@ -2261,6 +2262,7 @@ public class JFNpc extends javax.swing.JFrame {
                     NovaArmaduraNpc.setCodigo_armadura(Integer.parseInt(jTFNovosItensCodArmadura.getText()));
                     NovaArmaduraNpc.setQuantidade_armadura(Integer.parseInt(jTFNovosItensQuantidadeArmaduraNpc.getText()));
                     gDao.adicionar(NovaArmaduraNpc);
+                    
                 }
                     
             } 
@@ -2285,7 +2287,8 @@ public class JFNpc extends javax.swing.JFrame {
                     NovaArmaNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
                     NovaArmaNpc.setCodigo_arma(Integer.parseInt(jTFNovosItensCodArma.getText()));
                     NovaArmaNpc.setQuantidade_arma(Integer.parseInt(jTFNovosItensQuantidadeArmaNpc.getText()));
-                    gDao.alterar(NovaArmaNpc);    
+                    gDao.alterar(NovaArmaNpc); 
+                    
                 }
                 
                 else{ // Senão, ele faz um insert
@@ -2310,11 +2313,27 @@ public class JFNpc extends javax.swing.JFrame {
                 
                 ConsumiveisNpcs NovoConsumivelNpc = new ConsumiveisNpcs();
                 
-                NovoConsumivelNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
-                NovoConsumivelNpc.setCodigo_consumivel(Integer.parseInt(jTFNovosItensCodConsumivel.getText()));
-                NovoConsumivelNpc.setQuantidade_consumivel(Integer.parseInt(jTFNovosItensQuantidadeConsumivelNpc.getText()));
+                // Verifica se campos codigo são iguais ao que esta cadastrado
+                // Se já existir o valor ele faz um update na tabela    
+               
+                if ( jTFNovosItensCodConsumivel.getText().equalsIgnoreCase(jTFNovosItensVerificaCodConsumivel.getText()) ) { 
+                    
+                    NovoConsumivelNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
+                    NovoConsumivelNpc.setCodigo_consumivel(Integer.parseInt(jTFNovosItensCodConsumivel.getText()));
+                    NovoConsumivelNpc.setQuantidade_consumivel(Integer.parseInt(jTFNovosItensQuantidadeConsumivelNpc.getText()));               
+                    gDao.alterar(NovoConsumivelNpc); 
+                    
+                }               
                 
-                gDao.adicionar(NovoConsumivelNpc);
+                else{ // Senão, ele faz um insert
+
+                    NovoConsumivelNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
+                    NovoConsumivelNpc.setCodigo_consumivel(Integer.parseInt(jTFNovosItensCodConsumivel.getText()));
+                    NovoConsumivelNpc.setQuantidade_consumivel(Integer.parseInt(jTFNovosItensQuantidadeConsumivelNpc.getText()));               
+                    gDao.adicionar(NovoConsumivelNpc);
+                    
+                }
+                
             }
             
             else { // Informa campos em branco
@@ -2329,11 +2348,27 @@ public class JFNpc extends javax.swing.JFrame {
                 
                 EscudosNpcs NovoEscudoNpc = new EscudosNpcs();
                 
-                NovoEscudoNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
-                NovoEscudoNpc.setCodigo_escudo(Integer.parseInt(jTFNovosItensCodEscudo.getText()));
-                NovoEscudoNpc.setQuantidade_escudos(Integer.parseInt(jTFNovosItensQuantidadeEscudoNpc.getText()));
+                // Verifica se campos codigo são iguais ao que esta cadastrado
+                // Se já existir o valor ele faz um update na tabela    
+               
+                if ( jTFNovosItensCodConsumivel.getText().equalsIgnoreCase(jTFNovosItensVerificaCodConsumivel.getText()) ) { 
                 
-                gDao.adicionar(NovoEscudoNpc);
+                    NovoEscudoNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
+                    NovoEscudoNpc.setCodigo_escudo(Integer.parseInt(jTFNovosItensCodEscudo.getText()));
+                    NovoEscudoNpc.setQuantidade_escudos(Integer.parseInt(jTFNovosItensQuantidadeEscudoNpc.getText()));
+                    gDao.alterar(NovoEscudoNpc);  
+                    
+                }  
+                
+                else{ // Senão, ele faz um insert
+                    
+                    NovoEscudoNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
+                    NovoEscudoNpc.setCodigo_escudo(Integer.parseInt(jTFNovosItensCodEscudo.getText()));
+                    NovoEscudoNpc.setQuantidade_escudos(Integer.parseInt(jTFNovosItensQuantidadeEscudoNpc.getText()));
+                    gDao.adicionar(NovoEscudoNpc);
+                    
+                }
+
             }
             
             else { // Informa campos em branco
