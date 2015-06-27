@@ -1122,61 +1122,62 @@ public class JFNpc extends javax.swing.JFrame {
         
         GenericDAO gDao = new GenericDAO();
 
-        // Carrega combobox Armaduras    
-        List<Object> listarArmaduras = null;
-            try {
-                listarArmaduras = gDao.listar(Armaduras.class);
-            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+            // Carrega ComboBox Armaduras    
+            List<Object> listarArmaduras = null;
+                try {
+                    listarArmaduras = gDao.listar(Armaduras.class);
+                } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+                        Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                for (Object obj2 : listarArmaduras) {
+                    Armaduras armaduranpc = (Armaduras) obj2;
+                    jCBArmaduraNpc.addItem(armaduranpc.getNome_armadura());
+                }
+            // Fim listar Armaduras 
+
+            // Carrega ComboBox Armas    
+            List<Object> listarArmas = null;
+                try {
+                    listarArmas = gDao.listar(Armas.class);
+                } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
                     Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                }
 
-            for (Object obj2 : listarArmaduras) {
-                Armaduras armaduranpc = (Armaduras) obj2;
-                jCBArmaduraNpc.addItem(armaduranpc.getNome_armadura());
-            }
-        // Fim listar Armaduras 
-        
-        // Carrega combobox Armas    
-        List<Object> listarArmas = null;
-            try {
-                listarArmas = gDao.listar(Armas.class);
-            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
-                Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                for (Object obj2 : listarArmas) {
+                    Armas armanpc = (Armas) obj2;
+                    jCBArmaNpc.addItem(armanpc.getNome_arma());
+                }   
+            // Fim listar Armas         
 
-            for (Object obj2 : listarArmas) {
-                Armas armanpc = (Armas) obj2;
-                jCBArmaNpc.addItem(armanpc.getNome_arma());
-            }   
-        // Fim listar Armas         
-        
-        // Carrega combobox Consumiveis
-        List<Object> listarConsumiveis = null;
-            try {
-                listarConsumiveis = gDao.listar(Consumiveis.class);
-            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
-                    Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            // Carrega ComboBox Consumiveis
+            List<Object> listarConsumiveis = null;
+                try {
+                    listarConsumiveis = gDao.listar(Consumiveis.class);
+                } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+                        Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
-            for (Object obj2 : listarConsumiveis) {
-                Consumiveis consumivelnpc = (Consumiveis) obj2;
-                jCBConsumivelNpc.addItem(consumivelnpc.getNome_consumivel());
-            }    
-        // Fim listar Consumiveis        
+                for (Object obj2 : listarConsumiveis) {
+                    Consumiveis consumivelnpc = (Consumiveis) obj2;
+                    jCBConsumivelNpc.addItem(consumivelnpc.getNome_consumivel());
+                }    
+            // Fim listar Consumiveis        
 
-        // Carrega combobox Escudos
-        List<Object> listarEscudos = null;
-            try {
-                listarEscudos = gDao.listar(Escudos.class);
-            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
-                    Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            // Carrega ComboBox Escudos
+            List<Object> listarEscudos = null;
+                try {
+                    listarEscudos = gDao.listar(Escudos.class);
+                } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+                        Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
-            for (Object obj2 : listarEscudos) {
-                Escudos escudonpc = (Escudos) obj2;
-                jCBEscudoNpc.addItem(escudonpc.getNome_escudo());
-            }
-        // Fim listar Escudos
+                for (Object obj2 : listarEscudos) {
+                    Escudos escudonpc = (Escudos) obj2;
+                    jCBEscudoNpc.addItem(escudonpc.getNome_escudo());
+                }
+            // Fim listar Escudos
+
     } 
     
     // Carrega ComboBox dos Atributos em aba Cadastrar
@@ -1184,33 +1185,34 @@ public class JFNpc extends javax.swing.JFrame {
         
         GenericDAO gDao = new GenericDAO();
         
-        // Carrega combobox Raças    
-        List<Object> listarRacas = null;
-            try {
-                listarRacas = gDao.listar(Raca.class);
-            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+            // Carrega ComboBox Raças    
+            List<Object> listarRacas = null;
+                try {
+                    listarRacas = gDao.listar(Raca.class);
+                } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+                        Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                for (Object obj2 : listarRacas) {
+                    Raca racanpc = (Raca) obj2;
+                    jCBRaca.addItem(racanpc.getNome_raca());
+                }
+            // Fim listar Raças
+
+            // Carrega ComboBox Classes    
+            List<Object> listarClasses = null;
+                try {
+                    listarClasses = gDao.listar(Classes.class);
+                } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
                     Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                }
 
-            for (Object obj2 : listarRacas) {
-                Raca racanpc = (Raca) obj2;
-                jCBRaca.addItem(racanpc.getNome_raca());
-            }
-        // Fim listar Raças
+                for (Object obj2 : listarClasses) {
+                    Classes classenpc = (Classes) obj2;
+                    jCBClasse.addItem(classenpc.getNome_classe());
+                }
+            // Fim listar Classes  
                 
-        // Carrega combobox Classes    
-        List<Object> listarClasses = null;
-            try {
-                listarClasses = gDao.listar(Classes.class);
-            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
-                Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            for (Object obj2 : listarClasses) {
-                Classes classenpc = (Classes) obj2;
-                jCBClasse.addItem(classenpc.getNome_classe());
-            }
-        // Fim listar Classes  
     }
     
     // Limpa todos os campos em aba Cadastrar
@@ -1268,6 +1270,7 @@ public class JFNpc extends javax.swing.JFrame {
     public void LimparCamposCodigoAbaCadastrar(java.awt.event.ActionEvent evt){
     
         // Itens
+        
         // Armaduras 
         jTFCodArmadura.setText("");
     
@@ -1308,61 +1311,61 @@ public class JFNpc extends javax.swing.JFrame {
     
         GenericDAO gDao = new GenericDAO();
 
-        // Carrega combobox Armaduras    
-        List<Object> listarArmaduras = null;
-            try {
-                listarArmaduras = gDao.listar(Armaduras.class);
-            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+            // Carrega ComboBox Armaduras    
+            List<Object> listarArmaduras = null;
+                try {
+                    listarArmaduras = gDao.listar(Armaduras.class);
+                } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+                        Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                for (Object obj2 : listarArmaduras) {
+                    Armaduras armaduranpc = (Armaduras) obj2;
+                    jCBNovosItensArmaduraNpc.addItem(armaduranpc.getNome_armadura());
+                }
+            // Fim listar Armaduras 
+
+            // Carrega ComboBox Armas    
+            List<Object> listarArmas = null;
+                try {
+                    listarArmas = gDao.listar(Armas.class);
+                } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
                     Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                }
 
-            for (Object obj2 : listarArmaduras) {
-                Armaduras armaduranpc = (Armaduras) obj2;
-                jCBNovosItensArmaduraNpc.addItem(armaduranpc.getNome_armadura());
-            }
-        // Fim listar Armaduras 
-        
-        // Carrega combobox Armas    
-        List<Object> listarArmas = null;
-            try {
-                listarArmas = gDao.listar(Armas.class);
-            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
-                Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                for (Object obj2 : listarArmas) {
+                    Armas armanpc = (Armas) obj2;
+                    jCBNovosItensArmaNpc.addItem(armanpc.getNome_arma());
+                }   
+            // Fim listar Armas         
 
-            for (Object obj2 : listarArmas) {
-                Armas armanpc = (Armas) obj2;
-                jCBNovosItensArmaNpc.addItem(armanpc.getNome_arma());
-            }   
-        // Fim listar Armas         
-        
-        // Carrega combobox Consumiveis
-        List<Object> listarConsumiveis = null;
-            try {
-                listarConsumiveis = gDao.listar(Consumiveis.class);
-            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
-                    Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            // Carrega ComboBox Consumiveis
+            List<Object> listarConsumiveis = null;
+                try {
+                    listarConsumiveis = gDao.listar(Consumiveis.class);
+                } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+                        Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
-            for (Object obj2 : listarConsumiveis) {
-                Consumiveis consumivelnpc = (Consumiveis) obj2;
-                jCBNovosItensConsumivelNpc.addItem(consumivelnpc.getNome_consumivel());
-            }    
-        // Fim listar Consumiveis        
+                for (Object obj2 : listarConsumiveis) {
+                    Consumiveis consumivelnpc = (Consumiveis) obj2;
+                    jCBNovosItensConsumivelNpc.addItem(consumivelnpc.getNome_consumivel());
+                }    
+            // Fim listar Consumiveis        
 
-        // Carrega combobox Escudos
-        List<Object> listarEscudos = null;
-            try {
-                listarEscudos = gDao.listar(Escudos.class);
-            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
-                    Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            // Carrega ComboBox Escudos
+            List<Object> listarEscudos = null;
+                try {
+                    listarEscudos = gDao.listar(Escudos.class);
+                } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+                        Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
-            for (Object obj2 : listarEscudos) {
-                Escudos escudonpc = (Escudos) obj2;
-                jCBNovosItensEscudoNpc.addItem(escudonpc.getNome_escudo());
-            }
-        // Fim listar Escudos   
+                for (Object obj2 : listarEscudos) {
+                    Escudos escudonpc = (Escudos) obj2;
+                    jCBNovosItensEscudoNpc.addItem(escudonpc.getNome_escudo());
+                }
+            // Fim listar Escudos   
     }
         
     // Limpa os campos jTF e seleciona index -1 em ComboBox na aba Adicinar Novos Itens
@@ -1832,6 +1835,7 @@ public class JFNpc extends javax.swing.JFrame {
             jTFCodigoNpc.setText(String.valueOf(codnpc));
 
             // ----- ----- ----- ----- //
+            
             // Oculta campos atributos e itens ao iniciar formulário
             if (jTFIndexTipoNpc.getText().equals("")) {
                 OcultarComponentesAtributos(null);
@@ -1869,7 +1873,7 @@ public class JFNpc extends javax.swing.JFrame {
 
                 MostrarComponentesItens(null); // Chama evt MostrarComponentesItens
                 
-                // Seleciona index -1
+                // Seleciona index -1 em ComboBox
                 // Itens
                 jCBArmaduraNpc.setSelectedIndex(-1);
                 jCBArmaNpc.setSelectedIndex(-1);
@@ -2251,7 +2255,7 @@ public class JFNpc extends javax.swing.JFrame {
                     gDao.alterar(NovaArmaduraNpc); 
                 }
                 
-                else{// Senão, ele faz um insert
+                else{ // Senão, ele faz um insert
                     
                     NovaArmaduraNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
                     NovaArmaduraNpc.setCodigo_armadura(Integer.parseInt(jTFNovosItensCodArmadura.getText()));
@@ -2261,7 +2265,7 @@ public class JFNpc extends javax.swing.JFrame {
                     
             } 
             
-            else {// Informa campos em branco  
+            else { // Informa campos em branco  
                 JOptionPane.showMessageDialog(null, "Selecione uma Armadura e insira a quantidade desejada!");
             }
             
@@ -2273,14 +2277,28 @@ public class JFNpc extends javax.swing.JFrame {
                 
                 ArmasNpcs NovaArmaNpc = new ArmasNpcs();
                 
-                NovaArmaNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
-                NovaArmaNpc.setCodigo_arma(Integer.parseInt(jTFNovosItensCodArma.getText()));
-                NovaArmaNpc.setQuantidade_arma(Integer.parseInt(jTFNovosItensQuantidadeArmaNpc.getText()));
+                // Verifica se campos codigo são iguais ao que esta cadastrado
+                // Se já existir o valor ele faz um update na tabela    
+               
+                if ( jTFNovosItensCodArma.getText().equalsIgnoreCase(jTFNovosItensVerificaCodArma.getText()) ) {
+                    
+                    NovaArmaNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
+                    NovaArmaNpc.setCodigo_arma(Integer.parseInt(jTFNovosItensCodArma.getText()));
+                    NovaArmaNpc.setQuantidade_arma(Integer.parseInt(jTFNovosItensQuantidadeArmaNpc.getText()));
+                    gDao.alterar(NovaArmaNpc);    
+                }
                 
-                gDao.adicionar(NovaArmaNpc);
+                else{ // Senão, ele faz um insert
+                
+                    NovaArmaNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
+                    NovaArmaNpc.setCodigo_arma(Integer.parseInt(jTFNovosItensCodArma.getText()));
+                    NovaArmaNpc.setQuantidade_arma(Integer.parseInt(jTFNovosItensQuantidadeArmaNpc.getText()));
+                    gDao.adicionar(NovaArmaNpc);    
+                    
+                }
             }
             
-            else {// Informa campos em branco
+            else { // Informa campos em branco
                 JOptionPane.showMessageDialog(null, "Selecione uma Arma e insira a quantidade desejada!");
             }
             
@@ -2299,7 +2317,7 @@ public class JFNpc extends javax.swing.JFrame {
                 gDao.adicionar(NovoConsumivelNpc);
             }
             
-            else {// Informa campos em branco
+            else { // Informa campos em branco
                 JOptionPane.showMessageDialog(null, "Selecione um Consumivel e insira a quantidade desejada!");
             }
             
@@ -2318,7 +2336,7 @@ public class JFNpc extends javax.swing.JFrame {
                 gDao.adicionar(NovoEscudoNpc);
             }
             
-            else {// Informa campos em branco
+            else { // Informa campos em branco
                 JOptionPane.showMessageDialog(null, "Selecione um Escudo e insira a quantidade desejada!");
             }
         }
@@ -2446,8 +2464,7 @@ public class JFNpc extends javax.swing.JFrame {
         }
         
     }
-    
-            
+       
     // Lista Npcs cadastrados e mostra em ComboBox em aba Adicionar Nova Fala
     private void jBNovaFalaAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovaFalaAtualizarActionPerformed
             
@@ -2469,7 +2486,8 @@ public class JFNpc extends javax.swing.JFrame {
                 for (Object obj2 : listarNpcs) {
                     Npcs nomenpc = (Npcs) obj2;
                     jCBNovaFalaNomeNpc.addItem(nomenpc.getNome_npc());
-                }// Fim listar Npcs
+                }
+            // Fim listar Npcs
 
                 // Deixa campos em branco
                 jCBNovaFalaNomeNpc.setSelectedIndex(-1);
@@ -2507,7 +2525,8 @@ public class JFNpc extends javax.swing.JFrame {
                 for (Object obj2 : listarNpcs) {
                     Npcs nomenpc = (Npcs) obj2;
                     jCBNovosItensNomeNpc.addItem(nomenpc.getNome_npc());
-                }// Fim listar Npcs
+                }
+            // Fim listar Npcs
 
                 // Limpa os campos
                 jCBNovosItensNomeNpc.setSelectedIndex(-1);
@@ -2532,7 +2551,7 @@ public class JFNpc extends javax.swing.JFrame {
             // Chama evt AddItensComboAtributosNpcsAbaCadastrar
             AddItensComboAtributosNpcsAbaCadastrar(evt);
             
-            // Seleciona index -1 e limpa campos codigo
+            // Seleciona index -1 e limpa campos código
             // Atributos
             jCBRaca.setSelectedIndex(-1);
             jCBClasse.setSelectedIndex(-1);
@@ -2600,14 +2619,15 @@ public class JFNpc extends javax.swing.JFrame {
             for (Object obj2 : listarArmaduras) {
                 Armaduras armaduranpc = (Armaduras) obj2;
                 jCBNovosItensArmaduraNpc.addItem(armaduranpc.getNome_armadura());
-            }// Fim listar Armaduras
+            }
+            // Fim listar Armaduras
            
             jCBNovosItensArmaduraNpc.setSelectedIndex(-1);
             jTFNovosItensCodArmadura.setText("");
             jTFNovosItensQuantidadeArmaduraNpc.setText("");  
         }
         
-        else { //Senão remove armaduras e limpa campos
+        else { // Senão remove armaduras e limpa campos
             
             jCBNovosItensArmaduraNpc.removeAllItems();
             jTFNovosItensCodArmadura.setText("");
@@ -2642,14 +2662,15 @@ public class JFNpc extends javax.swing.JFrame {
             for (Object obj2 : listarArmas) {
                 Armas armanpc = (Armas) obj2;
                 jCBNovosItensArmaNpc.addItem(armanpc.getNome_arma());
-            }// Fim listar Armas   
+            }
+            // Fim listar Armas   
            
             jCBNovosItensArmaNpc.setSelectedIndex(-1);
             jTFNovosItensCodArma.setText("");
             jTFNovosItensQuantidadeArmaNpc.setText("");    
         }
         
-        else{ //Senão remove armaduras e limpa campos
+        else{ // Senão remove armaduras e limpa campos
                     
             jCBNovosItensArmaNpc.removeAllItems();
             jTFNovosItensCodArma.setText("");
@@ -2684,14 +2705,15 @@ public class JFNpc extends javax.swing.JFrame {
             for (Object obj2 : listarConsumiveis) {
                 Consumiveis consumivelnpc = (Consumiveis) obj2;
                 jCBNovosItensConsumivelNpc.addItem(consumivelnpc.getNome_consumivel());
-            }// Fim listar Consumiveis    
+            }
+            // Fim listar Consumiveis    
             
             jCBNovosItensConsumivelNpc.setSelectedIndex(-1);
             jTFNovosItensCodConsumivel.setText("");
             jTFNovosItensQuantidadeConsumivelNpc.setText(""); 
         }
         
-        else {  //Senão remove armaduras e limpa campos
+        else { // Senão remove armaduras e limpa campos
         
             jCBNovosItensConsumivelNpc.removeAllItems();
             jTFNovosItensCodConsumivel.setText("");
@@ -2726,14 +2748,15 @@ public class JFNpc extends javax.swing.JFrame {
             for (Object obj2 : listarEscudos) {
                 Escudos escudonpc = (Escudos) obj2;
                 jCBNovosItensEscudoNpc.addItem(escudonpc.getNome_escudo());
-            }// Fim listar Escudos        
+            }
+            // Fim listar Escudos        
             
             jCBNovosItensEscudoNpc.setSelectedIndex(-1);
             jTFNovosItensCodEscudo.setText("");
             jTFNovosItensQuantidadeEscudoNpc.setText("");  
         }
         
-        else{ //Senão remove armaduras e limpa campos
+        else{ // Senão remove armaduras e limpa campos
             
             jCBNovosItensEscudoNpc.removeAllItems();
             jTFNovosItensCodEscudo.setText("");
@@ -2746,7 +2769,7 @@ public class JFNpc extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jCBNovosItensAdicionarEscudoActionPerformed
 
-    // Chama formulário parar alterar e excluir Npc
+    // Chama formulário para alterar ou excluir um Npc
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
         JFNpcAlterarExcluir NpcAlterarExcluir = new JFNpcAlterarExcluir();
         NpcAlterarExcluir.setVisible(true);
@@ -2755,7 +2778,7 @@ public class JFNpc extends javax.swing.JFrame {
         Npc.setVisible(false);
     }//GEN-LAST:event_jBAlterarActionPerformed
 
-    // --- Valores de ComboBox passam para jTF sendo utilizados para fazer verificação --- // 
+    // --- Valores de ComboBox passam para jTextField sendo utilizados para fazer verificação --- // 
     
     private void jCBNovosItensCodArmaduraNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNovosItensCodArmaduraNpcItemStateChanged
         jTFNovosItensVerificaCodArmadura.setText((String) jCBNovosItensCodArmaduraNpc.getSelectedItem());
