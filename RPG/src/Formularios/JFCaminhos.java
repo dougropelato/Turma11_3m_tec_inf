@@ -107,6 +107,11 @@ public class JFCaminhos extends javax.swing.JFrame {
         jlCampanha.setText("Selecionar Campanha");
 
         jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -194,6 +199,12 @@ public class JFCaminhos extends javax.swing.JFrame {
         String t = (String.valueOf(jcbMissao.getSelectedIndex()) + jcbMissao.getSelectedItem().toString());//Variável 't' recebe o Código Index e o Nome do Atributo selecionado no JComboBox
         System.out.println(t);
     }//GEN-LAST:event_jcbMissaoActionPerformed
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        jtfCaminho.setText("");
+        this.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbCancelarActionPerformed
 
     /**
      * @param args the command line arguments
