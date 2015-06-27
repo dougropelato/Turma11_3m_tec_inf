@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationTargetException;
+import static java.rmi.Naming.list;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import static java.util.Collections.list;
@@ -18,8 +19,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import sun.net.www.content.text.Generic;
 import tabelas.Caminhos;
+import tabelas.Campanhas;
 import tabelas.Npcs;
 import tabelas.Pericias;
 import tabelas.Posicoes;
@@ -95,6 +99,13 @@ public class JFPosicoes extends javax.swing.JFrame {
         }
     }
 
+    public void LimpaCamposPosicoes() {
+        jtaDescricaoCaminho.setText("");
+        jtaDescricaoPericia.setText("");
+        jtfValorX.setText("");
+        jtfValorY.setText("");
+    }
+
     /**
      * Creates new form JFPosicoes
      */
@@ -132,7 +143,6 @@ public class JFPosicoes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jlTamMapa = new javax.swing.JLabel();
-        jtfTamMapa = new javax.swing.JTextField();
         jtfValorX = new javax.swing.JTextField();
         jlValorX = new javax.swing.JLabel();
         jlValorY = new javax.swing.JLabel();
@@ -152,6 +162,9 @@ public class JFPosicoes extends javax.swing.JFrame {
         jcheckPericia = new javax.swing.JCheckBox();
         jcbValorPericia = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
+        jlY = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jlX = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -160,6 +173,11 @@ public class JFPosicoes extends javax.swing.JFrame {
             }
         });
 
+        jcbCaminho.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcbCaminhoItemStateChanged(evt);
+            }
+        });
         jcbCaminho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbCaminhoActionPerformed(evt);
@@ -172,17 +190,27 @@ public class JFPosicoes extends javax.swing.JFrame {
 
         jlTamMapa.setText("Tamanho Mapa (X, Y):");
 
-        jtfTamMapa.setText("20x20");
-        jtfTamMapa.setEnabled(false);
-        jtfTamMapa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfTamMapaActionPerformed(evt);
+        jtfValorX.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfValorXKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfValorXKeyTyped(evt);
             }
         });
 
         jlValorX.setText("Insira Valor da Posição X:");
 
         jlValorY.setText("Insira Valor da Posição Y:");
+
+        jtfValorY.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfValorYKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfValorYKeyTyped(evt);
+            }
+        });
 
         jcbNpc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,6 +228,11 @@ public class JFPosicoes extends javax.swing.JFrame {
         });
 
         jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
 
         jtaDescricaoCaminho.setColumns(20);
         jtaDescricaoCaminho.setRows(5);
@@ -230,6 +263,12 @@ public class JFPosicoes extends javax.swing.JFrame {
         jcbValorPericia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fácil (5)", "Médio (10)", "Difícil (15)", "Desafiador (20)", "Formidável (25)", "Heróico (30)", "Impossível (40)" }));
 
         jLabel3.setText("Opcional:");
+
+        jlY.setText("Y");
+
+        jLabel7.setText("x");
+
+        jlX.setText("X");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -262,9 +301,13 @@ public class JFPosicoes extends javax.swing.JFrame {
                         .addComponent(jtfValorX, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jlTamMapa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfTamMapa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(56, 56, 56))
+                        .addGap(10, 10, 10)
+                        .addComponent(jlX)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jlY, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(69, 69, 69))
             .addGroup(layout.createSequentialGroup()
                 .addGap(114, 114, 114)
                 .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -317,7 +360,9 @@ public class JFPosicoes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlTamMapa)
-                    .addComponent(jtfTamMapa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlY, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(jlX))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfValorX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -357,114 +402,213 @@ public class JFPosicoes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtfTamMapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfTamMapaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfTamMapaActionPerformed
-
     private void jcbNpcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbNpcActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbNpcActionPerformed
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
-
         try {
             if (jtaDescricaoCaminho.getText().equals("") || jtfValorY.getText().equals("") || jtfValorX.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Preencha Todos os Campos!");
             } else {
-                GenericDAO gDAO = new GenericDAO();
-                Posicoes posicoes = new Posicoes();
-                PosicoesNpcs posicaoNpc = new PosicoesNpcs();
-                Npcs npc = new Npcs();
-                Pericias pericias = new Pericias();
-                PericiasPosicoes periciaPosicao = new PericiasPosicoes();
-                Caminhos caminhos = new Caminhos();
+                if (jcheckNpc.isSelected() && (jcheckPericia.isSelected()) && jtaDescricaoPericia.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Preencha Todos os Campos!");
+                } else {
+                    if (jcheckNpc.isSelected() && (jcheckPericia.isSelected()) && !jtaDescricaoPericia.getText().equals("")) {
+                        GenericDAO gDAO = new GenericDAO();
+                        Posicoes posicoes = new Posicoes();
+                        PosicoesNpcs posicaoNpc = new PosicoesNpcs();
+                        Npcs npc = new Npcs();
+                        Pericias pericias = new Pericias();
+                        PericiasPosicoes periciaPosicao = new PericiasPosicoes();
 
-                //Insertes tabela 'Posicoes'
-                posicoes.setCodigo_caminho((int) (arrayListCaminhos.get(jcbCaminho.getSelectedIndex())));
-                posicoes.setDescricao_posicao(jtaDescricaoCaminho.getText());
-                posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));
-                posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorY.getText()));
-                gDAO.adicionar(posicoes); //adicionando posicao
-                posicoes.setCodigo_posicao(gDAO.codigoMax(Posicoes.class));//Pega o código da última posição cadastrada
-                System.out.println("Posição Cadastrada com Sucesso!");//
+                        //Insertes tabela 'Posicoes'
+                        posicoes.setCodigo_caminho((int) (arrayListCaminhos.get(jcbCaminho.getSelectedIndex())));
+                        posicoes.setDescricao_posicao(jtaDescricaoCaminho.getText());
+                        posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));
+                        posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorY.getText()));
+                        gDAO.adicionar(posicoes); //cadastrando posicao
+                        posicoes.setCodigo_posicao(gDAO.codigoMax(Posicoes.class));//Pega o código da última posição cadastrada
+                        System.out.println("Posição Cadastrada com Sucesso!");//
+                        ////////////////////////////////////////////////////
+                        //Inserts Tabela N/N 'PosicoesNpcs'
+                        npc.setNome_npc(jcbNpc.getSelectedItem().toString());
+                        List<Object> list = gDAO.listar2(Npcs.class, npc);
 
-                if (jcheckNpc.isSelected()) {
-                    //Inserts Tabela 'PosicoesNpcs'
-                    npc.setNome_npc(jcbNpc.getSelectedItem().toString());
-                    List<Object> list = gDAO.listar2(Npcs.class, npc);
+                        for (Object obj4 : list) {
+                            Npcs npcc = (Npcs) obj4;
+                            posicaoNpc.setCodigo_npc(npcc.getCodigo_npc());
+                        }
+                        posicaoNpc.setCodigo_posicao(posicoes.getCodigo_posicao());
+                        System.out.println(posicoes.getCodigo_posicao());
+                        gDAO.adicionar(posicaoNpc);//Cadastrando npc
+                        System.out.println("NPC Cadastrado com Sucesso!");
+                        /////////////////////////////////////////////////////////////
+                        //Inserts Tabela N/N 'PericiasPosicoes'
+                        int varDificuldadePericia = (0);
 
-                    for (Object obj4 : list) {
-                        Npcs npcc = (Npcs) obj4;
+                        if (jcbValorPericia.getSelectedIndex() == 0) { //Fácil
+                            varDificuldadePericia = 5;
+                        }
+                        if (jcbValorPericia.getSelectedIndex() == 1) { //Médio
+                            varDificuldadePericia = 10;
+                        }
+                        if (jcbValorPericia.getSelectedIndex() == 2) { //Difícil
+                            varDificuldadePericia = 15;
+                        }
+                        if (jcbValorPericia.getSelectedIndex() == 3) { //Formidável
+                            varDificuldadePericia = 20;
+                        }
+                        if (jcbValorPericia.getSelectedIndex() == 4) { //Desafiador
+                            varDificuldadePericia = 25;
+                        }
+                        if (jcbValorPericia.getSelectedIndex() == 5) { //Heróico
+                            varDificuldadePericia = 30;
+                        }
+                        if (jcbValorPericia.getSelectedIndex() == 6) { //Impossível
+                            varDificuldadePericia = 40;
+                        }
 
-                        posicaoNpc.setCodigo_npc(npcc.getCodigo_npc());
+                        pericias.setNome_pericia(jcbPericias.getSelectedItem().toString());
+                        List<Object> list2 = gDAO.listar2(Pericias.class, pericias);
+                        //System.out.println("Estou aqui deeerrreeentroooo!!!");
+
+                        for (Object obj5 : list2) {
+                            Pericias peric = (Pericias) obj5;
+                            periciaPosicao.setCodigo_pericia(peric.getCodigo_pericia());
+                        }
+                        periciaPosicao.setCodigo_posicao(posicoes.getCodigo_posicao());
+                        periciaPosicao.setDificuldade_pericia(varDificuldadePericia);
+                        periciaPosicao.setDescricao_pericia_sucesso(jtaDescricaoPericia.getText());
+                        System.out.println(posicoes.getCodigo_posicao());
+
+                        gDAO.adicionar(periciaPosicao);
+                        System.out.println("Pericia Cadastrados com Sucesso! " + varDificuldadePericia + "");
+                        LimpaCamposPosicoes();//Limpa Posicoes
+                        JOptionPane.showMessageDialog(null, "Posição, NPC e Perícia Cadastrados com Sucesso!");
+
+                    } else {
+
+                        if (jcheckNpc.isSelected()) {
+
+                            GenericDAO gDAO = new GenericDAO();
+                            Posicoes posicoes = new Posicoes();
+                            PosicoesNpcs posicaoNpc = new PosicoesNpcs();
+                            Npcs npc = new Npcs();
+
+                            //Insertes tabela 'Posicoes'
+                            posicoes.setCodigo_caminho((int) (arrayListCaminhos.get(jcbCaminho.getSelectedIndex())));
+                            posicoes.setDescricao_posicao(jtaDescricaoCaminho.getText());
+                            posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));
+                            posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorY.getText()));
+                            gDAO.adicionar(posicoes); //cadastrando posicao
+                            posicoes.setCodigo_posicao(gDAO.codigoMax(Posicoes.class));//Pega o código da última posição cadastrada
+                            System.out.println("Posição Cadastrada com Sucesso!");//
+                            ////////////////////////////////////////////////////
+                            //Inserts Tabela 'PosicoesNpcs'
+                            npc.setNome_npc(jcbNpc.getSelectedItem().toString());
+                            List<Object> list = gDAO.listar2(Npcs.class, npc);
+
+                            for (Object obj4 : list) {
+                                Npcs npcc = (Npcs) obj4;
+                                posicaoNpc.setCodigo_npc(npcc.getCodigo_npc());
+                            }
+                            posicaoNpc.setCodigo_posicao(posicoes.getCodigo_posicao());
+                            System.out.println(posicoes.getCodigo_posicao());
+                            gDAO.adicionar(posicaoNpc);//Cadastrando npc
+                            System.out.println("NPC Cadastrado com Sucesso!");
+                            LimpaCamposPosicoes();//Limpa Posicoes
+                            JOptionPane.showMessageDialog(null, "Posição e NPC Cadastrados com Sucesso!");
+                        } else {
+                            if (jcheckPericia.isSelected()) {
+                                if (jtaDescricaoPericia.getText().equals("")) {
+                                    JOptionPane.showMessageDialog(null, "Preencha Todos os Campos!");
+                                } else {
+                                    GenericDAO gDAO = new GenericDAO();
+                                    Posicoes posicoes = new Posicoes();
+                                    Pericias pericias = new Pericias();
+                                    PericiasPosicoes periciaPosicao = new PericiasPosicoes();
+
+                                    //Insertes tabela 'Posicoes'
+                                    posicoes.setCodigo_caminho((int) (arrayListCaminhos.get(jcbCaminho.getSelectedIndex())));
+                                    posicoes.setDescricao_posicao(jtaDescricaoCaminho.getText());
+                                    posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));
+                                    posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorY.getText()));
+                                    gDAO.adicionar(posicoes); //cadastrando posicao
+                                    posicoes.setCodigo_posicao(gDAO.codigoMax(Posicoes.class));//Pega o código da última posição cadastrada
+                                    System.out.println("Posição Cadastrada com Sucesso!");//
+                                    ////////////////////////////////////////////////////
+
+                                    int varDificuldadePericia = (0);
+
+                                    if (jcbValorPericia.getSelectedIndex() == 0) { //Fácil
+                                        varDificuldadePericia = 5;
+                                    }
+                                    if (jcbValorPericia.getSelectedIndex() == 1) { //Médio
+                                        varDificuldadePericia = 10;
+                                    }
+                                    if (jcbValorPericia.getSelectedIndex() == 2) { //Difícil
+                                        varDificuldadePericia = 15;
+                                    }
+                                    if (jcbValorPericia.getSelectedIndex() == 3) { //Formidável
+                                        varDificuldadePericia = 20;
+                                    }
+                                    if (jcbValorPericia.getSelectedIndex() == 4) { //Desafiador
+                                        varDificuldadePericia = 25;
+                                    }
+                                    if (jcbValorPericia.getSelectedIndex() == 5) { //Heróico
+                                        varDificuldadePericia = 30;
+                                    }
+                                    if (jcbValorPericia.getSelectedIndex() == 6) { //Impossível
+                                        varDificuldadePericia = 40;
+                                    }
+                                    //Inserts Tabela N/N 'PericiasPosicoes'
+                                    pericias.setNome_pericia(jcbPericias.getSelectedItem().toString());
+                                    List<Object> list2 = gDAO.listar2(Pericias.class, pericias);
+                                    //System.out.println("Estou aqui deeerrreeentroooo!!!");
+
+                                    for (Object obj5 : list2) {
+                                        Pericias peric = (Pericias) obj5;
+                                        periciaPosicao.setCodigo_pericia(peric.getCodigo_pericia());
+                                    }
+                                    periciaPosicao.setCodigo_posicao(posicoes.getCodigo_posicao());
+                                    periciaPosicao.setDificuldade_pericia(varDificuldadePericia);
+                                    periciaPosicao.setDescricao_pericia_sucesso(jtaDescricaoPericia.getText());
+                                    System.out.println(posicoes.getCodigo_posicao());
+
+                                    gDAO.adicionar(periciaPosicao);
+                                    System.out.println("Pericia Cadastrados com Sucesso! " + varDificuldadePericia + "");
+                                    LimpaCamposPosicoes();//Limpa Posicoes
+                                    JOptionPane.showMessageDialog(null, "Posição e Perícia Cadastrados com Sucesso!");
+
+                                }
+                            } else {
+                                //Cadastra Posições Vazias (Sem NPC e Sem Perícia)
+                                GenericDAO gDAO = new GenericDAO();
+                                Posicoes posicoes = new Posicoes();
+
+                                //Insertes tabela 'Posicoes'
+                                posicoes.setCodigo_caminho((int) (arrayListCaminhos.get(jcbCaminho.getSelectedIndex())));
+                                posicoes.setDescricao_posicao(jtaDescricaoCaminho.getText());
+                                posicoes.setCoordenadaX_posicao(Integer.parseInt(jtfValorX.getText()));
+                                posicoes.setCoordenadaY_posicao(Integer.parseInt(jtfValorY.getText()));
+                                gDAO.adicionar(posicoes); //cadastrando posicao
+                                posicoes.setCodigo_posicao(gDAO.codigoMax(Posicoes.class));//Pega o código da última posição cadastrada
+                                System.out.println("Posição Cadastrada com Sucesso!");//
+                                ////////////////////////////////////////////////////
+
+                                LimpaCamposPosicoes();//Limpa Posicoes
+
+                                JOptionPane.showMessageDialog(null, "Posição Cadastrada com Sucesso!");
+
+                            }
+
+                        }//
+
+                        ///
                     }
-                    posicaoNpc.setCodigo_posicao(posicoes.getCodigo_posicao());
-                    System.out.println(posicoes.getCodigo_posicao());
-                    gDAO.adicionar(posicaoNpc);
-                    System.out.println("NPC Cadastrado com Sucesso!");
                 }
-
-                if (jcheckPericia.isSelected()) {
-
-                    int varDificuldadePericia = (0);
-
-                    if (jcbValorPericia.getSelectedIndex() == 0) { //Fácil
-                        varDificuldadePericia = 5;
-                    }
-                    if (jcbValorPericia.getSelectedIndex() == 1) { //Fácil
-                        varDificuldadePericia = 10;
-                    }
-                    if (jcbValorPericia.getSelectedIndex() == 2) { //Fácil
-                        varDificuldadePericia = 15;
-                    }
-                    if (jcbValorPericia.getSelectedIndex() == 3) { //Fácil
-                        varDificuldadePericia = 20;
-                    }
-                    if (jcbValorPericia.getSelectedIndex() == 4) { //Fácil
-                        varDificuldadePericia = 25;
-                    }
-                    if (jcbValorPericia.getSelectedIndex() == 5) { //Fácil
-                        varDificuldadePericia = 30;
-                    }
-                    if (jcbValorPericia.getSelectedIndex() == 6) { //Fácil
-                        varDificuldadePericia = 40;
-                    }
-
-                    //Inserts Tabela N/N 'PericiasPosicoes'
-                    pericias.setNome_pericia(jcbPericias.getSelectedItem().toString());
-                    List<Object> list2 = gDAO.listar2(Pericias.class, pericias);
-                    System.out.println("Estou aqui deeerrreeentroooo!!!");
-
-                    for (Object obj5 : list2) {
-                        Pericias peric = (Pericias) obj5;
-
-                        periciaPosicao.setCodigo_pericia(peric.getCodigo_pericia());
-                    }
-
-                   
-                    periciaPosicao.setCodigo_posicao(posicoes.getCodigo_posicao());
-                    periciaPosicao.setValor_pericia(varDificuldadePericia);
-                    periciaPosicao.setDescricao_pericia_sucesso(jtaDescricaoPericia.getText());
-                    System.out.println(posicoes.getCodigo_posicao());
-
-                    gDAO.adicionar(periciaPosicao);
-
-                    System.out.println("Pericia Cadastrados com Sucesso! " + varDificuldadePericia + "");
-
-                }
-
-                //mensagem de cadastro
-                JOptionPane.showMessageDialog(null, "Posição Cadastrada com Sucesso!");
-                //limpando campos apos cadastro
-                jtaDescricaoCaminho.setText("");
-                jtfValorX.setText("");
-                jtfValorY.setText("");
-                jtaDescricaoPericia.setText("");
-
-                //jtfValPericia.setText("");
-                //jcbCaminho.set
             }
-
         } catch (SQLException ex) {
             Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -480,8 +624,8 @@ public class JFPosicoes extends javax.swing.JFrame {
         } catch (InstantiationException ex) {
             Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_jbSalvarActionPerformed
+
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
@@ -491,19 +635,26 @@ public class JFPosicoes extends javax.swing.JFrame {
             carregaComboPericia();
 
         } catch (SQLException ex) {
-            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JFPosicoes.class
+                    .getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JFPosicoes.class
+                    .getName()).log(Level.SEVERE, null, ex);
         } catch (NoSuchMethodException ex) {
-            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JFPosicoes.class
+                    .getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalArgumentException ex) {
-            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JFPosicoes.class
+                    .getName()).log(Level.SEVERE, null, ex);
         } catch (InvocationTargetException ex) {
-            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JFPosicoes.class
+                    .getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JFPosicoes.class
+                    .getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(JFPosicoes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JFPosicoes.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -543,6 +694,121 @@ public class JFPosicoes extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jcheckPericiaActionPerformed
 
+    private void jtfValorXKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfValorXKeyTyped
+        String caracteres = "0987654321 "; //apenas numeros podem ser digitados
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Apenas Números");
+            jtfValorX.setText("");
+
+        }
+        /*else {
+         int label_X = Integer.parseInt(jlX.getText());
+         int campo_x = Integer.parseInt(jtfValorX.getText());
+
+         if (label_X < campo_x) {
+
+         JOptionPane.showMessageDialog(null, "Valor Informado Excede o Tamanho do Mapa!, Insira um Valor Menor");
+             
+         }}*/
+
+
+    }//GEN-LAST:event_jtfValorXKeyTyped
+
+    private void jtfValorYKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfValorYKeyTyped
+        String caracteres = "0987654321"; //apenas numeros podem ser digitados
+        if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Apenas Números");
+            jtfValorY.setText("");
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfValorYKeyTyped
+
+    private void jcbCaminhoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbCaminhoItemStateChanged
+        // TODO add your handling code here:
+
+        int recebe_cod_campanha = 0;
+        recebe_cod_campanha = (int) arrayListCampanhas.get(jcbCaminho.getSelectedIndex());
+
+        try {
+            Campanhas cmp = new Campanhas();
+            GenericDAO gDAO = new GenericDAO();
+
+            cmp.setCodigo_campanha(recebe_cod_campanha);
+
+            List<Object> list = gDAO.listar2(Campanhas.class, cmp);
+
+            for (Object obj5 : list) {
+                Campanhas camp = (Campanhas) obj5;
+                //camp.getTam_x_campanha();
+                //camp.getTam_y_campanha();
+                jlX.setText(String.valueOf(camp.getTam_x_campanha()));
+                System.out.println(camp.getTam_x_campanha());
+                jlY.setText(String.valueOf(camp.getTam_y_campanha()));
+
+            }
+            jtfValorX.setText("");
+            jtfValorY.setText("");
+        } catch (SQLException ex) {
+            Logger.getLogger(JFPosicoes.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFPosicoes.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFPosicoes.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFPosicoes.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFPosicoes.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFPosicoes.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFPosicoes.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+
+        List<Object> list;
+
+
+    }//GEN-LAST:event_jcbCaminhoItemStateChanged
+
+    private void jtfValorXKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfValorXKeyReleased
+        int label_X = Integer.parseInt(jlX.getText());
+        int campo_x = Integer.parseInt(jtfValorX.getText());
+
+        if (label_X < campo_x) {
+
+            JOptionPane.showMessageDialog(null, "Valor de X Informado Excede o Tamanho do Mapa!, Insira um Valor Menor");
+            jtfValorX.setText("");
+        }       // TODO add your handling code here:
+    }//GEN-LAST:event_jtfValorXKeyReleased
+
+    private void jtfValorYKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfValorYKeyReleased
+        int label_y = Integer.parseInt(jlY.getText());
+        int campo_y = Integer.parseInt(jtfValorY.getText());
+
+        if (label_y < campo_y) {
+
+            JOptionPane.showMessageDialog(null, "Valor de Y Informado Excede o Tamanho do Mapa!, Insira um Valor Menor");
+            jtfValorY.setText("");
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfValorYKeyReleased
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        jtaDescricaoCaminho.setText("");
+        jtaDescricaoPericia.setText("");
+        jtfValorX.setText("");
+        jtfValorY.setText("");
+        this.dispose();
+
+
+    }//GEN-LAST:event_jbCancelarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -557,16 +823,21 @@ public class JFPosicoes extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFPosicoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFPosicoes.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFPosicoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFPosicoes.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFPosicoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFPosicoes.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFPosicoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFPosicoes.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -582,6 +853,7 @@ public class JFPosicoes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -599,9 +871,10 @@ public class JFPosicoes extends javax.swing.JFrame {
     private javax.swing.JLabel jlTituloDificuldadePericia;
     private javax.swing.JLabel jlValorX;
     private javax.swing.JLabel jlValorY;
+    private javax.swing.JLabel jlX;
+    private javax.swing.JLabel jlY;
     private javax.swing.JTextArea jtaDescricaoCaminho;
     private javax.swing.JTextArea jtaDescricaoPericia;
-    private javax.swing.JTextField jtfTamMapa;
     private javax.swing.JTextField jtfValorX;
     private javax.swing.JTextField jtfValorY;
     // End of variables declaration//GEN-END:variables
