@@ -14,17 +14,17 @@ public class Raca {
     int carisma_raca;
     int qtd_talen_raca_adc;
     int uso_arma_raca;
-    Boolean uso_escudo_raca;
+    int uso_escudo_raca;
     int  uso_armadura_raca;
      String nome_raca;
 
-   /* public int getUso_armadura_raca() {
+    public int getUso_armadura_raca() {
         return uso_armadura_raca;
     }
 
     public void setUso_armadura_raca(int uso_armadura_raca) {
         this.uso_armadura_raca = uso_armadura_raca;
-    }*/
+    }
    
 
     public int getCodigo_raca() {
@@ -107,13 +107,9 @@ public class Raca {
         this.uso_arma_raca = uso_arma_raca;
     }
 
-    public Boolean getUso_escudo_raca() {
+    public int getUso_escudo_raca() {
         return uso_escudo_raca;
-    }
-
-    public void setUso_escudo_raca(Boolean uso_escudo_raca) {
-        this.uso_escudo_raca = uso_escudo_raca;
-    }
+    } 
 
 
 
