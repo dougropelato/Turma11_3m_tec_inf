@@ -300,7 +300,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="780" y="540" width="120" height="30"/>
+                  <AbsoluteConstraints x="780" y="500" width="120" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -1045,6 +1045,16 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="780" y="540" width="120" height="30"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JButton" name="jBSair">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sair"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="780" y="580" width="120" height="30"/>
                 </Constraint>
               </Constraints>
@@ -1532,6 +1542,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTFNovosItensQuantidadeArmaduraNpc">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jCBNovosItensArmaNpc"/>
@@ -1545,6 +1556,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTFNovosItensQuantidadeArmaNpc">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jCBNovosItensConsumivelNpc"/>
@@ -1558,6 +1570,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTFNovosItensQuantidadeConsumivelNpc">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jCBNovosItensEscudoNpc"/>
@@ -1571,6 +1584,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTFNovosItensQuantidadeEscudoNpc">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jBNovosItensAdicionar"/>
@@ -1750,6 +1764,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="jTFNovosItensVerificaCodArmadura">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="490" y="170" width="60" height="-1"/>
@@ -1783,6 +1800,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="jTFNovosItensVerificaCodArma">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="490" y="220" width="60" height="-1"/>
@@ -1842,6 +1862,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="jTFNovosItensVerificaCodConsumivel">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="490" y="270" width="60" height="-1"/>
@@ -1849,6 +1872,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="jTFNovosItensVerificaCodEscudo">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="490" y="320" width="60" height="-1"/>
