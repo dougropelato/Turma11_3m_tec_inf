@@ -141,7 +141,7 @@ public class JFRaca extends javax.swing.JFrame {
             rc.setInteligencia_raca(Integer.parseInt(jtfInteligencia_raca.getText()));
             rc.setQtd_talen_raca_adc(Integer.parseInt(jtfqtd_adicionais_raca.getText()));
             rc.setSabedoria_raca(Integer.parseInt(jtfSabedoria_raca.getText()));
-            rc.setUso_armadura_raca(jCBoxUsoArmadura.getItemAt(jCBoxUsoArmadura.getSelectedIndex()));
+            rc.setUso_armadura_raca(jCBoxUsoArmadura.getSelectedIndex());
           
             
             if (jCheckBox1.isSelected())  {
