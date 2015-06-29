@@ -28,7 +28,7 @@ public class jPintar extends JPanel {
         
         
         g.setColor(cor);
-
+           
         //g.drawOval(x, y, tamX, tamY);
         int xx = 1, yy = 1;
 
@@ -53,6 +53,6 @@ public class jPintar extends JPanel {
          int tamx = auth.getTam_x_mapa();
          int tamy = auth.getTam_y_mapa();
          
-        criaGrade(g, Color.BLACK, tamx, tamy, 10);
+        criaGrade(g, Color.BLACK, 25, 25, 10);
     }
 }
