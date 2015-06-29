@@ -22,6 +22,7 @@ import tabelas.Npcs;
 import tabelas.Pericias;
 import tabelas.Personagens;
 import tabelas.Posicoes;
+import tabelas.PosicoesNpcs;
 import tabelas.Talentos;
 
 /**
@@ -81,9 +82,7 @@ public class Utilitarios {
         String textoPosicoes = "";
         
         posicoes.setCodigo_caminho(auth.getCodigo_caminho()); //Aqui vai o codigo do caminho que o usuario digita no metodo de caminhos
-
         List<Object> list3 = gDAO.listar2(Posicoes.class, posicoes);
-
         for (Object obj4 : list3) {
             Posicoes p = (Posicoes) obj4;
             
@@ -91,30 +90,37 @@ public class Utilitarios {
             //textoPosicoes=posicoes.getDescricao_posicao() +" ";
             //System.out.println(posicoes.getDescricao_posicao());
             
+            
+            int cont = 1;
+            while (cont <= arrayListPosicao.size()) {
+
+                auth.setCodigo_posicao((int) arrayListPosicao.get(cont)); //posição atual
+        
+                textoPosicoes=" "+posicoes.getDescricao_posicao()+" /n";
+            
+                cont++;
+            }
+            
+            
+            //pega todas as pericias dessa posição
             periciasPosicoes.setCodigo_posicao(posicoes.getCodigo_posicao());
             List<Object> list4 = gDAO.listar2(PericiasPosicoes.class, periciasPosicoes);
             for (Object obj5 : list4) {
                 PericiasPosicoes pp = new PericiasPosicoes();
                 
-                
                 Pericias ps = new Pericias();
                 ps.setCodigo_pericia(pp.getCodigo_pericia());
                 List<Object> list6 = gDAO.listar2(Pericias.class, ps);
-                for (){
-                    
+                for (Object obj6 : list6){
+                    System.out.println(ps.getNome_pericia());
                 }
             }
-        }
-        
-        int cont = 1;
-        while (cont <= arrayListPosicao.size()) {
-
-            auth.setCodigo_posicao((int) arrayListPosicao.get(cont)); //posição atual
-        
-            textoPosicoes=" "+posicoes.getDescricao_posicao()+" /n";
             
-            cont++;
+            //pegando npcs dessa posicao
+            PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
+            
         }
+        
         
         return textoPosicoes;
     }
