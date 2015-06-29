@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import tabelas.Caminhos;
 import tabelas.Campanhas;
+import tabelas.Npcs;
 import tabelas.Pericias;
 import tabelas.Personagens;
 import tabelas.Posicoes;
@@ -96,6 +97,12 @@ public class Utilitarios {
                 PericiasPosicoes pp = new PericiasPosicoes();
                 
                 
+                Pericias ps = new Pericias();
+                ps.setCodigo_pericia(pp.getCodigo_pericia());
+                List<Object> list6 = gDAO.listar2(Pericias.class, ps);
+                for (){
+                    
+                }
             }
         }
         
