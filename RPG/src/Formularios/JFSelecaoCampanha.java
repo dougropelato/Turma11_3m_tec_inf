@@ -27,7 +27,7 @@ public class JFSelecaoCampanha extends javax.swing.JFrame {
     public JFSelecaoCampanha() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         initComponents();
         carregaCampanha();
-        
+
     }
 
     /**
@@ -107,16 +107,16 @@ public class JFSelecaoCampanha extends javax.swing.JFrame {
             cc.setNome_campanha(jComboBox1.getSelectedItem().toString());
             Autenticacao auth = Autenticacao.getInstance();
             List<Object> ll = new ArrayList();
-            
+
             ll = gg.listar2(Campanhas.class, cc);
-            
+
             for (Object obj : ll) {
                 Campanhas cc2 = (Campanhas) obj;
                 auth.setCodigo_campanha(cc2.getCodigo_campanha());
             }
-            
+
             dispose();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(JFSelecaoCampanha.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
@@ -185,20 +185,20 @@ public class JFSelecaoCampanha extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public void carregaCampanha() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         GenericDAO gg = new GenericDAO();
-        
+
         List<Object> ll = new ArrayList();
-        
+
         ll = gg.listar(Campanhas.class);
-     
+
         for (Object obj : ll) {
             Campanhas cc = (Campanhas) obj;
             jComboBox1.add(cc.getNome_campanha(), null);
-            
+
         }
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
