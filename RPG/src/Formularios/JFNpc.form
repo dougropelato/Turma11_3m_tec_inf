@@ -1473,6 +1473,7 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jTFNovosItensQuantidadeArmaduraNpc"/>
                 </Property>
@@ -1491,6 +1492,7 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jTFNovosItensQuantidadeArmaNpc"/>
                 </Property>
@@ -1509,6 +1511,7 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jTFNovosItensQuantidadeConsumivelNpc"/>
                 </Property>
@@ -1527,6 +1530,7 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jTFNovosItensQuantidadeEscudoNpc"/>
                 </Property>
@@ -1688,6 +1692,7 @@
             <Component class="javax.swing.JCheckBox" name="jCBNovosItensAdicionarArmadura">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Armaduras"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCBNovosItensAdicionarArmaduraActionPerformed"/>
@@ -1701,6 +1706,7 @@
             <Component class="javax.swing.JCheckBox" name="jCBNovosItensAdicionarArma">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Armas"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCBNovosItensAdicionarArmaActionPerformed"/>
@@ -1714,6 +1720,7 @@
             <Component class="javax.swing.JCheckBox" name="jCBNovosItensAdicionarConsumivel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consumiveis"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCBNovosItensAdicionarConsumivelActionPerformed"/>
@@ -1727,6 +1734,7 @@
             <Component class="javax.swing.JCheckBox" name="jCBNovosItensAdicionarEscudo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Escudos"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCBNovosItensAdicionarEscudoActionPerformed"/>

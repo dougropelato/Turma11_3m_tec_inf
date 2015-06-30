@@ -747,6 +747,7 @@ public class JFNpc extends javax.swing.JFrame {
         jLNovosItensEscudoNpc.setText("Escudo:");
         jPanel2.add(jLNovosItensEscudoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 155, -1));
 
+        jCBNovosItensArmaduraNpc.setEnabled(false);
         jCBNovosItensArmaduraNpc.setNextFocusableComponent(jTFNovosItensQuantidadeArmaduraNpc);
         jCBNovosItensArmaduraNpc.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -755,6 +756,7 @@ public class JFNpc extends javax.swing.JFrame {
         });
         jPanel2.add(jCBNovosItensArmaduraNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 170, 155, -1));
 
+        jCBNovosItensArmaNpc.setEnabled(false);
         jCBNovosItensArmaNpc.setNextFocusableComponent(jTFNovosItensQuantidadeArmaNpc);
         jCBNovosItensArmaNpc.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -763,6 +765,7 @@ public class JFNpc extends javax.swing.JFrame {
         });
         jPanel2.add(jCBNovosItensArmaNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 220, 155, -1));
 
+        jCBNovosItensConsumivelNpc.setEnabled(false);
         jCBNovosItensConsumivelNpc.setNextFocusableComponent(jTFNovosItensQuantidadeConsumivelNpc);
         jCBNovosItensConsumivelNpc.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -771,6 +774,7 @@ public class JFNpc extends javax.swing.JFrame {
         });
         jPanel2.add(jCBNovosItensConsumivelNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 270, 155, -1));
 
+        jCBNovosItensEscudoNpc.setEnabled(false);
         jCBNovosItensEscudoNpc.setNextFocusableComponent(jTFNovosItensQuantidadeEscudoNpc);
         jCBNovosItensEscudoNpc.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -842,6 +846,7 @@ public class JFNpc extends javax.swing.JFrame {
         jPanel2.add(jBNovosItensAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 120, 30));
 
         jCBNovosItensAdicionarArmadura.setText("Armaduras");
+        jCBNovosItensAdicionarArmadura.setEnabled(false);
         jCBNovosItensAdicionarArmadura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBNovosItensAdicionarArmaduraActionPerformed(evt);
@@ -850,6 +855,7 @@ public class JFNpc extends javax.swing.JFrame {
         jPanel2.add(jCBNovosItensAdicionarArmadura, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
 
         jCBNovosItensAdicionarArma.setText("Armas");
+        jCBNovosItensAdicionarArma.setEnabled(false);
         jCBNovosItensAdicionarArma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBNovosItensAdicionarArmaActionPerformed(evt);
@@ -858,6 +864,7 @@ public class JFNpc extends javax.swing.JFrame {
         jPanel2.add(jCBNovosItensAdicionarArma, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, -1, -1));
 
         jCBNovosItensAdicionarConsumivel.setText("Consumiveis");
+        jCBNovosItensAdicionarConsumivel.setEnabled(false);
         jCBNovosItensAdicionarConsumivel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBNovosItensAdicionarConsumivelActionPerformed(evt);
@@ -866,6 +873,7 @@ public class JFNpc extends javax.swing.JFrame {
         jPanel2.add(jCBNovosItensAdicionarConsumivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, -1, -1));
 
         jCBNovosItensAdicionarEscudo.setText("Escudos");
+        jCBNovosItensAdicionarEscudo.setEnabled(false);
         jCBNovosItensAdicionarEscudo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBNovosItensAdicionarEscudoActionPerformed(evt);
@@ -1333,24 +1341,30 @@ public class JFNpc extends javax.swing.JFrame {
         jTARespostaPositiva.setText("");
         jTARespostaNegativa.setText("");    
     
-        // Armaduras 
+        // Armaduras
+        jCBArmaduraNpc.setSelectedIndex(-1);
         jTFCodArmadura.setText("");
         jTFQuantidadeArmaduraNpc.setText("");
     
         // Armas
+        jCBArmaNpc.setSelectedIndex(-1);
         jTFCodArma.setText("");
         jTFQuantidadeArmaNpc.setText("");
     
         // Consumiveis
+        jCBConsumivelNpc.setSelectedIndex(-1);
         jTFCodConsumivel.setText(""); 
         jTFQuantidadeConsumivelNpc.setText("");    
     
         // Escudos
+        jCBEscudoNpc.setSelectedIndex(-1);
         jTFCodEscudo.setText("");
         jTFQuantidadeEscudoNpc.setText("");     
 
-        // Atributos       
+        // Atributos 
+        jCBRaca.setSelectedIndex(-1);
         jTFCodRaca.setText("");
+        jCBClasse.setSelectedIndex(-1);
         jTFCodClasse.setText("");
 
         jTFForca.setText("");
@@ -1475,25 +1489,42 @@ public class JFNpc extends javax.swing.JFrame {
     public void LimparCamposAbaAdicionarNovosItens(java.awt.event.ActionEvent evt){
         
         jCBNovosItensNomeNpc.setSelectedIndex(-1);
+        jCBNovosItensArmaduraNpc.setSelectedIndex(-1);
+        jCBNovosItensArmaNpc.setSelectedIndex(-1);
+        jCBNovosItensConsumivelNpc.setSelectedIndex(-1);
+        jCBNovosItensEscudoNpc.setSelectedIndex(-1);
+        
+        jCBNovosItensCodArmaduraNpc.removeAllItems();
+        jCBNovosItensCodArmaNpc.removeAllItems();
+        jCBNovosItensCodConsumivelNpc.removeAllItems();
+        jCBNovosItensCodEscudoNpc.removeAllItems();
+        
         jTFNovosItensCodigoNpc.setText("");
         jTFNovosItensTipoNpc.setText("");
         
-        jCBNovosItensArmaduraNpc.setSelectedIndex(-1);
         jTFNovosItensCodArmadura.setText("");
         jTFNovosItensQuantidadeArmaduraNpc.setText("");
 
-        jCBNovosItensArmaNpc.setSelectedIndex(-1);
         jTFNovosItensCodArma.setText("");
         jTFNovosItensQuantidadeArmaNpc.setText("");
-        
-        jCBNovosItensConsumivelNpc.setSelectedIndex(-1);
+                
         jTFNovosItensCodConsumivel.setText("");
         jTFNovosItensQuantidadeConsumivelNpc.setText("");
-         
-        jCBNovosItensEscudoNpc.setSelectedIndex(-1);
+                 
         jTFNovosItensCodEscudo.setText("");
         jTFNovosItensQuantidadeEscudoNpc.setText("");
-                
+        
+        // CheckBox
+        jCBNovosItensAdicionarArmadura.setSelected(false);
+        jCBNovosItensAdicionarArma.setSelected(false);
+        jCBNovosItensAdicionarConsumivel.setSelected(false);
+        jCBNovosItensAdicionarEscudo.setSelected(false);
+        
+        jTFNovosItensVerificaCodArmadura.setText("");
+        jTFNovosItensVerificaCodArma.setText("");
+        jTFNovosItensVerificaCodConsumivel.setText("");
+        jTFNovosItensVerificaCodEscudo.setText("");
+            
     }
         
     // Remove itens do ComboBox na aba Adicionar Novos Itens
@@ -2210,6 +2241,15 @@ public class JFNpc extends javax.swing.JFrame {
             BuscarCodArmaNpcsBanco(null);
             BuscarCodConsumivelNpcsBanco(null);
             BuscarCodEscudoNpcsBanco(null);
+            
+            if (jCBNovosItensNomeNpc.getSelectedIndex() != -1){
+                
+                jCBNovosItensAdicionarArmadura.setEnabled(true);
+                jCBNovosItensAdicionarArma.setEnabled(true);
+                jCBNovosItensAdicionarConsumivel.setEnabled(true);
+                jCBNovosItensAdicionarEscudo.setEnabled(true);
+
+            }
         
         } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
@@ -2359,7 +2399,7 @@ public class JFNpc extends javax.swing.JFrame {
     private void jBNovosItensAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovosItensAdicionarActionPerformed
 
         try {
-        
+            
             GenericDAO gDao = new GenericDAO();
             
         // Verifica se algum Npc esta selecionado em ComboBox    
@@ -2385,8 +2425,8 @@ public class JFNpc extends javax.swing.JFrame {
                     NovaArmaduraNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
                     NovaArmaduraNpc.setCodigo_armadura(Integer.parseInt(jTFNovosItensCodArmadura.getText()));
                     NovaArmaduraNpc.setQuantidade_armadura(Integer.parseInt(jTFNovosItensQuantidadeArmaduraNpc.getText()));
-                    gDao.alterar2(NovaArmaduraNpc); 
-
+                    gDao.alterar2(NovaArmaduraNpc);
+                    
                 }
                 
                 else{ // Senão, ele faz um insert
@@ -2395,7 +2435,7 @@ public class JFNpc extends javax.swing.JFrame {
                     NovaArmaduraNpc.setCodigo_armadura(Integer.parseInt(jTFNovosItensCodArmadura.getText()));
                     NovaArmaduraNpc.setQuantidade_armadura(Integer.parseInt(jTFNovosItensQuantidadeArmaduraNpc.getText()));
                     gDao.adicionar(NovaArmaduraNpc);
-              
+                    
                 }
                     
             } 
@@ -2420,8 +2460,8 @@ public class JFNpc extends javax.swing.JFrame {
                     NovaArmaNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
                     NovaArmaNpc.setCodigo_arma(Integer.parseInt(jTFNovosItensCodArma.getText()));
                     NovaArmaNpc.setQuantidade_arma(Integer.parseInt(jTFNovosItensQuantidadeArmaNpc.getText()));
-                    gDao.alterar2(NovaArmaNpc); 
-                    
+                    gDao.alterar2(NovaArmaNpc);
+                            
                 }
                 
                 else{ // Senão, ele faz um insert
@@ -2508,7 +2548,9 @@ public class JFNpc extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Selecione um Escudo e insira a quantidade desejada!");
             }
         }
-
+        
+        LimparCamposAbaAdicionarNovosItens(evt); // Chama evento LimparCamposAbaAdicionarNovosItens
+        
         } catch (SQLException | ClassNotFoundException | IllegalArgumentException | IllegalAccessException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -2784,6 +2826,7 @@ public class JFNpc extends javax.swing.JFrame {
             jCBNovosItensArmaNpc.removeAllItems();
             jCBNovosItensConsumivelNpc.removeAllItems();
             jCBNovosItensEscudoNpc.removeAllItems();
+            LimparCamposAbaAdicionarNovosItens(evt);
 
             // Carrega ComboBox Npcs    
             List<Object> listarNpcs = null;
@@ -2873,6 +2916,13 @@ public class JFNpc extends javax.swing.JFrame {
     private void jCBNovosItensAdicionarArmaduraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBNovosItensAdicionarArmaduraActionPerformed
         
         try {
+        
+            if (jCBNovosItensAdicionarArmadura.isSelected()) {
+                jCBNovosItensArmaduraNpc.setEnabled(true);
+            }
+            else{
+                jCBNovosItensArmaduraNpc.setEnabled(false);
+            }
             
             GenericDAO gDao = new GenericDAO();
         
@@ -2919,6 +2969,14 @@ public class JFNpc extends javax.swing.JFrame {
         
         try {
             
+            if (jCBNovosItensAdicionarArma.isSelected()) {
+                jCBNovosItensArmaNpc.setEnabled(true);
+            }
+            else{
+                jCBNovosItensArmaNpc.setEnabled(false);
+            }
+            
+            
             GenericDAO gDao = new GenericDAO();
         
         // Se CheckBox estiver selecionado...
@@ -2964,6 +3022,13 @@ public class JFNpc extends javax.swing.JFrame {
     
         try {
             
+            if (jCBNovosItensAdicionarConsumivel.isSelected()) {
+            jCBNovosItensConsumivelNpc.setEnabled(true);
+            }
+            else{
+            jCBNovosItensConsumivelNpc.setEnabled(false);
+            }                        
+
             GenericDAO gDao = new GenericDAO();
             
         // Se CheckBox estiver selecionado...
@@ -3009,6 +3074,13 @@ public class JFNpc extends javax.swing.JFrame {
         
         try {
             
+            if (jCBNovosItensAdicionarEscudo.isSelected()) {
+            jCBNovosItensEscudoNpc.setEnabled(true);
+            }
+            else{
+            jCBNovosItensEscudoNpc.setEnabled(false);
+            } 
+
             GenericDAO gDao = new GenericDAO();
             
         // Se CheckBox estiver selecionado...
