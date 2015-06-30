@@ -133,6 +133,25 @@ public class JFRaca extends javax.swing.JFrame {
             Raca rc = new Raca();
             
             rc.setNome_raca(jtfNome_raca.getText());
+            rc.setConstituicao_raca(Integer.parseInt(jtfConstituicao_raca.getText()));
+            rc.setCarisma_raca(Integer.parseInt(jtfCarisma_raca.getText()));
+            rc.setDescricao_raca(jtaDescricao_raca.getText());
+            rc.setDestreza_raca(Integer.parseInt(jtfDestreza_raca.getText()));
+            rc.setForca_raca(Integer.parseInt(jtfForca_raca.getText()));
+            rc.setInteligencia_raca(Integer.parseInt(jtfInteligencia_raca.getText()));
+            rc.setQtd_talen_raca_adc(Integer.parseInt(jtfqtd_adicionais_raca.getText()));
+            rc.setSabedoria_raca(Integer.parseInt(jtfSabedoria_raca.getText()));
+            rc.setUso_armadura_raca(jCBoxUsoArmadura.getSelectedIndex());
+          
+            
+            if (jCheckBox1.isSelected())  {
+                rc.setUso_escudo_raca(1);
+                                
+            }
+            else {
+               rc.setUso_escudo_raca(0); 
+            }
+          
             gDao.adicionar(rc);
             
             
