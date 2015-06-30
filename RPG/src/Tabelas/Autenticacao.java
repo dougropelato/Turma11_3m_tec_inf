@@ -36,6 +36,15 @@ public class Autenticacao extends Temporario {
     int valida_posicao;
     int iniciativa_personagem;
     int iniciativa_npc;
+    int codigo_npc;
+
+    public int getCodigo_npc() {
+        return codigo_npc;
+    }
+
+    public void setCodigo_npc(int codigo_npc) {
+        this.codigo_npc = codigo_npc;
+    }
 
     public int getIniciativa_npc() {
         return iniciativa_npc;

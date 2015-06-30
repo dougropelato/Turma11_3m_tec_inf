@@ -120,15 +120,16 @@ public class Utilitarios {
                 npcs.setCodigo_npc(posicoesNpcs.getCodigo_npc());
                 List<Object> list8 = gDAO.listar2(Npcs.class, npcs);
                 for (Object obj8 : list8){
-                    textoPosicoes=" "+ npcs.getNome_npc()+" ";
+                    textoPosicoes=" "+npcs.getNome_npc()+" ";
                     textoPosicoes=" "+npcs.getDescricao_npc()+" /n";
                     
                     if(npcs.getTipo_npc().equals("combatente")){
                         auth.setStatus_atual("Batalha");
+                        auth.setCodigo_npc(npcs.getCodigo_npc());
                     }
-                    
                     if(npcs.getTipo_npc().equals("comerciante")){
-                     //   auth.
+                        auth.setStatus_atual("Comercio");
+                        auth.setCodigo_npc(npcs.getCodigo_npc());
                     }
                 }
             }
@@ -148,6 +149,7 @@ public class Utilitarios {
             }
             
             auth.setValida_posicao(auth.getValida_posicao()+1);
+            break;
         }
         
         return textoPosicoes;
