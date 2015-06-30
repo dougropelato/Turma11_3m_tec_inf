@@ -89,20 +89,20 @@ public class Utilitarios {
             arrayListPosicao.add(posicoes.getCodigo_posicao());
             //textoPosicoes=posicoes.getDescricao_posicao() +" ";
             //System.out.println(posicoes.getDescricao_posicao());
+        }
+        
+        
+       /* if (auth.getValida_posicao() == ) {
             
-            //pega todas as pericias dessa posição
-            periciasPosicoes.setCodigo_posicao(posicoes.getCodigo_posicao());
-            List<Object> list4 = gDAO.listar2(PericiasPosicoes.class, periciasPosicoes);
-            for (Object obj5 : list4) {
-                PericiasPosicoes pp = new PericiasPosicoes();
-                
-                Pericias ps = new Pericias();
-                ps.setCodigo_pericia(pp.getCodigo_pericia());
-                List<Object> list6 = gDAO.listar2(Pericias.class, ps);
-                for (Object obj6 : list6){
-                    System.out.println(ps.getNome_pericia());
-                }
-            }
+        }*/
+        int cont=1;
+        while (cont <= arrayListPosicao.size()) {
+
+            auth.setCodigo_posicao((int) arrayListPosicao.get(cont)); //posição atual
+            
+            
+            
+            textoPosicoes=" "+posicoes.getDescricao_posicao()+" /n";
             
             //pegando npcs dessa posicao
             PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
@@ -114,17 +114,25 @@ public class Utilitarios {
                 npcs.setCodigo_npc(posicoesNpcs.getCodigo_npc());
                 List<Object> list8 = gDAO.listar2(Npcs.class, npcs);
                 for (Object obj8 : list8){
-                    System.out.println(npcs.getNome_npc());
+                    textoPosicoes=" "+ npcs.getNome_npc()+" ";
+                    textoPosicoes=" "+npcs.getDescricao_npc()+" /n";
                 }
             }
-        }
-        
-        int cont = 1;
-        while (cont <= arrayListPosicao.size()) {
-
-            auth.setCodigo_posicao((int) arrayListPosicao.get(cont)); //posição atual
-        
-            textoPosicoes=" "+posicoes.getDescricao_posicao()+" /n";
+            
+            //pega todas as pericias dessa posição
+            periciasPosicoes.setCodigo_posicao(auth.getCodigo_posicao());
+            List<Object> list4 = gDAO.listar2(PericiasPosicoes.class, periciasPosicoes);
+            for (Object obj5 : list4) {
+                PericiasPosicoes pp = new PericiasPosicoes();
+                
+                Pericias ps = new Pericias();
+                ps.setCodigo_pericia(pp.getCodigo_pericia());
+                List<Object> list6 = gDAO.listar2(Pericias.class, ps);
+                for (Object obj6 : list6){
+                    textoPosicoes=" "+ps.getNome_pericia()+" ";
+                    System.out.println(ps.getNome_pericia());
+                }
+            }
             
             cont++;
         }
