@@ -34,7 +34,7 @@ public class Batalhas {
         Temporario tempnpc = new Temporario();
         int dano = 0;
         
-        auth.setIniciativa_npc(dano);
+        
         tem.setIniciativa_personagem(dad.getDado(20) + per.getDestreza_personagem());
 
         List<Object> lis = new ArrayList();
