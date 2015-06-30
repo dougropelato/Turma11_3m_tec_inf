@@ -43,7 +43,7 @@ public class jPintar extends JPanel {
 
         //jogador
         
-        g.drawRect(32, 32, 10, 10);
+        g.drawRect(13, 23, 6, 6); //13 e 23 é equivalente a posição do jogador 2,3 nas coordenadas x,y
     }
 
     @Override
