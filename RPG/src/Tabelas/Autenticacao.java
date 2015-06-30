@@ -25,8 +25,70 @@ public class Autenticacao extends Temporario {
     boolean jogador_logado;
     String nome_jogador;
     String senha_jogador;
-
     int codigo_jogador;
+    int codigo_campanha;
+    int codigo_caminho;
+    int codigo_posicao;
+    int tam_x_mapa;
+    int tam_y_mapa;
+    int coordenadaX_posicao;    //coordenadas da posicao em que o jogador está
+    int coordenadaY_posicao;
+
+    public int getCoordenadaX_posicao() {
+        return coordenadaX_posicao;
+    }
+
+    public void setCoordenadaX_posicao(int coordenadaX_posicao) {
+        this.coordenadaX_posicao = coordenadaX_posicao;
+    }
+
+    public int getCoordenadaY_posicao() {
+        return coordenadaY_posicao;
+    }
+
+    public void setCoordenadaY_posicao(int coordenadaY_posicao) {
+        this.coordenadaY_posicao = coordenadaY_posicao;
+    }
+    
+    public int getTam_x_mapa() {
+        return tam_x_mapa;
+    }
+
+    public void setTam_x_mapa(int tam_x_mapa) {
+        this.tam_x_mapa = tam_x_mapa;
+    }
+
+    public int getTam_y_mapa() {
+        return tam_y_mapa;
+    }
+
+    public void setTam_y_mapa(int tam_y_mapa) {
+        this.tam_y_mapa = tam_y_mapa;
+    }
+
+    public int getCodigo_posicao() {
+        return codigo_posicao;
+    }
+
+    public void setCodigo_posicao(int codigo_posicao) {
+        this.codigo_posicao = codigo_posicao;
+    }
+    
+    public int getCodigo_caminho() {
+        return codigo_caminho;
+    }
+
+    public void setCodigo_caminho(int codigo_caminho) {
+        this.codigo_caminho = codigo_caminho;
+    }
+    
+    public int getCodigo_campanha() {
+        return codigo_campanha;
+    }
+
+    public void setCodigo_campanha(int codigo_campanha) {
+        this.codigo_campanha = codigo_campanha;
+    }
 
     public int getCodigo_jogador() {
         return codigo_jogador;

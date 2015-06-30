@@ -43,7 +43,7 @@ public class jPintar extends JPanel {
 
         //jogador
         
-        g.drawRect(13, 23, 6, 6);
+        g.drawRect(32, 32, 10, 10);
     }
 
     @Override

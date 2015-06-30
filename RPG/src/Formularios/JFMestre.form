@@ -32,83 +32,104 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="110" pref="110" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="65" pref="65" max="-2" attributes="0"/>
+                      <Component id="jbtcampanha" min="-2" pref="143" max="-2" attributes="0"/>
+                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                      <Component id="jbtraça" min="-2" pref="143" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="65" pref="65" max="-2" attributes="0"/>
+                      <Component id="jbtcaminho" min="-2" pref="143" max="-2" attributes="0"/>
+                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                      <Component id="jbtclasse" min="-2" pref="143" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="65" pref="65" max="-2" attributes="0"/>
+                      <Component id="jbtvariavel" min="-2" pref="143" max="-2" attributes="0"/>
+                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                      <Component id="jbtarmadura" min="-2" pref="143" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="65" pref="65" max="-2" attributes="0"/>
+                      <Component id="jbtmissao" min="-2" pref="143" max="-2" attributes="0"/>
+                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                      <Component id="jbtarma" min="-2" pref="143" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jbtcampanha" min="-2" pref="143" max="-2" attributes="0"/>
-                          <Component id="jbtcaminho" alignment="1" min="-2" pref="143" max="-2" attributes="0"/>
-                          <Component id="jbtnpc" alignment="1" min="-2" pref="143" max="-2" attributes="0"/>
-                          <Component id="jbtmissao" min="-2" pref="143" max="-2" attributes="0"/>
-                          <Component id="jbtvariavel" min="-2" pref="143" max="-2" attributes="0"/>
+                      <EmptySpace min="65" pref="65" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jbtnpc" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
+                          <Component id="jbtpericiais" min="-2" pref="143" max="-2" attributes="0"/>
                           <Component id="jbttalentos" min="-2" pref="143" max="-2" attributes="0"/>
-                          <Component id="jbtpericiais" alignment="1" min="-2" pref="143" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jbtclasse" max="32767" attributes="0"/>
-                              <Component id="jbtraça" max="32767" attributes="0"/>
-                              <Component id="jbtarmadura" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jbtarma" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jbtescudo" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jbtconsumivel" alignment="0" pref="143" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jbtescudo" min="-2" pref="143" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jbtsair" min="-2" pref="143" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jbtjogar" min="-2" pref="143" max="-2" attributes="0"/>
+                                  <Component id="jbtconsumivel" min="-2" pref="143" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="65" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="66" pref="66" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jbtcampanha" min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jbtraça" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="jbtcampanha" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jbtcaminho" min="-2" pref="36" max="-2" attributes="0"/>
+                  <Component id="jbtclasse" min="-2" pref="35" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                      <Component id="jbtraça" max="32767" attributes="0"/>
+                      <Component id="jbtvariavel" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jbtarmadura" min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jbtclasse" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="jbtcaminho" min="-2" pref="36" max="-2" attributes="0"/>
+                  <Component id="jbtmissao" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="jbtarma" min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbtarmadura" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                  <Component id="jbtvariavel" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbtarma" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="jbtmissao" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbtescudo" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="jbtnpc" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="jbtescudo" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jbtconsumivel" pref="35" max="32767" attributes="0"/>
-                  <Component id="jbttalentos" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbtpericiais" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="jbtsair" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="jbttalentos" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="jbtconsumivel" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="120" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jbtpericiais" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="jbtjogar" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -226,13 +247,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtpericiaisActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jbtsair">
+    <Component class="javax.swing.JButton" name="jbtjogar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Sair"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="JOGAR"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtsairActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

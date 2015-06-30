@@ -5,6 +5,7 @@
  */
 package formularios;
 
+//Importações da Biblioteca Java
 import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -23,43 +24,50 @@ import tabelas.Npcs;
 
 /**
  *
- * @author Orlando
+ * @author Kaayo
  */
 public class JFCaminhos extends javax.swing.JFrame {
 
-    ArrayList arrayListMissoes = new ArrayList();
+    ArrayList arrayListMissoes = new ArrayList();//Criando ArrayList de nome 'arrayListMissoes'
 
+    //Método Void para Centralziar o Formulário Caminhos quando iniciado (Visível)
     public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
         setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
     }
 
+    //Método void para Carregar o JComboBox Caminho
     public void carregaComboCampanha() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
+        //Criando Objetos
         GenericDAO gDAO = new GenericDAO();
         Campanhas campanhas = new Campanhas();
+
+        //Criando Lista da Classe Campanhas
         List<Object> list = gDAO.listar(Campanhas.class);
 
-        for (Object obj2 : list) {
+        for (Object obj2 : list) {//criando 'For' para Lista os atributos da Classe Campanhas
             Campanhas c = (Campanhas) obj2;
 
+            //Exibe Mensagem
             System.out.println("cod npc " + c.getCodigo_campanha());
 
+            //Array recebe o Código e indexa-o
             arrayListMissoes.add(c.getCodigo_campanha());
+
+            //JComboBox Missao recebe o nome da Campanha
             jcbMissao.addItem(c.getNome_campanha());
         }
     }
-
     /**
      * Creates new form JFCaminhos
      */
     public JFCaminhos() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         initComponents();
         centralizarComponente();
-        carregaComboCampanha();
+        carregaComboCampanha();//Inicia o método quando o JFCaminhos é iniciado
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -107,6 +115,11 @@ public class JFCaminhos extends javax.swing.JFrame {
         jlCampanha.setText("Selecionar Campanha");
 
         jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,25 +162,25 @@ public class JFCaminhos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Método Void presente no evento do Botão Salvar quando pressionado
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
 
         try {
-            if (jtfCaminho.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Por Favor insira um nome para o Caminho");
-            } else {
+            if (jtfCaminho.getText().equals("")) {//Se o Campo estiver em branco, faça...
+                JOptionPane.showMessageDialog(null, "Por Favor insira um nome para o Caminho");//Exibe mensagem
+            } else {//Senão faça...
+
+                //Criando Objetos
+                GenericDAO gDAO = new GenericDAO();
                 Caminhos caminhos = new Caminhos();
 
-                caminhos.setNome_caminho(jtfCaminho.getText());
+                caminhos.setNome_caminho(jtfCaminho.getText());//Atributo 'nome_caminho' da Classe Caminhos recebe o dado inserido no campo JTextField
+                caminhos.setCodigo_campanha((int) (arrayListMissoes.get(jcbMissao.getSelectedIndex()))); //apenas para teste               
+                gDAO.adicionar(caminhos);//Cadastrando o Caminho no Banco de Dados***
 
-                caminhos.setCodigo_campanha((int) (arrayListMissoes.get(jcbMissao.getSelectedIndex()))); //apenas para teste
+                JOptionPane.showMessageDialog(null, "Caminho Cadastrado com Sucesso!");//Exibe Mensagem
 
-                GenericDAO gDAO = new GenericDAO();
-                gDAO.adicionar(caminhos);
-
-                //mensagem de cadastro
-                JOptionPane.showMessageDialog(null, "Caminho Cadastrado com Sucesso!");
-                //limpando campos apos cadastro
-                jtfCaminho.setText("");
+                jtfCaminho.setText(""); //limpando campos apos cadastro
             }
         } catch (SQLException ex) {
             Logger.getLogger(JFCaminhos.class.getName()).log(Level.SEVERE, null, ex);
@@ -192,8 +205,14 @@ public class JFCaminhos extends javax.swing.JFrame {
 
     private void jcbMissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMissaoActionPerformed
         String t = (String.valueOf(jcbMissao.getSelectedIndex()) + jcbMissao.getSelectedItem().toString());//Variável 't' recebe o Código Index e o Nome do Atributo selecionado no JComboBox
-        System.out.println(t);
+        System.out.println(t);//Exibem os os dados que a variável tem armazenado
     }//GEN-LAST:event_jcbMissaoActionPerformed
+
+    //Método void presente no evento do Botão Cancelar quando pressionado
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        jtfCaminho.setText("");//Limpa Campo
+        this.dispose();//Fecha o Formulário      
+    }//GEN-LAST:event_jbCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,7 +277,6 @@ public class JFCaminhos extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbSalvar;

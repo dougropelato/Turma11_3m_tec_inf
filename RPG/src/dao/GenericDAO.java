@@ -99,6 +99,56 @@ public class GenericDAO {
         }
         String sql = "UPDATE " + tabela + " SET " + campos + " WHERE " + lugar + "";
         PreparedStatement stmt = conexao.prepareCall(sql);
+        System.out.println(sql);
+        stmt.execute();
+        stmt.close();
+        System.out.println("deu certo essa porra");
+    }
+
+    /**
+     * *************************************************************************
+     * Método ALTERAR passar o objeto que vai ser alterado
+     * **************************************************************************
+     */
+    public void alterar2(Object obj) throws ClassNotFoundException,
+            SQLException, IllegalArgumentException,
+            IllegalAccessException {
+
+        String classe = obj.getClass().getName();
+        Class cls = Class.forName(classe);
+        String campos = "";
+        String[] codigos;
+
+        String lugar = "";
+        String tabela = cls.getSimpleName();
+        String baseDados = conexao.getCatalog();
+
+        Field listaAtributos[] = cls.getDeclaredFields();
+
+        for (int i = 0; i < listaAtributos.length; i++) {
+            Field fld = listaAtributos[i];
+            fld.setAccessible(true);
+            campos += fld.getName() + " = '" + fld.get(obj) + "'";
+            if (i != (listaAtributos.length - 1)) {
+                campos += ", ";
+            }
+
+            if (fld.getType().toString().equals("int")) {
+
+                codigos = fld.getName().split("_");
+
+                if (codigos[0].equalsIgnoreCase("codigo")) {
+                    if (lugar.equalsIgnoreCase("")) {
+                        lugar = fld.getName() + " = '" + fld.get(obj) + "' ";
+                    } else {
+                        lugar += " AND " + fld.getName() + " = '" + fld.get(obj) + "'";
+                    }
+                }
+            }
+        }
+        String sql = "UPDATE " + tabela + " SET " + campos + " WHERE " + lugar + "";
+        PreparedStatement stmt = conexao.prepareCall(sql);
+        System.out.println(sql);
         stmt.execute();
         stmt.close();
         System.out.println("deu certo essa porra");
@@ -136,6 +186,10 @@ public class GenericDAO {
                     if (pvec[0].getName().equals("int")) {
                         args1[0] = int.class;
                         obj.getClass().getMethod(m.getName(), args1).invoke(obj, rset.getInt(s));
+                    }
+                    if (pvec[0].getName().equals("double")) {
+                        args1[0] = double.class;
+                        obj.getClass().getMethod(m.getName(), args1).invoke(obj, rset.getDouble(s));
                     }
                 }
             }

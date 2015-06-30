@@ -5,6 +5,7 @@
  */
 package Utilitários;
 
+import Tabelas.Autenticacao;
 import Tabelas.NpcsCombatentes;
 import Tabelas.Temporario;
 import dao.GenericDAO;
@@ -23,7 +24,9 @@ import tabelas.Personagens;
 public class Batalhas {
 
     public String iniciaBatalha(Personagens per, NpcsCombatentes npc, Temporario tem) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
-
+       
+        Autenticacao auth = Autenticacao.getInstance();
+        
         String ini = "";
         utilitários.Dados dad = new utilitários.Dados();
         GenericDAO gda = new GenericDAO();
@@ -62,7 +65,7 @@ public class Batalhas {
                 psg.setSabedoria_personagem(pso.getSabedoria_personagem());
                 psg.setVontade_personagem(pso.getVontade_personagem());
             }
-            
+
             tempnpc.setCodigo_personagem(npc.getCodigo_personagem());
             lis = gda.listar2(Temporario.class, tempnpc);
 

@@ -5,7 +5,7 @@
  */
 package rpg;
 
-import Tabelas.Autenticacao;
+import Formularios.JFPrincipal;
 import formularios.JFMestre;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
@@ -16,13 +16,14 @@ import java.sql.SQLException;
  */
 public class Rpg {
 
-    Autenticacao auth = Autenticacao.getInstance();
+    
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
-
+        
+        //JFPrincipal jfprim = JFPrincipal.getInstance();
         JFMestre m = new JFMestre();
         m.setVisible(true);
 
