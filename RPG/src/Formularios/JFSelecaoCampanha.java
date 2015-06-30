@@ -5,6 +5,7 @@
  */
 package Formularios;
 
+import Tabelas.Autenticacao;
 import dao.GenericDAO;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
@@ -26,7 +27,6 @@ public class JFSelecaoCampanha extends javax.swing.JFrame {
     public JFSelecaoCampanha() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         initComponents();
         carregaCampanha();
-        
         
     }
 
@@ -51,6 +51,11 @@ public class JFSelecaoCampanha extends javax.swing.JFrame {
         jLabel1.setText("Seleção de Campanha");
 
         jButton1.setText("Continuar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +98,42 @@ public class JFSelecaoCampanha extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            GenericDAO gg = new GenericDAO();
+            Campanhas cc = new Campanhas();
+            cc.setNome_campanha(jComboBox1.getSelectedItem().toString());
+            Autenticacao auth = Autenticacao.getInstance();
+            List<Object> ll = new ArrayList();
+            
+            ll = gg.listar2(Campanhas.class, cc);
+            
+            for (Object obj : ll) {
+                Campanhas cc2 = (Campanhas) obj;
+                auth.setCodigo_campanha(cc2.getCodigo_campanha());
+            }
+            
+            dispose();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(JFSelecaoCampanha.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFSelecaoCampanha.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFSelecaoCampanha.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFSelecaoCampanha.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFSelecaoCampanha.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFSelecaoCampanha.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFSelecaoCampanha.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,19 +186,18 @@ public class JFSelecaoCampanha extends javax.swing.JFrame {
         });
     }
     
-    public  void carregaCampanha() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+    public void carregaCampanha() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         GenericDAO gg = new GenericDAO();
         
         List<Object> ll = new ArrayList();
         
         ll = gg.listar(Campanhas.class);
-          jComboBox1.addItem(ll);
+     
         for (Object obj : ll) {
-            Campanhas cc  =  (Campanhas) obj;
-           jComboBox1.add(cc.getNome_campanha(),null);
-          
+            Campanhas cc = (Campanhas) obj;
+            jComboBox1.add(cc.getNome_campanha(), null);
+            
         }
-        
         
     }
 
