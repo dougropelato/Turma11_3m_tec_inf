@@ -422,6 +422,11 @@ public class JFVendaItens extends javax.swing.JFrame {
                 QuantComprarActionPerformed(evt);
             }
         });
+        QuantComprar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                QuantComprarKeyReleased(evt);
+            }
+        });
         getContentPane().add(QuantComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 40, -1));
         getContentPane().add(QuantVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, 40, -1));
         getContentPane().add(jlListPreçoUndComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 70, 20));
@@ -456,7 +461,6 @@ public class JFVendaItens extends javax.swing.JFrame {
         lbPrecoUndComprar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbPrecoUndComprar.setText("Preço unidade:");
         getContentPane().add(lbPrecoUndComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
-        lbPrecoUndComprar.getAccessibleContext().setAccessibleName("Preço unidade:");
 
         lbComprar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbComprar.setText("O que você deseja comprar?");
@@ -1118,13 +1122,15 @@ public class JFVendaItens extends javax.swing.JFrame {
 
             PersonagensArmaduras armadurasNN = (PersonagensArmaduras) obj2;
             Armaduras armadura = new Armaduras();
+            
             List<Object> ListarArmaduras = new ArrayList<>();
 
-            int mostrarCodigo = (armadurasNN.getCodigo_personagem());
-            //armadura.setCodigo_armadura(mostrarCodigo);  /////seta o codigo da armadura da tabela N/N
-            //armadurasNN.setCodigo_personagem(mostrarCodigo);
+            int codigoArmadura = (armadurasNN.getCodigo_armadura());
+            int codigoPersonagem = (armadurasNN.getCodigo_personagem());
+            armadura.setCodigo_armadura(codigoArmadura);  /////seta o codigo da armadura da tabela N/N
+            
 
-            if ( mostrarCodigo == (Integer.parseInt(editcodigoPersonagem.getText()))) {
+            if ( codigoPersonagem == (Integer.parseInt(editcodigoPersonagem.getText()))) {
 
                 try {
 
