@@ -422,6 +422,11 @@ public class JFVendaItens extends javax.swing.JFrame {
                 QuantComprarActionPerformed(evt);
             }
         });
+        QuantComprar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                QuantComprarKeyReleased(evt);
+            }
+        });
         getContentPane().add(QuantComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 40, -1));
         getContentPane().add(QuantVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, 40, -1));
         getContentPane().add(jlListPreçoUndComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 70, 20));
@@ -1062,10 +1067,11 @@ public class JFVendaItens extends javax.swing.JFrame {
             Armas arma = new Armas();
             List<Object> ListarArmas = new ArrayList<>();
 
-            int mostrarCodigo = (armaNN.getCodigo_arma());
-            arma.setCodigo_arma(mostrarCodigo);     /////seta o codigo da arma da tabela N/N
+            int codigoArma = (armaNN.getCodigo_arma());
+            int codigoPersonagem = (armaNN.getCodigo_personagem());
+            arma.setCodigo_arma(codigoArma);     /////seta o codigo da arma da tabela N/N
 
-            if (mostrarCodigo == (Integer.parseInt(editcodigoPersonagem.getText()))) {
+            if (codigoPersonagem == (Integer.parseInt(editcodigoPersonagem.getText()))) {
                 try {
 
                     ListarArmas = gDao.listar2(Armas.class, arma);
@@ -1131,12 +1137,12 @@ public class JFVendaItens extends javax.swing.JFrame {
             Armaduras armadura = new Armaduras();
             List<Object> ListarArmaduras = new ArrayList<>();
 
-           int mostrarCodigo = (armadurasNN.getCodigo_armadura());
-            int teste = (armadurasNN.getCodigo_personagem());
-            armadura.setCodigo_armadura(mostrarCodigo);  /////seta o codigo da armadura da tabela N/N
+           int codigoArmadura = (armadurasNN.getCodigo_armadura());
+            int codigoPersonagem = (armadurasNN.getCodigo_personagem());
+            armadura.setCodigo_armadura(codigoArmadura);  /////seta o codigo da armadura da tabela N/N
             
 
-            if ( teste == (Integer.parseInt(editcodigoPersonagem.getText()))) {
+            if ( codigoPersonagem == (Integer.parseInt(editcodigoPersonagem.getText()))) {
 
                 try {
 
@@ -1202,10 +1208,11 @@ public class JFVendaItens extends javax.swing.JFrame {
             Escudos escudo = new Escudos();
             List<Object> ListarEscudos = new ArrayList<>();
 
-            int mostrarCodigo = (escudosNN.getCodigo_escudo());
-            escudo.setCodigo_escudo(mostrarCodigo);  /////seta o codigo do escudo da tabela N/N
+            int codigoEscudo = (escudosNN.getCodigo_escudo());
+            int codigoPersonagem = (escudosNN.getCodigo_personagem());
+            escudo.setCodigo_escudo(codigoEscudo);  /////seta o codigo do escudo da tabela N/N
 
-            if (mostrarCodigo == (Integer.parseInt(editcodigoPersonagem.getText()))) {
+            if (codigoPersonagem == (Integer.parseInt(editcodigoPersonagem.getText()))) {
 
                 try {
 
@@ -1271,10 +1278,11 @@ public class JFVendaItens extends javax.swing.JFrame {
             Consumiveis consumivel = new Consumiveis();
             List<Object> ListarConsumiveis = new ArrayList<>();
 
-            int mostrarCodigo = (consumiveisNN.getCodigo_consumivel());
-            consumivel.setCodigo_consumivel(mostrarCodigo);  /////seta o codigo do consumivel da tabela N/N
+            int codigoConsumivel = (consumiveisNN.getCodigo_consumivel());
+            int codigoPersonagem = (consumiveisNN.getCodigo_personagem());
+            consumivel.setCodigo_consumivel(codigoConsumivel);  /////seta o codigo do consumivel da tabela N/N
 
-            if (mostrarCodigo == (Integer.parseInt(editcodigoPersonagem.getText()))) {
+            if (codigoPersonagem == (Integer.parseInt(editcodigoPersonagem.getText()))) {
 
                 try {
 
@@ -1493,6 +1501,7 @@ public class JFVendaItens extends javax.swing.JFrame {
     private void jcPersonagemItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcPersonagemItemStateChanged
 
         ListarDinheiro();
+        
     }//GEN-LAST:event_jcPersonagemItemStateChanged
 
 
@@ -1501,10 +1510,12 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_jlListPreçoComprarKeyReleased
 
     private void QuantComprarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_QuantComprarKeyReleased
+       
         double QuantItens = (Double.parseDouble(QuantComprar.getText()));
         double PrecoUnidade = (Double.parseDouble(jlListPreçoUndComprar.getText()));
         double Result = PrecoUnidade * QuantItens;
         jlListPreçoComprar.setText(String.valueOf(Result));
+        
     }//GEN-LAST:event_QuantComprarKeyReleased
 
     private void jcVenderArmasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcVenderArmasItemStateChanged
@@ -1564,6 +1575,20 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                 editvenderCodigoArmadura.setText(String.valueOf(aa.getCodigo_armadura()));
                 // jlListPreçoUndComprar.setText(String.valueOf(aa.getPreco_arma())); //// lista preço arma
+                
+                PersonagensArmaduras personagensArmadura = new PersonagensArmaduras();
+                List<Object> ListarQuantArmadura = new ArrayList<>();
+
+                personagensArmadura.setCodigo_armadura(Integer.parseInt(editvenderCodigoArmadura.getText()));
+
+                ListarQuantArmadura = gDao.listar2(PersonagensArmaduras.class, personagensArmadura);
+
+                for (Object cod2 : ListarQuantArmadura) {
+
+                    PersonagensArmaduras nn = (PersonagensArmaduras) cod2;
+                    QuantVender.setText(String.valueOf(nn.getQuantidade_armadura()));
+
+                }
             }
 
         } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
@@ -1589,6 +1614,21 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                 editvenderCodigoEscudo.setText(String.valueOf(ee.getCodigo_escudo()));
                 // jlListPreçoUndComprar.setText(String.valueOf(aa.getPreco_arma())); //// lista preço arma
+                
+                PersonagensEscudos personagensEscudo = new PersonagensEscudos();
+                List<Object> ListarQuantEscudo = new ArrayList<>();
+
+                personagensEscudo.setCodigo_escudo(Integer.parseInt(editvenderCodigoEscudo.getText()));
+
+                ListarQuantEscudo = gDao.listar2(PersonagensEscudos.class, personagensEscudo);
+
+                for (Object cod2 : ListarQuantEscudo) {
+
+                    PersonagensEscudos nn = (PersonagensEscudos) cod2;
+                    QuantVender.setText(String.valueOf(nn.getQuantidade_escudo()));
+
+                }
+                
             }
 
         } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
@@ -1615,6 +1655,19 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                 editvenderCodigoConsumivel.setText(String.valueOf(cc.getCodigo_consumivel()));
                 // jlListPreçoUndComprar.setText(String.valueOf(aa.getPreco_arma())); //// lista preço arma
+                
+                PersonagensConsumiveis personagensConsumivel = new PersonagensConsumiveis();
+                List<Object> ListarQuantConsumivel = new ArrayList<>();
+
+                personagensConsumivel.setCodigo_consumivel(Integer.parseInt(editvenderCodigoConsumivel.getText()));
+
+                ListarQuantConsumivel = gDao.listar2(PersonagensConsumiveis.class, personagensConsumivel);
+
+                for (Object cod2 : ListarQuantConsumivel) {
+
+                    PersonagensConsumiveis nn = (PersonagensConsumiveis) cod2;
+                    QuantVender.setText(String.valueOf(nn.getQuantidade_consumivel()));
+                }
             }
 
         } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
