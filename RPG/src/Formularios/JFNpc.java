@@ -2385,7 +2385,7 @@ public class JFNpc extends javax.swing.JFrame {
                     NovaArmaduraNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
                     NovaArmaduraNpc.setCodigo_armadura(Integer.parseInt(jTFNovosItensCodArmadura.getText()));
                     NovaArmaduraNpc.setQuantidade_armadura(Integer.parseInt(jTFNovosItensQuantidadeArmaduraNpc.getText()));
-                    gDao.alterar(NovaArmaduraNpc); 
+                    gDao.alterar2(NovaArmaduraNpc); 
 
                 }
                 
@@ -2420,7 +2420,7 @@ public class JFNpc extends javax.swing.JFrame {
                     NovaArmaNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
                     NovaArmaNpc.setCodigo_arma(Integer.parseInt(jTFNovosItensCodArma.getText()));
                     NovaArmaNpc.setQuantidade_arma(Integer.parseInt(jTFNovosItensQuantidadeArmaNpc.getText()));
-                    gDao.alterar(NovaArmaNpc); 
+                    gDao.alterar2(NovaArmaNpc); 
                     
                 }
                 
@@ -2454,7 +2454,7 @@ public class JFNpc extends javax.swing.JFrame {
                     NovoConsumivelNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
                     NovoConsumivelNpc.setCodigo_consumivel(Integer.parseInt(jTFNovosItensCodConsumivel.getText()));
                     NovoConsumivelNpc.setQuantidade_consumivel(Integer.parseInt(jTFNovosItensQuantidadeConsumivelNpc.getText()));               
-                    gDao.alterar(NovoConsumivelNpc); 
+                    gDao.alterar2(NovoConsumivelNpc); 
                     
                 }               
                 
@@ -2489,7 +2489,7 @@ public class JFNpc extends javax.swing.JFrame {
                     NovoEscudoNpc.setCodigo_npc(Integer.parseInt(jTFNovosItensCodigoNpc.getText()));
                     NovoEscudoNpc.setCodigo_escudo(Integer.parseInt(jTFNovosItensCodEscudo.getText()));
                     NovoEscudoNpc.setQuantidade_escudos(Integer.parseInt(jTFNovosItensQuantidadeEscudoNpc.getText()));
-                    gDao.alterar(NovoEscudoNpc);  
+                    gDao.alterar2(NovoEscudoNpc);  
                     
                 }  
                 
