@@ -357,8 +357,15 @@ public class JFMestre extends javax.swing.JFrame {
 
     private void jbtpericiaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtpericiaisActionPerformed
         // TODO add your handling code here:
-       Formularios.JFPericias per = new Formularios.JFPericias();
-       per.setVisible(true);
+       Formularios.JFPericias per;
+       
+        try {
+            per = new Formularios.JFPericias();
+            per.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }//GEN-LAST:event_jbtpericiaisActionPerformed
 
     private void jbtsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtsairActionPerformed
