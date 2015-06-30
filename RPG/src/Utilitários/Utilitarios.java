@@ -78,37 +78,36 @@ public class Utilitarios {
         PericiasPosicoes periciasPosicoes = new PericiasPosicoes();
         GenericDAO gDAO = new GenericDAO();
         ArrayList arrayListPosicao = new ArrayList(); //aqui todos os codigos de posicoes do caminho selecionado ficam
+        ArrayList arrayListDesc = new ArrayList();
         Autenticacao auth = Autenticacao.getInstance();
         String textoPosicoes = "";
         
-        posicoes.setCodigo_caminho(auth.getCodigo_caminho()); //Aqui vai o codigo do caminho que o usuario digita no metodo de caminhos
+        //limpando arrays
+        arrayListPosicao.clear();
+        arrayListPosicao.clear();
+        
+        //pega posicoes do caminho selecionado pelo usuario
+        posicoes.setCodigo_caminho(auth.getCodigo_caminho()); 
         List<Object> list3 = gDAO.listar2(Posicoes.class, posicoes);
         for (Object obj4 : list3) {
             Posicoes p = (Posicoes) obj4;
             
             arrayListPosicao.add(posicoes.getCodigo_posicao());
-            //textoPosicoes=posicoes.getDescricao_posicao() +" ";
-            //System.out.println(posicoes.getDescricao_posicao());
+            arrayListDesc.add(posicoes.getDescricao_posicao());
         }
         
-        
-       /* if (auth.getValida_posicao() == ) {
-            
-        }*/
-     //   if (auth.getValida_posicao() == null){
-            
-      //  }
+        //caso a posicao seja 0 ele inicia em 1
         if (auth.getValida_posicao() == 0){
             auth.setValida_posicao(1);
         }
-        
+     
         while (auth.getValida_posicao() <= arrayListPosicao.size()) {
 
-            auth.setCodigo_posicao((int) arrayListPosicao.get(auth.getValida_posicao())); //posição atual
-            
-            
-            
-            textoPosicoes=" "+posicoes.getDescricao_posicao()+" /n";
+            //cod posição atual
+            auth.setCodigo_posicao((int) arrayListPosicao.get(auth.getValida_posicao())); 
+
+            //descricao da posicao
+            textoPosicoes=" "+arrayListDesc.get(auth.getValida_posicao())+" /n";
             
             //pegando npcs dessa posicao
             PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
@@ -120,9 +119,10 @@ public class Utilitarios {
                 npcs.setCodigo_npc(posicoesNpcs.getCodigo_npc());
                 List<Object> list8 = gDAO.listar2(Npcs.class, npcs);
                 for (Object obj8 : list8){
-                    textoPosicoes=" "+npcs.getNome_npc()+" ";
-                    textoPosicoes=" "+npcs.getDescricao_npc()+" /n";
+                    textoPosicoes+=" "+npcs.getNome_npc()+" ";
+                    textoPosicoes+=" "+npcs.getDescricao_npc()+" /n";
                     
+                    //verificação de tipos de Npcs
                     if(npcs.getTipo_npc().equals("combatente")){
                         auth.setStatus_atual("Batalha");
                         auth.setCodigo_npc(npcs.getCodigo_npc());
@@ -144,7 +144,7 @@ public class Utilitarios {
                 ps.setCodigo_pericia(pp.getCodigo_pericia());
                 List<Object> list6 = gDAO.listar2(Pericias.class, ps);
                 for (Object obj6 : list6){
-                    textoPosicoes=" "+ps.getNome_pericia()+"; ";
+                    textoPosicoes+=" "+ps.getNome_pericia()+"; ";
                 }
             }
             
