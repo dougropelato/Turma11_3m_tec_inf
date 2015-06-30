@@ -33,6 +33,25 @@ public class Autenticacao extends Temporario {
     int tam_y_mapa;
     int coordenadaX_posicao;    //coordenadas da posicao em que o jogador está
     int coordenadaY_posicao;
+    int valida_posicao;
+    int iniciativa_personagem;
+    int iniciativa_npc;
+
+    public int getIniciativa_npc() {
+        return iniciativa_npc;
+    }
+
+    public void setIniciativa_npc(int iniciativa_npc) {
+        this.iniciativa_npc = iniciativa_npc;
+    }
+
+    public int getValida_posicao() {
+        return valida_posicao;
+    }
+
+    public void setValida_posicao(int valida_posicao) {
+        this.valida_posicao = valida_posicao;
+    }
 
     public int getCoordenadaX_posicao() {
         return coordenadaX_posicao;

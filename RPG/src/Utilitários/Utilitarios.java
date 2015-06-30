@@ -95,10 +95,16 @@ public class Utilitarios {
        /* if (auth.getValida_posicao() == ) {
             
         }*/
-        int cont=1;
-        while (cont <= arrayListPosicao.size()) {
+     //   if (auth.getValida_posicao() == null){
+            
+      //  }
+        if (auth.getValida_posicao() == 0){
+            auth.setValida_posicao(1);
+        }
+        
+        while (auth.getValida_posicao() <= arrayListPosicao.size()) {
 
-            auth.setCodigo_posicao((int) arrayListPosicao.get(cont)); //posição atual
+            auth.setCodigo_posicao((int) arrayListPosicao.get(auth.getValida_posicao())); //posição atual
             
             
             
@@ -116,6 +122,14 @@ public class Utilitarios {
                 for (Object obj8 : list8){
                     textoPosicoes=" "+ npcs.getNome_npc()+" ";
                     textoPosicoes=" "+npcs.getDescricao_npc()+" /n";
+                    
+                    if(npcs.getTipo_npc().equals("combatente")){
+                        auth.setStatus_atual("Batalha");
+                    }
+                    
+                    if(npcs.getTipo_npc().equals("comerciante")){
+                     //   auth.
+                    }
                 }
             }
             
@@ -129,12 +143,11 @@ public class Utilitarios {
                 ps.setCodigo_pericia(pp.getCodigo_pericia());
                 List<Object> list6 = gDAO.listar2(Pericias.class, ps);
                 for (Object obj6 : list6){
-                    textoPosicoes=" "+ps.getNome_pericia()+" ";
-                    System.out.println(ps.getNome_pericia());
+                    textoPosicoes=" "+ps.getNome_pericia()+"; ";
                 }
             }
             
-            cont++;
+            auth.setValida_posicao(auth.getValida_posicao()+1);
         }
         
         return textoPosicoes;
