@@ -4,6 +4,8 @@ import Tabelas.Autenticacao;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
+import static javafx.scene.paint.Color.color;
+import static javafx.scene.paint.Color.color;
 import javax.swing.JPanel;
 
 public class jPintar extends JPanel {
@@ -43,7 +45,16 @@ public class jPintar extends JPanel {
 
         //jogador
         
+        g.setColor(Color.RED);
+        
         g.drawRect(13, 23, 6, 6); //13 e 23 é equivalente a posição do jogador 2,3 nas coordenadas x,y
+        g.drawRect(13, 23, 5, 5); //13 e 23 é equivalente a posição do jogador 2,3 nas coordenadas x,y
+        g.drawRect(13, 23, 4, 4); //13 e 23 é equivalente a posição do jogador 2,3 nas coordenadas x,y
+        g.drawRect(13, 23, 3, 3); //13 e 23 é equivalente a posição do jogador 2,3 nas coordenadas x,y
+        g.drawRect(13, 23, 2, 2); //13 e 23 é equivalente a posição do jogador 2,3 nas coordenadas x,y
+        g.drawRect(13, 23, 1, 1); //13 e 23 é equivalente a posição do jogador 2,3 nas coordenadas x,y
+        
+        
     }
 
     @Override
