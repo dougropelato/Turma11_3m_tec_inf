@@ -86,6 +86,13 @@ public class JFPericias extends javax.swing.JFrame {
 
         jLCadastroPerícias.setText("CADASTRO DE PERÍCIAS");
 
+        jCBAtributo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Força", "Destreza", "Constituição", "Inteligência", "Sabedoria", "Carisma" }));
+        jCBAtributo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBAtributoActionPerformed(evt);
+            }
+        });
+
         jLAtributoPrincipal.setText("Atributo Principal");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -102,10 +109,6 @@ public class JFPericias extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLAtributoPrincipal)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jCBAtributo, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLDescrição)
                                     .addComponent(jLPerícia))
@@ -116,7 +119,11 @@ public class JFPericias extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jBSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(43, 43, 43)
-                                        .addComponent(jBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(jBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLAtributoPrincipal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCBAtributo, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(50, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -179,31 +186,15 @@ public class JFPericias extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-        try { //lista classes cadastradas no ComboBox
-
-            GenericDAO gDao = new GenericDAO();
-
-            List<Object> listarClasses = null;
-            try {
-                listarClasses = gDao.listar(Classes.class);
-            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
-                Logger.getLogger(formularios.JFNpc.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            for (Object obj2 : listarClasses) {
-                Classes classe = (Classes) obj2;
-                jCBAtributo.addItem(classe.getNome_classe());
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(JFPericias.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
     }//GEN-LAST:event_formWindowOpened
 
     private void jCBAtributoPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAtributoPrincipalActionPerformed
 
     }//GEN-LAST:event_jCBAtributoPrincipalActionPerformed
+
+    private void jCBAtributoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAtributoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBAtributoActionPerformed
 
     /**
      * @param args the command line arguments
