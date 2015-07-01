@@ -117,6 +117,7 @@ public class Utilitarios {
                     textoPosicoes=" "+npcs.getNome_npc()+" ";
                     textoPosicoes=" "+npcs.getDescricao_npc()+" /n";
                     
+                    //setando tipos de npcs
                     if(npcs.getTipo_npc().equals("combatente")){
                         auth.setStatus_atual("Batalha");
                         auth.setCodigo_npc(npcs.getCodigo_npc());
