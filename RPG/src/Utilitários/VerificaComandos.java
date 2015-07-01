@@ -125,7 +125,9 @@ public class VerificaComandos {
 
                     if (auth.getStatus_atual().equalsIgnoreCase("BATALHA")) {// entra na batalha
 
-                        bata.iniciaBatalha(null, null, null);
+                        if (auth.getIniciativa_personagem() == 0) {
+                            bata.iniciaBatalha(null, null, null);
+                        }
 
                         if (aux[0].equalsIgnoreCase("atacar")) {//ataca
 
