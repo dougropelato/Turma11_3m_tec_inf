@@ -23,23 +23,25 @@ import tabelas.Personagens;
  */
 public class Batalhas {
 
+    Personagens psg = new Personagens();
+    Temporario tempnpc = new Temporario();
+
+    Personagens per = new Personagens();
+    Temporario tem = new Temporario();
+
     public String iniciaBatalha(Personagens per, NpcsCombatentes npc, Temporario tem) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
         Autenticacao auth = Autenticacao.getInstance();
-
-        String ini = "";
         utilitários.Dados dad = new utilitários.Dados();
         GenericDAO gda = new GenericDAO();
-        Personagens psg = new Personagens();
-        Temporario tempnpc = new Temporario();
-        int dano = 0;
-        
-        
+
+        String ini = "";
+
         tem.setIniciativa_personagem(dad.getDado(20) + per.getDestreza_personagem());
 
         List<Object> lis = new ArrayList();
 
-        psg.setCodigo_personagem(npc.getCodigo_personagem());
+        psg.setCodigo_personagem(auth.getCodigo_npc());
 
         lis = gda.listar2(Personagens.class, psg);
 
@@ -94,7 +96,8 @@ public class Batalhas {
         return res;
     }
 
-    public String combate() {
+    public String combate() throws SQLException, IllegalAccessException, ClassNotFoundException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
+        int dano = 0;
         String res = "";
 
         if (tem.getIniciativa_personagem() > tempnpc.getIniciativa_personagem()) {
