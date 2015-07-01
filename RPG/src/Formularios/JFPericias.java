@@ -25,6 +25,7 @@ import tabelas.Pericias;
 public class JFPericias extends javax.swing.JFrame {
 
     GenericDAO gDAO;
+
     /**
      * Creates new form JFPericias
      */
@@ -147,20 +148,24 @@ public class JFPericias extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarActionPerformed
-        
-        try {
-            GenericDAO gDao = new GenericDAO();
-            
-            Pericias p = new Pericias();
-            p.setNome_pericia(jTNomePerícia.getText());
-            p.setDescricao_pericia(jTADescrição.getText());
-            p.setAtributo_principal_pericia(String.valueOf(jCBAtributo.getSelectedItem()));
-            gDAO.adicionar(p);
-            
-            JOptionPane.showMessageDialog(null, " Salvou, manda nude!"); // Após clicar no botão salvar, aparece tal mensagem
-            
-        } catch (SQLException | ClassNotFoundException | IllegalArgumentException | IllegalAccessException ex) {
-            Logger.getLogger(JFPericias.class.getName()).log(Level.SEVERE, null, ex);
+
+        if (jTNomePerícia.getText().equalsIgnoreCase("") || jTADescrição.getText().equalsIgnoreCase("") || jCBAtributo.getSelectedIndex() != 0) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+        } else {
+            try {
+                GenericDAO gDao = new GenericDAO();
+
+                Pericias p = new Pericias();
+                p.setNome_pericia(jTNomePerícia.getText());
+                p.setDescricao_pericia(jTADescrição.getText());
+                p.setAtributo_principal_pericia(String.valueOf(jCBAtributo.getSelectedItem()));
+                gDAO.adicionar(p);
+
+                JOptionPane.showMessageDialog(null, " Salvou, manda nude!"); // Após clicar no botão salvar, aparece tal mensagem
+
+            } catch (SQLException | ClassNotFoundException | IllegalArgumentException | IllegalAccessException ex) {
+                Logger.getLogger(JFPericias.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jBSalvarActionPerformed
 
@@ -173,27 +178,27 @@ public class JFPericias extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFNomePericiaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       
+
         try { //lista classes cadastradas no ComboBox
-    
-        GenericDAO gDao = new GenericDAO();
-        
+
+            GenericDAO gDao = new GenericDAO();
+
             List<Object> listarClasses = null;
             try {
                 listarClasses = gDao.listar(Classes.class);
-                } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
-                    Logger.getLogger(formularios.JFNpc.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+                Logger.getLogger(formularios.JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-                for (Object obj2 : listarClasses) {
-                    Classes classe = (Classes) obj2;
-                    jCBAtributo.addItem(classe.getNome_classe());
-                }
+            for (Object obj2 : listarClasses) {
+                Classes classe = (Classes) obj2;
+                jCBAtributo.addItem(classe.getNome_classe());
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(JFPericias.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_formWindowOpened
 
     private void jCBAtributoPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAtributoPrincipalActionPerformed
