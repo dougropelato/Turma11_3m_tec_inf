@@ -79,12 +79,16 @@ public class Utilitarios {
         GenericDAO gDAO = new GenericDAO();
         ArrayList arrayListPosicao = new ArrayList(); //aqui todos os codigos de posicoes do caminho selecionado ficam
         ArrayList arrayListDesc = new ArrayList();
+        ArrayList arrayListCoordX = new ArrayList();
+        ArrayList arrayListCoordY = new ArrayList();
         Autenticacao auth = Autenticacao.getInstance();
         String textoPosicoes = "";
         
         //limpando arrays
         arrayListPosicao.clear();
         arrayListPosicao.clear();
+        arrayListCoordX.clear();
+        arrayListCoordY.clear();
         
         //pega posicoes do caminho selecionado pelo usuario
         posicoes.setCodigo_caminho(auth.getCodigo_caminho()); 
@@ -94,6 +98,8 @@ public class Utilitarios {
             
             arrayListPosicao.add(posicoes.getCodigo_posicao());
             arrayListDesc.add(posicoes.getDescricao_posicao());
+            arrayListCoordX.add(posicoes.getCoordenadaX_posicao());
+            arrayListCoordY.add(posicoes.getCoordenadaY_posicao());
         }
         
         //caso a posicao seja 0 ele inicia em 1
@@ -106,6 +112,10 @@ public class Utilitarios {
             //cod posição atual
             auth.setCodigo_posicao((int) arrayListPosicao.get(auth.getValida_posicao())); 
 
+            //setando coordenadas posicao atual do jogador
+            auth.setCoordenadaX_posicao((int) arrayListCoordX.get(auth.getValida_posicao()));
+            auth.setCoordenadaY_posicao((int) arrayListCoordY.get(auth.getValida_posicao()));
+            
             //descricao da posicao
             textoPosicoes=" "+arrayListDesc.get(auth.getValida_posicao())+" /n";
             
