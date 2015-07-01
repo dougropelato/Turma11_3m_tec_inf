@@ -9,7 +9,7 @@
     </Component>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -62,10 +62,10 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="65" pref="65" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jbtnpc" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
-                          <Component id="jbtpericiais" min="-2" pref="143" max="-2" attributes="0"/>
-                          <Component id="jbttalentos" min="-2" pref="143" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jbtnpc" alignment="0" pref="143" max="32767" attributes="0"/>
+                          <Component id="jbttalentos" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
@@ -75,7 +75,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jbtjogar" min="-2" pref="143" max="-2" attributes="0"/>
+                                  <Component id="jbtsair" min="-2" pref="143" max="-2" attributes="0"/>
                                   <Component id="jbtconsumivel" min="-2" pref="143" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -120,16 +120,16 @@
                   <Component id="jbtescudo" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbttalentos" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="jbtconsumivel" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jbtconsumivel" pref="35" max="32767" attributes="0"/>
+                  <Component id="jbttalentos" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbtpericiais" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                  <Component id="jbtjogar" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jButton1" pref="40" max="32767" attributes="0"/>
+                  <Component id="jbtsair" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+              <EmptySpace pref="114" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -231,7 +231,7 @@
         <Property name="text" type="java.lang.String" value="Menu de Cadastros - Mestre"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jbttalentos">
+    <Component class="javax.swing.JButton" name="jbttalentos">
       <Properties>
         <Property name="text" type="java.lang.String" value="Talentos"/>
       </Properties>
@@ -239,21 +239,21 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbttalentosActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jbtpericiais">
+    <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pericias"/>
+        <Property name="text" type="java.lang.String" value="Per&#xed;cias"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtpericiaisActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jbtjogar">
+    <Component class="javax.swing.JButton" name="jbtsair">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="JOGAR"/>
+        <Property name="text" type="java.lang.String" value="Sair"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtsairActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

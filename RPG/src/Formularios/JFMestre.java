@@ -17,13 +17,13 @@ import java.util.logging.Logger;
  * @author Eduardo
  */
 public class JFMestre extends javax.swing.JFrame {
-  
-    public void centralizarComponente(){
-     Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
-     Dimension dw = getSize();
-     setLocation ((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+
+    public void centralizarComponente() {
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
     }
-    
+
     public JFMestre() {
         initComponents();
         centralizarComponente();
@@ -51,13 +51,13 @@ public class JFMestre extends javax.swing.JFrame {
         jbtescudo = new javax.swing.JButton();
         jbtconsumivel = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jbttalentos = new javax.swing.JToggleButton();
-        jbtpericiais = new javax.swing.JToggleButton();
-        jbtjogar = new javax.swing.JButton();
+        jbttalentos = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jbtsair = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jbtcampanha.setText("Campanhas");
         jbtcampanha.addActionListener(new java.awt.event.ActionListener() {
@@ -146,15 +146,19 @@ public class JFMestre extends javax.swing.JFrame {
             }
         });
 
-        jbtpericiais.setText("Pericias");
-        jbtpericiais.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Perícias");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtpericiaisActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        jbtjogar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jbtjogar.setText("JOGAR");
+        jbtsair.setText("Sair");
+        jbtsair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtsairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -187,10 +191,10 @@ public class JFMestre extends javax.swing.JFrame {
                         .addComponent(jbtarma, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbtnpc, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtpericiais, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbttalentos, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jbtnpc, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                            .addComponent(jbttalentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -198,7 +202,7 @@ public class JFMestre extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jbtjogar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jbtsair, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jbtconsumivel, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(65, 65, 65))
         );
@@ -230,14 +234,14 @@ public class JFMestre extends javax.swing.JFrame {
                     .addComponent(jbtnpc, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtescudo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbttalentos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtconsumivel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtpericiais, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtjogar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(113, 113, 113))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jbtconsumivel, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(jbttalentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(jbtsair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         pack();
@@ -245,7 +249,7 @@ public class JFMestre extends javax.swing.JFrame {
 
     private void jbtcampanhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtcampanhaActionPerformed
         // TODO add your handling code here:
-        JFCampanhas cam = new JFCampanhas(); 
+        JFCampanhas cam = new JFCampanhas();
         cam.setVisible(true);
     }//GEN-LAST:event_jbtcampanhaActionPerformed
 
@@ -291,9 +295,9 @@ public class JFMestre extends javax.swing.JFrame {
 
     private void jbtraçaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtraçaActionPerformed
         // TODO add your handling code here:
-       Formularios.JFRaca rac = new Formularios.JFRaca();
-       rac.setVisible(true);
-        
+        Formularios.JFRaca rac = new Formularios.JFRaca();
+        rac.setVisible(true);
+
     }//GEN-LAST:event_jbtraçaActionPerformed
 
     private void jbtclasseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtclasseActionPerformed
@@ -361,7 +365,7 @@ public class JFMestre extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_jbtarmaActionPerformed
 
     private void jbtescudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtescudoActionPerformed
@@ -385,7 +389,7 @@ public class JFMestre extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_jbtescudoActionPerformed
 
     private void jbtconsumivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtconsumivelActionPerformed
@@ -409,15 +413,15 @@ public class JFMestre extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_jbtconsumivelActionPerformed
 
     private void jbttalentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbttalentosActionPerformed
         // TODO add your handling code here:
-        Formularios.JFTalentos tal;
+        Formularios.JFTalentos tln;
         try {
-            tal = new Formularios.JFTalentos();
-            tal.setVisible(true);
+            tln = new Formularios.JFTalentos();
+            tln.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
@@ -433,18 +437,24 @@ public class JFMestre extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+
     }//GEN-LAST:event_jbttalentosActionPerformed
 
-    private void jbtpericiaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtpericiaisActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Formularios.JFPericias prc;
         try {
-            // TODO add your handling code here:
-            Formularios.JFPericias per = new Formularios.JFPericias();
-            per.setVisible(true);
+            prc = new Formularios.JFPericias();
+            prc.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(JFMestre.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jbtpericiaisActionPerformed
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jbtsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtsairActionPerformed
+        dispose();
+    }//GEN-LAST:event_jbtsairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -482,6 +492,7 @@ public class JFMestre extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton jbtarma;
@@ -491,12 +502,11 @@ public class JFMestre extends javax.swing.JFrame {
     private javax.swing.JButton jbtclasse;
     private javax.swing.JButton jbtconsumivel;
     private javax.swing.JButton jbtescudo;
-    private javax.swing.JButton jbtjogar;
     private javax.swing.JButton jbtmissao;
     private javax.swing.JButton jbtnpc;
-    private javax.swing.JToggleButton jbtpericiais;
     private javax.swing.JButton jbtraça;
-    private javax.swing.JToggleButton jbttalentos;
+    private javax.swing.JButton jbtsair;
+    private javax.swing.JButton jbttalentos;
     private javax.swing.JButton jbtvariavel;
     // End of variables declaration//GEN-END:variables
 }
