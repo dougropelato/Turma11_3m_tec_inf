@@ -42,15 +42,14 @@ public class Utilitarios {
         String textoCampanha = "";
         
         //localiza a campanha selecionada
-        campanha.setCodigo_campanha(2);  //precisa de uma verificação da campanha que o usuario seleciona
+        campanha.setCodigo_campanha(auth.getCodigo_campanha());  
         List<Object> list = gDAO.listar2(Campanhas.class, campanha);
         for (Object obj2 : list) {
             Campanhas c = (Campanhas) obj2;
             
-            textoCampanha=" Bem vindo a campanha " + c.getNome_campanha() + " \n "; //mostra nome da campanha 
-            //textoCampanha+=" "+c.getNome_campanha();
+            textoCampanha=" Bem vindo a campanha " + c.getNome_campanha() + " \n "; //mostra nome da campanha
             
-        //setando tamanho do mapa
+            //setando tamanho do mapa
             auth.setTam_x_mapa(c.getTam_x_campanha());
             auth.setTam_y_mapa(c.getTam_y_campanha());
         }
@@ -65,8 +64,6 @@ public class Utilitarios {
             Caminhos ca = (Caminhos) obj3;
             textoCampanha+= " "+ ca.getCodigo_caminho() + " - " + ca.getNome_caminho() + " \n ";
         }
-        
-        
         //auth.setCodigo_caminho(0); //caminho selecionado
         
         return textoCampanha;
@@ -78,26 +75,25 @@ public class Utilitarios {
         PericiasPosicoes periciasPosicoes = new PericiasPosicoes();
         GenericDAO gDAO = new GenericDAO();
         ArrayList arrayListPosicao = new ArrayList(); //aqui todos os codigos de posicoes do caminho selecionado ficam
+        ArrayList arrayListDescPosicao = new ArrayList();
         Autenticacao auth = Autenticacao.getInstance();
         String textoPosicoes = "";
         
-        posicoes.setCodigo_caminho(auth.getCodigo_caminho()); //Aqui vai o codigo do caminho que o usuario digita no metodo de caminhos
+        //limpando arrays
+        arrayListDescPosicao.clear();
+        arrayListPosicao.clear();
+        
+        //salva os dados da posicao
+        posicoes.setCodigo_caminho(auth.getCodigo_caminho()); 
         List<Object> list3 = gDAO.listar2(Posicoes.class, posicoes);
         for (Object obj4 : list3) {
             Posicoes p = (Posicoes) obj4;
             
             arrayListPosicao.add(posicoes.getCodigo_posicao());
-            //textoPosicoes=posicoes.getDescricao_posicao() +" ";
-            //System.out.println(posicoes.getDescricao_posicao());
+            arrayListDescPosicao.add(posicoes.getDescricao_posicao());
         }
         
-        
-       /* if (auth.getValida_posicao() == ) {
-            
-        }*/
-     //   if (auth.getValida_posicao() == null){
-            
-      //  }
+        //verifica se a posicao validada é 0
         if (auth.getValida_posicao() == 0){
             auth.setValida_posicao(1);
         }
@@ -106,9 +102,7 @@ public class Utilitarios {
 
             auth.setCodigo_posicao((int) arrayListPosicao.get(auth.getValida_posicao())); //posição atual
             
-            
-            
-            textoPosicoes=" "+posicoes.getDescricao_posicao()+" /n";
+            textoPosicoes=" "+arrayListDescPosicao.get(auth.getValida_posicao())+" /n";
             
             //pegando npcs dessa posicao
             PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
