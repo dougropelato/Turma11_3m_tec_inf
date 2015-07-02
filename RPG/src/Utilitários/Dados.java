@@ -9,7 +9,7 @@ import java.util.Random;
 
 /**
  *
- * @author mamut
+ * @author Eduardo
  */
 public class Dados {
 
@@ -31,15 +31,14 @@ public class Dados {
                                           //dado que voce precisa, por exemplo,
                                           //um d20 (dAD.getDado(20));
        
-    
     public int getDado(int ladosDado) {
-              //ladoDados é  igual a quantidades de lados do dado que vc precisa 
+              //ladosDado é  igual a quantidades de lados do dado que voce precisa 
         
         Random Dado = new Random();
         int numeroAleatorio = 0;
         for (int i = 0; i < 1; i++) {//mostra sequencia de um numero aleatorio
             numeroAleatorio = Dado.nextInt(ladosDado) + 1;  
-                            //numero entre 1 e a quantidade que vc informou
+                            //numero entre 1 e a quantidade que voce informou
            
         }
          return numeroAleatorio; // retorna o valor que voce tirou no dado 
