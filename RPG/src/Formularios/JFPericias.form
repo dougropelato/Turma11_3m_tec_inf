@@ -64,6 +64,10 @@
                               <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                               <Component id="jLCadastroPerícias" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                              <Component id="jTNomePericia" min="-2" pref="283" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace pref="68" max="32767" attributes="0"/>
                   </Group>
@@ -77,10 +81,7 @@
                                       <Component id="jLPerícia" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jTNomePerícia" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jScrollPane1" min="-2" pref="285" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jScrollPane1" min="-2" pref="285" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLAtributoPrincipal" min="-2" max="-2" attributes="0"/>
@@ -98,7 +99,9 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLCadastroPerícias" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="374" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                      <Component id="jTNomePericia" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="298" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jBCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jBSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -107,12 +110,9 @@
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="94" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLPerícia" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTNomePerícia" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <EmptySpace pref="115" max="32767" attributes="0"/>
+                          <Component id="jLPerícia" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLDescrição" min="-2" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="133" max="-2" attributes="0"/>
@@ -138,11 +138,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o:"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTNomePer&#xed;cia">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTNomePer&#xed;ciaActionPerformed"/>
-              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
@@ -201,6 +196,8 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Atributo Principal"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTNomePericia">
             </Component>
           </SubComponents>
         </Container>

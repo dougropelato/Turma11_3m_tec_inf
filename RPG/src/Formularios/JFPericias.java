@@ -9,6 +9,7 @@ import Tabelas.Raca;
 import dao.GenericDAO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.PreparedStatement;
@@ -78,7 +79,6 @@ public class JFPericias extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLPerícia = new javax.swing.JLabel();
         jLDescrição = new javax.swing.JLabel();
-        jTNomePerícia = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTADescrição = new javax.swing.JTextArea();
         jBSalvar = new javax.swing.JButton();
@@ -86,6 +86,7 @@ public class JFPericias extends javax.swing.JFrame {
         jLCadastroPerícias = new javax.swing.JLabel();
         jCBAtributo = new javax.swing.JComboBox();
         jLAtributoPrincipal = new javax.swing.JLabel();
+        jTNomePericia = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jCBNomePericiaAlt = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
@@ -113,12 +114,6 @@ public class JFPericias extends javax.swing.JFrame {
         jLPerícia.setText("Perícia:");
 
         jLDescrição.setText("Descrição:");
-
-        jTNomePerícia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTNomePeríciaActionPerformed(evt);
-            }
-        });
 
         jTADescrição.setColumns(20);
         jTADescrição.setRows(5);
@@ -162,7 +157,10 @@ public class JFPericias extends javax.swing.JFrame {
                         .addComponent(jBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(112, 112, 112)
-                        .addComponent(jLCadastroPerícias)))
+                        .addComponent(jLCadastroPerícias))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(jTNomePericia, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(68, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -173,9 +171,7 @@ public class JFPericias extends javax.swing.JFrame {
                                 .addComponent(jLDescrição)
                                 .addComponent(jLPerícia))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTNomePerícia)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLAtributoPrincipal)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -187,18 +183,18 @@ public class JFPericias extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLCadastroPerícias)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 374, Short.MAX_VALUE)
+                .addGap(84, 84, 84)
+                .addComponent(jTNomePericia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBCancelar)
                     .addComponent(jBSalvar))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(94, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLPerícia)
-                        .addComponent(jTNomePerícia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(29, 29, 29)
+                    .addContainerGap(115, Short.MAX_VALUE)
+                    .addComponent(jLPerícia)
+                    .addGap(32, 32, 32)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLDescrição)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -361,14 +357,14 @@ public class JFPericias extends javax.swing.JFrame {
 
     private void jBSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarActionPerformed
 
-        if (jTNomePerícia.getText().equalsIgnoreCase("") || jTADescrição.getText().equalsIgnoreCase("")) {
+        if (jTNomePericia.getText().equalsIgnoreCase("") || jTADescrição.getText().equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
         } else {
             try {
                 GenericDAO gDao = new GenericDAO();
 
                 Pericias p = new Pericias();
-                p.setNome_pericia(jTNomePerícia.getText());
+                p.setNome_pericia(jTNomePericia.getText());
                 p.setDescricao_pericia(jTADescrição.getText());
                 p.setAtributo_principal_pericia(String.valueOf(jCBAtributo.getSelectedItem()));
                 gDAO.adicionar(p);
@@ -376,7 +372,7 @@ public class JFPericias extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, " Salvou, manda nude!"); // Após clicar no botão salvar, aparece tal mensagem
                    
                 //Limpando campos
-                jTNomePerícia.setText(null);
+                jTNomePericia.setText(null);
                 jTADescrição.setText(null);
                 CarregaComboPericias();
             } catch (SQLException | ClassNotFoundException | IllegalArgumentException | IllegalAccessException ex) {
@@ -429,12 +425,16 @@ public class JFPericias extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            
+            int cod = 1;
+            cod=(int) arrayListPericia.get(jCBNomePericiaAlt.getSelectedIndex());
             GenericDAO genericDAO = new GenericDAO();
             Pericias p = new Pericias();
             
-            p.setCodigo_pericia((int) arrayListPericia.get(jCBNomePericiaAlt.getSelectedIndex()));
-            
+            p.setCodigo_pericia(cod);
+            p.setNome_pericia(jTFPericiaAlt.getText());
+            p.setDescricao_pericia(jTADescricaoAlt.getText());
+            p.setAtributo_principal_pericia(jCBAtributoAlt.getItemAt(jCBAtributoAlt.getSelectedIndex()).toString());
+            genericDAO.alterar(p);
             //todo procedimento de alterar
             CarregaComboPericias();
         } catch (SQLException ex) {
@@ -568,7 +568,7 @@ public class JFPericias extends javax.swing.JFrame {
     private javax.swing.JTextArea jTADescrição;
     private javax.swing.JTextField jTFAtibrutoAlt;
     private javax.swing.JTextField jTFPericiaAlt;
-    private javax.swing.JTextField jTNomePerícia;
+    private javax.swing.JTextField jTNomePericia;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
