@@ -28,12 +28,13 @@ public class jPintar extends JPanel {
         int cont = 1;
         int index = 3;
         posicaoY.add(index);
-        posicaoX.add(index);
-        while (cont <= 20) {
+       posicaoX.add(index);
+        while (cont <= 50) {
             posicaoY.add(index);
             posicaoX.add(index);
             index = index + 10;
             cont = cont + 1;
+            System.out.println(index);
             //System.out.println("p: " + posicaoX);
         }
 
@@ -45,14 +46,16 @@ public class jPintar extends JPanel {
         Autenticacao auth = Autenticacao.getInstance();
 
         //repaint();
-
-        g.setColor(Color.white);
+        
+        g.setColor(Color.RED);
 
         int x = (int) posicaoY.get(auth.getCoordenadaX_posicao());
         int y = (int) posicaoX.get(auth.getCoordenadaY_posicao());
 
         g.drawOval(x, y, 6, 6); //pinta jogador
-    }
+        
+        }
+        
 
     
     public Color escolheCor() {
@@ -85,7 +88,7 @@ public class jPintar extends JPanel {
         Posicoes posicoes = new Posicoes();
         Caminhos caminhos = new Caminhos();
 
-        int f = auth.getCodigo_campanha();
+        int f = 4;
         caminhos.setCodigo_campanha(f);
         List<Object> list4 = gDAO.listar2(Caminhos.class, caminhos);
         for (Object obj5 : list4) {

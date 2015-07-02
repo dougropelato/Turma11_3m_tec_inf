@@ -244,9 +244,9 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-//        Autenticacao auth = Autenticacao.getInstance();
-//        auth.setCoordenadaX_posicao(Integer.parseInt(jTextField2.getText()));
-//        auth.setCoordenadaY_posicao(Integer.parseInt(jTextField3.getText()));
+        Autenticacao auth = Autenticacao.getInstance();
+        auth.setCoordenadaX_posicao(Integer.parseInt(jTextField2.getText()));
+        auth.setCoordenadaY_posicao(Integer.parseInt(jTextField3.getText()));
 
 // TODO add your handling code here:
         String string = jTextField1.getText();
