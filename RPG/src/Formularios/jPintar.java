@@ -39,11 +39,12 @@ public class jPintar extends JPanel {
 
     }
 
-    public void pintaJogador(Graphics g, Color cor) {
-        repaint();
+    private void pintaJogador(Graphics g, Color cor) {
+        //repaint();
+
         Autenticacao auth = Autenticacao.getInstance();
 
-        repaint();
+        //repaint();
 
         g.setColor(Color.white);
 
