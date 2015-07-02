@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import tabelas.Armaduras;
 
 /**
@@ -91,6 +92,11 @@ public class JFArmaduras extends javax.swing.JFrame {
         jTFCodigoArmadura = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel2.setText("Nome Armadura:");
 
@@ -345,7 +351,25 @@ public class JFArmaduras extends javax.swing.JFrame {
     }//GEN-LAST:event_jBalterarActionPerformed
 
     private void jBexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBexcluirActionPerformed
-          
+
+        try {
+            GenericDAO gDao = new GenericDAO();
+            Armaduras excluirarmadura = new Armaduras();
+        
+            excluirarmadura.setCodigo_armadura(Integer.parseInt(jTFCodigoArmadura.getText()));
+
+            gDao.excluir(excluirarmadura);
+            
+            JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchFieldException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
     }//GEN-LAST:event_jBexcluirActionPerformed
     
     private void jBconfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconfirmarActionPerformed
@@ -376,6 +400,12 @@ public class JFArmaduras extends javax.swing.JFrame {
         jBcancelar.setEnabled(false);
 
     }//GEN-LAST:event_jBconfirmarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       
+        jTFCodigoArmadura.setVisible(false);
+        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
