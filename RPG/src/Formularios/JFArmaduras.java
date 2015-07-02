@@ -49,6 +49,7 @@ public class JFArmaduras extends javax.swing.JFrame {
             Armaduras a = (Armaduras) l1;
 
             if (a.getCodigo_armadura() == contador) {
+                jTFCodigoArmadura.setText(String.valueOf(a.getCodigo_armadura()));
                 jtfNomeArmadura.setText(a.getNome_armadura());
                 jcTipoArmadura.setSelectedIndex(a.getTipo_armadura());
                 jtfPrecoArmadura.setText(String.valueOf(a.getPreco_armadura()));
@@ -87,6 +88,7 @@ public class JFArmaduras extends javax.swing.JFrame {
         jBexcluir = new javax.swing.JButton();
         jBconfirmar = new javax.swing.JButton();
         jBcancelar = new javax.swing.JButton();
+        jTFCodigoArmadura = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -195,7 +197,9 @@ public class JFArmaduras extends javax.swing.JFrame {
                             .addComponent(jtfPrecoArmadura, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfNomeArmadura, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfPenalidadeDestrezaArmadura, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcTipoArmadura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jcTipoArmadura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTFCodigoArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -214,10 +218,10 @@ public class JFArmaduras extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jBalterar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(jBexcluir))
                             .addComponent(jBcancelar))))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,7 +231,8 @@ public class JFArmaduras extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfNomeArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jTFCodigoArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -345,6 +350,7 @@ public class JFArmaduras extends javax.swing.JFrame {
     
     private void jBconfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconfirmarActionPerformed
         Armaduras armd = new Armaduras();
+        armd.setCodigo_armadura(Integer.parseInt(jTFCodigoArmadura.getText()));
         armd.setNome_armadura(jtfNomeArmadura.getText());
         armd.setTipo_armadura(jcTipoArmadura.getSelectedIndex());
         armd.setPreco_armadura(Double.parseDouble(jtfPrecoArmadura.getText()));
@@ -437,6 +443,7 @@ public class JFArmaduras extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JTextField jTFCodigoArmadura;
     private javax.swing.JComboBox jcTipoArmadura;
     private javax.swing.JTextField jtfBonusMaximoArmadura;
     private javax.swing.JTextField jtfNomeArmadura;
