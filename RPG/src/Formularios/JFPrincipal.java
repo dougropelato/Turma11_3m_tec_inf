@@ -58,7 +58,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLvida_personagem.setText("");
 
         Container c = getContentPane();
-        c.setBackground(Color.WHITE); // Define a cor de fundo
+//        c.setBackground(Color.WHITE); // Define a cor de fundo
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
       //  setSize(1000, 1000);
@@ -92,6 +92,8 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLnome_personagem = new javax.swing.JLabel();
         jLvida_personagem = new javax.swing.JLabel();
         jLnome_campanha = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
         jpAraDePintar = new jPintar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -136,20 +138,31 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         jLnome_campanha.setText("jLabel1");
 
+        jTextField2.setText("jTextField2");
+
+        jTextField3.setText("jTextField3");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLnome_jogador)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
-                .addComponent(jLnome_personagem)
-                .addGap(129, 129, 129)
-                .addComponent(jLvida_personagem)
-                .addGap(125, 125, 125)
-                .addComponent(jLnome_campanha)
-                .addGap(119, 119, 119))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLnome_jogador)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                        .addComponent(jLnome_personagem)
+                        .addGap(129, 129, 129)
+                        .addComponent(jLvida_personagem)
+                        .addGap(125, 125, 125)
+                        .addComponent(jLnome_campanha)
+                        .addGap(119, 119, 119))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,7 +173,10 @@ public class JFPrincipal extends javax.swing.JFrame {
                     .addComponent(jLnome_personagem)
                     .addComponent(jLvida_personagem)
                     .addComponent(jLnome_campanha))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout jpAraDePintarLayout = new javax.swing.GroupLayout(jpAraDePintar);
@@ -171,7 +187,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         );
         jpAraDePintarLayout.setVerticalGroup(
             jpAraDePintarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 154, Short.MAX_VALUE)
+            .addGap(0, 150, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -227,7 +243,12 @@ public class JFPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
+//        Autenticacao auth = Autenticacao.getInstance();
+//        auth.setCoordenadaX_posicao(Integer.parseInt(jTextField2.getText()));
+//        auth.setCoordenadaY_posicao(Integer.parseInt(jTextField3.getText()));
+
+// TODO add your handling code here:
         String string = jTextField1.getText();
         if (string != "") {
             try {
@@ -255,7 +276,7 @@ public class JFPrincipal extends javax.swing.JFrame {
             }
 
         }
-        // limpa comando digitado
+//        // limpa comando digitado
         jTextField1.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -317,6 +338,8 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel jpAraDePintar;
     // End of variables declaration//GEN-END:variables
 
