@@ -102,6 +102,22 @@ public class JFVendaItens extends javax.swing.JFrame {
 
     }
 
+    public void ocultarEdits () {
+        
+        editPararExecução.setVisible(false);
+        editcodigoPersonagem.setVisible(false);
+        editcomprasCodigoArma.setVisible(false);
+        editcomprasCodigoArmadura.setVisible(false);
+        editcomprasCodigoConsumivel.setVisible(false);
+        editcomprasCodigoEscudo.setVisible(false);
+        editvenderCodigoArma.setVisible(false);
+        editvenderCodigoArmadura.setVisible(false);
+        editvenderCodigoConsumivel.setVisible(false);
+        editvenderCodigoEscudo.setVisible(false);
+    }
+    
+    
+    
     public void OcultarObjetos() { //////Oculta objetos setados antes de abrir o form
         lbDinheiroClasse.setVisible(false);
         jbComprar.setVisible(false);
@@ -139,6 +155,7 @@ public class JFVendaItens extends javax.swing.JFrame {
         centralizarComponente();
         CarregaComboboxPersonagem();
         OcultarObjetos();
+        //ocultarEdits();
 
     }
 
@@ -203,6 +220,7 @@ public class JFVendaItens extends javax.swing.JFrame {
         editvenderCodigoArmadura = new javax.swing.JTextField();
         editvenderCodigoEscudo = new javax.swing.JTextField();
         editvenderCodigoConsumivel = new javax.swing.JTextField();
+        editPararExecução = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -490,6 +508,7 @@ public class JFVendaItens extends javax.swing.JFrame {
         getContentPane().add(editvenderCodigoArmadura, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 30, -1));
         getContentPane().add(editvenderCodigoEscudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 30, -1));
         getContentPane().add(editvenderCodigoConsumivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 30, -1));
+        getContentPane().add(editPararExecução, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 30, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -535,6 +554,7 @@ public class JFVendaItens extends javax.swing.JFrame {
                     for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
                         Personagens pp = (Personagens) ll1;
                         comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// cadastra na tabela N/N o codigo do personagem
+
                     }
 
                     comprar.setQuantidade_armadura(varComprarQuant); /// cadastra na tabela N/N a quantidade de armaduras compradas 
@@ -551,6 +571,7 @@ public class JFVendaItens extends javax.swing.JFrame {
                     if (dinheiroTotal < Result) {
                         JOptionPane.showMessageDialog(null, "Não há Peças de Ouro disponiveis para efetuar a compra!!!");
                     } else {
+
                         lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
                         gDAO.adicionar(comprar);
                         JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
@@ -609,9 +630,35 @@ public class JFVendaItens extends javax.swing.JFrame {
                     if (dinheiroTotal < Result) {
                         JOptionPane.showMessageDialog(null, "Não há Peças de Ouro disponiveis para efetuar a compra!!!");
                     } else {
-                        lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
-                        gDAO.adicionar(comprar);
-                        JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
+
+                        editPararExecução.setText("1");
+
+                        List<Object> list = null;
+
+                        GenericDAO gDao = new GenericDAO();
+                        list = gDao.listar(PersonagensArmas.class);
+
+                        for (Object obj2 : list) {
+                            PersonagensArmas personagemnn = (PersonagensArmas) obj2;
+
+                            if (((editcodigoPersonagem.getText()).equalsIgnoreCase(String.valueOf(personagemnn.getCodigo_personagem())))
+                                    && ((editcomprasCodigoArma.getText()).equalsIgnoreCase(String.valueOf(personagemnn.getCodigo_arma())))) {
+
+                                System.out.println("alterar");
+                                editPararExecução.setText("0");
+                                break;
+                            }
+
+                        }
+
+                        if (editPararExecução.getText().equals("1")) {
+                            System.out.println("entra aqui poaaa caraleooooo");
+                            System.out.println("cadastrar");
+                        }
+
+                           // lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
+                        // gDAO.adicionar(comprar);
+                        // JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
                     }
 
                 } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
@@ -1137,12 +1184,11 @@ public class JFVendaItens extends javax.swing.JFrame {
             Armaduras armadura = new Armaduras();
             List<Object> ListarArmaduras = new ArrayList<>();
 
-           int codigoArmadura = (armadurasNN.getCodigo_armadura());
+            int codigoArmadura = (armadurasNN.getCodigo_armadura());
             int codigoPersonagem = (armadurasNN.getCodigo_personagem());
             armadura.setCodigo_armadura(codigoArmadura);  /////seta o codigo da armadura da tabela N/N
-            
 
-            if ( codigoPersonagem == (Integer.parseInt(editcodigoPersonagem.getText()))) {
+            if (codigoPersonagem == (Integer.parseInt(editcodigoPersonagem.getText()))) {
 
                 try {
 
@@ -1159,7 +1205,7 @@ public class JFVendaItens extends javax.swing.JFrame {
                     jcVenderArmaduras.addItem(aa.getNome_armadura()); /// adiciona no combobox o nome da armadura
                     // jcVenderArmaduras.addItem(mostrarCodigo + " - " + aa.getNome_armadura());
 
-               }
+                }
             }
         }
 
@@ -1501,7 +1547,7 @@ public class JFVendaItens extends javax.swing.JFrame {
     private void jcPersonagemItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcPersonagemItemStateChanged
 
         ListarDinheiro();
-        
+
     }//GEN-LAST:event_jcPersonagemItemStateChanged
 
 
@@ -1510,12 +1556,12 @@ public class JFVendaItens extends javax.swing.JFrame {
     }//GEN-LAST:event_jlListPreçoComprarKeyReleased
 
     private void QuantComprarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_QuantComprarKeyReleased
-       
+
         double QuantItens = (Double.parseDouble(QuantComprar.getText()));
         double PrecoUnidade = (Double.parseDouble(jlListPreçoUndComprar.getText()));
         double Result = PrecoUnidade * QuantItens;
         jlListPreçoComprar.setText(String.valueOf(Result));
-        
+
     }//GEN-LAST:event_QuantComprarKeyReleased
 
     private void jcVenderArmasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcVenderArmasItemStateChanged
@@ -1534,7 +1580,7 @@ public class JFVendaItens extends javax.swing.JFrame {
                 Armas aa = (Armas) cod;
 
                 editvenderCodigoArma.setText(String.valueOf(aa.getCodigo_arma()));
-               // jlListPreçoUndComprar.setText(String.valueOf(aa.getPreco_arma())); //// lista preço arma
+                // jlListPreçoUndComprar.setText(String.valueOf(aa.getPreco_arma())); //// lista preço arma
 
                 PersonagensArmas personagensArma = new PersonagensArmas();
                 List<Object> ListarQuantArma = new ArrayList<>();
@@ -1575,7 +1621,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                 editvenderCodigoArmadura.setText(String.valueOf(aa.getCodigo_armadura()));
                 // jlListPreçoUndComprar.setText(String.valueOf(aa.getPreco_arma())); //// lista preço arma
-                
+
                 PersonagensArmaduras personagensArmadura = new PersonagensArmaduras();
                 List<Object> ListarQuantArmadura = new ArrayList<>();
 
@@ -1614,7 +1660,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                 editvenderCodigoEscudo.setText(String.valueOf(ee.getCodigo_escudo()));
                 // jlListPreçoUndComprar.setText(String.valueOf(aa.getPreco_arma())); //// lista preço arma
-                
+
                 PersonagensEscudos personagensEscudo = new PersonagensEscudos();
                 List<Object> ListarQuantEscudo = new ArrayList<>();
 
@@ -1628,7 +1674,7 @@ public class JFVendaItens extends javax.swing.JFrame {
                     QuantVender.setText(String.valueOf(nn.getQuantidade_escudo()));
 
                 }
-                
+
             }
 
         } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
@@ -1655,7 +1701,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                 editvenderCodigoConsumivel.setText(String.valueOf(cc.getCodigo_consumivel()));
                 // jlListPreçoUndComprar.setText(String.valueOf(aa.getPreco_arma())); //// lista preço arma
-                
+
                 PersonagensConsumiveis personagensConsumivel = new PersonagensConsumiveis();
                 List<Object> ListarQuantConsumivel = new ArrayList<>();
 
@@ -1683,7 +1729,6 @@ public class JFVendaItens extends javax.swing.JFrame {
     private void editvenderCodigoArmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editvenderCodigoArmaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_editvenderCodigoArmaActionPerformed
-
 
     /**
      * @param args the command line arguments
@@ -1730,6 +1775,7 @@ public class JFVendaItens extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup5;
     private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.ButtonGroup buttonGroup7;
+    private javax.swing.JTextField editPararExecução;
     private javax.swing.JTextField editcodigoPersonagem;
     private javax.swing.JTextField editcomprasCodigoArma;
     private javax.swing.JTextField editcomprasCodigoArmadura;
