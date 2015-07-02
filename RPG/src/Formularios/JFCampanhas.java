@@ -27,10 +27,18 @@ public class JFCampanhas extends javax.swing.JFrame {
     ArrayList arrayListTamX = new ArrayList();
     ArrayList arrayListTamY = new ArrayList();
     
-    public void carregaComboCampanhas() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException{
+    public void carregaComboCampanhas() throws SQLException, IllegalAccessException, NoSuchMethodException,
+            IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException{
         GenericDAO genericDAO = new GenericDAO();
-        List<Object> list = genericDAO.listar(Campanhas.class);
         
+        //limpando
+        arrayListCampanhas.clear();
+        arrayListTamX.clear();
+        arrayListTamY.clear();
+        jcbCampanhas.removeAllItems();
+        jcbExcluirCampanha.removeAllItems();
+        
+        List<Object> list = genericDAO.listar(Campanhas.class);
         for (Object obj: list) {
             Campanhas campanhas = (Campanhas) obj;
             arrayListCampanhas.add(campanhas.getCodigo_campanha());
