@@ -17,7 +17,10 @@ import static javafx.scene.paint.Color.color;
 import javax.swing.JPanel;
 import tabelas.Caminhos;
 import tabelas.Posicoes;
-
+/**
+ *
+ * @author Adriel
+ */
 public class jPintar extends JPanel {
 
     ArrayList posicaoX = new ArrayList();
@@ -46,6 +49,8 @@ public class jPintar extends JPanel {
         Autenticacao auth = Autenticacao.getInstance();
 
         //repaint();
+        
+       
         
         g.setColor(Color.RED);
 
@@ -88,8 +93,8 @@ public class jPintar extends JPanel {
         Posicoes posicoes = new Posicoes();
         Caminhos caminhos = new Caminhos();
 
-        int f = 4;
-        caminhos.setCodigo_campanha(f);
+        
+        caminhos.setCodigo_campanha(auth.getCodigo_campanha());
         List<Object> list4 = gDAO.listar2(Caminhos.class, caminhos);
         for (Object obj5 : list4) {
             Caminhos c = (Caminhos) obj5;
@@ -107,12 +112,12 @@ public class jPintar extends JPanel {
                 int coordenadaX = (int) posicaoX.get(px);
 
                 g.setColor(Color.BLUE);
-                g.drawRect(coordenadaX, coordenadaY, 6, 6); //13 e 23 é equivalente a posição do jogador 2,3 nas coordenadas x,y
-                g.drawRect(coordenadaX, coordenadaY, 5, 5); //13 e 23 é equivalente a posição do jogador 2,3 nas coordenadas x,y
-                g.drawRect(coordenadaX, coordenadaY, 4, 4); //13 e 23 é equivalente a posição do jogador 2,3 nas coordenadas x,y     
-                g.drawRect(coordenadaX, coordenadaY, 3, 3); //13 e 23 é equivalente a posição do jogador 2,3 nas coordenadas x,y
-                g.drawRect(coordenadaX, coordenadaY, 2, 2); //13 e 23 é equivalente a posição do jogador 2,3 nas coordenadas x,y
-                g.drawRect(coordenadaX, coordenadaY, 1, 1); //13 e 23 é equivalente a posição do jogador 2,3 nas coordenadas x,y
+                g.drawRect(coordenadaX, coordenadaY, 6, 6); 
+                g.drawRect(coordenadaX, coordenadaY, 5, 5); 
+                g.drawRect(coordenadaX, coordenadaY, 4, 4); 
+                g.drawRect(coordenadaX, coordenadaY, 3, 3); 
+                g.drawRect(coordenadaX, coordenadaY, 2, 2); 
+                g.drawRect(coordenadaX, coordenadaY, 1, 1); 
 
             }
 
