@@ -527,7 +527,7 @@ public class JFVendaItens extends javax.swing.JFrame {
                 int varComprarQuant = (Integer.parseInt(QuantComprar.getText()));
 
                 try {
-/////////////////////////verificar armadura
+/////////////////////////verificaçao armaduras
                     GenericDAO gDAO = new GenericDAO();
                     Armaduras armadura = new Armaduras();
                     List<Object> ListarArmaduras = new ArrayList<>();
@@ -538,10 +538,10 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                     for (Object ll1 : ListarArmaduras) {  //// pega o nome da armadura no combobox e procura pelo codigo da mesma
                         Armaduras aa = (Armaduras) ll1;
-                        comprar.setCodigo_armadura(aa.getCodigo_armadura()); /// seta na tabela N/N o codigo da armadura
+                        comprar.setCodigo_armadura(aa.getCodigo_armadura()); /// seta o codigo da armadura
                     }
 
-///////////////////////////Verificar personagem                    
+///////////////////////////Verificaçao personagem                    
                     Personagens personagem = new Personagens();
                     List<Object> ProcurarCodPersonagem = new ArrayList<>();
 
@@ -551,9 +551,9 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                     for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
                         Personagens pp = (Personagens) ll1;
-                        comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// seta na tabela N/N o codigo do personagem
+                        comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// seta o codigo do personagem
                     }
-                    comprar.setQuantidade_armadura(varComprarQuant); /// seta na tabela N/N a quantidade de armaduras compradas        
+                    comprar.setQuantidade_armadura(varComprarQuant); /// seta a quantidade de armaduras compradas        
 
 ///////////////////////////////// Verificação de Peças de Ouro         
                     double dinheiroTotal = (Double.parseDouble(lbDinheiroPersonagem.getText()));
@@ -568,9 +568,36 @@ public class JFVendaItens extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Não há Peças de Ouro disponiveis para efetuar a compra!!!");
                     } else {
 
-                        lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
-                        gDAO.adicionar(comprar);
-                        JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
+                        editPararExecução.setText("1");
+
+                        List<Object> list = null;
+
+                        GenericDAO gDao = new GenericDAO();
+                        list = gDao.listar(PersonagensArmaduras.class);
+                        PersonagensArmaduras alterar = new PersonagensArmaduras();
+
+                        for (Object obj2 : list) {
+                            PersonagensArmaduras personagemnn = (PersonagensArmaduras) obj2;
+
+                            if (((editcodigoPersonagem.getText()).equalsIgnoreCase(String.valueOf(personagemnn.getCodigo_personagem())))
+                                    && ((editcomprasCodigoArmadura.getText()).equalsIgnoreCase(String.valueOf(personagemnn.getCodigo_armadura())))) {
+
+                                alterar.setCodigo_armadura(personagemnn.getCodigo_armadura());
+                                alterar.setCodigo_personagem(personagemnn.getCodigo_personagem());
+                                alterar.setQuantidade_armadura(varComprarQuant + personagemnn.getQuantidade_armadura());
+                                lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
+                                gDao.alterar2(alterar);
+                                editPararExecução.setText("0");
+                                JOptionPane.showMessageDialog(null, "Foi adicionado mais itens ao seu inventário!!!");
+                                break;
+
+                            }
+                        }
+                        if (editPararExecução.getText().equals("1")) {
+                            lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
+                            gDAO.adicionar(comprar);
+                            JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
+                        }
                     }
 
                 } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
@@ -587,34 +614,32 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                 try {
 
-//////////////verifica armas
+//////////////verificaçao armas
                     GenericDAO gDAO = new GenericDAO();
                     Armas arma = new Armas();
                     List<Object> ListarArmas = new ArrayList<>();
 
                     arma.setNome_arma((String) jcComprarArmas.getSelectedItem());
-
                     ListarArmas = gDAO.listar2(Armas.class, arma);
 
                     for (Object ll1 : ListarArmas) { //// pega o nome da arma no combobox e procura pelo codigo da mesma
                         Armas aa = (Armas) ll1;
-                        comprar.setCodigo_arma(aa.getCodigo_arma()); /// seta na tabela N/N o codigo da arma
+                        comprar.setCodigo_arma(aa.getCodigo_arma()); /// seta o codigo da arma
                     }
 
-/////////////////verifica personagem                  
+/////////////////verificaçao personagem                  
                     Personagens personagem = new Personagens();
                     List<Object> ProcurarCodPersonagem = new ArrayList<>();
 
                     personagem.setNome_personagem((String) jcPersonagem.getSelectedItem());
-
                     ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);
 
                     for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
                         Personagens pp = (Personagens) ll1;
-                        comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// seta na tabela N/N o codigo do personagem
+                        comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// seta o codigo do personagem
                     }
 
-                    comprar.setQuantidade_arma(varComprarQuant); /// cadastra na tabela N/N a quantidade de armas compradas 
+                    comprar.setQuantidade_arma(varComprarQuant); /// seta a quantidade de armas compradas 
 
 ///////////////////////////////// Verificação de Peças de Ouro
                     double dinheiroTotal = (Double.parseDouble(lbDinheiroPersonagem.getText()));
@@ -624,9 +649,9 @@ public class JFVendaItens extends javax.swing.JFrame {
                     double ResultDinheiro = dinheiroTotal - Result;
                     System.out.println("Total compras" + Result);
 //////////////////////////////////////////////
-                    
+
 ////////////////////verificação compra
-                    if (dinheiroTotal < Result) { 
+                    if (dinheiroTotal < Result) {
                         JOptionPane.showMessageDialog(null, "Não há Peças de Ouro disponiveis para efetuar a compra!!!");
                     } else {
 
@@ -643,7 +668,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                             if (((editcodigoPersonagem.getText()).equalsIgnoreCase(String.valueOf(personagemnn.getCodigo_personagem())))
                                     && ((editcomprasCodigoArma.getText()).equalsIgnoreCase(String.valueOf(personagemnn.getCodigo_arma())))) {
-                                    
+
                                 alterar.setCodigo_arma(personagemnn.getCodigo_arma());
                                 alterar.setCodigo_personagem(personagemnn.getCodigo_personagem());
                                 alterar.setQuantidade_arma(varComprarQuant + personagemnn.getQuantidade_arma());
@@ -654,12 +679,11 @@ public class JFVendaItens extends javax.swing.JFrame {
                                 break;
 
                             }
-                            
-                            if (editPararExecução.getText().equals("1")) {
-                                 lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
-                                 gDAO.adicionar(comprar);
-                                 JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
-                            }
+                        }
+                        if (editPararExecução.getText().equals("1")) {
+                            lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
+                            gDAO.adicionar(comprar);
+                            JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
                         }
                     }
 
@@ -675,30 +699,28 @@ public class JFVendaItens extends javax.swing.JFrame {
                 comprar.setQuantidade_escudo(varComprarQuant);
 
                 try {
-
+////////////////////verificaçao escudos
                     GenericDAO gDAO = new GenericDAO();
                     Escudos escudo = new Escudos();
                     List<Object> ListarEscudos = new ArrayList<>();
 
                     escudo.setNome_escudo((String) jcComprarEscudos.getSelectedItem());
-
                     ListarEscudos = gDAO.listar2(Escudos.class, escudo);
 
                     for (Object ll1 : ListarEscudos) {   //// pega o nome do escudo no combobox e procura pelo codigo da mesmo
                         Escudos ee = (Escudos) ll1;
-                        comprar.setCodigo_escudo(ee.getCodigo_escudo()); /// cadastra na tabela N/N o codigo do escudo
+                        comprar.setCodigo_escudo(ee.getCodigo_escudo()); /// seta o codigo do escudo
                     }
-
+//////////////////////////verificaçao personagem
                     Personagens personagem = new Personagens();
                     List<Object> ProcurarCodPersonagem = new ArrayList<>();
 
                     personagem.setNome_personagem((String) jcPersonagem.getSelectedItem());
-
                     ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);
 
                     for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
                         Personagens pp = (Personagens) ll1;
-                        comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// cadastra na tabela N/N o codigo do personagem
+                        comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// seta o codigo do personagem
                     }
 
                     comprar.setQuantidade_escudo(varComprarQuant); /// cadastra na tabela N/N a quantidade de escudos comprados
@@ -709,15 +731,43 @@ public class JFVendaItens extends javax.swing.JFrame {
                     double PrecoUnidade = (Double.parseDouble(jlListPreçoUndComprar.getText()));
                     double Result = PrecoUnidade * QuantItens;
                     double ResultDinheiro = dinheiroTotal - Result;
-
                     System.out.println("Total compras" + Result);
-
+                    
+///////////////////////////////verificação compra
                     if (dinheiroTotal < Result) {
                         JOptionPane.showMessageDialog(null, "Não há Peças de Ouro disponiveis para efetuar a compra!!!");
                     } else {
-                        lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
-                        gDAO.adicionar(comprar);
-                        JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
+
+                        editPararExecução.setText("1");
+
+                        List<Object> list = null;
+
+                        GenericDAO gDao = new GenericDAO();
+                        list = gDao.listar(PersonagensEscudos.class);
+                        PersonagensEscudos alterar = new PersonagensEscudos();
+
+                        for (Object obj2 : list) {
+                            PersonagensEscudos personagemnn = (PersonagensEscudos) obj2;
+
+                            if (((editcodigoPersonagem.getText()).equalsIgnoreCase(String.valueOf(personagemnn.getCodigo_personagem())))
+                                    && ((editcomprasCodigoEscudo.getText()).equalsIgnoreCase(String.valueOf(personagemnn.getCodigo_escudo())))) {
+
+                                alterar.setCodigo_escudo(personagemnn.getCodigo_escudo());
+                                alterar.setCodigo_personagem(personagemnn.getCodigo_personagem());
+                                alterar.setQuantidade_escudo(varComprarQuant + personagemnn.getQuantidade_escudo());
+                                lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
+                                gDao.alterar2(alterar);
+                                editPararExecução.setText("0");
+                                JOptionPane.showMessageDialog(null, "Foi adicionado mais itens ao seu inventário!!!");
+                                break;
+
+                            }
+                        }
+                        if (editPararExecução.getText().equals("1")) {
+                            lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
+                            gDAO.adicionar(comprar);
+                            JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
+                        }
                     }
 
                 } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
@@ -731,33 +781,32 @@ public class JFVendaItens extends javax.swing.JFrame {
                 comprar.setQuantidade_consumivel(varComprarQuant);
 
                 try {
-
+/////////////////////////verificaçao consumiveis
                     GenericDAO gDAO = new GenericDAO();
                     Consumiveis consumivel = new Consumiveis();
                     List<Object> ListarConsumiveis = new ArrayList<>();
 
                     consumivel.setNome_consumivel((String) jcComprarConsumiveis.getSelectedItem());
-
                     ListarConsumiveis = gDAO.listar2(Consumiveis.class, consumivel);
 
                     for (Object ll1 : ListarConsumiveis) {  //// pega o nome do consumivel no combobox e procura pelo codigo do mesmo
                         Consumiveis cc = (Consumiveis) ll1;
-                        comprar.setCodigo_consumivel(cc.getCodigo_consumivel()); /// cadastra na tabela N/N o codigo do consumivel
+                        comprar.setCodigo_consumivel(cc.getCodigo_consumivel()); /// seta o codigo do consumivel
                     }
-
+                    
+///////////////////verificaçao personagem
                     Personagens personagem = new Personagens();
                     List<Object> ProcurarCodPersonagem = new ArrayList<>();
 
                     personagem.setNome_personagem((String) jcPersonagem.getSelectedItem());
-
                     ProcurarCodPersonagem = gDAO.listar2(Personagens.class, personagem);
 
                     for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
                         Personagens pp = (Personagens) ll1;
-                        comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// cadastra na tabela N/N o codigo do personagem
+                        comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// seta o codigo do personagem
                     }
 
-                    comprar.setQuantidade_consumivel(varComprarQuant); /// cadastra na tabela N/N a quantidade de consumiveis comprados
+                    comprar.setQuantidade_consumivel(varComprarQuant); /// seta a quantidade de consumiveis comprados
 
 ///////////////////////////////// Verificação de Peças de Ouro
                     double dinheiroTotal = (Double.parseDouble(lbDinheiroPersonagem.getText()));
@@ -765,16 +814,43 @@ public class JFVendaItens extends javax.swing.JFrame {
                     double PrecoUnidade = (Double.parseDouble(jlListPreçoUndComprar.getText()));
                     double Result = PrecoUnidade * QuantItens;
                     double ResultDinheiro = dinheiroTotal - Result;
-
                     System.out.println("Total compras" + Result);
 
+/////////////////////////verificaçao compra                    
                     if (dinheiroTotal < Result) {
                         JOptionPane.showMessageDialog(null, "Não há Peças de Ouro disponiveis para efetuar a compra!!!");
                     } else {
 
-                        lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
-                        gDAO.adicionar(comprar);
-                        JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
+                        editPararExecução.setText("1");
+
+                        List<Object> list = null;
+
+                        GenericDAO gDao = new GenericDAO();
+                        list = gDao.listar(PersonagensConsumiveis.class);
+                        PersonagensConsumiveis alterar = new PersonagensConsumiveis();
+
+                        for (Object obj2 : list) {
+                            PersonagensConsumiveis personagemnn = (PersonagensConsumiveis) obj2;
+
+                            if (((editcodigoPersonagem.getText()).equalsIgnoreCase(String.valueOf(personagemnn.getCodigo_personagem())))
+                                    && ((editcomprasCodigoConsumivel.getText()).equalsIgnoreCase(String.valueOf(personagemnn.getCodigo_consumivel())))) {
+
+                                alterar.setCodigo_consumivel(personagemnn.getCodigo_consumivel());
+                                alterar.setCodigo_personagem(personagemnn.getCodigo_personagem());
+                                alterar.setQuantidade_consumivel(varComprarQuant + personagemnn.getQuantidade_consumivel());
+                                lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
+                                gDao.alterar2(alterar);
+                                editPararExecução.setText("0");
+                                JOptionPane.showMessageDialog(null, "Foi adicionado mais itens ao seu inventário!!!");
+                                break;
+
+                            }
+                        }
+                        if (editPararExecução.getText().equals("1")) {
+                            lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
+                            gDAO.adicionar(comprar);
+                            JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
+                        }
                     }
 
                 } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
