@@ -2131,7 +2131,7 @@ public class JFNpc extends javax.swing.JFrame {
 
         try {
 
-            //OcultarComponentesCodigoTodasAbas(null);
+            OcultarComponentesCodigoTodasAbas(null);
             
             GenericDAO gDao = new GenericDAO();
 
@@ -3399,33 +3399,57 @@ public class JFNpc extends javax.swing.JFrame {
         jTFNovosItensVerificaCodEscudo.setText((String) jCBNovosItensCodEscudoNpc.getSelectedItem());
     }//GEN-LAST:event_jCBNovosItensCodEscudoNpcItemStateChanged
 
-    // ----- Habilita campos se checkbox esta selecionado
+    // --- Habilita campos se checkbox esta selecionado --- //
     
     private void jCBAdicionarItemArmaduraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAdicionarItemArmaduraActionPerformed
-        
-        jCBArmaduraNpc.setEnabled(true);
-        jTFQuantidadeArmaduraNpc.setEditable(true);
+
+        if (jCBAdicionarItemArmadura.isSelected()){
+            jCBArmaduraNpc.setEnabled(true);
+            jTFQuantidadeArmaduraNpc.setEditable(true);
+        }
+        else{
+            jCBArmaduraNpc.setEnabled(false);
+            jTFQuantidadeArmaduraNpc.setEditable(false); 
+        }
         
     }//GEN-LAST:event_jCBAdicionarItemArmaduraActionPerformed
 
     private void jCBAdicionarItemArmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAdicionarItemArmaActionPerformed
         
-        jCBArmaNpc.setEnabled(true);
-        jTFQuantidadeArmaNpc.setEditable(true);
+        if (jCBAdicionarItemArmadura.isSelected()){
+            jCBArmaNpc.setEnabled(true);
+            jTFQuantidadeArmaNpc.setEditable(true);
+        }
+        else{
+            jCBArmaNpc.setEnabled(false);
+            jTFQuantidadeArmaNpc.setEditable(false); 
+        }
         
     }//GEN-LAST:event_jCBAdicionarItemArmaActionPerformed
 
     private void jCBAdicionarItemConsumivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAdicionarItemConsumivelActionPerformed
         
-        jCBConsumivelNpc.setEnabled(true);
-        jTFQuantidadeConsumivelNpc.setEditable(true);
+        if (jCBAdicionarItemConsumivel.isSelected()){
+            jCBConsumivelNpc.setEnabled(true);
+            jTFQuantidadeConsumivelNpc.setEditable(true);
+        }
+        else{
+            jCBConsumivelNpc.setEnabled(false);
+            jTFQuantidadeConsumivelNpc.setEditable(false); 
+        }
         
     }//GEN-LAST:event_jCBAdicionarItemConsumivelActionPerformed
 
     private void jCBAdicionarItemEscudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAdicionarItemEscudoActionPerformed
         
-        jCBEscudoNpc.setEnabled(true);
-        jTFQuantidadeEscudoNpc.setEditable(true);
+        if (jCBAdicionarItemEscudo.isSelected()){
+            jCBEscudoNpc.setEnabled(true);
+            jTFQuantidadeEscudoNpc.setEditable(true);
+        }
+        else{
+            jCBEscudoNpc.setEnabled(false);
+            jTFQuantidadeEscudoNpc.setEditable(false); 
+        }
         
     }//GEN-LAST:event_jCBAdicionarItemEscudoActionPerformed
     
