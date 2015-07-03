@@ -602,6 +602,11 @@ public class JFNpc extends javax.swing.JFrame {
         jPCadastrar.add(jBAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 540, 120, 30));
 
         jBSair.setText("Sair");
+        jBSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSairActionPerformed(evt);
+            }
+        });
         jPCadastrar.add(jBSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 580, 120, 30));
 
         jCBAdicionarItemEscudo.addActionListener(new java.awt.event.ActionListener() {
@@ -1973,13 +1978,6 @@ public class JFNpc extends javax.swing.JFrame {
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
 
         try {
-
-            Npcs npc = new Npcs();
-            Falas fala = new Falas();
-            NpcsFalas npcfala = new NpcsFalas();
-            NpcsCombatentes npccombate = new NpcsCombatentes();
-
-            GenericDAO gDao = new GenericDAO();
             
             // Verifica se Npc é do tipo Combatente 
             while (jTFIndexTipoNpc.getText().equals("0")) {
@@ -2034,16 +2032,10 @@ public class JFNpc extends javax.swing.JFrame {
                 else { // Se todos os campos estiverem preenchidos, o cadastro é efetuado
                 
                 // Chama evt CadastrarNpcCombatente
-                CadastrarNpcCombatente(evt);    
-                // Chama evt OcultarComponentesAtributos
-                OcultarComponentesAtributos(evt);
-                // Chama evt OcultarComponentesItens
-                OcultarComponentesItens(evt);  
-                // Chama evt LimparCampos
-                LimparCamposAbaCadastrar(evt);
-                // Chama evt RemoveItensComboAbaCadastrar 
-                RemoveItensComboAbaCadastrar(evt);  
-
+                CadastrarNpcCombatente(evt);
+                
+                formWindowOpened(null); // Chama evt formWindowOpened
+                
                 }   // Fim else - Cadastro Npc Combatente     
 
             } // Fim if - Verifica se Npc é do tipo Combatente
@@ -2093,13 +2085,9 @@ public class JFNpc extends javax.swing.JFrame {
                 else { // Se todos os campos estiverem preenchidos, o cadastro é efetuado 
                     
                     // Chama evt CadastrarNpcComercianteColetavel
-                    CadastrarNpcComercianteColetavel(evt);  
-                    // Chama evt LimparCamposAbaCadastrar
-                    LimparCamposAbaCadastrar(evt);  
-                    // Chama evt RemoveItensComboAbaCadastrar  
-                    RemoveItensComboAbaCadastrar(evt);  
-                    // Chama evt OcultarComponentesItens
-                    OcultarComponentesItens(evt);    
+                    CadastrarNpcComercianteColetavel(evt);
+                    
+                    formWindowOpened(null); // Chama evt formWindowOpened
                     
                 } // Fim else - Cadastro Npc Comerciante ou Coletável
                 
@@ -2120,17 +2108,15 @@ public class JFNpc extends javax.swing.JFrame {
                 
                 else { // Se todos os campos estiverem preenchidos, o cadastro é efetuado
                         
-                    CadastrarNpcGuiaMissao(evt); // Chama evt CadastrarNpcGuiaMissao
-                        
-                    LimparCamposAbaCadastrar(evt);  // Chama evt LimparCampos
-                    RemoveItensComboAbaCadastrar(evt);  // Chama evt RemoveItensComboAbaCadastrar
-                    break;
+                    CadastrarNpcGuiaMissao(evt);    // Chama evt CadastrarNpcGuiaMissao
+                    
+                    formWindowOpened(null); // Chama evt formWindowOpened
                     
                 }   // Fim else - Cadastro Npc Guia ou Missão 
                 
             }   // Fim if - Verifica se tipo Npc é Guia ou Missão
             
-        } catch (SQLException | IllegalArgumentException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
+        } catch (IllegalArgumentException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -2145,6 +2131,17 @@ public class JFNpc extends javax.swing.JFrame {
             
             GenericDAO gDao = new GenericDAO();
 
+            // ----- ----- ----- ----- //
+            
+            LimparCamposAbaCadastrar(null);  // Chama evt LimparCampos
+            RemoveItensComboAbaCadastrar(null);  // Chama evt RemoveItensComboAbaCadastrar
+            
+            // Oculta campos atributos e itens ao iniciar formulário
+            if (jTFIndexTipoNpc.getText().equals("")) {
+                OcultarComponentesAtributos(null);
+                OcultarComponentesItens(null);
+            }     
+            
             int codMaxNPC = gDao.codigoMax(Npcs.class);
 
             // Calculo para saber o codigo_npc atual
@@ -2153,15 +2150,7 @@ public class JFNpc extends javax.swing.JFrame {
 
             // Mostra o codigo_npc que vai ser cadastrado em componente jTFCodigoNpc
             jTFCodigoNpc.setText(String.valueOf(codnpc));
-
-            // ----- ----- ----- ----- //
             
-            // Oculta campos atributos e itens ao iniciar formulário
-            if (jTFIndexTipoNpc.getText().equals("")) {
-                OcultarComponentesAtributos(null);
-                OcultarComponentesItens(null);
-            }
-
         } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -3462,6 +3451,16 @@ public class JFNpc extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jCBAdicionarItemEscudoActionPerformed
+
+    private void jBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairActionPerformed
+        
+        JFMestre Mestre = new JFMestre();
+        Mestre.setVisible(true);
+        
+        JFNpc Npc = new JFNpc();
+        Npc.setVisible(false);
+        
+    }//GEN-LAST:event_jBSairActionPerformed
     
     
     /**
