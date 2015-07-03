@@ -32,6 +32,14 @@ import tabelas.Talentos;
  */
 public class Utilitarios {
 
+    public String falanpcs(int codigo_npc, String falanpc){
+        String fala = "";
+        
+        return fala;
+
+    }
+    
+    
     public String caminhos() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException,
             InvocationTargetException, InstantiationException, ClassNotFoundException {
         GenericDAO gDAO = new GenericDAO();
