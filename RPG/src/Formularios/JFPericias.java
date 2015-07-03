@@ -5,6 +5,7 @@
  */
 package Formularios;
 
+import Tabelas.PericiasPosicoes;
 import Tabelas.Raca;
 import dao.GenericDAO;
 import java.awt.Dimension;
@@ -39,23 +40,29 @@ public class JFPericias extends javax.swing.JFrame {
         GenericDAO genericDAO = new GenericDAO();
         
         //Limpa os campos
-        
         arrayListPericia.clear();
         arrayListDescricao.clear();
         arrayListAtributo.clear();
         
         jCBNomePericiaAlt.removeAllItems();
-        List<Object> list = genericDAO.listar(Pericias.class);
+        jCBNomePericiaExc.removeAllItems();
         
+        jTFAtributoExc.setText(null);
+        jTFNomePericiaExc.setText(null);
+        jTADescricaoExc.setText(null);
+        jTFPericiaAlt.setText(null);
+        jTADescricaoAlt.setText(null);
+        jTFAtributoPAlt.setText(null);
+        
+        List<Object> list = genericDAO.listar(Pericias.class);
         for (Object obj : list) {
             Pericias p = (Pericias) obj;
             arrayListPericia.add(p.getCodigo_pericia());
             arrayListDescricao.add(p.getDescricao_pericia());
             arrayListAtributo.add(p.getAtributo_principal_pericia());
             jCBNomePericiaAlt.addItem(p.getNome_pericia());
-            
-            
-    }
+            jCBNomePericiaExc.addItem(p.getNome_pericia());
+        }
     }
     
     
@@ -99,10 +106,15 @@ public class JFPericias extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jCBAtributoAlt = new javax.swing.JComboBox();
-        jTFAtibrutoAlt = new javax.swing.JTextField();
+        jTFAtributoPAlt = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jCBNomePericiaExc = new javax.swing.JComboBox();
+        jTFNomePericiaExc = new javax.swing.JTextField();
+        jTFAtributoExc = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTADescricaoExc = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -242,11 +254,7 @@ public class JFPericias extends javax.swing.JFrame {
 
         jCBAtributoAlt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Força", "Destreza", "Constituição", "Inteligência", "Sabedoria", "Carisma" }));
 
-        jTFAtibrutoAlt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFAtibrutoAltActionPerformed(evt);
-            }
-        });
+        jTFAtributoPAlt.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -254,30 +262,30 @@ public class JFPericias extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTFPericiaAlt))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(18, 18, 18)
+                            .addComponent(jCBNomePericiaAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(35, 35, 35)
+                            .addComponent(jButton1)
+                            .addGap(45, 45, 45)
+                            .addComponent(jButton2)))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTFAtibrutoAlt))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCBAtributoAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTFPericiaAlt))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jCBNomePericiaAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jButton1)
-                        .addGap(45, 45, 45)
-                        .addComponent(jButton2)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                        .addComponent(jTFAtributoPAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCBAtributoAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,18 +301,17 @@ public class JFPericias extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTFAtibrutoAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
+                    .addComponent(jTFAtributoPAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCBAtributoAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Alterar", jPanel2);
@@ -318,6 +325,21 @@ public class JFPericias extends javax.swing.JFrame {
 
         jButton4.setText("Cancelar");
 
+        jCBNomePericiaExc.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBNomePericiaExcItemStateChanged(evt);
+            }
+        });
+
+        jTFNomePericiaExc.setEnabled(false);
+
+        jTFAtributoExc.setEnabled(false);
+
+        jTADescricaoExc.setColumns(20);
+        jTADescricaoExc.setRows(5);
+        jTADescricaoExc.setEnabled(false);
+        jScrollPane3.setViewportView(jTADescricaoExc);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -327,12 +349,29 @@ public class JFPericias extends javax.swing.JFrame {
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(138, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jCBNomePericiaExc, 0, 127, Short.MAX_VALUE)
+                        .addComponent(jTFNomePericiaExc))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFAtributoExc, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(142, 142, 142))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(380, Short.MAX_VALUE)
+                .addGap(62, 62, 62)
+                .addComponent(jCBNomePericiaExc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(jTFNomePericiaExc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jTFAtributoExc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
@@ -426,17 +465,22 @@ public class JFPericias extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             int cod = 1;
-            cod=(int) arrayListPericia.get(jCBNomePericiaAlt.getSelectedIndex());
             GenericDAO genericDAO = new GenericDAO();
             Pericias p = new Pericias();
+            if (jTFPericiaAlt.getText().equals("") || jTADescricaoAlt.getText().equals("") || jTFAtributoPAlt.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Por favor insira todas as informações!"); 
+            } else {
+                cod=(int) arrayListPericia.get(jCBNomePericiaAlt.getSelectedIndex());    
             
-            p.setCodigo_pericia(cod);
-            p.setNome_pericia(jTFPericiaAlt.getText());
-            p.setDescricao_pericia(jTADescricaoAlt.getText());
-            p.setAtributo_principal_pericia(jCBAtributoAlt.getItemAt(jCBAtributoAlt.getSelectedIndex()).toString());
-            genericDAO.alterar(p);
-            //todo procedimento de alterar
-            CarregaComboPericias();
+                p.setCodigo_pericia(cod);
+                p.setNome_pericia(jTFPericiaAlt.getText());
+                p.setDescricao_pericia(jTADescricaoAlt.getText());
+                p.setAtributo_principal_pericia(jCBAtributoAlt.getItemAt(jCBAtributoAlt.getSelectedIndex()).toString());
+                genericDAO.alterar(p);
+                //todo procedimento de alterar
+                CarregaComboPericias();
+                JOptionPane.showMessageDialog(null, "Alterado com sucesso!"); 
+            }
         } catch (SQLException ex) {
             Logger.getLogger(JFPericias.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
@@ -456,7 +500,19 @@ public class JFPericias extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
-            // TODO add your handling code here:
+            GenericDAO genericDAO = new GenericDAO();
+            Pericias pericia = new Pericias();
+            PericiasPosicoes periciasPosicoes = new PericiasPosicoes();
+            
+            //exclui n para n
+            periciasPosicoes.setCodigo_pericia((int) arrayListPericia.get(jCBNomePericiaExc.getSelectedIndex()));
+            genericDAO.excluir(periciasPosicoes);
+            
+            //exclui pericia
+            pericia.setCodigo_pericia((int) arrayListPericia.get(jCBNomePericiaExc.getSelectedIndex()));
+            genericDAO.excluir(pericia);
+            
+            JOptionPane.showMessageDialog(null, "Excluido com sucesso!");
             CarregaComboPericias();
         } catch (SQLException ex) {
             Logger.getLogger(JFPericias.class.getName()).log(Level.SEVERE, null, ex);
@@ -472,6 +528,8 @@ public class JFPericias extends javax.swing.JFrame {
             Logger.getLogger(JFPericias.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JFPericias.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchFieldException ex) {
+            Logger.getLogger(JFPericias.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -483,11 +541,11 @@ public class JFPericias extends javax.swing.JFrame {
                 
                 jTADescricaoAlt.setText(null);
                 jTFPericiaAlt.setText(null);
-                jTFAtibrutoAlt.setText(null);
+                jTFAtributoPAlt.setText(null);
                 
                 jTFPericiaAlt.setText((String) jCBNomePericiaAlt.getItemAt(jCBNomePericiaAlt.getSelectedIndex()));
                 jTADescricaoAlt.setText((String) arrayListDescricao.get(jCBNomePericiaAlt.getSelectedIndex()));
-                jTFAtibrutoAlt.setText(arrayListAtributo.get(jCBAtributoAlt.getSelectedIndex()).toString());
+                jTFAtributoPAlt.setText(arrayListAtributo.get(jCBNomePericiaAlt.getSelectedIndex()).toString());
             } catch (SQLException ex) {
                 Logger.getLogger(JFPericias.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -498,9 +556,24 @@ public class JFPericias extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFPericiaAltActionPerformed
 
-    private void jTFAtibrutoAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFAtibrutoAltActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFAtibrutoAltActionPerformed
+    private void jCBNomePericiaExcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNomePericiaExcItemStateChanged
+        if (!arrayListPericia.isEmpty()) {
+            try {
+                GenericDAO genericDAO = new GenericDAO();
+                Pericias p = new Pericias();
+                
+                jTADescricaoExc.setText(null);
+                jTFAtributoExc.setText(null);
+                jTFNomePericiaExc.setText(null);
+                
+                jTFNomePericiaExc.setText((String) jCBNomePericiaExc.getItemAt(jCBNomePericiaExc.getSelectedIndex()));
+                jTADescricaoExc.setText((String) arrayListDescricao.get(jCBNomePericiaExc.getSelectedIndex()));
+                jTFAtributoExc.setText(arrayListAtributo.get(jCBNomePericiaExc.getSelectedIndex()).toString());
+            } catch (SQLException ex) {
+                Logger.getLogger(JFPericias.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jCBNomePericiaExcItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -551,6 +624,7 @@ public class JFPericias extends javax.swing.JFrame {
     private javax.swing.JComboBox jCBAtributo;
     private javax.swing.JComboBox jCBAtributoAlt;
     private javax.swing.JComboBox jCBNomePericiaAlt;
+    private javax.swing.JComboBox jCBNomePericiaExc;
     private javax.swing.JLabel jLAtributoPrincipal;
     private javax.swing.JLabel jLCadastroPerícias;
     private javax.swing.JLabel jLDescrição;
@@ -564,9 +638,13 @@ public class JFPericias extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTADescricaoAlt;
+    private javax.swing.JTextArea jTADescricaoExc;
     private javax.swing.JTextArea jTADescrição;
-    private javax.swing.JTextField jTFAtibrutoAlt;
+    private javax.swing.JTextField jTFAtributoExc;
+    private javax.swing.JTextField jTFAtributoPAlt;
+    private javax.swing.JTextField jTFNomePericiaExc;
     private javax.swing.JTextField jTFPericiaAlt;
     private javax.swing.JTextField jTNomePericia;
     private javax.swing.JTabbedPane jTabbedPane1;
