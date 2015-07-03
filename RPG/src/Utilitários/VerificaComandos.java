@@ -45,6 +45,18 @@ public class VerificaComandos {
             res = "doctor who ?";
         } // modo adm
 
+        if (aux[0].equalsIgnoreCase("logoff")) {
+            auth.setCodigo_jogador(0);
+            auth.setMestre_jogador(false);
+            auth.setCodigo_personagem(0);
+            auth.setSenha_jogador("");
+            auth.setJogador_logado(false);
+            auth.setNome_jogador("");
+            // jfprim.jLnome_jogador.setText("Mestre");
+
+            res = "Você saiu do jogo";
+        } // modo adm
+
         if (!auth.isJogador_logado()) {// se não estiver logado entra
 
             if (auth.getCodigo_jogador() == 0) {// verifica se falta logar
@@ -58,17 +70,16 @@ public class VerificaComandos {
 
                     ll = bsk.listar2(Jogadores.class, jj);
 
-                    if (ll.size() > 0) {//virifica se volta algo da pesquisa
+                    if (ll.size() > 0) {//virifica se volta algo da pesquisa                       
+
+                        Jogadores jog = (Jogadores) ll.get(0);
+
+                        auth.setNome_jogador(jog.getNome_jogador());
+                        auth.setCodigo_jogador(jog.getCodigo_jogador());
+                        auth.setSenha_jogador(jog.getSenha_jogador());
+                        auth.setMestre_jogador(true);
 
                         res = "digite a senha - EX: senha Minhasenha"; // seta a resposta do "mestre"
-
-                        for (Object obj : ll) {
-                            Jogadores jog = (Jogadores) obj;
-                            auth.setNome_jogador(jog.getNome_jogador());
-                            auth.setCodigo_jogador(jog.getCodigo_jogador());
-                            auth.setSenha_jogador(jog.getSenha_jogador());
-                            auth.setMestre_jogador(jog.getMestre_jogador());
-                        }
 
                     } else {
                         res = "Login invalido tente novamente - EX: login Usuario "; // causo a pesquisa não retornar é pra exibir o erro 

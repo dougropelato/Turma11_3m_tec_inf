@@ -24,8 +24,8 @@ import java.util.logging.Logger;
  * @author Alexjonas
  */
 public class JFPrincipal extends javax.swing.JFrame {
-    
-  
+
+    Autenticacao auth = Autenticacao.getInstance();
 
     public static JFPrincipal instance;
 
@@ -60,14 +60,10 @@ public class JFPrincipal extends javax.swing.JFrame {
         Container c = getContentPane();
 //        c.setBackground(Color.WHITE); // Define a cor de fundo
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+
       //  setSize(1000, 1000);
-        
-        
-        
         this.setExtendedState(MAXIMIZED_BOTH);
-        
-        
+
     }
 
     /**
@@ -244,10 +240,6 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        Autenticacao auth = Autenticacao.getInstance();
-        auth.setCoordenadaX_posicao(Integer.parseInt(jTextField2.getText()));
-        auth.setCoordenadaY_posicao(Integer.parseInt(jTextField3.getText()));
-
 // TODO add your handling code here:
         String string = jTextField1.getText();
         if (string != "") {
@@ -256,9 +248,9 @@ public class JFPrincipal extends javax.swing.JFrame {
                 String[] comands = string.split(" ");
                 //posi = Integer.parseInt(string);
 
-                jTextArea1.setText(jTextArea1.getText() + "Jogador diz: " + string); // mostra no texto da historia
+                jTextArea1.setText(jTextArea1.getText() + "Jogador diz: " + string + "\n" ); // mostra no texto da historia
 
-                jTextArea1.setText(jTextArea1.getText() + "\n" + "Mestre: " + vercom.verificaComando(comands) + '\n');
+                jTextArea1.setText(jTextArea1.getText()+ "Mestre: " + vercom.verificaComando(comands) + '\n');
             } catch (SQLException ex) {
                 Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IllegalAccessException ex) {
