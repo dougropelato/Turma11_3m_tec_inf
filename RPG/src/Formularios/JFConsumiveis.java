@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import tabelas.Consumiveis;
 
 /**
@@ -25,7 +26,7 @@ public class JFConsumiveis extends javax.swing.JFrame {
     private final GenericDAO gg;
     private List<Object> lista = new ArrayList();
     private int contador = 0;
-    
+
     public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
@@ -37,20 +38,21 @@ public class JFConsumiveis extends javax.swing.JFrame {
         this.gg = new GenericDAO();
         initComponents();
         centralizarComponente();
-        this.lista =  gg.listar(Consumiveis.class);
+        this.lista = gg.listar(Consumiveis.class);
     }
-        
-        public void carregaRegistro() {
+
+    public void carregaRegistro() {
 
         for (Object l1 : lista) {
             Consumiveis a = (Consumiveis) l1;
-            
-            if (a.getCodigo_consumivel()== contador) {
+
+            if (a.getCodigo_consumivel() == contador) {
+                jTFCodigoConsumivel.setText(String.valueOf(a.getCodigo_consumivel()));
                 jtfNomeConsumivel.setText(a.getNome_consumivel());
                 jtfPrecoConsumivel.setText(String.valueOf(a.getPreco_consumivel()));
                 jtfQuantidadeDadosConsumivel.setText(String.valueOf(a.getQuantidade_dados_consumivel()));
                 jtfTipoDadoConsumivel.setText(String.valueOf(a.getTipo_dado_consumivel()));
-                
+
             }
         }
 
@@ -77,8 +79,19 @@ public class JFConsumiveis extends javax.swing.JFrame {
         jbCadastrar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jBalterar = new javax.swing.JButton();
+        jBexcluir = new javax.swing.JButton();
+        jBconfirmar = new javax.swing.JButton();
+        jBcancelar = new javax.swing.JButton();
+        jTFCodigoConsumivel = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Cadastro de Consumíveis");
@@ -92,6 +105,7 @@ public class JFConsumiveis extends javax.swing.JFrame {
         jLabel6.setText("Tipo Dado Consumível:");
 
         jbCadastrar.setText("Cadastrar");
+        jbCadastrar.setEnabled(false);
         jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCadastrarActionPerformed(evt);
@@ -112,49 +126,95 @@ public class JFConsumiveis extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setText("Novo");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jBalterar.setText("Alterar");
+        jBalterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBalterarActionPerformed(evt);
+            }
+        });
+
+        jBexcluir.setText("Excluir");
+        jBexcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBexcluirActionPerformed(evt);
+            }
+        });
+
+        jBconfirmar.setText("Confirmar");
+        jBconfirmar.setEnabled(false);
+        jBconfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBconfirmarActionPerformed(evt);
+            }
+        });
+
+        jBcancelar.setText("Cancelar");
+        jBcancelar.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(190, 190, 190))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
+                        .addGap(59, 59, 59)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton2)
+                                    .addComponent(jLabel6)))
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtfNomeConsumivel)
-                            .addComponent(jtfPrecoConsumivel)
-                            .addComponent(jtfQuantidadeDadosConsumivel)
-                            .addComponent(jtfTipoDadoConsumivel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtfNomeConsumivel)
+                                    .addComponent(jtfPrecoConsumivel)
+                                    .addComponent(jtfQuantidadeDadosConsumivel)
+                                    .addComponent(jtfTipoDadoConsumivel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTFCodigoConsumivel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jBconfirmar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jBcancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jbCadastrar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jBalterar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBexcluir))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbCadastrar)
-                        .addGap(26, 26, 26)))
-                .addContainerGap(168, Short.MAX_VALUE))
+                        .addGap(197, 197, 197)
+                        .addComponent(jLabel1)))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel1)
-                .addGap(37, 37, 37)
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jtfNomeConsumivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfNomeConsumivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFCodigoConsumivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -167,17 +227,24 @@ public class JFConsumiveis extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jtfTipoDadoConsumivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbCadastrar)
+                    .addComponent(jButton4)
+                    .addComponent(jBalterar)
+                    .addComponent(jBexcluir))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jbCadastrar)
-                        .addContainerGap(59, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
-                        .addGap(41, 41, 41))))
+                            .addComponent(jButton2)
+                            .addComponent(jButton1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBconfirmar)
+                            .addComponent(jBcancelar))))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -187,14 +254,14 @@ public class JFConsumiveis extends javax.swing.JFrame {
 
         try {
             Consumiveis cons = new Consumiveis();
-            
+
             GenericDAO gDAO = new GenericDAO();
-            
+
             cons.setNome_consumivel(jtfNomeConsumivel.getText());
             cons.setPreco_consumivel(Double.parseDouble(jtfPrecoConsumivel.getText()));
             cons.setQuantidade_dados_consumivel(Integer.parseInt(jtfQuantidadeDadosConsumivel.getText()));
             cons.setTipo_dado_consumivel(Integer.parseInt(jtfTipoDadoConsumivel.getText()));
-            
+
             gDAO.adicionar(cons);
         } catch (SQLException ex) {
             Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
@@ -205,17 +272,107 @@ public class JFConsumiveis extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+
+        jButton1.setEnabled(true);
+        jButton2.setEnabled(true);
+        jbCadastrar.setEnabled(true);
+        jBalterar.setEnabled(true);
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         contador--;
-       this.carregaRegistro();
+        this.carregaRegistro();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         contador++;
-       this.carregaRegistro();
+        this.carregaRegistro();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        jtfNomeConsumivel.setEditable(true);
+        jtfPrecoConsumivel.setEditable(true);
+        jtfQuantidadeDadosConsumivel.setEditable(true);
+        jtfTipoDadoConsumivel.setEditable(true);
+
+        jtfNomeConsumivel.setText("");
+        jtfPrecoConsumivel.setText("");
+        jtfQuantidadeDadosConsumivel.setText("");
+        jtfTipoDadoConsumivel.setText("");
+
+        jbCadastrar.setEnabled(true);
+        jBalterar.setEnabled(false);
+        jButton2.setEnabled(false);
+        jButton1.setEnabled(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jBalterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBalterarActionPerformed
+        jtfNomeConsumivel.setEditable(true);
+        jtfPrecoConsumivel.setEditable(true);
+        jtfQuantidadeDadosConsumivel.setEditable(true);
+        jtfTipoDadoConsumivel.setEditable(true);
+
+        jButton4.setEnabled(false);
+        jBconfirmar.setEnabled(true);
+        jBcancelar.setEnabled(true);
+    }//GEN-LAST:event_jBalterarActionPerformed
+
+    private void jBexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBexcluirActionPerformed
+
+        try {
+            GenericDAO gDao = new GenericDAO();
+            Consumiveis excluirconsumivel = new Consumiveis();
+
+            excluirconsumivel.setCodigo_consumivel(Integer.parseInt(jTFCodigoConsumivel.getText()));
+
+            gDao.excluir(excluirconsumivel);
+
+            JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchFieldException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBexcluirActionPerformed
+
+    private void jBconfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconfirmarActionPerformed
+        Consumiveis armd = new Consumiveis();
+        armd.setCodigo_consumivel(Integer.parseInt(jTFCodigoConsumivel.getText()));
+        armd.setNome_consumivel(jtfNomeConsumivel.getText());
+        armd.setPreco_consumivel(Double.parseDouble(jtfPrecoConsumivel.getText()));
+        armd.setQuantidade_dados_consumivel(Integer.parseInt(jtfQuantidadeDadosConsumivel.getText()));
+        armd.setTipo_dado_consumivel(Integer.parseInt(jtfTipoDadoConsumivel.getText()));
+
+        try {
+            gg.alterar(armd);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+
+        jButton4.setEnabled(true);
+        jbCadastrar.setEnabled(false);
+        jBalterar.setEnabled(true);
+        jBconfirmar.setEnabled(false);
+        jBcancelar.setEnabled(false);
+    }//GEN-LAST:event_jBconfirmarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+        jTFCodigoConsumivel.setVisible(false);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -269,13 +426,19 @@ public class JFConsumiveis extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBalterar;
+    private javax.swing.JButton jBcancelar;
+    private javax.swing.JButton jBconfirmar;
+    private javax.swing.JButton jBexcluir;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField jTFCodigoConsumivel;
     private javax.swing.JButton jbCadastrar;
     private javax.swing.JTextField jtfNomeConsumivel;
     private javax.swing.JTextField jtfPrecoConsumivel;

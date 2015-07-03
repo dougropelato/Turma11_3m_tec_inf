@@ -22,8 +22,8 @@ import tabelas.Escudos;
  * @author Jailton
  */
 public class JFEscudos extends javax.swing.JFrame {
-
-     private final GenericDAO gg;
+    
+    private final GenericDAO gg;
     private List<Object> lista = new ArrayList();
     private int contador = 0;
     
@@ -38,15 +38,15 @@ public class JFEscudos extends javax.swing.JFrame {
         this.gg = new GenericDAO();
         initComponents();
         centralizarComponente();
-        this.lista =  gg.listar(Escudos.class);
+        this.lista = gg.listar(Escudos.class);
     }
-
+    
     public void carregaRegistro() {
-
+        
         for (Object l1 : lista) {
             Escudos a = (Escudos) l1;
             
-            if (a.getCodigo_escudo()== contador) {
+            if (a.getCodigo_escudo() == contador) {
                 jTFCodigoEscudo.setText(String.valueOf(a.getCodigo_escudo()));
                 jtfNomeEscudo.setText(a.getNome_escudo());
                 jtfPrecoEscudo.setText(String.valueOf(a.getPreco_escudo()));
@@ -55,9 +55,8 @@ public class JFEscudos extends javax.swing.JFrame {
                 
             }
         }
-
+        
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -88,6 +87,11 @@ public class JFEscudos extends javax.swing.JFrame {
         jTFCodigoEscudo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Cadastro de Escudos");
@@ -101,6 +105,7 @@ public class JFEscudos extends javax.swing.JFrame {
         jLabel6.setText("Penalidade Destreza Escudo:");
 
         jbCadastrar.setText("Cadastrar");
+        jbCadastrar.setEnabled(false);
         jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCadastrarActionPerformed(evt);
@@ -265,8 +270,13 @@ public class JFEscudos extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
+        
+        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+        
+        jButton1.setEnabled(true);
+        jButton2.setEnabled(true);
+        jbCadastrar.setEnabled(true);
+        jBalterar.setEnabled(true);
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -280,17 +290,17 @@ public class JFEscudos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jBexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBexcluirActionPerformed
-
+        
         try {
             GenericDAO gDao = new GenericDAO();
             Escudos excluirescudos = new Escudos();
-
+            
             excluirescudos.setCodigo_escudo(Integer.parseInt(jTFCodigoEscudo.getText()));
-
+            
             gDao.excluir(excluirescudos);
-
+            
             JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -305,7 +315,7 @@ public class JFEscudos extends javax.swing.JFrame {
         jtfPrecoEscudo.setEditable(true);
         jtfBonusMaximoEscudo.setEditable(true);
         jtfPenalidadeDestrezaEscudo.setEditable(true);
-
+        
         jButton4.setEnabled(false);
         jBconfirmar.setEnabled(true);
         jBcancelar.setEnabled(true);
@@ -317,12 +327,12 @@ public class JFEscudos extends javax.swing.JFrame {
         jtfPrecoEscudo.setEditable(true);
         jtfBonusMaximoEscudo.setEditable(true);
         jtfPenalidadeDestrezaEscudo.setEditable(true);
-
+        
         jtfNomeEscudo.setText("");
         jtfPrecoEscudo.setText("");
         jtfBonusMaximoEscudo.setText("");
         jtfPenalidadeDestrezaEscudo.setText("");
-
+        
         jbCadastrar.setEnabled(true);
         jBalterar.setEnabled(false);
         jButton2.setEnabled(false);
@@ -333,9 +343,10 @@ public class JFEscudos extends javax.swing.JFrame {
         Escudos armd = new Escudos();
         armd.setCodigo_escudo(Integer.parseInt(jTFCodigoEscudo.getText()));
         armd.setNome_escudo(jtfNomeEscudo.getText());
+        armd.setPreco_escudo(Double.parseDouble(jtfPrecoEscudo.getText()));
         armd.setBonus_maximo_escudo(Integer.parseInt(jtfBonusMaximoEscudo.getText()));
         armd.setPenalidade_destreza_escudo(Integer.parseInt(jtfPenalidadeDestrezaEscudo.getText()));
-
+        
         try {
             gg.alterar(armd);
         } catch (ClassNotFoundException ex) {
@@ -347,15 +358,19 @@ public class JFEscudos extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
-
+        
         jButton4.setEnabled(true);
         jbCadastrar.setEnabled(false);
         jBalterar.setEnabled(true);
         jBconfirmar.setEnabled(false);
         jBcancelar.setEnabled(false);
     }//GEN-LAST:event_jBconfirmarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        jTFCodigoEscudo.setVisible(false);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

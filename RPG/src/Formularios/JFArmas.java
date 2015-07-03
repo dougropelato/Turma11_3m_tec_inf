@@ -293,6 +293,9 @@ public class JFArmas extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+
         jButton2.setEnabled(true);
         jButton1.setEnabled(true);
         jbCadastrar.setEnabled(false);
@@ -397,7 +400,7 @@ public class JFArmas extends javax.swing.JFrame {
     }//GEN-LAST:event_jBconfirmarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-            
+
         jTFCodigoArma.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
 
