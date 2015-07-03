@@ -2127,7 +2127,7 @@ public class JFNpc extends javax.swing.JFrame {
 
         try {
 
-            //OcultarComponentesCodigoTodasAbas(null);
+            OcultarComponentesCodigoTodasAbas(null);
             
             GenericDAO gDao = new GenericDAO();
 
@@ -3375,9 +3375,6 @@ public class JFNpc extends javax.swing.JFrame {
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
         
         JFNpc.this.dispose();
-        
-        JFNpcAlterarExcluir NpcAlterarExcluir = new JFNpcAlterarExcluir();
-        NpcAlterarExcluir.setVisible(true);
 
     }//GEN-LAST:event_jBAlterarActionPerformed
 
