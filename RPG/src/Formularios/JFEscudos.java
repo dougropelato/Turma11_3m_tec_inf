@@ -23,41 +23,40 @@ import tabelas.Escudos;
  */
 public class JFEscudos extends javax.swing.JFrame {
 
-     private final GenericDAO gg;
+    private final GenericDAO gg;
     private List<Object> lista = new ArrayList();
     private int contador = 0;
-    
+
     public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
         setLocation((ds.width - dw.width) / 2,
                 (ds.height - dw.height) / 2);
     }
-    
+
     public JFEscudos() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         this.gg = new GenericDAO();
         initComponents();
         centralizarComponente();
-        this.lista =  gg.listar(Escudos.class);
+        this.lista = gg.listar(Escudos.class);
     }
 
     public void carregaRegistro() {
 
         for (Object l1 : lista) {
             Escudos a = (Escudos) l1;
-            
-            if (a.getCodigo_escudo()== contador) {
+
+            if (a.getCodigo_escudo() == contador) {
                 jTFCodigoEscudo.setText(String.valueOf(a.getCodigo_escudo()));
                 jtfNomeEscudo.setText(a.getNome_escudo());
                 jtfPrecoEscudo.setText(String.valueOf(a.getPreco_escudo()));
                 jtfBonusMaximoEscudo.setText(String.valueOf(a.getBonus_maximo_escudo()));
                 jtfPenalidadeDestrezaEscudo.setText(String.valueOf(a.getPenalidade_destreza_escudo()));
-                
+
             }
         }
 
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -244,17 +243,17 @@ public class JFEscudos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
-        
+
         try {
             Escudos esc = new Escudos();
-            
+
             GenericDAO gDAO = new GenericDAO();
-            
+
             esc.setNome_escudo(jtfNomeEscudo.getText());
             esc.setPreco_escudo(Double.parseDouble(jtfPrecoEscudo.getText()));
             esc.setBonus_maximo_escudo(Double.parseDouble(jtfBonusMaximoEscudo.getText()));
             esc.setPenalidade_destreza_escudo(Integer.parseInt(jtfPenalidadeDestrezaEscudo.getText()));
-            
+
             gDAO.adicionar(esc);
         } catch (SQLException ex) {
             Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
@@ -266,7 +265,12 @@ public class JFEscudos extends javax.swing.JFrame {
             Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
 
+        jButton1.setEnabled(true);
+        jButton2.setEnabled(true);
+        jbCadastrar.setEnabled(true);
+        jBalterar.setEnabled(true);
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
