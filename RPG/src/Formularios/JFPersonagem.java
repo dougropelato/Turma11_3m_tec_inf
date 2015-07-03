@@ -365,6 +365,7 @@ public class JFPersonagem extends javax.swing.JFrame {
                 Personagens pers = new Personagens();
                 Raca rc = new Raca();
 
+                rc.setCodigo_raca((int) listRaca.get(jCRaca.getSelectedIndex()));
                 List<Object> list = aDao.listar2(Raca.class, rc);
                 for (Object obj3 : list) {
 
