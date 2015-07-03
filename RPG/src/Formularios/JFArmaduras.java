@@ -396,7 +396,7 @@ public class JFArmaduras extends javax.swing.JFrame {
         }
 
         JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
-        
+
         jButton4.setEnabled(true);
         jButton1.setEnabled(false);
         jBalterar.setEnabled(true);

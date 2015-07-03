@@ -105,6 +105,7 @@ public class JFConsumiveis extends javax.swing.JFrame {
         jLabel6.setText("Tipo Dado Consumível:");
 
         jbCadastrar.setText("Cadastrar");
+        jbCadastrar.setEnabled(false);
         jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCadastrarActionPerformed(evt);
@@ -188,15 +189,17 @@ public class JFConsumiveis extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTFCodigoConsumivel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbCadastrar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jBalterar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jBconfirmar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jBcancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jbCadastrar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jBalterar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBexcluir))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jBconfirmar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jBcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jBexcluir))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(197, 197, 197)
                         .addComponent(jLabel1)))
@@ -271,7 +274,7 @@ public class JFConsumiveis extends javax.swing.JFrame {
         }
 
         JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
-        
+
         jButton1.setEnabled(true);
         jButton2.setEnabled(true);
         jbCadastrar.setEnabled(true);
@@ -341,6 +344,7 @@ public class JFConsumiveis extends javax.swing.JFrame {
         Consumiveis armd = new Consumiveis();
         armd.setCodigo_consumivel(Integer.parseInt(jTFCodigoConsumivel.getText()));
         armd.setNome_consumivel(jtfNomeConsumivel.getText());
+        armd.setPreco_consumivel(Double.parseDouble(jtfPrecoConsumivel.getText()));
         armd.setQuantidade_dados_consumivel(Integer.parseInt(jtfQuantidadeDadosConsumivel.getText()));
         armd.setTipo_dado_consumivel(Integer.parseInt(jtfTipoDadoConsumivel.getText()));
 
