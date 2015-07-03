@@ -1698,6 +1698,7 @@ public class JFNpc extends javax.swing.JFrame {
             Personagens npcpersonagem = new Personagens();
             NpcsCombatentes npccombate = new NpcsCombatentes();
 
+            ArmadurasNpcs armaduranpc = new ArmadurasNpcs();
             ArmasNpcs armanpc = new ArmasNpcs();
             ConsumiveisNpcs consumivelnpc = new ConsumiveisNpcs();
             EscudosNpcs escudonpc = new EscudosNpcs();
@@ -1756,8 +1757,39 @@ public class JFNpc extends javax.swing.JFrame {
             // Cadastra NpcsCombatentes
             npccombate.setCodigo_npc(codMaxNPC);
             npccombate.setCodigo_personagem(codMaxPersonagem);
-            gDao.adicionar(npccombate);   
-
+            gDao.adicionar(npccombate);
+            
+            // Cadastra ArmadurasNpcs
+            if (jCBAdicionarItemArmadura.isSelected()){
+                armaduranpc.setCodigo_npc(codMaxNPC);
+                armaduranpc.setCodigo_armadura(Integer.parseInt(jTFCodArmadura.getText()));
+                armaduranpc.setQuantidade_armadura(Integer.parseInt(jTFQuantidadeArmaduraNpc.getText()));
+                gDao.adicionar(armaduranpc);
+            }
+            // Cadastra ArmaNpcs
+            if (jCBAdicionarItemArma.isSelected()){
+                armanpc.setCodigo_npc(codMaxNPC);                
+                armanpc.setCodigo_arma(Integer.parseInt(jTFCodArma.getText()));
+                armanpc.setQuantidade_arma(Integer.parseInt(jTFQuantidadeArmaNpc.getText()));
+                gDao.adicionar(armanpc);
+            }
+            // Cadastra ConsumiveisNpcs
+            if (jCBAdicionarItemConsumivel.isSelected()){                
+                consumivelnpc.setCodigo_npc(codMaxNPC);    
+                consumivelnpc.setCodigo_consumivel(Integer.parseInt(jTFCodConsumivel.getText()));
+                consumivelnpc.setQuantidade_consumivel(Integer.parseInt(jTFQuantidadeConsumivelNpc.getText()));
+                gDao.adicionar(consumivelnpc);     
+            }
+            // Cadastra EscudosNpcs
+            if (jCBAdicionarItemEscudo.isSelected()){                
+                escudonpc.setCodigo_npc(codMaxNPC); 
+                escudonpc.setCodigo_escudo(Integer.parseInt(jTFCodEscudo.getText()));
+                escudonpc.setQuantidade_escudos(Integer.parseInt(jTFQuantidadeEscudoNpc.getText()));
+                gDao.adicionar(escudonpc);      
+            }
+            
+            JOptionPane.showMessageDialog(null, "NPC Combatente Cadastrado!");
+            
         } catch (SQLException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1807,29 +1839,34 @@ public class JFNpc extends javax.swing.JFrame {
             npcfala.setCodigo_npc(codMaxNPC);
             gDao.adicionar(npcfala);
                 
-            // Cadastra ArmadurasNpcs   
-            armaduranpc.setCodigo_npc(codMaxNPC);
-            armaduranpc.setCodigo_armadura(Integer.parseInt(jTFCodArmadura.getText()));
-            armaduranpc.setQuantidade_armadura(Integer.parseInt(jTFQuantidadeArmaduraNpc.getText()));
-            gDao.adicionar(armaduranpc);
-
+            // Cadastra ArmadurasNpcs
+            if (jCBAdicionarItemArmadura.isSelected()){
+                armaduranpc.setCodigo_npc(codMaxNPC);
+                armaduranpc.setCodigo_armadura(Integer.parseInt(jTFCodArmadura.getText()));
+                armaduranpc.setQuantidade_armadura(Integer.parseInt(jTFQuantidadeArmaduraNpc.getText()));
+                gDao.adicionar(armaduranpc);
+            }
             // Cadastra ArmaNpcs
-            armanpc.setCodigo_npc(codMaxNPC);                
-            armanpc.setCodigo_arma(Integer.parseInt(jTFCodArma.getText()));
-            armanpc.setQuantidade_arma(Integer.parseInt(jTFQuantidadeArmaNpc.getText()));
-            gDao.adicionar(armanpc);    
-                
+            if (jCBAdicionarItemArma.isSelected()){
+                armanpc.setCodigo_npc(codMaxNPC);                
+                armanpc.setCodigo_arma(Integer.parseInt(jTFCodArma.getText()));
+                armanpc.setQuantidade_arma(Integer.parseInt(jTFQuantidadeArmaNpc.getText()));
+                gDao.adicionar(armanpc);
+            }
             // Cadastra ConsumiveisNpcs
-            consumivelnpc.setCodigo_npc(codMaxNPC);    
-            consumivelnpc.setCodigo_consumivel(Integer.parseInt(jTFCodConsumivel.getText()));
-            consumivelnpc.setQuantidade_consumivel(Integer.parseInt(jTFQuantidadeConsumivelNpc.getText()));
-            gDao.adicionar(consumivelnpc);  
-
+            if (jCBAdicionarItemConsumivel.isSelected()){                
+                consumivelnpc.setCodigo_npc(codMaxNPC);    
+                consumivelnpc.setCodigo_consumivel(Integer.parseInt(jTFCodConsumivel.getText()));
+                consumivelnpc.setQuantidade_consumivel(Integer.parseInt(jTFQuantidadeConsumivelNpc.getText()));
+                gDao.adicionar(consumivelnpc);     
+            }
             // Cadastra EscudosNpcs
-            escudonpc.setCodigo_npc(codMaxNPC); 
-            escudonpc.setCodigo_escudo(Integer.parseInt(jTFCodEscudo.getText()));
-            escudonpc.setQuantidade_escudos(Integer.parseInt(jTFQuantidadeEscudoNpc.getText()));
-            gDao.adicionar(escudonpc);
+            if (jCBAdicionarItemEscudo.isSelected()){                
+                escudonpc.setCodigo_npc(codMaxNPC); 
+                escudonpc.setCodigo_escudo(Integer.parseInt(jTFCodEscudo.getText()));
+                escudonpc.setQuantidade_escudos(Integer.parseInt(jTFQuantidadeEscudoNpc.getText()));
+                gDao.adicionar(escudonpc);      
+            }
       
             if (jTFIndexTipoNpc.getText().equals("1")){
                 JOptionPane.showMessageDialog(null, "Npc Comerciante cadastrado!");
@@ -1942,165 +1979,142 @@ public class JFNpc extends javax.swing.JFrame {
             NpcsFalas npcfala = new NpcsFalas();
             NpcsCombatentes npccombate = new NpcsCombatentes();
 
-            ArmadurasNpcs armaduranpc = new ArmadurasNpcs();
-            ArmasNpcs armanpc = new ArmasNpcs();
-            ConsumiveisNpcs consumivelnpc = new ConsumiveisNpcs();
-            EscudosNpcs escudonpc = new EscudosNpcs();
-
             GenericDAO gDao = new GenericDAO();
             
             // Verifica se Npc é do tipo Combatente 
-            if (jTFIndexTipoNpc.getText().equals("0")) {            
+            while (jTFIndexTipoNpc.getText().equals("0")) {
                 
-                MostrarComponentesAtributos(evt); // Chama evt MostrarComponentesAtributos
-                MostrarComponentesItens(evt);   // Chama evt MostrarComponentesItens
+                // Verifica se CheckBox Armadura esta selecionado
+                if (jCBAdicionarItemArmadura.isSelected()){
+                    if (jTFCodArmadura.getText().equals("") | jTFQuantidadeArmaduraNpc.getText().equals("")){  
+                        JOptionPane.showMessageDialog(null, "Selecione uma Armadura e sua quantidade!");
+                        break;
+                    }
+                }
                 
+                // Verifica se CheckBox Arma esta selecionado
+                if (jCBAdicionarItemArma.isSelected()){
+                    if (jTFCodArma.getText().equals("") | jTFQuantidadeArmaNpc.getText().equals("")){
+                        JOptionPane.showMessageDialog(null, "Selecione uma Arma e sua quantidade!");
+                        break;
+                    }
+                }
+                
+                // Verifica se CheckBox Consumivel esta selecionado
+                if (jCBAdicionarItemConsumivel.isSelected()){
+                    if (jTFCodConsumivel.getText().equals("") | jTFQuantidadeConsumivelNpc.getText().equals("")){
+                        JOptionPane.showMessageDialog(null, "Selecione uma Consumivel e sua quantidade!");
+                        break;
+                    } 
+                }
+                
+                // Verifica se CheckBox Escudo esta selecionado
+                if (jCBAdicionarItemEscudo.isSelected()){
+                    if (jTFCodEscudo.getText().equals("") | jTFQuantidadeEscudoNpc.getText().equals("")){
+                        JOptionPane.showMessageDialog(null, "Selecione uma Escudo e sua quantidade!");
+                        break;
+                    }
+                }
+                
+            // Verifica se campos estão em branco
+            if (JTFNomeNpc.getText().equals("") | jTADescricaoNpc.getText().equals("") | jTFIndexTipoNpc.getText().equals("") 
+                | jTAFalaNpc.getText().equals("") | jTARespostaPositiva.getText().equals("") 
+                 | jTARespostaNegativa.getText().equals("")
+                  |jTFCodRaca.getText().equals("") | jTFCodClasse.getText().equals("") | jTFForca.getText().equals("")
+                   | jTFDestreza.getText().equals("") | jTFConstituicao.getText().equals("") |  jTFInteligencia.getText().equals("") 
+                    | jTFSabedoria.getText().equals("") | jTFFortitude.getText().equals("") | jTFClassedeArmadura.getText().equals("")
+                     | jTFBasedeAtaque.getText().equals("") | jTFPontosdeVida.getText().equals("") | jTFIniciativa.getText().equals("")
+                      | jTFVontade.getText().equals("") | jTFReflexos.getText().equals("") | jTFCarisma.getText().equals("")){ 
+                        
+                            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+                            break;
+            
+                } // Fim if - Verifica se campos estão em branco
+            
+                else { // Se todos os campos estiverem preenchidos, o cadastro é efetuado
+                
+                // Chama evt CadastrarNpcCombatente
+                CadastrarNpcCombatente(evt);    
+                // Chama evt OcultarComponentesAtributos
+                OcultarComponentesAtributos(evt);
+                // Chama evt OcultarComponentesItens
+                OcultarComponentesItens(evt);  
+                // Chama evt LimparCampos
+                LimparCamposAbaCadastrar(evt);
+                // Chama evt RemoveItensComboAbaCadastrar 
+                RemoveItensComboAbaCadastrar(evt);  
+
+                }   // Fim else - Cadastro Npc Combatente     
+
+            } // Fim if - Verifica se Npc é do tipo Combatente
+
+
+            // Verifica se Npc é do tipo Comerciante ou Coletável
+            while (jTFIndexTipoNpc.getText().equals("1") | jTFIndexTipoNpc.getText().equals("2")) {
+                    
+                // Verifica se CheckBox Armadura esta selecionado
+                if (jCBAdicionarItemArmadura.isSelected()){  
+                  if (jTFCodArmadura.getText().equals("") | jTFQuantidadeArmaduraNpc.getText().equals("")){ 
+                        JOptionPane.showMessageDialog(null, "Selecione uma Armadura e sua quantidade!");
+                        break;
+                  }       
+                }
+                // Verifica se CheckBox Arma esta selecionado
+                if (jCBAdicionarItemArma.isSelected()){
+                    if (jTFCodArma.getText().equals("") | jTFQuantidadeArmaNpc.getText().equals("")){
+                        JOptionPane.showMessageDialog(null, "Selecione uma Arma e sua quantidade!");
+                        break;
+                    }
+                }
+                // Verifica se CheckBox Consumivel esta selecionado
+                if (jCBAdicionarItemConsumivel.isSelected()){
+                    if (jTFCodConsumivel.getText().equals("") | jTFQuantidadeConsumivelNpc.getText().equals("")){
+                        JOptionPane.showMessageDialog(null, "Selecione uma Consumivel e sua quantidade!");
+                        break;
+                    }
+                }
+                // Verifica se CheckBox Escudo esta selecionado
+                if (jCBAdicionarItemEscudo.isSelected()){
+                    if (jTFCodEscudo.getText().equals("") | jTFQuantidadeEscudoNpc.getText().equals("")){
+                        JOptionPane.showMessageDialog(null, "Selecione uma Escudo e sua quantidade!");
+                        break;
+                    }
+                }
                 // Verifica se campos estão em branco
                 if (JTFNomeNpc.getText().equals("") | jTADescricaoNpc.getText().equals("") | jTFIndexTipoNpc.getText().equals("") 
                  | jTAFalaNpc.getText().equals("") | jTARespostaPositiva.getText().equals("") 
-                  | jTARespostaNegativa.getText().equals("")
-                   |jTFCodRaca.getText().equals("") | jTFCodClasse.getText().equals("") | jTFForca.getText().equals("")
-                    | jTFDestreza.getText().equals("") | jTFConstituicao.getText().equals("") |  jTFInteligencia.getText().equals("") 
-                     | jTFSabedoria.getText().equals("") | jTFFortitude.getText().equals("") | jTFClassedeArmadura.getText().equals("")
-                      | jTFBasedeAtaque.getText().equals("") | jTFPontosdeVida.getText().equals("") | jTFIniciativa.getText().equals("")
-                       | jTFVontade.getText().equals("") | jTFReflexos.getText().equals("") | jTFCarisma.getText().equals("")){ 
-                        
-                        // Verifica se CheckBox Armadura esta selecionado
-                        if (jCBAdicionarItemArmadura.isSelected()){  
-                          if (jTFCodArmadura.getText().equals("") | jTFQuantidadeArmaduraNpc.getText().equals("")){ 
-                              JOptionPane.showMessageDialog(null, "Selecione uma Armadura e sua quantidade!");
-                          }       
-                        }
-                        // Verifica se CheckBox Arma esta selecionado
-                        if (jCBAdicionarItemArma.isSelected()){
-                            if (jTFCodArma.getText().equals("") | jTFQuantidadeArmaNpc.getText().equals("")){
-                                JOptionPane.showMessageDialog(null, "Selecione uma Arma e sua quantidade!");
-                            }
-                        }
-                        // Verifica se CheckBox Consumivel esta selecionado
-                        if (jCBAdicionarItemConsumivel.isSelected()){
-                            if (jTFCodConsumivel.getText().equals("") | jTFQuantidadeConsumivelNpc.getText().equals("")){
-                                JOptionPane.showMessageDialog(null, "Selecione uma Consumivel e sua quantidade!");
-                            }
-                        }
-                        // Verifica se CheckBox Escudo esta selecionado
-                        if (jCBAdicionarItemEscudo.isSelected()){
-                            if (jTFCodEscudo.getText().equals("") | jTFQuantidadeEscudoNpc.getText().equals("")){
-                                JOptionPane.showMessageDialog(null, "Selecione uma Escudo e sua quantidade!");
-                            }
-                        }
-   
-                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
-            
-            } // Fim if - Verifica se campos estão em branco
-            
-            else { // Se todos os campos estiverem preenchidos, o cadastro é efetuado
-
-                CadastrarNpcCombatente(evt);    // Chama evt CadastrarNpcCombatente    
-                    
-                    if (jCBAdicionarItemArmadura.isSelected()){
-                    
-                        // Pega o código do Npc recem cadastrado
-                        int codMaxNPC = gDao.codigoMax(Npcs.class);
-                        
-                        // Cadastra ArmadurasNpcs   
-                        armaduranpc.setCodigo_npc(codMaxNPC);
-                        armaduranpc.setCodigo_armadura(Integer.parseInt(jTFCodArmadura.getText()));
-                        armaduranpc.setQuantidade_armadura(Integer.parseInt(jTFQuantidadeArmaduraNpc.getText()));
-                        gDao.adicionar(armaduranpc);    
-                        
-                    }
-                    
-                    if (jCBAdicionarItemArma.isSelected()){
-                    
-                        // Pega o código do Npc recem cadastrado
-                        int codMaxNPC = gDao.codigoMax(Npcs.class);
-                        
-                        // Cadastra ArmaNpcs
-                        armanpc.setCodigo_npc(codMaxNPC);                
-                        armanpc.setCodigo_arma(Integer.parseInt(jTFCodArma.getText()));
-                        armanpc.setQuantidade_arma(Integer.parseInt(jTFQuantidadeArmaNpc.getText()));
-                        gDao.adicionar(armanpc);
-                        
-                    }
-                    
-                    if (jCBAdicionarItemConsumivel.isSelected()){
-                        
-                        // Pega o código do Npc recem cadastrado
-                        int codMaxNPC = gDao.codigoMax(Npcs.class);
-                        
-                        // Cadastra ConsumiveisNpcs
-                        consumivelnpc.setCodigo_npc(codMaxNPC);    
-                        consumivelnpc.setCodigo_consumivel(Integer.parseInt(jTFCodConsumivel.getText()));
-                        consumivelnpc.setQuantidade_consumivel(Integer.parseInt(jTFQuantidadeConsumivelNpc.getText()));
-                        gDao.adicionar(consumivelnpc);  
-                    }
-                    
-                    if (jCBAdicionarItemEscudo.isSelected()){
-                        
-                        // Pega o código do Npc recem cadastrado
-                        int codMaxNPC = gDao.codigoMax(Npcs.class);
-                        
-                        // Cadastra EscudosNpcs
-                        escudonpc.setCodigo_npc(codMaxNPC); 
-                        escudonpc.setCodigo_escudo(Integer.parseInt(jTFCodEscudo.getText()));
-                        escudonpc.setQuantidade_escudos(Integer.parseInt(jTFQuantidadeEscudoNpc.getText()));
-                        gDao.adicionar(escudonpc);
-                        
-                    }
-
-                    JOptionPane.showMessageDialog(null, "Npc Combatente cadastrado!"); 
-
-                    LimparCamposAbaCadastrar(evt);  // Chama evt LimparCamposAbaCadastrar
-                    RemoveItensComboAbaCadastrar(evt);  // Chama evt RemoveItensComboAbaCadastrar
-                    
-                    OcultarComponentesAtributos(evt);   // Chama evt OcultarComponentesAtributos
-                    OcultarComponentesItens(evt);   // Chama evt OcultarComponentesItens
-            }   // Fim else - Cadastro Npc Combatente     
-  
-            } // Fim if - Verifica se Npc é do tipo Combatente
-            
-            else { 
-                // Verifica se Npc é do tipo Comerciante ou Coletável
-                if (jTFIndexTipoNpc.getText().equals("1") | jTFIndexTipoNpc.getText().equals("2")) {
-                    
-                    MostrarComponentesItens(evt);   // Chama evt MostrarComponentesItens
-                    
-                    // Verifica se campos estão em branco
-                    if (JTFNomeNpc.getText().equals("") | jTADescricaoNpc.getText().equals("") | jTFIndexTipoNpc.getText().equals("") 
-                     | jTAFalaNpc.getText().equals("") | jTARespostaPositiva.getText().equals("") 
-                      | jTARespostaNegativa.getText().equals("")
-                       | jTFCodArmadura.getText().equals("") | jTFCodArma.getText().equals("") | jTFCodConsumivel.getText().equals("")
-                        | jTFCodEscudo.getText().equals("") | jTFQuantidadeArmaduraNpc.getText().equals("") | jTFQuantidadeArmaNpc.getText().equals("")
-                         | jTFQuantidadeConsumivelNpc.getText().equals("") | jTFQuantidadeEscudoNpc.getText().equals("")) {
+                  | jTARespostaNegativa.getText().equals("")){
                     
                     JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+                    break;
                     
-                    }   // Fim if - Verifica se campos estão em branco
+                }   // Fim if - Verifica se campos estão em branco
+                
+                else { // Se todos os campos estiverem preenchidos, o cadastro é efetuado 
                     
-                    else { // Se todos os campos estiverem preenchidos, o cadastro é efetuado 
-                            
-                            CadastrarNpcComercianteColetavel(evt);  // Chama evt CadastrarNpcComercianteColetavel
-                            
-                            LimparCamposAbaCadastrar(evt);  // Chama evt LimparCamposAbaCadastrar
-                            RemoveItensComboAbaCadastrar(evt);  // Chama evt RemoveItensComboAbaCadastrar  
-                            
-                            OcultarComponentesItens(evt);    // Chama evt OcultarComponentesItens
-                    } // Fim else - Cadastro Npc Comerciante ou Coletável
-                }   // Fim if - Verifica se Npc é do tipo Comerciante ou Coletável
-            }   // Fim else - Tipo Npc
+                    // Chama evt CadastrarNpcComercianteColetavel
+                    CadastrarNpcComercianteColetavel(evt);  
+                    // Chama evt LimparCamposAbaCadastrar
+                    LimparCamposAbaCadastrar(evt);  
+                    // Chama evt RemoveItensComboAbaCadastrar  
+                    RemoveItensComboAbaCadastrar(evt);  
+                    // Chama evt OcultarComponentesItens
+                    OcultarComponentesItens(evt);    
+                    
+                } // Fim else - Cadastro Npc Comerciante ou Coletável
+                
+            }   // Fim if - Verifica se Npc é do tipo Comerciante ou Coletável
             
+    
             // Verifica se tipo Npc é Guia ou Missão
-            if (jTFIndexTipoNpc.getText().equals("3") | jTFIndexTipoNpc.getText().equals("4")){
-                
-                OcultarComponentesAtributos(evt);
-                OcultarComponentesItens(evt);
-                
+            while (jTFIndexTipoNpc.getText().equals("3") | jTFIndexTipoNpc.getText().equals("4")){
+
                 // Verifica se campos estão em branco
                 if (JTFNomeNpc.getText().equals("") | jTADescricaoNpc.getText().equals("") | jTFIndexTipoNpc.getText().equals("") 
-                | jTAFalaNpc.getText().equals("") | jTARespostaPositiva.getText().equals("") | jTARespostaNegativa.getText().equals("")) {
+                    | jTAFalaNpc.getText().equals("") | jTARespostaPositiva.getText().equals("") | jTARespostaNegativa.getText().equals("")) {
                  
-                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");    
+                        JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+                        break;
             
                 } // Fim if - Verifica se campos estão em branco
                 
@@ -2109,12 +2123,14 @@ public class JFNpc extends javax.swing.JFrame {
                     CadastrarNpcGuiaMissao(evt); // Chama evt CadastrarNpcGuiaMissao
                         
                     LimparCamposAbaCadastrar(evt);  // Chama evt LimparCampos
-                    RemoveItensComboAbaCadastrar(evt);  // Chama evt RemoveItensComboAbaCadastrar   
+                    RemoveItensComboAbaCadastrar(evt);  // Chama evt RemoveItensComboAbaCadastrar
+                    break;
                     
-                }   // Fim else - Cadastro Npc Guia ou Missão      
+                }   // Fim else - Cadastro Npc Guia ou Missão 
+                
             }   // Fim if - Verifica se tipo Npc é Guia ou Missão
             
-        } catch (SQLException | ClassNotFoundException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
+        } catch (SQLException | IllegalArgumentException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -2125,7 +2141,7 @@ public class JFNpc extends javax.swing.JFrame {
 
         try {
 
-            OcultarComponentesCodigoTodasAbas(null);
+            //OcultarComponentesCodigoTodasAbas(null);
             
             GenericDAO gDao = new GenericDAO();
 
