@@ -28,7 +28,7 @@ import tabelas.Pericias;
  * @author Fabio
  */
 public class JFPericias extends javax.swing.JFrame {
-
+    //criado uma arraylist para cadastro de perícias
     GenericDAO gDAO;
     
     
@@ -39,14 +39,16 @@ public class JFPericias extends javax.swing.JFrame {
     public void CarregaComboPericias() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException{
         GenericDAO genericDAO = new GenericDAO();
         
-        //Limpa os campos
+        //Limpa todos os campos
         arrayListPericia.clear();
         arrayListDescricao.clear();
         arrayListAtributo.clear();
         
+        //limpa os campos onde tem ComboBox
         jCBNomePericiaAlt.removeAllItems();
         jCBNomePericiaExc.removeAllItems();
         
+        //limpa os campos de TextField
         jTFAtributoExc.setText(null);
         jTFNomePericiaExc.setText(null);
         jTADescricaoExc.setText(null);
@@ -66,7 +68,7 @@ public class JFPericias extends javax.swing.JFrame {
     }
     
     
-    
+    //centraliza todas as telas
     public JFPericias() throws SQLException {
         this.gDAO = new GenericDAO();
         initComponents();
@@ -422,20 +424,21 @@ public class JFPericias extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarActionPerformed
-
+        //quando falta preencher algum campo aparece uma mensagem
         if (jTNomePericia.getText().equalsIgnoreCase("") || jTADescrição.getText().equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(null, "Necessário preencher todos os campos!");
         } else {
             try {
                 GenericDAO gDao = new GenericDAO();
-
+                //adiciona os campos de cadastrar
                 Pericias p = new Pericias();
                 p.setNome_pericia(jTNomePericia.getText());
                 p.setDescricao_pericia(jTADescrição.getText());
                 p.setAtributo_principal_pericia(String.valueOf(jCBAtributo.getSelectedItem()));
                 gDAO.adicionar(p);
-
-                JOptionPane.showMessageDialog(null, "Perícia salva com sucesso!"); // Após clicar no botão salvar, aparece tal mensagem
+                
+                // Após clicar no botão salvar, aparece tal mensagem
+                JOptionPane.showMessageDialog(null, "Perícia salva com sucesso!"); 
                    
                 //Limpando campos
                 jTNomePericia.setText(null);
@@ -454,7 +457,7 @@ public class JFPericias extends javax.swing.JFrame {
     }//GEN-LAST:event_jBSalvarActionPerformed
 
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
-     JFPericias.this.dispose();
+     JFPericias.this.dispose(); //fecha apenas a tela, mas não o programa em geral
     }//GEN-LAST:event_jBCancelarActionPerformed
 
     private void jTFNomePericiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNomePericiaActionPerformed
@@ -494,6 +497,8 @@ public class JFPericias extends javax.swing.JFrame {
             int cod = 1;
             GenericDAO genericDAO = new GenericDAO();
             Pericias p = new Pericias();
+            
+            //aviso casoalgum campo da aba alterar não foir preenchido
             if (jTFPericiaAlt.getText().equals("") || jTADescricaoAlt.getText().equals("") || jTFAtributoPAlt.getText().equals("")){
                 JOptionPane.showMessageDialog(null, "Por favor, insira todas as informações!"); 
             } else {
@@ -531,14 +536,15 @@ public class JFPericias extends javax.swing.JFrame {
             Pericias pericia = new Pericias();
             PericiasPosicoes periciasPosicoes = new PericiasPosicoes();
             
-            //exclui n para n
+            //exclui da tabela n para n (Perícias Posições)
             periciasPosicoes.setCodigo_pericia((int) arrayListPericia.get(jCBNomePericiaExc.getSelectedIndex()));
             genericDAO.excluir(periciasPosicoes);
             
-            //exclui pericia
+            //exclui da tabela Perícia
             pericia.setCodigo_pericia((int) arrayListPericia.get(jCBNomePericiaExc.getSelectedIndex()));
             genericDAO.excluir(pericia);
             
+            //mensagem avisando a exclusão bem sucedida
             JOptionPane.showMessageDialog(null, "Perícia excluída com sucesso!");
             CarregaComboPericias();
         } catch (SQLException ex) {
@@ -561,6 +567,7 @@ public class JFPericias extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jCBNomePericiaAltItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNomePericiaAltItemStateChanged
+        //faz a aba de alteração vir com os campos limpos
         if (!arrayListPericia.isEmpty()) {
             try {
                 GenericDAO genericDAO = new GenericDAO();
@@ -584,6 +591,7 @@ public class JFPericias extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFPericiaAltActionPerformed
 
     private void jCBNomePericiaExcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNomePericiaExcItemStateChanged
+        //faz a aba de exclusão vir com os campos limpos
         if (!arrayListPericia.isEmpty()) {
             try {
                 GenericDAO genericDAO = new GenericDAO();
@@ -603,11 +611,11 @@ public class JFPericias extends javax.swing.JFrame {
     }//GEN-LAST:event_jCBNomePericiaExcItemStateChanged
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JFPericias.this.dispose();
+        JFPericias.this.dispose(); // fecha a tela mas não o programa em si
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        JFPericias.this.dispose();
+        JFPericias.this.dispose(); // fecha a tela mas não o programa em si
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
