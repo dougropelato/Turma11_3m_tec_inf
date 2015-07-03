@@ -1214,12 +1214,10 @@ public class JFNpc extends javax.swing.JFrame {
         jLRaca.setVisible(true);
         jCBRaca.setVisible(true);
         jCBRaca.setEnabled(false);
-        jTFCodRaca.setVisible(true);
 
         jLClasse.setVisible(true);
         jCBClasse.setVisible(true);
         jCBClasse.setEnabled(false);
-        jTFCodClasse.setVisible(true);
 
         jLForca.setVisible(true);
         jTFForca.setVisible(true);
@@ -1280,7 +1278,6 @@ public class JFNpc extends javax.swing.JFrame {
         jTFQuantidadeArmaduraNpc.setEditable(false);
         
         jCBAdicionarItemArmadura.setVisible(true);
-        jTFCodArmadura.setVisible(true);
         jCBArmaduraNpc.setVisible(true);
         jTFQuantidadeArmaduraNpc.setVisible(true);
     
@@ -1290,7 +1287,6 @@ public class JFNpc extends javax.swing.JFrame {
         jTFQuantidadeArmaNpc.setEditable(false);
         
         jCBAdicionarItemArma.setVisible(true);
-        jTFCodArma.setVisible(true);
         jCBArmaNpc.setVisible(true);
         jTFQuantidadeArmaNpc.setVisible(true);
     
@@ -1300,7 +1296,6 @@ public class JFNpc extends javax.swing.JFrame {
         jTFQuantidadeConsumivelNpc.setEditable(false);
         
         jCBAdicionarItemConsumivel.setVisible(true);
-        jTFCodConsumivel.setVisible(true);
         jCBConsumivelNpc.setVisible(true);
         jTFQuantidadeConsumivelNpc.setVisible(true);
     
@@ -1310,7 +1305,6 @@ public class JFNpc extends javax.swing.JFrame {
         jTFQuantidadeEscudoNpc.setEditable(false);
         
         jCBAdicionarItemEscudo.setVisible(true);
-        jTFCodEscudo.setVisible(true);
         jCBEscudoNpc.setVisible(true);
         jTFQuantidadeEscudoNpc.setVisible(true);
         
