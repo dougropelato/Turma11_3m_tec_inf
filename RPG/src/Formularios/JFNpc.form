@@ -847,6 +847,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTFQuantidadeArmaduraNpc">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jCBArmaNpc"/>
@@ -860,6 +861,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTFQuantidadeArmaNpc">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jCBConsumivelNpc"/>
@@ -873,6 +875,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTFQuantidadeConsumivelNpc">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jCBEscudoNpc"/>
@@ -886,6 +889,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTFQuantidadeEscudoNpc">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jBCadastrar"/>

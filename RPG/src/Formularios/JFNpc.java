@@ -511,18 +511,22 @@ public class JFNpc extends javax.swing.JFrame {
         });
         jPCadastrar.add(jCBEscudoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 302, 155, -1));
 
+        jTFQuantidadeArmaduraNpc.setEditable(false);
         jTFQuantidadeArmaduraNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTFQuantidadeArmaduraNpc.setNextFocusableComponent(jCBArmaNpc);
         jPCadastrar.add(jTFQuantidadeArmaduraNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(867, 160, 45, -1));
 
+        jTFQuantidadeArmaNpc.setEditable(false);
         jTFQuantidadeArmaNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTFQuantidadeArmaNpc.setNextFocusableComponent(jCBConsumivelNpc);
         jPCadastrar.add(jTFQuantidadeArmaNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(867, 210, 45, -1));
 
+        jTFQuantidadeConsumivelNpc.setEditable(false);
         jTFQuantidadeConsumivelNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTFQuantidadeConsumivelNpc.setNextFocusableComponent(jCBEscudoNpc);
         jPCadastrar.add(jTFQuantidadeConsumivelNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(867, 256, 45, -1));
 
+        jTFQuantidadeEscudoNpc.setEditable(false);
         jTFQuantidadeEscudoNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTFQuantidadeEscudoNpc.setNextFocusableComponent(jBCadastrar);
         jPCadastrar.add(jTFQuantidadeEscudoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(867, 302, 45, -1));
@@ -1185,10 +1189,12 @@ public class JFNpc extends javax.swing.JFrame {
 
         jLRaca.setVisible(true);
         jCBRaca.setVisible(true);
+        jCBRaca.setEnabled(false);
         jTFCodRaca.setVisible(true);
 
         jLClasse.setVisible(true);
         jCBClasse.setVisible(true);
+        jCBClasse.setEnabled(false);
         jTFCodClasse.setVisible(true);
 
         jLForca.setVisible(true);
@@ -1245,24 +1251,40 @@ public class JFNpc extends javax.swing.JFrame {
         jLQuantidadeItensNpc.setVisible(true);        
         
         // Armaduras
+        jCBAdicionarItemArmadura.setSelected(false);
+        jCBArmaduraNpc.setEnabled(false);
+        jTFQuantidadeArmaduraNpc.setEditable(false);
+        
         jCBAdicionarItemArmadura.setVisible(true);
         jTFCodArmadura.setVisible(true);
         jCBArmaduraNpc.setVisible(true);
         jTFQuantidadeArmaduraNpc.setVisible(true);
     
         // Armas
+        jCBAdicionarItemArma.setSelected(false);
+        jCBArmaNpc.setEnabled(false);
+        jTFQuantidadeArmaNpc.setEditable(false);
+        
         jCBAdicionarItemArma.setVisible(true);
         jTFCodArma.setVisible(true);
         jCBArmaNpc.setVisible(true);
         jTFQuantidadeArmaNpc.setVisible(true);
     
         // Consumiveis
+        jCBAdicionarItemConsumivel.setSelected(false);
+        jCBConsumivelNpc.setEnabled(false);
+        jTFQuantidadeConsumivelNpc.setEditable(false);
+        
         jCBAdicionarItemConsumivel.setVisible(true);
         jTFCodConsumivel.setVisible(true);
         jCBConsumivelNpc.setVisible(true);
         jTFQuantidadeConsumivelNpc.setVisible(true);
     
         // Escudos
+        jCBAdicionarItemEscudo.setSelected(false);
+        jCBEscudoNpc.setEnabled(false);
+        jTFQuantidadeEscudoNpc.setEditable(false);
+        
         jCBAdicionarItemEscudo.setVisible(true);
         jTFCodEscudo.setVisible(true);
         jCBEscudoNpc.setVisible(true);
@@ -1384,32 +1406,42 @@ public class JFNpc extends javax.swing.JFrame {
         jTARespostaNegativa.setText("");    
     
         // Armaduras
+        jCBArmaduraNpc.setEnabled(false);
         jCBAdicionarItemArmadura.setSelected(false);
         jCBArmaduraNpc.setSelectedIndex(-1);
         jTFCodArmadura.setText("");
         jTFQuantidadeArmaduraNpc.setText("");
+        jTFQuantidadeArmaduraNpc.setEditable(false);
     
         // Armas
+        jCBArmaNpc.setEnabled(false);
         jCBAdicionarItemArma.setSelected(false);
         jCBArmaNpc.setSelectedIndex(-1);
         jTFCodArma.setText("");
         jTFQuantidadeArmaNpc.setText("");
+        jTFQuantidadeArmaNpc.setEditable(false);
     
         // Consumiveis
+        jCBConsumivelNpc.setEnabled(false);
         jCBAdicionarItemConsumivel.setSelected(false);
         jCBConsumivelNpc.setSelectedIndex(-1);
         jTFCodConsumivel.setText(""); 
-        jTFQuantidadeConsumivelNpc.setText("");    
+        jTFQuantidadeConsumivelNpc.setText("");
+        jTFQuantidadeConsumivelNpc.setEditable(false);
     
         // Escudos
+        jCBEscudoNpc.setEnabled(false);
         jCBAdicionarItemEscudo.setSelected(false);
         jCBEscudoNpc.setSelectedIndex(-1);
         jTFCodEscudo.setText("");
-        jTFQuantidadeEscudoNpc.setText("");     
+        jTFQuantidadeEscudoNpc.setText(""); 
+        jTFQuantidadeEscudoNpc.setEditable(false);
 
-        // Atributos 
+        // Atributos
+        jCBRaca.setEnabled(false);
         jCBRaca.setSelectedIndex(-1);
         jTFCodRaca.setText("");
+        jCBClasse.setEnabled(false);
         jCBClasse.setSelectedIndex(-1);
         jTFCodClasse.setText("");
 
