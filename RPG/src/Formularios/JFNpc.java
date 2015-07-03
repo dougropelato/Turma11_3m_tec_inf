@@ -603,9 +603,33 @@ public class JFNpc extends javax.swing.JFrame {
 
         jBSair.setText("Sair");
         jPCadastrar.add(jBSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 580, 120, 30));
+
+        jCBAdicionarItemEscudo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBAdicionarItemEscudoActionPerformed(evt);
+            }
+        });
         jPCadastrar.add(jCBAdicionarItemEscudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 302, -1, -1));
+
+        jCBAdicionarItemArmadura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBAdicionarItemArmaduraActionPerformed(evt);
+            }
+        });
         jPCadastrar.add(jCBAdicionarItemArmadura, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 160, -1, -1));
+
+        jCBAdicionarItemArma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBAdicionarItemArmaActionPerformed(evt);
+            }
+        });
         jPCadastrar.add(jCBAdicionarItemArma, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, -1, -1));
+
+        jCBAdicionarItemConsumivel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBAdicionarItemConsumivelActionPerformed(evt);
+            }
+        });
         jPCadastrar.add(jCBAdicionarItemConsumivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 256, -1, -1));
 
         jTPNPC.addTab("Cadastrar", jPCadastrar);
@@ -3083,6 +3107,9 @@ public class JFNpc extends javax.swing.JFrame {
             jCBRaca.removeAllItems();
             jCBClasse.removeAllItems();
             
+            jCBRaca.setEnabled(true);
+            jCBClasse.setEnabled(true);       
+            
             // Chama evt AddItensComboAtributosNpcsAbaCadastrar
             AddItensComboAtributosNpcsAbaCadastrar(evt);
             
@@ -3371,6 +3398,36 @@ public class JFNpc extends javax.swing.JFrame {
     private void jCBNovosItensCodEscudoNpcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNovosItensCodEscudoNpcItemStateChanged
         jTFNovosItensVerificaCodEscudo.setText((String) jCBNovosItensCodEscudoNpc.getSelectedItem());
     }//GEN-LAST:event_jCBNovosItensCodEscudoNpcItemStateChanged
+
+    // ----- Habilita campos se checkbox esta selecionado
+    
+    private void jCBAdicionarItemArmaduraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAdicionarItemArmaduraActionPerformed
+        
+        jCBArmaduraNpc.setEnabled(true);
+        jTFQuantidadeArmaduraNpc.setEditable(true);
+        
+    }//GEN-LAST:event_jCBAdicionarItemArmaduraActionPerformed
+
+    private void jCBAdicionarItemArmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAdicionarItemArmaActionPerformed
+        
+        jCBArmaNpc.setEnabled(true);
+        jTFQuantidadeArmaNpc.setEditable(true);
+        
+    }//GEN-LAST:event_jCBAdicionarItemArmaActionPerformed
+
+    private void jCBAdicionarItemConsumivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAdicionarItemConsumivelActionPerformed
+        
+        jCBConsumivelNpc.setEnabled(true);
+        jTFQuantidadeConsumivelNpc.setEditable(true);
+        
+    }//GEN-LAST:event_jCBAdicionarItemConsumivelActionPerformed
+
+    private void jCBAdicionarItemEscudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAdicionarItemEscudoActionPerformed
+        
+        jCBEscudoNpc.setEnabled(true);
+        jTFQuantidadeEscudoNpc.setEditable(true);
+        
+    }//GEN-LAST:event_jCBAdicionarItemEscudoActionPerformed
     
     
     /**

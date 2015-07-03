@@ -1064,6 +1064,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCBAdicionarItemEscudo">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCBAdicionarItemEscudoActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="680" y="302" width="-1" height="-1"/>
@@ -1071,6 +1074,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCBAdicionarItemArmadura">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCBAdicionarItemArmaduraActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="680" y="160" width="-1" height="-1"/>
@@ -1078,6 +1084,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCBAdicionarItemArma">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCBAdicionarItemArmaActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="680" y="210" width="-1" height="-1"/>
@@ -1085,6 +1094,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCBAdicionarItemConsumivel">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCBAdicionarItemConsumivelActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="680" y="256" width="-1" height="-1"/>
