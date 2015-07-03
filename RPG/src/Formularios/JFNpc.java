@@ -3373,11 +3373,12 @@ public class JFNpc extends javax.swing.JFrame {
 
     // Chama formulário para alterar ou excluir um Npc
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
+        
+        JFNpc.this.dispose();
+        
         JFNpcAlterarExcluir NpcAlterarExcluir = new JFNpcAlterarExcluir();
         NpcAlterarExcluir.setVisible(true);
-        
-        JFNpc Npc = new JFNpc();
-        Npc.setVisible(false);
+
     }//GEN-LAST:event_jBAlterarActionPerformed
 
     // --- Valores de ComboBox passam para jTextField sendo utilizados para fazer verificação --- // 
@@ -3454,12 +3455,11 @@ public class JFNpc extends javax.swing.JFrame {
 
     private void jBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairActionPerformed
         
+        JFNpc.this.dispose();
+        
         JFMestre Mestre = new JFMestre();
         Mestre.setVisible(true);
-        
-        JFNpc Npc = new JFNpc();
-        Npc.setVisible(false);
-        
+
     }//GEN-LAST:event_jBSairActionPerformed
     
     
