@@ -442,7 +442,6 @@ public class JFNpc extends javax.swing.JFrame {
         jLRaca.setText("Raça:");
         jPCadastrar.add(jLRaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 214, -1));
 
-        jCBRaca.setEnabled(false);
         jCBRaca.setNextFocusableComponent(jCBClasse);
         jCBRaca.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -451,7 +450,6 @@ public class JFNpc extends javax.swing.JFrame {
         });
         jPCadastrar.add(jCBRaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 214, -1));
 
-        jCBClasse.setEnabled(false);
         jCBClasse.setNextFocusableComponent(jTFForca);
         jCBClasse.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -481,7 +479,6 @@ public class JFNpc extends javax.swing.JFrame {
         jLEscudoNpc.setText("Escudo:");
         jPCadastrar.add(jLEscudoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 282, 155, -1));
 
-        jCBArmaduraNpc.setEnabled(false);
         jCBArmaduraNpc.setNextFocusableComponent(jTFQuantidadeArmaduraNpc);
         jCBArmaduraNpc.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -490,7 +487,6 @@ public class JFNpc extends javax.swing.JFrame {
         });
         jPCadastrar.add(jCBArmaduraNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 160, 155, -1));
 
-        jCBArmaNpc.setEnabled(false);
         jCBArmaNpc.setNextFocusableComponent(jTFQuantidadeArmaNpc);
         jCBArmaNpc.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -499,7 +495,6 @@ public class JFNpc extends javax.swing.JFrame {
         });
         jPCadastrar.add(jCBArmaNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 210, 155, -1));
 
-        jCBConsumivelNpc.setEnabled(false);
         jCBConsumivelNpc.setNextFocusableComponent(jTFQuantidadeConsumivelNpc);
         jCBConsumivelNpc.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -508,7 +503,6 @@ public class JFNpc extends javax.swing.JFrame {
         });
         jPCadastrar.add(jCBConsumivelNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 256, 155, -1));
 
-        jCBEscudoNpc.setEnabled(false);
         jCBEscudoNpc.setNextFocusableComponent(jTFQuantidadeEscudoNpc);
         jCBEscudoNpc.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1251,25 +1245,25 @@ public class JFNpc extends javax.swing.JFrame {
         jLQuantidadeItensNpc.setVisible(true);        
         
         // Armaduras
-        jCBAdicionarItemArmadura.setVisible(false);
+        jCBAdicionarItemArmadura.setVisible(true);
         jTFCodArmadura.setVisible(true);
         jCBArmaduraNpc.setVisible(true);
         jTFQuantidadeArmaduraNpc.setVisible(true);
     
         // Armas
-        jCBAdicionarItemArma.setVisible(false);
+        jCBAdicionarItemArma.setVisible(true);
         jTFCodArma.setVisible(true);
         jCBArmaNpc.setVisible(true);
         jTFQuantidadeArmaNpc.setVisible(true);
     
         // Consumiveis
-        jCBAdicionarItemConsumivel.setVisible(false);
+        jCBAdicionarItemConsumivel.setVisible(true);
         jTFCodConsumivel.setVisible(true);
         jCBConsumivelNpc.setVisible(true);
         jTFQuantidadeConsumivelNpc.setVisible(true);
     
         // Escudos
-        jCBAdicionarItemEscudo.setVisible(false);
+        jCBAdicionarItemEscudo.setVisible(true);
         jTFCodEscudo.setVisible(true);
         jCBEscudoNpc.setVisible(true);
         jTFQuantidadeEscudoNpc.setVisible(true);
@@ -1390,21 +1384,25 @@ public class JFNpc extends javax.swing.JFrame {
         jTARespostaNegativa.setText("");    
     
         // Armaduras
+        jCBAdicionarItemArmadura.setSelected(false);
         jCBArmaduraNpc.setSelectedIndex(-1);
         jTFCodArmadura.setText("");
         jTFQuantidadeArmaduraNpc.setText("");
     
         // Armas
+        jCBAdicionarItemArma.setSelected(false);
         jCBArmaNpc.setSelectedIndex(-1);
         jTFCodArma.setText("");
         jTFQuantidadeArmaNpc.setText("");
     
         // Consumiveis
+        jCBAdicionarItemConsumivel.setSelected(false);
         jCBConsumivelNpc.setSelectedIndex(-1);
         jTFCodConsumivel.setText(""); 
         jTFQuantidadeConsumivelNpc.setText("");    
     
         // Escudos
+        jCBAdicionarItemEscudo.setSelected(false);
         jCBEscudoNpc.setSelectedIndex(-1);
         jTFCodEscudo.setText("");
         jTFQuantidadeEscudoNpc.setText("");     
@@ -1650,7 +1648,6 @@ public class JFNpc extends javax.swing.JFrame {
             Personagens npcpersonagem = new Personagens();
             NpcsCombatentes npccombate = new NpcsCombatentes();
 
-            ArmadurasNpcs armaduranpc = new ArmadurasNpcs();
             ArmasNpcs armanpc = new ArmasNpcs();
             ConsumiveisNpcs consumivelnpc = new ConsumiveisNpcs();
             EscudosNpcs escudonpc = new EscudosNpcs();
@@ -1709,33 +1706,7 @@ public class JFNpc extends javax.swing.JFrame {
             // Cadastra NpcsCombatentes
             npccombate.setCodigo_npc(codMaxNPC);
             npccombate.setCodigo_personagem(codMaxPersonagem);
-            gDao.adicionar(npccombate);
-                
-            // Cadastra ArmadurasNpcs   
-            armaduranpc.setCodigo_npc(codMaxNPC);
-            armaduranpc.setCodigo_armadura(Integer.parseInt(jTFCodArmadura.getText()));
-            armaduranpc.setQuantidade_armadura(Integer.parseInt(jTFQuantidadeArmaduraNpc.getText()));
-            gDao.adicionar(armaduranpc);
-
-            // Cadastra ArmaNpcs
-            armanpc.setCodigo_npc(codMaxNPC);                
-            armanpc.setCodigo_arma(Integer.parseInt(jTFCodArma.getText()));
-            armanpc.setQuantidade_arma(Integer.parseInt(jTFQuantidadeArmaNpc.getText()));
-            gDao.adicionar(armanpc);    
-
-            // Cadastra ConsumiveisNpcs
-            consumivelnpc.setCodigo_npc(codMaxNPC);    
-            consumivelnpc.setCodigo_consumivel(Integer.parseInt(jTFCodConsumivel.getText()));
-            consumivelnpc.setQuantidade_consumivel(Integer.parseInt(jTFQuantidadeConsumivelNpc.getText()));
-            gDao.adicionar(consumivelnpc);  
-
-            // Cadastra EscudosNpcs
-            escudonpc.setCodigo_npc(codMaxNPC); 
-            escudonpc.setCodigo_escudo(Integer.parseInt(jTFCodEscudo.getText()));
-            escudonpc.setQuantidade_escudos(Integer.parseInt(jTFQuantidadeEscudoNpc.getText()));
-            gDao.adicionar(escudonpc);
-            
-            JOptionPane.showMessageDialog(null, "Npc Combatente cadastrado!");    
+            gDao.adicionar(npccombate);   
 
         } catch (SQLException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
@@ -1942,22 +1913,94 @@ public class JFNpc extends javax.swing.JFrame {
                     | jTFDestreza.getText().equals("") | jTFConstituicao.getText().equals("") |  jTFInteligencia.getText().equals("") 
                      | jTFSabedoria.getText().equals("") | jTFFortitude.getText().equals("") | jTFClassedeArmadura.getText().equals("")
                       | jTFBasedeAtaque.getText().equals("") | jTFPontosdeVida.getText().equals("") | jTFIniciativa.getText().equals("")
-                       | jTFVontade.getText().equals("") | jTFReflexos.getText().equals("") | jTFCarisma.getText().equals("") 
+                       | jTFVontade.getText().equals("") | jTFReflexos.getText().equals("") | jTFCarisma.getText().equals("")){ 
                         
-                        | jTFCodArmadura.getText().equals("") | jTFCodArma.getText().equals("") | jTFCodConsumivel.getText().equals("")
-                         | jTFCodEscudo.getText().equals("") | jTFQuantidadeArmaduraNpc.getText().equals("") | jTFQuantidadeArmaNpc.getText().equals("")
-                          | jTFQuantidadeConsumivelNpc.getText().equals("") | jTFQuantidadeEscudoNpc.getText().equals("")) {
-                
+                        // Verifica se CheckBox Armadura esta selecionado
+                        if (jCBAdicionarItemArmadura.isSelected()){  
+                          if (jTFCodArmadura.getText().equals("") | jTFQuantidadeArmaduraNpc.getText().equals("")){ 
+                              JOptionPane.showMessageDialog(null, "Selecione uma Armadura e sua quantidade!");
+                          }       
+                        }
+                        // Verifica se CheckBox Arma esta selecionado
+                        if (jCBAdicionarItemArma.isSelected()){
+                            if (jTFCodArma.getText().equals("") | jTFQuantidadeArmaNpc.getText().equals("")){
+                                JOptionPane.showMessageDialog(null, "Selecione uma Arma e sua quantidade!");
+                            }
+                        }
+                        // Verifica se CheckBox Consumivel esta selecionado
+                        if (jCBAdicionarItemConsumivel.isSelected()){
+                            if (jTFCodConsumivel.getText().equals("") | jTFQuantidadeConsumivelNpc.getText().equals("")){
+                                JOptionPane.showMessageDialog(null, "Selecione uma Consumivel e sua quantidade!");
+                            }
+                        }
+                        // Verifica se CheckBox Escudo esta selecionado
+                        if (jCBAdicionarItemEscudo.isSelected()){
+                            if (jTFCodEscudo.getText().equals("") | jTFQuantidadeEscudoNpc.getText().equals("")){
+                                JOptionPane.showMessageDialog(null, "Selecione uma Escudo e sua quantidade!");
+                            }
+                        }
+   
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
             
             } // Fim if - Verifica se campos estão em branco
             
             else { // Se todos os campos estiverem preenchidos, o cadastro é efetuado
+
+                CadastrarNpcCombatente(evt);    // Chama evt CadastrarNpcCombatente    
                     
+                    if (jCBAdicionarItemArmadura.isSelected()){
                     
+                        // Pega o código do Npc recem cadastrado
+                        int codMaxNPC = gDao.codigoMax(Npcs.class);
+                        
+                        // Cadastra ArmadurasNpcs   
+                        armaduranpc.setCodigo_npc(codMaxNPC);
+                        armaduranpc.setCodigo_armadura(Integer.parseInt(jTFCodArmadura.getText()));
+                        armaduranpc.setQuantidade_armadura(Integer.parseInt(jTFQuantidadeArmaduraNpc.getText()));
+                        gDao.adicionar(armaduranpc);    
+                        
+                    }
                     
-                    CadastrarNpcCombatente(evt);    // Chama evt CadastrarNpcCombatente
+                    if (jCBAdicionarItemArma.isSelected()){
                     
+                        // Pega o código do Npc recem cadastrado
+                        int codMaxNPC = gDao.codigoMax(Npcs.class);
+                        
+                        // Cadastra ArmaNpcs
+                        armanpc.setCodigo_npc(codMaxNPC);                
+                        armanpc.setCodigo_arma(Integer.parseInt(jTFCodArma.getText()));
+                        armanpc.setQuantidade_arma(Integer.parseInt(jTFQuantidadeArmaNpc.getText()));
+                        gDao.adicionar(armanpc);
+                        
+                    }
+                    
+                    if (jCBAdicionarItemConsumivel.isSelected()){
+                        
+                        // Pega o código do Npc recem cadastrado
+                        int codMaxNPC = gDao.codigoMax(Npcs.class);
+                        
+                        // Cadastra ConsumiveisNpcs
+                        consumivelnpc.setCodigo_npc(codMaxNPC);    
+                        consumivelnpc.setCodigo_consumivel(Integer.parseInt(jTFCodConsumivel.getText()));
+                        consumivelnpc.setQuantidade_consumivel(Integer.parseInt(jTFQuantidadeConsumivelNpc.getText()));
+                        gDao.adicionar(consumivelnpc);  
+                    }
+                    
+                    if (jCBAdicionarItemEscudo.isSelected()){
+                        
+                        // Pega o código do Npc recem cadastrado
+                        int codMaxNPC = gDao.codigoMax(Npcs.class);
+                        
+                        // Cadastra EscudosNpcs
+                        escudonpc.setCodigo_npc(codMaxNPC); 
+                        escudonpc.setCodigo_escudo(Integer.parseInt(jTFCodEscudo.getText()));
+                        escudonpc.setQuantidade_escudos(Integer.parseInt(jTFQuantidadeEscudoNpc.getText()));
+                        gDao.adicionar(escudonpc);
+                        
+                    }
+
+                    JOptionPane.showMessageDialog(null, "Npc Combatente cadastrado!"); 
+
                     LimparCamposAbaCadastrar(evt);  // Chama evt LimparCamposAbaCadastrar
                     RemoveItensComboAbaCadastrar(evt);  // Chama evt RemoveItensComboAbaCadastrar
                     
