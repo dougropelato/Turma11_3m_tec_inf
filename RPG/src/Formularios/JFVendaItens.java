@@ -102,8 +102,8 @@ public class JFVendaItens extends javax.swing.JFrame {
 
     }
 
-    public void ocultarEdits () {
-        
+    public void ocultarEdits() {
+
         editPararExecução.setVisible(false);
         editcodigoPersonagem.setVisible(false);
         editcomprasCodigoArma.setVisible(false);
@@ -115,9 +115,7 @@ public class JFVendaItens extends javax.swing.JFrame {
         editvenderCodigoConsumivel.setVisible(false);
         editvenderCodigoEscudo.setVisible(false);
     }
-    
-    
-    
+
     public void OcultarObjetos() { //////Oculta objetos setados antes de abrir o form
         lbDinheiroClasse.setVisible(false);
         jbComprar.setVisible(false);
@@ -523,14 +521,13 @@ public class JFVendaItens extends javax.swing.JFrame {
         if (QuantComprar.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Favor escolha a quantidade do item que deseja comprar!!!");
         } else {
-
             if (jcbComprarArmaduras.isSelected()) {
 
                 PersonagensArmaduras comprar = new PersonagensArmaduras();
                 int varComprarQuant = (Integer.parseInt(QuantComprar.getText()));
 
                 try {
-
+/////////////////////////verificar armadura
                     GenericDAO gDAO = new GenericDAO();
                     Armaduras armadura = new Armaduras();
                     List<Object> ListarArmaduras = new ArrayList<>();
@@ -541,9 +538,10 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                     for (Object ll1 : ListarArmaduras) {  //// pega o nome da armadura no combobox e procura pelo codigo da mesma
                         Armaduras aa = (Armaduras) ll1;
-                        comprar.setCodigo_armadura(aa.getCodigo_armadura()); /// cadastra na tabela N/N o codigo da armadura
+                        comprar.setCodigo_armadura(aa.getCodigo_armadura()); /// seta na tabela N/N o codigo da armadura
                     }
-////////////////////////////////////////
+
+///////////////////////////Verificar personagem                    
                     Personagens personagem = new Personagens();
                     List<Object> ProcurarCodPersonagem = new ArrayList<>();
 
@@ -553,20 +551,18 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                     for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
                         Personagens pp = (Personagens) ll1;
-                        comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// cadastra na tabela N/N o codigo do personagem
-
+                        comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// seta na tabela N/N o codigo do personagem
                     }
+                    comprar.setQuantidade_armadura(varComprarQuant); /// seta na tabela N/N a quantidade de armaduras compradas        
 
-                    comprar.setQuantidade_armadura(varComprarQuant); /// cadastra na tabela N/N a quantidade de armaduras compradas 
-
-///////////////////////////////// Verificação de Peças de Ouro                    
+///////////////////////////////// Verificação de Peças de Ouro         
                     double dinheiroTotal = (Double.parseDouble(lbDinheiroPersonagem.getText()));
                     double QuantItens = (Double.parseDouble(QuantComprar.getText()));
                     double PrecoUnidade = (Double.parseDouble(jlListPreçoUndComprar.getText()));
                     double Result = PrecoUnidade * QuantItens;
                     double ResultDinheiro = dinheiroTotal - Result;
-
                     System.out.println("Total compras" + Result);
+/////////////////////////////////////////////////////////
 
                     if (dinheiroTotal < Result) {
                         JOptionPane.showMessageDialog(null, "Não há Peças de Ouro disponiveis para efetuar a compra!!!");
@@ -591,6 +587,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                 try {
 
+//////////////verifica armas
                     GenericDAO gDAO = new GenericDAO();
                     Armas arma = new Armas();
                     List<Object> ListarArmas = new ArrayList<>();
@@ -601,9 +598,10 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                     for (Object ll1 : ListarArmas) { //// pega o nome da arma no combobox e procura pelo codigo da mesma
                         Armas aa = (Armas) ll1;
-                        comprar.setCodigo_arma(aa.getCodigo_arma()); /// cadastra na tabela N/N o codigo da arma
+                        comprar.setCodigo_arma(aa.getCodigo_arma()); /// seta na tabela N/N o codigo da arma
                     }
 
+/////////////////verifica personagem                  
                     Personagens personagem = new Personagens();
                     List<Object> ProcurarCodPersonagem = new ArrayList<>();
 
@@ -613,7 +611,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                     for (Object ll1 : ProcurarCodPersonagem) {  //// pega o nome do personagem no combobox e procura pelo codigo do mesmo
                         Personagens pp = (Personagens) ll1;
-                        comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// cadastra na tabela N/N o codigo do personagem
+                        comprar.setCodigo_personagem(pp.getCodigo_personagem()); /// seta na tabela N/N o codigo do personagem
                     }
 
                     comprar.setQuantidade_arma(varComprarQuant); /// cadastra na tabela N/N a quantidade de armas compradas 
@@ -624,10 +622,11 @@ public class JFVendaItens extends javax.swing.JFrame {
                     double PrecoUnidade = (Double.parseDouble(jlListPreçoUndComprar.getText()));
                     double Result = PrecoUnidade * QuantItens;
                     double ResultDinheiro = dinheiroTotal - Result;
-
                     System.out.println("Total compras" + Result);
-
-                    if (dinheiroTotal < Result) {
+//////////////////////////////////////////////
+                    
+////////////////////verificação compra
+                    if (dinheiroTotal < Result) { 
                         JOptionPane.showMessageDialog(null, "Não há Peças de Ouro disponiveis para efetuar a compra!!!");
                     } else {
 
@@ -637,28 +636,31 @@ public class JFVendaItens extends javax.swing.JFrame {
 
                         GenericDAO gDao = new GenericDAO();
                         list = gDao.listar(PersonagensArmas.class);
+                        PersonagensArmas alterar = new PersonagensArmas();
 
                         for (Object obj2 : list) {
                             PersonagensArmas personagemnn = (PersonagensArmas) obj2;
 
                             if (((editcodigoPersonagem.getText()).equalsIgnoreCase(String.valueOf(personagemnn.getCodigo_personagem())))
                                     && ((editcomprasCodigoArma.getText()).equalsIgnoreCase(String.valueOf(personagemnn.getCodigo_arma())))) {
-
-                                System.out.println("alterar");
+                                    
+                                alterar.setCodigo_arma(personagemnn.getCodigo_arma());
+                                alterar.setCodigo_personagem(personagemnn.getCodigo_personagem());
+                                alterar.setQuantidade_arma(varComprarQuant + personagemnn.getQuantidade_arma());
+                                lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
+                                gDao.alterar2(alterar);
                                 editPararExecução.setText("0");
+                                JOptionPane.showMessageDialog(null, "Foi adicionado mais itens ao seu inventário!!!");
                                 break;
+
                             }
-
+                            
+                            if (editPararExecução.getText().equals("1")) {
+                                 lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
+                                 gDAO.adicionar(comprar);
+                                 JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
+                            }
                         }
-
-                        if (editPararExecução.getText().equals("1")) {
-                            System.out.println("entra aqui poaaa caraleooooo");
-                            System.out.println("cadastrar");
-                        }
-
-                           // lbDinheiroPersonagem.setText(String.valueOf(ResultDinheiro));
-                        // gDAO.adicionar(comprar);
-                        // JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!!!");
                     }
 
                 } catch (ClassNotFoundException | SQLException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException ex) {
@@ -1572,35 +1574,36 @@ public class JFVendaItens extends javax.swing.JFrame {
             Armas arma = new Armas();
             List<Object> ListarCodigoArma = new ArrayList<>();
 
-            arma.setNome_arma((String) jcVenderArmas.getSelectedItem());
-
-            ListarCodigoArma = gDao.listar2(Armas.class, arma);    ////compara o item selecionado no combobox e procura seu preço
+            arma.setNome_arma((String) jcVenderArmas.getSelectedItem()); ////compara o item selecionado no combobox e lista seu codigo no edit
+            ListarCodigoArma = gDao.listar2(Armas.class, arma);
 
             for (Object cod : ListarCodigoArma) {
                 Armas aa = (Armas) cod;
 
                 editvenderCodigoArma.setText(String.valueOf(aa.getCodigo_arma()));
-                // jlListPreçoUndComprar.setText(String.valueOf(aa.getPreco_arma())); //// lista preço arma
 
                 PersonagensArmas personagensArma = new PersonagensArmas();
                 List<Object> ListarQuantArma = new ArrayList<>();
 
-                personagensArma.setCodigo_arma(Integer.parseInt(editvenderCodigoArma.getText()));
-
-                ListarQuantArma = gDao.listar2(PersonagensArmas.class, personagensArma);
+                personagensArma.setCodigo_arma(Integer.parseInt(editvenderCodigoArma.getText())); ////compara o item selecionado no edit 
+                ListarQuantArma = gDao.listar2(PersonagensArmas.class, personagensArma);          ////e procura a quant de itens comprados pelo jogador
 
                 for (Object cod2 : ListarQuantArma) {
 
                     PersonagensArmas nn = (PersonagensArmas) cod2;
-                    QuantVender.setText(String.valueOf(nn.getQuantidade_arma()));
 
+                    if (((editcodigoPersonagem.getText()).equalsIgnoreCase(String.valueOf(nn.getCodigo_personagem())))
+                            && ((editvenderCodigoArma.getText()).equalsIgnoreCase(String.valueOf(nn.getCodigo_arma())))) {
+
+                        QuantVender.setText(String.valueOf(nn.getQuantidade_arma()));
+                    }
                 }
-
             }
 
         } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
         }
+
 
     }//GEN-LAST:event_jcVenderArmasItemStateChanged
 
@@ -1613,27 +1616,28 @@ public class JFVendaItens extends javax.swing.JFrame {
             List<Object> ListarCodigoArmadura = new ArrayList<>();
 
             armadura.setNome_armadura((String) jcVenderArmaduras.getSelectedItem());
-
-            ListarCodigoArmadura = gDao.listar2(Armaduras.class, armadura);    ////compara o item selecionado no combobox e procura seu preço
+            ListarCodigoArmadura = gDao.listar2(Armaduras.class, armadura);
 
             for (Object cod : ListarCodigoArmadura) {
                 Armaduras aa = (Armaduras) cod;
 
                 editvenderCodigoArmadura.setText(String.valueOf(aa.getCodigo_armadura()));
-                // jlListPreçoUndComprar.setText(String.valueOf(aa.getPreco_arma())); //// lista preço arma
 
                 PersonagensArmaduras personagensArmadura = new PersonagensArmaduras();
                 List<Object> ListarQuantArmadura = new ArrayList<>();
 
                 personagensArmadura.setCodigo_armadura(Integer.parseInt(editvenderCodigoArmadura.getText()));
-
                 ListarQuantArmadura = gDao.listar2(PersonagensArmaduras.class, personagensArmadura);
 
                 for (Object cod2 : ListarQuantArmadura) {
 
                     PersonagensArmaduras nn = (PersonagensArmaduras) cod2;
-                    QuantVender.setText(String.valueOf(nn.getQuantidade_armadura()));
 
+                    if (((editcodigoPersonagem.getText()).equalsIgnoreCase(String.valueOf(nn.getCodigo_personagem())))
+                            && ((editvenderCodigoArmadura.getText()).equalsIgnoreCase(String.valueOf(nn.getCodigo_armadura())))) {
+
+                        QuantVender.setText(String.valueOf(nn.getQuantidade_armadura()));
+                    }
                 }
             }
 
@@ -1652,29 +1656,30 @@ public class JFVendaItens extends javax.swing.JFrame {
             List<Object> ListarCodigoEscudo = new ArrayList<>();
 
             escudo.setNome_escudo((String) jcVenderEscudos.getSelectedItem());
-
-            ListarCodigoEscudo = gDao.listar2(Escudos.class, escudo);    ////compara o item selecionado no combobox e procura seu preço
+            ListarCodigoEscudo = gDao.listar2(Escudos.class, escudo);
 
             for (Object cod : ListarCodigoEscudo) {
                 Escudos ee = (Escudos) cod;
 
                 editvenderCodigoEscudo.setText(String.valueOf(ee.getCodigo_escudo()));
-                // jlListPreçoUndComprar.setText(String.valueOf(aa.getPreco_arma())); //// lista preço arma
 
                 PersonagensEscudos personagensEscudo = new PersonagensEscudos();
                 List<Object> ListarQuantEscudo = new ArrayList<>();
 
                 personagensEscudo.setCodigo_escudo(Integer.parseInt(editvenderCodigoEscudo.getText()));
-
                 ListarQuantEscudo = gDao.listar2(PersonagensEscudos.class, personagensEscudo);
 
                 for (Object cod2 : ListarQuantEscudo) {
 
                     PersonagensEscudos nn = (PersonagensEscudos) cod2;
-                    QuantVender.setText(String.valueOf(nn.getQuantidade_escudo()));
 
+                    if (((editcodigoPersonagem.getText()).equalsIgnoreCase(String.valueOf(nn.getCodigo_personagem())))
+                            && ((editvenderCodigoEscudo.getText()).equalsIgnoreCase(String.valueOf(nn.getCodigo_escudo())))) {
+
+                        QuantVender.setText(String.valueOf(nn.getQuantidade_escudo()));
+
+                    }
                 }
-
             }
 
         } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
@@ -1693,26 +1698,29 @@ public class JFVendaItens extends javax.swing.JFrame {
             List<Object> ListarCodigoConsumiveis = new ArrayList<>();
 
             consumivel.setNome_consumivel((String) jcVenderConsumiveis.getSelectedItem());
-
-            ListarCodigoConsumiveis = gDao.listar2(Consumiveis.class, consumivel);    ////compara o item selecionado no combobox e procura seu preço
+            ListarCodigoConsumiveis = gDao.listar2(Consumiveis.class, consumivel);
 
             for (Object cod : ListarCodigoConsumiveis) {
                 Consumiveis cc = (Consumiveis) cod;
 
                 editvenderCodigoConsumivel.setText(String.valueOf(cc.getCodigo_consumivel()));
-                // jlListPreçoUndComprar.setText(String.valueOf(aa.getPreco_arma())); //// lista preço arma
 
                 PersonagensConsumiveis personagensConsumivel = new PersonagensConsumiveis();
                 List<Object> ListarQuantConsumivel = new ArrayList<>();
 
                 personagensConsumivel.setCodigo_consumivel(Integer.parseInt(editvenderCodigoConsumivel.getText()));
-
                 ListarQuantConsumivel = gDao.listar2(PersonagensConsumiveis.class, personagensConsumivel);
 
                 for (Object cod2 : ListarQuantConsumivel) {
 
                     PersonagensConsumiveis nn = (PersonagensConsumiveis) cod2;
-                    QuantVender.setText(String.valueOf(nn.getQuantidade_consumivel()));
+
+                    if (((editcodigoPersonagem.getText()).equalsIgnoreCase(String.valueOf(nn.getCodigo_personagem())))
+                            && ((editvenderCodigoConsumivel.getText()).equalsIgnoreCase(String.valueOf(nn.getCodigo_consumivel())))) {
+
+                        QuantVender.setText(String.valueOf(nn.getQuantidade_consumivel()));
+                    }
+
                 }
             }
 
