@@ -47,6 +47,7 @@ public class JFArmas extends javax.swing.JFrame {
             Armas a = (Armas) l1;
 
             if (a.getCodigo_arma() == contador) {
+                jTFCodigoArma.setText(String.valueOf(a.getCodigo_arma()));
                 jtfNomeArma.setText(a.getNome_arma());
                 jcTipoArma.setSelectedIndex(a.getTipo_arma());
                 jtfPrecoArma.setText(String.valueOf(a.getPreco_arma()));
@@ -88,6 +89,11 @@ public class JFArmas extends javax.swing.JFrame {
         jTFCodigoArma = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Cadastro de Armas");
@@ -291,7 +297,7 @@ public class JFArmas extends javax.swing.JFrame {
         jButton1.setEnabled(true);
         jbCadastrar.setEnabled(false);
         jBalterar.setEnabled(true);
-        
+
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -334,8 +340,8 @@ public class JFArmas extends javax.swing.JFrame {
         jButton4.setEnabled(false);
         jBconfirmar.setEnabled(true);
         jBcancelar.setEnabled(true);
-        
-        
+
+
     }//GEN-LAST:event_jBalterarActionPerformed
 
     private void jBexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBexcluirActionPerformed
@@ -361,13 +367,13 @@ public class JFArmas extends javax.swing.JFrame {
     }//GEN-LAST:event_jBexcluirActionPerformed
 
     private void jBconfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconfirmarActionPerformed
-        Armaduras armd = new Armaduras();
-        armd.setCodigo_armadura(Integer.parseInt(jTFCodigoArma.getText()));
-        armd.setNome_armadura(jtfNomeArmadura.getText());
-        armd.setTipo_armadura(jcTipoArmadura.getSelectedIndex());
-        armd.setPreco_armadura(Double.parseDouble(jtfPrecoArmadura.getText()));
-        armd.setBonus_maximo_armadura(Double.parseDouble(jtfBonusMaximoArmadura.getText()));
-        armd.setPenalidade_destreza_armadura(Integer.parseInt(jtfPenalidadeDestrezaArmadura.getText()));
+        Armas armd = new Armas();
+        armd.setCodigo_arma(Integer.parseInt(jTFCodigoArma.getText()));
+        armd.setNome_arma(jtfNomeArma.getText());
+        armd.setTipo_arma(jcTipoArma.getSelectedIndex());
+        armd.setPreco_arma(Double.parseDouble(jtfPrecoArma.getText()));
+        armd.setQuantidade_dado_arma(Integer.parseInt(jtfQuantidadeDadoArma.getText()));
+        armd.setTipo_do_dado_arma(Integer.parseInt(jtfTipoDadoArma.getText()));
 
         try {
             gg.alterar(armd);
@@ -384,11 +390,15 @@ public class JFArmas extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
 
         jButton4.setEnabled(true);
-        jButton1.setEnabled(false);
+        jbCadastrar.setEnabled(false);
         jBalterar.setEnabled(true);
         jBconfirmar.setEnabled(false);
         jBcancelar.setEnabled(false);
     }//GEN-LAST:event_jBconfirmarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
