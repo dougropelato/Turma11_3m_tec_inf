@@ -321,6 +321,11 @@ public class JFPersonagem extends javax.swing.JFrame {
         getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 14, -1, -1));
 
         jButton1.setText("Sair");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 289, 120, -1));
 
         pack();
@@ -589,6 +594,29 @@ public class JFPersonagem extends javax.swing.JFrame {
         if (!caracteres.contains(evt.getKeyChar() + "")) { //se algo diferente que "caracteres" for digitado
             evt.consume();}        // TODO add your handling code here:
     }//GEN-LAST:event_jtfCarismaPersonagemKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jtfNomePersonagem.setText(null);
+        jtfAlturaPersonagem.setText(null);
+        jtfBaseDeAtaquePersonagem.setText(null);
+        jtfCarismaPersonagem.setText(null);
+        jtfClasseArmaduraPersonagem.setText(null);
+        jtfConstituicaoPersonagem.setText(null);
+        jtfDestrezaPersonagem.setText(null);
+        jtfForcaPersonagem.setText(null);
+        jtfFortitudePersonagem.setText(null);
+        jtfIdadePersonagem.setText(null);
+        jtfIniciativaPersonagem.setText(null);
+        jtfInteligenciaPersonagem.setText(null);
+        jtfPesoPersonagem.setText(null);
+        jtfPontosDeVidaPersonagem.setText(null);
+        jtfRefexoPersonagem.setText(null);
+        jtfSabedoriaPersonagem.setText(null);
+        jtfVontadePersonagem.setText(null);
+        JFPersonagem.this.dispose();
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
