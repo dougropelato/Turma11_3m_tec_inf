@@ -59,16 +59,17 @@ public class JFRaca extends javax.swing.JFrame {
 
         jLabel2.setText("Nome Raça:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
-        getContentPane().add(jtfNome_raca, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 120, -1));
+        getContentPane().add(jtfNome_raca, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 150, -1));
 
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel3.setText("DESCRIÇÃO DA RAÇA:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, -1, -1));
 
         jtaDescricao_raca.setColumns(20);
         jtaDescricao_raca.setRows(5);
         jScrollPane1.setViewportView(jtaDescricao_raca);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 390, 130));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 370, 130));
 
         jLabel4.setText("Força Raca:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
@@ -96,7 +97,7 @@ public class JFRaca extends javax.swing.JFrame {
 
         jLabel10.setText("Quantidade Talentos Adc:");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
-        getContentPane().add(jtfqtd_adicionais_raca, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 30, -1));
+        getContentPane().add(jtfqtd_adicionais_raca, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 30, -1));
 
         jLabel11.setText("Uso Arma:");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, -1, -1));
@@ -113,16 +114,16 @@ public class JFRaca extends javax.swing.JFrame {
                 jbCadastrar_racaActionPerformed(evt);
             }
         });
-        getContentPane().add(jbCadastrar_raca, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 90, 40));
+        getContentPane().add(jbCadastrar_raca, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 90, 40));
 
         jComboBoxUsoArma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Armas Simples", "Armas Comuns", "Armas Exóticas ", " " }));
         getContentPane().add(jComboBoxUsoArma, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, -1, -1));
 
         jCheckBox1.setText("Usa Escudo");
-        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, -1, -1));
+        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, -1, -1));
 
         jBCancelar_cadastro_raca.setText("CANCELAR");
-        getContentPane().add(jBCancelar_cadastro_raca, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, 100, 40));
+        getContentPane().add(jBCancelar_cadastro_raca, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 380, 100, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
