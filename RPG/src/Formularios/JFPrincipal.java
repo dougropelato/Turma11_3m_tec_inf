@@ -61,7 +61,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 //        c.setBackground(Color.WHITE); // Define a cor de fundo
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-      //  setSize(1000, 1000);
+        //  setSize(1000, 1000);
         this.setExtendedState(MAXIMIZED_BOTH);
 
     }
@@ -88,8 +88,6 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLnome_personagem = new javax.swing.JLabel();
         jLvida_personagem = new javax.swing.JLabel();
         jLnome_campanha = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
         jpAraDePintar = new jPintar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -126,17 +124,13 @@ public class JFPrincipal extends javax.swing.JFrame {
         jTextArea3.setRows(5);
         jScrollPane3.setViewportView(jTextArea3);
 
-        jLnome_jogador.setText("jLabel1");
+        jLnome_jogador.setText("");
 
-        jLnome_personagem.setText("jLabel1");
+        jLnome_personagem.setText("");
 
-        jLvida_personagem.setText("jLabel1");
+        jLvida_personagem.setText("");
 
-        jLnome_campanha.setText("jLabel1");
-
-        jTextField2.setText("jTextField2");
-
-        jTextField3.setText("jTextField3");
+        jLnome_campanha.setText("");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -144,21 +138,14 @@ public class JFPrincipal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLnome_jogador)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
-                        .addComponent(jLnome_personagem)
-                        .addGap(129, 129, 129)
-                        .addComponent(jLvida_personagem)
-                        .addGap(125, 125, 125)
-                        .addComponent(jLnome_campanha)
-                        .addGap(119, 119, 119))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addComponent(jLnome_jogador)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addComponent(jLnome_personagem)
+                .addGap(129, 129, 129)
+                .addComponent(jLvida_personagem)
+                .addGap(125, 125, 125)
+                .addComponent(jLnome_campanha)
+                .addGap(119, 119, 119))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,10 +156,7 @@ public class JFPrincipal extends javax.swing.JFrame {
                     .addComponent(jLnome_personagem)
                     .addComponent(jLvida_personagem)
                     .addComponent(jLnome_campanha))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jpAraDePintarLayout = new javax.swing.GroupLayout(jpAraDePintar);
@@ -248,9 +232,9 @@ public class JFPrincipal extends javax.swing.JFrame {
                 String[] comands = string.split(" ");
                 //posi = Integer.parseInt(string);
 
-                jTextArea1.setText(jTextArea1.getText() + "Jogador diz: " + string + "\n" ); // mostra no texto da historia
+                jTextArea1.setText(jTextArea1.getText() + "Jogador diz: " + string + "\n"); // mostra no texto da historia
 
-                jTextArea1.setText(jTextArea1.getText()+ "Mestre: " + vercom.verificaComando(comands) + '\n');
+                jTextArea1.setText(jTextArea1.getText() + "Mestre: " + vercom.verificaComando(comands) + '\n');
             } catch (SQLException ex) {
                 Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IllegalAccessException ex) {
@@ -317,22 +301,20 @@ public class JFPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLnome_campanha;
-    private javax.swing.JLabel jLnome_jogador;
-    private javax.swing.JLabel jLnome_personagem;
-    private javax.swing.JLabel jLvida_personagem;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JPanel jpAraDePintar;
+    public javax.swing.JButton jButton1;
+    public javax.swing.JButton jButton2;
+    public javax.swing.JButton jButton3;
+    public javax.swing.JLabel jLnome_campanha;
+    public javax.swing.JLabel jLnome_jogador;
+    public javax.swing.JLabel jLnome_personagem;
+    public javax.swing.JLabel jLvida_personagem;
+    public javax.swing.JPanel jPanel2;
+    public javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JScrollPane jScrollPane3;
+    public javax.swing.JTextArea jTextArea1;
+    public javax.swing.JTextArea jTextArea3;
+    public javax.swing.JTextField jTextField1;
+    public javax.swing.JPanel jpAraDePintar;
     // End of variables declaration//GEN-END:variables
 
 }

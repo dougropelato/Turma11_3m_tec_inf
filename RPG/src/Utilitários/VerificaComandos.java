@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import tabelas.Jogadores;
+import tabelas.Personagens;
 
 /**
  *
@@ -27,7 +28,7 @@ public class VerificaComandos {
     // clase criada so para amanter a autenticação 
 
     public String verificaComando(String[] aux) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
-
+        JFPrincipal jfp = JFPrincipal.getInstance();
         String res = "";
         GenericDAO bsk = new GenericDAO();
         JFPrincipal jfprim = JFPrincipal.getInstance();
@@ -176,8 +177,12 @@ public class VerificaComandos {
 
     public String listaPersonagens() throws SQLException {
         String res = "";
+        GenericDAO gg = new GenericDAO();
+        Personagens pp = new Personagens();
+        List<Personagens> ll = new ArrayList<>();
+        
+        pp.setCodigo_personagem(auth.getCodigo_jogador());
 
-        // fazer a listagem
         return res;
 
     }
