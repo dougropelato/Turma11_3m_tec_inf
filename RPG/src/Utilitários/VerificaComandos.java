@@ -6,6 +6,7 @@
 package utilitários;
 
 import Formularios.JFPrincipal;
+import Formularios.JFSelecaoCampanha;
 import Tabelas.Autenticacao;
 import dao.GenericDAO;
 import formularios.JFMestre;
@@ -15,6 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import tabelas.Jogadores;
+import tabelas.JogadoresPersonagens;
 import tabelas.Personagens;
 
 /**
@@ -97,6 +99,7 @@ public class VerificaComandos {
 
                         // seta como logado
                         auth.setJogador_logado(true);
+                        jfp.jLnome_jogador.setText("Jogador: " + auth.getNome_jogador());
 
                         //envi resposta que esta logado
                         res = "Logado com sucesso" + '\n'; // +'\n' usado para quebrar linha
@@ -125,6 +128,9 @@ public class VerificaComandos {
                     JFPersonagem nper = new JFPersonagem();
                     nper.setVisible(true);
                 }
+                if (aux[0].equalsIgnoreCase("selecionar")) {
+
+                }
 
                 //lista personagem usando o 
                 auth.getCodigo_jogador(); // <-- este
@@ -132,7 +138,8 @@ public class VerificaComandos {
             } else {
 
                 if (auth.getCodigo_campanha() == 0) {
-                    // abre formulario campanha
+                    JFSelecaoCampanha jsf = new JFSelecaoCampanha();
+                    jsf.setVisible(true);
                 } else {
 
                     if (auth.getStatus_atual().equalsIgnoreCase("BATALHA")) {// entra na batalha
@@ -150,19 +157,22 @@ public class VerificaComandos {
                         if (aux[0].equalsIgnoreCase("fugir")) {//tenta fugir
 
                         }
-                    }
+                    } else if (auth.getStatus_atual().equalsIgnoreCase("npc")) {
+                        if (aux[0].equalsIgnoreCase("falar")) {
+                            res = "npc não encontrado";
+                        }
+                    } else {
 
-                    if (aux[0].equalsIgnoreCase("Pericia")) {
-                        res = "pericia";
-                    }
-                    if (aux[0].equalsIgnoreCase("Usar")) {
-                        res = "item / escudos / armas / comsumiveis / armaduras";
-                    }
-                    if (aux[0].equalsIgnoreCase("npc")) {
-                        res = "npc não encontrado";
-                    }
-                    if (aux[0].equalsIgnoreCase("coletar")) {
-                        res = "nada a coletar aki";
+                        if (aux[0].equalsIgnoreCase("Pericia")) {
+                            res = "pericia";
+                        }
+                        if (aux[0].equalsIgnoreCase("Usar")) {
+                            res = "item / escudos / armas / comsumiveis / armaduras";
+                        }
+
+                        if (aux[0].equalsIgnoreCase("coletar")) {
+                            res = "nada a coletar aki";
+                        }
                     }
                 }
             }
@@ -175,13 +185,23 @@ public class VerificaComandos {
 
     }
 
-    public String listaPersonagens() throws SQLException {
+    public String listaPersonagens() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         String res = "";
         GenericDAO gg = new GenericDAO();
-        Personagens pp = new Personagens();
-        List<Personagens> ll = new ArrayList<>();
-        
-        pp.setCodigo_personagem(auth.getCodigo_jogador());
+        Jogadores jj = new Jogadores();
+        List ll = new ArrayList<>();
+        List<Personagens> lp = new ArrayList<>();
+
+        jj.setCodigo_jogador(auth.getCodigo_jogador());
+
+        ll = gg.listar3(jj, Personagens.class, JogadoresPersonagens.class);
+
+        lp = (List<Personagens>) ll.get(1);
+
+        for (Personagens per : lp) {
+            Personagens ppr = (Personagens) per;
+            res += " " + ppr.getCodigo_personagem() + " - " + ppr.getNome_personagem() + "\n";
+        }
 
         return res;
 
