@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import tabelas.Jogadores;
 import tabelas.JogadoresPersonagens;
-import tabelas.Personagens;
+import tabelas.Personagens; 
 import java.awt.Color;
 
 /**
@@ -48,6 +48,12 @@ public class VerificaComandos {
             // jfprim.jLnome_jogador.setText("Mestre");
 
             res = "doctor who ?";
+        } // modo adm
+        // lista comandos
+        if (aux[0].equalsIgnoreCase("Comandos")) {
+            jfprim.jTextArea3.setText(listaComando());
+
+            res = "lista dos comandos";
         } // modo adm
 
         if (aux[0].equalsIgnoreCase("logoff")) {
@@ -195,8 +201,8 @@ public class VerificaComandos {
                         if (aux[0].equalsIgnoreCase("fugir")) {//tenta fugir
 
                         }
-                    } else if (auth.getStatus_atual().equalsIgnoreCase("npc")) {
-                        if (aux[0].equalsIgnoreCase("falar")) {
+                    } else if (auth.getStatus_atual().equalsIgnoreCase("npc")) {// couse estiver falando com o npc
+                        if (aux[0].equalsIgnoreCase("falar")) { // fala com o npc disponivel
                             res = "npc não encontrado";
                         }
                     } else {
@@ -240,6 +246,40 @@ public class VerificaComandos {
             Personagens ppr = (Personagens) per;
             res += " " + ppr.getCodigo_personagem() + " - " + ppr.getNome_personagem() + "\n";
         }
+
+        return res;
+
+    }
+
+    public String listaComando() {
+        String res = "LOGOFF - sai da sessão\n"
+                + "\n"
+                + "LOGIN seunome\n"
+                + "SENHA suasenha\n"
+                + "MESTRE - abre janela mestre\n"
+                + "CRIAR - abre criação de personagem\n"
+                + "SELECIONAR nomePersonagem - seleciona personagem \n"
+                + "\n"
+                + "---- DURANTE A BATALHA ----\n"
+                + "\n"
+                + "ATACAR - ataca\n"
+                + "USAR - usa poção de vida\n"
+                + "FUGIR - tenta   fugir da batalha\n"
+                + "--------------------------\n"
+                + "\n"
+                + "---- Falando com um NPC ---\n"
+                + "\n"
+                + "FALAR nomedonpc  \n"
+                + "\n"
+                + "SIM - responde o npc\n"
+                + "\n"
+                + "NAO - responde o npc\n"
+                + "\n"
+                + "-------------------------\n"
+                + "\n"
+                + "PERICIA nomedapericia - executa pericia\n"
+                + "USAR quantidade nome tipo -\n"
+                + "COLETAR";
 
         return res;
 
