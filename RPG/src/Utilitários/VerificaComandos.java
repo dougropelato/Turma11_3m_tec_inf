@@ -18,6 +18,7 @@ import java.util.List;
 import tabelas.Jogadores;
 import tabelas.JogadoresPersonagens;
 import tabelas.Personagens;
+import java.awt.Color;
 
 /**
  *
@@ -27,10 +28,11 @@ public class VerificaComandos {
 
     Autenticacao auth = Autenticacao.getInstance();
     Utilitários.Batalhas bata = new Utilitários.Batalhas();
+    Utilitários.Utilitarios utt = new Utilitários.Utilitarios();
     // clase criada so para amanter a autenticação 
 
     public String verificaComando(String[] aux) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
-        JFPrincipal jfp = JFPrincipal.getInstance();
+
         String res = "";
         GenericDAO bsk = new GenericDAO();
         JFPrincipal jfprim = JFPrincipal.getInstance();
@@ -99,7 +101,7 @@ public class VerificaComandos {
 
                         // seta como logado
                         auth.setJogador_logado(true);
-                        jfp.jLnome_jogador.setText("Jogador: " + auth.getNome_jogador());
+                        jfprim.jLnome_jogador.setText("Jogador: " + auth.getNome_jogador());
 
                         //envi resposta que esta logado
                         res = "Logado com sucesso" + '\n'; // +'\n' usado para quebrar linha
@@ -130,10 +132,46 @@ public class VerificaComandos {
                 }
                 if (aux[0].equalsIgnoreCase("selecionar")) {
 
-                }
+                    Personagens pp = new Personagens();
+                    List<Object> ll = new ArrayList();
 
-                //lista personagem usando o 
-                auth.getCodigo_jogador(); // <-- este
+                    pp.setNome_personagem(aux[1]);
+
+                    // ll = bsk.listar2(Jogadores.class, jj);
+                    String sql = "SELECT * "
+                            + "FROM personagens pp "
+                            + ", jogadorespersonagens jp "
+                            + "where jp.codigo_jogador = " + auth.getCodigo_jogador() + " "
+                            + "AND pp.codigo_personagem = jp.codigo_personagem "
+                            + "AND pp.nome_personagem like '" + aux[1] + "'";
+
+                    res = bsk.executaSql(sql, "codigo_personagem");
+
+                    try {
+                        auth.setCodigo_personagem(Integer.valueOf(res));
+
+                        pp.setCodigo_personagem(auth.getCodigo_personagem());
+                        ll = bsk.listar2(Personagens.class, pp);
+
+                        for (Object ll1 : ll) {
+                            Personagens pps = (Personagens) ll1;
+                            auth.setNome_personagem(pps.getNome_personagem());
+                            auth.setPontos_vida_personagem(pps.getPontos_vida_personagem());
+                        }
+
+                        res = "Personagem - " + auth.getNome_personagem() + " - selecionado";
+                        jfprim.jLnome_personagem.setText("Personagem: " + auth.getNome_personagem());
+                        jfprim.jLvida_personagem.setBackground(Color.red);
+                        jfprim.jLvida_personagem.setForeground(Color.WHITE);
+                        jfprim.jLvida_personagem.setText("Pontos de vida: " + auth.getPontos_vida_personagem());
+
+                    } catch (NumberFormatException ex) {
+                        res = "Este personagem não existe \n";
+                        res += "Digite CRIAR  para criar um novo personagem \n";
+
+                    }
+
+                }
 
             } else {
 
@@ -186,7 +224,7 @@ public class VerificaComandos {
     }
 
     public String listaPersonagens() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
-        String res = "";
+        String res = "-- Listando Personagens de " + auth.getNome_jogador() + " --\n";
         GenericDAO gg = new GenericDAO();
         Jogadores jj = new Jogadores();
         List ll = new ArrayList<>();

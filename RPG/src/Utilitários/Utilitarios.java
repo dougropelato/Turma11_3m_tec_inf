@@ -290,7 +290,7 @@ public class Utilitarios {
                 sql += " WHERE codigo_personagem = " + pp.getCodigo_personagem();
 
                 System.out.println(sql);
-                gd.executaSql(sql);
+                gd.executaSql(sql,"");
             }
 
             if (bonus[0].equalsIgnoreCase("Pericias")) {
