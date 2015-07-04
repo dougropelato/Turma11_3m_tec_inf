@@ -157,6 +157,11 @@ public class JFConsumiveis extends javax.swing.JFrame {
 
         jBcancelar.setText("Cancelar");
         jBcancelar.setEnabled(false);
+        jBcancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBcancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -373,6 +378,13 @@ public class JFConsumiveis extends javax.swing.JFrame {
 
         jTFCodigoConsumivel.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
+
+    private void jBcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcancelarActionPerformed
+
+        jButton4.setEnabled(true);
+        jBconfirmar.setEnabled(false);
+        jBcancelar.setEnabled(false);
+    }//GEN-LAST:event_jBcancelarActionPerformed
 
     /**
      * @param args the command line arguments
