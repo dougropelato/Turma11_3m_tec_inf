@@ -36,6 +36,7 @@ public class JFProgressao extends javax.swing.JFrame {
         jtbprogressao = new javax.swing.JTable();
         jbtsalvar = new javax.swing.JButton();
         jbtcancelar = new javax.swing.JButton();
+        jbtTalentos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -100,6 +101,8 @@ public class JFProgressao extends javax.swing.JFrame {
             }
         });
 
+        jbtTalentos.setText("Adicionar Talentos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,9 +111,11 @@ public class JFProgressao extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(277, 277, 277)
                 .addComponent(jbtsalvar)
-                .addGap(126, 126, 126)
+                .addGap(59, 59, 59)
                 .addComponent(jbtcancelar)
-                .addContainerGap(378, Short.MAX_VALUE))
+                .addGap(58, 58, 58)
+                .addComponent(jbtTalentos)
+                .addContainerGap(266, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,7 +124,8 @@ public class JFProgressao extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtsalvar)
-                    .addComponent(jbtcancelar))
+                    .addComponent(jbtcancelar)
+                    .addComponent(jbtTalentos))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -196,6 +202,7 @@ public class JFProgressao extends javax.swing.JFrame {
             
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbtTalentos;
     private javax.swing.JButton jbtcancelar;
     private javax.swing.JButton jbtsalvar;
     private javax.swing.JTable jtbprogressao;
