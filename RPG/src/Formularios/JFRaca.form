@@ -71,7 +71,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="460" y="80" width="-1" height="-1"/>
+          <AbsoluteConstraints x="460" y="90" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -81,7 +81,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="320" y="100" width="370" height="130"/>
+          <AbsoluteConstraints x="320" y="110" width="370" height="130"/>
         </Constraint>
       </Constraints>
 
@@ -210,7 +210,7 @@
     <Component class="javax.swing.JTextField" name="jtfqtd_adicionais_raca">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="340" y="250" width="30" height="-1"/>
+          <AbsoluteConstraints x="350" y="250" width="30" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -259,7 +259,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="430" y="380" width="90" height="40"/>
+          <AbsoluteConstraints x="600" y="390" width="90" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -287,16 +287,6 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="260" y="340" width="-1" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JButton" name="jBCancelar_cadastro_raca">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="CANCELAR"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="540" y="380" width="100" height="40"/>
         </Constraint>
       </Constraints>
     </Component>

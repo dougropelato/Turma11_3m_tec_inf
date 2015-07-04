@@ -6,6 +6,7 @@
 package utilitários;
 
 import Formularios.JFPrincipal;
+import Formularios.JFSelecaoCampanha;
 import Tabelas.Autenticacao;
 import dao.GenericDAO;
 import formularios.JFMestre;
@@ -15,6 +16,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import tabelas.Jogadores;
+import tabelas.JogadoresPersonagens;
+import tabelas.Personagens;
 
 /**
  *
@@ -27,7 +30,7 @@ public class VerificaComandos {
     // clase criada so para amanter a autenticação 
 
     public String verificaComando(String[] aux) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
-
+        JFPrincipal jfp = JFPrincipal.getInstance();
         String res = "";
         GenericDAO bsk = new GenericDAO();
         JFPrincipal jfprim = JFPrincipal.getInstance();
@@ -45,6 +48,18 @@ public class VerificaComandos {
             res = "doctor who ?";
         } // modo adm
 
+        if (aux[0].equalsIgnoreCase("logoff")) {
+            auth.setCodigo_jogador(0);
+            auth.setMestre_jogador(false);
+            auth.setCodigo_personagem(0);
+            auth.setSenha_jogador("");
+            auth.setJogador_logado(false);
+            auth.setNome_jogador("");
+            // jfprim.jLnome_jogador.setText("Mestre");
+
+            res = "Você saiu do jogo";
+        } // modo adm
+
         if (!auth.isJogador_logado()) {// se não estiver logado entra
 
             if (auth.getCodigo_jogador() == 0) {// verifica se falta logar
@@ -58,17 +73,16 @@ public class VerificaComandos {
 
                     ll = bsk.listar2(Jogadores.class, jj);
 
-                    if (ll.size() > 0) {//virifica se volta algo da pesquisa
+                    if (ll.size() > 0) {//virifica se volta algo da pesquisa                       
+
+                        Jogadores jog = (Jogadores) ll.get(0);
+
+                        auth.setNome_jogador(jog.getNome_jogador());
+                        auth.setCodigo_jogador(jog.getCodigo_jogador());
+                        auth.setSenha_jogador(jog.getSenha_jogador());
+                        auth.setMestre_jogador(true);
 
                         res = "digite a senha - EX: senha Minhasenha"; // seta a resposta do "mestre"
-
-                        for (Object obj : ll) {
-                            Jogadores jog = (Jogadores) obj;
-                            auth.setNome_jogador(jog.getNome_jogador());
-                            auth.setCodigo_jogador(jog.getCodigo_jogador());
-                            auth.setSenha_jogador(jog.getSenha_jogador());
-                            auth.setMestre_jogador(jog.getMestre_jogador());
-                        }
 
                     } else {
                         res = "Login invalido tente novamente - EX: login Usuario "; // causo a pesquisa não retornar é pra exibir o erro 
@@ -85,6 +99,7 @@ public class VerificaComandos {
 
                         // seta como logado
                         auth.setJogador_logado(true);
+                        jfp.jLnome_jogador.setText("Jogador: " + auth.getNome_jogador());
 
                         //envi resposta que esta logado
                         res = "Logado com sucesso" + '\n'; // +'\n' usado para quebrar linha
@@ -113,6 +128,9 @@ public class VerificaComandos {
                     JFPersonagem nper = new JFPersonagem();
                     nper.setVisible(true);
                 }
+                if (aux[0].equalsIgnoreCase("selecionar")) {
+
+                }
 
                 //lista personagem usando o 
                 auth.getCodigo_jogador(); // <-- este
@@ -120,13 +138,14 @@ public class VerificaComandos {
             } else {
 
                 if (auth.getCodigo_campanha() == 0) {
-                    // abre formulario campanha
+                    JFSelecaoCampanha jsf = new JFSelecaoCampanha();
+                    jsf.setVisible(true);
                 } else {
 
                     if (auth.getStatus_atual().equalsIgnoreCase("BATALHA")) {// entra na batalha
 
                         if (auth.getIniciativa_personagem() == 0) {
-                            bata.iniciaBatalha(null, null, null);
+                            bata.iniciaBatalha();
                         }
 
                         if (aux[0].equalsIgnoreCase("atacar")) {//ataca
@@ -138,19 +157,22 @@ public class VerificaComandos {
                         if (aux[0].equalsIgnoreCase("fugir")) {//tenta fugir
 
                         }
-                    }
+                    } else if (auth.getStatus_atual().equalsIgnoreCase("npc")) {
+                        if (aux[0].equalsIgnoreCase("falar")) {
+                            res = "npc não encontrado";
+                        }
+                    } else {
 
-                    if (aux[0].equalsIgnoreCase("Pericia")) {
-                        res = "pericia";
-                    }
-                    if (aux[0].equalsIgnoreCase("Usar")) {
-                        res = "item / escudos / armas / comsumiveis / armaduras";
-                    }
-                    if (aux[0].equalsIgnoreCase("npc")) {
-                        res = "npc não encontrado";
-                    }
-                    if (aux[0].equalsIgnoreCase("coletar")) {
-                        res = "nada a coletar aki";
+                        if (aux[0].equalsIgnoreCase("Pericia")) {
+                            res = "pericia";
+                        }
+                        if (aux[0].equalsIgnoreCase("Usar")) {
+                            res = "item / escudos / armas / comsumiveis / armaduras";
+                        }
+
+                        if (aux[0].equalsIgnoreCase("coletar")) {
+                            res = "nada a coletar aki";
+                        }
                     }
                 }
             }
@@ -163,10 +185,24 @@ public class VerificaComandos {
 
     }
 
-    public String listaPersonagens() throws SQLException {
+    public String listaPersonagens() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         String res = "";
+        GenericDAO gg = new GenericDAO();
+        Jogadores jj = new Jogadores();
+        List ll = new ArrayList<>();
+        List<Personagens> lp = new ArrayList<>();
 
-        // fazer a listagem
+        jj.setCodigo_jogador(auth.getCodigo_jogador());
+
+        ll = gg.listar3(jj, Personagens.class, JogadoresPersonagens.class);
+
+        lp = (List<Personagens>) ll.get(1);
+
+        for (Personagens per : lp) {
+            Personagens ppr = (Personagens) per;
+            res += " " + ppr.getCodigo_personagem() + " - " + ppr.getNome_personagem() + "\n";
+        }
+
         return res;
 
     }

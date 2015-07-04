@@ -5,17 +5,97 @@
  */
 package Formularios;
 
+import Tabelas.NpcsCombatentes;
+import dao.GenericDAO;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import tabelas.ArmadurasNpcs;
+import tabelas.ArmasNpcs;
+import tabelas.ConsumiveisNpcs;
+import tabelas.EscudosNpcs;
+import tabelas.Npcs;
+import tabelas.NpcsFalas;
+
 /**
  *
  * @author Micro7
  */
 public class JFNpcAlterarExcluir extends javax.swing.JFrame {
+    
+    private Connection conexao;
+    ArrayList arrayListNpc = new ArrayList();
+    
+    public void carregaComboNpcs() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+        GenericDAO gDAO = new GenericDAO();
+        Npcs exnpc = new Npcs();
+        List<Object> list = gDAO.listar(Npcs.class);
 
+        for (Object obj : list) {
+            Npcs n = (Npcs) obj;
+
+            //Arrays recebem os respectivos códigos e indexam-os
+            arrayListNpc.add(n.getCodigo_npc());
+            jCBExcluirNomeNpc.addItem(n.getNome_npc());
+        }
+}
     /**
      * Creates new form JFNpcAlterarExcluir
      */
-    public JFNpcAlterarExcluir() {
+
+    /**
+     * Creates new form JFNpcAlterarExcluir
+     * @throws java.sql.SQLException
+     */
+
+    /**
+     * Creates new form JFNpcAlterarExcluir
+     * @throws java.sql.SQLException
+     * @throws java.lang.IllegalAccessException
+     */
+
+    /**
+     * Creates new form JFNpcAlterarExcluir
+     * @throws java.sql.SQLException
+     * @throws java.lang.IllegalAccessException
+     * @throws java.lang.NoSuchMethodException
+     */
+
+    /**
+     * Creates new form JFNpcAlterarExcluir
+     * @throws java.sql.SQLException
+     * @throws java.lang.IllegalAccessException
+     * @throws java.lang.NoSuchMethodException
+     * @throws java.lang.reflect.InvocationTargetException
+     */
+
+    /**
+     * Creates new form JFNpcAlterarExcluir
+     * @throws java.sql.SQLException
+     * @throws java.lang.IllegalAccessException
+     * @throws java.lang.NoSuchMethodException
+     * @throws java.lang.reflect.InvocationTargetException
+     * @throws java.lang.ClassNotFoundException
+     */
+
+    /**
+     * Creates new form JFNpcAlterarExcluir
+     * @throws java.sql.SQLException
+     * @throws java.lang.IllegalAccessException
+     * @throws java.lang.NoSuchMethodException
+     * @throws java.lang.reflect.InvocationTargetException
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.lang.InstantiationException
+     */    
+    
+    public JFNpcAlterarExcluir() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         initComponents();
+        carregaComboNpcs();//Inicia o método
     }
 
     /**
@@ -108,6 +188,11 @@ public class JFNpcAlterarExcluir extends javax.swing.JFrame {
         jBExcluirNpc = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -392,6 +477,11 @@ public class JFNpcAlterarExcluir extends javax.swing.JFrame {
         jPExcluir.add(jCBExcluirNomeNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 70, 155, -1));
 
         jBExcluirNpc.setText("EXCLUIR");
+        jBExcluirNpc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExcluirNpcActionPerformed(evt);
+            }
+        });
         jPExcluir.add(jBExcluirNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 108, 155, -1));
 
         jTabbedPane1.addTab("Excluir", jPExcluir);
@@ -415,6 +505,76 @@ public class JFNpcAlterarExcluir extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    
+    private void jBExcluirNpcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirNpcActionPerformed
+        // TODO add your handling code here:
+        try {
+            GenericDAO gDAO = new GenericDAO();
+            Npcs npc = new Npcs();
+            ArmadurasNpcs durasNpc = new ArmadurasNpcs();
+            ArmasNpcs armaNpc = new ArmasNpcs();
+            EscudosNpcs escudoNpc = new EscudosNpcs();
+            ConsumiveisNpcs consuNpc = new ConsumiveisNpcs();
+            NpcsCombatentes combateNpc = new NpcsCombatentes();
+            NpcsFalas falaNpc = new NpcsFalas();
+          
+            //Busca o codigo do npc na tabela Armadurasnpc e exclui ambos (npc e o codigo do armadura que esta o npc).
+            durasNpc.setCodigo_npc((int) arrayListNpc.get(jCBExcluirNomeNpc.getSelectedIndex()));
+            gDAO.excluir(durasNpc);
+            
+            //Busca o codigo do npc na tabela ArmasNpcs e exclui ambos (npc e o codigo do armas que esta o npc).
+            armaNpc.setCodigo_npc((int) arrayListNpc.get(jCBExcluirNomeNpc.getSelectedIndex()));
+            gDAO.excluir(armaNpc);
+            
+            //Busca o codigo do npc na tabela ArmasNpcs e exclui ambos (npc e o codigo do armas que esta o npc).
+            escudoNpc.setCodigo_npc((int) arrayListNpc.get(jCBExcluirNomeNpc.getSelectedIndex()));
+            gDAO.excluir(escudoNpc);
+            
+            //Busca o codigo do npc na tabela consumiveisnpc e exclui ambos (npc e o codigo do consumivel que esta o npc).
+            consuNpc.setCodigo_npc((int) arrayListNpc.get(jCBExcluirNomeNpc.getSelectedIndex()));
+            gDAO.excluir(consuNpc);
+            
+            //Busca o codigo do npc na tabela Npccombatente e exclui ambos (npc e o codigo do npc combatente que esta o npc).
+            combateNpc.setCodigo_npc((int) arrayListNpc.get(jCBExcluirNomeNpc.getSelectedIndex()));
+            gDAO.excluir(combateNpc);
+            
+            //Busca o codigo do npc na tabela Npccombatente e exclui ambos (npc e o codigo do npc combatente que esta o codigo do npc).
+            falaNpc.setCodigo_npc((int) arrayListNpc.get(jCBExcluirNomeNpc.getSelectedIndex()));
+            gDAO.excluir(falaNpc);
+            
+            //Busca o codigo do npc na tabela Npc e exclui o mesmo.
+            npc.setCodigo_npc((int) arrayListNpc.get(jCBExcluirNomeNpc.getSelectedIndex()));
+            gDAO.excluir(npc);
+            arrayListNpc.clear();
+            jCBExcluirNomeNpc.removeAllItems();
+            JOptionPane.showMessageDialog(null, "Npc Excluido com sucesso!");
+            carregaComboNpcs();
+            
+            } catch (SQLException ex) {
+            Logger.getLogger(JFNpcAlterarExcluir.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFNpcAlterarExcluir.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchFieldException ex) {
+            Logger.getLogger(JFNpcAlterarExcluir.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFNpcAlterarExcluir.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFNpcAlterarExcluir.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFNpcAlterarExcluir.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFNpcAlterarExcluir.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFNpcAlterarExcluir.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBExcluirNpcActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        
+        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -446,7 +606,23 @@ public class JFNpcAlterarExcluir extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFNpcAlterarExcluir().setVisible(true);
+                try {
+                    new JFNpcAlterarExcluir().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JFNpcAlterarExcluir.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(JFNpcAlterarExcluir.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NoSuchMethodException ex) {
+                    Logger.getLogger(JFNpcAlterarExcluir.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(JFNpcAlterarExcluir.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(JFNpcAlterarExcluir.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(JFNpcAlterarExcluir.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(JFNpcAlterarExcluir.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

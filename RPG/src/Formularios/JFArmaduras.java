@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import tabelas.Armaduras;
 
 /**
@@ -21,34 +22,35 @@ import tabelas.Armaduras;
  * @author Jailton
  */
 public class JFArmaduras extends javax.swing.JFrame {
-
+    
     private final GenericDAO gg;
     private List<Object> lista = new ArrayList();
     private int contador = 0;
-
+    
     public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
         setLocation((ds.width - dw.width) / 2,
                 (ds.height - dw.height) / 2);
-
+        
     }
-
+    
     public JFArmaduras() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
-
+        
         this.gg = new GenericDAO();
         initComponents();
         centralizarComponente();
         this.lista = gg.listar(Armaduras.class);
-
+        
     }
-
+    
     public void carregaRegistro() {
-
+        
         for (Object l1 : lista) {
             Armaduras a = (Armaduras) l1;
-
+            
             if (a.getCodigo_armadura() == contador) {
+                jTFCodigoArmadura.setText(String.valueOf(a.getCodigo_armadura()));
                 jtfNomeArmadura.setText(a.getNome_armadura());
                 jcTipoArmadura.setSelectedIndex(a.getTipo_armadura());
                 jtfPrecoArmadura.setText(String.valueOf(a.getPreco_armadura()));
@@ -56,7 +58,7 @@ public class JFArmaduras extends javax.swing.JFrame {
                 jtfPenalidadeDestrezaArmadura.setText(String.valueOf(a.getPenalidade_destreza_armadura()));
             }
         }
-
+        
     }
 
     /**
@@ -87,8 +89,14 @@ public class JFArmaduras extends javax.swing.JFrame {
         jBexcluir = new javax.swing.JButton();
         jBconfirmar = new javax.swing.JButton();
         jBcancelar = new javax.swing.JButton();
+        jTFCodigoArmadura = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel2.setText("Nome Armadura:");
 
@@ -171,6 +179,11 @@ public class JFArmaduras extends javax.swing.JFrame {
 
         jBcancelar.setText("Cancelar");
         jBcancelar.setEnabled(false);
+        jBcancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBcancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -195,7 +208,9 @@ public class JFArmaduras extends javax.swing.JFrame {
                             .addComponent(jtfPrecoArmadura, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfNomeArmadura, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfPenalidadeDestrezaArmadura, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcTipoArmadura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jcTipoArmadura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTFCodigoArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -214,10 +229,10 @@ public class JFArmaduras extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jBalterar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(jBexcluir))
                             .addComponent(jBcancelar))))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,7 +242,8 @@ public class JFArmaduras extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfNomeArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jTFCodigoArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -267,7 +283,7 @@ public class JFArmaduras extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfNomeArmaduraActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        
         Armaduras armd = new Armaduras();
         armd.setNome_armadura(jtfNomeArmadura.getText());
         armd.setTipo_armadura(jcTipoArmadura.getSelectedIndex());
@@ -286,6 +302,8 @@ public class JFArmaduras extends javax.swing.JFrame {
             Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+        
         jButton2.setEnabled(true);
         jButton3.setEnabled(true);
         jButton1.setEnabled(false);
@@ -293,14 +311,14 @@ public class JFArmaduras extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        
         contador--;
         this.carregaRegistro();
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
+        
         contador++;
         this.carregaRegistro();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -311,18 +329,18 @@ public class JFArmaduras extends javax.swing.JFrame {
         jtfPrecoArmadura.setEditable(true);
         jtfBonusMaximoArmadura.setEditable(true);
         jtfPenalidadeDestrezaArmadura.setEditable(true);
-
+        
         jtfNomeArmadura.setText("");
         jcTipoArmadura.setSelectedIndex(0);
         jtfPrecoArmadura.setText("");
         jtfBonusMaximoArmadura.setText("");
         jtfPenalidadeDestrezaArmadura.setText("");
-
+        
         jButton1.setEnabled(true);
         jBalterar.setEnabled(false);
         jButton2.setEnabled(false);
         jButton3.setEnabled(false);
-
+        
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -332,7 +350,7 @@ public class JFArmaduras extends javax.swing.JFrame {
         jtfPrecoArmadura.setEditable(true);
         jtfBonusMaximoArmadura.setEditable(true);
         jtfPenalidadeDestrezaArmadura.setEditable(true);
-
+        
         jButton4.setEnabled(false);
         jBconfirmar.setEnabled(true);
         jBcancelar.setEnabled(true);
@@ -340,17 +358,36 @@ public class JFArmaduras extends javax.swing.JFrame {
     }//GEN-LAST:event_jBalterarActionPerformed
 
     private void jBexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBexcluirActionPerformed
-          
+        
+        try {
+            GenericDAO gDao = new GenericDAO();
+            Armaduras excluirarmadura = new Armaduras();
+            
+            excluirarmadura.setCodigo_armadura(Integer.parseInt(jTFCodigoArmadura.getText()));
+            
+            gDao.excluir(excluirarmadura);
+            
+            JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchFieldException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jBexcluirActionPerformed
-    
+
     private void jBconfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconfirmarActionPerformed
         Armaduras armd = new Armaduras();
+        armd.setCodigo_armadura(Integer.parseInt(jTFCodigoArmadura.getText()));
         armd.setNome_armadura(jtfNomeArmadura.getText());
         armd.setTipo_armadura(jcTipoArmadura.getSelectedIndex());
         armd.setPreco_armadura(Double.parseDouble(jtfPrecoArmadura.getText()));
         armd.setBonus_maximo_armadura(Double.parseDouble(jtfBonusMaximoArmadura.getText()));
         armd.setPenalidade_destreza_armadura(Integer.parseInt(jtfPenalidadeDestrezaArmadura.getText()));
-
+        
         try {
             gg.alterar(armd);
         } catch (ClassNotFoundException ex) {
@@ -362,7 +399,9 @@ public class JFArmaduras extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
+        JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+        
         jButton4.setEnabled(true);
         jButton1.setEnabled(false);
         jBalterar.setEnabled(true);
@@ -370,6 +409,19 @@ public class JFArmaduras extends javax.swing.JFrame {
         jBcancelar.setEnabled(false);
 
     }//GEN-LAST:event_jBconfirmarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        jTFCodigoArmadura.setVisible(false);
+
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jBcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcancelarActionPerformed
+        
+        jButton4.setEnabled(true);
+        jBconfirmar.setEnabled(false);
+        jBcancelar.setEnabled(false);
+    }//GEN-LAST:event_jBcancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -437,6 +489,7 @@ public class JFArmaduras extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JTextField jTFCodigoArmadura;
     private javax.swing.JComboBox jcTipoArmadura;
     private javax.swing.JTextField jtfBonusMaximoArmadura;
     private javax.swing.JTextField jtfNomeArmadura;

@@ -24,8 +24,8 @@ import java.util.logging.Logger;
  * @author Alexjonas
  */
 public class JFPrincipal extends javax.swing.JFrame {
-    
-  
+
+    Autenticacao auth = Autenticacao.getInstance();
 
     public static JFPrincipal instance;
 
@@ -58,16 +58,12 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLvida_personagem.setText("");
 
         Container c = getContentPane();
-        c.setBackground(Color.WHITE); // Define a cor de fundo
+//        c.setBackground(Color.WHITE); // Define a cor de fundo
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
-      //  setSize(1000, 1000);
-        
-        
-        
+
+        //  setSize(1000, 1000);
         this.setExtendedState(MAXIMIZED_BOTH);
-        
-        
+
     }
 
     /**
@@ -128,13 +124,13 @@ public class JFPrincipal extends javax.swing.JFrame {
         jTextArea3.setRows(5);
         jScrollPane3.setViewportView(jTextArea3);
 
-        jLnome_jogador.setText("jLabel1");
+        jLnome_jogador.setText("");
 
-        jLnome_personagem.setText("jLabel1");
+        jLnome_personagem.setText("");
 
-        jLvida_personagem.setText("jLabel1");
+        jLvida_personagem.setText("");
 
-        jLnome_campanha.setText("jLabel1");
+        jLnome_campanha.setText("");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -160,7 +156,7 @@ public class JFPrincipal extends javax.swing.JFrame {
                     .addComponent(jLnome_personagem)
                     .addComponent(jLvida_personagem)
                     .addComponent(jLnome_campanha))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jpAraDePintarLayout = new javax.swing.GroupLayout(jpAraDePintar);
@@ -171,7 +167,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         );
         jpAraDePintarLayout.setVerticalGroup(
             jpAraDePintarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 154, Short.MAX_VALUE)
+            .addGap(0, 150, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -227,7 +223,8 @@ public class JFPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
+// TODO add your handling code here:
         String string = jTextField1.getText();
         if (string != "") {
             try {
@@ -235,9 +232,9 @@ public class JFPrincipal extends javax.swing.JFrame {
                 String[] comands = string.split(" ");
                 //posi = Integer.parseInt(string);
 
-                jTextArea1.setText(jTextArea1.getText() + "Jogador diz: " + string); // mostra no texto da historia
+                jTextArea1.setText(jTextArea1.getText() + "Jogador diz: " + string + "\n"); // mostra no texto da historia
 
-                jTextArea1.setText(jTextArea1.getText() + "\n" + "Mestre: " + vercom.verificaComando(comands) + '\n');
+                jTextArea1.setText(jTextArea1.getText() + "Mestre: " + vercom.verificaComando(comands) + '\n');
             } catch (SQLException ex) {
                 Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IllegalAccessException ex) {
@@ -255,7 +252,7 @@ public class JFPrincipal extends javax.swing.JFrame {
             }
 
         }
-        // limpa comando digitado
+//        // limpa comando digitado
         jTextField1.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -304,20 +301,20 @@ public class JFPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLnome_campanha;
-    private javax.swing.JLabel jLnome_jogador;
-    private javax.swing.JLabel jLnome_personagem;
-    private javax.swing.JLabel jLvida_personagem;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JPanel jpAraDePintar;
+    public javax.swing.JButton jButton1;
+    public javax.swing.JButton jButton2;
+    public javax.swing.JButton jButton3;
+    public javax.swing.JLabel jLnome_campanha;
+    public javax.swing.JLabel jLnome_jogador;
+    public javax.swing.JLabel jLnome_personagem;
+    public javax.swing.JLabel jLvida_personagem;
+    public javax.swing.JPanel jPanel2;
+    public javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JScrollPane jScrollPane3;
+    public javax.swing.JTextArea jTextArea1;
+    public javax.swing.JTextArea jTextArea3;
+    public javax.swing.JTextField jTextField1;
+    public javax.swing.JPanel jpAraDePintar;
     // End of variables declaration//GEN-END:variables
 
 }

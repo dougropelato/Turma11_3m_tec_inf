@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import tabelas.Armas;
 
 /**
@@ -46,6 +47,7 @@ public class JFArmas extends javax.swing.JFrame {
             Armas a = (Armas) l1;
 
             if (a.getCodigo_arma() == contador) {
+                jTFCodigoArma.setText(String.valueOf(a.getCodigo_arma()));
                 jtfNomeArma.setText(a.getNome_arma());
                 jcTipoArma.setSelectedIndex(a.getTipo_arma());
                 jtfPrecoArma.setText(String.valueOf(a.getPreco_arma()));
@@ -79,8 +81,19 @@ public class JFArmas extends javax.swing.JFrame {
         jcTipoArma = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jBalterar = new javax.swing.JButton();
+        jBexcluir = new javax.swing.JButton();
+        jBconfirmar = new javax.swing.JButton();
+        jBcancelar = new javax.swing.JButton();
+        jTFCodigoArma = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Cadastro de Armas");
@@ -95,7 +108,16 @@ public class JFArmas extends javax.swing.JFrame {
 
         jLabel7.setText("Tipo Dado Arma:");
 
+        jtfNomeArma.setEditable(false);
+
+        jtfPrecoArma.setEditable(false);
+
+        jtfQuantidadeDadoArma.setEditable(false);
+
+        jtfTipoDadoArma.setEditable(false);
+
         jbCadastrar.setText("Cadastrar");
+        jbCadastrar.setEnabled(false);
         jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCadastrarActionPerformed(evt);
@@ -118,18 +140,51 @@ public class JFArmas extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setText("Novo");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jBalterar.setText("Alterar");
+        jBalterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBalterarActionPerformed(evt);
+            }
+        });
+
+        jBexcluir.setText("Excluir");
+        jBexcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBexcluirActionPerformed(evt);
+            }
+        });
+
+        jBconfirmar.setText("Confirmar");
+        jBconfirmar.setEnabled(false);
+        jBconfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBconfirmarActionPerformed(evt);
+            }
+        });
+
+        jBcancelar.setText("Cancelar");
+        jBcancelar.setEnabled(false);
+        jBcancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBcancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(166, 166, 166))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
+                        .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel7)
@@ -142,30 +197,50 @@ public class JFArmas extends javax.swing.JFrame {
                                     .addComponent(jLabel3))
                                 .addGap(4, 4, 4)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtfPrecoArma)
                             .addComponent(jtfQuantidadeDadoArma)
                             .addComponent(jtfNomeArma)
                             .addComponent(jtfTipoDadoArma)
-                            .addComponent(jcTipoArma, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jButton1)
+                            .addComponent(jtfPrecoArma)
+                            .addComponent(jcTipoArma, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbCadastrar)
-                        .addGap(33, 33, 33)))
-                .addContainerGap(138, Short.MAX_VALUE))
+                        .addComponent(jTFCodigoArma, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jBconfirmar))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(139, 139, 139)
+                                .addComponent(jButton4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jbCadastrar)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBalterar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBexcluir))
+                            .addComponent(jBcancelar))))
+                .addContainerGap(88, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(203, 203, 203))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel1)
                 .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jtfNomeArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfNomeArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFCodigoArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -174,25 +249,27 @@ public class JFArmas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jtfPrecoArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jtfQuantidadeDadoArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jtfTipoDadoArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbCadastrar)
-                        .addContainerGap(45, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1))
-                        .addGap(37, 37, 37))))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jtfQuantidadeDadoArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jtfTipoDadoArma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbCadastrar)
+                    .addComponent(jButton4)
+                    .addComponent(jBalterar)
+                    .addComponent(jBexcluir))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBcancelar)
+                    .addComponent(jBconfirmar)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -221,6 +298,14 @@ public class JFArmas extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+
+        jButton2.setEnabled(true);
+        jButton1.setEnabled(true);
+        jbCadastrar.setEnabled(false);
+        jBalterar.setEnabled(true);
+
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -232,6 +317,105 @@ public class JFArmas extends javax.swing.JFrame {
         contador--;
         this.carregaRegistro();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        jtfNomeArma.setEditable(true);
+        jcTipoArma.setEditable(true);
+        jtfPrecoArma.setEditable(true);
+        jtfQuantidadeDadoArma.setEditable(true);
+        jtfTipoDadoArma.setEditable(true);
+
+        jtfNomeArma.setText("");
+        jcTipoArma.setSelectedIndex(0);
+        jtfPrecoArma.setText("");
+        jtfQuantidadeDadoArma.setText("");
+        jtfTipoDadoArma.setText("");
+
+        jbCadastrar.setEnabled(true);
+        jBalterar.setEnabled(false);
+        jButton2.setEnabled(false);
+        jButton1.setEnabled(false);
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jBalterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBalterarActionPerformed
+        jtfNomeArma.setEditable(true);
+        jcTipoArma.setEditable(true);
+        jtfPrecoArma.setEditable(true);
+        jtfQuantidadeDadoArma.setEditable(true);
+        jtfTipoDadoArma.setEditable(true);
+
+        jButton4.setEnabled(false);
+        jBconfirmar.setEnabled(true);
+        jBcancelar.setEnabled(true);
+
+
+    }//GEN-LAST:event_jBalterarActionPerformed
+
+    private void jBexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBexcluirActionPerformed
+
+        try {
+            GenericDAO gDao = new GenericDAO();
+            Armas excluirarmas = new Armas();
+
+            excluirarmas.setCodigo_arma(Integer.parseInt(jTFCodigoArma.getText()));
+
+            gDao.excluir(excluirarmas);
+
+            JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchFieldException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jBexcluirActionPerformed
+
+    private void jBconfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconfirmarActionPerformed
+        Armas armd = new Armas();
+        armd.setCodigo_arma(Integer.parseInt(jTFCodigoArma.getText()));
+        armd.setNome_arma(jtfNomeArma.getText());
+        armd.setTipo_arma(jcTipoArma.getSelectedIndex());
+        armd.setPreco_arma(Double.parseDouble(jtfPrecoArma.getText()));
+        armd.setQuantidade_dado_arma(Integer.parseInt(jtfQuantidadeDadoArma.getText()));
+        armd.setTipo_do_dado_arma(Integer.parseInt(jtfTipoDadoArma.getText()));
+
+        try {
+            gg.alterar(armd);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+
+        jButton4.setEnabled(true);
+        jbCadastrar.setEnabled(false);
+        jBalterar.setEnabled(true);
+        jBconfirmar.setEnabled(false);
+        jBcancelar.setEnabled(false);
+    }//GEN-LAST:event_jBconfirmarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+        jTFCodigoArma.setVisible(false);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jBcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcancelarActionPerformed
+
+        jButton4.setEnabled(true);
+        jBconfirmar.setEnabled(false);
+        jBcancelar.setEnabled(false);
+
+    }//GEN-LAST:event_jBcancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,14 +469,20 @@ public class JFArmas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBalterar;
+    private javax.swing.JButton jBcancelar;
+    private javax.swing.JButton jBconfirmar;
+    private javax.swing.JButton jBexcluir;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JTextField jTFCodigoArma;
     private javax.swing.JButton jbCadastrar;
     private javax.swing.JComboBox jcTipoArma;
     private javax.swing.JTextField jtfNomeArma;

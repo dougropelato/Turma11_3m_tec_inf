@@ -16,16 +16,14 @@ import java.sql.SQLException;
  */
 public class Rpg {
 
-    
-
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
-        
-        //JFPrincipal jfprim = JFPrincipal.getInstance();
-        JFMestre m = new JFMestre();
-        m.setVisible(true);
+
+        JFPrincipal jfprim = JFPrincipal.getInstance();
+        // JFMestre m = new JFMestre();
+        jfprim.setVisible(true);
 
     }
 
