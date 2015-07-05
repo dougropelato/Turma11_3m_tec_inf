@@ -116,6 +116,11 @@ public class JFPrincipal extends javax.swing.JFrame {
         });
 
         jButton2.setText("Comandos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Itens");
 
@@ -124,13 +129,13 @@ public class JFPrincipal extends javax.swing.JFrame {
         jTextArea3.setRows(5);
         jScrollPane3.setViewportView(jTextArea3);
 
-        jLnome_jogador.setText("");
+        jLnome_jogador.setText("jLabel1");
 
-        jLnome_personagem.setText("");
+        jLnome_personagem.setText("jLabel1");
 
-        jLvida_personagem.setText("");
+        jLvida_personagem.setText("jLabel1");
 
-        jLnome_campanha.setText("");
+        jLnome_campanha.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -269,6 +274,12 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jTextField1KeyPressed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        jTextField1.setText("comandos");
+        jButton1.doClick();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

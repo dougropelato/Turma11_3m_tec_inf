@@ -5,6 +5,7 @@
  */
 package formularios;
 
+import Tabelas.PericiasPosicoes;
 import com.sun.corba.se.impl.ior.NewObjectKeyTemplateBase;
 import dao.GenericDAO;
 import java.awt.Dimension;
@@ -16,7 +17,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import tabelas.Caminhos;
 import tabelas.Campanhas;
+import tabelas.Posicoes;
+import tabelas.PosicoesNpcs;
 
 /**
  *
@@ -376,6 +380,11 @@ public class JFCampanhas extends javax.swing.JFrame {
         });
 
         jbExcluirCancelar.setText("Cancelar");
+        jbExcluirCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbExcluirCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpExcluirLayout = new javax.swing.GroupLayout(jpExcluir);
         jpExcluir.setLayout(jpExcluirLayout);
@@ -493,13 +502,8 @@ public class JFCampanhas extends javax.swing.JFrame {
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        jtfNomeCampanha.setText(null);  //Limpa o campo
-        
-        arrayListCampanhas.clear();
-        arrayListTamX.clear();
-        arrayListTamY.clear();
-        jcbCampanhas.removeAllItems();
-        jcbExcluirCampanha.removeAllItems();
+        //sai do form
+        JFCampanhas.this.dispose();
     }//GEN-LAST:event_jbCancelarActionPerformed
 
     private void jcbCampanhasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCampanhasActionPerformed
@@ -511,7 +515,8 @@ public class JFCampanhas extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfEditarCampanhaActionPerformed
 
     private void jbCancelarEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarEdicaoActionPerformed
-        // TODO add your handling code here:
+        //sai do form
+        JFCampanhas.this.dispose();
     }//GEN-LAST:event_jbCancelarEdicaoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -647,24 +652,134 @@ public class JFCampanhas extends javax.swing.JFrame {
     private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirActionPerformed
         try {
             GenericDAO gDAO = new GenericDAO();
-            Campanhas c = new Campanhas();
+            Campanhas campanha = new Campanhas();
+            Caminhos caminho = new Caminhos();
+            Posicoes posicao = new Posicoes();
+            PericiasPosicoes periciasPosicoes = new PericiasPosicoes();
+            PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
+            ArrayList arrayListCodCaminhos = new ArrayList();
+            ArrayList arrayListCodPosicao = new ArrayList();
+            ArrayList arrayListPosiPeri = new ArrayList();
+            ArrayList arrayListPosiNpc = new ArrayList();
+            int index = 0;
+            int cont = 0;
             
-            c.setCodigo_campanha((int) arrayListCampanhas.get(jcbExcluirCampanha.getSelectedIndex()));
-            c.setNome_campanha(jlExcluirNomeCampanha.getText());
-            c.setTam_x_campanha(Integer.parseInt(jlExcluirTamanhoX.getText()));
-            c.setTam_y_campanha(Integer.parseInt(jlExcluirTamanhoY.getText()));
-            gDAO.excluir(c);
+            //lista caminhos
+            caminho.setCodigo_campanha(((int) arrayListCampanhas.get(jcbExcluirCampanha.getSelectedIndex())));
+            List<Object> list9 = gDAO.listar2(Caminhos.class, caminho);
+            for (Object obj9 : list9) {
+                Caminhos cam = (Caminhos) obj9;
+                arrayListCodCaminhos.add(cam.getCodigo_caminho());
+            }
+            
+            //lista posicoes
+            cont = 1;
+            index = 0;
+            while (cont <= arrayListCodCaminhos.size()){
+                posicao.setCodigo_caminho((int) arrayListCodCaminhos.get(index));
+                List<Object> list1 = gDAO.listar2(Posicoes.class, posicao);
+                for (Object obj1 : list1) {
+                    Posicoes p = (Posicoes) obj1;
+                    arrayListCodPosicao.add(p.getCodigo_posicao());
+                }
+                cont++;
+                index++;
+            }
+                
+            //lista n pra n pericias posicoes     
+            cont = 1;
+            index = 0;
+            while (cont <=arrayListCodPosicao.size()){
+                periciasPosicoes.setCodigo_posicao((int) arrayListCodPosicao.get(index));
+                List<Object> list8 = gDAO.listar2(PericiasPosicoes.class, periciasPosicoes);
+                for (Object obj8 : list8) {
+                    PericiasPosicoes pp = (PericiasPosicoes) obj8;
+                    arrayListPosiPeri.add(pp.getCodigo_posicao());
+                }
+                cont++;
+                index++;
+            }
+        
+            //lista n pra n posicoes npcs
+            cont = 1;
+            index = 0;
+            while (cont <=arrayListCodPosicao.size()){
+                posicoesNpcs.setCodigo_posicao((int) arrayListCodPosicao.get(index));
+                List<Object> list7 = gDAO.listar2(PosicoesNpcs.class, posicoesNpcs);
+                for (Object obj7 : list7) {
+                    PosicoesNpcs pn = (PosicoesNpcs) obj7;
+                    arrayListPosiNpc.add(pn.getCodigo_posicao());
+                }
+                cont++;
+                index++;
+            }    
+                
+            //exclui n pra n posicoes pericias
+            cont = 1;
+            index = 0;
+            while (cont <= arrayListPosiPeri.size()){
+                periciasPosicoes.setCodigo_posicao((int) arrayListPosiPeri.get(index));
+                gDAO.excluir(periciasPosicoes);
+                        
+                cont++;   
+                index++;
+            }
+
+            //exclui n pra n posicoes npcs
+            cont = 1;
+            index = 0;
+            while (cont <= arrayListPosiNpc.size()){
+                        
+                posicoesNpcs.setCodigo_posicao((int) arrayListPosiNpc.get(index));
+                gDAO.excluir(posicoesNpcs);
+                        
+                cont++;   
+                index++;
+            }
+    
+            //exclui posicao
+            int x = 1;
+            index = 0;
+            while (x <= arrayListCodPosicao.size()){
+                posicao.setCodigo_posicao((int) arrayListCodPosicao.get(index));
+                gDAO.excluir(posicao);
+                x++;
+                index++;
+            }
+            
+            //exclui caminho
+            x = 1;
+            index = 0;
+            while (x <= arrayListCodPosicao.size()){
+                caminho.setCodigo_campanha((int) arrayListCampanhas.get(jcbExcluirCampanha.getSelectedIndex()));
+                gDAO.excluir(caminho);
+                x++;
+            }  
+            
+            //exclui campanha
+            campanha.setCodigo_campanha((int) arrayListCampanhas.get(jcbExcluirCampanha.getSelectedIndex()));
+            campanha.setNome_campanha(jlExcluirNomeCampanha.getText());
+            campanha.setTam_x_campanha(Integer.parseInt(jlExcluirTamanhoX.getText()));
+            campanha.setTam_y_campanha(Integer.parseInt(jlExcluirTamanhoY.getText()));
+            gDAO.excluir(campanha);
             
             JOptionPane.showMessageDialog(null, "Campanha " + jlExcluirNomeCampanha.getText() + " foi excluida!");
             
+            //limpando campos
             jlExcluirNomeCampanha.setText("Nome Campanha");
             jlExcluirTamanhoX.setText("Tamanho X");
             jlExcluirTamanhoY.setText("Tamanho Y");
             arrayListCampanhas.clear();
             arrayListTamX.clear();
             arrayListTamY.clear();
+            arrayListCodCaminhos.clear();
+            arrayListCodPosicao.clear();
+            arrayListPosiNpc.clear();
+            arrayListPosiPeri.clear();
             jcbCampanhas.removeAllItems();
             jcbExcluirCampanha.removeAllItems();
+            
+            //carregrando os combos
             carregaComboCampanhas();    
         } catch (SQLException ex) {
             Logger.getLogger(JFCampanhas.class.getName()).log(Level.SEVERE, null, ex);
@@ -716,6 +831,11 @@ public class JFCampanhas extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_jtfTamYKeyTyped
+
+    private void jbExcluirCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirCancelarActionPerformed
+        //sai do form
+        JFCampanhas.this.dispose();
+    }//GEN-LAST:event_jbExcluirCancelarActionPerformed
 
     /**
      * @param args the command line arguments

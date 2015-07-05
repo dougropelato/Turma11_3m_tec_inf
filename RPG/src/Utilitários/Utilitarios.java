@@ -19,7 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 import tabelas.Caminhos;
 import tabelas.Campanhas;
+import tabelas.Falas;
 import tabelas.Npcs;
+import tabelas.NpcsFalas;
 import tabelas.Pericias;
 import tabelas.Personagens;
 import tabelas.Posicoes;
@@ -32,14 +34,47 @@ import tabelas.Talentos;
  */
 public class Utilitarios {
 
-    public String falanpcs(int codigo_npc, String falanpc) {
+    public String falanpcs(int codigo_npc, String falanpc) throws SQLException, IllegalAccessException, NoSuchMethodException,
+            IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         String fala = "";
-
+        GenericDAO gDAO = new GenericDAO();
+        Npcs npcs = new Npcs();
+        NpcsFalas npcsFalas = new NpcsFalas();
+        Falas falas = new Falas();
+        ArrayList arrayListCodFala = new ArrayList();
+        int index = 0;
+        int cont = 1;
+        
+        //lista codigo da fala
+        npcsFalas.setCodigo_npc(codigo_npc);
+        List<Object> list = gDAO.listar2(NpcsFalas.class, npcsFalas);
+        for (Object obj2 : list) {
+            NpcsFalas nf = (NpcsFalas) obj2;
+            arrayListCodFala.add(nf.getCodigo_fala());
+        }
+        
+        while (index < arrayListCodFala.size()){
+            //pega a fala desejada
+            falas.setCodigo_fala((int) arrayListCodFala.get(cont));
+            List<Object> list1 = gDAO.listar2(Falas.class, falas);
+            for (Object obj3 : list1) {
+                Falas f = (Falas) obj3;
+                //verifica o tipo de fala desejado
+                if (falanpc.equals("fala")){
+                    fala=("Npc: " + f.getDescricao_fala() + " \n ");
+                }else if (falanpc.equals("sim")) {
+                    fala=("Npc: " +f.getResposta_positivo_fala() + " \n ");
+                }else if (falanpc.equals("nao")){
+                    fala=("Npc: " +f.getResposta_negativo_fala() + " \n ");
+                }
+            }
+            cont++;
+            index++;
+        }
         return fala;
-
     }
 
-    public String caminhos() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException,
+    public String carregaCaminhos() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException,
             InvocationTargetException, InstantiationException, ClassNotFoundException {
         GenericDAO gDAO = new GenericDAO();
         Caminhos caminhos = new Caminhos();
@@ -119,12 +154,12 @@ public class Utilitarios {
         tem.setIniciativa_personagem(dad.getDado(20) + per.getDestreza_personagem());
     }
 
-    public String posicoes() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException,
+    public String carregaPosicoes() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException,
             InvocationTargetException, InstantiationException, ClassNotFoundException {
         Posicoes posicoes = new Posicoes();
         PericiasPosicoes periciasPosicoes = new PericiasPosicoes();
         GenericDAO gDAO = new GenericDAO();
-        ArrayList arrayListPosicao = new ArrayList(); //aqui todos os codigos de posicoes do caminho selecionado ficam
+        ArrayList arrayListPosicao = new ArrayList(); //aqui todos os codigos de carregaPosicoes do caminho selecionado ficam
         ArrayList arrayListDescPosicao = new ArrayList();
         Autenticacao auth = Autenticacao.getInstance();
         String textoPosicoes = "";
@@ -290,7 +325,7 @@ public class Utilitarios {
                 sql += " WHERE codigo_personagem = " + pp.getCodigo_personagem();
 
                 System.out.println(sql);
-                gd.executaSql(sql);
+                gd.executaSql(sql,"");
             }
 
             if (bonus[0].equalsIgnoreCase("Pericias")) {

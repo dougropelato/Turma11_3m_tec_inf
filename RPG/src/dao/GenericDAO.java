@@ -573,10 +573,18 @@ public class GenericDAO {
      * ela não lista nada so altera e ou deleta
      * **************************************************************************
      */
-    public String executaSql(String sql) throws SQLException {
+    public String executaSql(String sql, String retorno) throws SQLException {
         String res = "O Sql foi executado";
 
+        System.out.println(sql);
+
         PreparedStatement stmt = conexao.prepareStatement(sql);
+        ResultSet rset = stmt.executeQuery();
+
+        while (rset.next()) {
+            res = rset.getString(retorno);
+        }
+
         stmt.execute();
         stmt.close();
 
