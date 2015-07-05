@@ -151,7 +151,7 @@ public class JFVendaItens extends javax.swing.JFrame {
         centralizarComponente();
         CarregaComboboxPersonagem();
         OcultarObjetos();
-        //ocultarEdits();
+        ocultarEdits();
 
     }
 
@@ -1171,7 +1171,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 
             int codigoArma = (armaNN.getCodigo_arma());
             int codigoPersonagem = (armaNN.getCodigo_personagem());
-            arma.setCodigo_arma(codigoArma);     /////seta o codigo da arma da tabela N/N
+            arma.setCodigo_arma(codigoArma);     /////seta o codigo da arma na tabela N/N
 
             if (codigoPersonagem == (Integer.parseInt(editcodigoPersonagem.getText()))) {
                 try {
@@ -1240,7 +1240,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 
             int codigoArmadura = (armadurasNN.getCodigo_armadura());
             int codigoPersonagem = (armadurasNN.getCodigo_personagem());
-            armadura.setCodigo_armadura(codigoArmadura);  /////seta o codigo da armadura da tabela N/N
+            armadura.setCodigo_armadura(codigoArmadura);  /////seta o codigo da armadura na tabela N/N
 
             if (codigoPersonagem == (Integer.parseInt(editcodigoPersonagem.getText()))) {
 
@@ -1308,7 +1308,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 
             int codigoEscudo = (escudosNN.getCodigo_escudo());
             int codigoPersonagem = (escudosNN.getCodigo_personagem());
-            escudo.setCodigo_escudo(codigoEscudo);  /////seta o codigo do escudo da tabela N/N
+            escudo.setCodigo_escudo(codigoEscudo);  /////seta o codigo do escudo na tabela N/N
 
             if (codigoPersonagem == (Integer.parseInt(editcodigoPersonagem.getText()))) {
 
@@ -1377,7 +1377,7 @@ public class JFVendaItens extends javax.swing.JFrame {
 
             int codigoConsumivel = (consumiveisNN.getCodigo_consumivel());
             int codigoPersonagem = (consumiveisNN.getCodigo_personagem());
-            consumivel.setCodigo_consumivel(codigoConsumivel);  /////seta o codigo do consumivel da tabela N/N
+            consumivel.setCodigo_consumivel(codigoConsumivel);  /////seta o codigo do consumivel na tabela N/N
 
             if (codigoPersonagem == (Integer.parseInt(editcodigoPersonagem.getText()))) {
 
