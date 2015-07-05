@@ -5,8 +5,12 @@
  */
 package Formularios;
 
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tabelas.Progressoes;
 
 /**
@@ -18,10 +22,12 @@ public class JFProgressao extends javax.swing.JFrame {
     /**
      * Creates new form JFProgressao
      */
-    public JFProgressao() {
+    public JFProgressao() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+        this.progTalento = new JFProgressaoTalento();
         initComponents();
     }
     List<Progressoes> lista = new ArrayList();
+    JFProgressaoTalento progTalento;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -102,6 +108,11 @@ public class JFProgressao extends javax.swing.JFrame {
         });
 
         jbtTalentos.setText("Adicionar Talentos");
+        jbtTalentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtTalentosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,16 +144,16 @@ public class JFProgressao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtsalvarActionPerformed
-
+        
         lista.clear();
-                
+        
         for (int i = 0; i < 20; i++) {
             Progressoes prg = new Progressoes();
             lista.add(prg);
             // Atribui os valores da linha e coluna informados para o campo correspondente 
             // da classe progressao passo i -1 para linha pois a mesma deve começar de zero
             // e a variavel i começa em 1
-            prg.setNivel_progressao(i+1);
+            prg.setNivel_progressao(i + 1);
             prg.setBonus_base_progressao((int) jtbprogressao.getValueAt(i, 1));
             prg.setFortitude_progressao((int) jtbprogressao.getValueAt(i, 2));
             prg.setReflexos_progressao((int) jtbprogressao.getValueAt(i, 3));
@@ -160,6 +171,10 @@ public class JFProgressao extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jbtcancelarActionPerformed
+
+    private void jbtTalentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtTalentosActionPerformed
+        progTalento.setVisible(true);
+    }//GEN-LAST:event_jbtTalentosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,15 +206,31 @@ public class JFProgressao extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFProgressao().setVisible(true);
+                try {
+                    new JFProgressao().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JFProgressao.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(JFProgressao.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NoSuchMethodException ex) {
+                    Logger.getLogger(JFProgressao.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(JFProgressao.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(JFProgressao.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(JFProgressao.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(JFProgressao.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
     
-    public List getProgressoes () {
+    public List getProgressoes() {
         return lista;
     }
-            
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbtTalentos;
