@@ -196,7 +196,7 @@ public class JFProgressao extends javax.swing.JFrame {
         });
     }
     
-    public List buscaProgressoes () {
+    public List getProgressoes () {
         return lista;
     }
             
