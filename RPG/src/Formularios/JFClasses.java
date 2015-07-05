@@ -5,7 +5,11 @@
  */
 package formularios;
 
+import Tabelas.PericiasClasse;
 import dao.GenericDAO;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,6 +19,7 @@ import java.util.logging.Logger;
 import tabelas.Armaduras;
 import tabelas.Armas;
 import tabelas.Classes;
+import tabelas.Pericias;
 import tabelas.Progressoes;
 
 /**
@@ -31,12 +36,18 @@ public class JFClasses extends javax.swing.JFrame {
         this.gDAO = new GenericDAO();
         this.armas = gDAO.listar(Armas.class);
         this.armaduras = gDAO.listar(Armaduras.class);
+        this.pericias = gDAO.listar(Pericias.class);
+        this.listaPc = new ArrayList<>();
         initComponents();
     }
     Formularios.JFProgressao prog1;
+    Formularios.JFPericiasClasse periciasClasse;
     GenericDAO gDAO;
     List<Object> armas;
     List<Object> armaduras;
+    List<Object> pericias;
+    List<PericiasClasse> listaPc;
+    List<Progressoes> listaP;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -76,7 +87,7 @@ public class JFClasses extends javax.swing.JFrame {
         jbtsalvar = new javax.swing.JButton();
         jbtprogressao = new javax.swing.JButton();
         jbtcancelar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jbtPericias = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -152,7 +163,12 @@ public class JFClasses extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Pericias de classe");
+        jbtPericias.setText("Pericias de classe");
+        jbtPericias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtPericiasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,7 +186,7 @@ public class JFClasses extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addComponent(jButton1)
+                        .addComponent(jbtPericias)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                         .addComponent(jbtprogressao)
                         .addGap(34, 34, 34)))
@@ -264,7 +280,7 @@ public class JFClasses extends javax.swing.JFrame {
                             .addComponent(jtfQtPericias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
+                            .addComponent(jbtPericias)
                             .addComponent(jbtprogressao))
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -325,9 +341,9 @@ public class JFClasses extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Valor informado não é um numero");
         }
-        List<Progressoes> listaP = new ArrayList<>();
+        listaP = prog1.getProgressoes();
 
-        listaP = prog1.buscaProgressoes();
+        listaPc = periciasClasse.getPericiasClasse();
 
         System.out.println("Nome " + c.getNome_classe());
         System.out.println("desc " + c.getDescricao_classe());
@@ -348,12 +364,19 @@ public class JFClasses extends javax.swing.JFrame {
             gDAO.adicionar(c);
             int codigoClasse = gDAO.codigoMax(c.getClass());
             System.out.println("Adiciionou classe codigo " + codigoClasse);
-            
+
             for (Progressoes lp : listaP) {
                 Progressoes p = (Progressoes) lp;
                 p.setClasses_codigo_classe(codigoClasse);
                 gDAO.adicionar(p);
             }
+
+            for (PericiasClasse lpc : listaPc) {
+                PericiasClasse pc = (PericiasClasse) lpc;
+                pc.setCodigo_classe(codigoClasse);
+                gDAO.adicionar(pc);
+            }
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JFClasses.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -375,6 +398,11 @@ public class JFClasses extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jbtcancelarActionPerformed
+
+    private void jbtPericiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtPericiasActionPerformed
+        periciasClasse = new Formularios.JFPericiasClasse(pericias);
+        periciasClasse.setVisible(true);
+    }//GEN-LAST:event_jbtPericiasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -432,7 +460,6 @@ public class JFClasses extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -446,6 +473,7 @@ public class JFClasses extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbtPericias;
     private javax.swing.JButton jbtcancelar;
     private javax.swing.JButton jbtprogressao;
     private javax.swing.JButton jbtsalvar;
