@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import tabelas.Jogadores;
 import tabelas.JogadoresPersonagens;
-import tabelas.Personagens; 
+import tabelas.Personagens;
 import java.awt.Color;
 
 /**
@@ -171,6 +171,7 @@ public class VerificaComandos {
                         jfprim.jLvida_personagem.setForeground(Color.WHITE);
                         jfprim.jLvida_personagem.setText("Pontos de vida: " + auth.getPontos_vida_personagem());
 
+
                     } catch (NumberFormatException ex) {
                         res = "Este personagem não existe \n";
                         res += "Digite CRIAR  para criar um novo personagem \n";
@@ -181,9 +182,10 @@ public class VerificaComandos {
 
             } else {
 
-                if (auth.getCodigo_campanha() == 0) {
+                if (auth.getCodigo_campanha() == 0 && aux[0].equalsIgnoreCase("Cmapanhas")) {
                     JFSelecaoCampanha jsf = new JFSelecaoCampanha();
                     jsf.setVisible(true);
+                    res = "Selecione sua camanha";
                 } else {
 
                     if (auth.getStatus_atual().equalsIgnoreCase("BATALHA")) {// entra na batalha
