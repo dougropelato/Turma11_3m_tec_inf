@@ -105,6 +105,8 @@ public class VerificaComandos {
 
                     if (auth.getSenha_jogador().equals(aux[1])) {
 
+                        String lp = "";
+
                         // seta como logado
                         auth.setJogador_logado(true);
                         jfprim.jLnome_jogador.setText("Jogador: " + auth.getNome_jogador());
@@ -112,7 +114,14 @@ public class VerificaComandos {
                         //envi resposta que esta logado
                         res = "Logado com sucesso" + '\n'; // +'\n' usado para quebrar linha
                         // chama função que lista os personagens deste jogador
-                        res = res + listaPersonagens();
+                        lp = listaPersonagens();
+
+                        System.out.println(lp);
+                        if (lp.equalsIgnoreCase("NOK")) {
+                            res += "Digite CRIAR  para criar um novo personagem \n";
+                        } else {
+                            res += lp;
+                        }
 
                     } else {// caso a senha não bater exibe erro
                         res = "senha invalida tente novamente - EX: senha Minhasenha";
@@ -135,6 +144,7 @@ public class VerificaComandos {
                 if (aux[0].equalsIgnoreCase("criar")) {
                     JFPersonagem nper = new JFPersonagem();
                     nper.setVisible(true);
+                    res = "Crie seu personagem";
                 }
                 if (aux[0].equalsIgnoreCase("selecionar")) {
 
@@ -171,7 +181,6 @@ public class VerificaComandos {
                         jfprim.jLvida_personagem.setForeground(Color.WHITE);
                         jfprim.jLvida_personagem.setText("Pontos de vida: " + auth.getPontos_vida_personagem());
 
-
                     } catch (NumberFormatException ex) {
                         res = "Este personagem não existe \n";
                         res += "Digite CRIAR  para criar um novo personagem \n";
@@ -182,10 +191,13 @@ public class VerificaComandos {
 
             } else {
 
-                if (auth.getCodigo_campanha() == 0 && aux[0].equalsIgnoreCase("Cmapanhas")) {
-                    JFSelecaoCampanha jsf = new JFSelecaoCampanha();
-                    jsf.setVisible(true);
-                    res = "Selecione sua camanha";
+                if (auth.getCodigo_campanha() == 0) {
+                    if (aux[0].equalsIgnoreCase("Campanhas")) {
+                        JFSelecaoCampanha jsf = new JFSelecaoCampanha();
+                        jsf.setVisible(true);
+                        res = "Selecione sua camanha";
+                    }
+
                 } else {
 
                     if (auth.getStatus_atual().equalsIgnoreCase("BATALHA")) {// entra na batalha
@@ -232,7 +244,7 @@ public class VerificaComandos {
     }
 
     public String listaPersonagens() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
-        String res = "-- Listando Personagens de " + auth.getNome_jogador() + " --\n";
+        String res = "NOK";
         GenericDAO gg = new GenericDAO();
         Jogadores jj = new Jogadores();
         List ll = new ArrayList<>();
@@ -244,9 +256,14 @@ public class VerificaComandos {
 
         lp = (List<Personagens>) ll.get(1);
 
-        for (Personagens per : lp) {
-            Personagens ppr = (Personagens) per;
-            res += " " + ppr.getCodigo_personagem() + " - " + ppr.getNome_personagem() + "\n";
+        if (lp.size() > 0) {
+
+            res = "-- Listando Personagens de " + auth.getNome_jogador() + " --\n";
+
+            for (Personagens per : lp) {
+                Personagens ppr = (Personagens) per;
+                res += " " + ppr.getCodigo_personagem() + " - " + ppr.getNome_personagem() + "\n";
+            }
         }
 
         return res;

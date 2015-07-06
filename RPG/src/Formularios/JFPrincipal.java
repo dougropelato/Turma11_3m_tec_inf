@@ -240,6 +240,7 @@ public class JFPrincipal extends javax.swing.JFrame {
                 jTextArea1.setText(jTextArea1.getText() + "Jogador diz: " + string + "\n"); // mostra no texto da historia
 
                 jTextArea1.setText(jTextArea1.getText() + "Mestre: " + vercom.verificaComando(comands) + '\n');
+
             } catch (SQLException ex) {
                 Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IllegalAccessException ex) {
@@ -254,6 +255,12 @@ public class JFPrincipal extends javax.swing.JFrame {
                 Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            if (auth.getCodigo_personagem() != 0 && auth.getCodigo_campanha() == 0) {
+               
+                jTextField1.setText("Campanhas");
+                jButton1.doClick();
             }
 
         }
