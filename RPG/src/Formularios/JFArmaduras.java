@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import tabelas.Armaduras;
+import tabelas.Campanhas;
 
 /**
  *
@@ -26,6 +27,7 @@ public class JFArmaduras extends javax.swing.JFrame {
     private final GenericDAO gg;
     private List<Object> lista = new ArrayList();
     private int contador = 0;
+    ArrayList arrayListArmaduras = new ArrayList();
     
     public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
@@ -44,12 +46,16 @@ public class JFArmaduras extends javax.swing.JFrame {
         
     }
     
-    public void carregaRegistro() {
-        
-        for (Object l1 : lista) {
+  public void carregaRegistro() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+        List<Object> list = gg.listar(Armaduras.class);
+        for (Object l1 : list) {
             Armaduras a = (Armaduras) l1;
-            
-            if (a.getCodigo_armadura() == contador) {
+            arrayListArmaduras.add(a.getCodigo_armadura());
+        }
+        
+        for (Object l1 : list) {
+            Armaduras a = (Armaduras) l1;
+            if(a.getCodigo_armadura() == (int) arrayListArmaduras.get(contador) ) {
                 jTFCodigoArmadura.setText(String.valueOf(a.getCodigo_armadura()));
                 jtfNomeArmadura.setText(a.getNome_armadura());
                 jcTipoArmadura.setSelectedIndex(a.getTipo_armadura());
@@ -308,19 +314,74 @@ public class JFArmaduras extends javax.swing.JFrame {
         jButton3.setEnabled(true);
         jButton1.setEnabled(false);
         jBalterar.setEnabled(true);
+        arrayListArmaduras.clear();
+        contador = 0;
+        try {
+            carregaRegistro();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
         contador--;
-        this.carregaRegistro();
+        if (contador < 0){
+            contador = 0;
+        }
+        try {
+            this.carregaRegistro();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
         contador++;
-        this.carregaRegistro();
+        try {
+            this.carregaRegistro();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -354,6 +415,7 @@ public class JFArmaduras extends javax.swing.JFrame {
         jButton4.setEnabled(false);
         jBconfirmar.setEnabled(true);
         jBcancelar.setEnabled(true);
+        
 
     }//GEN-LAST:event_jBalterarActionPerformed
 
@@ -364,16 +426,30 @@ public class JFArmaduras extends javax.swing.JFrame {
             Armaduras excluirarmadura = new Armaduras();
             
             excluirarmadura.setCodigo_armadura(Integer.parseInt(jTFCodigoArmadura.getText()));
-            
+            System.out.println(jTFCodigoArmadura.getText());
             gDao.excluir(excluirarmadura);
             
             JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
             
+            arrayListArmaduras.clear();
+            contador--;
+            lista.clear();
+            carregaRegistro();
         } catch (SQLException ex) {
             Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoSuchFieldException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
             Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -407,7 +483,25 @@ public class JFArmaduras extends javax.swing.JFrame {
         jBalterar.setEnabled(true);
         jBconfirmar.setEnabled(false);
         jBcancelar.setEnabled(false);
-
+        arrayListArmaduras.clear();
+        contador=0;
+        try {
+            carregaRegistro();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBconfirmarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
