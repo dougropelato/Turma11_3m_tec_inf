@@ -6,6 +6,8 @@
 package Formularios;
 
 import dao.GenericDAO;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.List;
@@ -30,7 +32,8 @@ public class JFProgressaoTalento extends javax.swing.JFrame {
     public JFProgressaoTalento() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         gDAO = new GenericDAO();
         talentos = gDAO.listar(Talentos.class);
-        this.carregaTalento(talentos);
+        carregaTalento(talentos);
+        centralizarComponente();
         initComponents();
     }
 
@@ -40,7 +43,13 @@ public class JFProgressaoTalento extends javax.swing.JFrame {
             jcbTalento.addItem(l);
         }
     }
+    
+    public void centralizarComponente() {
 
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
