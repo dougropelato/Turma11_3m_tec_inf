@@ -9,7 +9,9 @@ import Tabelas.PericiasClasse;
 import java.awt.Checkbox;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -33,10 +35,12 @@ public class JFPericiasClasse extends javax.swing.JFrame {
      * Creates new form JFPericiasClasse
      */
     public JFPericiasClasse() {
+        centralizarComponente();
         initComponents();
     }
 
     public JFPericiasClasse(List<Object> l) {
+        centralizarComponente();
         initComponents();
         GridLayout layout = new GridLayout(10, 5, 10, 10);
         this.setLayout(layout);
@@ -57,6 +61,13 @@ public class JFPericiasClasse extends javax.swing.JFrame {
         jbtSalvar.addActionListener(new salvarPC());
         this.add(jbtSalvar);
         this.pack();
+    }
+    
+    public void centralizarComponente() {
+
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
     }
 
     public class salvarPC implements ActionListener {
