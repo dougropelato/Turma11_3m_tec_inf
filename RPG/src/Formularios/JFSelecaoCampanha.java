@@ -195,7 +195,7 @@ public class JFSelecaoCampanha extends javax.swing.JFrame {
 
         for (Object obj : ll) {
             Campanhas cc = (Campanhas) obj;
-            jComboBox1.add(cc.getNome_campanha(), null);
+            jComboBox1.addItem(cc.getNome_campanha());
 
         }
 

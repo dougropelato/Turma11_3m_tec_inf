@@ -24,22 +24,22 @@ import java.util.logging.Logger;
  * @author Alexjonas
  */
 public class JFPrincipal extends javax.swing.JFrame {
-
+    
     Autenticacao auth = Autenticacao.getInstance();
-
+    
     public static JFPrincipal instance;
-
+    
     public static JFPrincipal getInstance() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InstantiationException, InvocationTargetException, ClassNotFoundException {
         if (instance == null) {
             instance = new JFPrincipal();
         }
         return instance;
     }
-
+    
     int posi = 0;
     ArrayList arrayListDescPosicao = new ArrayList();
     VerificaComandos vercom = new VerificaComandos();
-
+    
     public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
@@ -56,14 +56,14 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLnome_jogador.setText("");
         jLnome_personagem.setText("");
         jLvida_personagem.setText("");
-
+        
         Container c = getContentPane();
 //        c.setBackground(Color.WHITE); // Define a cor de fundo
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         //  setSize(1000, 1000);
         this.setExtendedState(MAXIMIZED_BOTH);
-
+        
     }
 
     /**
@@ -231,6 +231,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
 // TODO add your handling code here:
         String string = jTextField1.getText();
+        String mestre = "";
         if (string != "") {
             try {
                 // divide string em uma arraiy para verificar por partes
@@ -239,8 +240,14 @@ public class JFPrincipal extends javax.swing.JFrame {
 
                 jTextArea1.setText(jTextArea1.getText() + "Jogador diz: " + string + "\n"); // mostra no texto da historia
 
-                jTextArea1.setText(jTextArea1.getText() + "Mestre: " + vercom.verificaComando(comands) + '\n');
-
+                mestre = vercom.verificaComando(comands);
+                
+                jTextArea1.setText(jTextArea1.getText() + "Mestre: " + mestre + '\n');
+                
+                if (mestre.equalsIgnoreCase("lpt")) {
+                    jTextArea1.setText(""); // limpa tela
+                }
+                
             } catch (SQLException ex) {
                 Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IllegalAccessException ex) {
@@ -257,12 +264,6 @@ public class JFPrincipal extends javax.swing.JFrame {
                 Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            if (auth.getCodigo_personagem() != 0 && auth.getCodigo_campanha() == 0) {
-               
-                jTextField1.setText("Campanhas");
-                jButton1.doClick();
-            }
-
         }
 //        // limpa comando digitado
         jTextField1.setText("");
@@ -278,7 +279,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jButton1.doClick();
-
+            
         }
     }//GEN-LAST:event_jTextField1KeyPressed
 
