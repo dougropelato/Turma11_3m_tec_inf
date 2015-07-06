@@ -5,6 +5,8 @@
  */
 package Formularios;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -24,11 +26,18 @@ public class JFProgressao extends javax.swing.JFrame {
      */
     public JFProgressao() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         this.progTalento = new JFProgressaoTalento();
+        centralizarComponente();
         initComponents();
     }
     List<Progressoes> lista = new ArrayList();
     JFProgressaoTalento progTalento;
 
+    public void centralizarComponente() {
+
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
