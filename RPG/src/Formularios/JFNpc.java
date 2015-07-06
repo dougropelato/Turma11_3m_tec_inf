@@ -2619,13 +2619,13 @@ public class JFNpc extends javax.swing.JFrame {
                     
                 }
                 
-                    JOptionPane.showMessageDialog(null, 
-                    "Foram adicionadas: " 
-                    +"\n"+jTFNovosItensQuantidadeArmaduraNpc.getText()+ " quantidades de Armadura: " 
-                    +jCBNovosItensArmaduraNpc.getSelectedItem()+ "\n" +
-                    "para..."+ "\n"+        
-                    "NPC: "+jCBNovosItensNomeNpc.getSelectedItem()+ "\n"+
-                    "Tipo: "+jTFNovosItensTipoNpc.getText());
+                JOptionPane.showMessageDialog(null, 
+                " -- Armadura adicionada -- "+ "\n"+
+                "Armadura: " +jCBNovosItensArmaduraNpc.getSelectedItem()+ "\n"+
+                "Quantidade: "+jTFNovosItensQuantidadeArmaduraNpc.getText()+ "\n"+        
+                "para..."+ "\n"+        
+                "NPC: "+jCBNovosItensNomeNpc.getSelectedItem()+ "\n"+
+                "Tipo: "+jTFNovosItensTipoNpc.getText());
                           
             } 
             
@@ -2670,11 +2670,13 @@ public class JFNpc extends javax.swing.JFrame {
                     
                 }
                 
-                    JOptionPane.showMessageDialog(null, "Foram adicionadas " 
-                        +jTFNovosItensQuantidadeArmaNpc.getText()+ " quantidades de Arma: " 
-                         +jCBNovosItensArmaNpc.getSelectedItem()+ 
-                          " para o NPC: "+jCBNovosItensNomeNpc.getSelectedItem()+ 
-                            " do Tipo: "+jTFNovosItensTipoNpc.getText()+" !");
+                    JOptionPane.showMessageDialog(null, 
+                    " -- Arma adicionada -- "+ "\n"+
+                    "Arma: "+jCBNovosItensArmaNpc.getSelectedItem()+ "\n"+
+                    "Quantidade: "+jTFNovosItensQuantidadeArmaNpc.getText()+ "\n"+
+                    "para..."+ "\n"+  
+                    "NPC: "+jCBNovosItensNomeNpc.getSelectedItem()+ "\n"+ 
+                    "Tipo: "+jTFNovosItensTipoNpc.getText());
                                     
             }
             
@@ -2719,11 +2721,13 @@ public class JFNpc extends javax.swing.JFrame {
                     
                 }
                 
-                    JOptionPane.showMessageDialog(null, "Foram adicionadas " 
-                        +jTFNovosItensQuantidadeConsumivelNpc.getText()+ " quantidades de Consumivel: " 
-                         +jCBNovosItensConsumivelNpc.getSelectedItem()+ 
-                          " para o NPC: "+jCBNovosItensNomeNpc.getSelectedItem()+ 
-                            " do Tipo: "+jTFNovosItensTipoNpc.getText()+" !");
+                    JOptionPane.showMessageDialog(null,
+                    " -- Consumivel adicionado -- "+ "\n"+
+                    "Consumivel: "+jCBNovosItensConsumivelNpc.getSelectedItem()+ "\n"+  
+                    "Quantidade: "+jTFNovosItensQuantidadeConsumivelNpc.getText()+ "\n"+
+                    "para..."+ "\n"+
+                    "NPC: "+jCBNovosItensNomeNpc.getSelectedItem()+ "\n"+ 
+                    "Tipo: "+jTFNovosItensTipoNpc.getText());
                 
             }
             
@@ -2768,11 +2772,13 @@ public class JFNpc extends javax.swing.JFrame {
                     
                 }
                 
-                    JOptionPane.showMessageDialog(null, "Foram adicionadas " 
-                        +jTFNovosItensQuantidadeEscudoNpc.getText()+ " quantidades de Escudo: " 
-                         +jCBNovosItensEscudoNpc.getSelectedItem()+ 
-                          " para o NPC: "+jCBNovosItensNomeNpc.getSelectedItem()+ 
-                            " do Tipo: "+jTFNovosItensTipoNpc.getText()+" !");
+                    JOptionPane.showMessageDialog(null, 
+                    " -- Escudo adicionado -- "+ "\n"+
+                    "Escudo: "+jCBNovosItensEscudoNpc.getSelectedItem()+ "\n"+     
+                    "Quantidade: "+jTFNovosItensQuantidadeEscudoNpc.getText()+ "\n"+
+                    "para..."+ "\n"+   
+                    "NPC: "+jCBNovosItensNomeNpc.getSelectedItem()+ "\n"+ 
+                    "Tipo: "+jTFNovosItensTipoNpc.getText());
                 
             }
             
