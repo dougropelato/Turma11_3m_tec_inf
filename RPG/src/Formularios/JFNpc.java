@@ -135,8 +135,8 @@ public class JFNpc extends javax.swing.JFrame {
         jTFCodRaca = new javax.swing.JTextField();
         jTFCodClasse = new javax.swing.JTextField();
         jTFIndexTipoNpc = new javax.swing.JTextField();
-        jBAtualizarAtributos = new javax.swing.JButton();
-        jBAtualizarItens = new javax.swing.JButton();
+        jBCarregarRacaClasse = new javax.swing.JButton();
+        jBCarregarItens = new javax.swing.JButton();
         jBAlterar = new javax.swing.JButton();
         jBSair = new javax.swing.JButton();
         jCBAdicionarItemEscudo = new javax.swing.JCheckBox();
@@ -289,7 +289,7 @@ public class JFNpc extends javax.swing.JFrame {
         jTARespostaNegativa.setLineWrap(true);
         jTARespostaNegativa.setRows(5);
         jTARespostaNegativa.setWrapStyleWord(true);
-        jTARespostaNegativa.setNextFocusableComponent(jBAtualizarAtributos);
+        jTARespostaNegativa.setNextFocusableComponent(jBCarregarRacaClasse);
         jTARespostaNegativa.setPreferredSize(null);
         jScrollPane3.setViewportView(jTARespostaNegativa);
 
@@ -431,7 +431,7 @@ public class JFNpc extends javax.swing.JFrame {
         jPCadastrar.add(jTFReflexos, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 529, 90, -1));
 
         jTFCarisma.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTFCarisma.setNextFocusableComponent(jBAtualizarItens);
+        jTFCarisma.setNextFocusableComponent(jBCarregarItens);
         jPCadastrar.add(jTFCarisma, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 555, 90, -1));
 
         jLClasse.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -575,23 +575,23 @@ public class JFNpc extends javax.swing.JFrame {
         jTFIndexTipoNpc.setFocusable(false);
         jPCadastrar.add(jTFIndexTipoNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 77, 40, -1));
 
-        jBAtualizarAtributos.setText("Atualizar Atributos");
-        jBAtualizarAtributos.setNextFocusableComponent(jCBRaca);
-        jBAtualizarAtributos.addActionListener(new java.awt.event.ActionListener() {
+        jBCarregarRacaClasse.setText("Carregar Raça/Classe");
+        jBCarregarRacaClasse.setNextFocusableComponent(jCBRaca);
+        jBCarregarRacaClasse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBAtualizarAtributosActionPerformed(evt);
+                jBCarregarRacaClasseActionPerformed(evt);
             }
         });
-        jPCadastrar.add(jBAtualizarAtributos, new org.netbeans.lib.awtextra.AbsoluteConstraints(447, 70, 125, 30));
+        jPCadastrar.add(jBCarregarRacaClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 70, 150, 30));
 
-        jBAtualizarItens.setText("Atualizar Itens");
-        jBAtualizarItens.setNextFocusableComponent(jCBArmaduraNpc);
-        jBAtualizarItens.addActionListener(new java.awt.event.ActionListener() {
+        jBCarregarItens.setText("Carregar Itens");
+        jBCarregarItens.setNextFocusableComponent(jCBArmaduraNpc);
+        jBCarregarItens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBAtualizarItensActionPerformed(evt);
+                jBCarregarItensActionPerformed(evt);
             }
         });
-        jPCadastrar.add(jBAtualizarItens, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 70, 125, 30));
+        jPCadastrar.add(jBCarregarItens, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 70, 125, 30));
 
         jBAlterar.setText("Alterar");
         jBAlterar.addActionListener(new java.awt.event.ActionListener() {
@@ -1026,7 +1026,7 @@ public class JFNpc extends javax.swing.JFrame {
     public void OcultarComponentesAtributos(java.awt.event.ActionEvent evt) {
         
         // Atributos
-        jBAtualizarAtributos.setVisible(false);
+        jBCarregarRacaClasse.setVisible(false);
         
         jLAtributosNpc.setVisible(false);
         
@@ -1083,7 +1083,7 @@ public class JFNpc extends javax.swing.JFrame {
     public void OcultarComponentesItens(java.awt.event.ActionEvent evt){
     
         // Itens
-        jBAtualizarItens.setVisible(false);
+        jBCarregarItens.setVisible(false);
         jLItens.setVisible(false);
         jLArmaNpc.setVisible(false);
         jLArmaduraNpc.setVisible(false);
@@ -1213,7 +1213,7 @@ public class JFNpc extends javax.swing.JFrame {
     public void MostrarComponentesAtributos(java.awt.event.ActionEvent evt) {
 
         // Atributos
-        jBAtualizarAtributos.setVisible(true);
+        jBCarregarRacaClasse.setVisible(true);
         jLAtributosNpc.setVisible(true);
 
         jLRaca.setVisible(true);
@@ -1269,7 +1269,7 @@ public class JFNpc extends javax.swing.JFrame {
     public void MostrarComponentesItens(java.awt.event.ActionEvent evt){
     
         // Itens
-        jBAtualizarItens.setVisible(true);
+        jBCarregarItens.setVisible(true);
         jLItens.setVisible(true);
         jLArmaNpc.setVisible(true);
         jLArmaduraNpc.setVisible(true);
@@ -2619,12 +2619,14 @@ public class JFNpc extends javax.swing.JFrame {
                     
                 }
                 
-                    JOptionPane.showMessageDialog(null, "Foram adicionadas " 
-                        +jTFNovosItensQuantidadeArmaduraNpc.getText()+ " quantidades de Armadura: " 
-                         +jCBNovosItensArmaduraNpc.getSelectedItem()+ 
-                          " para o NPC: "+jCBNovosItensNomeNpc.getSelectedItem()+ 
-                            " do Tipo: "+jTFNovosItensTipoNpc.getText()+" !");
-                    
+                    JOptionPane.showMessageDialog(null, 
+                    "Foram adicionadas: " 
+                    +"\n"+jTFNovosItensQuantidadeArmaduraNpc.getText()+ " quantidades de Armadura: " 
+                    +jCBNovosItensArmaduraNpc.getSelectedItem()+ "\n" +
+                    "para..."+ "\n"+        
+                    "NPC: "+jCBNovosItensNomeNpc.getSelectedItem()+ "\n"+
+                    "Tipo: "+jTFNovosItensTipoNpc.getText());
+                          
             } 
             
             else { // Informa campos em branco  
@@ -3098,7 +3100,7 @@ public class JFNpc extends javax.swing.JFrame {
     }//GEN-LAST:event_jBNovosItensAtualizarActionPerformed
 
     // Atualiza ComboBox Raça e ComboBox Classe com dados do banco em aba Cadastrar
-    private void jBAtualizarAtributosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAtualizarAtributosActionPerformed
+    private void jBCarregarRacaClasseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCarregarRacaClasseActionPerformed
         
         try {
             
@@ -3128,10 +3130,10 @@ public class JFNpc extends javax.swing.JFrame {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }//GEN-LAST:event_jBAtualizarAtributosActionPerformed
+    }//GEN-LAST:event_jBCarregarRacaClasseActionPerformed
     
     // Atualiza ComboBox Armas, ComboBox Armaduras, ComboBox Consumiveis e ComboBox Escudos com dados do banco em aba Cadastrar
-    private void jBAtualizarItensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAtualizarItensActionPerformed
+    private void jBCarregarItensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCarregarItensActionPerformed
              
         try {
             
@@ -3160,7 +3162,7 @@ public class JFNpc extends javax.swing.JFrame {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }//GEN-LAST:event_jBAtualizarItensActionPerformed
+    }//GEN-LAST:event_jBCarregarItensActionPerformed
 
     // CheckBox Armaduras selecionado
     private void jCBNovosItensAdicionarArmaduraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBNovosItensAdicionarArmaduraActionPerformed
@@ -3510,9 +3512,9 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JLabel LabelRespostaPositiva;
     private javax.swing.JLabel LabelTipoNpc;
     private javax.swing.JButton jBAlterar;
-    private javax.swing.JButton jBAtualizarAtributos;
-    private javax.swing.JButton jBAtualizarItens;
     private javax.swing.JButton jBCadastrar;
+    private javax.swing.JButton jBCarregarItens;
+    private javax.swing.JButton jBCarregarRacaClasse;
     private javax.swing.JButton jBNovaFalaAdicionar;
     private javax.swing.JButton jBNovaFalaAtualizar;
     private javax.swing.JButton jBNovosItensAdicionar;
