@@ -468,23 +468,26 @@ public class JFCampanhas extends javax.swing.JFrame {
                 GenericDAO gDAO = new GenericDAO();
                 Campanhas c = new Campanhas();
                 
+                //set nos campos da nova campanha
                 c.setNome_campanha(jtfNomeCampanha.getText());
                 c.setTam_x_campanha(Integer.parseInt(jtfTamX.getText()));
                 c.setTam_y_campanha(Integer.parseInt(jtfTamY.getText()));
                 gDAO.adicionar(c); //post
                 
                 JOptionPane.showMessageDialog(null, "Campanha " + jtfNomeCampanha.getText() + " foi cadastrada!");
-                jtfNomeCampanha.setText(null);  //Limpa o Campos
+
+                //Limpa o Campos
+                jtfNomeCampanha.setText(null);  
                 jtfTamX.setText(null);
                 jtfTamY.setText(null);
+                
+                //limpa arrays e chama o procedimento que atualiza os combos
+                arrayListCampanhas.clear();
+                jcbCampanhas.removeAllItems();
+                jcbExcluirCampanha.removeAllItems();
+                carregaComboCampanhas();
             }
-          
-            arrayListCampanhas.clear();
-            jcbCampanhas.removeAllItems();
-            jcbExcluirCampanha.removeAllItems();
-            carregaComboCampanhas();
-        
-        } catch (SQLException ex) {//Caso Houver Exceção... E Não puder Cadastrar...
+        } catch (SQLException ex) {
             Logger.getLogger(JFCampanhas.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JFCampanhas.class.getName()).log(Level.SEVERE, null, ex);
@@ -498,7 +501,7 @@ public class JFCampanhas extends javax.swing.JFrame {
             Logger.getLogger(JFCampanhas.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
             Logger.getLogger(JFCampanhas.class.getName()).log(Level.SEVERE, null, ex);
-        }//Fim Catch...
+        }
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
