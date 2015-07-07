@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import tabelas.ProgressaoTalento;
 import tabelas.Progressoes;
 
 /**
@@ -25,18 +26,19 @@ public class JFProgressao extends javax.swing.JFrame {
      * Creates new form JFProgressao
      */
     public JFProgressao() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InvocationTargetException, InstantiationException, ClassNotFoundException {
-        this.progTalento = new JFProgressaoTalento();
         centralizarComponente();
         initComponents();
+        progTalento = new JFProgressaoTalento();
     }
     List<Progressoes> lista = new ArrayList();
     JFProgressaoTalento progTalento;
-
+    List<ProgressaoTalento> listaPt = new ArrayList();
+            
     public void centralizarComponente() {
 
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
-        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+        setLocation((ds.width - dw.width - 500) / 2, (ds.height - dw.height - 500) / 2);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -154,6 +156,7 @@ public class JFProgressao extends javax.swing.JFrame {
 
     private void jbtsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtsalvarActionPerformed
         
+        listaPt = progTalento.getProgTalento();
         lista.clear();
         
         for (int i = 0; i < 20; i++) {
@@ -238,6 +241,10 @@ public class JFProgressao extends javax.swing.JFrame {
     
     public List getProgressoes() {
         return lista;
+    }
+    
+    public List getProgTalento() {
+        return listaPt;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
