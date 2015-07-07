@@ -119,7 +119,7 @@ public class JFVendaItens extends javax.swing.JFrame {
         jbComprar.setVisible(false);
         lbComprar.setVisible(false);
         lbPrecoUndComprar.setVisible(false);
-        jlListPreçoComprar.setVisible(false);
+        jlListPreçoTotalComprar.setVisible(false);
         lbPrecoComprar.setVisible(false);
         jcbVenderConsumiveis.setVisible(false);
         jcbVenderEscudos.setVisible(false);
@@ -203,7 +203,7 @@ public class JFVendaItens extends javax.swing.JFrame {
         lbDinheiroClasse = new javax.swing.JLabel();
         lbDinheiroPersonagem = new javax.swing.JLabel();
         lbPrecoComprar = new javax.swing.JLabel();
-        jlListPreçoComprar = new javax.swing.JLabel();
+        jlListPreçoTotalComprar = new javax.swing.JLabel();
         lbPrecoUndComprar = new javax.swing.JLabel();
         lbComprar = new javax.swing.JLabel();
         lbVender = new javax.swing.JLabel();
@@ -475,7 +475,7 @@ public class JFVendaItens extends javax.swing.JFrame {
         lbPrecoComprar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbPrecoComprar.setText("Preço Total:");
         getContentPane().add(lbPrecoComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
-        getContentPane().add(jlListPreçoComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 190, 20));
+        getContentPane().add(jlListPreçoTotalComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 190, 20));
 
         lbPrecoUndComprar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbPrecoUndComprar.setText("Preço unidade:");
@@ -883,7 +883,7 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcVenderEscudos.removeAllItems();
             jcVenderConsumiveis.removeAllItems();
             jlListPreçoUndComprar.setText("");
-            jlListPreçoComprar.setText("");
+            jlListPreçoTotalComprar.setText("");
         } else {
             lbVender.setVisible(false);
             jcbVenderConsumiveis.setVisible(false);
@@ -925,6 +925,9 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcVenderArmaduras.removeAllItems();
             jcVenderEscudos.removeAllItems();
             jcVenderConsumiveis.removeAllItems();
+            jlListPreçoUndComprar.setText("");
+            jlListPreçoTotalComprar.setText("");
+            QuantComprar.setText("");
 
         } else {
             lbComprar.setVisible(false);
@@ -938,14 +941,13 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcComprarArmas.setVisible(false);
             jbComprar.setVisible(false);
             lbPrecoUndComprar.setVisible(false);
-            jlListPreçoComprar.setVisible(false);
+            jlListPreçoTotalComprar.setVisible(false);
             lbPrecoComprar.setVisible(false);
             jlQuantComprar.setVisible(false);
             QuantComprar.setVisible(false);
             jcbVender.setEnabled(true);
-            jlListPreçoUndComprar.setEnabled(false);
             jlListPreçoUndComprar.setText("");
-            jlListPreçoComprar.setText("");
+            jlListPreçoTotalComprar.setText("");
 
         }
     }//GEN-LAST:event_jcbComprarActionPerformed
@@ -974,18 +976,18 @@ public class JFVendaItens extends javax.swing.JFrame {
             lbPrecoUndComprar.setVisible(true);
             jlQuantComprar.setVisible(true);
             QuantComprar.setVisible(true);
-            jlListPreçoComprar.setVisible(true);
+            jlListPreçoTotalComprar.setVisible(true);
             lbPrecoComprar.setVisible(true);
             jcbComprarArmaduras.setEnabled(false);
             jcbComprarEscudos.setEnabled(false);
             jcbComprarConsumiveis.setEnabled(false);
-            jlListPreçoUndComprar.setEnabled(true);
+            QuantComprar.setText("");
 
         } else {
             jcComprarArmas.setVisible(false);
             jbComprar.setVisible(false);
             lbPrecoUndComprar.setVisible(false);
-            jlListPreçoComprar.setVisible(false);
+            jlListPreçoTotalComprar.setVisible(false);
             lbPrecoComprar.setVisible(false);
             jlQuantComprar.setVisible(false);
             QuantComprar.setVisible(false);
@@ -993,11 +995,10 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcbComprarArmaduras.setEnabled(true);
             jcbComprarEscudos.setEnabled(true);
             jcbComprarConsumiveis.setEnabled(true);
-            jlListPreçoUndComprar.setEnabled(false);
-            jlListPreçoComprar.setVisible(false);
+            jlListPreçoTotalComprar.setVisible(false);
             lbPrecoComprar.setVisible(false);
             jlListPreçoUndComprar.setText("");
-            jlListPreçoComprar.setText("");
+            jlListPreçoTotalComprar.setText("");
         }
     }//GEN-LAST:event_jcbComprarArmasActionPerformed
 
@@ -1024,12 +1025,12 @@ public class JFVendaItens extends javax.swing.JFrame {
             lbPrecoUndComprar.setVisible(true);
             jlQuantComprar.setVisible(true);
             QuantComprar.setVisible(true);
-            jlListPreçoComprar.setVisible(true);
+            jlListPreçoTotalComprar.setVisible(true);
             lbPrecoComprar.setVisible(true);
             jcbComprarArmas.setEnabled(false);
             jcbComprarEscudos.setEnabled(false);
             jcbComprarConsumiveis.setEnabled(false);
-            jlListPreçoUndComprar.setEnabled(true);
+            QuantComprar.setText("");
         } else {
             jcComprarArmaduras.setVisible(false);
             jbComprar.setVisible(false);
@@ -1040,11 +1041,10 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcbComprarArmas.setEnabled(true);
             jcbComprarEscudos.setEnabled(true);
             jcbComprarConsumiveis.setEnabled(true);
-            jlListPreçoUndComprar.setEnabled(false);
-            jlListPreçoComprar.setVisible(false);
+            jlListPreçoTotalComprar.setVisible(false);
             lbPrecoComprar.setVisible(false);
             jlListPreçoUndComprar.setText("");
-            jlListPreçoComprar.setText("");
+            jlListPreçoTotalComprar.setText("");
         }
     }//GEN-LAST:event_jcbComprarArmadurasActionPerformed
 
@@ -1073,12 +1073,12 @@ public class JFVendaItens extends javax.swing.JFrame {
             lbPrecoUndComprar.setVisible(true);
             jlQuantComprar.setVisible(true);
             QuantComprar.setVisible(true);
-            jlListPreçoComprar.setVisible(true);
+            jlListPreçoTotalComprar.setVisible(true);
             lbPrecoComprar.setVisible(true);
             jcbComprarArmas.setEnabled(false);
             jcbComprarArmaduras.setEnabled(false);
             jcbComprarConsumiveis.setEnabled(false);
-            jlListPreçoUndComprar.setEnabled(true);
+            QuantComprar.setText("");
         } else {
             jcComprarEscudos.setVisible(false);
             jbComprar.setVisible(false);
@@ -1089,11 +1089,10 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcbComprarArmas.setEnabled(true);
             jcbComprarArmaduras.setEnabled(true);
             jcbComprarConsumiveis.setEnabled(true);
-            jlListPreçoUndComprar.setEnabled(false);
-            jlListPreçoComprar.setVisible(false);
+            jlListPreçoTotalComprar.setVisible(false);
             lbPrecoComprar.setVisible(false);
             jlListPreçoUndComprar.setText("");
-            jlListPreçoComprar.setText("");
+            jlListPreçoTotalComprar.setText("");
 
         }
     }//GEN-LAST:event_jcbComprarEscudosActionPerformed
@@ -1120,13 +1119,13 @@ public class JFVendaItens extends javax.swing.JFrame {
             jbComprar.setVisible(true);
             lbPrecoUndComprar.setVisible(true);
             QuantComprar.setVisible(true);
-            jlListPreçoComprar.setVisible(true);
+            jlListPreçoTotalComprar.setVisible(true);
             lbPrecoComprar.setVisible(true);
             jlQuantComprar.setVisible(true);
             jcbComprarArmas.setEnabled(false);
             jcbComprarArmaduras.setEnabled(false);
             jcbComprarEscudos.setEnabled(false);
-            jlListPreçoUndComprar.setEnabled(true);
+            QuantComprar.setText("");
         } else {
             jcComprarConsumiveis.setVisible(false);
             jbComprar.setVisible(false);
@@ -1136,11 +1135,11 @@ public class JFVendaItens extends javax.swing.JFrame {
             jcbComprarArmas.setEnabled(true);
             jcbComprarArmaduras.setEnabled(true);
             jcbComprarEscudos.setEnabled(true);
-            jlListPreçoUndComprar.setEnabled(false);
-            jlListPreçoComprar.setVisible(false);
+            jlListPreçoTotalComprar.setVisible(false);
             lbPrecoComprar.setVisible(false);
+            jlQuantComprar.setVisible(false);
             jlListPreçoUndComprar.setText("");
-            jlListPreçoComprar.setText("");
+            jlListPreçoTotalComprar.setText("");
         }
     }//GEN-LAST:event_jcbComprarConsumiveisActionPerformed
 
@@ -1581,7 +1580,7 @@ public class JFVendaItens extends javax.swing.JFrame {
         double QuantItens = (Double.parseDouble(QuantComprar.getText()));
         double PrecoUnidade = (Double.parseDouble(jlListPreçoUndComprar.getText()));
         double Result = PrecoUnidade * QuantItens;
-        jlListPreçoComprar.setText(String.valueOf(Result));
+        jlListPreçoTotalComprar.setText(String.valueOf(Result));
 
     }//GEN-LAST:event_QuantComprarKeyReleased
 
@@ -1840,7 +1839,7 @@ public class JFVendaItens extends javax.swing.JFrame {
     private javax.swing.JCheckBox jcbVenderArmas;
     private javax.swing.JCheckBox jcbVenderConsumiveis;
     private javax.swing.JCheckBox jcbVenderEscudos;
-    private javax.swing.JLabel jlListPreçoComprar;
+    private javax.swing.JLabel jlListPreçoTotalComprar;
     private javax.swing.JLabel jlListPreçoUndComprar;
     private javax.swing.JLabel jlQuantComprar;
     private javax.swing.JLabel jlQuantVender;

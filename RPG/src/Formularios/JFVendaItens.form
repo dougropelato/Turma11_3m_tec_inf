@@ -497,7 +497,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jlListPre&#xe7;oComprar">
+    <Component class="javax.swing.JLabel" name="jlListPre&#xe7;oTotalComprar">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="120" y="460" width="190" height="20"/>
