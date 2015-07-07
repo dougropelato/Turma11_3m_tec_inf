@@ -171,6 +171,9 @@ public class Personagens {
         this.codigo_raca = codigo_raca;
     }
 
+    
+    
+    //modificadores para uso em batalhas
     public int getModForca() {
 
         double forca = (double) this.forca_personagem;

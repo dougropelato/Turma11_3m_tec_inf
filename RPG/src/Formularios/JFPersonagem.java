@@ -33,17 +33,14 @@ public class JFPersonagem extends javax.swing.JFrame {
         setLocation((ds.width - dw.width) / 2,
                 (ds.height - dw.height) / 2);
     }
-    
-    
-    
-
+    //declaração de variaveis
     int forca;
     int destreza;
     int constituicao;
     int inteligencia;
     int sabedoria;
     int carisma;
-
+    //arraylist
     ArrayList listRaca = new ArrayList();
     ArrayList listClasse = new ArrayList();
 
@@ -377,24 +374,20 @@ public class JFPersonagem extends javax.swing.JFrame {
                 Personagens pers = new Personagens();
                 Raca rc = new Raca();
 
-                rc.setCodigo_raca((int) listRaca.get(jCRaca.getSelectedIndex()));
-                List<Object> list = aDao.listar2(Raca.class, rc);
-                for (Object obj3 : list) {
-
-                    Raca r = (Raca) obj3;
-
-                    forca = (r.getForca_raca());
-                    //System.out.println("forca raca : "+ forca);
-                    destreza = (r.getDestreza_raca());
-                    constituicao = (r.getConstituicao_raca());
-                    inteligencia = (r.getInteligencia_raca());
-                    sabedoria = (r.getSabedoria_raca());
-                    carisma = (r.getCarisma_raca());
+                rc.setCodigo_raca((int) listRaca.get(jCRaca.getSelectedIndex()));   //pega os atributos da raça
+                List<Object> list = aDao.listar2(Raca.class, rc);                   //que o jogador escolheu
+                for (Object obj3 : list) {                                          //<--
+                                                                                    //<--
+                    Raca r = (Raca) obj3;                                           //<--
+                                                                                    //<--
+                    forca = (r.getForca_raca());                                    //<--
+                    destreza = (r.getDestreza_raca());                              //<--
+                    constituicao = (r.getConstituicao_raca());                      //<--
+                    inteligencia = (r.getInteligencia_raca());                      //<--
+                    sabedoria = (r.getSabedoria_raca());                            //<--
+                    carisma = (r.getCarisma_raca());                                //<--
                 }
 
-                //System.out.println("forca personagem " + forcaPersonagem);
-                //totalForca = (forca+forcaPersonagem);
-                //System.out.println("total: " + (forca + (Integer.parseInt(jtfForcaPersonagem.getText()))));
                 pers.setNome_personagem("");
                 pers.setIdade_personagem(0);
                 pers.setPeso_personagem(0);
@@ -414,6 +407,7 @@ public class JFPersonagem extends javax.swing.JFrame {
                 pers.setIniciativa_personagem(0);
                 pers.setBase_ataque_personagem(0);
 
+                //seta os atributos do personagem no BD de acordo com que o jogador escolher + o que o personagem ganha da classe
                 pers.setNome_personagem(jtfNomePersonagem.getText());
                 pers.setIdade_personagem(Integer.parseInt(jtfIdadePersonagem.getText()));
                 pers.setPeso_personagem(Integer.parseInt(jtfPesoPersonagem.getText()));
@@ -482,8 +476,8 @@ public class JFPersonagem extends javax.swing.JFrame {
                 Raca rc = (Raca) obj2;
                 String Raca = "";
                 Raca = rc.getNome_raca();
-                listRaca.add(rc.getCodigo_raca());// adiciona o nome da raca no comboBox
-                jCRaca.addItem(Raca);//adiciona o codigo da raca no array raca
+                jCRaca.addItem(Raca);// adiciona o nome da raca no comboBox
+                listRaca.add(rc.getCodigo_raca());//adiciona o codigo da raca no array raca
             }
 
         } catch (SQLException ex) {
