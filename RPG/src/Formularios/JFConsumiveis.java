@@ -26,6 +26,7 @@ public class JFConsumiveis extends javax.swing.JFrame {
     private final GenericDAO gg;
     private List<Object> lista = new ArrayList();
     private int contador = 0;
+    ArrayList arrayListConsumiveis = new ArrayList();
 
     public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
@@ -41,12 +42,18 @@ public class JFConsumiveis extends javax.swing.JFrame {
         this.lista = gg.listar(Consumiveis.class);
     }
 
-    public void carregaRegistro() {
+    public void carregaRegistro() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+        
+        List<Object> list = gg.listar(Consumiveis.class);
+        for (Object l1 : list) {
+            Consumiveis a = (Consumiveis) l1;
+            arrayListConsumiveis.add(a.getCodigo_consumivel());
+        }
 
         for (Object l1 : lista) {
             Consumiveis a = (Consumiveis) l1;
 
-            if (a.getCodigo_consumivel() == contador) {
+            if(a.getCodigo_consumivel()== (int) arrayListConsumiveis.get(contador) ) {
                 jTFCodigoConsumivel.setText(String.valueOf(a.getCodigo_consumivel()));
                 jtfNomeConsumivel.setText(a.getNome_consumivel());
                 jtfPrecoConsumivel.setText(String.valueOf(a.getPreco_consumivel()));
@@ -257,26 +264,25 @@ public class JFConsumiveis extends javax.swing.JFrame {
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
 
-        try {
             Consumiveis cons = new Consumiveis();
-
-            GenericDAO gDAO = new GenericDAO();
 
             cons.setNome_consumivel(jtfNomeConsumivel.getText());
             cons.setPreco_consumivel(Double.parseDouble(jtfPrecoConsumivel.getText()));
             cons.setQuantidade_dados_consumivel(Integer.parseInt(jtfQuantidadeDadosConsumivel.getText()));
             cons.setTipo_dado_consumivel(Integer.parseInt(jtfTipoDadoConsumivel.getText()));
 
-            gDAO.adicionar(cons);
-        } catch (SQLException ex) {
-            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            gg.adicionar(cons);
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalArgumentException ex) {
             Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
 
         JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
 
@@ -284,16 +290,70 @@ public class JFConsumiveis extends javax.swing.JFrame {
         jButton2.setEnabled(true);
         jbCadastrar.setEnabled(true);
         jBalterar.setEnabled(true);
+        arrayListConsumiveis.clear();
+        contador = 0;
+        try {
+            carregaRegistro();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         contador--;
-        this.carregaRegistro();
+        if (contador < 0){
+            contador = 0;
+        }
+        try {
+            this.carregaRegistro();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         contador++;
-        this.carregaRegistro();
+        try {
+            this.carregaRegistro();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -331,17 +391,31 @@ public class JFConsumiveis extends javax.swing.JFrame {
             Consumiveis excluirconsumivel = new Consumiveis();
 
             excluirconsumivel.setCodigo_consumivel(Integer.parseInt(jTFCodigoConsumivel.getText()));
-
+            System.out.println(jTFCodigoConsumivel.getText());
             gDao.excluir(excluirconsumivel);
 
             JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
-
+            
+            arrayListConsumiveis.clear();
+            contador--;
+            lista.clear();
+           carregaRegistro();
         } catch (SQLException ex) {
             Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoSuchFieldException ex) {
             Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBexcluirActionPerformed
 
@@ -372,6 +446,25 @@ public class JFConsumiveis extends javax.swing.JFrame {
         jBalterar.setEnabled(true);
         jBconfirmar.setEnabled(false);
         jBcancelar.setEnabled(false);
+        arrayListConsumiveis.clear();
+        contador=0;
+        try {
+            carregaRegistro();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFConsumiveis.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBconfirmarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
