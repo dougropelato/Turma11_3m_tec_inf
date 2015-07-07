@@ -63,11 +63,15 @@ public class JFPericiasClasse extends javax.swing.JFrame {
         this.pack();
     }
     
+    public void teste () {
+        this.setVisible(false);
+    }
+    
     public void centralizarComponente() {
 
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
-        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+        setLocation((ds.width - dw.width - 500) / 2, (ds.height - dw.height - 500) / 2);
     }
 
     public class salvarPC implements ActionListener {
@@ -91,6 +95,7 @@ public class JFPericiasClasse extends javax.swing.JFrame {
                     }
                 }
             }
+            teste();
         }
     }
 
