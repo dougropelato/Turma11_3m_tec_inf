@@ -26,6 +26,7 @@ public class JFArmas extends javax.swing.JFrame {
     private final GenericDAO gg;
     private List<Object> lista = new ArrayList();
     private int contador = 0;
+    ArrayList arrayListArmas = new ArrayList();
 
     public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
@@ -35,18 +36,24 @@ public class JFArmas extends javax.swing.JFrame {
     }
 
     public JFArmas() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+
         this.gg = new GenericDAO();
         initComponents();
         centralizarComponente();
         this.lista = gg.listar(Armas.class);
     }
 
-    public void carregaRegistro() {
+    public void carregaRegistro() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+        List<Object> list = gg.listar(Armas.class);
+        for (Object l1 : list) {
+            Armas a = (Armas) l1;
+            arrayListArmas.add(a.getCodigo_arma());
+        }
 
         for (Object l1 : lista) {
             Armas a = (Armas) l1;
 
-            if (a.getCodigo_arma() == contador) {
+            if (a.getCodigo_arma() == (int) arrayListArmas.get(contador)) {
                 jTFCodigoArma.setText(String.valueOf(a.getCodigo_arma()));
                 jtfNomeArma.setText(a.getNome_arma());
                 jcTipoArma.setSelectedIndex(a.getTipo_arma());
@@ -277,18 +284,14 @@ public class JFArmas extends javax.swing.JFrame {
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
 
+        Armas arma = new Armas();
+        arma.setNome_arma(jtfNomeArma.getText());
+        arma.setTipo_arma(jcTipoArma.getSelectedIndex());
+        arma.setPreco_arma(Double.parseDouble(jtfPrecoArma.getText()));
+        arma.setQuantidade_dado_arma(Integer.parseInt(jtfQuantidadeDadoArma.getText()));
+        arma.setTipo_do_dado_arma(Integer.parseInt(jtfTipoDadoArma.getText()));
         try {
-            Armas arma = new Armas();
-
-            GenericDAO gDAO = new GenericDAO();
-
-            arma.setNome_arma(jtfNomeArma.getText());
-            arma.setTipo_arma(jcTipoArma.getSelectedIndex());
-            arma.setPreco_arma(Double.parseDouble(jtfPrecoArma.getText()));
-            arma.setQuantidade_dado_arma(Integer.parseInt(jtfQuantidadeDadoArma.getText()));
-            arma.setTipo_do_dado_arma(Integer.parseInt(jtfTipoDadoArma.getText()));
-
-            gDAO.adicionar(arma);
+            gg.adicionar(arma);
         } catch (SQLException ex) {
             Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -305,17 +308,71 @@ public class JFArmas extends javax.swing.JFrame {
         jButton1.setEnabled(true);
         jbCadastrar.setEnabled(false);
         jBalterar.setEnabled(true);
+        arrayListArmas.clear();
+        contador = 0;
+        try {
+            carregaRegistro();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         contador++;
-        this.carregaRegistro();
+        try {
+            this.carregaRegistro();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         contador--;
-        this.carregaRegistro();
+        if (contador < 0) {
+            contador = 0;
+        }
+        try {
+            this.carregaRegistro();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -359,17 +416,30 @@ public class JFArmas extends javax.swing.JFrame {
             Armas excluirarmas = new Armas();
 
             excluirarmas.setCodigo_arma(Integer.parseInt(jTFCodigoArma.getText()));
-
+            System.out.println(jTFCodigoArma.getText());
             gDao.excluir(excluirarmas);
 
             JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
-
+            arrayListArmas.clear();
+            contador--;
+            lista.clear();
+            carregaRegistro();
         } catch (SQLException ex) {
             Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoSuchFieldException ex) {
             Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_jBexcluirActionPerformed
@@ -402,6 +472,26 @@ public class JFArmas extends javax.swing.JFrame {
         jBalterar.setEnabled(true);
         jBconfirmar.setEnabled(false);
         jBcancelar.setEnabled(false);
+        arrayListArmas.clear();
+        contador = 0;
+        try {
+            carregaRegistro();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFArmas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jBconfirmarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

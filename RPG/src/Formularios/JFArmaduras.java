@@ -55,6 +55,7 @@ public class JFArmaduras extends javax.swing.JFrame {
         
         for (Object l1 : list) {
             Armaduras a = (Armaduras) l1;
+            
             if(a.getCodigo_armadura() == (int) arrayListArmaduras.get(contador) ) {
                 jTFCodigoArmadura.setText(String.valueOf(a.getCodigo_armadura()));
                 jtfNomeArmadura.setText(a.getNome_armadura());
