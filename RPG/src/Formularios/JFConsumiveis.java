@@ -16,7 +16,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import tabelas.Consumiveis;
-
 /**
  *
  * @author Jailton
@@ -110,6 +109,12 @@ public class JFConsumiveis extends javax.swing.JFrame {
         jLabel5.setText("Quantidade Dados Consumível:");
 
         jLabel6.setText("Tipo Dado Consumível:");
+
+        jtfNomeConsumivel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfNomeConsumivelActionPerformed(evt);
+            }
+        });
 
         jbCadastrar.setText("Cadastrar");
         jbCadastrar.setEnabled(false);
@@ -478,6 +483,10 @@ public class JFConsumiveis extends javax.swing.JFrame {
         jBconfirmar.setEnabled(false);
         jBcancelar.setEnabled(false);
     }//GEN-LAST:event_jBcancelarActionPerformed
+
+    private void jtfNomeConsumivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNomeConsumivelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfNomeConsumivelActionPerformed
 
     /**
      * @param args the command line arguments

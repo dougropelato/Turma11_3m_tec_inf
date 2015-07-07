@@ -26,6 +26,8 @@ public class JFEscudos extends javax.swing.JFrame {
     private final GenericDAO gg;
     private List<Object> lista = new ArrayList();
     private int contador = 0;
+    ArrayList arrayListEscudos = new ArrayList();
+    
 
     public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
@@ -41,12 +43,17 @@ public class JFEscudos extends javax.swing.JFrame {
         this.lista = gg.listar(Escudos.class);
     }
 
-    public void carregaRegistro() {
-
+    public void carregaRegistro() throws SQLException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException, InstantiationException, ClassNotFoundException {    
+        List<Object> list = gg.listar(Escudos.class);
+            for (Object l1 : list){
+            Escudos a = (Escudos) l1;
+            arrayListEscudos.add(a.getCodigo_escudo());
+            }
+        
         for (Object l1 : lista) {
             Escudos a = (Escudos) l1;
 
-            if (a.getCodigo_escudo() == contador) {
+             if (a.getCodigo_escudo()== (int) arrayListEscudos.get(contador))  {
                 jTFCodigoEscudo.setText(String.valueOf(a.getCodigo_escudo()));
                 jtfNomeEscudo.setText(a.getNome_escudo());
                 jtfPrecoEscudo.setText(String.valueOf(a.getPreco_escudo()));
@@ -282,16 +289,70 @@ public class JFEscudos extends javax.swing.JFrame {
         jButton2.setEnabled(true);
         jbCadastrar.setEnabled(true);
         jBalterar.setEnabled(true);
+        arrayListEscudos.clear();
+        contador = 0;
+        try {
+            carregaRegistro();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         contador++;
-        this.carregaRegistro();
+        try {
+            this.carregaRegistro();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         contador--;
-        this.carregaRegistro();
+         if (contador < 0){
+            contador = 0;
+        }
+        try {
+            this.carregaRegistro();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jBexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBexcluirActionPerformed
@@ -306,6 +367,10 @@ public class JFEscudos extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
             
+            arrayListEscudos.clear();
+            contador--;
+            lista.clear();
+            carregaRegistro();
 
         } catch (SQLException ex) {
             Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
@@ -313,6 +378,16 @@ public class JFEscudos extends javax.swing.JFrame {
             Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoSuchFieldException ex) {
             Logger.getLogger(JFArmaduras.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBexcluirActionPerformed
 
@@ -372,6 +447,25 @@ public class JFEscudos extends javax.swing.JFrame {
         jBalterar.setEnabled(true);
         jBconfirmar.setEnabled(false);
         jBcancelar.setEnabled(false);
+        arrayListEscudos.clear();
+        contador=0;
+        try {
+            carregaRegistro();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFEscudos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBconfirmarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
