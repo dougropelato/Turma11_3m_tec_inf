@@ -336,6 +336,8 @@ public class GenericDAO {
 
         onde += " AND ";
         onde += "tC." + retornaPK(tB) + " = tB." + retornaPK(tB);
+        onde += " AND ";
+        onde += "tA." + retornaPK(tA) + " = tC." + retornaPK(tA);
 
         String sql = "SELECT * FROM " + tabela + onde;
 

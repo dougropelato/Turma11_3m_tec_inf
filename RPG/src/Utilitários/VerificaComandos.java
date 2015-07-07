@@ -9,6 +9,7 @@ import Formularios.JFPrincipal;
 import Formularios.JFSelecaoCampanha;
 import Tabelas.Autenticacao;
 import dao.GenericDAO;
+import formularios.JFJogador;
 import formularios.JFMestre;
 import formularios.JFPersonagem;
 import java.lang.reflect.InvocationTargetException;
@@ -37,6 +38,12 @@ public class VerificaComandos {
         GenericDAO bsk = new GenericDAO();
         JFPrincipal jfprim = JFPrincipal.getInstance();
 
+        if (aux[0].equalsIgnoreCase("novo") && aux[1].equalsIgnoreCase("jogador")) {
+            JFJogador jog = new JFJogador();
+            jog.setVisible(true);
+            res = "Abrindo Criação de usuarios \n";
+        }
+
         // feito apra logar sem banco
         if (aux[0].equalsIgnoreCase("thedoctor")) {
             auth.setCodigo_jogador(1);
@@ -63,7 +70,7 @@ public class VerificaComandos {
             auth.setSenha_jogador("");
             auth.setJogador_logado(false);
             auth.setNome_jogador("");
-            // jfprim.jLnome_jogador.setText("Mestre");
+            jfprim.jTextArea1.setText("");
 
             res = "Você saiu do jogo";
         } // modo adm
@@ -96,7 +103,7 @@ public class VerificaComandos {
                         res = "Login invalido tente novamente - EX: login Usuario "; // causo a pesquisa não retornar é pra exibir o erro 
                     }
                 } else {// caso comando não for login
-                    res = "Faça o login para entrar - EX: login Usuario";
+                    res += "Faça o login para entrar - EX: login Usuario";
                 }
 
             } else {//caso ja tenha o login do usuario / jogador
@@ -106,9 +113,9 @@ public class VerificaComandos {
                     if (auth.getSenha_jogador().equals(aux[1])) {
 
                         String lp = "";
+                        jfprim.jTextArea1.setText("");//limpa a tela
 
-                        // seta como logado
-                        auth.setJogador_logado(true);
+                        auth.setJogador_logado(true); // seta como logado
                         jfprim.jLnome_jogador.setText("Jogador: " + auth.getNome_jogador());
 
                         //envi resposta que esta logado
@@ -176,9 +183,10 @@ public class VerificaComandos {
                         }
 
                         res = "Personagem - " + auth.getNome_personagem() + " - selecionado";
+                        res += "\n Digite 'CAMPANHAS' para selecionar a camapanha";
                         jfprim.jLnome_personagem.setText("Personagem: " + auth.getNome_personagem());
                         jfprim.jLvida_personagem.setBackground(Color.red);
-                        jfprim.jLvida_personagem.setForeground(Color.WHITE);
+                        jfprim.jLvida_personagem.setForeground(Color.red);
                         jfprim.jLvida_personagem.setText("Pontos de vida: " + auth.getPontos_vida_personagem());
 
                     } catch (NumberFormatException ex) {
@@ -192,9 +200,11 @@ public class VerificaComandos {
             } else {
 
                 if (auth.getCodigo_campanha() == 0) {
+
                     if (aux[0].equalsIgnoreCase("Campanhas")) {
-                        JFSelecaoCampanha jsf = new JFSelecaoCampanha();
-                        jsf.setVisible(true);
+
+                        JFSelecaoCampanha jfsl = new JFSelecaoCampanha();
+                        jfsl.setVisible(true);
                         res = "Selecione sua camanha";
                     }
 
@@ -207,14 +217,23 @@ public class VerificaComandos {
                         }
 
                         if (aux[0].equalsIgnoreCase("atacar")) {//ataca
-
+                            res = bata.combate();
                         }
                         if (aux[0].equalsIgnoreCase("usar")) {//usa item
 
                         }
                         if (aux[0].equalsIgnoreCase("fugir")) {//tenta fugir
+                            List<String> ff = new ArrayList();
+                            ff = bata.fugir();
+
+                            if (ff.size() == 2) {
+                                res = ff.get(1);
+                            } else {
+                                res = ff.get(0);
+                            }
 
                         }
+
                     } else if (auth.getStatus_atual().equalsIgnoreCase("npc")) {// couse estiver falando com o npc
                         if (aux[0].equalsIgnoreCase("falar")) { // fala com o npc disponivel
                             res = "npc não encontrado";
@@ -238,6 +257,9 @@ public class VerificaComandos {
         if (res.equalsIgnoreCase("")) {// se não encontrar ne um comando a resposta sera vasia
             res = "Comando não encontrado";// avisa que não foi encontrado o comando
         }
+        if (aux[0].equalsIgnoreCase("limpar") || aux[0].equalsIgnoreCase("cls") || aux[0].equalsIgnoreCase("limpatela") || aux[0].equalsIgnoreCase("lpt")) {
+            res = "lpt";
+        }
 
         return res;// retorna  a resposta 
 
@@ -259,9 +281,10 @@ public class VerificaComandos {
         if (lp.size() > 0) {
 
             res = "-- Listando Personagens de " + auth.getNome_jogador() + " --\n";
-
+            int t = 0;
             for (Personagens per : lp) {
                 Personagens ppr = (Personagens) per;
+                System.out.println(t += 1);
                 res += " " + ppr.getCodigo_personagem() + " - " + ppr.getNome_personagem() + "\n";
             }
         }
@@ -278,12 +301,14 @@ public class VerificaComandos {
                 + "MESTRE - abre janela mestre\n"
                 + "CRIAR - abre criação de personagem\n"
                 + "SELECIONAR nomePersonagem - seleciona personagem \n"
+                + "Campanhas - abre form campanhas \n"
+                + "cls | lpt | limpatela - limpa a tela \n"
                 + "\n"
                 + "---- DURANTE A BATALHA ----\n"
                 + "\n"
                 + "ATACAR - ataca\n"
                 + "USAR - usa poção de vida\n"
-                + "FUGIR - tenta   fugir da batalha\n"
+                + "FUGIR - tenta fugir da batalha\n"
                 + "--------------------------\n"
                 + "\n"
                 + "---- Falando com um NPC ---\n"

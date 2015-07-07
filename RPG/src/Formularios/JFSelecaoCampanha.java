@@ -27,7 +27,7 @@ public class JFSelecaoCampanha extends javax.swing.JFrame {
     public JFSelecaoCampanha() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         initComponents();
         carregaCampanha();
-
+        
     }
 
     /**
@@ -104,19 +104,23 @@ public class JFSelecaoCampanha extends javax.swing.JFrame {
             // TODO add your handling code here:
             GenericDAO gg = new GenericDAO();
             Campanhas cc = new Campanhas();
-            cc.setNome_campanha(jComboBox1.getSelectedItem().toString());
+            JFPrincipal jfprim = JFPrincipal.getInstance();
             Autenticacao auth = Autenticacao.getInstance();
+            
+            cc.setNome_campanha(jComboBox1.getSelectedItem().toString());
+            
             List<Object> ll = new ArrayList();
-
+            
             ll = gg.listar2(Campanhas.class, cc);
-
+            
             for (Object obj : ll) {
                 Campanhas cc2 = (Campanhas) obj;
                 auth.setCodigo_campanha(cc2.getCodigo_campanha());
+                jfprim.jLnome_campanha.setText("Campanha: "+cc2.getNome_campanha());
             }
-
+            
             dispose();
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(JFSelecaoCampanha.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
@@ -185,20 +189,20 @@ public class JFSelecaoCampanha extends javax.swing.JFrame {
             }
         });
     }
-
+    
     public void carregaCampanha() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         GenericDAO gg = new GenericDAO();
-
+        
         List<Object> ll = new ArrayList();
-
+        
         ll = gg.listar(Campanhas.class);
-
+        
         for (Object obj : ll) {
             Campanhas cc = (Campanhas) obj;
-            jComboBox1.add(cc.getNome_campanha(), null);
-
+            jComboBox1.addItem(cc.getNome_campanha());
+            
         }
-
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
