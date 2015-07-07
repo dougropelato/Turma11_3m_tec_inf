@@ -6,6 +6,7 @@ import dao.GenericDAO;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
 public class JFRaca extends javax.swing.JFrame {
@@ -72,30 +73,72 @@ public class JFRaca extends javax.swing.JFrame {
 
         jLabel4.setText("Força Raca:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+
+        jtfForca_raca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfForca_racaKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfForca_raca, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 60, -1));
 
         jLabel5.setText("Destreza Raca:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
+
+        jtfDestreza_raca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfDestreza_racaKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfDestreza_raca, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 60, -1));
 
         jLabel6.setText("Constituição Raça:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, -1, -1));
+
+        jtfConstituicao_raca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfConstituicao_racaKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfConstituicao_raca, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 59, -1));
 
         jLabel7.setText("Inteligencia Raça:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, -1, -1));
+
+        jtfInteligencia_raca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfInteligencia_racaKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfInteligencia_raca, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 60, -1));
 
         jLabel8.setText("Sabedoria Raça:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
+
+        jtfSabedoria_raca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfSabedoria_racaKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfSabedoria_raca, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 60, -1));
 
         jLabel9.setText("Carisma Raça:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
+
+        jtfCarisma_raca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfCarisma_racaKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfCarisma_raca, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 60, -1));
 
         jLabel10.setText("Quantidade Talentos Adc:");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
+
+        jtfqtd_adicionais_raca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfqtd_adicionais_racaKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtfqtd_adicionais_raca, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 30, -1));
 
         jLabel11.setText("Uso Arma:");
@@ -113,7 +156,7 @@ public class JFRaca extends javax.swing.JFrame {
                 jbCadastrar_racaActionPerformed(evt);
             }
         });
-        getContentPane().add(jbCadastrar_raca, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, 90, 40));
+        getContentPane().add(jbCadastrar_raca, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, 90, 40));
 
         jComboBoxUsoArma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Armas Simples", "Armas Comuns", "Armas Exóticas ", " " }));
         getContentPane().add(jComboBoxUsoArma, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, -1, -1));
@@ -126,6 +169,13 @@ public class JFRaca extends javax.swing.JFrame {
 
     private void jbCadastrar_racaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrar_racaActionPerformed
         try {         
+            
+            if (jtaDescricao_raca.getText().equalsIgnoreCase("") || jtfCarisma_raca.getText().equalsIgnoreCase("") || jtfConstituicao_raca.getText().equalsIgnoreCase("") || jtfDestreza_raca.getText().equalsIgnoreCase("") || jtfInteligencia_raca.getText().equalsIgnoreCase("") || jtfSabedoria_raca.getText().equalsIgnoreCase("") || jtfqtd_adicionais_raca.getText().equalsIgnoreCase("") || jtfForca_raca.getText().equalsIgnoreCase("") || jtfConstituicao_raca.getText().equalsIgnoreCase("")){
+             
+             JOptionPane.showMessageDialog(null, " Preencha todos os campos!" );
+                
+            } else{
+                  
             GenericDAO gDao = new GenericDAO ();
             Raca rc = new Raca();
             
@@ -151,8 +201,20 @@ public class JFRaca extends javax.swing.JFrame {
           
             gDao.adicionar(rc);
             
+            JOptionPane.showMessageDialog(null, " Raça "+jtfNome_raca.getText()+" cadastrada com total sucesso!" );
+            
+            jtfCarisma_raca.setText(null);
+            jtfConstituicao_raca.setText(null);
+            jtfInteligencia_raca.setText(null);
+            jtfSabedoria_raca.setText(null);
+            jtfNome_raca.setText(null);
+            jtfForca_raca.setText(null);
+            jtfqtd_adicionais_raca.setText(null);
+            jtfDestreza_raca.setText(null);
+            jtaDescricao_raca.setText(null);
             
             
+            }
             
         } catch (SQLException ex) {
             Logger.getLogger(JFRaca.class.getName()).log(Level.SEVERE, null, ex);
@@ -164,6 +226,62 @@ public class JFRaca extends javax.swing.JFrame {
             Logger.getLogger(JFRaca.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbCadastrar_racaActionPerformed
+
+    private void jtfForca_racaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfForca_racaKeyTyped
+        // TODO add your handling code here:
+         String caracteres = "0987654321"; //apenas numeros podem ser digitados
+        if(!caracteres.contains(evt.getKeyChar()+"")){ //se algo diferente que "caracteres" for digitado
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfForca_racaKeyTyped
+
+    private void jtfDestreza_racaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDestreza_racaKeyTyped
+        // TODO add your handling code here:
+         String caracteres = "0987654321"; //apenas numeros podem ser digitados
+        if(!caracteres.contains(evt.getKeyChar()+"")){ //se algo diferente que "caracteres" for digitado
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfDestreza_racaKeyTyped
+
+    private void jtfConstituicao_racaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfConstituicao_racaKeyTyped
+        // TODO add your handling code here:
+         String caracteres = "0987654321"; //apenas numeros podem ser digitados
+        if(!caracteres.contains(evt.getKeyChar()+"")){ //se algo diferente que "caracteres" for digitado
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfConstituicao_racaKeyTyped
+
+    private void jtfInteligencia_racaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfInteligencia_racaKeyTyped
+        // TODO add your handling code here:
+         String caracteres = "0987654321"; //apenas numeros podem ser digitados
+        if(!caracteres.contains(evt.getKeyChar()+"")){ //se algo diferente que "caracteres" for digitado
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfInteligencia_racaKeyTyped
+
+    private void jtfSabedoria_racaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfSabedoria_racaKeyTyped
+        // TODO add your handling code here:
+         String caracteres = "0987654321"; //apenas numeros podem ser digitados
+        if(!caracteres.contains(evt.getKeyChar()+"")){ //se algo diferente que "caracteres" for digitado
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfSabedoria_racaKeyTyped
+
+    private void jtfCarisma_racaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCarisma_racaKeyTyped
+        // TODO add your handling code here:
+         String caracteres = "0987654321"; //apenas numeros podem ser digitados
+        if(!caracteres.contains(evt.getKeyChar()+"")){ //se algo diferente que "caracteres" for digitado
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfCarisma_racaKeyTyped
+
+    private void jtfqtd_adicionais_racaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfqtd_adicionais_racaKeyTyped
+        // TODO add your handling code here:
+         String caracteres = "0987654321"; //apenas numeros podem ser digitados
+        if(!caracteres.contains(evt.getKeyChar()+"")){ //se algo diferente que "caracteres" for digitado
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfqtd_adicionais_racaKeyTyped
 
     /**
      * @param args the command line arguments
