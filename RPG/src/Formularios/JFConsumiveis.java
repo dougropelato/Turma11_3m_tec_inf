@@ -49,7 +49,7 @@ public class JFConsumiveis extends javax.swing.JFrame {
             arrayListConsumiveis.add(a.getCodigo_consumivel());
         }
 
-        for (Object l1 : lista) {
+        for (Object l1 : list) {
             Consumiveis a = (Consumiveis) l1;
 
             if(a.getCodigo_consumivel()== (int) arrayListConsumiveis.get(contador) ) {

@@ -50,7 +50,7 @@ public class JFEscudos extends javax.swing.JFrame {
             arrayListEscudos.add(a.getCodigo_escudo());
             }
         
-        for (Object l1 : lista) {
+        for (Object l1 : list) {
             Escudos a = (Escudos) l1;
 
              if (a.getCodigo_escudo()== (int) arrayListEscudos.get(contador))  {
@@ -425,7 +425,7 @@ public class JFEscudos extends javax.swing.JFrame {
         armd.setCodigo_escudo(Integer.parseInt(jTFCodigoEscudo.getText()));
         armd.setNome_escudo(jtfNomeEscudo.getText());
         armd.setPreco_escudo(Double.parseDouble(jtfPrecoEscudo.getText()));
-        armd.setBonus_maximo_escudo(Integer.parseInt(jtfBonusMaximoEscudo.getText()));
+        armd.setBonus_maximo_escudo(Double.parseDouble(jtfBonusMaximoEscudo.getText()));
         armd.setPenalidade_destreza_escudo(Integer.parseInt(jtfPenalidadeDestrezaEscudo.getText()));
 
         try {

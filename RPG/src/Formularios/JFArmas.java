@@ -50,7 +50,7 @@ public class JFArmas extends javax.swing.JFrame {
             arrayListArmas.add(a.getCodigo_arma());
         }
 
-        for (Object l1 : lista) {
+        for (Object l1 : list) {
             Armas a = (Armas) l1;
 
             if (a.getCodigo_arma() == (int) arrayListArmas.get(contador)) {
