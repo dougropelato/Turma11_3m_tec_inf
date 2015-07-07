@@ -10,9 +10,11 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import jdk.nashorn.internal.runtime.ListAdapter;
 import tabelas.ProgressaoTalento;
 import tabelas.Talentos;
 
@@ -23,8 +25,9 @@ import tabelas.Talentos;
 public class JFProgressaoTalento extends javax.swing.JFrame {
 
     GenericDAO gDAO;
-    List<ProgressaoTalento> listaTC;
+    List<ProgressaoTalento> listaTC = new ArrayList<>();
     List<Object> talentos;
+    ArrayList listaTalentos = new ArrayList();
 
     /**
      * Creates new form JFTalentosClasse
@@ -32,24 +35,35 @@ public class JFProgressaoTalento extends javax.swing.JFrame {
     public JFProgressaoTalento() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         gDAO = new GenericDAO();
         talentos = gDAO.listar(Talentos.class);
-        carregaTalento(talentos);
         centralizarComponente();
         initComponents();
+
+        if (talentos.size() > 0) {
+            carregaTalento(talentos);
+        }
     }
 
     public void carregaTalento(List<Object> lista) {
+
         for (Object l : lista) {
+
             Talentos t = (Talentos) l;
-            jcbTalento.addItem(l);
+            jcbTalento.addItem(t.getNome_talento());
+            listaTalentos.add(t.getCodigo_talento());
         }
     }
-    
-    public void centralizarComponente() {
 
+    public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
-        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+        setLocation((ds.width - dw.width - 500) / 2,
+                (ds.height - dw.height - 500) / 2);
     }
+
+    public List<ProgressaoTalento> getProgTalento() {
+        return listaTC;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,39 +74,48 @@ public class JFProgressaoTalento extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jbtAdicionar = new javax.swing.JButton();
         jbtFinalizar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jtfNivel = new javax.swing.JTextField();
         jcbTalento = new javax.swing.JComboBox();
+        jbtSalva = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jbtAdicionar.setText("Adicionar");
-
         jbtFinalizar.setText("Finalizar");
+        jbtFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtFinalizarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Nível");
+
+        jbtSalva.setText("Salvar");
+        jbtSalva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtSalvaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtfNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jcbTalento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jbtAdicionar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jbtSalva)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
                         .addComponent(jbtFinalizar)))
                 .addGap(61, 61, 61))
         );
@@ -106,13 +129,29 @@ public class JFProgressaoTalento extends javax.swing.JFrame {
                     .addComponent(jcbTalento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtAdicionar)
-                    .addComponent(jbtFinalizar))
+                    .addComponent(jbtFinalizar)
+                    .addComponent(jbtSalva))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtFinalizarActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jbtFinalizarActionPerformed
+
+    private void jbtSalvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSalvaActionPerformed
+        ProgressaoTalento progTal = new ProgressaoTalento();
+
+        progTal.setCodigo_progressao(Integer.valueOf(jtfNivel.getText()));
+        progTal.setCodigo_talento((int) listaTalentos.get(jcbTalento.getSelectedIndex()));
+
+        listaTC.add(progTal);
+
+        jcbTalento.setSelectedIndex(-1);
+        jtfNivel.setText("");
+    }//GEN-LAST:event_jbtSalvaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,8 +208,8 @@ public class JFProgressaoTalento extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JButton jbtAdicionar;
     private javax.swing.JButton jbtFinalizar;
+    private javax.swing.JButton jbtSalva;
     private javax.swing.JComboBox jcbTalento;
     private javax.swing.JTextField jtfNivel;
     // End of variables declaration//GEN-END:variables
