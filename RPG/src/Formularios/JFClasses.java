@@ -19,7 +19,9 @@ import java.util.logging.Logger;
 import tabelas.Armaduras;
 import tabelas.Armas;
 import tabelas.Classes;
+import tabelas.Escudos;
 import tabelas.Pericias;
+import tabelas.ProgressaoTalento;
 import tabelas.Progressoes;
 
 /**
@@ -36,27 +38,106 @@ public class JFClasses extends javax.swing.JFrame {
         gDAO = new GenericDAO();
         armas = gDAO.listar(Armas.class);
         armaduras = gDAO.listar(Armaduras.class);
+        escudos = gDAO.listar(Escudos.class);
         pericias = gDAO.listar(Pericias.class);
         listaPc = new ArrayList<>();
         centralizarComponente();
         initComponents();
+
+        if (armas.size() > 0) {
+            carregaArmas(armas, jcbArmas.getSelectedIndex());
+        }
+
+        if (armaduras.size() > 0) {
+            carregaArmaduras(armaduras, jcbArmaduras.getSelectedIndex());
+        }
     }
     Formularios.JFProgressao prog1;
     Formularios.JFPericiasClasse periciasClasse;
     GenericDAO gDAO;
     List<Object> armas;
     List<Object> armaduras;
+    List<Object> escudos;
     List<Object> pericias;
     List<PericiasClasse> listaPc;
     List<Progressoes> listaP;
+    List<ProgressaoTalento> listaPt;
+    ArrayList listaArmas = new ArrayList();
+    ArrayList listaArmaduras = new ArrayList();
+    ArrayList listaEscudos = new ArrayList();
 
-      public void centralizarComponente() {
+    public void centralizarComponente() {
 
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
-        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+        setLocation((ds.width - dw.width - 500) / 2,
+                (ds.height - dw.height - 500) / 2);
     }
-    
+
+    public void carregaArmas(List<Object> lista, int tipoArma) {
+
+        if (jcbArmaduraInicial.getItemCount() > 0) {
+            jcbArmaInicial.removeAllItems();
+        }
+
+        if (listaArmas.size() > 0) {
+            listaArmas.clear();;
+        }
+
+        for (Object l : lista) {
+
+            Armas a = (Armas) l;
+
+            if (a.getTipo_arma() == tipoArma) {
+                jcbArmaInicial.addItem(a.getNome_arma());
+                listaArmas.add(a.getCodigo_arma());
+            }
+
+        }
+    }
+
+    public void carregaArmaduras(List<Object> lista, int tipoArmadura) {
+
+        if (jcbArmaduraInicial.getItemCount() > 0) {
+            jcbArmaduraInicial.removeAllItems();
+        }
+
+        if (listaArmaduras.size() > 0) {
+            listaArmaduras.clear();;
+        }
+
+        for (Object l : lista) {
+
+            Armaduras a = (Armaduras) l;
+
+            if (a.getTipo_armadura() == tipoArmadura) {
+                jcbArmaduraInicial.addItem(a.getNome_armadura());
+                listaArmaduras.add(a.getCodigo_armadura());
+            }
+
+        }
+    }
+
+    public void carregaEscudos(List<Object> lista) {
+        // caso tenha algo no combo box limpa
+        if (jcbEscudos.getItemCount() > 0) {
+            jcbEscudos.removeAllItems();
+        }
+        // caso tenha algo na lista limpa
+        if (listaEscudos.size() > 0) {
+            listaEscudos.clear();;
+        }
+        // adiciona itens no combo box e o codigo em uma lista
+        for (Object l : lista) {
+
+            Escudos e = (Escudos) l;
+
+            jcbEscudos.addItem(e.getNome_escudo());
+            listaEscudos.add(e.getCodigo_escudo());
+
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,7 +169,7 @@ public class JFClasses extends javax.swing.JFrame {
         jtaDescricao = new javax.swing.JTextArea();
         jcbArmaduraInicial = new javax.swing.JComboBox();
         jcbArmaInicial = new javax.swing.JComboBox();
-        jComboBox4 = new javax.swing.JComboBox();
+        jcbEscudos = new javax.swing.JComboBox();
         jtfDinheiro = new javax.swing.JTextField();
         jcbArmaduras = new javax.swing.JComboBox();
         jcbArmas = new javax.swing.JComboBox();
@@ -96,6 +177,7 @@ public class JFClasses extends javax.swing.JFrame {
         jbtprogressao = new javax.swing.JButton();
         jbtcancelar = new javax.swing.JButton();
         jbtPericias = new javax.swing.JButton();
+        jcbUsaEscudo = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -116,7 +198,7 @@ public class JFClasses extends javax.swing.JFrame {
 
         jLabel5.setText("Armas");
 
-        jLabel6.setText("Quantidade pericias por nivel");
+        jLabel6.setText("Qtd pericias p/ nivel");
 
         jLabel7.setText("Armadura inicial");
 
@@ -138,7 +220,7 @@ public class JFClasses extends javax.swing.JFrame {
         jtaDescricao.setRows(5);
         jScrollPane1.setViewportView(jtaDescricao);
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Grande de madeira", "Grande de metal", "Broquel" }));
+        jcbEscudos.setEnabled(false);
 
         jtfDinheiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,8 +229,18 @@ public class JFClasses extends javax.swing.JFrame {
         });
 
         jcbArmaduras.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Leves", "Médias", "Pesadas" }));
+        jcbArmaduras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbArmadurasActionPerformed(evt);
+            }
+        });
 
         jcbArmas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Simples", "Comuns", "Exóticas" }));
+        jcbArmas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbArmasActionPerformed(evt);
+            }
+        });
 
         jbtsalvar.setText("Salvar");
         jbtsalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -178,6 +270,13 @@ public class JFClasses extends javax.swing.JFrame {
             }
         });
 
+        jcbUsaEscudo.setText("Usa escudo");
+        jcbUsaEscudo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbUsaEscudoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -185,29 +284,44 @@ public class JFClasses extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(jbtPericias)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                         .addComponent(jbtprogressao)
                         .addGap(34, 34, 34)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfDinheiro, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcbArmaduraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jcbArmaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel9)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jcbEscudos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jLabel10)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtfDinheiro, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jcbArmaduraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(87, 87, 87)))
+                .addContainerGap(29, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,21 +333,21 @@ public class JFClasses extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jtfDadoVida, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jcbArmaduras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jcbArmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(jcbArmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jcbArmaduras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtfQtPericias, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(11, 11, 11)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jtfQtPericias, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(44, 44, 44)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jcbArmaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addComponent(jcbUsaEscudo))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(210, 210, 210)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -248,37 +362,39 @@ public class JFClasses extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                        .addComponent(jtfNome))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                            .addComponent(jtfNome)
-                            .addComponent(jLabel8)
-                            .addComponent(jcbArmaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jtfDadoVida)
                             .addComponent(jLabel7)
                             .addComponent(jcbArmaduraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jcbArmaduras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jtfDadoVida)
+                    .addComponent(jcbArmaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jcbArmaduras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(jcbUsaEscudo)
+                        .addComponent(jcbEscudos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbArmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfDinheiro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel10))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -295,7 +411,7 @@ public class JFClasses extends javax.swing.JFrame {
                             .addComponent(jbtsalvar)
                             .addComponent(jbtcancelar)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jbtsalvar.getAccessibleContext().setAccessibleName("BtnNovo");
@@ -343,8 +459,8 @@ public class JFClasses extends javax.swing.JFrame {
             c.setDado_vida_classe(Integer.valueOf(jtfDadoVida.getText()));
             c.setQuantidade_pericias_classe(Integer.valueOf(jtfQtPericias.getText()));
             c.setDinheiro_classe(Integer.valueOf(jtfDinheiro.getText()));
-            c.setCodigo_arma(1);
-            c.setCodigo_armadura(1);
+            c.setCodigo_arma((int) listaArmas.get(jcbArmaInicial.getSelectedIndex()));
+            c.setCodigo_armadura((int) listaArmaduras.get(jcbArmaduraInicial.getSelectedIndex()));
             c.setCodigo_escudo(1);
         } catch (Exception e) {
             System.out.println("Valor informado não é um numero");
@@ -353,6 +469,8 @@ public class JFClasses extends javax.swing.JFrame {
 
         listaPc = periciasClasse.getPericiasClasse();
 
+        listaPt = prog1.getProgTalento();
+
         System.out.println("Nome " + c.getNome_classe());
         System.out.println("desc " + c.getDescricao_classe());
         System.out.println("Dado " + c.getDado_vida_classe());
@@ -360,6 +478,12 @@ public class JFClasses extends javax.swing.JFrame {
         System.out.println("Pnts " + c.getQuantidade_pericias_classe());
         System.out.println("Usar arma" + c.getUsar_armas_classe());
         System.out.println("Usar armadura" + c.getUsar_armaduras_classe());
+
+        for (ProgressaoTalento pt : listaPt) {
+
+            System.out.println("Nivel = " + pt.getCodigo_progressao());
+            System.out.println("Talento = " + pt.getCodigo_talento());
+        }
 
         for (Progressoes l : listaP) {
             Progressoes prg = (Progressoes) l;
@@ -383,6 +507,33 @@ public class JFClasses extends javax.swing.JFrame {
                 PericiasClasse pc = (PericiasClasse) lpc;
                 pc.setCodigo_classe(codigoClasse);
                 gDAO.adicionar(pc);
+            }
+
+            List<Object> listaProgressao = gDAO.listar(Progressoes.class);
+
+            for (Object lpt : listaPt) {
+
+                ProgressaoTalento progT = new ProgressaoTalento();
+
+                System.out.println("Nivel = " + progT.getCodigo_progressao());
+                System.out.println("Talento = " + progT.getCodigo_talento());
+
+                for (Object lp1 : listaProgressao) {
+                    Progressoes p = new Progressoes();
+
+                    System.out.println("Nivel progressao =" + p.getNivel_progressao());
+                    System.out.println("Classe = " + p.getClasses_codigo_classe());
+                    System.out.println("Cod = " + p.getClasses_codigo_classe());
+
+                    if (p.getClasses_codigo_classe() == codigoClasse
+                            && progT.getCodigo_progressao() == p.getNivel_progressao()) {
+
+                        progT.setCodigo_progressao(p.getCodigo_progressao());
+
+                        gDAO.adicionar(progT);
+                    }
+                }
+
             }
 
         } catch (ClassNotFoundException ex) {
@@ -411,6 +562,28 @@ public class JFClasses extends javax.swing.JFrame {
         periciasClasse = new Formularios.JFPericiasClasse(pericias);
         periciasClasse.setVisible(true);
     }//GEN-LAST:event_jbtPericiasActionPerformed
+
+    private void jcbUsaEscudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbUsaEscudoActionPerformed
+        jcbEscudos.setEnabled(jcbUsaEscudo.isSelected());
+
+        if (escudos.size() > 0) {
+            carregaEscudos(escudos);
+        }
+    }//GEN-LAST:event_jcbUsaEscudoActionPerformed
+
+    private void jcbArmadurasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbArmadurasActionPerformed
+
+        if (armaduras.size() > 0) {
+            carregaArmaduras(armaduras, jcbArmaduras.getSelectedIndex());
+        }
+    }//GEN-LAST:event_jcbArmadurasActionPerformed
+
+    private void jcbArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbArmasActionPerformed
+
+        if (armas.size() > 0) {
+            carregaArmas(armas, jcbArmas.getSelectedIndex());
+        }
+    }//GEN-LAST:event_jcbArmasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -468,7 +641,6 @@ public class JFClasses extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.JComboBox jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -489,6 +661,8 @@ public class JFClasses extends javax.swing.JFrame {
     private javax.swing.JComboBox jcbArmaduraInicial;
     private javax.swing.JComboBox jcbArmaduras;
     private javax.swing.JComboBox jcbArmas;
+    private javax.swing.JComboBox jcbEscudos;
+    private javax.swing.JCheckBox jcbUsaEscudo;
     private javax.swing.JTextArea jtaDescricao;
     private javax.swing.JTextField jtfDadoVida;
     private javax.swing.JTextField jtfDinheiro;
