@@ -23,6 +23,7 @@ import tabelas.Personagens;
  */
 public class Batalhas {
 
+    Autenticacao auth = Autenticacao.getInstance();
     Personagens npc = new Personagens();
     Temporario tempnpc = new Temporario();
 
@@ -31,7 +32,6 @@ public class Batalhas {
 
     public String iniciaBatalha() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
-        Autenticacao auth = Autenticacao.getInstance();
         utilitários.Dados dad = new utilitários.Dados();
         GenericDAO gda = new GenericDAO();
         String res = "";
@@ -47,20 +47,32 @@ public class Batalhas {
 
         ut.carregaPersonagem(npc, tempnpc);
 
+        if (tem.getIniciativa_personagem() > tempnpc.getIniciativa_personagem()) {
+            auth.setIniciativa_personagem(2);
+            auth.setIniciativa_npc(1);
+        } else {
+            auth.setIniciativa_personagem(1);
+            auth.setIniciativa_npc(2);
+        }
+
         return res;
     }
 
-    public int verAcerto(Personagens pp, Temporario tp) {
-        int res = 0;
+    public List fugir() {
 
         utilitários.Dados dad = new utilitários.Dados();
+        // String[] res = null;
+        List<String> res = new ArrayList();
+        int i;
+        i = dad.getDado(20);
 
-        if (pp.getModForca() > pp.getModDestreza()) {
-            res = dad.getDado(20) + pp.getModForca() + pp.getBase_ataque_personagem();
+        res.add("você tenta fugir mas é encurralado pelo seu inimigo dado = " + i);
+        
+        if (i > 15) {
+            res.add("você corre velozmente para o lado oposto do seu inimigo deixando-o para tráz  dado = " + i);
 
-        } else {
-            res = dad.getDado(20) + pp.getModDestreza() + pp.getBase_ataque_personagem();
         }
+
         return res;
     }
 
@@ -69,6 +81,9 @@ public class Batalhas {
         String res = "";
 
         if (tem.getIniciativa_personagem() > tempnpc.getIniciativa_personagem()) {
+            auth.setIniciativa_personagem(1);
+            auth.setIniciativa_npc(2);
+
             if (verAcerto(npc, tempnpc) > verDefesa(per, tem)) {
                 dano = dano(per, tem);
                 npc.setPontos_vida_personagem(npc.getPontos_vida_personagem() - dano);
@@ -83,10 +98,12 @@ public class Batalhas {
 
             } else {
                 res = "Você Errou.";
-                return res;
             }
 
         } else {
+            auth.setIniciativa_npc(1);
+            auth.setIniciativa_personagem(2);
+
             if (verAcerto(per, tem) > verDefesa(npc, tempnpc)) {
 
                 dano = dano(npc, tempnpc);
@@ -104,6 +121,20 @@ public class Batalhas {
             }
         }
 
+        return res;
+    }
+
+    public int verAcerto(Personagens pp, Temporario tp) {
+        int res = 0;
+
+        utilitários.Dados dad = new utilitários.Dados();
+
+        if (pp.getModForca() > pp.getModDestreza()) {
+            res = dad.getDado(20) + pp.getModForca() + pp.getBase_ataque_personagem();
+
+        } else {
+            res = dad.getDado(20) + pp.getModDestreza() + pp.getBase_ataque_personagem();
+        }
         return res;
     }
 
