@@ -42,50 +42,41 @@ public class Utilitarios {
             if (i > 1) {
                 junta += " " + fala[i];
             }
-
         }
-
         return junta;
-
     }
 
     public String falanpcs(int codigo_npc, String falanpc) throws SQLException, IllegalAccessException, NoSuchMethodException,
             IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+
         String fala = "";
         GenericDAO gDAO = new GenericDAO();
         Npcs npcs = new Npcs();
-        NpcsFalas npcsFalas = new NpcsFalas();
         Falas falas = new Falas();
-        ArrayList arrayListCodFala = new ArrayList();
-        int index = 0;
-        int cont = 1;
 
-        //lista codigo da fala
-        npcsFalas.setCodigo_npc(codigo_npc);
-        List<Object> list = gDAO.listar2(NpcsFalas.class, npcsFalas);
-        for (Object obj2 : list) {
-            NpcsFalas nf = (NpcsFalas) obj2;
-            arrayListCodFala.add(nf.getCodigo_fala());
-        }
+        List lista = new ArrayList();
 
-        while (index < arrayListCodFala.size()) {
-            //pega a fala desejada
-            falas.setCodigo_fala((int) arrayListCodFala.get(cont));
-            List<Object> list1 = gDAO.listar2(Falas.class, falas);
-            for (Object obj3 : list1) {
-                Falas f = (Falas) obj3;
-                //verifica o tipo de fala desejado
-                if (falanpc.equals("fala")) {
-                    fala = ("Npc: " + f.getDescricao_fala() + " \n ");
-                } else if (falanpc.equals("sim")) {
-                    fala = ("Npc: " + f.getResposta_positivo_fala() + " \n ");
-                } else if (falanpc.equals("nao")) {
-                    fala = ("Npc: " + f.getResposta_negativo_fala() + " \n ");
-                }
+        List<Falas> lf = new ArrayList();
+
+        npcs.setCodigo_npc(codigo_npc);
+
+        lista = gDAO.listar3(npcs, Falas.class, NpcsFalas.class);
+
+        lf = (List<Falas>) lista.get(1);
+
+        for (Falas lf1 : lf) {
+            falas = lf1;
+            if (falanpc.equalsIgnoreCase("fala")) {
+                fala = falas.getDescricao_fala();
             }
-            cont++;
-            index++;
+            if (falanpc.equalsIgnoreCase("sim")) {
+                fala = falas.getResposta_positivo_fala();
+            }
+            if (falanpc.equalsIgnoreCase("não")) {
+                fala = falas.getResposta_negativo_fala();
+            }
         }
+
         return fala;
     }
 
@@ -219,6 +210,9 @@ public class Utilitarios {
                 if (posicoesNpcs.getCodigo_npc() != 0) {
 
                     auth.setStatus_atual("npc");
+                    auth.setCodigo_npc(posicoesNpcs.getCodigo_npc());
+
+                    System.out.println(posicoesNpcs.getCodigo_npc());
 
                     Npcs npcs = new Npcs();
                     npcs.setCodigo_npc(posicoesNpcs.getCodigo_npc());
@@ -234,12 +228,11 @@ public class Utilitarios {
                         //setando tipos de npcs
                         if (npcs.getTipo_npc().equals("combatente")) {
                             auth.setStatus_atual("Batalha");
-                            auth.setCodigo_npc(npcs.getCodigo_npc());
+
                         }
                         if (npcs.getTipo_npc().equals("comerciante")) {
-                            // auth.setStatus_atual("Comercio");
-                            auth.setStatus_atual("npc");
-                            auth.setCodigo_npc(npcs.getCodigo_npc());
+                            auth.setStatus_atual("Comercio");
+
                         }
 
                     }
