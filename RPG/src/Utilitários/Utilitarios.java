@@ -34,6 +34,21 @@ import tabelas.Talentos;
  */
 public class Utilitarios {
 
+    public String juntarStr(String[] fala) {
+        String junta = fala[1];
+
+        for (int i = 0; i < fala.length; i++) {
+
+            if (i > 1) {
+                junta += " " + fala[i];
+            }
+
+        }
+
+        return junta;
+
+    }
+
     public String falanpcs(int codigo_npc, String falanpc) throws SQLException, IllegalAccessException, NoSuchMethodException,
             IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         String fala = "";

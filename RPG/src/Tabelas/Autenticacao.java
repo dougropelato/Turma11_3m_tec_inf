@@ -137,7 +137,7 @@ public class Autenticacao extends Temporario {
     public void setStatus_atual(String status_atual) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InstantiationException, InvocationTargetException, ClassNotFoundException {
         JFPrincipal jfprim = JFPrincipal.getInstance();
         
-        jfprim.jLnome_personagem.setText("status_atual");
+        jfprim.jLstatus.setText(status_atual);
         this.status_atual = status_atual;
     }
     

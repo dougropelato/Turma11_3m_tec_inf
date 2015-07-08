@@ -35,6 +35,7 @@ public class VerificaComandos {
     public String verificaComando(String[] aux) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
         String res = "";
+
         GenericDAO bsk = new GenericDAO();
         JFPrincipal jfprim = JFPrincipal.getInstance();
 
@@ -96,6 +97,7 @@ public class VerificaComandos {
                         auth.setCodigo_jogador(jog.getCodigo_jogador());
                         auth.setSenha_jogador(jog.getSenha_jogador());
                         auth.setMestre_jogador(true);
+                        auth.setStatus_atual("logado");
 
                         res = "digite a senha - EX: senha Minhasenha"; // seta a resposta do "mestre"
 
@@ -154,6 +156,8 @@ public class VerificaComandos {
                     res = "Crie seu personagem";
                 }
                 if (aux[0].equalsIgnoreCase("selecionar")) {
+
+                    aux[1] = utt.juntarStr(aux);
 
                     Personagens pp = new Personagens();
                     List<Object> ll = new ArrayList();
@@ -252,7 +256,10 @@ public class VerificaComandos {
 
                         } else if (auth.getStatus_atual().equalsIgnoreCase("npc")) {// couse estiver falando com o npc
                             if (aux[0].equalsIgnoreCase("falar")) { // fala com o npc disponivel
-                                res = "npc não encontrado";
+                                aux[1] = utt.juntarStr(aux);
+
+                                res = utt.falanpcs(auth.getCodigo_npc(), "fala");
+
                             }
                         } else {
 
