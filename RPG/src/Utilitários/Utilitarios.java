@@ -203,8 +203,11 @@ public class Utilitarios {
 
                 if (posicoesNpcs.getCodigo_npc() != 0) {
 
+                    auth.setStatus_atual("npc");
+
                     Npcs npcs = new Npcs();
                     npcs.setCodigo_npc(posicoesNpcs.getCodigo_npc());
+
                     List<Object> list8 = gDAO.listar2(Npcs.class, npcs);
                     for (Object obj8 : list8) {
                         Npcs npc = (Npcs) obj8;
@@ -219,7 +222,8 @@ public class Utilitarios {
                             auth.setCodigo_npc(npcs.getCodigo_npc());
                         }
                         if (npcs.getTipo_npc().equals("comerciante")) {
-                            auth.setStatus_atual("Comercio");
+                            // auth.setStatus_atual("Comercio");
+                            auth.setStatus_atual("npc");
                             auth.setCodigo_npc(npcs.getCodigo_npc());
                         }
 
