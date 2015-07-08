@@ -88,6 +88,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLnome_personagem = new javax.swing.JLabel();
         jLvida_personagem = new javax.swing.JLabel();
         jLnome_campanha = new javax.swing.JLabel();
+        jLstatus = new javax.swing.JLabel();
         jpAraDePintar = new jPintar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -137,20 +138,27 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         jLnome_campanha.setText("jLabel1");
 
+        jLstatus.setText("jLstatus");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLnome_jogador)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
-                .addComponent(jLnome_personagem)
-                .addGap(129, 129, 129)
-                .addComponent(jLvida_personagem)
-                .addGap(125, 125, 125)
-                .addComponent(jLnome_campanha)
-                .addGap(119, 119, 119))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLnome_jogador)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                        .addComponent(jLnome_personagem)
+                        .addGap(129, 129, 129)
+                        .addComponent(jLvida_personagem)
+                        .addGap(125, 125, 125)
+                        .addComponent(jLnome_campanha)
+                        .addGap(119, 119, 119))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLstatus)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,7 +169,8 @@ public class JFPrincipal extends javax.swing.JFrame {
                     .addComponent(jLnome_personagem)
                     .addComponent(jLvida_personagem)
                     .addComponent(jLnome_campanha))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(jLstatus))
         );
 
         javax.swing.GroupLayout jpAraDePintarLayout = new javax.swing.GroupLayout(jpAraDePintar);
@@ -212,7 +221,7 @@ public class JFPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jpAraDePintar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,6 +335,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     public javax.swing.JLabel jLnome_campanha;
     public javax.swing.JLabel jLnome_jogador;
     public javax.swing.JLabel jLnome_personagem;
+    public javax.swing.JLabel jLstatus;
     public javax.swing.JLabel jLvida_personagem;
     public javax.swing.JPanel jPanel2;
     public javax.swing.JScrollPane jScrollPane1;
