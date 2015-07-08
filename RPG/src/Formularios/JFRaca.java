@@ -3,6 +3,8 @@ package Formularios;
 
 import Tabelas.Raca;
 import dao.GenericDAO;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,9 +13,16 @@ import javax.swing.JOptionPane;
 
 public class JFRaca extends javax.swing.JFrame {
 
+    public void centralizarComponente() { 
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+    }
+
   
     public JFRaca() {
         initComponents();
+        centralizarComponente();
     }
 
     @SuppressWarnings("unchecked")

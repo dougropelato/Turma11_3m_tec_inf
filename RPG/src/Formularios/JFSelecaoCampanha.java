@@ -7,6 +7,8 @@ package Formularios;
 
 import Tabelas.Autenticacao;
 import dao.GenericDAO;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -24,9 +26,17 @@ public class JFSelecaoCampanha extends javax.swing.JFrame {
     /**
      * Creates new form JFSelecaoCampanha
      */
+    
+        public void centralizarComponente() { 
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+    }
+
     public JFSelecaoCampanha() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         initComponents();
         carregaCampanha();
+        centralizarComponente();
         
     }
 
