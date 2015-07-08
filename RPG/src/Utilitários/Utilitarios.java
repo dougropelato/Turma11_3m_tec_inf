@@ -217,6 +217,13 @@ public class Utilitarios {
                 }
             }
         }
+        if(auth.getValida_posicao() == lvp.size()){
+            auth.setCodigo_campanha(0);
+            auth.setCodigo_caminho(0);
+            auth.setStatus_atual("logado");
+            texto += "---------------------- THE END -------------------------";
+        }
+            
 
         return texto;
     }

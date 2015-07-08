@@ -266,8 +266,10 @@ public class VerificaComandos {
 
                                 if (aux[1].equalsIgnoreCase("sim")) {
                                     res = utt.falanpcs(auth.getCodigo_npc(), "sim");
+                                    auth.setStatus_atual("andar");
                                 } else if (aux[1].equalsIgnoreCase("não")) {
                                     res = utt.falanpcs(auth.getCodigo_npc(), "não");
+                                    auth.setStatus_atual("andar");
                                 } else {
                                     aux[1] = utt.juntarStr(aux);
                                     res = utt.falanpcs(auth.getCodigo_npc(), "fala");
