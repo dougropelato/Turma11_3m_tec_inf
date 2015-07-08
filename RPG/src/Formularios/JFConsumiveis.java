@@ -298,7 +298,7 @@ public class JFConsumiveis extends javax.swing.JFrame {
 
         jButton1.setEnabled(true);
         jButton2.setEnabled(true);
-        jbCadastrar.setEnabled(true);
+        jbCadastrar.setEnabled(false);
         jBalterar.setEnabled(true);
         arrayListConsumiveis.clear();
         contador = 0;
