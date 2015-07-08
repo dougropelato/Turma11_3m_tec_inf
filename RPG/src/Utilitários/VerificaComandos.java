@@ -205,50 +205,63 @@ public class VerificaComandos {
 
                         JFSelecaoCampanha jfsl = new JFSelecaoCampanha();
                         jfsl.setVisible(true);
-                        res = "Selecione sua camanha";
+                        res = "Selecione sua camanha \n digite CAMINHOS para ver os caminhos da campanha";
                     }
 
                 } else {
 
-                    if (auth.getStatus_atual().equalsIgnoreCase("BATALHA")) {// entra na batalha
+                    if (auth.getCodigo_caminho() == 0) {
+                        if (aux[0].equalsIgnoreCase("caminhos")) {
+                            res = utt.carregaCaminhos();
+                        }
+                        if (aux[0].equalsIgnoreCase("caminho") && !aux[1].equalsIgnoreCase("")) {
 
-                        if (auth.getIniciativa_personagem() == 0) {
-                            bata.iniciaBatalha();
+                            auth.setCodigo_caminho(Integer.valueOf(aux[1]));
+                            res = utt.carregaPosicoes();
                         }
 
-                        if (aux[0].equalsIgnoreCase("atacar")) {//ataca
-                            res = bata.combate();
-                        }
-                        if (aux[0].equalsIgnoreCase("usar")) {//usa item
-
-                        }
-                        if (aux[0].equalsIgnoreCase("fugir")) {//tenta fugir
-                            List<String> ff = new ArrayList();
-                            ff = bata.fugir();
-
-                            if (ff.size() == 2) {
-                                res = ff.get(1);
-                            } else {
-                                res = ff.get(0);
-                            }
-
-                        }
-
-                    } else if (auth.getStatus_atual().equalsIgnoreCase("npc")) {// couse estiver falando com o npc
-                        if (aux[0].equalsIgnoreCase("falar")) { // fala com o npc disponivel
-                            res = "npc não encontrado";
-                        }
                     } else {
 
-                        if (aux[0].equalsIgnoreCase("Pericia")) {
-                            res = "pericia";
-                        }
-                        if (aux[0].equalsIgnoreCase("Usar")) {
-                            res = "item / escudos / armas / comsumiveis / armaduras";
-                        }
+                        if (auth.getStatus_atual().equalsIgnoreCase("BATALHA")) {// entra na batalha
 
-                        if (aux[0].equalsIgnoreCase("coletar")) {
-                            res = "nada a coletar aki";
+                            if (auth.getIniciativa_personagem() == 0) {
+                                bata.iniciaBatalha();
+                            }
+
+                            if (aux[0].equalsIgnoreCase("atacar")) {//ataca
+                                res = bata.combate();
+                            }
+                            if (aux[0].equalsIgnoreCase("usar")) {//usa item
+
+                            }
+                            if (aux[0].equalsIgnoreCase("fugir")) {//tenta fugir
+                                List<String> ff = new ArrayList();
+                                ff = bata.fugir();
+
+                                if (ff.size() == 2) {
+                                    res = ff.get(1);
+                                } else {
+                                    res = ff.get(0);
+                                }
+
+                            }
+
+                        } else if (auth.getStatus_atual().equalsIgnoreCase("npc")) {// couse estiver falando com o npc
+                            if (aux[0].equalsIgnoreCase("falar")) { // fala com o npc disponivel
+                                res = "npc não encontrado";
+                            }
+                        } else {
+
+                            if (aux[0].equalsIgnoreCase("Pericia")) {
+                                res = "pericia";
+                            }
+                            if (aux[0].equalsIgnoreCase("Usar")) {
+                                res = "item / escudos / armas / comsumiveis / armaduras";
+                            }
+
+                            if (aux[0].equalsIgnoreCase("coletar")) {
+                                res = "nada a coletar aki";
+                            }
                         }
                     }
                 }

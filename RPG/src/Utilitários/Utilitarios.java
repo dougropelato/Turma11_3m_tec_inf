@@ -44,7 +44,7 @@ public class Utilitarios {
         ArrayList arrayListCodFala = new ArrayList();
         int index = 0;
         int cont = 1;
-        
+
         //lista codigo da fala
         npcsFalas.setCodigo_npc(codigo_npc);
         List<Object> list = gDAO.listar2(NpcsFalas.class, npcsFalas);
@@ -52,20 +52,20 @@ public class Utilitarios {
             NpcsFalas nf = (NpcsFalas) obj2;
             arrayListCodFala.add(nf.getCodigo_fala());
         }
-        
-        while (index < arrayListCodFala.size()){
+
+        while (index < arrayListCodFala.size()) {
             //pega a fala desejada
             falas.setCodigo_fala((int) arrayListCodFala.get(cont));
             List<Object> list1 = gDAO.listar2(Falas.class, falas);
             for (Object obj3 : list1) {
                 Falas f = (Falas) obj3;
                 //verifica o tipo de fala desejado
-                if (falanpc.equals("fala")){
-                    fala=("Npc: " + f.getDescricao_fala() + " \n ");
-                }else if (falanpc.equals("sim")) {
-                    fala=("Npc: " +f.getResposta_positivo_fala() + " \n ");
-                }else if (falanpc.equals("nao")){
-                    fala=("Npc: " +f.getResposta_negativo_fala() + " \n ");
+                if (falanpc.equals("fala")) {
+                    fala = ("Npc: " + f.getDescricao_fala() + " \n ");
+                } else if (falanpc.equals("sim")) {
+                    fala = ("Npc: " + f.getResposta_positivo_fala() + " \n ");
+                } else if (falanpc.equals("nao")) {
+                    fala = ("Npc: " + f.getResposta_negativo_fala() + " \n ");
                 }
             }
             cont++;
@@ -193,6 +193,7 @@ public class Utilitarios {
             PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
             posicoesNpcs.setCodigo_posicao(posicoes.getCodigo_posicao());
             List<Object> list7 = gDAO.listar2(PosicoesNpcs.class, posicoesNpcs);
+
             for (Object obj7 : list7) {
                 Npcs npcs = new Npcs();
 
@@ -201,15 +202,18 @@ public class Utilitarios {
                 for (Object obj8 : list8) {
                     textoPosicoes = " " + npcs.getNome_npc() + " ";
                     textoPosicoes = " " + npcs.getDescricao_npc() + " /n";
+                    
+                    if (npcs.getTipo_npc() != null) {
 
-                    //setando tipos de npcs
-                    if (npcs.getTipo_npc().equals("combatente")) {
-                        auth.setStatus_atual("Batalha");
-                        auth.setCodigo_npc(npcs.getCodigo_npc());
-                    }
-                    if (npcs.getTipo_npc().equals("comerciante")) {
-                        auth.setStatus_atual("Comercio");
-                        auth.setCodigo_npc(npcs.getCodigo_npc());
+                        //setando tipos de npcs
+                        if (npcs.getTipo_npc().equals("combatente")) {
+                            auth.setStatus_atual("Batalha");
+                            auth.setCodigo_npc(npcs.getCodigo_npc());
+                        }
+                        if (npcs.getTipo_npc().equals("comerciante")) {
+                            auth.setStatus_atual("Comercio");
+                            auth.setCodigo_npc(npcs.getCodigo_npc());
+                        }
                     }
                 }
             }
@@ -325,7 +329,7 @@ public class Utilitarios {
                 sql += " WHERE codigo_personagem = " + pp.getCodigo_personagem();
 
                 System.out.println(sql);
-                gd.executaSql(sql,"");
+                gd.executaSql(sql, "");
             }
 
             if (bonus[0].equalsIgnoreCase("Pericias")) {
