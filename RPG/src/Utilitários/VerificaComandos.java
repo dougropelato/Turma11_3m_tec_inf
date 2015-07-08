@@ -227,6 +227,7 @@ public class VerificaComandos {
                     } else {
 
                         if (aux[0].equalsIgnoreCase("andar")) {
+                            auth.setValida_posicao(auth.getValida_posicao() + 1);
                             res = utt.carregaPosicoes();
                         }
 
@@ -237,6 +238,8 @@ public class VerificaComandos {
                             }
 
                             if (aux[0].equalsIgnoreCase("atacar")) {//ataca
+                                res = "-- ataque --";
+
                                 res = bata.combate();
                             }
                             if (aux[0].equalsIgnoreCase("usar")) {//usa item
@@ -256,7 +259,7 @@ public class VerificaComandos {
 
                         } else if (auth.getStatus_atual().equalsIgnoreCase("npc")) {// couse estiver falando com o npc
                             if (aux[0].equalsIgnoreCase("falar") || aux[0].equalsIgnoreCase("responder")) { // fala com o npc disponivel
-                               
+
                                 if (aux[1].equalsIgnoreCase("sim")) {
                                     res = utt.falanpcs(auth.getCodigo_npc(), "sim");
                                 } else if (aux[1].equalsIgnoreCase("não")) {
