@@ -222,6 +222,10 @@ public class VerificaComandos {
 
                     } else {
 
+                        if (aux[0].equalsIgnoreCase("andar")) {
+                            res = utt.carregaPosicoes();
+                        }
+
                         if (auth.getStatus_atual().equalsIgnoreCase("BATALHA")) {// entra na batalha
 
                             if (auth.getIniciativa_personagem() == 0) {

@@ -173,6 +173,8 @@ public class Utilitarios {
         List<Object> list3 = gDAO.listar2(Posicoes.class, posicoes);
         for (Object obj4 : list3) {
             Posicoes p = (Posicoes) obj4;
+            
+            posicoes = p;
 
             arrayListPosicao.add(posicoes.getCodigo_posicao());
             arrayListDescPosicao.add(posicoes.getDescricao_posicao());
@@ -187,7 +189,7 @@ public class Utilitarios {
 
             auth.setCodigo_posicao((int) arrayListPosicao.get(auth.getValida_posicao())); //posição atual
 
-            textoPosicoes = " " + arrayListDescPosicao.get(auth.getValida_posicao()) + " /n";
+            textoPosicoes += " " + arrayListDescPosicao.get(auth.getValida_posicao()) + " \n";
 
             //pegando npcs dessa posicao
             PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
@@ -200,9 +202,9 @@ public class Utilitarios {
                 npcs.setCodigo_npc(posicoesNpcs.getCodigo_npc());
                 List<Object> list8 = gDAO.listar2(Npcs.class, npcs);
                 for (Object obj8 : list8) {
-                    textoPosicoes = " " + npcs.getNome_npc() + " ";
-                    textoPosicoes = " " + npcs.getDescricao_npc() + " /n";
-                    
+                    textoPosicoes += " " + npcs.getNome_npc() + " ";
+                    textoPosicoes += " " + npcs.getDescricao_npc() + " \n";
+
                     if (npcs.getTipo_npc() != null) {
 
                         //setando tipos de npcs
@@ -228,7 +230,7 @@ public class Utilitarios {
                 ps.setCodigo_pericia(pp.getCodigo_pericia());
                 List<Object> list6 = gDAO.listar2(Pericias.class, ps);
                 for (Object obj6 : list6) {
-                    textoPosicoes = " " + ps.getNome_pericia() + "; ";
+                    textoPosicoes += " " + ps.getNome_pericia() + "; ";
                 }
             }
 

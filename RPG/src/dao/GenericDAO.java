@@ -257,7 +257,7 @@ public class GenericDAO {
                     String s = m.getName().substring(3, m.getName().length());
 
                     if (pvec[0].getName().equals("java.lang.String")) {
-                        args1[0] = String.class;
+                        args1[0] = String.class;                       
                         obj.getClass().getMethod(m.getName(), args1).invoke(obj, rset.getString(s));
                     }
 
