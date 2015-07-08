@@ -11,6 +11,7 @@ import Tabelas.PericiaPersonagem;
 import Tabelas.PericiasPosicoes;
 import Tabelas.TalentosPersonagem;
 import Tabelas.Temporario;
+import Tabelas.Vwposicoes;
 import dao.GenericDAO;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -161,118 +162,169 @@ public class Utilitarios {
         tem.setIniciativa_personagem(dad.getDado(20) + per.getDestreza_personagem());
     }
 
-    public String carregaPosicoes() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException,
-            InvocationTargetException, InstantiationException, ClassNotFoundException {
-        
-        Posicoes posicoes = new Posicoes();
-        PericiasPosicoes periciasPosicoes = new PericiasPosicoes();
-        GenericDAO gDAO = new GenericDAO();
-        ArrayList arrayListPosicao = new ArrayList(); //aqui todos os codigos de carregaPosicoes do caminho selecionado ficam
-        ArrayList arrayListDescPosicao = new ArrayList();
+    public String carregaPosicoes() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         Autenticacao auth = Autenticacao.getInstance();
-        String textoPosicoes = "";
-         auth.setStatus_atual("Caminhando");
+        GenericDAO gg = new GenericDAO();
+        Vwposicoes vwp = new Vwposicoes();
+        List<Object> lvp = new ArrayList();
+        String texto = "";
 
-        //limpando arrays
-        arrayListDescPosicao.clear();
-        arrayListPosicao.clear();
+        vwp.setCodigo_caminho(auth.getCodigo_caminho());
 
-        //salva os dados da posicao
-        posicoes.setCodigo_caminho(auth.getCodigo_caminho());
-        
-        List<Object> list3 = gDAO.listar2(Posicoes.class, posicoes);       
-       
-        
-        for (Object obj4 : list3) {
-            Posicoes p = (Posicoes) obj4;
+        lvp = gg.listar2(Vwposicoes.class, vwp);
 
-            posicoes = p;
+        for (int i = auth.getValida_posicao(); i < lvp.size(); i++) {
+            auth.setStatus_atual("Caminhando");
+            auth.setValida_posicao(i);
+            Vwposicoes vpp = new Vwposicoes();
+            vpp = (Vwposicoes) lvp.get(i);
 
-            arrayListPosicao.add(posicoes.getCodigo_posicao());
-            arrayListDescPosicao.add(posicoes.getDescricao_posicao());
-        }
+            texto += "  " + vpp.getDescricao_posicao() + "\n";
+            if (vpp.getCodigo_pericia() != 0) {
+                texto += "--- Pericias disponives ---\n";
+                texto += "---  " + vpp.getNome_pericia();
+                break;
 
-        //verifica se a posicao validada é 0
-        if (auth.getValida_posicao() == 0) {
-            auth.setValida_posicao(1);
-        }
+            }
+            if (vpp.getCodigo_npc() != 0) {
+                auth.setCodigo_npc(vpp.getCodigo_npc());
+                if (vpp.getTipo_npc().equalsIgnoreCase("guia")) {
+                    texto += "Você avista: " + vpp.getNome_npc();
+                    texto += " " + vpp.getDescricao_npc();
+                    auth.setStatus_atual("Guia");
+                    break;
 
-        while (auth.getValida_posicao() <= arrayListPosicao.size()) {
+                }
+                if (vpp.getTipo_npc().equalsIgnoreCase("Combatente")) {
+                    texto += "Você avista: " + vpp.getNome_npc();
+                    texto += " " + vpp.getDescricao_npc();
+                    auth.setStatus_atual("BATALHA");
+                    break;
 
-            auth.setCodigo_posicao((int) arrayListPosicao.get(auth.getValida_posicao())); //posição atual
-
-            textoPosicoes += " " + arrayListDescPosicao.get(auth.getValida_posicao()) + " \n";
-
-            //pegando npcs dessa posicao
-            PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
-            posicoesNpcs.setCodigo_posicao(posicoes.getCodigo_posicao());
-
-            List<Object> list7 = gDAO.listar2(PosicoesNpcs.class, posicoesNpcs);
-
-            for (Object obj7 : list7) {
-                PosicoesNpcs ps = (PosicoesNpcs) obj7;
-                posicoesNpcs = ps;
-
-                if (posicoesNpcs.getCodigo_npc() != 0) {
-
-                    auth.setStatus_atual("npc");
-                    auth.setCodigo_npc(posicoesNpcs.getCodigo_npc());
-
-                    System.out.println(posicoesNpcs.getCodigo_npc());
-
-                    Npcs npcs = new Npcs();
-                    npcs.setCodigo_npc(posicoesNpcs.getCodigo_npc());
-
-                    List<Object> list8 = gDAO.listar2(Npcs.class, npcs);
-                    for (Object obj8 : list8) {
-                        Npcs npc = (Npcs) obj8;
-                        npcs = npc;
-
-                        textoPosicoes += " " + npcs.getNome_npc() + " ";
-                        textoPosicoes += " " + npcs.getDescricao_npc() + " \n";
-
-                        //setando tipos de npcs
-                        if (npcs.getTipo_npc().equals("combatente")) {
-                            auth.setStatus_atual("Batalha");
-
-                        }
-                        if (npcs.getTipo_npc().equals("comerciante")) {
-                            auth.setStatus_atual("Comerciante");
-
-                        }
-
-                    }
+                }
+                if (vpp.getTipo_npc().equalsIgnoreCase("Coletavel")) {
+                    texto += "Você avista: " + vpp.getNome_npc();
+                    texto += " " + vpp.getDescricao_npc();
+                    auth.setStatus_atual("Coletavel");
+                    break;
                 }
             }
-
-            //pega todas as pericias dessa posição
-            periciasPosicoes.setCodigo_posicao(auth.getCodigo_posicao());
-
-            List<Object> list4 = gDAO.listar2(PericiasPosicoes.class, periciasPosicoes);
-
-            for (Object obj5 : list4) {
-                PericiasPosicoes pp = new PericiasPosicoes();
-
-                if (pp.getCodigo_pericia() != 0) {
-                    textoPosicoes += " - Prericias diponiveis - \n";
-                    Pericias ps = new Pericias();
-
-                    ps.setCodigo_pericia(pp.getCodigo_pericia());
-
-                    List<Object> list6 = gDAO.listar2(Pericias.class, ps);
-
-                    for (Object obj6 : list6) {
-                        textoPosicoes += " " + ps.getNome_pericia() + "; \n ";
-                    }
-                }
-            }
-
-            auth.setValida_posicao(auth.getValida_posicao() + 1);
-            break;
         }
 
-        return textoPosicoes;
+        return texto;
     }
+//
+//    public String carregaPosicoes() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException,
+//            InvocationTargetException, InstantiationException, ClassNotFoundException {
+//
+//        Posicoes posicoes = new Posicoes();
+//        PericiasPosicoes periciasPosicoes = new PericiasPosicoes();
+//        GenericDAO gDAO = new GenericDAO();
+//        ArrayList arrayListPosicao = new ArrayList(); //aqui todos os codigos de carregaPosicoes do caminho selecionado ficam
+//        ArrayList arrayListDescPosicao = new ArrayList();
+//        Autenticacao auth = Autenticacao.getInstance();
+//        String textoPosicoes = "";
+//        auth.setStatus_atual("Caminhando");
+//
+//        //limpando arrays
+//        arrayListDescPosicao.clear();
+//        arrayListPosicao.clear();
+//
+//        //salva os dados da posicao
+//        posicoes.setCodigo_caminho(auth.getCodigo_caminho());
+//
+//        List<Object> list3 = gDAO.listar2(Posicoes.class, posicoes);
+//
+//        for (Object obj4 : list3) {
+//            Posicoes p = (Posicoes) obj4;
+//
+//            posicoes = p;
+//
+//            arrayListPosicao.add(posicoes.getCodigo_posicao());
+//            arrayListDescPosicao.add(posicoes.getDescricao_posicao());
+//        }
+//
+//        //verifica se a posicao validada é 0
+//        if (auth.getValida_posicao() == 0) {
+//            auth.setValida_posicao(1);
+//        }
+//
+//        while (auth.getValida_posicao() <= arrayListPosicao.size()) {
+//
+//            auth.setCodigo_posicao((int) arrayListPosicao.get(auth.getValida_posicao())); //posição atual
+//
+//            textoPosicoes += " " + arrayListDescPosicao.get(auth.getValida_posicao()) + " \n";
+//
+//            //pegando npcs dessa posicao
+//            PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
+//            posicoesNpcs.setCodigo_posicao(posicoes.getCodigo_posicao());
+//
+//            List<Object> list7 = gDAO.listar2(PosicoesNpcs.class, posicoesNpcs);
+//
+//            for (Object obj7 : list7) {
+//                PosicoesNpcs ps = (PosicoesNpcs) obj7;
+//                posicoesNpcs = ps;
+//
+//                if (posicoesNpcs.getCodigo_npc() != 0) {
+//
+//                    auth.setStatus_atual("npc");
+//                    auth.setCodigo_npc(posicoesNpcs.getCodigo_npc());
+//
+//                    System.out.println(posicoesNpcs.getCodigo_npc());
+//
+//                    Npcs npcs = new Npcs();
+//                    npcs.setCodigo_npc(posicoesNpcs.getCodigo_npc());
+//
+//                    List<Object> list8 = gDAO.listar2(Npcs.class, npcs);
+//                    for (Object obj8 : list8) {
+//                        Npcs npc = (Npcs) obj8;
+//                        npcs = npc;
+//
+//                        textoPosicoes += " " + npcs.getNome_npc() + " ";
+//                        textoPosicoes += " " + npcs.getDescricao_npc() + " \n";
+//
+//                        //setando tipos de npcs
+//                        if (npcs.getTipo_npc().equals("combatente")) {
+//                            auth.setStatus_atual("Batalha");
+//
+//                        }
+//                        if (npcs.getTipo_npc().equals("comerciante")) {
+//                            auth.setStatus_atual("Comerciante");
+//
+//                        }
+//
+//                    }
+//                }
+//            }
+//
+//            //pega todas as pericias dessa posição
+//            periciasPosicoes.setCodigo_posicao(auth.getCodigo_posicao());
+//
+//            List<Object> list4 = gDAO.listar2(PericiasPosicoes.class, periciasPosicoes);
+//
+//            for (Object obj5 : list4) {
+//                PericiasPosicoes pp = new PericiasPosicoes();
+//
+//                if (pp.getCodigo_pericia() != 0) {
+//                    textoPosicoes += " - Prericias diponiveis - \n";
+//                    Pericias ps = new Pericias();
+//
+//                    ps.setCodigo_pericia(pp.getCodigo_pericia());
+//
+//                    List<Object> list6 = gDAO.listar2(Pericias.class, ps);
+//
+//                    for (Object obj6 : list6) {
+//                        textoPosicoes += " " + ps.getNome_pericia() + "; \n ";
+//                    }
+//                }
+//            }
+//
+//            auth.setValida_posicao(auth.getValida_posicao() + 1);
+//            break;
+//        }
+//
+//        return textoPosicoes;
+//    }
 
     public static void aplicaTalento(Personagens pp, Talentos tts) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
