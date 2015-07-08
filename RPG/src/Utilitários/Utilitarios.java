@@ -163,6 +163,7 @@ public class Utilitarios {
 
     public String carregaPosicoes() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException,
             InvocationTargetException, InstantiationException, ClassNotFoundException {
+        
         Posicoes posicoes = new Posicoes();
         PericiasPosicoes periciasPosicoes = new PericiasPosicoes();
         GenericDAO gDAO = new GenericDAO();
@@ -170,6 +171,7 @@ public class Utilitarios {
         ArrayList arrayListDescPosicao = new ArrayList();
         Autenticacao auth = Autenticacao.getInstance();
         String textoPosicoes = "";
+         auth.setStatus_atual("Caminhando");
 
         //limpando arrays
         arrayListDescPosicao.clear();
@@ -177,7 +179,10 @@ public class Utilitarios {
 
         //salva os dados da posicao
         posicoes.setCodigo_caminho(auth.getCodigo_caminho());
-        List<Object> list3 = gDAO.listar2(Posicoes.class, posicoes);
+        
+        List<Object> list3 = gDAO.listar2(Posicoes.class, posicoes);       
+       
+        
         for (Object obj4 : list3) {
             Posicoes p = (Posicoes) obj4;
 
@@ -232,7 +237,7 @@ public class Utilitarios {
 
                         }
                         if (npcs.getTipo_npc().equals("comerciante")) {
-                            auth.setStatus_atual("Comercio");
+                            auth.setStatus_atual("Comerciante");
 
                         }
 
