@@ -131,33 +131,40 @@ public class Utilitarios {
         for (Object li : lis) {
             Personagens pso = (Personagens) li;
 
-            per.setAltura_personagem(pso.getAltura_personagem());
-            per.setBase_ataque_personagem(pso.getBase_ataque_personagem());
-            per.setCarisma_personagem(pso.getCarisma_personagem());
-            per.setClasse_armadura_personagem(pso.getClasse_armadura_personagem());
-            per.setContituicao_personagem(pso.getContituicao_personagem());
-            per.setDestreza_personagem(pso.getDestreza_personagem());
-            per.setForca_personagem(pso.getForca_personagem());
-            per.setFortitude_personagem(pso.getFortitude_personagem());
-            per.setIdade_personagem(pso.getIdade_personagem());
-            per.setIniciativa_personagem(pso.getIniciativa_personagem());
-            per.setInteligencia_personagem(pso.getInteligencia_personagem());
-            per.setNome_personagem(pso.getNome_personagem());
-            per.setPeso_personagem(pso.getPeso_personagem());
-            per.setPontos_vida_personagem(pso.getPontos_vida_personagem());
-            per.setReflexos_personagem(pso.getReflexos_personagem());
-            per.setSabedoria_personagem(pso.getSabedoria_personagem());
-            per.setVontade_personagem(pso.getVontade_personagem());
+            if (pso.getCodigo_personagem() == per.getCodigo_personagem()) {
+
+                per.setAltura_personagem(pso.getAltura_personagem());
+                per.setBase_ataque_personagem(pso.getBase_ataque_personagem());
+                per.setCarisma_personagem(pso.getCarisma_personagem());
+                per.setClasse_armadura_personagem(pso.getClasse_armadura_personagem());
+                per.setContituicao_personagem(pso.getContituicao_personagem());
+                per.setDestreza_personagem(pso.getDestreza_personagem());
+                per.setForca_personagem(pso.getForca_personagem());
+                per.setFortitude_personagem(pso.getFortitude_personagem());
+                per.setIdade_personagem(pso.getIdade_personagem());
+                per.setIniciativa_personagem(pso.getIniciativa_personagem());
+                per.setInteligencia_personagem(pso.getInteligencia_personagem());
+                per.setNome_personagem(pso.getNome_personagem());
+                per.setPeso_personagem(pso.getPeso_personagem());
+                per.setPontos_vida_personagem(pso.getPontos_vida_personagem());
+                per.setReflexos_personagem(pso.getReflexos_personagem());
+                per.setSabedoria_personagem(pso.getSabedoria_personagem());
+                per.setVontade_personagem(pso.getVontade_personagem());
+            }
+
         }
 
         lis = gda.listar2(Temporario.class, tem);
 
         for (Object li : lis) {
             Temporario tp = (Temporario) li;
-            tem.setCa_personagem(tp.getCa_personagem());
-            tem.setCodigo_arma(tp.getCodigo_arma());
-            tem.setPontos_vida_temporario(tp.getPontos_vida_temporario());
-            tem.setCodigo_escudo(tp.getCodigo_escudo());
+            if (tem.getCodigo_personagem() == tp.getCodigo_personagem()) {
+                tem.setCa_personagem(tp.getCa_personagem());
+                tem.setCodigo_arma(tp.getCodigo_arma());
+                tem.setPontos_vida_temporario(tp.getPontos_vida_temporario());
+                tem.setCodigo_escudo(tp.getCodigo_escudo());
+            }
+
         }
         tem.setIniciativa_personagem(dad.getDado(20) + per.getDestreza_personagem());
     }
@@ -213,118 +220,6 @@ public class Utilitarios {
 
         return texto;
     }
-//
-//    public String carregaPosicoes() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException,
-//            InvocationTargetException, InstantiationException, ClassNotFoundException {
-//
-//        Posicoes posicoes = new Posicoes();
-//        PericiasPosicoes periciasPosicoes = new PericiasPosicoes();
-//        GenericDAO gDAO = new GenericDAO();
-//        ArrayList arrayListPosicao = new ArrayList(); //aqui todos os codigos de carregaPosicoes do caminho selecionado ficam
-//        ArrayList arrayListDescPosicao = new ArrayList();
-//        Autenticacao auth = Autenticacao.getInstance();
-//        String textoPosicoes = "";
-//        auth.setStatus_atual("Caminhando");
-//
-//        //limpando arrays
-//        arrayListDescPosicao.clear();
-//        arrayListPosicao.clear();
-//
-//        //salva os dados da posicao
-//        posicoes.setCodigo_caminho(auth.getCodigo_caminho());
-//
-//        List<Object> list3 = gDAO.listar2(Posicoes.class, posicoes);
-//
-//        for (Object obj4 : list3) {
-//            Posicoes p = (Posicoes) obj4;
-//
-//            posicoes = p;
-//
-//            arrayListPosicao.add(posicoes.getCodigo_posicao());
-//            arrayListDescPosicao.add(posicoes.getDescricao_posicao());
-//        }
-//
-//        //verifica se a posicao validada é 0
-//        if (auth.getValida_posicao() == 0) {
-//            auth.setValida_posicao(1);
-//        }
-//
-//        while (auth.getValida_posicao() <= arrayListPosicao.size()) {
-//
-//            auth.setCodigo_posicao((int) arrayListPosicao.get(auth.getValida_posicao())); //posição atual
-//
-//            textoPosicoes += " " + arrayListDescPosicao.get(auth.getValida_posicao()) + " \n";
-//
-//            //pegando npcs dessa posicao
-//            PosicoesNpcs posicoesNpcs = new PosicoesNpcs();
-//            posicoesNpcs.setCodigo_posicao(posicoes.getCodigo_posicao());
-//
-//            List<Object> list7 = gDAO.listar2(PosicoesNpcs.class, posicoesNpcs);
-//
-//            for (Object obj7 : list7) {
-//                PosicoesNpcs ps = (PosicoesNpcs) obj7;
-//                posicoesNpcs = ps;
-//
-//                if (posicoesNpcs.getCodigo_npc() != 0) {
-//
-//                    auth.setStatus_atual("npc");
-//                    auth.setCodigo_npc(posicoesNpcs.getCodigo_npc());
-//
-//                    System.out.println(posicoesNpcs.getCodigo_npc());
-//
-//                    Npcs npcs = new Npcs();
-//                    npcs.setCodigo_npc(posicoesNpcs.getCodigo_npc());
-//
-//                    List<Object> list8 = gDAO.listar2(Npcs.class, npcs);
-//                    for (Object obj8 : list8) {
-//                        Npcs npc = (Npcs) obj8;
-//                        npcs = npc;
-//
-//                        textoPosicoes += " " + npcs.getNome_npc() + " ";
-//                        textoPosicoes += " " + npcs.getDescricao_npc() + " \n";
-//
-//                        //setando tipos de npcs
-//                        if (npcs.getTipo_npc().equals("combatente")) {
-//                            auth.setStatus_atual("Batalha");
-//
-//                        }
-//                        if (npcs.getTipo_npc().equals("comerciante")) {
-//                            auth.setStatus_atual("Comerciante");
-//
-//                        }
-//
-//                    }
-//                }
-//            }
-//
-//            //pega todas as pericias dessa posição
-//            periciasPosicoes.setCodigo_posicao(auth.getCodigo_posicao());
-//
-//            List<Object> list4 = gDAO.listar2(PericiasPosicoes.class, periciasPosicoes);
-//
-//            for (Object obj5 : list4) {
-//                PericiasPosicoes pp = new PericiasPosicoes();
-//
-//                if (pp.getCodigo_pericia() != 0) {
-//                    textoPosicoes += " - Prericias diponiveis - \n";
-//                    Pericias ps = new Pericias();
-//
-//                    ps.setCodigo_pericia(pp.getCodigo_pericia());
-//
-//                    List<Object> list6 = gDAO.listar2(Pericias.class, ps);
-//
-//                    for (Object obj6 : list6) {
-//                        textoPosicoes += " " + ps.getNome_pericia() + "; \n ";
-//                    }
-//                }
-//            }
-//
-//            auth.setValida_posicao(auth.getValida_posicao() + 1);
-//            break;
-//        }
-//
-//        return textoPosicoes;
-//    }
 
     public static void aplicaTalento(Personagens pp, Talentos tts) throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 

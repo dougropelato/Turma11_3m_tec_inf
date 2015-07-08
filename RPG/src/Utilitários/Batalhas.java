@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import tabelas.Armas;
 import tabelas.Escudos;
+import tabelas.Npcs;
 import tabelas.Personagens;
 
 /**
@@ -32,20 +33,34 @@ public class Batalhas {
 
     public String iniciaBatalha() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
-        utilitários.Dados dad = new utilitários.Dados();
-        GenericDAO gda = new GenericDAO();
+        Npcs nn = new Npcs();
+        GenericDAO gd = new GenericDAO();
         String res = "";
         Utilitarios ut = new Utilitarios();
+
+        Personagens pno = new Personagens();
 
         per.setCodigo_personagem(auth.getCodigo_personagem());
         tem.setCodigo_personagem(per.getCodigo_personagem());
 
         ut.carregaPersonagem(per, tem);
 
-        npc.setCodigo_personagem(auth.getCodigo_npc());
+        nn.setCodigo_npc(auth.getCodigo_npc());
+        List asd = new ArrayList();
+
+        asd = gd.listar3(nn, Personagens.class, NpcsCombatentes.class);
+        try {
+            pno = (Personagens) asd.get(1);
+        } catch (Exception e) {
+
+        }
+
+        npc.setCodigo_personagem(pno.getCodigo_personagem());
         tempnpc.setCodigo_personagem(npc.getCodigo_personagem());
 
         ut.carregaPersonagem(npc, tempnpc);
+
+        res = "Seu inimigo é: " + npc.getNome_personagem();
 
         if (tem.getIniciativa_personagem() > tempnpc.getIniciativa_personagem()) {
             auth.setIniciativa_personagem(2);
@@ -61,13 +76,13 @@ public class Batalhas {
     public List fugir() {
 
         utilitários.Dados dad = new utilitários.Dados();
-        // String[] res = null;
+
         List<String> res = new ArrayList();
         int i;
         i = dad.getDado(20);
 
         res.add("você tenta fugir mas é encurralado pelo seu inimigo dado = " + i);
-        
+
         if (i > 15) {
             res.add("você corre velozmente para o lado oposto do seu inimigo deixando-o para tráz  dado = " + i);
 
@@ -80,7 +95,7 @@ public class Batalhas {
         int dano = 0;
         String res = "";
 
-        if (tem.getIniciativa_personagem() > tempnpc.getIniciativa_personagem()) {
+        if (auth.getIniciativa_personagem() > auth.getIniciativa_npc()) {
             auth.setIniciativa_personagem(1);
             auth.setIniciativa_npc(2);
 
@@ -90,10 +105,10 @@ public class Batalhas {
 
                 if (npc.getPontos_vida_personagem() > 0) {
                     res = npc.getNome_personagem() + " recebeu um ataque violento \n";
-                    res += dano + " pontos de dano ";
+                    res += "de " + dano + " pontos de dano ";
                 } else {
                     res = npc.getNome_personagem() + " recebeu um ataque violento \n";
-                    res += dano + " pontos de dano e morreu";
+                    res += "de " + dano + " pontos de dano e morre";
                 }
 
             } else {
@@ -130,10 +145,10 @@ public class Batalhas {
         utilitários.Dados dad = new utilitários.Dados();
 
         if (pp.getModForca() > pp.getModDestreza()) {
-            res = dad.getDado(20) + pp.getModForca() + pp.getBase_ataque_personagem();
+            res = dad.getDado(20) + pp.getModForca() + pp.getBase_ataque_personagem() + 15;
 
         } else {
-            res = dad.getDado(20) + pp.getModDestreza() + pp.getBase_ataque_personagem();
+            res = dad.getDado(20) + pp.getModDestreza() + pp.getBase_ataque_personagem() + 15;
         }
         return res;
     }
