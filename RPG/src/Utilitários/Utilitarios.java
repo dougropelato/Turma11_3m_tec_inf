@@ -65,15 +65,16 @@ public class Utilitarios {
         lf = (List<Falas>) lista.get(1);
 
         for (Falas lf1 : lf) {
-            falas = lf1;
+            Falas lll = (Falas) lf1;
+
             if (falanpc.equalsIgnoreCase("fala")) {
-                fala = falas.getDescricao_fala();
+                fala = lll.getDescricao_fala();
             }
             if (falanpc.equalsIgnoreCase("sim")) {
-                fala = falas.getResposta_positivo_fala();
+                fala = lll.getResposta_positivo_fala();
             }
             if (falanpc.equalsIgnoreCase("não")) {
-                fala = falas.getResposta_negativo_fala();
+                fala = lll.getResposta_negativo_fala();
             }
         }
 

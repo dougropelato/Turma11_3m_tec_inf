@@ -255,11 +255,16 @@ public class VerificaComandos {
                             }
 
                         } else if (auth.getStatus_atual().equalsIgnoreCase("npc")) {// couse estiver falando com o npc
-                            if (aux[0].equalsIgnoreCase("falar")) { // fala com o npc disponivel
-                                aux[1] = utt.juntarStr(aux);
-
-                                res = utt.falanpcs(auth.getCodigo_npc(), "fala");
-
+                            if (aux[0].equalsIgnoreCase("falar") || aux[0].equalsIgnoreCase("responder")) { // fala com o npc disponivel
+                               
+                                if (aux[1].equalsIgnoreCase("sim")) {
+                                    res = utt.falanpcs(auth.getCodigo_npc(), "sim");
+                                } else if (aux[1].equalsIgnoreCase("não")) {
+                                    res = utt.falanpcs(auth.getCodigo_npc(), "ñão");
+                                } else {
+                                    aux[1] = utt.juntarStr(aux);
+                                    res = utt.falanpcs(auth.getCodigo_npc(), "fala");
+                                }
                             }
                         } else {
 
@@ -308,13 +313,10 @@ public class VerificaComandos {
             int t = 0;
             for (Personagens per : lp) {
                 Personagens ppr = (Personagens) per;
-                System.out.println(t += 1);
                 res += " " + ppr.getCodigo_personagem() + " - " + ppr.getNome_personagem() + "\n";
             }
         }
-
         return res;
-
     }
 
     public String listaComando() {
