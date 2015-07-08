@@ -226,44 +226,48 @@ public class VerificaComandos {
 
                     } else {
 
-                        if (aux[0].equalsIgnoreCase("andar")) {
-                            auth.setValida_posicao(auth.getValida_posicao() + 1);
-                            res = utt.carregaPosicoes();
-                        }
-
                         if (auth.getStatus_atual().equalsIgnoreCase("BATALHA")) {// entra na batalha
 
                             if (auth.getIniciativa_personagem() == 0) {
                                 res = bata.iniciaBatalha();
-                            }
+                            } else {
 
-                            if (aux[0].equalsIgnoreCase("atacar")) {//ataca
-                                res = "-- ataque --";
+                                if (aux[0].equalsIgnoreCase("atacar")) {//ataca
+                                    res = "-- ataque --\n";
 
-                                res = bata.combate();
-                            }
-                            if (aux[0].equalsIgnoreCase("usar")) {//usa item
-
-                            }
-                            if (aux[0].equalsIgnoreCase("fugir")) {//tenta fugir
-                                List<String> ff = new ArrayList();
-                                ff = bata.fugir();
-
-                                if (ff.size() == 2) {
-                                    res = ff.get(1);
-                                } else {
-                                    res = ff.get(0);
+                                    res += bata.combate();
                                 }
+                                if (aux[0].equalsIgnoreCase("usar")) {//usa item
 
+                                }
+                                if (aux[0].equalsIgnoreCase("fugir")) {//tenta fugir
+                                    List<String> ff = new ArrayList();
+                                    ff = bata.fugir();
+
+                                    if (ff.size() == 2) {
+                                        res = ff.get(1);
+                                        auth.setStatus_atual("Fugindo");
+                                    } else {
+                                        res = ff.get(0);
+                                    }
+
+                                }
+                                if (!auth.getStatus_atual().equalsIgnoreCase("BATALHA")) {
+                                    auth.setIniciativa_personagem(0);
+                                    auth.setCodigo_npc(0);
+                                    auth.setValida_posicao(auth.getValida_posicao() + 1);
+                                    res = utt.carregaPosicoes();
+
+                                }
                             }
 
-                        } else if (auth.getStatus_atual().equalsIgnoreCase("npc")) {// couse estiver falando com o npc
+                        } else if (auth.getStatus_atual().equalsIgnoreCase("npc") || auth.getStatus_atual().equalsIgnoreCase("Guia")) {// couse estiver falando com o npc
                             if (aux[0].equalsIgnoreCase("falar") || aux[0].equalsIgnoreCase("responder")) { // fala com o npc disponivel
 
                                 if (aux[1].equalsIgnoreCase("sim")) {
                                     res = utt.falanpcs(auth.getCodigo_npc(), "sim");
                                 } else if (aux[1].equalsIgnoreCase("não")) {
-                                    res = utt.falanpcs(auth.getCodigo_npc(), "ñão");
+                                    res = utt.falanpcs(auth.getCodigo_npc(), "não");
                                 } else {
                                     aux[1] = utt.juntarStr(aux);
                                     res = utt.falanpcs(auth.getCodigo_npc(), "fala");
@@ -271,6 +275,10 @@ public class VerificaComandos {
                             }
                         } else {
 
+                            if (aux[0].equalsIgnoreCase("andar")) {
+                                auth.setValida_posicao(auth.getValida_posicao() + 1);
+                                res = utt.carregaPosicoes();
+                            }
                             if (aux[0].equalsIgnoreCase("Pericia")) {
                                 res = "pericia";
                             }

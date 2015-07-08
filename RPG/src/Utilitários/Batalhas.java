@@ -39,6 +39,7 @@ public class Batalhas {
         Utilitarios ut = new Utilitarios();
 
         Personagens pno = new Personagens();
+        List<Personagens> npp = new ArrayList();
 
         per.setCodigo_personagem(auth.getCodigo_personagem());
         tem.setCodigo_personagem(per.getCodigo_personagem());
@@ -49,10 +50,12 @@ public class Batalhas {
         List asd = new ArrayList();
 
         asd = gd.listar3(nn, Personagens.class, NpcsCombatentes.class);
-        try {
-            pno = (Personagens) asd.get(1);
-        } catch (Exception e) {
 
+        npp = (List<Personagens>) asd.get(1);
+
+        for (Object asd1 : npp) {
+            Personagens dd = (Personagens) asd1;
+            pno = dd;
         }
 
         npc.setCodigo_personagem(pno.getCodigo_personagem());
@@ -109,6 +112,7 @@ public class Batalhas {
                 } else {
                     res = npc.getNome_personagem() + " recebeu um ataque violento \n";
                     res += "de " + dano + " pontos de dano e morre";
+                    auth.setStatus_atual("Venceu");
                 }
 
             } else {
@@ -126,8 +130,11 @@ public class Batalhas {
 
                 if (per.getPontos_vida_personagem() > 0) {
                     res = "voce recebeu um ataque violento";
+                    res += "de " + dano + " pontos de dano";
                 } else {
-
+                    res = "voce recebeu um ataque violento";
+                    res += "de " + dano + " pontos de dano e morre";
+                    auth.setStatus_atual("Game Over");
                 }
 
             } else {
@@ -145,10 +152,10 @@ public class Batalhas {
         utilitários.Dados dad = new utilitários.Dados();
 
         if (pp.getModForca() > pp.getModDestreza()) {
-            res = dad.getDado(20) + pp.getModForca() + pp.getBase_ataque_personagem() + 15;
+            res = dad.getDado(20) + pp.getModForca() + pp.getBase_ataque_personagem() + 13;
 
         } else {
-            res = dad.getDado(20) + pp.getModDestreza() + pp.getBase_ataque_personagem() + 15;
+            res = dad.getDado(20) + pp.getModDestreza() + pp.getBase_ataque_personagem() + 13;
         }
         return res;
     }
