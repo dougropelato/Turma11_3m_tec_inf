@@ -111,6 +111,14 @@ public class JFEscudos extends javax.swing.JFrame {
 
         jLabel6.setText("Penalidade Destreza Escudo:");
 
+        jtfNomeEscudo.setEditable(false);
+
+        jtfPrecoEscudo.setEditable(false);
+
+        jtfBonusMaximoEscudo.setEditable(false);
+
+        jtfPenalidadeDestrezaEscudo.setEditable(false);
+
         jbCadastrar.setText("Cadastrar");
         jbCadastrar.setEnabled(false);
         jbCadastrar.addActionListener(new java.awt.event.ActionListener() {

@@ -110,11 +110,16 @@ public class JFConsumiveis extends javax.swing.JFrame {
 
         jLabel6.setText("Tipo Dado Consumível:");
 
+        jtfNomeConsumivel.setEditable(false);
         jtfNomeConsumivel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfNomeConsumivelActionPerformed(evt);
             }
         });
+
+        jtfPrecoConsumivel.setEditable(false);
+
+        jtfTipoDadoConsumivel.setEditable(false);
 
         jbCadastrar.setText("Cadastrar");
         jbCadastrar.setEnabled(false);

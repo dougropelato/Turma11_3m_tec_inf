@@ -169,15 +169,24 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfNomeConsumivel">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfNomeConsumivelActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfPrecoConsumivel">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfQuantidadeDadosConsumivel">
     </Component>
     <Component class="javax.swing.JTextField" name="jtfTipoDadoConsumivel">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jbCadastrar">
       <Properties>
