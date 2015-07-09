@@ -589,23 +589,16 @@ public class JFNpcAlterarExcluir extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBExcluirNpcActionPerformed
 
-    // Chama formulário NPC
+    // Volta para o fomulário Mestre
     private void jBAlterarSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarSairActionPerformed
        
         JFNpcAlterarExcluir.this.dispose();
         
-        JFNpc npc = new JFNpc();
-        npc.setVisible(true);
-        
     }//GEN-LAST:event_jBAlterarSairActionPerformed
 
-    // Chama formulário Mestre
     private void jBExcluirSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirSairActionPerformed
         
        JFNpcAlterarExcluir.this.dispose();
-        
-       JFMestre Mestre = new JFMestre();
-       Mestre.setVisible(true); 
       
     }//GEN-LAST:event_jBExcluirSairActionPerformed
 

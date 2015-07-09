@@ -143,6 +143,7 @@ public class JFNpc extends javax.swing.JFrame {
         jCBAdicionarItemArmadura = new javax.swing.JCheckBox();
         jCBAdicionarItemArma = new javax.swing.JCheckBox();
         jCBAdicionarItemConsumivel = new javax.swing.JCheckBox();
+        jBNovosItensCancelar1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         LabelNovaFalaNomeNpc = new javax.swing.JLabel();
         LabelAdicionarNovaFala = new javax.swing.JLabel();
@@ -162,6 +163,7 @@ public class JFNpc extends javax.swing.JFrame {
         jTFNovaFalaTipoNpc = new javax.swing.JTextField();
         jBNovaFalaAtualizar = new javax.swing.JButton();
         jBAdicionarNovaFalaSair = new javax.swing.JButton();
+        jBNovaFalaCancelar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         LabelAdicionarNovosItens = new javax.swing.JLabel();
         LabelNovosItensNomeNpc = new javax.swing.JLabel();
@@ -211,6 +213,7 @@ public class JFNpc extends javax.swing.JFrame {
         jTFNovosItensQuantidadeArmaBanco = new javax.swing.JTextField();
         jTFNovosItensQuantidadeConsumivelBanco = new javax.swing.JTextField();
         jBAdicionarNovosItensSair = new javax.swing.JButton();
+        jBNovosItensCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Npc's");
@@ -313,7 +316,7 @@ public class JFNpc extends javax.swing.JFrame {
                 jBCadastrarActionPerformed(evt);
             }
         });
-        jPCadastrar.add(jBCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 500, 120, 30));
+        jPCadastrar.add(jBCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 460, 120, 30));
 
         jCBTipoNpc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Combatente", "Comerciante", "Coletável", "Guia", "Missão" }));
         jCBTipoNpc.setSelectedIndex(-1);
@@ -584,7 +587,7 @@ public class JFNpc extends javax.swing.JFrame {
                 jBCarregarRacaClasseActionPerformed(evt);
             }
         });
-        jPCadastrar.add(jBCarregarRacaClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 70, 150, 30));
+        jPCadastrar.add(jBCarregarRacaClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 70, 170, 30));
 
         jBCarregarItens.setText("Carregar Itens");
         jBCarregarItens.setNextFocusableComponent(jCBArmaduraNpc);
@@ -638,6 +641,14 @@ public class JFNpc extends javax.swing.JFrame {
             }
         });
         jPCadastrar.add(jCBAdicionarItemConsumivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 256, -1, -1));
+
+        jBNovosItensCancelar1.setText("Cancelar");
+        jBNovosItensCancelar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNovosItensCancelar1ActionPerformed(evt);
+            }
+        });
+        jPCadastrar.add(jBNovosItensCancelar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 500, 120, 30));
 
         jTPNPC.addTab("Cadastrar", jPCadastrar);
 
@@ -720,7 +731,7 @@ public class JFNpc extends javax.swing.JFrame {
                 jBNovaFalaAdicionarActionPerformed(evt);
             }
         });
-        jPanel3.add(jBNovaFalaAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, 120, 30));
+        jPanel3.add(jBNovaFalaAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 120, 30));
 
         jTFNovaFalaTipoNpc.setEditable(false);
         jTFNovaFalaTipoNpc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -743,6 +754,14 @@ public class JFNpc extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jBAdicionarNovaFalaSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 580, 120, 30));
+
+        jBNovaFalaCancelar.setText("Cancelar");
+        jBNovaFalaCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNovaFalaCancelarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jBNovaFalaCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, 120, 30));
 
         jTPNPC.addTab("Adicionar Nova Fala", jPanel3);
 
@@ -1015,6 +1034,14 @@ public class JFNpc extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jBAdicionarNovosItensSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 580, 120, 30));
+
+        jBNovosItensCancelar.setText("Cancelar");
+        jBNovosItensCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNovosItensCancelarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jBNovosItensCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 155, 30));
 
         jTPNPC.addTab("Adicionar Novos Itens", jPanel2);
 
@@ -3486,7 +3513,7 @@ public class JFNpc extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jCBAdicionarItemEscudoActionPerformed
 
-    // Chama formulário Mestre ao precionar botões Sai em ambas as abas
+    // Volta para o formulário Mestre ao precionar botões Sair em ambas as abas
     private void jBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairActionPerformed
         
         JFNpc.this.dispose();
@@ -3504,6 +3531,25 @@ public class JFNpc extends javax.swing.JFrame {
         JFNpc.this.dispose();   
         
     }//GEN-LAST:event_jBAdicionarNovosItensSairActionPerformed
+
+    // Limpa todos campos referentes a aba do botão Cancelar que for precionado
+    private void jBNovaFalaCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovaFalaCancelarActionPerformed
+        
+        LimparCamposAbaAdicionarNovaFala(evt);
+        
+    }//GEN-LAST:event_jBNovaFalaCancelarActionPerformed
+
+    private void jBNovosItensCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovosItensCancelarActionPerformed
+        
+        LimparCamposAbaAdicionarNovosItens(evt);
+        
+    }//GEN-LAST:event_jBNovosItensCancelarActionPerformed
+
+    private void jBNovosItensCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovosItensCancelar1ActionPerformed
+        
+        LimparCamposAbaCadastrar(evt);
+        
+    }//GEN-LAST:event_jBNovosItensCancelar1ActionPerformed
     
     
     /**
@@ -3563,8 +3609,11 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JButton jBCarregarRacaClasse;
     private javax.swing.JButton jBNovaFalaAdicionar;
     private javax.swing.JButton jBNovaFalaAtualizar;
+    private javax.swing.JButton jBNovaFalaCancelar;
     private javax.swing.JButton jBNovosItensAdicionar;
     private javax.swing.JButton jBNovosItensAtualizar;
+    private javax.swing.JButton jBNovosItensCancelar;
+    private javax.swing.JButton jBNovosItensCancelar1;
     private javax.swing.JButton jBSair;
     private javax.swing.JCheckBox jCBAdicionarItemArma;
     private javax.swing.JCheckBox jCBAdicionarItemArmadura;
