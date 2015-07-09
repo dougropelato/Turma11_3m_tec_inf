@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import jdk.nashorn.internal.runtime.ListAdapter;
 import tabelas.ProgressaoTalento;
 import tabelas.Talentos;
@@ -148,7 +149,9 @@ public class JFProgressaoTalento extends javax.swing.JFrame {
         progTal.setCodigo_talento((int) listaTalentos.get(jcbTalento.getSelectedIndex()));
 
         listaTC.add(progTal);
-
+        
+        JOptionPane.showMessageDialog(null, "Talento adicionado com sucesso!");
+        
         jcbTalento.setSelectedIndex(-1);
         jtfNivel.setText("");
     }//GEN-LAST:event_jbtSalvaActionPerformed
