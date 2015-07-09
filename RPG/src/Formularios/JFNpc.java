@@ -161,6 +161,7 @@ public class JFNpc extends javax.swing.JFrame {
         jBNovaFalaAdicionar = new javax.swing.JButton();
         jTFNovaFalaTipoNpc = new javax.swing.JTextField();
         jBNovaFalaAtualizar = new javax.swing.JButton();
+        jBAdicionarNovaFalaSair = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         LabelAdicionarNovosItens = new javax.swing.JLabel();
         LabelNovosItensNomeNpc = new javax.swing.JLabel();
@@ -209,6 +210,7 @@ public class JFNpc extends javax.swing.JFrame {
         jTFNovosItensQuantidadeArmaduraBanco = new javax.swing.JTextField();
         jTFNovosItensQuantidadeArmaBanco = new javax.swing.JTextField();
         jTFNovosItensQuantidadeConsumivelBanco = new javax.swing.JTextField();
+        jBAdicionarNovosItensSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Npc's");
@@ -734,6 +736,14 @@ public class JFNpc extends javax.swing.JFrame {
         });
         jPanel3.add(jBNovaFalaAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 42, 120, 30));
 
+        jBAdicionarNovaFalaSair.setText("Sair");
+        jBAdicionarNovaFalaSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAdicionarNovaFalaSairActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jBAdicionarNovaFalaSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 580, 120, 30));
+
         jTPNPC.addTab("Adicionar Nova Fala", jPanel3);
 
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -997,6 +1007,14 @@ public class JFNpc extends javax.swing.JFrame {
 
         jTFNovosItensQuantidadeConsumivelBanco.setEditable(false);
         jPanel2.add(jTFNovosItensQuantidadeConsumivelBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, 60, -1));
+
+        jBAdicionarNovosItensSair.setText("Sair");
+        jBAdicionarNovosItensSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAdicionarNovosItensSairActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jBAdicionarNovosItensSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 580, 120, 30));
 
         jTPNPC.addTab("Adicionar Novos Itens", jPanel2);
 
@@ -3468,6 +3486,7 @@ public class JFNpc extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jCBAdicionarItemEscudoActionPerformed
 
+    // Chama formulário Mestre ao precionar botões Sai em ambas as abas
     private void jBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairActionPerformed
         
         JFNpc.this.dispose();
@@ -3476,6 +3495,24 @@ public class JFNpc extends javax.swing.JFrame {
         Mestre.setVisible(true);
 
     }//GEN-LAST:event_jBSairActionPerformed
+
+    private void jBAdicionarNovaFalaSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdicionarNovaFalaSairActionPerformed
+    
+        JFNpc.this.dispose();
+    
+        JFMestre Mestre = new JFMestre();
+        Mestre.setVisible(true);    
+        
+    }//GEN-LAST:event_jBAdicionarNovaFalaSairActionPerformed
+
+    private void jBAdicionarNovosItensSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdicionarNovosItensSairActionPerformed
+         
+        JFNpc.this.dispose();
+    
+        JFMestre Mestre = new JFMestre();
+        Mestre.setVisible(true);    
+        
+    }//GEN-LAST:event_jBAdicionarNovosItensSairActionPerformed
     
     
     /**
@@ -3527,6 +3564,8 @@ public class JFNpc extends javax.swing.JFrame {
     private javax.swing.JLabel LabelRespostaNegativa;
     private javax.swing.JLabel LabelRespostaPositiva;
     private javax.swing.JLabel LabelTipoNpc;
+    private javax.swing.JButton jBAdicionarNovaFalaSair;
+    private javax.swing.JButton jBAdicionarNovosItensSair;
     private javax.swing.JButton jBAlterar;
     private javax.swing.JButton jBCadastrar;
     private javax.swing.JButton jBCarregarItens;

@@ -129,7 +129,7 @@ public class JFNpcAlterarExcluir extends javax.swing.JFrame {
         jScrollPane12 = new javax.swing.JScrollPane();
         jTAAlterarRespostaPositiva = new javax.swing.JTextArea();
         jBAlterarCadastrar = new javax.swing.JButton();
-        jBAlterarAdicionarFala = new javax.swing.JButton();
+        jBAlterarSair = new javax.swing.JButton();
         jCBAlterarTipoNpc = new javax.swing.JComboBox();
         jLAlterarAtributosNpc = new javax.swing.JLabel();
         jTFAlterarForca = new javax.swing.JTextField();
@@ -189,13 +189,9 @@ public class JFNpcAlterarExcluir extends javax.swing.JFrame {
         LabelExcluirNpc = new javax.swing.JLabel();
         jCBExcluirNomeNpc = new javax.swing.JComboBox();
         jBExcluirNpc = new javax.swing.JButton();
+        jBExcluirSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -267,10 +263,15 @@ public class JFNpcAlterarExcluir extends javax.swing.JFrame {
         jPanel1.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 375, 375, -1));
 
         jBAlterarCadastrar.setText("Cadastrar");
-        jPanel1.add(jBAlterarCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 604, 120, 30));
+        jPanel1.add(jBAlterarCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 540, 120, 30));
 
-        jBAlterarAdicionarFala.setText("Adicionar Fala");
-        jPanel1.add(jBAlterarAdicionarFala, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 604, 120, 30));
+        jBAlterarSair.setText("Sair");
+        jBAlterarSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAlterarSairActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBAlterarSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 580, 120, 30));
 
         jCBAlterarTipoNpc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Combatente", "Comerciante", "Guia", "Missão", "Coletável" }));
         jCBAlterarTipoNpc.setSelectedIndex(-1);
@@ -487,6 +488,14 @@ public class JFNpcAlterarExcluir extends javax.swing.JFrame {
         });
         jPExcluir.add(jBExcluirNpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 108, 155, -1));
 
+        jBExcluirSair.setText("Sair");
+        jBExcluirSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExcluirSairActionPerformed(evt);
+            }
+        });
+        jPExcluir.add(jBExcluirSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 580, 120, 30));
+
         jTabbedPane1.addTab("Excluir", jPExcluir);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -580,11 +589,25 @@ public class JFNpcAlterarExcluir extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBExcluirNpcActionPerformed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+    // Chama formulário NPC
+    private void jBAlterarSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarSairActionPerformed
+       
+        JFNpcAlterarExcluir.this.dispose();
         
+        JFNpc npc = new JFNpc();
+        npc.setVisible(true);
         
+    }//GEN-LAST:event_jBAlterarSairActionPerformed
+
+    // Chama formulário Mestre
+    private void jBExcluirSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirSairActionPerformed
         
-    }//GEN-LAST:event_formWindowOpened
+       JFNpcAlterarExcluir.this.dispose();
+        
+       JFMestre Mestre = new JFMestre();
+       Mestre.setVisible(true); 
+      
+    }//GEN-LAST:event_jBExcluirSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -648,10 +671,11 @@ public class JFNpcAlterarExcluir extends javax.swing.JFrame {
     private javax.swing.JLabel LabelAlterarTipoNpc;
     private javax.swing.JLabel LabelExcluirNomeNpc;
     private javax.swing.JLabel LabelExcluirNpc;
-    private javax.swing.JButton jBAlterarAdicionarFala;
     private javax.swing.JButton jBAlterarAdicionarItenNpc;
     private javax.swing.JButton jBAlterarCadastrar;
+    private javax.swing.JButton jBAlterarSair;
     private javax.swing.JButton jBExcluirNpc;
+    private javax.swing.JButton jBExcluirSair;
     private javax.swing.JComboBox jCBAlterarArmaNpc;
     private javax.swing.JComboBox jCBAlterarArmaduraNpc;
     private javax.swing.JComboBox jCBAlterarClasse;
