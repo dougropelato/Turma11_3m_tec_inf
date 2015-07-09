@@ -3490,27 +3490,18 @@ public class JFNpc extends javax.swing.JFrame {
     private void jBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairActionPerformed
         
         JFNpc.this.dispose();
-        
-        JFMestre Mestre = new JFMestre();
-        Mestre.setVisible(true);
 
     }//GEN-LAST:event_jBSairActionPerformed
 
     private void jBAdicionarNovaFalaSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdicionarNovaFalaSairActionPerformed
     
         JFNpc.this.dispose();
-    
-        JFMestre Mestre = new JFMestre();
-        Mestre.setVisible(true);    
-        
+         
     }//GEN-LAST:event_jBAdicionarNovaFalaSairActionPerformed
 
     private void jBAdicionarNovosItensSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdicionarNovosItensSairActionPerformed
          
-        JFNpc.this.dispose();
-    
-        JFMestre Mestre = new JFMestre();
-        Mestre.setVisible(true);    
+        JFNpc.this.dispose();   
         
     }//GEN-LAST:event_jBAdicionarNovosItensSairActionPerformed
     
