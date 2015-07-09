@@ -3382,7 +3382,17 @@ public class JFNpc extends javax.swing.JFrame {
     // Chama formulário para alterar ou excluir um Npc
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
         
-        JFNpc.this.dispose();
+        
+        try {
+            
+            JFNpcAlterarExcluir NPCAlterarExcluir = new JFNpcAlterarExcluir();
+            NPCAlterarExcluir.setVisible(true);
+            
+            JFNpc.this.dispose();
+            
+        } catch (SQLException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | InstantiationException | ClassNotFoundException ex) {
+            Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_jBAlterarActionPerformed
 

@@ -7,6 +7,8 @@ package Formularios;
 
 import Tabelas.NpcsCombatentes;
 import dao.GenericDAO;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -27,7 +29,7 @@ import tabelas.NpcsFalas;
  * @author Micro7
  */
 public class JFNpcAlterarExcluir extends javax.swing.JFrame {
-    
+         
     private Connection conexao;
     ArrayList arrayListNpc = new ArrayList();
     
@@ -96,6 +98,7 @@ public class JFNpcAlterarExcluir extends javax.swing.JFrame {
     public JFNpcAlterarExcluir() throws SQLException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
         initComponents();
         carregaComboNpcs();//Inicia o método
+        centralizarComponente();
     }
 
     /**
@@ -506,6 +509,13 @@ public class JFNpcAlterarExcluir extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void centralizarComponente() {
+
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+        
+    }
     
     private void jBExcluirNpcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirNpcActionPerformed
         // TODO add your handling code here:
