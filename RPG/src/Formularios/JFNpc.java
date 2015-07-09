@@ -1701,10 +1701,10 @@ public class JFNpc extends javax.swing.JFrame {
         jCBNovosItensConsumivelNpc.setEnabled(false);    
         jCBNovosItensEscudoNpc.setEnabled(false);
                 
-        //jTFNovosItensQuantidadeArmaduraNpc.setEnabled(false);
-        //jTFNovosItensQuantidadeArmaNpc.setEnabled(false);     
-        //jTFNovosItensQuantidadeConsumivelNpc.setEnabled(false);        
-        //jTFNovosItensQuantidadeEscudoNpc.setEnabled(false);       
+        jTFNovosItensQuantidadeArmaduraNpc.setEditable(false);
+        jTFNovosItensQuantidadeArmaNpc.setEditable(false);     
+        jTFNovosItensQuantidadeConsumivelNpc.setEditable(false);        
+        jTFNovosItensQuantidadeEscudoNpc.setEditable(false);       
                 
     }
     
@@ -3232,6 +3232,8 @@ public class JFNpc extends javax.swing.JFrame {
         // Se CheckBox estiver selecionado...
         if (jCBNovosItensAdicionarArmadura.isSelected()){    
             
+            jTFNovosItensQuantidadeArmaduraNpc.setEditable(true);
+            
             jCBNovosItensArmaduraNpc.removeAllItems();
             
             // Carrega ComboBox Armaduras    
@@ -3254,12 +3256,12 @@ public class JFNpc extends javax.swing.JFrame {
         
         else { // Senão remove armaduras e limpa campos
             
+            jTFNovosItensQuantidadeArmaduraNpc.setEditable(false);
+            
             jCBNovosItensArmaduraNpc.removeAllItems();
             jTFNovosItensCodArmadura.setText("");
             jTFNovosItensQuantidadeArmaduraNpc.setText("");
         }
-        
-        jTFNovosItensQuantidadeArmaduraNpc.setEditable(true);
             
         } catch (SQLException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
@@ -3285,6 +3287,8 @@ public class JFNpc extends javax.swing.JFrame {
         // Se CheckBox estiver selecionado...
         if (jCBNovosItensAdicionarArma.isSelected()){              
             
+            jTFNovosItensQuantidadeArmaNpc.setEditable(true);
+            
             jCBNovosItensArmaNpc.removeAllItems();
             
             // Carrega ComboBox Armas    
@@ -3306,13 +3310,15 @@ public class JFNpc extends javax.swing.JFrame {
         }
         
         else{ // Senão remove armaduras e limpa campos
-                    
+            
+            jTFNovosItensQuantidadeArmaNpc.setEditable(false);
+            
             jCBNovosItensArmaNpc.removeAllItems();
             jTFNovosItensCodArma.setText("");
             jTFNovosItensQuantidadeArmaNpc.setText("");
         }
         
-        jTFNovosItensQuantidadeArmaNpc.setEditable(true);
+        
         
         } catch (SQLException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
@@ -3337,6 +3343,8 @@ public class JFNpc extends javax.swing.JFrame {
         // Se CheckBox estiver selecionado...
         if (jCBNovosItensAdicionarConsumivel.isSelected()){ 
             
+            jTFNovosItensQuantidadeConsumivelNpc.setEditable(true);
+            
             jCBNovosItensConsumivelNpc.removeAllItems();
         
             // Carrega ComboBox Consumiveis
@@ -3358,13 +3366,13 @@ public class JFNpc extends javax.swing.JFrame {
         }
         
         else { // Senão remove armaduras e limpa campos
-        
+
+            jTFNovosItensQuantidadeConsumivelNpc.setEditable(false);
+            
             jCBNovosItensConsumivelNpc.removeAllItems();
             jTFNovosItensCodConsumivel.setText("");
             jTFNovosItensQuantidadeConsumivelNpc.setText("");
         }
-        
-        jTFNovosItensQuantidadeConsumivelNpc.setEditable(true);
             
         } catch (SQLException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
@@ -3388,6 +3396,8 @@ public class JFNpc extends javax.swing.JFrame {
             
         // Se CheckBox estiver selecionado...
         if (jCBNovosItensAdicionarEscudo.isSelected()){  
+                    
+            jTFNovosItensQuantidadeEscudoNpc.setEditable(true);
             
             jCBNovosItensEscudoNpc.removeAllItems();
             
@@ -3411,12 +3421,14 @@ public class JFNpc extends javax.swing.JFrame {
         
         else{ // Senão remove armaduras e limpa campos
             
+            jTFNovosItensQuantidadeEscudoNpc.setEditable(false);
+            
             jCBNovosItensEscudoNpc.removeAllItems();
             jTFNovosItensCodEscudo.setText("");
             jTFNovosItensQuantidadeEscudoNpc.setText("");
         }
         
-        jTFNovosItensQuantidadeEscudoNpc.setEditable(true);
+        
             
         } catch (SQLException ex) {
             Logger.getLogger(JFNpc.class.getName()).log(Level.SEVERE, null, ex);
@@ -3542,6 +3554,7 @@ public class JFNpc extends javax.swing.JFrame {
     private void jBNovosItensCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovosItensCancelarActionPerformed
         
         LimparCamposAbaAdicionarNovosItens(evt);
+        BloquearComponentesAbaAdicionarNovosItens(evt);
         
     }//GEN-LAST:event_jBNovosItensCancelarActionPerformed
 
