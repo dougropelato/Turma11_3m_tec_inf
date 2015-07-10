@@ -256,7 +256,7 @@ public class VerificaComandos {
                                     auth.setIniciativa_personagem(0);
                                     auth.setCodigo_npc(0);
                                     auth.setValida_posicao(auth.getValida_posicao() + 1);
-                                    res = utt.carregaPosicoes();
+                                    //res = utt.carregaPosicoes();
 
                                 }
                             }
