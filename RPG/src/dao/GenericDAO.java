@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Douglas / Alex jonas
+ * @author Alex jonas
  */
 /**
  * *************************************************************************
